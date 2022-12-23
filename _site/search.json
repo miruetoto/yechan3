@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "posts/2022-12-23-Ebayesthresh.html",
+    "href": "posts/2022-12-23-Ebayesthresh.html",
+    "title": "03_yechan3",
+    "section": "",
+    "text": "아래와 같은 상황을 가정하자.\n\\(X_i = \\mu_i +\\epsilon_i.\\)\n단 여기에서 \\(\\epsilon_i \\sim N(0,1)\\) 이다. 이러한 문제는, 예를들어, 천문학 이미지 프로세싱, 데이터마이닝, 모형선택, 웨이블릿 혹은 다른 dictionaries에 의한 함수추정 문제에서 발생한다. (따라서 이 논문은 쓸모가 있다) 언급한 예시에 대한 자세한 discussion은 Johnstone and Silverman (2004)를 참고하면 된다.\n많은 실제예제에서 \\(\\mu_i\\)는 어떤 의미에서 (in some sense) sparse하다고 여길 수 있다. EbayesThresh 패키지는 이처럼 \\(\\mu_i\\)가 sparse하다는 구조 (혹은 가정)을 이용하여 \\(\\mu_i\\)를 적절하게 추정한다.\nSparsity를 이용하는 자연스러운 방법은 threshoding이다: 여기에서 threshold의 값 \\(t\\)를 너무 크게 잡으면 신호를 잡음으로 잘못 판단할 것이고 \\(t\\)의 값이 너무 작다면 잡음을 신호로 잘못 판단할 수 있다. 따라서 \\(t\\)의 선택은 이 양쪽 기준사이의 tradeoff가 있는데 EbayesThresh는 이러한 tradeoff를 자동으로 조정하는 효과가 있다.\nargument\nprior: \\(\\mu_i\\)의 density. 보통 \\(\\frac{1}{2}a \\exp(-a|u|)\\)라고 가정한다. parameter \\(a\\)는 Section 2.1에서 자시해 나옴.\nbayesfac, threshrule: Section 2.2, 2.3에 자세히 나온다.\nsdev: \\(X_i-\\mu_i\\)의 noise를 의미한다. 이 값은 보통 observed data로 부터 추정하는데 보통 \\(median(|X_i|)\\)로 추정한다. 이것의 motivation은 (the movtivation for this is that) 비록 \\(\\mu_i\\)가 합리적인 수준에서 sparse하더라도 median absolute value는 영향을 받지 않기 때문이다. 당연히 신호가 sparse하지 않다면 이러한 방식으로 sdev를 추정하는 것은 매우 조심스럽게 수행되어야 할 것이다. 만약에 sdev를 알고있는 경우라면 적절하게 추정하면 된다."
+  },
+  {
+    "objectID": "posts/2022-12-23-Ebayesthresh.html#the-bayesian-model",
+    "href": "posts/2022-12-23-Ebayesthresh.html#the-bayesian-model",
+    "title": "03_yechan3",
+    "section": "The Bayesian model",
+    "text": "The Bayesian model\n\\(X_i \\sim N(\\mu_i,1)\\)\n\\(f_{\\text{prior}}(\\mu)=(1-w)\\delta_0(\\mu)+w \\gamma_a(\\mu), \\quad \\gamma_a(\\mu)=\\frac{1}{2}a\\exp(-a|\\mu|)\\)\n여기에서 \\(\\gamma_a(\\mu)\\)는 하나의 예시일 뿐이다. Ebayesthresh에 디폴트로 설정된 prior=\"laplace\"를 셋팅하면 \\(\\gamma_a(\\mu)\\)가 사용된다. \\(\\gamma\\)의 선택은 tail이 polynomial rates로 줄어드는 어떠한 분포를 사용해도 무방하다. 저자들은 quasi-Cauchy분포를 제안하였는데 이는 Johnstone and Sliverman이 만든 theoretical assumption을 만족하는 분포중 가장 꼬리가 두꺼운 분포이다."
+  },
+  {
+    "objectID": "posts/2022-12-23-Ebayesthresh.html#thresholding-rules",
+    "href": "posts/2022-12-23-Ebayesthresh.html#thresholding-rules",
+    "title": "03_yechan3",
+    "section": "Thresholding rules",
+    "text": "Thresholding rules\n모수 \\(\\mu\\)는 사전분포(prior distribution)를 가진다고 가정하고 \\(X \\sim N(\\mu,1)\\)이라고 가정하자. 이 경우 \\(X=x\\)가 given되었을 경우 \\(\\mu\\)의 사후분포(posterior distribution)를 구할 수 있다. (자세한 내용은 Section 6을 참고해야함) 사후분포의 중앙값을 \\(\\hat{\\mu}(x;w)\\)라고 하자. (사후분포의 중앙값이 \\(w\\)에 영향받는 이유는 사전분포가 \\(w\\)에 depend하기 때문이다. 여기에서 \\(w\\)는 marginal MLE로 적절히 추론한다고 가정한다)\n\\(X_i\\)는 독립이라고 가정한다. 여기에서 \\(X_i\\)가 독립이 아니라면 약간의 정보손실이 있을 수 있다. 하지만 \\(X_i\\) 사이에 너무 많은 dependency가 존재하는 경우가 아니라면 Ebayesthresh는 어느정도 합리적인 결과를 제공한다.\n만약에 bayesfac=TRUE를 사용하면 \\(\\mu\\)의 사후분포의 중앙값 대신에 Bayes factor threshold 를 쓸 수도 있다."
+  },
+  {
+    "objectID": "posts/2022-12-23-Ebayesthresh.html#choosing-the-threshold",
+    "href": "posts/2022-12-23-Ebayesthresh.html#choosing-the-threshold",
+    "title": "03_yechan3",
+    "section": "Choosing the threshold",
+    "text": "Choosing the threshold\n\\(X_i\\)의 marginal density는\n\\((1-w)\\phi(x) +w(\\gamma \\star \\phi)(x)\\)\n\\(l(w) = \\sum_{i=1}^{n}\\log \\big\\{(1-w)\\phi(X_i)+wg(X_i) \\big\\}\\)\n와 같이 정의가능하다. 단, 여기에서 \\(g:= \\gamma\\star \\phi\\) 이다.\n이제 우리는 아래의 식을 풀면된다.\n\\[\\underset{w}{\\operatorname{argmax}} l(w)\\quad\\quad \\text{subject to}\\quad t(w) \\leq \\sqrt{2\\log n}\\]\n여기에서 \\(\\sqrt{2\\log n}\\)은 흔히 말하는 universal threshold 이다.\n만약에 \\(w\\)이외에 \\(a\\)도 추정해야 한다면 아래와 같이 추정할 수 있다.\n\\[\\underset{w}{\\operatorname{argmax}} l(w)\\quad\\quad \\text{subject to}\\quad t(w) \\leq \\sqrt{2\\log n}\\]"
+  },
+  {
+    "objectID": "posts/파이토치lightning/2022-11-29-단순선형회귀.html",
+    "href": "posts/파이토치lightning/2022-11-29-단순선형회귀.html",
+    "title": "pl_step1: 선형회귀",
+    "section": "",
+    "text": "import torch\nimport pandas as pd\nimport matplotlib.pyplot as plt \nimport pytorch_lightning as pl \n\n\nref\nref: https://guebin.github.io/DL2022/posts/II.%20DNN/2022-09-20-3wk-2.html\n\n\nRegression 1: CPU\n\ndf = pd.read_csv(\"https://raw.githubusercontent.com/guebin/DL2022/main/posts/II.%20DNN/2022-09-22-regression.csv\")\n\n\nx= torch.tensor(df.x).reshape(-1,1).float()\ny= torch.tensor(df.y).reshape(-1,1).float()\n\n\nds = torch.utils.data.TensorDataset(x,y)\ndl = torch.utils.data.DataLoader(ds,batch_size=100)\n\n\nclass NetLO(pl.LightningModule):\n    def __init__(self):\n        super().__init__()\n        self.linr = torch.nn.Linear(1,1)\n        self.loss_fn = torch.nn.MSELoss()\n    def forward(self,x):\n        yhat = self.linr(x)\n        return yhat\n    def configure_optimizers(self):\n        optimizr = torch.optim.SGD(self.parameters(), lr=0.1)\n        return optimizr \n    def training_step(self,batch,batch_idx):\n        x,y = batch\n        yhat = self(x)\n        loss = self.loss_fn(yhat,y) \n        return loss \n\n\nnet = NetLO()\n\n\ntrnr = pl.Trainer(max_epochs=1)\n\nGPU available: True (cuda), used: False\nTPU available: False, using: 0 TPU cores\nIPU available: False, using: 0 IPUs\nHPU available: False, using: 0 HPUs\n/home/cgb4/anaconda3/envs/py37/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py:1767: PossibleUserWarning: GPU available but not used. Set `accelerator` and `devices` using `Trainer(accelerator='gpu', devices=1)`.\n  category=PossibleUserWarning,\n\n\n\nnet.linr.bias.data = torch.tensor([-5.0])\nnet.linr.weight.data = torch.tensor([[10.0]])\n\n\ntrnr.fit(net, train_dataloaders=dl) \n\n\n  | Name    | Type    | Params\n------------------------------------\n0 | linr    | Linear  | 2     \n1 | loss_fn | MSELoss | 0     \n------------------------------------\n2         Trainable params\n0         Non-trainable params\n2         Total params\n0.000     Total estimated model params size (MB)\n\n\n\n\n\n`Trainer.fit` stopped: `max_epochs=1` reached.\n\n\n\nnet.linr.weight, net.linr.bias\n\n(Parameter containing:\n tensor([[8.8111]], requires_grad=True),\n Parameter containing:\n tensor([-3.6577], requires_grad=True))\n\n\n\nplt.plot(x,y,'o')\nplt.plot(x,net(x).data,'--')\n\n\n\n\n\n\nRegression 2: GPU\n\ndf = pd.read_csv(\"https://raw.githubusercontent.com/guebin/DL2022/main/posts/II.%20DNN/2022-09-22-regression.csv\")\n\n\nx= torch.tensor(df.x).reshape(-1,1).float()\ny= torch.tensor(df.y).reshape(-1,1).float()\n\n\nds = torch.utils.data.TensorDataset(x,y)\ndl = torch.utils.data.DataLoader(ds,batch_size=100)\n\n\nclass NetLO(pl.LightningModule):\n    def __init__(self):\n        super().__init__()\n        self.linr = torch.nn.Linear(1,1)\n        self.loss_fn = torch.nn.MSELoss()\n    def forward(self,x):\n        yhat = self.linr(x)\n        return yhat\n    def configure_optimizers(self):\n        optimizr = torch.optim.SGD(self.parameters(), lr=0.1)\n        return optimizr \n    def training_step(self,batch,batch_idx):\n        x,y = batch\n        yhat = self(x)\n        loss = self.loss_fn(yhat,y) \n        return loss \n\n\nnet = NetLO()\n\n\ntrnr = pl.Trainer(max_epochs=1, accelerator='gpu', devices=1)\n\nGPU available: True (cuda), used: True\nTPU available: False, using: 0 TPU cores\nIPU available: False, using: 0 IPUs\nHPU available: False, using: 0 HPUs\n\n\n\nnet.linr.bias.data = torch.tensor([-5.0])\nnet.linr.weight.data = torch.tensor([[10.0]])\n\n\ntrnr.fit(net, train_dataloaders=dl) \n\nLOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]\n\n  | Name    | Type    | Params\n------------------------------------\n0 | linr    | Linear  | 2     \n1 | loss_fn | MSELoss | 0     \n------------------------------------\n2         Trainable params\n0         Non-trainable params\n2         Total params\n0.000     Total estimated model params size (MB)\n\n\n\n\n\n`Trainer.fit` stopped: `max_epochs=1` reached.\n\n\n\nnet.linr.weight, net.linr.bias\n\n(Parameter containing:\n tensor([[8.8111]], requires_grad=True),\n Parameter containing:\n tensor([-3.6577], requires_grad=True))\n\n\n\nplt.plot(x,y,'o')\nplt.plot(x,net(x).data,'--')"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "03_yechan3",
+    "section": "",
+    "text": "Description of the method\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\npl_step1: 선형회귀\n\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2022\n\n\n최규빈\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  }
+]
