@@ -484,9 +484,10 @@ vectors:
 </div>
 </div>
 <p>(step2) <code>_DFT</code>의 각 원소에 함수 <span class="math inline">\(f: x \to \exp(-i\frac{2\pi}{4}x)\)</span>를 취함</p>
-<div class="cell" data-execution_count="358">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> (x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="358">
+<div class="cell" data-execution_count="468">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1"></a>f <span class="op">=</span> x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)</span>
+<span id="cb32-2"><a href="#cb32-2"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="468">
 <pre><code>4×4 Matrix{ComplexF64}:
  1.0-0.0im           1.0-0.0im          …           1.0-0.0im
  1.0-0.0im   6.12323e-17-1.0im             -1.83697e-16+1.0im
