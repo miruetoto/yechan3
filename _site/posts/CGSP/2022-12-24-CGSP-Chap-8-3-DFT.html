@@ -520,11 +520,12 @@ vectors:
     \end{bmatrix}\]</span></p>
 <p><span class="math inline">\({\bf DFT}\)</span>행렬에는 몇 가지 특징이 있다.</p>
 <p><strong>특징1:</strong> 유니터리행렬이다. 즉 <span class="math inline">\({\bf DFT}^\ast \cdot {\bf DFT} = {\bf DFT}^\ast \cdot{\bf DFT} = {\bf I}\)</span> 이다.</p>
-<div class="cell" data-execution_count="372">
+<div class="cell" data-execution_count="469">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1"></a>_DFT <span class="op">=</span> <span class="fu">reshape</span>([i<span class="op">*</span>j for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span> for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span>], (<span class="fl">4</span>,<span class="fl">4</span>))</span>
-<span id="cb36-2"><a href="#cb36-2"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> (x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)) </span>
-<span id="cb36-3"><a href="#cb36-3"></a>DFT <span class="co"># 아까의 예제의 DFT!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="372">
+<span id="cb36-2"><a href="#cb36-2"></a>f <span class="op">=</span> x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)</span>
+<span id="cb36-3"><a href="#cb36-3"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> f</span>
+<span id="cb36-4"><a href="#cb36-4"></a>DFT <span class="co"># 아까의 예제의 DFT!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="469">
 <pre><code>4×4 Matrix{ComplexF64}:
  1.0-0.0im           1.0-0.0im          …           1.0-0.0im
  1.0-0.0im   6.12323e-17-1.0im             -1.83697e-16+1.0im
@@ -532,10 +533,10 @@ vectors:
  1.0-0.0im  -1.83697e-16+1.0im              5.51091e-16-1.0im</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="373">
+<div class="cell" data-execution_count="470">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1"></a>DFT <span class="op">=</span> (<span class="fl">1</span><span class="op">/</span>√<span class="fl">4</span>)<span class="op">*</span>DFT <span class="co"># 새로운 DFT의 정의 </span></span>
 <span id="cb38-2"><a href="#cb38-2"></a>DFT<span class="op">'</span>DFT <span class="op">.|&gt;</span> round <span class="co"># 유니터리행렬임을 확인!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="373">
+<div class="cell-output cell-output-display" data-execution_count="470">
 <pre><code>4×4 Matrix{ComplexF64}:
   1.0+0.0im  -0.0-0.0im   0.0-0.0im   0.0-0.0im
  -0.0+0.0im   1.0+0.0im  -0.0-0.0im   0.0-0.0im
