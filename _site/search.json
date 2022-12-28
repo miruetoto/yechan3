@@ -65,9 +65,16 @@
   {
     "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html",
     "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html",
-    "title": "[CGSP] Weakly Stationary Graph Processes",
+    "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
     "section": "",
-    "text": "A set of matrices is said to be simultaneously diagonalizable if there exists a single inverible matrix \\({\\bf V}\\) such that\n\\[{\\bf V}^{-1}{\\bf A}{\\bf V}\\]\nis a diagonal matrix for every \\({\\bf A}\\) in the set.\n\n\n\nimage.png"
+    "text": "매트릭스 \\({\\bf A}\\)와 \\({\\bf B}\\)가 대각화 가능하다는 것은 아래의 표현을 만족하는 적당한 invertible matrix \\({\\bf \\Psi}_A\\), \\({\\bf \\Psi}_B\\)와 대각행렬 \\({\\bf \\Lambda}_A\\), \\({\\bf \\Lambda}_B\\)가 존재한다는 의미가 된다.\n\\[{\\bf A} = {\\bf V}_{A} {\\bf \\Lambda}_A {\\bf V}_{A}^{-1}\\]\n\\[{\\bf B} = {\\bf V}_{B} {\\bf \\Lambda}_B {\\bf V}_{B}^{-1}\\]\n그리고 만약에 \\({\\bf V}_{A}={\\bf V}_{B}\\)이라면 즉\n\\[{\\bf A} = {\\bf V} {\\bf \\Lambda}_A {\\bf V}^{-1}\\]\n\\[{\\bf B} = {\\bf V} {\\bf \\Lambda}_B {\\bf V}^{-1}\\]\n이라면 \\(\\{{\\bf A},{\\bf B}\\}\\)가 simultaneously diagonalzable 하다고 표현한다.\n\n\n\n두 matrix \\({\\bf A}\\)와 \\({\\bf B}\\)에 대하여\n\\[{\\bf A}{\\bf B}= {\\bf B}{\\bf A}\\]\n인 관계가 성립하면 두 매트릭스가 commute 한다고 표현한다. 그런데 \\({\\bf A}{\\bf B}={\\bf A}{\\bf B}\\)의 조건은 \\({\\bf A}, {\\bf B}\\)가 동시대각화가능할 (simultaneously diagonalzable) 조건과 같다. 1 따라서 simultaneously diagonalzable 는 commute와 같은 말이라 생각해도 무방하다.\n\n참고: 위키피디아.."
+  },
+  {
+    "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#coexisting-approaches",
+    "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#coexisting-approaches",
+    "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
+    "section": "Coexisting Approaches",
+    "text": "Coexisting Approaches\nStationary graph processes were first defined and analyzed in (Girault 2015). The fundamental problem identified there is that GSOs do not preserve energy in general and therefore cannot be isometric (Gavili and Zhang 2017). This problem is addressed in (Girault, Gonçalves, and Fleury 2015) with the definition of an isometric graph shift that preserves the eigenvector space of the Laplacian GSO but modifies its eigenvalues.\nA stationary graph process is then defined as one whose probability distributions are invariant with respect to multiplications with the isometric shift. One drawback of this approach is that the isometric shift is a complex-valued operator and has a sparsity structure (if any) different from \\({\\bf S}\\). By contrast, the vertex-based definition in\n\\[\\mathbb{E} \\bigg[ \\big({\\bf S}^a{\\bf x}\\big)\\Big(\\big({\\bf S}^H)^b {\\bf x}\\Big)^H  \\bigg]=\\mathbb{E}\\bigg[\\big({\\bf S}^{a+c}{\\bf x}\\big)\\Big(\\big({\\bf S}^H\\big)^{b-c}{\\bf x} \\Big)^H \\bigg]\\]\nis based on the original GSO \\({\\bf S}\\), which is local and real-valued. As a result, above Eq. provides intuition on the relations between stationarity and locality, which can be leveraged to develop stationarity tests or estimation schemes that work with local information. Graph stationarity was also studied in (Perraudin and Vandergheynst 2017) where the requirement of having a covariance matrix diagonalizable by the eigenvectors of the Laplacian GSO is adopted as a definition. This condition is shown to be equivalent to statistical invariance with respect to the translation operator introduced in (Shuman, Ricaud, and Vandergheynst 2016). When the shift \\({\\bf S}\\) coincides with the Laplacian of the graph and the eigenvalues of \\({\\bf S}\\) are all distinct, Definitions 12.1 and 12.2 are equivalent to those in Perraudin and Vandergheynst (2017). Hence, the definitions presented here differ from (Perraudin and Vandergheynst 2017) in that we consider general normal shifts instead of Laplacians and that we see Definition 12.1 as a definition, not a property. These are mathematically minor differences that are important in practice though; see Segarra et al. (2017) for more details."
   },
   {
     "objectID": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html",
@@ -144,7 +151,7 @@
     "href": "index.html",
     "title": "신록예찬’s blog",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 27, 2022\n\n\n[CGSP] Periodogram\n\n\n신록예찬\n\n\n\n\nDec 26, 2022\n\n\n[CGSP] Weakly Stationary Graph Processes\n\n\n신록예찬\n\n\n\n\nDec 25, 2022\n\n\n[CGSP] Chap 8.3: Shift Invariant\n\n\n신록예찬\n\n\n\n\nDec 24, 2022\n\n\n[CGSP] Chap8.3: Discrete Fourier Transform\n\n\n신록예찬\n\n\n\n\nDec 23, 2022\n\n\n[Review] EbayesThresh: R Programs for Empirical Bayes Thresholding\n\n\n신록예찬\n\n\n\n\nSep 21, 2022\n\n\n[PytorchLightning] 단순선형회귀\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 27, 2022\n\n\n[CGSP] Periodogram\n\n\n신록예찬\n\n\n\n\nDec 26, 2022\n\n\n[CGSP] Chap 12.2: Weakly Stationary Graph Processes\n\n\n신록예찬\n\n\n\n\nDec 25, 2022\n\n\n[CGSP] Chap 8.3: Shift Invariant\n\n\n신록예찬\n\n\n\n\nDec 24, 2022\n\n\n[CGSP] Chap8.3: Discrete Fourier Transform\n\n\n신록예찬\n\n\n\n\nDec 23, 2022\n\n\n[Review] EbayesThresh: R Programs for Empirical Bayes Thresholding\n\n\n신록예찬\n\n\n\n\nSep 21, 2022\n\n\n[PytorchLightning] 단순선형회귀\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
