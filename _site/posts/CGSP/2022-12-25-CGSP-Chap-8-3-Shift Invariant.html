@@ -204,12 +204,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A generic filter <span class="math inline">\({\boldsymbol h}\)</span> is given by its <span class="math inline">\(z\)</span>-transform</p>
 <p><span class="math display">\[h(z)=h_0z^0+h_1z^{-1}+\cdots +h_{N-1}z^{-(N-1)}.\]</span></p>
 <p>In vector notation, and with respect to the standard basis <span class="math inline">\({\bf I}\)</span>, the filter is represented by the matrix <span class="math inline">\({\bf H}\)</span>, a polynomial in the cyclic shift</p>
-<p><span class="math display">\[{\bf H}=h({\bf A})=h_0{\bf A}^0+h_1{\bf A}^1+\cdots+h_{N-1}{\bf A}^{N-1}.\]</span></p>
-<p>Thus we can interprete the matrix <span class="math inline">\({\bf A}{\bf s}\)</span> as “<span class="math inline">\(\downarrow\)</span> shifting operator”.</p>
+<p><span class="math display">\[{\bf H}=h({\bf B})=h_0{\bf B}^0+h_1{\bf B}^1+\cdots+h_{N-1}{\bf B}^{N-1}.\]</span></p>
 <p>Filters are <em>shift invariant</em> iff</p>
 <p><span class="math display">\[z\cdot h(z) = h(z)\cdot z\]</span></p>
 <p>or</p>
-<p><span class="math display">\[{\bf A}h({\bf A})=h({\bf A}){\bf A}.\]</span></p>
+<p><span class="math display">\[{\bf A}h({\bf A})=h({\bf A}){\bf B}.\]</span></p>
 <p>(ex1) Define <span class="math inline">\({\boldsymbol h}\)</span> as</p>
 <div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>h <span class="op">=</span> [<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
