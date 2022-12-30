@@ -56,6 +56,41 @@
     "text": "Choosing the threshold\n\\(X_i\\)의 marginal density는\n\\((1-w)\\phi(x) +w(\\gamma \\star \\phi)(x)\\)\n\\(l(w) = \\sum_{i=1}^{n}\\log \\big\\{(1-w)\\phi(X_i)+wg(X_i) \\big\\}\\)\n와 같이 정의가능하다. 단, 여기에서 \\(g:= \\gamma\\star \\phi\\) 이다.\n이제 우리는 아래의 식을 풀면된다.\n\\[\\underset{w}{\\operatorname{argmax}} l(w)\\quad\\quad \\text{subject to}\\quad t(w) \\leq \\sqrt{2\\log n}\\]\n여기에서 \\(\\sqrt{2\\log n}\\)은 흔히 말하는 universal threshold 이다.\n만약에 \\(w\\)이외에 \\(a\\)도 추정해야 한다면 아래와 같이 추정할 수 있다.\n\\[\\underset{w}{\\operatorname{argmax}} l(w)\\quad\\quad \\text{subject to}\\quad t(w) \\leq \\sqrt{2\\log n}\\]"
   },
   {
+    "objectID": "posts/2022-12-30-ST-GCN1.html",
+    "href": "posts/2022-12-30-ST-GCN1.html",
+    "title": "ST-GCN (1)",
+    "section": "",
+    "text": "import networkx as nx\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport torch"
+  },
+  {
+    "objectID": "posts/2022-12-30-ST-GCN1.html#data",
+    "href": "posts/2022-12-30-ST-GCN1.html#data",
+    "title": "ST-GCN (1)",
+    "section": "data",
+    "text": "data\n\nfrom torch_geometric_temporal.dataset import WikiMathsDatasetLoader\nfrom torch_geometric_temporal.signal import temporal_signal_split\n\nloader = WikiMathsDatasetLoader()\n\ndataset = loader.get_dataset(lags=14)\n\ntrain_dataset, test_dataset = temporal_signal_split(dataset, train_ratio=0.5)"
+  },
+  {
+    "objectID": "posts/2022-12-30-ST-GCN1.html#recurrentgcn",
+    "href": "posts/2022-12-30-ST-GCN1.html#recurrentgcn",
+    "title": "ST-GCN (1)",
+    "section": "RecurrentGCN",
+    "text": "RecurrentGCN\n\nimport torch\nimport torch.nn.functional as F\nfrom torch_geometric_temporal.nn.recurrent import GConvGRU\n\nclass RecurrentGCN(torch.nn.Module):\n    def __init__(self, node_features, filters):\n        super(RecurrentGCN, self).__init__()\n        self.recurrent = GConvGRU(node_features, filters, 2)\n        self.linear = torch.nn.Linear(filters, 1)\n\n    def forward(self, x, edge_index, edge_weight):\n        h = self.recurrent(x, edge_index, edge_weight)\n        h = F.relu(h)\n        h = self.linear(h)\n        return h"
+  },
+  {
+    "objectID": "posts/2022-12-30-ST-GCN1.html#learn",
+    "href": "posts/2022-12-30-ST-GCN1.html#learn",
+    "title": "ST-GCN (1)",
+    "section": "Learn",
+    "text": "Learn\n\nfrom tqdm import tqdm\n\nmodel = RecurrentGCN(node_features=14, filters=32)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, snapshot in enumerate(train_dataset):\n        y_hat = model(snapshot.x, snapshot.edge_index, snapshot.edge_attr)\n        cost = torch.mean((y_hat-snapshot.y)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n100%|██████████| 50/50 [03:48<00:00,  4.57s/it]"
+  },
+  {
+    "objectID": "posts/2022-12-30-ST-GCN1.html#예제의-차원-조사",
+    "href": "posts/2022-12-30-ST-GCN1.html#예제의-차원-조사",
+    "title": "ST-GCN (1)",
+    "section": "예제의 차원 조사",
+    "text": "예제의 차원 조사\n\nfor time, snapshot in enumerate(train_dataset):\n    _x = snapshot.x \n    _edge_index = snapshot.edge_index \n    _edge_attr = snapshot.edge_attr\n    _y = snapshot.y\n    break\n\n\n_x.shape\n\ntorch.Size([1068, 14])\n\n\n\n1068: number of nodes // 1068개의 노드가 있음\n14: number of features // 하나의 노드에 맵핑된 차원의수\n\n\n_edge_index.shape\n\ntorch.Size([2, 27079])\n\n\n\n_edge_attr.shape\n\ntorch.Size([27079])\n\n\n\n_y.shape\n\ntorch.Size([1068])\n\n\n\n1068: number of nodes\n\n\n_x.shape\n\ntorch.Size([1068, 14])"
+  },
+  {
     "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html",
     "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html",
     "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
@@ -165,7 +200,7 @@
     "href": "index.html",
     "title": "신록예찬’s blog",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 27, 2022\n\n\n[CGSP] Periodogram\n\n\n신록예찬\n\n\n\n\nDec 26, 2022\n\n\n[CGSP] Chap 12.2: Weakly Stationary Graph Processes\n\n\n신록예찬\n\n\n\n\nDec 24, 2022\n\n\n[CGSP] Chap 8.3: Discrete Fourier Transform\n\n\n신록예찬\n\n\n\n\nDec 23, 2022\n\n\n[Review] EbayesThresh: R Programs for Empirical Bayes Thresholding\n\n\n신록예찬\n\n\n\n\nSep 21, 2022\n\n\n[PytorchLightning] 단순선형회귀\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 30, 2022\n\n\nST-GCN (1)\n\n\n최규빈\n\n\n\n\nDec 27, 2022\n\n\n[CGSP] Periodogram\n\n\n신록예찬\n\n\n\n\nDec 26, 2022\n\n\n[CGSP] Chap 12.2: Weakly Stationary Graph Processes\n\n\n신록예찬\n\n\n\n\nDec 24, 2022\n\n\n[CGSP] Chap 8.3: Discrete Fourier Transform\n\n\n신록예찬\n\n\n\n\nDec 23, 2022\n\n\n[Review] EbayesThresh: R Programs for Empirical Bayes Thresholding\n\n\n신록예찬\n\n\n\n\nSep 21, 2022\n\n\n[PytorchLightning] 단순선형회귀\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
