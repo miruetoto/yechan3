@@ -56,18 +56,32 @@
     "text": "Choosing the threshold\n\\(X_i\\)의 marginal density는\n\\((1-w)\\phi(x) +w(\\gamma \\star \\phi)(x)\\)\n\\(l(w) = \\sum_{i=1}^{n}\\log \\big\\{(1-w)\\phi(X_i)+wg(X_i) \\big\\}\\)\n와 같이 정의가능하다. 단, 여기에서 \\(g:= \\gamma\\star \\phi\\) 이다.\n이제 우리는 아래의 식을 풀면된다.\n\\[\\underset{w}{\\operatorname{argmax}} l(w)\\quad\\quad \\text{subject to}\\quad t(w) \\leq \\sqrt{2\\log n}\\]\n여기에서 \\(\\sqrt{2\\log n}\\)은 흔히 말하는 universal threshold 이다.\n만약에 \\(w\\)이외에 \\(a\\)도 추정해야 한다면 아래와 같이 추정할 수 있다.\n\\[\\underset{w}{\\operatorname{argmax}} l(w)\\quad\\quad \\text{subject to}\\quad t(w) \\leq \\sqrt{2\\log n}\\]"
   },
   {
-    "objectID": "posts/CGSP/2022-12-25-CGSP-Chap-8-3-Shift Invariant.html",
-    "href": "posts/CGSP/2022-12-25-CGSP-Chap-8-3-Shift Invariant.html",
-    "title": "[CGSP] Chap 8.3: Shift Invariant",
-    "section": "",
-    "text": "A generic filter \\({\\boldsymbol h}\\) is given by its \\(z\\)-transform\n\\[h(z)=h_0z^0+h_1z^{-1}+\\cdots +h_{N-1}z^{-(N-1)}.\\]\nIn vector notation, and with respect to the standard basis \\({\\bf I}\\), the filter is represented by the matrix \\({\\bf H}\\), a polynomial in the cyclic shift\n\\[{\\bf H}=h({\\bf B})=h_0{\\bf B}^0+h_1{\\bf B}^1+\\cdots+h_{N-1}{\\bf B}^{N-1}.\\]\nFilters are shift invariant iff\n\\[z\\cdot h(z) = h(z)\\cdot z\\]\nor\n\\[{\\bf A}h({\\bf A})=h({\\bf A}){\\bf B}.\\]\n(ex1) Define \\({\\boldsymbol h}\\) as\n\nh = [1/3,1/3,1/3]\n\n3-element Vector{Float64}:\n 0.3333333333333333\n 0.3333333333333333\n 0.3333333333333333\n\n\nFurthermore define \\({\\bf H}=h({\\bf A})=h_0{\\bf A}^0+h_1{\\bf A}^1+h_2{\\bf A}^2\\)\n\nH = (1/3)*A^0 + (1/3)*A^1 + (1/3)*A^2 \n\n5×5 Matrix{Float64}:\n 0.333333  0.0       0.0       0.333333  0.333333\n 0.333333  0.333333  0.0       0.0       0.333333\n 0.333333  0.333333  0.333333  0.0       0.0\n 0.0       0.333333  0.333333  0.333333  0.0\n 0.0       0.0       0.333333  0.333333  0.333333\n\n\nObserve following:\n\nA*H == H*A \n\ntrue\n\n\nThus, filter \\({\\boldsymbol h}\\) is shift invariant filter and matrix \\({\\bf H}\\) is shift invariant operator.\nnote: \\({\\boldsymbol h}\\) is moving average filter.\nnote: for any \\({\\bf x}\\), \\({\\bf H}{\\bf x}\\) is definded by\n\\[\\left[\\frac{x_4+x_5+x_1}{3},\\frac{x_5+x_1+x_2}{3},\\dots,\\frac{x_3+x_4+x_5}{3}\\right].\\]\n\nx = [1,2,3,2,1]\nH*x\n\n5-element Vector{Float64}:\n 1.3333333333333333\n 1.3333333333333333\n 2.0\n 2.333333333333333\n 1.9999999999999998\n\n\nnote: in some sense, the matrix \\({\\bf H}{\\bf x}\\) can be thought as generalized version of \\({\\boldsymbol h}\\star {\\bf x}\\) where \\(\\star\\) is convolution.\n\nconv(h,x)\n\n7-element Vector{Float64}:\n 0.33333333333333326\n 1.0\n 2.0\n 2.3333333333333335\n 2.0\n 1.0\n 0.3333333333333334\n\n\n\nFinally, we observe that, from the Cayley-Hamilton Theorem, \\({\\bf A}\\) satisfies its characteristic polynomial \\(\\Delta({\\bf A})\\), where \\(\\Delta(\\lambda)\\) is the determinant of \\(\\lambda{\\bf I}-{\\bf A}\\). The characteristic polynomial \\(\\Delta({\\bf A})\\) has degree \\(N\\), so, in DSP, as described so far, linear filters are (matrix) polynomial with degree at most \\(N-1\\)."
-  },
-  {
     "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html",
     "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html",
     "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
     "section": "",
     "text": "using LinearAlgebra, DSP"
+  },
+  {
+    "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#simultaneously-diagonalizable",
+    "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#simultaneously-diagonalizable",
+    "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
+    "section": "Simultaneously Diagonalizable",
+    "text": "Simultaneously Diagonalizable\n매트릭스 \\({\\bf A}\\)와 \\({\\bf B}\\)가 대각화 가능하다는 것은 아래의 표현을 만족하는 적당한 invertible matrix \\({\\bf \\Psi}_A\\), \\({\\bf \\Psi}_B\\)와 대각행렬 \\({\\bf \\Lambda}_A\\), \\({\\bf \\Lambda}_B\\)가 존재한다는 의미가 된다.\n\\[{\\bf A} = {\\bf V}_{A} {\\bf \\Lambda}_A {\\bf V}_{A}^{-1}\\]\n\\[{\\bf B} = {\\bf V}_{B} {\\bf \\Lambda}_B {\\bf V}_{B}^{-1}\\]\n그리고 만약에 \\({\\bf V}_{A}={\\bf V}_{B}\\)이라면 즉\n\\[{\\bf A} = {\\bf V} {\\bf \\Lambda}_A {\\bf V}^{-1}\\]\n\\[{\\bf B} = {\\bf V} {\\bf \\Lambda}_B {\\bf V}^{-1}\\]\n이라면 \\(\\{{\\bf A},{\\bf B}\\}\\)가 simultaneously diagonalzable 하다고 표현한다."
+  },
+  {
+    "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#commute",
+    "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#commute",
+    "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
+    "section": "Commute",
+    "text": "Commute\n두 matrix \\({\\bf A}\\)와 \\({\\bf B}\\)에 대하여\n\\[{\\bf A}{\\bf B}= {\\bf B}{\\bf A}\\]\n인 관계가 성립하면 두 매트릭스가 commute 한다고 표현한다. 그런데 \\({\\bf A}{\\bf B}={\\bf A}{\\bf B}\\)의 조건은 \\({\\bf A}, {\\bf B}\\)가 동시대각화가능할 (simultaneously diagonalzable) 조건과 같다. 1 따라서 simultaneously diagonalzable 는 commute와 같은 말이라 생각해도 무방하다.\n\n참고: 위키피디아.."
+  },
+  {
+    "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#shift-invariant-filter",
+    "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#shift-invariant-filter",
+    "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
+    "section": "Shift Invariant Filter",
+    "text": "Shift Invariant Filter\n\nref: Djuric and Richard (2018) Chap 8.3 의 내용 중 일부\n\nDefine the matrix \\({\\bf B}\\) as periodic shift matrix such that\n\\[\n{\\bf B} = \\begin{bmatrix}\n0 & 0 & 0 & \\dots  & 0 & 1 \\\\\n1 & 0 & 0 & \\dots & 0 & 0 \\\\\n0 & 1 & 0 & \\dots & 0 & 0 \\\\\n\\dots & \\dots & \\dots & \\dots & \\dots & \\dots\\\\\n0 & 0 & \\dots & 1 & 0 & 0 \\\\\n0 & 0 & \\dots & 0 & 1 & 0 \\\\\n\\end{bmatrix}.\\]\nA generic filter \\({\\boldsymbol h}\\) is given by its \\(z\\)-transform\n\\[h(z)=h_0z^0+h_1z^{-1}+\\cdots +h_{N-1}z^{-(N-1)}\\]\nwhere \\(s_{n-1}=z^{-1}s_n\\). In vector notation, and with respect to the standard basis \\({\\bf I}\\), the filter is represented by the matrix \\({\\bf H}\\), a polynomial in the cyclic shift\n\\[{\\bf H}=h({\\bf B})=h_0{\\bf B}^0+h_1{\\bf B}^1+\\cdots+h_{N-1}{\\bf B}^{N-1}.\\]\nFilters are shift invariant iff\n\\[z\\cdot h(z) = h(z)\\cdot z\\]\nor from the matrix representation\n\\[{\\bf B}h({\\bf B})=h({\\bf B}){\\bf B}.\\]\nExample\nLet \\({\\bf B}\\) as\n\nB= [0 1 0 0 0 0 0\n    0 0 1 0 0 0 0 \n    0 0 0 1 0 0 0 \n    0 0 0 0 1 0 0 \n    0 0 0 0 0 1 0 \n    0 0 0 0 0 0 1 \n    1 0 0 0 0 0 0]\n\n7×7 Matrix{Int64}:\n 0  1  0  0  0  0  0\n 0  0  1  0  0  0  0\n 0  0  0  1  0  0  0\n 0  0  0  0  1  0  0\n 0  0  0  0  0  1  0\n 0  0  0  0  0  0  1\n 1  0  0  0  0  0  0\n\n\nDefine \\({\\boldsymbol h}\\) as\n\nh = [1/3,1/3,1/3]\n\n3-element Vector{Float64}:\n 0.3333333333333333\n 0.3333333333333333\n 0.3333333333333333\n\n\nFurthermore define \\({\\bf H}=h({\\bf B})=h_0{\\bf B}^0+h_1{\\bf B}^1+h_2{\\bf B}^2\\)\n\nH = (1/3)*B^0 + (1/3)*B^1 + (1/3)*B^2 \n\n7×7 Matrix{Float64}:\n 0.333333  0.333333  0.333333  0.0       0.0       0.0       0.0\n 0.0       0.333333  0.333333  0.333333  0.0       0.0       0.0\n 0.0       0.0       0.333333  0.333333  0.333333  0.0       0.0\n 0.0       0.0       0.0       0.333333  0.333333  0.333333  0.0\n 0.0       0.0       0.0       0.0       0.333333  0.333333  0.333333\n 0.333333  0.0       0.0       0.0       0.0       0.333333  0.333333\n 0.333333  0.333333  0.0       0.0       0.0       0.0       0.333333\n\n\nObserve following:\n\nB*H == H*B \n\ntrue\n\n\nThus, filter \\({\\boldsymbol h}\\) is shift invariant filter and matrix \\({\\bf H}\\) is shift invariant operator.\nnote: \\({\\boldsymbol h}\\) is moving average filter.\nnote: for any \\({\\bf x}\\), \\({\\bf H}{\\bf x}\\) is definded by\n\\[\\left[\\frac{x_{n-1}+x_n+x_1}{3},\\frac{x_n+x_1+x_2}{3},\\dots,\\frac{x_{n-3}+x_{n-2}+x_n}{3}\\right].\\]\n\nx = [1,1,1,1,2,2,2]\nH*x\n\n7-element Vector{Float64}:\n 1.0\n 1.0\n 1.3333333333333333\n 1.6666666666666665\n 2.0\n 1.6666666666666665\n 1.3333333333333333\n\n\nnote: In some sense, the matrix \\({\\bf H}{\\bf x}\\) can be thought as generalized version of \\({\\boldsymbol h}\\star {\\bf x}\\) where \\(\\star\\) is convolution up to shift\n\nconv(h,x)\n\n9-element Vector{Float64}:\n 0.3333333333333334\n 0.6666666666666667\n 1.0\n 1.0\n 1.3333333333333333\n 1.6666666666666667\n 2.0\n 1.3333333333333333\n 0.6666666666666667\n\n\nFinally, we observe that, from the Cayley-Hamilton Theorem, \\({\\bf B}\\) satisfies its characteristic polynomial \\(\\Delta({\\bf B})\\), where \\(\\Delta(\\lambda)\\) is the determinant of \\(\\lambda{\\bf I}-{\\bf B}\\). The characteristic polynomial \\(\\Delta({\\bf B})\\) has degree \\(N\\), so, in DSP, as described so far, linear filters are (matrix) polynomial with degree at most \\(N-1\\)."
   },
   {
     "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#coexisting-approaches",
@@ -84,11 +98,11 @@
     "text": "using LinearAlgebra"
   },
   {
-    "objectID": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#forward-operator-bf-a",
-    "href": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#forward-operator-bf-a",
+    "objectID": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#cyclic-shfit-operator-bf-b",
+    "href": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#cyclic-shfit-operator-bf-b",
     "title": "[CGSP] Chap 8.3: Discrete Fourier Transform",
-    "section": "Forward operator \\({\\bf A}\\)",
-    "text": "Forward operator \\({\\bf A}\\)\nThe matrix \\({\\bf A}\\) representing the periodic shift is\n\nA = [0 0 0 0 1\n    1 0 0 0 0 \n    0 1 0 0 0\n    0 0 1 0 0\n    0 0 0 1 0]\n\n5×5 Matrix{Int64}:\n 0  0  0  0  1\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n\n\nThis matrix is the cyclic shift.\nnote: \\({\\bf A}\\) is orthogonal matrix.\n\nA'A\n\n5×5 Matrix{Int64}:\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n 0  0  0  0  1\n\n\n(ex1) Define \\({\\bf s}\\) as\n\ns = [1,2,3,4,5]\ns\n\n5-element Vector{Int64}:\n 1\n 2\n 3\n 4\n 5\n\n\nObserve that\n\nA*s\n\n5-element Vector{Int64}:\n 5\n 1\n 2\n 3\n 4\n\n\n\nA^2*s\n\n5-element Vector{Int64}:\n 4\n 5\n 1\n 2\n 3\n\n\n\nA^3*s\n\n5-element Vector{Int64}:\n 3\n 4\n 5\n 1\n 2\n\n\nThus we can interprete the matrix \\({\\bf A}\\) as backward operator and \\({\\bf A}^\\ast\\) as forward operator such that\n\\[{\\bf A}s_n =s_{n-1}\\]"
+    "section": "Cyclic shfit operator \\({\\bf B}\\)",
+    "text": "Cyclic shfit operator \\({\\bf B}\\)\nThe matrix \\({\\bf B}\\) representing the periodic shift is\n\nB = [0 0 0 0 1\n    1 0 0 0 0 \n    0 1 0 0 0\n    0 0 1 0 0\n    0 0 0 1 0]\n\n5×5 Matrix{Int64}:\n 0  0  0  0  1\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n\n\nThis matrix is the cyclic shift.\nnote: \\({\\bf B}\\) is orthogonal matrix.\n\nB'B\n\n5×5 Matrix{Int64}:\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n 0  0  0  0  1\n\n\n(ex1) Define \\({\\bf s}\\) as\n\ns = [1,2,3,4,5]\ns\n\n5-element Vector{Int64}:\n 1\n 2\n 3\n 4\n 5\n\n\nObserve that\n\nB*s\n\n5-element Vector{Int64}:\n 5\n 1\n 2\n 3\n 4\n\n\n\nB^2*s\n\n5-element Vector{Int64}:\n 4\n 5\n 1\n 2\n 3\n\n\n\nB^3*s\n\n5-element Vector{Int64}:\n 3\n 4\n 5\n 1\n 2\n\n\nThus we can interprete the matrix \\({\\bf B}\\) as cyclic shift operator such that\n\\[\n{\\bf B}s_n =s_{n-1}\n\\]\nfor \\(n=1,\\dots, N-1\\) and \\({\\bf B}s_0 =s_N\\).\nnote: \\({\\bf B}\\)는 시계열에서 다루는 backshift operator 와 비슷함."
   },
   {
     "objectID": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#dft",
@@ -159,61 +173,5 @@
     "title": "About",
     "section": "",
     "text": "신록예찬3\ngbchoi0814@gmail.com"
-  },
-  {
-    "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#simultaneously-diagonalizable",
-    "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#simultaneously-diagonalizable",
-    "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
-    "section": "Simultaneously Diagonalizable",
-    "text": "Simultaneously Diagonalizable\n매트릭스 \\({\\bf A}\\)와 \\({\\bf B}\\)가 대각화 가능하다는 것은 아래의 표현을 만족하는 적당한 invertible matrix \\({\\bf \\Psi}_A\\), \\({\\bf \\Psi}_B\\)와 대각행렬 \\({\\bf \\Lambda}_A\\), \\({\\bf \\Lambda}_B\\)가 존재한다는 의미가 된다.\n\\[{\\bf A} = {\\bf V}_{A} {\\bf \\Lambda}_A {\\bf V}_{A}^{-1}\\]\n\\[{\\bf B} = {\\bf V}_{B} {\\bf \\Lambda}_B {\\bf V}_{B}^{-1}\\]\n그리고 만약에 \\({\\bf V}_{A}={\\bf V}_{B}\\)이라면 즉\n\\[{\\bf A} = {\\bf V} {\\bf \\Lambda}_A {\\bf V}^{-1}\\]\n\\[{\\bf B} = {\\bf V} {\\bf \\Lambda}_B {\\bf V}^{-1}\\]\n이라면 \\(\\{{\\bf A},{\\bf B}\\}\\)가 simultaneously diagonalzable 하다고 표현한다."
-  },
-  {
-    "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#commute",
-    "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#commute",
-    "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
-    "section": "Commute",
-    "text": "Commute\n두 matrix \\({\\bf A}\\)와 \\({\\bf B}\\)에 대하여\n\\[{\\bf A}{\\bf B}= {\\bf B}{\\bf A}\\]\n인 관계가 성립하면 두 매트릭스가 commute 한다고 표현한다. 그런데 \\({\\bf A}{\\bf B}={\\bf A}{\\bf B}\\)의 조건은 \\({\\bf A}, {\\bf B}\\)가 동시대각화가능할 (simultaneously diagonalzable) 조건과 같다. 1 따라서 simultaneously diagonalzable 는 commute와 같은 말이라 생각해도 무방하다.\n\n참고: 위키피디아.."
-  },
-  {
-    "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#shift-invariant-filter",
-    "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#shift-invariant-filter",
-    "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
-    "section": "Shift Invariant Filter",
-    "text": "Shift Invariant Filter\n\nref: Djuric and Richard (2018) Chap 8.3 의 내용 중 일부\n\nDefine the matrix \\({\\bf B}\\) as periodic shift matrix such that\n\\[\n{\\bf B} = \\begin{bmatrix}\n0 & 0 & 0 & \\dots  & 0 & 1 \\\\\n1 & 0 & 0 & \\dots & 0 & 0 \\\\\n0 & 1 & 0 & \\dots & 0 & 0 \\\\\n\\dots & \\dots & \\dots & \\dots & \\dots & \\dots\\\\\n0 & 0 & \\dots & 1 & 0 & 0 \\\\\n0 & 0 & \\dots & 0 & 1 & 0 \\\\\n\\end{bmatrix}.\\]\nA generic filter \\({\\boldsymbol h}\\) is given by its \\(z\\)-transform\n\\[h(z)=h_0z^0+h_1z^{-1}+\\cdots +h_{N-1}z^{-(N-1)}\\]\nwhere \\(s_{n-1}=z^{-1}s_n\\). In vector notation, and with respect to the standard basis \\({\\bf I}\\), the filter is represented by the matrix \\({\\bf H}\\), a polynomial in the cyclic shift\n\\[{\\bf H}=h({\\bf B})=h_0{\\bf B}^0+h_1{\\bf B}^1+\\cdots+h_{N-1}{\\bf B}^{N-1}.\\]\nFilters are shift invariant iff\n\\[z\\cdot h(z) = h(z)\\cdot z\\]\nor from the matrix representation\n\\[{\\bf B}h({\\bf B})=h({\\bf B}){\\bf B}.\\]\nExample\nLet \\({\\bf B}\\) as\n\nB= [0 1 0 0 0 0 0\n    0 0 1 0 0 0 0 \n    0 0 0 1 0 0 0 \n    0 0 0 0 1 0 0 \n    0 0 0 0 0 1 0 \n    0 0 0 0 0 0 1 \n    1 0 0 0 0 0 0]\n\n7×7 Matrix{Int64}:\n 0  1  0  0  0  0  0\n 0  0  1  0  0  0  0\n 0  0  0  1  0  0  0\n 0  0  0  0  1  0  0\n 0  0  0  0  0  1  0\n 0  0  0  0  0  0  1\n 1  0  0  0  0  0  0\n\n\nDefine \\({\\boldsymbol h}\\) as\n\nh = [1/3,1/3,1/3]\n\n3-element Vector{Float64}:\n 0.3333333333333333\n 0.3333333333333333\n 0.3333333333333333\n\n\nFurthermore define \\({\\bf H}=h({\\bf B})=h_0{\\bf B}^0+h_1{\\bf B}^1+h_2{\\bf B}^2\\)\n\nH = (1/3)*B^0 + (1/3)*B^1 + (1/3)*B^2 \n\n7×7 Matrix{Float64}:\n 0.333333  0.333333  0.333333  0.0       0.0       0.0       0.0\n 0.0       0.333333  0.333333  0.333333  0.0       0.0       0.0\n 0.0       0.0       0.333333  0.333333  0.333333  0.0       0.0\n 0.0       0.0       0.0       0.333333  0.333333  0.333333  0.0\n 0.0       0.0       0.0       0.0       0.333333  0.333333  0.333333\n 0.333333  0.0       0.0       0.0       0.0       0.333333  0.333333\n 0.333333  0.333333  0.0       0.0       0.0       0.0       0.333333\n\n\nObserve following:\n\nB*H == H*B \n\ntrue\n\n\nThus, filter \\({\\boldsymbol h}\\) is shift invariant filter and matrix \\({\\bf H}\\) is shift invariant operator.\nnote: \\({\\boldsymbol h}\\) is moving average filter.\nnote: for any \\({\\bf x}\\), \\({\\bf H}{\\bf x}\\) is definded by\n\\[\\left[\\frac{x_{n-1}+x_n+x_1}{3},\\frac{x_n+x_1+x_2}{3},\\dots,\\frac{x_{n-3}+x_{n-2}+x_n}{3}\\right].\\]\n\nx = [1,1,1,1,2,2,2]\nH*x\n\n7-element Vector{Float64}:\n 1.0\n 1.0\n 1.3333333333333333\n 1.6666666666666665\n 2.0\n 1.6666666666666665\n 1.3333333333333333\n\n\nnote: In some sense, the matrix \\({\\bf H}{\\bf x}\\) can be thought as generalized version of \\({\\boldsymbol h}\\star {\\bf x}\\) where \\(\\star\\) is convolution up to shift\n\nconv(h,x)\n\n9-element Vector{Float64}:\n 0.3333333333333334\n 0.6666666666666667\n 1.0\n 1.0\n 1.3333333333333333\n 1.6666666666666667\n 2.0\n 1.3333333333333333\n 0.6666666666666667\n\n\nFinally, we observe that, from the Cayley-Hamilton Theorem, \\({\\bf B}\\) satisfies its characteristic polynomial \\(\\Delta({\\bf B})\\), where \\(\\Delta(\\lambda)\\) is the determinant of \\(\\lambda{\\bf I}-{\\bf B}\\). The characteristic polynomial \\(\\Delta({\\bf B})\\) has degree \\(N\\), so, in DSP, as described so far, linear filters are (matrix) polynomial with degree at most \\(N-1\\)."
-  },
-  {
-    "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#summary",
-    "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html#summary",
-    "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
-    "section": "Summary",
-    "text": "Summary"
-  },
-  {
-    "objectID": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#back-operator-bf-a",
-    "href": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#back-operator-bf-a",
-    "title": "[CGSP] Chap 8.3: Discrete Fourier Transform",
-    "section": "Back operator \\({\\bf A}\\)",
-    "text": "Back operator \\({\\bf A}\\)\nThe matrix \\({\\bf A}\\) representing the periodic shift is\n\nA = [0 0 0 0 1\n    1 0 0 0 0 \n    0 1 0 0 0\n    0 0 1 0 0\n    0 0 0 1 0]\n\n5×5 Matrix{Int64}:\n 0  0  0  0  1\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n\n\nThis matrix is the cyclic shift.\nnote: \\({\\bf A}\\) is orthogonal matrix.\n\nA'A\n\n5×5 Matrix{Int64}:\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n 0  0  0  0  1\n\n\n(ex1) Define \\({\\bf s}\\) as\n\ns = [1,2,3,4,5]\ns\n\n5-element Vector{Int64}:\n 1\n 2\n 3\n 4\n 5\n\n\nObserve that\n\nA*s\n\n5-element Vector{Int64}:\n 5\n 1\n 2\n 3\n 4\n\n\n\nA^2*s\n\n5-element Vector{Int64}:\n 4\n 5\n 1\n 2\n 3\n\n\n\nA^3*s\n\n5-element Vector{Int64}:\n 3\n 4\n 5\n 1\n 2\n\n\nThus we can interprete the matrix \\({\\bf A}\\) as backward operator and \\({\\bf A}^\\ast\\) as forward operator such that\n\\[{\\bf A}s_n =s_{n-1}\\]"
-  },
-  {
-    "objectID": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#back-operator-bf-b",
-    "href": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#back-operator-bf-b",
-    "title": "[CGSP] Chap 8.3: Discrete Fourier Transform",
-    "section": "Back operator \\({\\bf B}\\)",
-    "text": "Back operator \\({\\bf B}\\)\nThe matrix \\({\\bf B}\\) representing the periodic shift is\n\nB = [0 0 0 0 1\n    1 0 0 0 0 \n    0 1 0 0 0\n    0 0 1 0 0\n    0 0 0 1 0]\n\n5×5 Matrix{Int64}:\n 0  0  0  0  1\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n\n\nThis matrix is the cyclic shift.\nnote: \\({\\bf B}\\) is orthogonal matrix.\n\nB'B\n\n5×5 Matrix{Int64}:\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n 0  0  0  0  1\n\n\n(ex1) Define \\({\\bf s}\\) as\n\ns = [1,2,3,4,5]\ns\n\n5-element Vector{Int64}:\n 1\n 2\n 3\n 4\n 5\n\n\nObserve that\n\nB*s\n\n5-element Vector{Int64}:\n 5\n 1\n 2\n 3\n 4\n\n\n\nB^2*s\n\n5-element Vector{Int64}:\n 4\n 5\n 1\n 2\n 3\n\n\n\nB^3*s\n\n5-element Vector{Int64}:\n 3\n 4\n 5\n 1\n 2\n\n\nThus we can interprete the matrix \\({\\bf B}\\) as backward operator and \\({\\bf B}^\\ast\\) as forward operator such that\n\\[{\\bf B}s_n =s_{n-1}\\]"
-  },
-  {
-    "objectID": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#backshift-operator-bf-b",
-    "href": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#backshift-operator-bf-b",
-    "title": "[CGSP] Chap 8.3: Discrete Fourier Transform",
-    "section": "Backshift operator \\({\\bf B}\\)",
-    "text": "Backshift operator \\({\\bf B}\\)\nThe matrix \\({\\bf B}\\) representing the periodic shift is\n\nB = [0 0 0 0 1\n    1 0 0 0 0 \n    0 1 0 0 0\n    0 0 1 0 0\n    0 0 0 1 0]\n\n5×5 Matrix{Int64}:\n 0  0  0  0  1\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n\n\nThis matrix is the cyclic shift.\nnote: \\({\\bf B}\\) is orthogonal matrix.\n\nB'B\n\n5×5 Matrix{Int64}:\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n 0  0  0  0  1\n\n\n(ex1) Define \\({\\bf s}\\) as\n\ns = [1,2,3,4,5]\ns\n\n5-element Vector{Int64}:\n 1\n 2\n 3\n 4\n 5\n\n\nObserve that\n\nB*s\n\n5-element Vector{Int64}:\n 5\n 1\n 2\n 3\n 4\n\n\n\nB^2*s\n\n5-element Vector{Int64}:\n 4\n 5\n 1\n 2\n 3\n\n\n\nB^3*s\n\n5-element Vector{Int64}:\n 3\n 4\n 5\n 1\n 2\n\n\nThus we can interprete the matrix \\({\\bf B}\\) as cyclic shift operator such that\n\\[\n{\\bf B}s_n =s_{n-1}\n\\]\nfor \\(n=1,\\dots, N-1\\) and \\({\\bf B}s_0 =s_N\\)."
-  },
-  {
-    "objectID": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#cyclic-shfit-operator-bf-b",
-    "href": "posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html#cyclic-shfit-operator-bf-b",
-    "title": "[CGSP] Chap 8.3: Discrete Fourier Transform",
-    "section": "Cyclic shfit operator \\({\\bf B}\\)",
-    "text": "Cyclic shfit operator \\({\\bf B}\\)\nThe matrix \\({\\bf B}\\) representing the periodic shift is\n\nB = [0 0 0 0 1\n    1 0 0 0 0 \n    0 1 0 0 0\n    0 0 1 0 0\n    0 0 0 1 0]\n\n5×5 Matrix{Int64}:\n 0  0  0  0  1\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n\n\nThis matrix is the cyclic shift.\nnote: \\({\\bf B}\\) is orthogonal matrix.\n\nB'B\n\n5×5 Matrix{Int64}:\n 1  0  0  0  0\n 0  1  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n 0  0  0  0  1\n\n\n(ex1) Define \\({\\bf s}\\) as\n\ns = [1,2,3,4,5]\ns\n\n5-element Vector{Int64}:\n 1\n 2\n 3\n 4\n 5\n\n\nObserve that\n\nB*s\n\n5-element Vector{Int64}:\n 5\n 1\n 2\n 3\n 4\n\n\n\nB^2*s\n\n5-element Vector{Int64}:\n 4\n 5\n 1\n 2\n 3\n\n\n\nB^3*s\n\n5-element Vector{Int64}:\n 3\n 4\n 5\n 1\n 2\n\n\nThus we can interprete the matrix \\({\\bf B}\\) as cyclic shift operator such that\n\\[\n{\\bf B}s_n =s_{n-1}\n\\]\nfor \\(n=1,\\dots, N-1\\) and \\({\\bf B}s_0 =s_N\\).\nnote: \\({\\bf B}\\)는 시계열에서 다루는 backshift operator 와 비슷함."
   }
 ]
