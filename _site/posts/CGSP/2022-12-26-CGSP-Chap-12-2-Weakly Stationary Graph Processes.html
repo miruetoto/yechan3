@@ -236,7 +236,7 @@ div.csl-indent {
 
 
 
-<div class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span>, <span class="bu">DSP</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="preliminary-study" class="level1">
@@ -399,18 +399,11 @@ div.csl-indent {
 <section id="summary" class="level1">
 <h1>Summary</h1>
 <p>일반적인 우리에게 익숙한 정상시계열의 정의는 아래와 같다.</p>
-<p>(정의1) <span class="math inline">\(\mathbb{E}[{\bf x}{\bf x}^H] = \mathbb{E}\big[({\bf B}^l{\bf x})({\bf B}^l{\bf x})^H \big]\)</span></p>
-<p>또한 <span class="math inline">\({\bf x}\)</span>가 정상시계열이라면 적당한 white noise <span class="math inline">\({\bf n}\)</span>에 대하여 <span class="math inline">\({\bf x} = {\bf H}{\bf n}\)</span>를 만족하는 shift invariant operater <span class="math inline">\({\bf H}=\sum_{l=0}^{N-1}h_l {\bf B}^l\)</span>가 존재함이 알려져 있다. (Wold’s theorem의 특수한 형태인 듯) 이것을 정의와 같이 사용하면 두번째 정상시계열의 정의를 얻을 수 있다.</p>
-<p>(정의2) <span class="math inline">\({\bf x}={\bf H}{\bf n}\)</span></p>
-<p>한편 <span class="math inline">\({\bf C}_{\bf x}=\mathbb{E}[{\bf x}{\bf x}^H]={\bf H}{\bf H}^H\)</span>와 같이 표현가능한데 <span class="math inline">\({\bf H}\)</span>와 <span class="math inline">\({\bf B}\)</span>는 같은 고유벡터행렬을 가지고<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="math inline">\({\bf H}^H{\bf H}\)</span>는 <span class="math inline">\({\bf H}\)</span>와 같은 고유벡터행렬을 가지므로^[<span class="math inline">\({\bf \Psi}\)</span>가 <span class="math inline">\({\bf H}\)</span>의 고유벡터행렬이면 <span class="math inline">\({\bf H}{\bf H}^H{\bf \Psi}={\bf H}{\bf \Lambda}{\bf H} = {\bf \Lambda}{\bf H}{\bf H}^H\)</span></p>
-<p><span class="math display">\[{\bf C}_{\bf x}=\mathbb{E}[{\bf x}{\bf x}^H] = {\bf H}{\bf H}^H\]</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1"></a>HB <span class="op">=</span> BH </span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a>HH<span class="op">'</span>B <span class="op">=</span> B HH<span class="op">'</span> </span>
-<span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a>HH<span class="op">'</span>B <span class="op">=</span> HBH<span class="op">'</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>(정의1) <span class="math inline">\({\bf x}\)</span>가 정상시계열이다. <span class="math inline">\(\overset{def}{\Longleftrightarrow}\)</span> 모든 <span class="math inline">\(l=0,1,2,\dots\)</span>에 대하여 <span class="math inline">\(\mathbb{E}[{\bf x}{\bf x}^H] = \mathbb{E}\big[({\bf B}^l{\bf x})({\bf B}^l{\bf x})^H \big]\)</span>이 성립한다.</p>
+<p>또한 <span class="math inline">\({\bf x}\)</span>가 정상시계열이라면 적당한 white noise <span class="math inline">\({\bf n}\)</span>에 대하여 <span class="math inline">\({\bf x} = {\bf H}{\bf n}\)</span>를 만족하는 shift invariant operater <span class="math inline">\({\bf H}=\sum_{l=0}^{N-1}h_l {\bf B}^l\)</span>가 존재함이 알려져 있다. (Wold’s theorem의 특수한 형태인 듯) 이 정리를 마치 정의와 같이 사용하면 아래와 같이 시계열의 정상성을 정의할 수 있다.</p>
+<p>(정의2) <span class="math inline">\({\bf x}\)</span>가 정상시계열이다. <span class="math inline">\(\overset{def}{\Longleftrightarrow}\)</span> 임의의 <span class="math inline">\({\bf n}\)</span>에 대하여 <span class="math inline">\({\bf x}={\bf H}{\bf n}\)</span>를 만족하는 shift invariant opertor <span class="math inline">\({\bf H}\)</span>가 항상 존재한다.</p>
+<p>한편 <span class="math inline">\({\bf C}_{\bf x}=\mathbb{E}[{\bf x}{\bf x}^H]={\bf H}{\bf H}^H\)</span>와 같이 표현가능한데 <span class="math inline">\({\bf H}\)</span>와 <span class="math inline">\({\bf B}\)</span>는 같은 고유벡터행렬을 가지고<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="math inline">\({\bf H}^H{\bf H}\)</span>는 <span class="math inline">\({\bf H}\)</span>와 같은 고유벡터행렬을 가지므로<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 결국 <span class="math inline">\({\bf C}_{\bf x}\)</span>와 <span class="math inline">\({\bf B}\)</span>는 같은 고유벡터 행렬을 가진다고 볼 수 있다. 이러한 직관에서 아래와 같이 시계열의 정상성에 대한 세번째 정의를 이해할 수 있다.</p>
+<p>(정의3) <span class="math inline">\({\bf x}\)</span>가 정상시계열이다. <span class="math inline">\(\overset{def}{\Longleftrightarrow}\)</span> <span class="math inline">\({\bf C}_{\bf x}\)</span>는 <span class="math inline">\({\bf DFT}\)</span> 행렬로 대각화 가능하다. (<span class="math inline">\({\bf C}_{\bf x}\)</span>와 <span class="math inline">\({\bf B}\)</span>는 같은 고유벡터 행렬을 가진다.)</p>
 <p><span class="math inline">\({\bf DFT}\cdot {\bf C}_{\bf x}\cdot{\bf DFT}^H\)</span></p>
 <p><span class="math inline">\({\bf \Psi}^H{\bf H}{\bf H}^H{\bf \Psi}\)</span></p>
 <p><span class="math inline">\({\bf H} = \sum_{l=0}^{N-1}h_l {\bf B}^l = \sum_{l=0}^{N-1}h_l {\bf \Psi} {\bf \Lambda}^l {\bf \Psi}^H\)</span></p>
@@ -452,7 +445,8 @@ Shuman, David I, Benjamin Ricaud, and Pierre Vandergheynst. 2016. <span>“Verte
 
 <ol>
 <li id="fn1"><p>필요충분조건이다.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>shift invariant operator의 정의에 의하여<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>shift invariant operator의 정의에 의하여 <span class="math inline">\({\bf H}{\bf B}={\bf B}{\bf H}\)</span>가 성립하니까<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><span class="math inline">\({\bf H}{\bf H}^H={\bf \Psi}{\bf \Lambda}{\bf \Lambda}^H{\bf \Psi}^H\)</span>이니까, 여기에서 <span class="math inline">\(\Lambda\)</span>는 <span class="math inline">\({\bf H}\)</span>의 고유벡터행렬임<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

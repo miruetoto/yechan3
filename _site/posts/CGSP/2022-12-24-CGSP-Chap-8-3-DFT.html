@@ -249,13 +249,13 @@ div.csl-indent {
 <section id="cyclic-shfit-operator-bf-b" class="level2">
 <h2 class="anchored" data-anchor-id="cyclic-shfit-operator-bf-b">Cyclic shfit operator <span class="math inline">\({\bf B}\)</span></h2>
 <p>The matrix <span class="math inline">\({\bf B}\)</span> representing the periodic shift is</p>
-<div class="cell" data-execution_count="476">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1"></a>B <span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span></span>
+<div class="cell" data-execution_count="511">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1"></a>B<span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> </span>
 <span id="cb2-3"><a href="#cb2-3"></a>    <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span></span>
 <span id="cb2-5"><a href="#cb2-5"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="476">
+<div class="cell-output cell-output-display" data-execution_count="511">
 <pre><code>5×5 Matrix{Int64}:
  0  0  0  0  1
  1  0  0  0  0
@@ -563,12 +563,12 @@ vectors:
 <section id="dft의-또-다른-정의" class="level2">
 <h2 class="anchored" data-anchor-id="dft의-또-다른-정의">DFT의 또 다른 정의</h2>
 <p>이번에는 <span class="math inline">\({\bf DFT}\)</span>에 대한 다른 정의를 생각해보자. 우선 아래와 같은 행렬 <span class="math inline">\({\bf B}\)</span>를 고려하자.</p>
-<div class="cell" data-execution_count="498">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1"></a>B <span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> </span>
+<div class="cell" data-execution_count="512">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1"></a>B<span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> </span>
 <span id="cb40-2"><a href="#cb40-2"></a>    <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> </span>
 <span id="cb40-3"><a href="#cb40-3"></a>    <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span></span>
 <span id="cb40-4"><a href="#cb40-4"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="498">
+<div class="cell-output cell-output-display" data-execution_count="512">
 <pre><code>4×4 Matrix{Int64}:
  0  0  0  1
  1  0  0  0
