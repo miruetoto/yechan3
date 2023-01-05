@@ -56,41 +56,6 @@
     "text": "Choosing the threshold\n\\(X_i\\)의 marginal density는\n\\((1-w)\\phi(x) +w(\\gamma \\star \\phi)(x)\\)\n\\(l(w) = \\sum_{i=1}^{n}\\log \\big\\{(1-w)\\phi(X_i)+wg(X_i) \\big\\}\\)\n와 같이 정의가능하다. 단, 여기에서 \\(g:= \\gamma\\star \\phi\\) 이다.\n이제 우리는 아래의 식을 풀면된다.\n\\[\\underset{w}{\\operatorname{argmax}} l(w)\\quad\\quad \\text{subject to}\\quad t(w) \\leq \\sqrt{2\\log n}\\]\n여기에서 \\(\\sqrt{2\\log n}\\)은 흔히 말하는 universal threshold 이다.\n만약에 \\(w\\)이외에 \\(a\\)도 추정해야 한다면 아래와 같이 추정할 수 있다.\n\\[\\underset{w}{\\operatorname{argmax}} l(w)\\quad\\quad \\text{subject to}\\quad t(w) \\leq \\sqrt{2\\log n}\\]"
   },
   {
-    "objectID": "posts/2022-12-30-ST-GCN1.html",
-    "href": "posts/2022-12-30-ST-GCN1.html",
-    "title": "ST-GCN (1)",
-    "section": "",
-    "text": "import networkx as nx\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport torch"
-  },
-  {
-    "objectID": "posts/2022-12-30-ST-GCN1.html#data",
-    "href": "posts/2022-12-30-ST-GCN1.html#data",
-    "title": "ST-GCN (1)",
-    "section": "data",
-    "text": "data\n\nfrom torch_geometric_temporal.dataset import WikiMathsDatasetLoader\nfrom torch_geometric_temporal.signal import temporal_signal_split\n\nloader = WikiMathsDatasetLoader()\n\ndataset = loader.get_dataset(lags=14)\n\ntrain_dataset, test_dataset = temporal_signal_split(dataset, train_ratio=0.5)"
-  },
-  {
-    "objectID": "posts/2022-12-30-ST-GCN1.html#recurrentgcn",
-    "href": "posts/2022-12-30-ST-GCN1.html#recurrentgcn",
-    "title": "ST-GCN (1)",
-    "section": "RecurrentGCN",
-    "text": "RecurrentGCN\n\nimport torch\nimport torch.nn.functional as F\nfrom torch_geometric_temporal.nn.recurrent import GConvGRU\n\nclass RecurrentGCN(torch.nn.Module):\n    def __init__(self, node_features, filters):\n        super(RecurrentGCN, self).__init__()\n        self.recurrent = GConvGRU(node_features, filters, 2)\n        self.linear = torch.nn.Linear(filters, 1)\n\n    def forward(self, x, edge_index, edge_weight):\n        h = self.recurrent(x, edge_index, edge_weight)\n        h = F.relu(h)\n        h = self.linear(h)\n        return h"
-  },
-  {
-    "objectID": "posts/2022-12-30-ST-GCN1.html#learn",
-    "href": "posts/2022-12-30-ST-GCN1.html#learn",
-    "title": "ST-GCN (1)",
-    "section": "Learn",
-    "text": "Learn\n\nfrom tqdm import tqdm\n\nmodel = RecurrentGCN(node_features=14, filters=32)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, snapshot in enumerate(train_dataset):\n        y_hat = model(snapshot.x, snapshot.edge_index, snapshot.edge_attr)\n        cost = torch.mean((y_hat-snapshot.y)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n100%|██████████| 50/50 [03:48<00:00,  4.57s/it]"
-  },
-  {
-    "objectID": "posts/2022-12-30-ST-GCN1.html#예제의-차원-조사",
-    "href": "posts/2022-12-30-ST-GCN1.html#예제의-차원-조사",
-    "title": "ST-GCN (1)",
-    "section": "예제의 차원 조사",
-    "text": "예제의 차원 조사\n\nfor time, snapshot in enumerate(train_dataset):\n    _x = snapshot.x \n    _edge_index = snapshot.edge_index \n    _edge_attr = snapshot.edge_attr\n    _y = snapshot.y\n    break\n\n\n_x.shape\n\ntorch.Size([1068, 14])\n\n\n\n1068: number of nodes // 1068개의 노드가 있음\n14: number of features // 하나의 노드에 맵핑된 차원의수\n\n\n_edge_index.shape\n\ntorch.Size([2, 27079])\n\n\n\n_edge_attr.shape\n\ntorch.Size([27079])\n\n\n\n_y.shape\n\ntorch.Size([1068])\n\n\n\n1068: number of nodes\n\n\n_x.shape\n\ntorch.Size([1068, 14])"
-  },
-  {
     "objectID": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html",
     "href": "posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html",
     "title": "[CGSP] Chap 12.2: Weakly Stationary Graph Processes",
@@ -184,9 +149,44 @@
   {
     "objectID": "posts/CGSP/2022-12-27-CGSP-Chap-12-2-1-PSD.html",
     "href": "posts/CGSP/2022-12-27-CGSP-Chap-12-2-1-PSD.html",
-    "title": "[CGSP] Periodogram",
+    "title": "[CGSP] Chap 12.2.1: Power Spectral Density",
     "section": "",
-    "text": "Power Spectral density\n\nDjuric and Richard (2018) 의 Chap 12.2.1.\n\nDefinition. The PSD of a random process \\({\\bf x}\\) that is stationary with respect to GSO \\({\\bf S}={\\bf V}{\\bf \\Lambda}{\\bf V}^H\\) is the nonnegative \\(N \\times 1\\) vector \\({\\bf p}\\)\n\\[{\\bf p}:=\\text{diag}\\big({\\bf V}^H {\\bf C}_{\\bf x}{\\bf V} \\big).\\]\n\nnote: Note that \\({\\bf C}_{\\bf x}\\) can be expressed as\n\\[{\\bf C}_{\\bf x} =\\mathbb{E}\\big[{\\bf x}{\\bf x}^H\\big] =  \\mathbb{E}\\big[({\\bf H}{\\bf n})({\\bf H}{\\bf n})^H \\big]={\\bf H}\\mathbb{E}\\big[{\\bf n}{\\bf n}^H \\big]{\\bf H}^H={\\bf H}{\\bf H}^H.\\]\nwhere \\({\\bf n}\\) is zero-mean white noise and \\({\\bf H}=\\sum_{l=0}^{N-1}h_l{\\bf S}^l\\) is linear shift-invariant graph filter.\n\nThanks to stationary properties, we can write\n\\[\\mathbb{E}\\big[ {\\bf S}{\\bf H}={\\bf H}{\\bf S}\\big] = \\]\n\n\n\n\n\nReferences\n\nDjuric, Petar, and Cédric Richard. 2018. Cooperative and Graph Signal Processing: Principles and Applications. Academic Press."
+    "text": "12.2.1. Power Spectral Density\n\nDjuric and Richard (2018) 의 Chap 12.2.1, Chap 12.3\n\nDefinition 12.3. The PSD of a random process \\({\\bf x}\\) that is stationary with respect to GSO \\({\\bf S}={\\bf V}{\\bf \\Lambda}{\\bf V}^H\\) is the nonnegative \\(N \\times 1\\) vector \\({\\bf p}\\)\n\\[{\\bf p}:=\\text{diag}\\big({\\bf V}^H {\\bf C}_{\\bf x}{\\bf V} \\big).\\]\nOversObserve that because \\({\\bf C}_{\\bf x}\\) is diagonalized by \\({\\bf V}\\) the matrix \\({\\bf V}^H{\\bf C}_{\\bf x}{\\bf V}\\) is diagonal and it follows that the PSD in above equation corresponds to the eigenvalues of the positive semidefinite covariance matrix \\({\\bf C}_{\\bf x}\\). Thus, above equation is equivalent to\n\\[{\\bf C}_{\\bf x}={\\bf V}\\text{diag}({\\bf p}){\\bf V}^H.\\]\nZero-mean white noise is an example of a random process that is stationary with respect to any graph shift \\({\\bf S}\\). The PSD of white noise with covariance \\(\\mathbb{E}[{\\bf n}{\\bf n}^H] = \\sigma^2{\\bf I}\\) is \\({\\bf p} = \\sigma^2{\\bf 1}\\)1. Also notice that, by definition, any random process \\({\\bf x}\\) is stationary with respect to the shift \\({\\bf S} = {\\bf C}_{\\bf x}\\) defined by its covariance matrix, with corresponding PSD \\({\\bf p} = \\text{diag}({\\bf \\Lambda})\\). This can be exploited in the context of network topology inference. Given a set of graph signals \\(\\{{\\bf x}_r\\}_{r=1}^R\\) it is common to infer the underlying topology by building a graph \\({\\cal G}_{corr}\\) whose edge weights correspond to cross-correlations among the entries of the signals. In that case, the process generating those signals is stationary in the shift given by the adjacency of \\({\\cal G}_{corr}\\); see Segarra et al. (2017) for details. A random process x is also stationary with respect to the shift given by its precision matrix, which is defined as the (pseudo-)inverse \\({\\bf \\Theta}= {\\bf C}^{\\dagger}_{\\bf x}\\). The PSD, in this case, is \\({\\bf p} = \\text{diag}(\\Lambda)^{\\dagger}\\). This is particularly important when \\({\\bf x}\\) is a Gaussian Markov Random Field (GMRF) whose Markovian dependence is captured by the unweighted graph \\({\\cal G}_{MF}\\). It is well known Segarra et al. (2017) Ch. 19 that in these cases \\({\\bf \\Theta}_{i,j}\\) can be nonzero only if \\((i,j)\\) is either a link of \\({\\cal G}_{MF}\\) , or an element in the diagonal. Thus, any GMRF is stationary with respect to the sparse shift \\({\\bf S} = {\\bf \\Theta}\\), which captures the conditional dependence between the elements of \\({\\bf x}\\). Two important properties that hold for random processes in time can be shown to be true as well for the PSD of graph processes.\nProperty 12.1 Let \\({\\bf x}\\) be stationary in \\({\\bf S}\\) with covariance \\({\\bf C}_{\\bf x}\\) and PSD \\({\\bf p}_x\\). Consider a filter \\({\\bf H}\\) with frequency response \\(\\tilde{\\bf h}\\) and define \\({\\bf y}:={\\bf H}{\\bf x}\\). Then, the process \\({\\bf y}\\):\n\nIs stationary in \\({\\bf S}\\) with covariance \\({\\bf C}_{\\bf y}= {\\bf H}{\\bf C}_{\\bf x}{\\bf H}^H\\).\nHas a PSD given by \\({\\bf p}_{\\bf y}=|\\tilde{\\bf h}|^2 \\circ {\\bf p}_{\\bf x}\\), where \\(|\\cdot|^2\\) is applied elementwise.\n\nProperty 12.2 Given a process \\({\\bf x}\\) stationary in \\({\\bf S}={\\bf V}{\\bf \\Lambda}{\\bf V}^H\\) with PSD \\({\\bf p}\\), define the GFT process as \\(\\tilde{\\bf x}={\\bf V}^H{\\bf x}\\). Then, it holds that \\(\\tilde{\\bf x}\\) is uncorrelated and its covariance matrix is\n\\[{\\bf C}_{\\tilde{\\bf x}}:= \\mathbb{E}\\left[\\tilde{\\bf x}\\tilde{\\bf x}^H \\right]=\\mathbb{E}\\left[({\\bf V}^H{\\bf x})({\\bf V}^H{\\bf x})^H \\right]=\\text{diag}({\\bf p}).\\]\nProperty 12.1 is a statement of the spectral convolution theorem for graph signals. Property 12.2 is fundamental to motivate the analysis and modeling of stationary graph processes in the frequency domain, which we undertake in the remainder of this chapter. It also shows that if a process \\({\\bf x}\\) is stationary in the shift \\({\\bf S} = {\\bf V}{\\bf \\Lambda}{\\bf V}^H\\), then the GFT \\({\\bf V}^H\\) provides the Karhunen-Loève expansion of the process.\nThe concept of stationarity and, consequently, that of PSD can be extended to processes defined jointly in a graph and over time. Before we review this extension in the ensuing section, we discuss requirements on the first moment of stationary graph processes.\nThe mean of stationary graph processes. While Definitions 12.1 and 12.2 assume that the random process \\({\\bf x}\\) has mean \\(\\tilde{\\bf x} := \\mathbb{E}[{\\bf x}] = {\\bf 0}\\), traditional stationary time processes are allowed to have a (nonzero) constant mean \\(\\bar{\\bf x} = \\alpha{\\bf 1}\\), with \\(\\alpha\\) being an arbitrary scalar. Stationary graph processes, by contrast, are required to have a first-order moment of the form \\(\\bar{\\bf x} = \\alpha {\\bf v}_k\\), i.e., a scaled version of an eigenvector of \\({\\bf S}\\). This choice: (i) takes into account the structure of the underlying graph; (ii) maintains the validity of Property 12.1; and (iii) encompasses the case \\({\\bf v}_k = {\\bf 1}\\) when \\({\\bf S}\\) is either the adjacency matrix of a directed cycle or the Laplacian of any graph, recovering the classical first-order requirement for weak stationarity.\n\n\n12.3. Power Spectral Density Estimators\nWe can exploit the fact that \\({\\bf x}\\) is a stationary graph process in \\({\\bf S} = {\\bf V}\\text{diag}({\\bf \\Lambda}){\\bf V}^H\\) to design efficient estimators of the covariance \\({\\bf C}_{\\bf x}\\). In particular, instead of estimating \\({\\bf C}_{\\bf x}\\) directly, which has \\(N(N + 1)/2\\) degrees of freedom, one can estimate \\({\\bf p}\\) first, which only has \\({\\bf N}\\) degrees of freedom, and then leverage that \\({\\bf C}_{\\bf x} = {\\bf V}\\text{diag}({\\bf p}){\\bf V}^H\\). Motivated by this, the focus of this section is on estimating \\({\\bf p}\\), the PSD of a stationary random graph process \\({\\bf x}\\), using as input either one or a few realizations \\(\\{{\\bf x}_r\\}_{r=1}^R\\) of \\({\\bf x}\\). To illustrate the developments in Sections 12.3 and 12.4, we will use as a running example a random process defined on the well-known Zachary’s Karate club network [28] (Figs. 12.3 and 12.4). As shown in Fig. 12.4, this graph consists of 34 nodes or members of the club and 78 undirected edges symbolizing friendships among members.2\n\n\nSummary\nㅁㄴㅇㄹ\n\n\n\n\n\n\nReferences\n\nDjuric, Petar, and Cédric Richard. 2018. Cooperative and Graph Signal Processing: Principles and Applications. Academic Press.\n\n\nSegarra, Santiago, Antonio G Marques, Gonzalo Mateos, and Alejandro Ribeiro. 2017. “Network Topology Inference from Spectral Templates.” IEEE Transactions on Signal and Information Processing over Networks 3 (3): 467–83.\n\nFootnotes\n\n\n\\({\\bf 1}\\) is length \\(N\\) vector with all elements are 1↩︎"
+  },
+  {
+    "objectID": "posts/2022-12-30-STGCN-Toy Example.html",
+    "href": "posts/2022-12-30-STGCN-Toy Example.html",
+    "title": "[STGCN] Toy Example",
+    "section": "",
+    "text": "import networkx as nx\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport torch"
+  },
+  {
+    "objectID": "posts/2022-12-30-STGCN-Toy Example.html#data",
+    "href": "posts/2022-12-30-STGCN-Toy Example.html#data",
+    "title": "[STGCN] Toy Example",
+    "section": "data",
+    "text": "data\n\nfrom torch_geometric_temporal.dataset import WikiMathsDatasetLoader\nfrom torch_geometric_temporal.signal import temporal_signal_split\n\nloader = WikiMathsDatasetLoader()\n\ndataset = loader.get_dataset(lags=14)\n\ntrain_dataset, test_dataset = temporal_signal_split(dataset, train_ratio=0.5)"
+  },
+  {
+    "objectID": "posts/2022-12-30-STGCN-Toy Example.html#recurrentgcn",
+    "href": "posts/2022-12-30-STGCN-Toy Example.html#recurrentgcn",
+    "title": "[STGCN] Toy Example",
+    "section": "RecurrentGCN",
+    "text": "RecurrentGCN\n\nimport torch\nimport torch.nn.functional as F\nfrom torch_geometric_temporal.nn.recurrent import GConvGRU\n\nclass RecurrentGCN(torch.nn.Module):\n    def __init__(self, node_features, filters):\n        super(RecurrentGCN, self).__init__()\n        self.recurrent = GConvGRU(node_features, filters, 2)\n        self.linear = torch.nn.Linear(filters, 1)\n\n    def forward(self, x, edge_index, edge_weight):\n        h = self.recurrent(x, edge_index, edge_weight)\n        h = F.relu(h)\n        h = self.linear(h)\n        return h"
+  },
+  {
+    "objectID": "posts/2022-12-30-STGCN-Toy Example.html#learn",
+    "href": "posts/2022-12-30-STGCN-Toy Example.html#learn",
+    "title": "[STGCN] Toy Example",
+    "section": "Learn",
+    "text": "Learn\n\nfrom tqdm import tqdm\n\nmodel = RecurrentGCN(node_features=14, filters=32)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, snapshot in enumerate(train_dataset):\n        y_hat = model(snapshot.x, snapshot.edge_index, snapshot.edge_attr)\n        cost = torch.mean((y_hat-snapshot.y)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n100%|██████████| 50/50 [03:48<00:00,  4.57s/it]"
+  },
+  {
+    "objectID": "posts/2022-12-30-STGCN-Toy Example.html#예제의-차원-조사",
+    "href": "posts/2022-12-30-STGCN-Toy Example.html#예제의-차원-조사",
+    "title": "[STGCN] Toy Example",
+    "section": "예제의 차원 조사",
+    "text": "예제의 차원 조사\n\nfor time, snapshot in enumerate(train_dataset):\n    _x = snapshot.x \n    _edge_index = snapshot.edge_index \n    _edge_attr = snapshot.edge_attr\n    _y = snapshot.y\n    break\n\n\n_x.shape\n\ntorch.Size([1068, 14])\n\n\n\n1068: number of nodes // 1068개의 노드가 있음\n14: number of features // 하나의 노드에 맵핑된 차원의수\n\n\n_edge_index.shape\n\ntorch.Size([2, 27079])\n\n\n\n_edge_attr.shape\n\ntorch.Size([27079])\n\n\n\n_y.shape\n\ntorch.Size([1068])\n\n\n\n1068: number of nodes\n\n\n_x.shape\n\ntorch.Size([1068, 14])"
   },
   {
     "objectID": "posts/파이토치lightning/2022-11-29-단순선형회귀.html",
@@ -200,7 +200,7 @@
     "href": "index.html",
     "title": "신록예찬’s blog",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 30, 2022\n\n\n[STGCN] Toy Example\n\n\n신록예찬\n\n\n\n\nDec 27, 2022\n\n\n[CGSP] Periodogram\n\n\n신록예찬\n\n\n\n\nDec 26, 2022\n\n\n[CGSP] Chap 12.2: Weakly Stationary Graph Processes\n\n\n신록예찬\n\n\n\n\nDec 24, 2022\n\n\n[CGSP] Chap 8.3: Discrete Fourier Transform\n\n\n신록예찬\n\n\n\n\nDec 23, 2022\n\n\n[Review] EbayesThresh: R Programs for Empirical Bayes Thresholding\n\n\n신록예찬\n\n\n\n\nSep 21, 2022\n\n\n[PytorchLightning] 단순선형회귀\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 30, 2022\n\n\n[STGCN] Toy Example\n\n\n신록예찬\n\n\n\n\nDec 27, 2022\n\n\n[CGSP] Chap 12.2.1: Power Spectral Density\n\n\n신록예찬\n\n\n\n\nDec 26, 2022\n\n\n[CGSP] Chap 12.2: Weakly Stationary Graph Processes\n\n\n신록예찬\n\n\n\n\nDec 24, 2022\n\n\n[CGSP] Chap 8.3: Discrete Fourier Transform\n\n\n신록예찬\n\n\n\n\nDec 23, 2022\n\n\n[Review] EbayesThresh: R Programs for Empirical Bayes Thresholding\n\n\n신록예찬\n\n\n\n\nSep 21, 2022\n\n\n[PytorchLightning] 단순선형회귀\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",

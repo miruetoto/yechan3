@@ -9,7 +9,7 @@
 <meta name="author" content="신록예찬">
 <meta name="dcterms.date" content="2022-12-27">
 
-<title>yechan3 - [CGSP] Periodogram</title>
+<title>yechan3 - [CGSP] Chap 12.2.1: Power Spectral Density</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ div.csl-indent {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">[CGSP] Periodogram</h1>
+      <h1 class="title">[CGSP] Chap 12.2.1: Power Spectral Density</h1>
                       </div>
   </div>
     
@@ -153,7 +153,9 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#power-spectral-density" id="toc-power-spectral-density" class="nav-link active" data-scroll-target="#power-spectral-density">Power Spectral density</a></li>
+  <li><a href="#power-spectral-density" id="toc-power-spectral-density" class="nav-link active" data-scroll-target="#power-spectral-density">12.2.1. Power Spectral Density</a></li>
+  <li><a href="#power-spectral-density-estimators" id="toc-power-spectral-density-estimators" class="nav-link" data-scroll-target="#power-spectral-density-estimators">12.3. Power Spectral Density Estimators</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -164,29 +166,52 @@ div.csl-indent {
 
 
 <section id="power-spectral-density" class="level1">
-<h1>Power Spectral density</h1>
+<h1>12.2.1. Power Spectral Density</h1>
 <blockquote class="blockquote">
-<p><span class="citation" data-cites="djuric2018cooperative">Djuric and Richard (<a href="#ref-djuric2018cooperative" role="doc-biblioref">2018</a>)</span> 의 Chap 12.2.1.</p>
+<p><span class="citation" data-cites="djuric2018cooperative">Djuric and Richard (<a href="#ref-djuric2018cooperative" role="doc-biblioref">2018</a>)</span> 의 Chap 12.2.1, Chap 12.3</p>
 </blockquote>
-<p><strong>Definition.</strong> The PSD of a random process <span class="math inline">\({\bf x}\)</span> that is stationary with respect to GSO <span class="math inline">\({\bf S}={\bf V}{\bf \Lambda}{\bf V}^H\)</span> is the nonnegative <span class="math inline">\(N \times 1\)</span> vector <span class="math inline">\({\bf p}\)</span></p>
+<p><strong>Definition 12.3.</strong> The PSD of a random process <span class="math inline">\({\bf x}\)</span> that is stationary with respect to GSO <span class="math inline">\({\bf S}={\bf V}{\bf \Lambda}{\bf V}^H\)</span> is the nonnegative <span class="math inline">\(N \times 1\)</span> vector <span class="math inline">\({\bf p}\)</span></p>
 <p><span class="math display">\[{\bf p}:=\text{diag}\big({\bf V}^H {\bf C}_{\bf x}{\bf V} \big).\]</span></p>
-<hr>
-<p><em>note:</em> Note that <span class="math inline">\({\bf C}_{\bf x}\)</span> can be expressed as</p>
-<p><span class="math display">\[{\bf C}_{\bf x} =\mathbb{E}\big[{\bf x}{\bf x}^H\big] =  \mathbb{E}\big[({\bf H}{\bf n})({\bf H}{\bf n})^H \big]={\bf H}\mathbb{E}\big[{\bf n}{\bf n}^H \big]{\bf H}^H={\bf H}{\bf H}^H.\]</span></p>
-<p>where <span class="math inline">\({\bf n}\)</span> is zero-mean white noise and <span class="math inline">\({\bf H}=\sum_{l=0}^{N-1}h_l{\bf S}^l\)</span> is linear shift-invariant graph filter.</p>
-<hr>
-<p>Thanks to stationary properties, we can write</p>
-<p><span class="math display">\[\mathbb{E}\big[ {\bf S}{\bf H}={\bf H}{\bf S}\big] = \]</span></p>
+<p>OversObserve that because <span class="math inline">\({\bf C}_{\bf x}\)</span> is diagonalized by <span class="math inline">\({\bf V}\)</span> the matrix <span class="math inline">\({\bf V}^H{\bf C}_{\bf x}{\bf V}\)</span> is diagonal and it follows that the PSD in above equation corresponds to the eigenvalues of the positive semidefinite covariance matrix <span class="math inline">\({\bf C}_{\bf x}\)</span>. Thus, above equation is equivalent to</p>
+<p><span class="math display">\[{\bf C}_{\bf x}={\bf V}\text{diag}({\bf p}){\bf V}^H.\]</span></p>
+<p>Zero-mean white noise is an example of a random process that is stationary with respect to any graph shift <span class="math inline">\({\bf S}\)</span>. The PSD of white noise with covariance <span class="math inline">\(\mathbb{E}[{\bf n}{\bf n}^H] = \sigma^2{\bf I}\)</span> is <span class="math inline">\({\bf p} = \sigma^2{\bf 1}\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Also notice that, by definition, any random process <span class="math inline">\({\bf x}\)</span> is stationary with respect to the shift <span class="math inline">\({\bf S} = {\bf C}_{\bf x}\)</span> defined by its covariance matrix, with corresponding PSD <span class="math inline">\({\bf p} = \text{diag}({\bf \Lambda})\)</span>. This can be exploited in the context of network topology inference. Given a set of graph signals <span class="math inline">\(\{{\bf x}_r\}_{r=1}^R\)</span> it is common to infer the underlying topology by building a graph <span class="math inline">\({\cal G}_{corr}\)</span> whose edge weights correspond to cross-correlations among the entries of the signals. In that case, the process generating those signals is stationary in the shift given by the adjacency of <span class="math inline">\({\cal G}_{corr}\)</span>; see <span class="citation" data-cites="segarra2017network">Segarra et al. (<a href="#ref-segarra2017network" role="doc-biblioref">2017</a>)</span> for details. A random process x is also stationary with respect to the shift given by its precision matrix, which is defined as the (pseudo-)inverse <span class="math inline">\({\bf \Theta}= {\bf C}^{\dagger}_{\bf x}\)</span>. The PSD, in this case, is <span class="math inline">\({\bf p} = \text{diag}(\Lambda)^{\dagger}\)</span>. This is particularly important when <span class="math inline">\({\bf x}\)</span> is a Gaussian Markov Random Field (GMRF) whose Markovian dependence is captured by the unweighted graph <span class="math inline">\({\cal G}_{MF}\)</span>. It is well known <span class="citation" data-cites="segarra2017network">Segarra et al. (<a href="#ref-segarra2017network" role="doc-biblioref">2017</a>)</span> Ch. 19 that in these cases <span class="math inline">\({\bf \Theta}_{i,j}\)</span> can be nonzero only if <span class="math inline">\((i,j)\)</span> is either a link of <span class="math inline">\({\cal G}_{MF}\)</span> , or an element in the diagonal. Thus, any GMRF is stationary with respect to the sparse shift <span class="math inline">\({\bf S} = {\bf \Theta}\)</span>, which captures the conditional dependence between the elements of <span class="math inline">\({\bf x}\)</span>. Two important properties that hold for random processes in time can be shown to be true as well for the PSD of graph processes.</p>
+<p><strong>Property 12.1</strong> Let <span class="math inline">\({\bf x}\)</span> be stationary in <span class="math inline">\({\bf S}\)</span> with covariance <span class="math inline">\({\bf C}_{\bf x}\)</span> and PSD <span class="math inline">\({\bf p}_x\)</span>. Consider a filter <span class="math inline">\({\bf H}\)</span> with frequency response <span class="math inline">\(\tilde{\bf h}\)</span> and define <span class="math inline">\({\bf y}:={\bf H}{\bf x}\)</span>. Then, the process <span class="math inline">\({\bf y}\)</span>:</p>
+<ol type="a">
+<li><p>Is stationary in <span class="math inline">\({\bf S}\)</span> with covariance <span class="math inline">\({\bf C}_{\bf y}= {\bf H}{\bf C}_{\bf x}{\bf H}^H\)</span>.</p></li>
+<li><p>Has a PSD given by <span class="math inline">\({\bf p}_{\bf y}=|\tilde{\bf h}|^2 \circ {\bf p}_{\bf x}\)</span>, where <span class="math inline">\(|\cdot|^2\)</span> is applied elementwise.</p></li>
+</ol>
+<p><strong>Property 12.2</strong> Given a process <span class="math inline">\({\bf x}\)</span> stationary in <span class="math inline">\({\bf S}={\bf V}{\bf \Lambda}{\bf V}^H\)</span> with PSD <span class="math inline">\({\bf p}\)</span>, define the GFT process as <span class="math inline">\(\tilde{\bf x}={\bf V}^H{\bf x}\)</span>. Then, it holds that <span class="math inline">\(\tilde{\bf x}\)</span> is uncorrelated and its covariance matrix is</p>
+<p><span class="math display">\[{\bf C}_{\tilde{\bf x}}:= \mathbb{E}\left[\tilde{\bf x}\tilde{\bf x}^H \right]=\mathbb{E}\left[({\bf V}^H{\bf x})({\bf V}^H{\bf x})^H \right]=\text{diag}({\bf p}).\]</span></p>
+<p>Property 12.1 is a statement of the spectral convolution theorem for graph signals. Property 12.2 is fundamental to motivate the analysis and modeling of stationary graph processes in the frequency domain, which we undertake in the remainder of this chapter. It also shows that if a process <span class="math inline">\({\bf x}\)</span> is stationary in the shift <span class="math inline">\({\bf S} = {\bf V}{\bf \Lambda}{\bf V}^H\)</span>, then the GFT <span class="math inline">\({\bf V}^H\)</span> provides the Karhunen-Loève expansion of the process.</p>
+<p>The concept of stationarity and, consequently, that of PSD can be extended to processes defined jointly in a graph and over time. Before we review this extension in the ensuing section, we discuss requirements on the first moment of stationary graph processes.</p>
+<p><strong>The mean of stationary graph processes</strong>. While Definitions 12.1 and 12.2 assume that the random process <span class="math inline">\({\bf x}\)</span> has mean <span class="math inline">\(\tilde{\bf x} := \mathbb{E}[{\bf x}] = {\bf 0}\)</span>, traditional stationary time processes are allowed to have a (nonzero) constant mean <span class="math inline">\(\bar{\bf x} = \alpha{\bf 1}\)</span>, with <span class="math inline">\(\alpha\)</span> being an arbitrary scalar. Stationary graph processes, by contrast, are required to have a first-order moment of the form <span class="math inline">\(\bar{\bf x} = \alpha {\bf v}_k\)</span>, i.e., a scaled version of an eigenvector of <span class="math inline">\({\bf S}\)</span>. This choice: (i) takes into account the structure of the underlying graph; (ii) maintains the validity of Property 12.1; and (iii) encompasses the case <span class="math inline">\({\bf v}_k = {\bf 1}\)</span> when <span class="math inline">\({\bf S}\)</span> is either the adjacency matrix of a directed cycle or the Laplacian of any graph, recovering the classical first-order requirement for weak stationarity.</p>
+</section>
+<section id="power-spectral-density-estimators" class="level1">
+<h1>12.3. Power Spectral Density Estimators</h1>
+<p>We can exploit the fact that <span class="math inline">\({\bf x}\)</span> is a stationary graph process in <span class="math inline">\({\bf S} = {\bf V}\text{diag}({\bf \Lambda}){\bf V}^H\)</span> to design efficient estimators of the covariance <span class="math inline">\({\bf C}_{\bf x}\)</span>. In particular, instead of estimating <span class="math inline">\({\bf C}_{\bf x}\)</span> directly, which has <span class="math inline">\(N(N + 1)/2\)</span> degrees of freedom, one can estimate <span class="math inline">\({\bf p}\)</span> first, which only has <span class="math inline">\({\bf N}\)</span> degrees of freedom, and then leverage that <span class="math inline">\({\bf C}_{\bf x} = {\bf V}\text{diag}({\bf p}){\bf V}^H\)</span>. Motivated by this, the focus of this section is on estimating <span class="math inline">\({\bf p}\)</span>, the PSD of a stationary random graph process <span class="math inline">\({\bf x}\)</span>, using as input either one or a few realizations <span class="math inline">\(\{{\bf x}_r\}_{r=1}^R\)</span> of <span class="math inline">\({\bf x}\)</span>. To illustrate the developments in Sections 12.3 and 12.4, we will use as a running example a random process defined on the well-known Zachary’s Karate club network [28] (Figs. 12.3 and 12.4). As shown in Fig. 12.4, this graph consists of 34 nodes or members of the club and 78 undirected edges symbolizing friendships among members.2</p>
+</section>
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<p>ㅁㄴㅇㄹ</p>
 
 
 
 </section>
 
+
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-djuric2018cooperative" class="csl-entry" role="doc-biblioentry">
 Djuric, Petar, and Cédric Richard. 2018. <em>Cooperative and Graph Signal Processing: Principles and Applications</em>. Academic Press.
 </div>
-</div></section></div></main> <!-- /main -->
+<div id="ref-segarra2017network" class="csl-entry" role="doc-biblioentry">
+Segarra, Santiago, Antonio G Marques, Gonzalo Mateos, and Alejandro Ribeiro. 2017. <span>“Network Topology Inference from Spectral Templates.”</span> <em>IEEE Transactions on Signal and Information Processing over Networks</em> 3 (3): 467–83.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><span class="math inline">\({\bf 1}\)</span> is length <span class="math inline">\(N\)</span> vector with all elements are 1<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
