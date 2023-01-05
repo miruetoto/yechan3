@@ -153,8 +153,19 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#power-spectral-density" id="toc-power-spectral-density" class="nav-link active" data-scroll-target="#power-spectral-density">12.2.1. Power Spectral Density</a></li>
-  <li><a href="#power-spectral-density-estimators" id="toc-power-spectral-density-estimators" class="nav-link" data-scroll-target="#power-spectral-density-estimators">12.3. Power Spectral Density Estimators</a></li>
+  <li><a href="#preliminary-study" id="toc-preliminary-study" class="nav-link active" data-scroll-target="#preliminary-study">Preliminary Study</a>
+  <ul class="collapse">
+  <li><a href="#kronecker-product" id="toc-kronecker-product" class="nav-link" data-scroll-target="#kronecker-product">Kronecker product</a></li>
+  <li><a href="#khatrirao-product" id="toc-khatrirao-product" class="nav-link" data-scroll-target="#khatrirao-product">Khatri–Rao product</a></li>
+  </ul></li>
+  <li><a href="#power-spectral-density" id="toc-power-spectral-density" class="nav-link" data-scroll-target="#power-spectral-density">12.2.1. Power Spectral Density</a></li>
+  <li><a href="#power-spectral-density-estimators" id="toc-power-spectral-density-estimators" class="nav-link" data-scroll-target="#power-spectral-density-estimators">12.3. Power Spectral Density Estimators</a>
+  <ul class="collapse">
+  <li><a href="#nonparametric-psd-estimators" id="toc-nonparametric-psd-estimators" class="nav-link" data-scroll-target="#nonparametric-psd-estimators">Nonparametric PSD estimators</a>
+  <ul class="collapse">
+  <li><a href="#periodogram-correlogram-and-ls-estimator" id="toc-periodogram-correlogram-and-ls-estimator" class="nav-link" data-scroll-target="#periodogram-correlogram-and-ls-estimator">Periodogram, correlogram, and LS estimator</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
@@ -165,6 +176,45 @@ div.csl-indent {
 
 
 
+<section id="preliminary-study" class="level1">
+<h1>Preliminary Study</h1>
+<section id="kronecker-product" class="level2">
+<h2 class="anchored" data-anchor-id="kronecker-product">Kronecker product</h2>
+<p>크로네커곱의 정의는 아래와 같다.</p>
+<p><span class="math display">\[{\bf A} \otimes {\bf B}
+=\begin{bmatrix}
+a_{11}{\bf B} &amp; a_{12}{\bf B} &amp; \dots &amp; a_{1m}{\bf B} \\
+a_{21}{\bf B} &amp; a_{22}{\bf B} &amp; \dots &amp; a_{2m}{\bf B} \\
+\dots &amp; \dots &amp; \dots &amp; \dots \\
+a_{n1}{\bf B} &amp; a_{n2}{\bf B} &amp; \dots &amp; a_{nm}{\bf B} \\
+\end{bmatrix}\]</span></p>
+<p>두 행렬 <span class="math inline">\({\bf A}_{m\times n}\)</span>, <span class="math inline">\({\bf B}_{p\times q}\)</span>의 크로네커곱 <span class="math inline">\({\bf A}\otimes {\bf B}\)</span>의 차원은 <span class="math inline">\(mp \times nq\)</span> 가 된다. 계산예시는 아래와 같다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-27-CGSP-Chap-12-2-1-PSD_files/figure-html/5663bf73-f717-4d07-96e8-c926fb6359c0-1-856d291e-9401-4ca2-84e0-269d7cd2eac7.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">위키에서 긁은 예제, 글씨가 좀 작음</figcaption><p></p>
+</figure>
+</div>
+<p>크로네커곱에 대한 성질들이 위키에 많이 있으니 참고하면 좋다.</p>
+</section>
+<section id="khatrirao-product" class="level2">
+<h2 class="anchored" data-anchor-id="khatrirao-product">Khatri–Rao product</h2>
+<p>카트리라오곱은 매트릭스 <span class="math inline">\({\bf A}\)</span>와 <span class="math inline">\({\bf B}\)</span>가 같은 차원의 블락매트릭스로 정의될때 각 서브매트릭스의 크로네커 곱으로 정의된다. 정의와 계산예시는 아래와 같다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-27-CGSP-Chap-12-2-1-PSD_files/figure-html/9b272351-038c-40ff-91d7-c16abab167be-1-7617bfb3-8b35-4b60-a609-25a593b62838.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">예시1: 위키에서 긁은 그림</figcaption><p></p>
+</figure>
+</div>
+<p>또 다른 계산예시는 아래와 같다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-27-CGSP-Chap-12-2-1-PSD_files/figure-html/dafb4ee2-42f6-4570-901b-d2fcc05cde32-1-f7f2fde4-ceb3-41e1-8580-036cb36951cc.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">예시2: 위키에서 긁은 그림</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
 <section id="power-spectral-density" class="level1">
 <h1>12.2.1. Power Spectral Density</h1>
 <blockquote class="blockquote">
@@ -180,6 +230,9 @@ div.csl-indent {
 <li><p>Is stationary in <span class="math inline">\({\bf S}\)</span> with covariance <span class="math inline">\({\bf C}_{\bf y}= {\bf H}{\bf C}_{\bf x}{\bf H}^H\)</span>.</p></li>
 <li><p>Has a PSD given by <span class="math inline">\({\bf p}_{\bf y}=|\tilde{\bf h}|^2 \circ {\bf p}_{\bf x}\)</span>, where <span class="math inline">\(|\cdot|^2\)</span> is applied elementwise.</p></li>
 </ol>
+<blockquote class="blockquote">
+<p>Here <span class="math inline">\(\circ\)</span> is elementwise matrix product</p>
+</blockquote>
 <p><strong>Property 12.2</strong> Given a process <span class="math inline">\({\bf x}\)</span> stationary in <span class="math inline">\({\bf S}={\bf V}{\bf \Lambda}{\bf V}^H\)</span> with PSD <span class="math inline">\({\bf p}\)</span>, define the GFT process as <span class="math inline">\(\tilde{\bf x}={\bf V}^H{\bf x}\)</span>. Then, it holds that <span class="math inline">\(\tilde{\bf x}\)</span> is uncorrelated and its covariance matrix is</p>
 <p><span class="math display">\[{\bf C}_{\tilde{\bf x}}:= \mathbb{E}\left[\tilde{\bf x}\tilde{\bf x}^H \right]=\mathbb{E}\left[({\bf V}^H{\bf x})({\bf V}^H{\bf x})^H \right]=\text{diag}({\bf p}).\]</span></p>
 <p>Property 12.1 is a statement of the spectral convolution theorem for graph signals. Property 12.2 is fundamental to motivate the analysis and modeling of stationary graph processes in the frequency domain, which we undertake in the remainder of this chapter. It also shows that if a process <span class="math inline">\({\bf x}\)</span> is stationary in the shift <span class="math inline">\({\bf S} = {\bf V}{\bf \Lambda}{\bf V}^H\)</span>, then the GFT <span class="math inline">\({\bf V}^H\)</span> provides the Karhunen-Loève expansion of the process.</p>
@@ -188,7 +241,58 @@ div.csl-indent {
 </section>
 <section id="power-spectral-density-estimators" class="level1">
 <h1>12.3. Power Spectral Density Estimators</h1>
-<p>We can exploit the fact that <span class="math inline">\({\bf x}\)</span> is a stationary graph process in <span class="math inline">\({\bf S} = {\bf V}\text{diag}({\bf \Lambda}){\bf V}^H\)</span> to design efficient estimators of the covariance <span class="math inline">\({\bf C}_{\bf x}\)</span>. In particular, instead of estimating <span class="math inline">\({\bf C}_{\bf x}\)</span> directly, which has <span class="math inline">\(N(N + 1)/2\)</span> degrees of freedom, one can estimate <span class="math inline">\({\bf p}\)</span> first, which only has <span class="math inline">\({\bf N}\)</span> degrees of freedom, and then leverage that <span class="math inline">\({\bf C}_{\bf x} = {\bf V}\text{diag}({\bf p}){\bf V}^H\)</span>. Motivated by this, the focus of this section is on estimating <span class="math inline">\({\bf p}\)</span>, the PSD of a stationary random graph process <span class="math inline">\({\bf x}\)</span>, using as input either one or a few realizations <span class="math inline">\(\{{\bf x}_r\}_{r=1}^R\)</span> of <span class="math inline">\({\bf x}\)</span>. To illustrate the developments in Sections 12.3 and 12.4, we will use as a running example a random process defined on the well-known Zachary’s Karate club network [28] (Figs. 12.3 and 12.4). As shown in Fig. 12.4, this graph consists of 34 nodes or members of the club and 78 undirected edges symbolizing friendships among members.2</p>
+<p>We can exploit the fact that <span class="math inline">\({\bf x}\)</span> is a stationary graph process in <span class="math inline">\({\bf S} = {\bf V}\text{diag}({\bf \Lambda}){\bf V}^H\)</span> to design efficient estimators of the covariance <span class="math inline">\({\bf C}_{\bf x}\)</span>. In particular, instead of estimating <span class="math inline">\({\bf C}_{\bf x}\)</span> directly, which has <span class="math inline">\(N(N + 1)/2\)</span> degrees of freedom, one can estimate <span class="math inline">\({\bf p}\)</span> first, which only has <span class="math inline">\(N\)</span> degrees of freedom, and then leverage that <span class="math inline">\({\bf C}_{\bf x} = {\bf V}\text{diag}({\bf p}){\bf V}^H\)</span>. Motivated by this, the focus of this section is on estimating <span class="math inline">\({\bf p}\)</span>, the PSD of a stationary random graph process <span class="math inline">\({\bf x}\)</span>, using as input either one or a few realizations <span class="math inline">\(\{{\bf x}_r\}_{r=1}^R\)</span> of <span class="math inline">\({\bf x}\)</span>. To illustrate the developments in Sections 12.3 and 12.4, we will use as a running example a random process defined on the well-known Zachary’s Karate club network <span class="citation" data-cites="zachary1977information">Zachary (<a href="#ref-zachary1977information" role="doc-biblioref">1977</a>)</span> (Figs. 12.3 and 12.4). As shown in Fig. 12.4, this graph consists of 34 nodes or members of the club and 78 undirected edges symbolizing friendships among members.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-27-CGSP-Chap-12-2-1-PSD_files/figure-html/1f505a23-5b9f-4dbb-a3f8-03c093652bc1-1-27b3f625-0405-4e7f-b677-35aa91a95a68.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">그림12.3(교재에서 긁어온 그림): Power spectral density estimation. All estimators are based on the same random process defined on the Karate club network <span class="citation" data-cites="zachary1977information">(<a href="#ref-zachary1977information" role="doc-biblioref">Zachary 1977</a>)</span>. (A) Periodogram estimation with different numbers of observations. (B) Windowed average periodogram from a single realization and a different number of windows. (C) Windowed average periodogram for four windows and a varying number of realizations. (D) Parametric MA estimation for 1 and 10 realizations.</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-27-CGSP-Chap-12-2-1-PSD_files/figure-html/871b9550-848f-4d49-9a99-26a5c2d85595-1-f9528ecc-9143-4e3b-bff7-18e4b23a9651.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">그림12.4(교재에서 긁어온 그림): PSD estimation from a subset of nodes. Estimators are based on a random process defined on the Karate club network <span class="citation" data-cites="zachary1977information">(<a href="#ref-zachary1977information" role="doc-biblioref">Zachary 1977</a>)</span>. (A) Graph sampling for nonparametric PSD estimation. Here, 20 out of 34 nodes are observed. The sampled nodes are highlighted by the circles around the nodes. (B) Nonparametric PSD estimation based on observations from 20 nodes and 100 data snapshots. (C) Graph sampling for parametric MA PSD estimation. Here, 4 out of 34 nodes are observed. (D) Parametric MA PSD estimation based on observations from 4 nodes and 100 data snapshots.</figcaption><p></p>
+</figure>
+</div>
+<section id="nonparametric-psd-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="nonparametric-psd-estimators">Nonparametric PSD estimators</h2>
+<p>Nonparametric estimators—as opposed to their parametric counterparts—do not assume any specific generating model on the process <span class="math inline">\({\bf x}\)</span>. This more agnostic view of <span class="math inline">\({\bf x}\)</span> comes with the price of needing, in general, to observe more graph signals to achieve satisfactory performance. In this section, we extend to the graph setting the periodogram, the correlogram, and the least-squares (LS) estimator, which are classical unbiased nonparametric estimators. Moreover, for the special case where the observations are Gaussian, we derive the Cramér-Rao lower bound. We also discuss the windowed average periodogram, which attains a better performance when a few observations are available by introducing bias in a controlled manner while drastically reducing the variance.</p>
+<section id="periodogram-correlogram-and-ls-estimator" class="level3">
+<h3 class="anchored" data-anchor-id="periodogram-correlogram-and-ls-estimator">Periodogram, correlogram, and LS estimator</h3>
+<p>From <span class="math inline">\({\bf C}_{\tilde{\bf x}}:= \mathbb{E}\left[\tilde{\bf x}\tilde{\bf x}^H \right]=\mathbb{E}\left[({\bf V}^H{\bf x})({\bf V}^H{\bf x})^H \right]=\text{diag}({\bf p})\)</span> it follows that one may express the PSD as <span class="math inline">\({\bf p}=\mathbb{E}\left[|{\bf V}^H{\bf x}|^2\right]\)</span>. That is, the PSD is given by the expected value of the squared frequency components of the random process. This leads to a natural approach for the estimation of <span class="math inline">\({\bf p}\)</span> from a finite set of <span class="math inline">\(R\)</span> realizations of the process <span class="math inline">\({\bf x}\)</span>. Indeed, we compute the <span class="math inline">\({\bf GFT} \tilde{\bf x}_r = {\bf V}^H{\bf x}_r\)</span> of each observed signal <span class="math inline">\({\bf x}_r\)</span> and estimate <span class="math inline">\({\bf p}\)</span> as</p>
+<p><span class="math display">\[
+\hat{\bf p}_{pg}:= \frac{1}{R}\sum_{r=1}^R|\tilde{\bf x}_r|^2=\frac{1}{R}\sum_{r=1}^{R}|{\bf V}^H{\bf x}_{r}|^2.
+\]</span></p>
+<p>The estimator <span class="math inline">\(\hat{\bf p}_{pg}\)</span> is termed periodogram due to its evident similarity with its homonym<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> in classical estimation. It is simple to show that <span class="math inline">\({\bf p}_{pg}\)</span> is an unbiased estimator, that is, <span class="math inline">\(\mathbb{E}[\hat{\bf p}_{pg}]= {\bf p}\)</span>. A more detailed analysis of the performance of <span class="math inline">\(\hat{\bf p}_{pg}\)</span>, for the case where the observations are Gaussian, is given in Proposition 12.1.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>An alternative nonparametric estimation scheme, denominated correlogram, can be devised by starting from the definition of <span class="math inline">\({\bf p}\)</span> in</p>
+<p><span class="math display">\[{\bf p}:=\text{diag}\big({\bf V}^H {\bf C}_{\bf x}{\bf V} \big).\]</span></p>
+<p>Namely, one may substitute <span class="math inline">\({\bf C}_{\bf x}\)</span> in above equation by the sample covariance <span class="math inline">\(\hat{\bf C}_{\bf x} = \frac{1}{R}\sum_{r=1}^R{\bf x}_r{\bf x}_r^H\)</span> computed based on the available observations to obtain</p>
+<p><span class="math display">\[\hat{\bf p}_{cg}:= \text{diag}\left({\bf V}^H \hat{\bf C}_{\bf x}{\bf V} \right):=\text{diag}\left[{\bf V}^H\big[ \frac{1}{R}\sum_{r=1}^R{\bf x}_r{\bf x}_r^H\big]{\bf V} \right].\]</span></p>
+<p>Notice that the matrix <span class="math inline">\({\bf V}^H\hat{\bf C}_{\bf x}{\bf V}\)</span> is in general, not diagonal because the eigenbasis of <span class="math inline">\(\hat{\bf C}_{\bf x}\)</span> differs from <span class="math inline">\({\bf V}\)</span>, the eigenbasis of <span class="math inline">\({\bf C}_{\bf x}\)</span>. Nonetheless, we keep only the diagonal elements <span class="math inline">\({\bf v}_i^H \hat{\bf C}_{\bf x}{\bf v}_i\)</span> for <span class="math inline">\(i = 1, \dots , N\)</span> as our PSD estimator. It can be shown that the correlogram <span class="math inline">\({\bf p}_{cg}\)</span> and the periodogram <span class="math inline">\({\bf p}_{pg}\)</span> lead to identical estimators, as is the case in classical signal processing.</p>
+<p>The correlogram can also be interpreted as an LS estimator. The decomposition in <span class="math inline">\({\bf C}_{\bf x}={\bf V}\text{diag}({\bf p}){\bf V}^H\)</span> allows a linear parameterization of the covariance matrix <span class="math inline">\({\bf C}_{\bf x}\)</span> as</p>
+<p><span class="math display">\[
+{\bf C}_{\bf x}({\bf p})=\sum_{i=1}^N p_i{\bf v}_i{\bf v}_i^H.
+\]</span></p>
+<p>This linear parametrization will also be useful for the sampling schemes developed in Section 12.4. Vectorizing <span class="math inline">\({\bf C}_{\bf x}\)</span> in <span class="math inline">\({\bf C}_{\bf x}({\bf p})=\sum_{i=1}^N p_i{\bf v}_i{\bf v}_i^H\)</span> results in a set of <span class="math inline">\(N^2\)</span> equations in <span class="math inline">\({\bf p}\)</span></p>
+<p><span class="math display">\[
+{\bf c}_{\bf x} = \text{vec}({\bf C}_{\bf x})=\sum_{i=1}^{N}p_i \text{vec}({\bf v}_i{\bf v}_i^H)={\bf G}_{np}{\bf p},
+\]</span></p>
+<p>where <span class="math inline">\(\text{vec}({\bf v}_i{\bf v}_i^H)={\bf v}_i^\ast \otimes {\bf v}_i\)</span>. Relying on the Khatri-Rao product, we then form the <span class="math inline">\(N^2 \times N\)</span> matrix <span class="math inline">\({\bf G}_{np}\)</span> as</p>
+<p><span class="math display">\[
+{\bf G}_{np}:= \left[{\bf v}_1^\ast \otimes {\bf v}_1, \dots, {\bf v}_N^\ast \otimes {\bf v}_N \right] = {\bf V}^\ast \odot {\bf V}.
+\]</span></p>
+<blockquote class="blockquote">
+<p>Here <span class="math inline">\(\otimes\)</span> denote the Kronecker matrix product and <span class="math inline">\(\odot\)</span> denote the Khatri-Rao matrix product.</p>
+</blockquote>
+<p>Using the sample covariance matrix <span class="math inline">\(\hat{\bf C}_{\bf x}\)</span> as an estimate of <span class="math inline">\({\bf C}_{\bf x}\)</span>, we can <em>match</em> the estimated covariance vector <span class="math inline">\(\hat{\bf c}_{\bf x}=\text{vec}(\hat{\bf C}_{\bf x})\)</span> to the true covariance vector <span class="math inline">\({\bf c}_{\bf x}\)</span> in the LS sense as</p>
+<p><span class="math display">\[
+\hat{\bf p}_{ls} = \underset{\bf p}{\operatorname{argmin}} \|\hat{\bf c}_{\bf x}-{\bf G}_{np}{\bf p}\|_2^2=({\bf G}_{np}^H{\bf G}_{np})^{-1}{\bf G}_{np}^H\hat{\bf c}_{\bf x}.
+\]</span></p>
+<p>In other words, the LS estimator minimizes the squared error <span class="math inline">\(\text{tr}\left[\big(\hat{\bf C}_{\bf x} − \hat{\bf C}_{\bf x}({\bf p})\big)^T \big(\hat{\bf C}_{\bf x} − \hat{\bf C}_{\bf x}({\bf p})\big)\right]\)</span>. From expression <span class="math inline">\(\hat{\bf p}_{ls} = \underset{\bf p}{\operatorname{argmin}} \|\hat{\bf c}_{\bf x}-{\bf G}_{np}{\bf p}\|_2^2=({\bf G}_{np}^H{\bf G}_{np})^{-1}{\bf G}_{np}^H\hat{\bf c}_{\bf x}\)</span> it can be shown that the <span class="math inline">\(i\)</span>th element of <span class="math inline">\(\hat{\bf p}_{ls}\)</span> is <span class="math inline">\({\bf v}_i^H \hat{\bf C}_{\bf x} {\bf v}_i\)</span>. Combining this with Eq.</p>
+<p><span class="math display">\[\hat{\bf p}_{cg}:= \text{diag}\left({\bf V}^H \hat{\bf C}_{\bf x}{\bf V} \right):=\text{diag}\left[{\bf V}^H\big[ \frac{1}{R}\sum_{r=1}^R{\bf x}_r{\bf x}_r^H\big]{\bf V} \right]\]</span></p>
+<p>we get that the LS estimator <span class="math inline">\(\hat{\bf p}_{ls}\)</span> and the correlogram <span class="math inline">\(\hat{\bf p}_{cg}\)</span> —and hence the periodogram as well— are all identical estimators. The estimators derived in this subsection do not assume any data distribution and are well suited for cases where the data probability density function is not available. In what follows, we provide performance bounds for these estimators under the condition that the observed signals are Gaussian.</p>
+</section>
+</section>
 </section>
 <section id="summary" class="level1">
 <h1>Summary</h1>
@@ -206,10 +310,15 @@ Djuric, Petar, and Cédric Richard. 2018. <em>Cooperative and Graph Signal Proce
 <div id="ref-segarra2017network" class="csl-entry" role="doc-biblioentry">
 Segarra, Santiago, Antonio G Marques, Gonzalo Mateos, and Alejandro Ribeiro. 2017. <span>“Network Topology Inference from Spectral Templates.”</span> <em>IEEE Transactions on Signal and Information Processing over Networks</em> 3 (3): 467–83.
 </div>
+<div id="ref-zachary1977information" class="csl-entry" role="doc-biblioentry">
+Zachary, Wayne W. 1977. <span>“An Information Flow Model for Conflict and Fission in Small Groups.”</span> <em>Journal of Anthropological Research</em> 33 (4): 452–73.
+</div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p><span class="math inline">\({\bf 1}\)</span> is length <span class="math inline">\(N\)</span> vector with all elements are 1<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>동음이의어<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Proposition 12.1은 뒤에 다루는데 <span class="math inline">\(\hat{\bf p}_{pg}\)</span>의 분산에 대한 서술이 있음. 분산은 <span class="math inline">\(\mathbb{V}[\hat{\bf p}_{pg}]=\frac{2}{R}\text{diag}^2({\bf p})\)</span>와 같음<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
