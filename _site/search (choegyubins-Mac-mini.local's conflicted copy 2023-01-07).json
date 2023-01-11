@@ -161,6 +161,13 @@
     "text": "Nonparametric PSD estimators\nNonparametric estimators—as opposed to their parametric counterparts—do not assume any specific generating model on the process \\({\\bf x}\\). This more agnostic view of \\({\\bf x}\\) comes with the price of needing, in general, to observe more graph signals to achieve satisfactory performance. In this section, we extend to the graph setting the periodogram, the correlogram, and the least-squares (LS) estimator, which are classical unbiased nonparametric estimators. Moreover, for the special case where the observations are Gaussian, we derive the Cramér-Rao lower bound. We also discuss the windowed average periodogram, which attains a better performance when a few observations are available by introducing bias in a controlled manner while drastically reducing the variance.\n\nPeriodogram, correlogram, and LS estimator\nFrom \\({\\bf C}_{\\tilde{\\bf x}}:= \\mathbb{E}\\left[\\tilde{\\bf x}\\tilde{\\bf x}^H \\right]=\\mathbb{E}\\left[({\\bf V}^H{\\bf x})({\\bf V}^H{\\bf x})^H \\right]=\\text{diag}({\\bf p})\\) it follows that one may express the PSD as \\({\\bf p}=\\mathbb{E}\\left[|{\\bf V}^H{\\bf x}|^2\\right]\\). That is, the PSD is given by the expected value of the squared frequency components of the random process. This leads to a natural approach for the estimation of \\({\\bf p}\\) from a finite set of \\(R\\) realizations of the process \\({\\bf x}\\). Indeed, we compute the \\({\\bf GFT} \\tilde{\\bf x}_r = {\\bf V}^H{\\bf x}_r\\) of each observed signal \\({\\bf x}_r\\) and estimate \\({\\bf p}\\) as\n\\[\n\\hat{\\bf p}_{pg}:= \\frac{1}{R}\\sum_{r=1}^R|\\tilde{\\bf x}_r|^2=\\frac{1}{R}\\sum_{r=1}^{R}|{\\bf V}^H{\\bf x}_{r}|^2.\n\\]\nThe estimator \\(\\hat{\\bf p}_{pg}\\) is termed periodogram due to its evident similarity with its homonym2 in classical estimation. It is simple to show that \\({\\bf p}_{pg}\\) is an unbiased estimator, that is, \\(\\mathbb{E}[\\hat{\\bf p}_{pg}]= {\\bf p}\\). A more detailed analysis of the performance of \\(\\hat{\\bf p}_{pg}\\), for the case where the observations are Gaussian, is given in Proposition 12.1.3\nAn alternative nonparametric estimation scheme, denominated correlogram, can be devised by starting from the definition of \\({\\bf p}\\) in\n\\[{\\bf p}:=\\text{diag}\\big({\\bf V}^H {\\bf C}_{\\bf x}{\\bf V} \\big).\\]\nNamely, one may substitute \\({\\bf C}_{\\bf x}\\) in above equation by the sample covariance \\(\\hat{\\bf C}_{\\bf x} = \\frac{1}{R}\\sum_{r=1}^R{\\bf x}_r{\\bf x}_r^H\\) computed based on the available observations to obtain\n\\[\\hat{\\bf p}_{cg}:= \\text{diag}\\left({\\bf V}^H \\hat{\\bf C}_{\\bf x}{\\bf V} \\right):=\\text{diag}\\left[{\\bf V}^H\\big[ \\frac{1}{R}\\sum_{r=1}^R{\\bf x}_r{\\bf x}_r^H\\big]{\\bf V} \\right].\\]\nNotice that the matrix \\({\\bf V}^H\\hat{\\bf C}_{\\bf x}{\\bf V}\\) is in general, not diagonal because the eigenbasis of \\(\\hat{\\bf C}_{\\bf x}\\) differs from \\({\\bf V}\\), the eigenbasis of \\({\\bf C}_{\\bf x}\\). Nonetheless, we keep only the diagonal elements \\({\\bf v}_i^H \\hat{\\bf C}_{\\bf x}{\\bf v}_i\\) for \\(i = 1, \\dots , N\\) as our PSD estimator. It can be shown that the correlogram \\({\\bf p}_{cg}\\) and the periodogram \\({\\bf p}_{pg}\\) lead to identical estimators, as is the case in classical signal processing.\nThe correlogram can also be interpreted as an LS estimator. The decomposition in \\({\\bf C}_{\\bf x}={\\bf V}\\text{diag}({\\bf p}){\\bf V}^H\\) allows a linear parameterization of the covariance matrix \\({\\bf C}_{\\bf x}\\) as\n\\[\n{\\bf C}_{\\bf x}({\\bf p})=\\sum_{i=1}^N p_i{\\bf v}_i{\\bf v}_i^H.\n\\]\nThis linear parametrization will also be useful for the sampling schemes developed in Section 12.4. Vectorizing \\({\\bf C}_{\\bf x}\\) in \\({\\bf C}_{\\bf x}({\\bf p})=\\sum_{i=1}^N p_i{\\bf v}_i{\\bf v}_i^H\\) results in a set of \\(N^2\\) equations in \\({\\bf p}\\)\n\\[\n{\\bf c}_{\\bf x} = \\text{vec}({\\bf C}_{\\bf x})=\\sum_{i=1}^{N}p_i \\text{vec}({\\bf v}_i{\\bf v}_i^H)={\\bf G}_{np}{\\bf p},\n\\]\nwhere \\(\\text{vec}({\\bf v}_i{\\bf v}_i^H)={\\bf v}_i^\\ast \\otimes {\\bf v}_i\\). Relying on the Khatri-Rao product, we then form the \\(N^2 \\times N\\) matrix \\({\\bf G}_{np}\\) as\n\\[\n{\\bf G}_{np}:= \\left[{\\bf v}_1^\\ast \\otimes {\\bf v}_1, \\dots, {\\bf v}_N^\\ast \\otimes {\\bf v}_N \\right] = {\\bf V}^\\ast \\odot {\\bf V}.\n\\]\n\nHere \\(\\otimes\\) denote the Kronecker matrix product and \\(\\odot\\) denote the Khatri-Rao matrix product.\n\nUsing the sample covariance matrix \\(\\hat{\\bf C}_{\\bf x}\\) as an estimate of \\({\\bf C}_{\\bf x}\\), we can match the estimated covariance vector \\(\\hat{\\bf c}_{\\bf x}=\\text{vec}(\\hat{\\bf C}_{\\bf x})\\) to the true covariance vector \\({\\bf c}_{\\bf x}\\) in the LS sense as\n\\[\n\\hat{\\bf p}_{ls} = \\underset{\\bf p}{\\operatorname{argmin}} \\|\\hat{\\bf c}_{\\bf x}-{\\bf G}_{np}{\\bf p}\\|_2^2=({\\bf G}_{np}^H{\\bf G}_{np})^{-1}{\\bf G}_{np}^H\\hat{\\bf c}_{\\bf x}.\n\\]\nIn other words, the LS estimator minimizes the squared error \\(\\text{tr}\\left[\\big(\\hat{\\bf C}_{\\bf x} − \\hat{\\bf C}_{\\bf x}({\\bf p})\\big)^T \\big(\\hat{\\bf C}_{\\bf x} − \\hat{\\bf C}_{\\bf x}({\\bf p})\\big)\\right]\\). From expression \\(\\hat{\\bf p}_{ls} = \\underset{\\bf p}{\\operatorname{argmin}} \\|\\hat{\\bf c}_{\\bf x}-{\\bf G}_{np}{\\bf p}\\|_2^2=({\\bf G}_{np}^H{\\bf G}_{np})^{-1}{\\bf G}_{np}^H\\hat{\\bf c}_{\\bf x}\\) it can be shown that the \\(i\\)th element of \\(\\hat{\\bf p}_{ls}\\) is \\({\\bf v}_i^H \\hat{\\bf C}_{\\bf x} {\\bf v}_i\\). Combining this with Eq.\n\\[\\hat{\\bf p}_{cg}:= \\text{diag}\\left({\\bf V}^H \\hat{\\bf C}_{\\bf x}{\\bf V} \\right):=\\text{diag}\\left[{\\bf V}^H\\big[ \\frac{1}{R}\\sum_{r=1}^R{\\bf x}_r{\\bf x}_r^H\\big]{\\bf V} \\right]\\]\nwe get that the LS estimator \\(\\hat{\\bf p}_{ls}\\) and the correlogram \\(\\hat{\\bf p}_{cg}\\) —and hence the periodogram as well— are all identical estimators. The estimators derived in this subsection do not assume any data distribution and are well suited for cases where the data probability density function is not available. In what follows, we provide performance bounds for these estimators under the condition that the observed signals are Gaussian."
   },
   {
+    "objectID": "posts/2022-01-07-RealAnalysis.html",
+    "href": "posts/2022-01-07-RealAnalysis.html",
+    "title": "해석학",
+    "section": "",
+    "text": "정의 유계(bounded)\n공집합이 아닌 실수의 부분집합 \\(S\\)에 대하여 위로 유계(bounded above) 이면서 동시에 아래로 유계(bounded below)일 때 \\(S\\)를 유계라 한다."
+  },
+  {
     "objectID": "posts/2022-12-30-STGCN-Toy Example.html",
     "href": "posts/2022-12-30-STGCN-Toy Example.html",
     "title": "[STGCN] Toy Example",
@@ -207,7 +214,7 @@
     "href": "index.html",
     "title": "신록예찬’s blog",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\n\n\nsdf\n\n\n\n\n\n\nDec 30, 2022\n\n\n[STGCN] Toy Example\n\n\n신록예찬\n\n\n\n\nDec 27, 2022\n\n\n[CGSP] Chap 12.2.1: Power Spectral Density\n\n\n신록예찬\n\n\n\n\nDec 26, 2022\n\n\n[CGSP] Chap 12.2: Weakly Stationary Graph Processes\n\n\n신록예찬\n\n\n\n\nDec 24, 2022\n\n\n[CGSP] Chap 8.3: Discrete Fourier Transform\n\n\n신록예찬\n\n\n\n\nDec 23, 2022\n\n\n[Review] EbayesThresh: R Programs for Empirical Bayes Thresholding\n\n\n신록예찬\n\n\n\n\nSep 21, 2022\n\n\n[PytorchLightning] 단순선형회귀\n\n\n신록예찬\n\n\n\n\nJan 7, 2022\n\n\n해석학\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 30, 2022\n\n\n[STGCN] Toy Example\n\n\n신록예찬\n\n\n\n\nDec 27, 2022\n\n\n[CGSP] Chap 12.2.1: Power Spectral Density\n\n\n신록예찬\n\n\n\n\nDec 26, 2022\n\n\n[CGSP] Chap 12.2: Weakly Stationary Graph Processes\n\n\n신록예찬\n\n\n\n\nDec 24, 2022\n\n\n[CGSP] Chap 8.3: Discrete Fourier Transform\n\n\n신록예찬\n\n\n\n\nDec 23, 2022\n\n\n[Review] EbayesThresh: R Programs for Empirical Bayes Thresholding\n\n\n신록예찬\n\n\n\n\nSep 21, 2022\n\n\n[PytorchLightning] 단순선형회귀\n\n\n신록예찬\n\n\n\n\nJan 7, 2022\n\n\n해석학\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -215,89 +222,5 @@
     "title": "About",
     "section": "",
     "text": "신록예찬3\ngbchoi0814@gmail.com"
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html",
-    "href": "posts/2022-01-07-RealAnalysis.html",
-    "title": "해석학",
-    "section": "",
-    "text": "이걸 증명하려면 자연수를 정의하는 페아노공리를 알아야함.\n그리고 그 공리로부터 유도되는 여러가지 자연수 성질중 하나인 자연수 집합은 위로 유계가 아니라는 사실을 알아야함.\n아르키메데스성질: For all \\(x \\in \\mathbb{R}\\) there exists \\(N \\in \\mathbb{N}\\) such that \\(x<N\\).\n\n아무 실수나 잡으면 그 숫자보다 큰 자연수가 존재한다는 의미\n아르키메데스 성질은 완비성공리로부터 증명가능함.\n\n아르키메데스 성질을 이용하면 임의의 \\(\\epsilon\\)보다 작은 \\(\\frac{1}{N}\\)을 항상 잡을수 있다. 즉 모든 \\(\\epsilon>0\\) 에 대하여 \\(0\\leq \\frac{1}{N} < \\epsilon\\) 을 만족하는 \\(N\\)이 항상 존재함을 알 수 있다.\n(예제) 아래를 증명하라.\n\\[\\lim_{n\\to \\infty}\\frac{4n}{2n+1}=2\\]\n(풀이) 모든 \\(\\epsilon>0\\)에 대하여 아래가 항상 성립함을 보이면 된다.\n\\[\\exists N \\in \\mathbb{N} \\quad \\text{such that} \\quad n \\geq N \\Rightarrow 0\\leq \\left |\\frac{4n}{2n+1}-2 \\right|<\\epsilon\\]\n그런데 \\(|\\frac{4n}{2n+1}-2|\\leq \\frac{1}{n}\\) 이므로 우리는 모든 \\(\\epsilon >0\\)에 대하여 아래가 성립함을 보이면 된다.\n\\[\\exists N \\in \\mathbb{N} \\quad \\text{such that} \\quad n \\geq N \\Rightarrow 0\\leq \\frac{1}{n} <\\epsilon\\]\n그런데 \\(n\\geq N\\)이라는 조건하에서는 \\(\\frac{1}{n} \\leq \\frac{1}{N}\\) 이므로 우리는 다시 모든 \\(\\epsilon>0\\)에 대하여 아래가 성립함을 보이면 된다.\n\\[\\exists N \\in \\mathbb{N} \\quad \\text{such that} \\quad 0 \\leq \\frac{1}{N} <\\epsilon\\]\n이러한 \\(N\\)은 아르키메데스의 성질에 의하여 항상 존재한다."
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html#연속의-정의",
-    "href": "posts/2022-01-07-RealAnalysis.html#연속의-정의",
-    "title": "해석학",
-    "section": "연속의 정의",
-    "text": "연속의 정의"
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html#thomae-함수",
-    "href": "posts/2022-01-07-RealAnalysis.html#thomae-함수",
-    "title": "해석학",
-    "section": "Thomae 함수",
-    "text": "Thomae 함수\n유리수에서는 불연속, 무리수에서는 연속"
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html#디리클레함수",
-    "href": "posts/2022-01-07-RealAnalysis.html#디리클레함수",
-    "title": "해석학",
-    "section": "디리클레함수",
-    "text": "디리클레함수\n모든 점에서 불연속인 함수임"
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html#합성함수의-연속",
-    "href": "posts/2022-01-07-RealAnalysis.html#합성함수의-연속",
-    "title": "해석학",
-    "section": "합성함수의 연속",
-    "text": "합성함수의 연속\n함수 \\(f(x)\\)와 \\(g(x)\\)가 모두 \\(x=c\\)에서 연속이면 함수 \\((f\\circ g)(x)\\) 혹은 \\((g \\circ f)(x)\\)도 \\(x=c\\)에서 연속이다."
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html#중간값정리-leftrightarrow-완비성공리",
-    "href": "posts/2022-01-07-RealAnalysis.html#중간값정리-leftrightarrow-완비성공리",
-    "title": "해석학",
-    "section": "중간값정리 \\(\\Leftrightarrow\\) 완비성공리",
-    "text": "중간값정리 \\(\\Leftrightarrow\\) 완비성공리"
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html#균등연속임을-판단하는-방법",
-    "href": "posts/2022-01-07-RealAnalysis.html#균등연속임을-판단하는-방법",
-    "title": "해석학",
-    "section": "균등연속임을 판단하는 방법",
-    "text": "균등연속임을 판단하는 방법\n\n립쉬츠조건: 어떠한 함수 \\(f\\)가 \\(|f(x)-f(u)|\\leq K|x-u|\\)를 만족하면 이러한 함수는 균등연속이다. \\(\\delta=\\frac{\\epsilon}{K}\\) 로만 선택하면 되므로\n\\(f(x)\\)가 연속이라고하자. \\(f(x)\\)의 정의역이 유계폐구간이면 함수 \\(f\\)는 균등연속이라 주장할 수 있다. 만약에 \\(f(x)\\)의 정의역이 개구간이면 구간의 양 끝점에서의 극한이 존재할때 \\(f\\)를 균등연속이라고 주장할 수 있다.\n\\(f(x)\\)가 개구간에서 정의된 경우"
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html#균등연속이-아님을-판단하는-방법",
-    "href": "posts/2022-01-07-RealAnalysis.html#균등연속이-아님을-판단하는-방법",
-    "title": "해석학",
-    "section": "균등연속이 아님을 판단하는 방법",
-    "text": "균등연속이 아님을 판단하는 방법\n\n어떠한 \\(\\epsilon_0>0\\)가 존재하여, 내가 \\(\\delta\\)를 어떻게 잡든 \\(|x-u|<\\delta\\) and \\(|f(x)-f(u)|\\geq\\epsilon_0\\) 를 만족하는 \\(x\\)와 \\(u\\)가 존재하면 균등연속이 아니다.\n\\(\\lim_{n\\to\\infty}(x_n-u_n)=0\\) 이지만 \\(|f(x_n)-f(u_n)| \\geq \\epsilon_0\\) 임을 확인하면 균등연속이 아니다. 즉 \\(x\\)축에서는 수렴하는 두개의 수열이 함수를 태우면 수렴하지 않는 경우"
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html#균등연속의-특징",
-    "href": "posts/2022-01-07-RealAnalysis.html#균등연속의-특징",
-    "title": "해석학",
-    "section": "균등연속의 특징",
-    "text": "균등연속의 특징\n코시수열을 보존한다. 즉 \\(x_n\\)이 코시수열이고 함수 \\(f\\)가 균등연속이면 \\(f(x_n)\\)역시 코시수열이다.\n연속확장정리: 개구간에서의 균등연속을 사용하고 싶음. \\(f(x)\\)가 개구간 \\((a,b)\\)에서 연속이고 양 끝점, 즉 \\(a\\), \\(b\\)에서의 극한이 존재하면 \\(f(x)\\)는 균등연속이다.\n균등연속의 아이디어: x축에서 수렴하던 어떤애가 y축에서도 수렴했으면 좋겠음. (이게 원래 안되는 건데요, 균등연속일때는 가능합니다)"
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html#모티브",
-    "href": "posts/2022-01-07-RealAnalysis.html#모티브",
-    "title": "해석학",
-    "section": "모티브",
-    "text": "모티브\n아래와 같은 합성함수의 미분을 생각하여 보자.4\n\\[(f\\circ g)'(c) = \\lim_{x\\to c}\\frac{f(g(x))-f(g(c))}{x-c}\\]\n(풀이1)\n고등학교 수준에서는 이것을 아래와 같이 쓸 수 있다.\n\\[\\lim_{x\\to c}\\frac{f(g(x))-f(g(c))}{x-c}=\\lim_{x\\to c}\\left(\\frac{f(g(x))-f(g(c))}{g(x)-g(c)}\\frac{g(x)-g(c)}{x-c}\\right)=f'\\big(g(c)\\big)\\cdot g'(c)\\]\n(아쉬움)\n이 증명의 단점은 \\(g(x)-g(c)\\neq 0\\)이라는 조건이 필요하다는 것이다. 이 조건을 제외할 수는 없을까? 그리스 수학자인 카라테오도리(Caratheodory)는 아래와 같은 명제를 발견하였다.\n(명제) \\(f(x)\\) 가 \\(x=c\\) 에서 미분가능하다 \\(\\Longleftrightarrow\\) 적당한 연속함수 \\(\\varphi(x)\\) 가 존재하여 (i) \\(\\varphi(x)\\) 는 \\(x=c\\) 에서 미분가능하고 (ii) \\(f(x)-f(c)=\\varphi(c)(x-c)\\) 이다.\n이것을 이용하면 합성함수의 미분을 다시 풀어보자.\n(풀이2)\n먼저 \\(g(x)\\) 는 \\(x=c\\) 에서 미분가능하다라는 조건은 아래와 같이 표현할 수 있다.\n\n\\(g(x)\\) 가 \\(x=c\\) 에서 미분가능하다 \\(\\Leftrightarrow\\) \\(g(x)-g(c)=\\varphi(c)(x-c)\\)\n\n또한 \\((f\\circ g)(x)=f(g(x))\\) 는 \\(x=g(c)\\) 에서 미분가능하다라는 조건은 아래와 같이 표현할 수 있다.\n\n\\((f\\circ g)(x)\\) 가 \\(x=g(c)\\) 에서 미분가능하다 \\(\\Leftrightarrow\\) \\(f(g(x))-f(g(c))=\\psi(g(c))(g(x)-g(c))\\)\n\n\n#"
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html#체-공리",
-    "href": "posts/2022-01-07-RealAnalysis.html#체-공리",
-    "title": "해석학",
-    "section": "체 공리",
-    "text": "체 공리\n- 실수는 더하기와 곱셈이라는 연산이 합리적으로 정리되는 집합이라는 의미"
-  },
-  {
-    "objectID": "posts/2022-01-07-RealAnalysis.html#순서-공리",
-    "href": "posts/2022-01-07-RealAnalysis.html#순서-공리",
-    "title": "해석학",
-    "section": "순서 공리",
-    "text": "순서 공리\n- 순서공리에 의하여 부등식이 정의됨\n- 3분성질"
   }
 ]
