@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -296,7 +296,15 @@ a_{n1}{\bf B} &amp; a_{n2}{\bf B} &amp; \dots &amp; a_{nm}{\bf B} \\
 </section>
 <section id="summary" class="level1">
 <h1>Summary</h1>
-<p>ㅁㄴㅇㄹ</p>
+<p>GSO <span class="math inline">\({\bf S}={\bf V}{\bf \Lambda}{\bf V}^H\)</span>에 대하여 정상인 시계열 <span class="math inline">\({\bf x}\)</span>를 고려한다. 이 신호의 그래프퓨리에 변환<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>은 아래와 같이 구할 수 있다.</p>
+<p><span class="math display">\[\tilde{\bf x}={\bf GFT} {\bf x} = {\bf V}^H{\bf x}\]</span></p>
+<p>여기에서 <span class="math inline">\(\tilde{\bf x}\)</span>를 <span class="math inline">\({\bf x}\)</span>의 주파수응답(frequency representation)이라고 부른다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 우리는 주파수와 주파수응답, 시각화 하고 싶을 때가 많다. 이유는 이러한 시각화는 <span class="math inline">\({\bf x}\)</span>가 어떠한 요소들의 합으로 이루어져 있는지 파악할 수 있게 도움을 주기 때문이다. 하지만 보통은 주파수응답을 바로 사용하기보다 주파수응답의 제곱값을 사용한다.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> 즉 아래의 값에 관심이 있다.</p>
+<p><span class="math display">\[{\bf p}=\mathbb{E}\left[|{\bf V}^H{\bf x}|^2\right]\]</span></p>
+<p>여기에서 <span class="math inline">\({\bf p}\)</span>를 PSD (power spectrum density) 라고 한다.</p>
+<p><span class="math display">\[{\bf p}:=\text{diag}\big({\bf V}^H {\bf C}_{\bf x}{\bf V} \big).\]</span></p>
+<p>여기에서 <span class="math inline">\({\bf C}_{\bf x}\)</span>는 <span class="math inline">\({\bf x}\)</span>의 공분산 매트릭스이다.</p>
+<p><strong>Definition 12.3.</strong> The PSD of a random process <span class="math inline">\({\bf x}\)</span> that is stationary with respect to GSO <span class="math inline">\({\bf S}={\bf V}{\bf \Lambda}{\bf V}^H\)</span> is the nonnegative <span class="math inline">\(N \times 1\)</span> vector <span class="math inline">\({\bf p}\)</span></p>
+<p><span class="math display">\[{\bf p}:=\text{diag}\big({\bf V}^H {\bf C}_{\bf x}{\bf V} \big).\]</span></p>
 
 
 
@@ -319,6 +327,9 @@ Zachary, Wayne W. 1977. <span>“An Information Flow Model for Conflict and Fiss
 <li id="fn1"><p><span class="math inline">\({\bf 1}\)</span> is length <span class="math inline">\(N\)</span> vector with all elements are 1<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>동음이의어<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Proposition 12.1은 뒤에 다루는데 <span class="math inline">\(\hat{\bf p}_{pg}\)</span>의 분산에 대한 서술이 있음. 분산은 <span class="math inline">\(\mathbb{V}[\hat{\bf p}_{pg}]=\frac{2}{R}\text{diag}^2({\bf p})\)</span>와 같음<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>좀 더 정확하게는 <span class="math inline">\({\bf V}^H\)</span> 에 대한 그래프 변환이라고 한다<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>이 <span class="math inline">\(\tilde{\bf x}\)</span>를 그냥 graph Fourier transform이라고 부르는 사람도 많다. 즉 그래프퓨리에변환이 (1) 변환매트릭스 <span class="math inline">\({\bf GFT}\)</span>자체를 지칭할때도 있고 (2) 트랜스폼된 결과 <span class="math inline">\(\tilde{\bf x}\)</span>를 지칭할때도 있음. 교재에서는 변환은 graph Fourier transform, 그리고 변환된 결과는 <span class="math inline">\({\bf x}\)</span>의 주파수응답이라고 한다.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>주파수응답의 제곱값은 주파수응답과 유사하게 해석할 수 있고, 여러가지 이론적 성질을 만족하기 때문에 그러하다<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
