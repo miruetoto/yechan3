@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -238,8 +238,8 @@ div.csl-indent {
 
 
 
-<div class="cell" data-execution_count="471">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="513">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span>, <span class="bu">FFTW</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="discrete-fourier-transform" class="level1">
 <h1>Discrete Fourier Transform</h1>
@@ -465,9 +465,9 @@ vectors:
 </figure>
 </div>
 <p>예제를 풀기위해서 우선 아래와 같은 벡터를 선언하다.</p>
-<div class="cell" data-execution_count="349">
+<div class="cell" data-execution_count="514">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1"></a>x <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span><span class="op">-</span><span class="cn">im</span>, <span class="op">-</span><span class="cn">im</span>, <span class="op">-</span><span class="fl">1</span><span class="op">+</span><span class="fl">2im</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="349">
+<div class="cell-output cell-output-display" data-execution_count="514">
 <pre><code>4-element Vector{Complex{Int64}}:
   1 + 0im
   2 - 1im
@@ -475,12 +475,13 @@ vectors:
  -1 + 2im</code></pre>
 </div>
 </div>
-<p>이제 <span class="math inline">\(4\times 4\)</span>의 크기를 가지는 DFT행렬을 선언해야 한다.</p>
+<p>(풀이1)</p>
+<p><span class="math inline">\(4\times 4\)</span>의 크기를 가지는 DFT행렬을 선언한다.</p>
 <p>(step1) 아래의 매트릭스 생성</p>
-<div class="cell" data-execution_count="350">
+<div class="cell" data-execution_count="515">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1"></a>_DFT <span class="op">=</span> <span class="fu">reshape</span>([i<span class="op">*</span>j for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span> for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span>], (<span class="fl">4</span>,<span class="fl">4</span>))</span>
 <span id="cb30-2"><a href="#cb30-2"></a>_DFT</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="350">
+<div class="cell-output cell-output-display" data-execution_count="515">
 <pre><code>4×4 Matrix{Int64}:
  0  0  0  0
  0  1  2  3
@@ -489,10 +490,10 @@ vectors:
 </div>
 </div>
 <p>(step2) <code>_DFT</code>의 각 원소에 함수 <span class="math inline">\(f: x \to \exp(-i\frac{2\pi}{4}x)\)</span>를 취함</p>
-<div class="cell" data-execution_count="468">
+<div class="cell" data-execution_count="516">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1"></a>f <span class="op">=</span> x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)</span>
 <span id="cb32-2"><a href="#cb32-2"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="468">
+<div class="cell-output cell-output-display" data-execution_count="516">
 <pre><code>4×4 Matrix{ComplexF64}:
  1.0-0.0im           1.0-0.0im          …           1.0-0.0im
  1.0-0.0im   6.12323e-17-1.0im             -1.83697e-16+1.0im
@@ -501,9 +502,9 @@ vectors:
 </div>
 </div>
 <p>이제 <span class="math inline">\({\bf X}\)</span>를 구하면 아래와 같다.</p>
-<div class="cell" data-execution_count="359">
+<div class="cell" data-execution_count="517">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1"></a>DFT <span class="op">*</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="359">
+<div class="cell-output cell-output-display" data-execution_count="517">
 <pre><code>4-element Vector{ComplexF64}:
                    2.0 + 0.0im
    -1.9999999999999998 - 2.0000000000000004im
@@ -512,6 +513,18 @@ vectors:
 </div>
 </div>
 <p>위키의 답이 잘 나옴</p>
+<p>(풀이2)</p>
+<p>참고로 아래와 같이 패키지를 이용하여 구할 수도 있다.</p>
+<div class="cell" data-execution_count="518">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">fft</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="518">
+<pre><code>4-element Vector{ComplexF64}:
+  2.0 + 0.0im
+ -2.0 - 2.0im
+  0.0 - 2.0im
+  4.0 + 4.0im</code></pre>
+</div>
+</div>
 </section>
 <section id="inverse-dft" class="level2">
 <h2 class="anchored" data-anchor-id="inverse-dft">Inverse DFT</h2>
@@ -526,10 +539,10 @@ vectors:
 <p><span class="math inline">\({\bf DFT}\)</span>행렬에는 몇 가지 특징이 있다.</p>
 <p><strong>특징1:</strong> 유니터리행렬이다. 즉 <span class="math inline">\({\bf DFT}^\ast \cdot {\bf DFT} = {\bf DFT}^\ast \cdot{\bf DFT} = {\bf I}\)</span> 이다.</p>
 <div class="cell" data-execution_count="469">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1"></a>_DFT <span class="op">=</span> <span class="fu">reshape</span>([i<span class="op">*</span>j for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span> for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span>], (<span class="fl">4</span>,<span class="fl">4</span>))</span>
-<span id="cb36-2"><a href="#cb36-2"></a>f <span class="op">=</span> x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)</span>
-<span id="cb36-3"><a href="#cb36-3"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> f</span>
-<span id="cb36-4"><a href="#cb36-4"></a>DFT <span class="co"># 아까의 예제의 DFT!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1"></a>_DFT <span class="op">=</span> <span class="fu">reshape</span>([i<span class="op">*</span>j for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span> for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span>], (<span class="fl">4</span>,<span class="fl">4</span>))</span>
+<span id="cb38-2"><a href="#cb38-2"></a>f <span class="op">=</span> x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)</span>
+<span id="cb38-3"><a href="#cb38-3"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> f</span>
+<span id="cb38-4"><a href="#cb38-4"></a>DFT <span class="co"># 아까의 예제의 DFT!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="469">
 <pre><code>4×4 Matrix{ComplexF64}:
  1.0-0.0im           1.0-0.0im          …           1.0-0.0im
@@ -539,8 +552,8 @@ vectors:
 </div>
 </div>
 <div class="cell" data-execution_count="470">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1"></a>DFT <span class="op">=</span> (<span class="fl">1</span><span class="op">/</span>√<span class="fl">4</span>)<span class="op">*</span>DFT <span class="co"># 새로운 DFT의 정의 </span></span>
-<span id="cb38-2"><a href="#cb38-2"></a>DFT<span class="op">'</span>DFT <span class="op">.|&gt;</span> round <span class="co"># 유니터리행렬임을 확인!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1"></a>DFT <span class="op">=</span> (<span class="fl">1</span><span class="op">/</span>√<span class="fl">4</span>)<span class="op">*</span>DFT <span class="co"># 새로운 DFT의 정의 </span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>DFT<span class="op">'</span>DFT <span class="op">.|&gt;</span> round <span class="co"># 유니터리행렬임을 확인!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="470">
 <pre><code>4×4 Matrix{ComplexF64}:
   1.0+0.0im  -0.0-0.0im   0.0-0.0im   0.0-0.0im
@@ -564,10 +577,10 @@ vectors:
 <h2 class="anchored" data-anchor-id="dft의-또-다른-정의">DFT의 또 다른 정의</h2>
 <p>이번에는 <span class="math inline">\({\bf DFT}\)</span>에 대한 다른 정의를 생각해보자. 우선 아래와 같은 행렬 <span class="math inline">\({\bf B}\)</span>를 고려하자.</p>
 <div class="cell" data-execution_count="512">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1"></a>B<span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> </span>
-<span id="cb40-2"><a href="#cb40-2"></a>    <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> </span>
-<span id="cb40-3"><a href="#cb40-3"></a>    <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span></span>
-<span id="cb40-4"><a href="#cb40-4"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1"></a>B<span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> </span>
+<span id="cb42-2"><a href="#cb42-2"></a>    <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> </span>
+<span id="cb42-3"><a href="#cb42-3"></a>    <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span></span>
+<span id="cb42-4"><a href="#cb42-4"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="512">
 <pre><code>4×4 Matrix{Int64}:
  0  0  0  1
@@ -578,7 +591,7 @@ vectors:
 </div>
 <p>이것은 길이가 4인 임의의 column vector를 아래로 한칸씩 이동시키는 매트릭스이다.</p>
 <div class="cell" data-execution_count="499">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1"></a>x <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span><span class="op">-</span><span class="cn">im</span>, <span class="op">-</span><span class="cn">im</span>, <span class="op">-</span><span class="fl">1</span><span class="op">+</span><span class="fl">2im</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1"></a>x <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span><span class="op">-</span><span class="cn">im</span>, <span class="op">-</span><span class="cn">im</span>, <span class="op">-</span><span class="fl">1</span><span class="op">+</span><span class="fl">2im</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="499">
 <pre><code>4-element Vector{Complex{Int64}}:
   1 + 0im
@@ -588,7 +601,7 @@ vectors:
 </div>
 </div>
 <div class="cell" data-execution_count="500">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1"></a>B<span class="op">*</span>x <span class="co"># 아래로 한칸이동 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1"></a>B<span class="op">*</span>x <span class="co"># 아래로 한칸이동 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="500">
 <pre><code>4-element Vector{Complex{Int64}}:
  -1 + 2im
@@ -598,7 +611,7 @@ vectors:
 </div>
 </div>
 <div class="cell" data-execution_count="501">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1"></a>B<span class="op">^</span><span class="fl">2</span><span class="op">*</span>x <span class="co"># 아래로 두칸이동, B^2*x = B*(Bx) 이므로 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1"></a>B<span class="op">^</span><span class="fl">2</span><span class="op">*</span>x <span class="co"># 아래로 두칸이동, B^2*x = B*(Bx) 이므로 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="501">
 <pre><code>4-element Vector{Complex{Int64}}:
   0 - 1im
@@ -614,21 +627,21 @@ vectors:
 <li><span class="math inline">\({\bf \Lambda}\)</span>: make <span class="math inline">\([e^{-\sqrt{-1}\frac{2\pi}{N}i}~\text{ for }~ i=0,1,2\dots,N-1]\)</span> and apply <code>Diagonal</code> function.</li>
 </ul>
 <div class="cell" data-execution_count="510">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1"></a>N <span class="op">=</span> <span class="fl">4</span> </span>
-<span id="cb48-2"><a href="#cb48-2"></a>λ <span class="op">=</span> [<span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span>N) <span class="op">*</span>i) for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>)]</span>
-<span id="cb48-3"><a href="#cb48-3"></a>Λ <span class="op">=</span> <span class="fu">Diagonal</span>(λ)</span>
-<span id="cb48-4"><a href="#cb48-4"></a>_Ψ <span class="op">=</span> <span class="fl">1</span><span class="op">/</span>√N <span class="op">*</span>[<span class="fu">exp</span>(<span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span>N) <span class="op">*</span> i<span class="op">*</span>j) for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>) for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>)]</span>
-<span id="cb48-5"><a href="#cb48-5"></a>Ψ <span class="op">=</span> <span class="fu">reshape</span>(_Ψ, (N,N))</span>
-<span id="cb48-6"><a href="#cb48-6"></a>B <span class="op">≈</span> Ψ <span class="op">*</span> Λ <span class="op">*</span> Ψ<span class="ch">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1"></a>N <span class="op">=</span> <span class="fl">4</span> </span>
+<span id="cb50-2"><a href="#cb50-2"></a>λ <span class="op">=</span> [<span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span>N) <span class="op">*</span>i) for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>)]</span>
+<span id="cb50-3"><a href="#cb50-3"></a>Λ <span class="op">=</span> <span class="fu">Diagonal</span>(λ)</span>
+<span id="cb50-4"><a href="#cb50-4"></a>_Ψ <span class="op">=</span> <span class="fl">1</span><span class="op">/</span>√N <span class="op">*</span>[<span class="fu">exp</span>(<span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span>N) <span class="op">*</span> i<span class="op">*</span>j) for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>) for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>)]</span>
+<span id="cb50-5"><a href="#cb50-5"></a>Ψ <span class="op">=</span> <span class="fu">reshape</span>(_Ψ, (N,N))</span>
+<span id="cb50-6"><a href="#cb50-6"></a>B <span class="op">≈</span> Ψ <span class="op">*</span> Λ <span class="op">*</span> Ψ<span class="ch">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="510">
 <pre><code>true</code></pre>
 </div>
 </div>
 <p>그런데 위에서 정의된 <span class="math inline">\({\bf \Psi}^\ast\)</span>는 우리가 그전에 정의하였던 <span class="math inline">\({\bf DFT}\)</span>의 행렬과 같다.</p>
 <div class="cell" data-execution_count="505">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1"></a>_DFT <span class="op">=</span> <span class="fu">reshape</span>([i<span class="op">*</span>j for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span> for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span>], (<span class="fl">4</span>,<span class="fl">4</span>))</span>
-<span id="cb50-2"><a href="#cb50-2"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> (x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)) </span>
-<span id="cb50-3"><a href="#cb50-3"></a>DFT <span class="op">=</span> DFT <span class="op">*</span> <span class="fl">1</span><span class="op">/</span>√N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1"></a>_DFT <span class="op">=</span> <span class="fu">reshape</span>([i<span class="op">*</span>j for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span> for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span>], (<span class="fl">4</span>,<span class="fl">4</span>))</span>
+<span id="cb52-2"><a href="#cb52-2"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> (x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)) </span>
+<span id="cb52-3"><a href="#cb52-3"></a>DFT <span class="op">=</span> DFT <span class="op">*</span> <span class="fl">1</span><span class="op">/</span>√N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="505">
 <pre><code>4×4 Matrix{ComplexF64}:
  0.5-0.0im           0.5-0.0im          …           0.5-0.0im
@@ -638,7 +651,7 @@ vectors:
 </div>
 </div>
 <div class="cell" data-execution_count="506">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1"></a>Ψ<span class="ch">' == DFT </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1"></a>Ψ<span class="ch">' == DFT </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="506">
 <pre><code>true</code></pre>
 </div>
@@ -654,16 +667,16 @@ vectors:
 <h2 class="anchored" data-anchor-id="spectral-component-and-frequencies">Spectral component and Frequencies</h2>
 <p><span class="math inline">\({\bf A}\)</span>의 고유벡터 <span class="math inline">\({\bf \Psi}\)</span>의 각 column을 spectral component라고 부른다.</p>
 <div class="cell" data-execution_count="507">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1"></a>ψ₁ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">1</span>] <span class="co"># ψ₁ is first spectral component </span></span>
-<span id="cb54-2"><a href="#cb54-2"></a>ψ₂ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">2</span>] <span class="co"># ψ₂ is seconde spectral component </span></span>
-<span id="cb54-3"><a href="#cb54-3"></a>ψ₃ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">3</span>] <span class="co"># ψ₃ is third spectral component </span></span>
-<span id="cb54-4"><a href="#cb54-4"></a>ψ₄ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">4</span>] <span class="co"># ψ₄ is last spectral component</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb56-1"><a href="#cb56-1"></a>ψ₁ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">1</span>] <span class="co"># ψ₁ is first spectral component </span></span>
+<span id="cb56-2"><a href="#cb56-2"></a>ψ₂ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">2</span>] <span class="co"># ψ₂ is seconde spectral component </span></span>
+<span id="cb56-3"><a href="#cb56-3"></a>ψ₃ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">3</span>] <span class="co"># ψ₃ is third spectral component </span></span>
+<span id="cb56-4"><a href="#cb56-4"></a>ψ₄ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">4</span>] <span class="co"># ψ₄ is last spectral component</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>그리고 아래와 같은 수열을 <span class="math inline">\(\Omega_{k}=\frac{k}{N}\)</span>을 frequency 라고 부른다.</p>
 <div class="cell" data-execution_count="508">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1"></a>N<span class="op">=</span><span class="fl">4</span> </span>
-<span id="cb55-2"><a href="#cb55-2"></a>Ω <span class="op">=</span> [k<span class="op">/</span>N for k <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>)]</span>
-<span id="cb55-3"><a href="#cb55-3"></a>Ω</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb57-1"><a href="#cb57-1"></a>N<span class="op">=</span><span class="fl">4</span> </span>
+<span id="cb57-2"><a href="#cb57-2"></a>Ω <span class="op">=</span> [k<span class="op">/</span>N for k <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>)]</span>
+<span id="cb57-3"><a href="#cb57-3"></a>Ω</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="508">
 <pre><code>4-element Vector{Float64}:
  0.0
