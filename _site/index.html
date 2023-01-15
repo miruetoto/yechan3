@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>yechan3 - 신록예찬’s blog</title>
+<title>신록예찬’s Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -60,42 +58,12 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -103,185 +71,206 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">yechan3</span>
+    <span class="navbar-title">신록예찬’s Blog</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/DL2022/">
+ <span class="menu-text">DL2022</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/DV2022/">
+ <span class="menu-text">DV2022</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/IP2022/">
+ <span class="menu-text">IP2022</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/SC2022/">
+ <span class="menu-text">SC2022</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/DS2022/">
+ <span class="menu-text">DS2022</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/IR2021/">
+ <span class="menu-text">IR2021</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan/">
+ <span class="menu-text">yechan(old)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan2/">
+ <span class="menu-text">yechan2</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">
- <span class="menu-text">About</span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/miruetoto/yechan3"><i class="bi bi-github" role="img">
-</i> 
- <span class="menu-text"></span></a>
+    <a class="nav-link" href="https://github.com/miruetoto/yechan3">
+ <span class="menu-text">git-repo</span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">신록예찬’s blog</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Codes</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_codes_pl.html" class="sidebar-item-text sidebar-link">PyTorch Lightning</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Let’s Study</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_study_cgsp.html" class="sidebar-item-text sidebar-link">BOOK: CGSP</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_study_essays.html" class="sidebar-item-text sidebar-link">Essays</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Researches</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_researches_hst.html" class="sidebar-item-text sidebar-link">HST</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_researches_stgcn.html" class="sidebar-item-text sidebar-link">STGCN</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_reviews.html" class="sidebar-item-text sidebar-link">Reviews</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_notes.html" class="sidebar-item-text sidebar-link">Notes</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 
+<p><strong>About this blog</strong></p>
+<p>This blog was created for my personal research, study and lecture preparation. Therefore, the contents of the blog can be thought of as my practice notes. As a result, sometimes the content of a post may be left unstructured or unfinished. The blog is named after my favorite essay ‘신록예찬’, which is also a nickname I use informally. You can check the written article in the sidebar on the left. It is a great honor for me if these posts can help others to learn and research.</p>
+<hr>
+<p><strong>Some urls that help me</strong></p>
+<p><em>first bunch</em></p>
+<ul>
+<li><a href="https://openai.com/blog/chatgpt/" class="uri">https://openai.com/blog/chatgpt/</a></li>
+<li><a href="https://matplotlib.org/stable/gallery/index.html" class="uri">https://matplotlib.org/stable/gallery/index.html</a></li>
+<li><a href="https://jupyterlab.readthedocs.io/en/stable/index.html" class="uri">https://jupyterlab.readthedocs.io/en/stable/index.html</a></li>
+<li><a href="https://pandas.pydata.org/docs/user_guide/index.html#user-guide" class="uri">https://pandas.pydata.org/docs/user_guide/index.html#user-guide</a></li>
+<li><a href="https://docs.julialang.org/en/v1/" class="uri">https://docs.julialang.org/en/v1/</a></li>
+<li><a href="https://keras.io/examples/" class="uri">https://keras.io/examples/</a></li>
+<li><a href="https://docs.juliaplots.org/stable/" class="uri">https://docs.juliaplots.org/stable/</a></li>
+<li><a href="http://personal.psu.edu/drh20/asymp/fall2006/lectures/" class="uri">http://personal.psu.edu/drh20/asymp/fall2006/lectures/</a></li>
+<li><a href="https://www.pytorchlightning.ai/" class="uri">https://www.pytorchlightning.ai/</a></li>
+<li><a href="https://plotly.com/graphing-libraries/" class="uri">https://plotly.com/graphing-libraries/</a></li>
+</ul>
+<p><em>second bunch</em></p>
+<ul>
+<li><a href="https://editor.codecogs.com/" class="uri">https://editor.codecogs.com/</a></li>
+<li><a href="https://www.tablesgenerator.com/" class="uri">https://www.tablesgenerator.com/</a></li>
+<li><a href="https://github.com/PacktPublishing/Deep-Learning-with-PyTorch-Lightning" class="uri">https://github.com/PacktPublishing/Deep-Learning-with-PyTorch-Lightning</a></li>
+<li><a href="https://github.com/rusty1s/pytorch_geometric" class="uri">https://github.com/rusty1s/pytorch_geometric</a></li>
+<li><a href="https://www.rayshader.com/reference/plot_gg.html" class="uri">https://www.rayshader.com/reference/plot_gg.html</a></li>
+<li><a href="https://github.com/southkorea" class="uri">https://github.com/southkorea</a></li>
+<li><a href="https://zvon.org/" class="uri">https://zvon.org/</a></li>
+<li><a href="https://rpy2.github.io/doc/v3.1.x/html/index.html" class="uri">https://rpy2.github.io/doc/v3.1.x/html/index.html</a></li>
+<li><a href="https://pywavelets.readthedocs.io/en/latest/ref/wavelets.html" class="uri">https://pywavelets.readthedocs.io/en/latest/ref/wavelets.html</a></li>
+<li><a href="https://pygsp.readthedocs.io/en/stable/#" class="uri">https://pygsp.readthedocs.io/en/stable/#</a></li>
+<li><a href="https://tikz.net/neural_networks/" class="uri">https://tikz.net/neural_networks/</a></li>
+<li><a href="https://plotly.com/python/plotly-express/" class="uri">https://plotly.com/python/plotly-express/</a></li>
+<li><a href="https://docs.fast.ai/" class="uri">https://docs.fast.ai/</a></li>
+<li><a href="https://course.fast.ai/#" class="uri">https://course.fast.ai/#</a></li>
+<li><a href="https://github.com/fastai/fastai/tree/master/dev_nbs/course" class="uri">https://github.com/fastai/fastai/tree/master/dev_nbs/course</a></li>
+</ul>
+<p><em>lectures notes</em></p>
+<ul>
+<li><a href="http://personal.psu.edu/drh20/asymp/fall2006/lectures/" class="uri">http://personal.psu.edu/drh20/asymp/fall2006/lectures/</a></li>
+</ul>
+<p><em>blogs run by acquaintance</em></p>
+<ul>
+<li><a href="https://kimha02.github.io/ham/" class="uri">https://kimha02.github.io/ham/</a></li>
+<li><a href="https://simjaein.github.io/ji1598/" class="uri">https://simjaein.github.io/ji1598/</a></li>
+<li><a href="https://seoyeonc.github.io/md/" class="uri">https://seoyeonc.github.io/md/</a></li>
+<li><a href="https://seoyeonc.github.io/blog/" class="uri">https://seoyeonc.github.io/blog/</a></li>
+<li><a href="https://seoyeonc.github.io/ms/" class="uri">https://seoyeonc.github.io/ms/</a> *suspension</li>
+<li><a href="https://seoyeonc.github.io/chch/" class="uri">https://seoyeonc.github.io/chch/</a> *suspension</li>
+</ul>
 
 
 
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Author
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1673449200000" data-listing-file-modified-sort="1673483313000" data-listing-reading-time-sort="11.015" data-listing-title-sort="토폴로지" data-listing-filename-sort="2022-01-12-Topology.ipynb">
-<td class="listing-date">
-Jan 12, 2023
-</td>
-<td class="listing-title">
-<a href="./posts/2022-01-12-Topology.html" class="title">토폴로지</a>
-</td>
-<td class="listing-author">
-신록예찬
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1673362800000" data-listing-file-modified-sort="1673406662000" data-listing-reading-time-sort="0.06" data-listing-title-sort="부등식" data-listing-filename-sort="2023-01-11-Inequality.ipynb">
-<td class="listing-date">
-Jan 11, 2023
-</td>
-<td class="listing-title">
-<a href="./posts/2023-01-11-Inequality.html" class="title">부등식</a>
-</td>
-<td class="listing-author">
-신록예찬
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1673017200000" data-listing-file-modified-sort="1673406655000" data-listing-reading-time-sort="4.555" data-listing-title-sort="해석학" data-listing-filename-sort="2023-01-07-RealAnalysis.ipynb">
-<td class="listing-date">
-Jan 7, 2023
-</td>
-<td class="listing-title">
-<a href="./posts/2023-01-07-RealAnalysis.html" class="title">해석학</a>
-</td>
-<td class="listing-author">
-신록예찬
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1672326000000" data-listing-file-modified-sort="1673602144000" data-listing-reading-time-sort="0.175" data-listing-title-sort="[STGCN] Toy Example" data-listing-filename-sort="2022-12-30-STGCN-Toy Example.ipynb">
-<td class="listing-date">
-Dec 30, 2022
-</td>
-<td class="listing-title">
-<a href="./posts/2022-12-30-STGCN-Toy Example.html" class="title">[STGCN] Toy Example</a>
-</td>
-<td class="listing-author">
-신록예찬
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1672066800000" data-listing-file-modified-sort="1673682374000" data-listing-reading-time-sort="20.85" data-listing-title-sort="[CGSP] Chap 12.2.1: Power Spectral Density" data-listing-filename-sort="2022-12-27-CGSP-Chap-12-2-1-PSD.ipynb">
-<td class="listing-date">
-Dec 27, 2022
-</td>
-<td class="listing-title">
-<a href="./posts/CGSP/2022-12-27-CGSP-Chap-12-2-1-PSD.html" class="title">[CGSP] Chap 12.2.1: Power Spectral Density</a>
-</td>
-<td class="listing-author">
-신록예찬
-</td>
-</tr>
-<tr data-index="5" data-listing-date-sort="1671980400000" data-listing-file-modified-sort="1673611836000" data-listing-reading-time-sort="6.49" data-listing-title-sort="[CGSP] Chap 12.2: Weakly Stationary Graph Processes" data-listing-filename-sort="2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.ipynb">
-<td class="listing-date">
-Dec 26, 2022
-</td>
-<td class="listing-title">
-<a href="./posts/CGSP/2022-12-26-CGSP-Chap-12-2-Weakly Stationary Graph Processes.html" class="title">[CGSP] Chap 12.2: Weakly Stationary Graph Processes</a>
-</td>
-<td class="listing-author">
-신록예찬
-</td>
-</tr>
-<tr data-index="6" data-listing-date-sort="1671807600000" data-listing-file-modified-sort="1673672194000" data-listing-reading-time-sort="5.375" data-listing-title-sort="[CGSP] Chap 8.3: Discrete Fourier Transform" data-listing-filename-sort="2022-12-24-CGSP-Chap-8-3-DFT.ipynb">
-<td class="listing-date">
-Dec 24, 2022
-</td>
-<td class="listing-title">
-<a href="./posts/CGSP/2022-12-24-CGSP-Chap-8-3-DFT.html" class="title">[CGSP] Chap 8.3: Discrete Fourier Transform</a>
-</td>
-<td class="listing-author">
-신록예찬
-</td>
-</tr>
-<tr data-index="7" data-listing-date-sort="1671721200000" data-listing-file-modified-sort="1673483440000" data-listing-reading-time-sort="3.38" data-listing-title-sort="[논문리뷰] EbayesThresh: R Programs for Empirical Bayes Thresholding" data-listing-filename-sort="2022-12-23-Ebayesthresh.ipynb">
-<td class="listing-date">
-Dec 23, 2022
-</td>
-<td class="listing-title">
-<a href="./posts/2022-12-23-Ebayesthresh.html" class="title">[논문리뷰] EbayesThresh: R Programs for Empirical Bayes Thresholding</a>
-</td>
-<td class="listing-author">
-신록예찬
-</td>
-</tr>
-<tr data-index="8" data-listing-date-sort="1663686000000" data-listing-file-modified-sort="1673018273282" data-listing-reading-time-sort="0.04" data-listing-title-sort="[PytorchLightning] 단순선형회귀" data-listing-filename-sort="2022-11-29-Simple Linear Regression.ipynb">
-<td class="listing-date">
-Sep 21, 2022
-</td>
-<td class="listing-title">
-<a href="./posts/PytorchLightning/2022-11-29-Simple Linear Regression.html" class="title">[PytorchLightning] 단순선형회귀</a>
-</td>
-<td class="listing-author">
-신록예찬
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
