@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="신록예찬">
-<meta name="dcterms.date" content="2022-12-27">
+<meta name="dcterms.date" content="2023-01-15">
 
-<title>신록예찬’s Blog - Chap 12.2 ~ 3: Power Spectral Density and its Estimators</title>
+<title>신록예찬’s Blog - Chap 12.4: Node Subsampling for PSD Estimation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -61,6 +124,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
@@ -126,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Chap 12.2 ~ 3: Power Spectral Density and its Estimators</h1>
+      <h1 class="quarto-secondary-nav-title">Chap 12.4: Node Subsampling for PSD Estimation</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -137,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Chap 12.2 ~ 3: Power Spectral Density and its Estimators</h1>
+      <h1 class="title d-none d-lg-block">Chap 12.4: Node Subsampling for PSD Estimation</h1>
                       </div>
   </div>
     
@@ -154,7 +218,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 27, 2022</p>
+        <p class="date">January 15, 2023</p>
       </div>
     </div>
     
@@ -247,7 +311,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-sampling-problem" id="toc-the-sampling-problem" class="nav-link active" data-scroll-target="#the-sampling-problem">12.4.1 The Sampling Problem</a></li>
+  <li><a href="#compressed-ls-estimator" id="toc-compressed-ls-estimator" class="nav-link" data-scroll-target="#compressed-ls-estimator">12.4.2 Compressed LS Estimator</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -255,8 +326,185 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<div class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span>, <span class="bu">Plots</span>, <span class="bu">FFTW</span>, <span class="bu">Statistics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1"></a>columnwise_kron <span class="op">=</span> </span>
+<span id="cb2-2"><a href="#cb2-2"></a>(C,D) <span class="op">-&gt;</span> <span class="fu">hcat</span>([<span class="fu">kron</span>(C[<span class="op">:</span>,i],D[<span class="op">:</span>,i]) for i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(C)[<span class="fl">2</span>]]<span class="op">...</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="76">
+<pre><code>#49 (generic function with 1 method)</code></pre>
+</div>
+</div>
+<section id="the-sampling-problem" class="level1">
+<h1>12.4.1 The Sampling Problem</h1>
+<p>아래와 같이 길이가 <span class="math inline">\(N=10\)</span> 인 신호 <span class="math inline">\({\bf x}\)</span>를 고려하자.</p>
+<div class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
+<pre><code>10-element Vector{Float64}:
+ 0.03235208758206609
+ 0.5069925854414447
+ 0.5795228508497553
+ 0.682832351742401
+ 0.64422613488741
+ 0.24116013388795854
+ 0.8439116925218157
+ 0.6362602319916778
+ 0.386069828675059
+ 0.5313655894235898</code></pre>
+</div>
+</div>
+<p>여기에서 1,3,4,5 번째 원소만 추출하여길이가 <span class="math inline">\(K=4\)</span> 인 신호 <span class="math inline">\({\bf y}\)</span>를 만들고 싶다.</p>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1"></a>y <span class="op">=</span> x[[<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>4-element Vector{Float64}:
+ 0.03235208758206609
+ 0.5795228508497553
+ 0.682832351742401
+ 0.64422613488741</code></pre>
+</div>
+</div>
+<p>이 과정은 아래와 같이 수행할 수도 있다.</p>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1"></a>Φ<span class="op">=</span> [<span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>4×10 Matrix{Int64}:
+ 1  0  0  0  0  0  0  0  0  0
+ 0  0  1  0  0  0  0  0  0  0
+ 0  0  0  1  0  0  0  0  0  0
+ 0  0  0  0  1  0  0  0  0  0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1"></a>Φ<span class="op">*</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>4-element Vector{Float64}:
+ 0.03235208758206609
+ 0.5795228508497553
+ 0.682832351742401
+ 0.64422613488741</code></pre>
+</div>
+</div>
+<p>즉 적당한 <span class="math inline">\(K\times N\)</span> selection matrix를 선언하여 subsampling을 수행할 수 있다. 이때 매트릭스 <span class="math inline">\({\bf \Phi}\)</span>를 subsampling matrix 혹은 sparse sampling matrix 라고 부른다.</p>
+</section>
+<section id="compressed-ls-estimator" class="level1">
+<h1>12.4.2 Compressed LS Estimator</h1>
+<div class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1"></a>N <span class="op">=</span> <span class="fl">10</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>V <span class="op">=</span> [i<span class="op">*</span>j for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>) for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>)] <span class="op">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3"></a>    x <span class="op">-&gt;</span> <span class="fu">reshape</span>(x,(N,N)) <span class="op">.|&gt;</span> </span>
+<span id="cb12-4"><a href="#cb12-4"></a>    x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span>N) <span class="op">*</span> x) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>10×10 Matrix{ComplexF64}:
+ 1.0+0.0im        1.0+0.0im          …        1.0+0.0im
+ 1.0+0.0im   0.809017+0.587785im         0.809017-0.587785im
+ 1.0+0.0im   0.309017+0.951057im         0.309017-0.951057im
+ 1.0+0.0im  -0.309017+0.951057im        -0.309017-0.951057im
+ 1.0+0.0im  -0.809017+0.587785im        -0.809017-0.587785im
+ 1.0+0.0im       -1.0+1.22465e-16im  …       -1.0+1.10218e-15im
+ 1.0+0.0im  -0.809017-0.587785im        -0.809017+0.587785im
+ 1.0+0.0im  -0.309017-0.951057im        -0.309017+0.951057im
+ 1.0+0.0im   0.309017-0.951057im         0.309017+0.951057im
+ 1.0+0.0im   0.809017-0.587785im         0.809017+0.587785im</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1"></a>G <span class="op">=</span> <span class="fu">columnwise_kron</span>(<span class="fu">conj</span>(V),V)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="62">
+<pre><code>100×10 Matrix{ComplexF64}:
+ 1.0+0.0im        1.0+0.0im          …        1.0+0.0im
+ 1.0+0.0im   0.809017+0.587785im         0.809017-0.587785im
+ 1.0+0.0im   0.309017+0.951057im         0.309017-0.951057im
+ 1.0+0.0im  -0.309017+0.951057im        -0.309017-0.951057im
+ 1.0+0.0im  -0.809017+0.587785im        -0.809017-0.587785im
+ 1.0+0.0im       -1.0+1.22465e-16im  …       -1.0+1.10218e-15im
+ 1.0+0.0im  -0.809017-0.587785im        -0.809017+0.587785im
+ 1.0+0.0im  -0.309017-0.951057im        -0.309017+0.951057im
+ 1.0+0.0im   0.309017-0.951057im         0.309017+0.951057im
+ 1.0+0.0im   0.809017-0.587785im         0.809017+0.587785im
+ 1.0+0.0im   0.809017-0.587785im     …   0.809017+0.587785im
+ 1.0+0.0im        1.0+0.0im                   1.0+0.0im
+ 1.0+0.0im   0.809017+0.587785im         0.809017-0.587785im
+    ⋮                                ⋱  
+ 1.0+0.0im        1.0+0.0im                   1.0+0.0im
+ 1.0+0.0im   0.809017+0.587785im         0.809017-0.587785im
+ 1.0+0.0im   0.809017+0.587785im     …   0.809017-0.587785im
+ 1.0+0.0im   0.309017+0.951057im         0.309017-0.951057im
+ 1.0+0.0im  -0.309017+0.951057im        -0.309017-0.951057im
+ 1.0+0.0im  -0.809017+0.587785im        -0.809017-0.587785im
+ 1.0+0.0im       -1.0-1.11022e-16im          -1.0+2.27596e-15im
+ 1.0+0.0im  -0.809017-0.587785im     …  -0.809017+0.587785im
+ 1.0+0.0im  -0.309017-0.951057im        -0.309017+0.951057im
+ 1.0+0.0im   0.309017-0.951057im         0.309017+0.951057im
+ 1.0+0.0im   0.809017-0.587785im         0.809017+0.587785im
+ 1.0+0.0im        1.0+0.0im                   1.0+0.0im</code></pre>
+</div>
+</div>
+<p><code>-</code> 방법1</p>
+<div class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1"></a>ĉₓ <span class="op">=</span> <span class="fu">vec</span>(x<span class="op">*</span>x<span class="op">'</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>p̂ <span class="op">=</span> <span class="fu">inv</span>(G<span class="op">'</span> <span class="op">*</span> G) <span class="op">*</span> G<span class="op">'</span> <span class="op">*</span> ĉₓ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<pre><code>10-element Vector{ComplexF64}:
+    0.25854107856772546 + 2.245922875954761e-20im
+   0.004743491121735806 - 1.3138893409553828e-18im
+   0.006946482731189413 - 9.791191432641327e-19im
+   0.001721693617954179 - 1.9827974128203887e-18im
+   0.011344167525098774 + 2.6827005818057562e-19im
+ 0.00012662617844242917 - 3.748573865136995e-20im
+   0.011344167525098762 + 2.7448152053954017e-18im
+  0.0017216936179541913 - 9.35534609073096e-19im
+   0.006946482731189404 + 1.954408900185458e-18im
+   0.004743491121735756 - 2.561030398375897e-18im</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">plot</span>(<span class="fu">real</span>(p̂)[<span class="fl">2</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<p><img src="2023-01-15-Chap-12.4_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<p><code>-</code> 방법2</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1"></a>ĉ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="94">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1"></a>ĉy <span class="op">=</span> <span class="fu">vec</span>(y<span class="op">*</span>y<span class="op">'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2"></a>p̂ <span class="op">=</span> (<span class="fu">kron</span>(Φ,Φ)<span class="op">*</span>G)<span class="ch">' * ĉy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="94">
+<pre><code>10-element Vector{ComplexF64}:
+   3.759462826821233 + 0.0im
+   2.765185174577697 - 2.0816681711721685e-17im
+   1.077337414764992 + 2.7755575615628914e-17im
+ 0.11594812606807317 + 2.0816681711721685e-17im
+ 0.08838298603932843 + 3.903127820947816e-17im
+ 0.32863702713833354 + 4.622231866529366e-33im
+ 0.08838298603932859 + 9.540979117872439e-18im
+  0.1159481260680729 - 2.0816681711721685e-17im
+  1.0773374147649915 + 0.0im
+  2.7651851745776965 - 2.0816681711721685e-17im</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">plot</span>(<span class="fu">real</span>(p̂)[<span class="fl">2</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="96">
+<p><img src="2023-01-15-Chap-12.4_files/figure-html/cell-14-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">plot</span>(<span class="fu">real</span>(p̂)[<span class="fl">2</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<p><img src="2023-01-15-Chap-12.4_files/figure-html/cell-15-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
