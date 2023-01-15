@@ -10,6 +10,12 @@
     ]
   },
   {
+    "listing": "/1_codes_python.html",
+    "items": [
+      "/posts/1. Codes/Python/2000-04-05-Numpy.html"
+    ]
+  },
+  {
     "listing": "/3_researches_stgcn.html",
     "items": [
       "/posts/3. Researches/STGCN/2022-12-30-STGCN-Toy Example.html"
@@ -46,12 +52,6 @@
     "listing": "/1_codes_pl.html",
     "items": [
       "/posts/1. Codes/PyTorchLightning/2022-11-29-Lesson1.html"
-    ]
-  },
-  {
-    "listing": "/1_codes_python.html",
-    "items": [
-      "/posts/1. Codes/Python/2000-04-05-Numpy.html"
     ]
   }
 ]
