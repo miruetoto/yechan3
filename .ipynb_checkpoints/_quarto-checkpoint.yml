@@ -38,6 +38,7 @@ website:
       - section: "Codes"
         contents:
           - 1_codes_pl.qmd
+          - 1_codes_python.qmd
       - section: "Let's Study"
         contents:
           - 2_study_cgsp.qmd
