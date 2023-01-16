@@ -18,6 +18,7 @@ This blog was created for my personal research, study and lecture preparation. T
 - <http://personal.psu.edu/drh20/asymp/fall2006/lectures/>
 - <https://www.pytorchlightning.ai/> 
 - <https://plotly.com/graphing-libraries/>
+- <https://quarto.org/> 
 
 *second bunch*
 

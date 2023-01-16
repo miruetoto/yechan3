@@ -394,12 +394,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="compressed-ls-estimator" class="level1">
 <h1>12.4.2 Compressed LS Estimator</h1>
-<div class="cell" data-execution_count="61">
+<div class="cell" data-execution_count="99">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1"></a>N <span class="op">=</span> <span class="fl">10</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>V <span class="op">=</span> [i<span class="op">*</span>j for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>) for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>)] <span class="op">|&gt;</span> </span>
 <span id="cb12-3"><a href="#cb12-3"></a>    x <span class="op">-&gt;</span> <span class="fu">reshape</span>(x,(N,N)) <span class="op">.|&gt;</span> </span>
 <span id="cb12-4"><a href="#cb12-4"></a>    x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span>N) <span class="op">*</span> x) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="61">
+<div class="cell-output cell-output-display" data-execution_count="99">
 <pre><code>10×10 Matrix{ComplexF64}:
  1.0+0.0im        1.0+0.0im          …        1.0+0.0im
  1.0+0.0im   0.809017+0.587785im         0.809017-0.587785im
@@ -413,9 +413,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  1.0+0.0im   0.809017-0.587785im         0.809017+0.587785im</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="62">
+<div class="cell" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1"></a>G <span class="op">=</span> <span class="fu">columnwise_kron</span>(<span class="fu">conj</span>(V),V)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="62">
+<div class="cell-output cell-output-display" data-execution_count="100">
 <pre><code>100×10 Matrix{ComplexF64}:
  1.0+0.0im        1.0+0.0im          …        1.0+0.0im
  1.0+0.0im   0.809017+0.587785im         0.809017-0.587785im
@@ -446,10 +446,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p><code>-</code> 방법1</p>
-<div class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1"></a>ĉₓ <span class="op">=</span> <span class="fu">vec</span>(x<span class="op">*</span>x<span class="op">'</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>p̂ <span class="op">=</span> <span class="fu">inv</span>(G<span class="op">'</span> <span class="op">*</span> G) <span class="op">*</span> G<span class="op">'</span> <span class="op">*</span> ĉₓ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="63">
+<div class="cell" data-execution_count="101">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1"></a>ĉx <span class="op">=</span> <span class="fu">vec</span>(x<span class="op">*</span>x<span class="op">'</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>p̂ <span class="op">=</span> <span class="fu">inv</span>(G<span class="op">'</span> <span class="op">*</span> G) <span class="op">*</span> G<span class="op">'</span> <span class="op">*</span> ĉx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="101">
 <pre><code>10-element Vector{ComplexF64}:
     0.25854107856772546 + 2.245922875954761e-20im
    0.004743491121735806 - 1.3138893409553828e-18im
@@ -463,20 +463,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    0.004743491121735756 - 2.561030398375897e-18im</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">plot</span>(<span class="fu">real</span>(p̂)[<span class="fl">2</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="68">
-<p><img src="2023-01-15-Chap-12.4_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
 <p><code>-</code> 방법2</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1"></a>ĉ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1"></a>ĉy <span class="op">=</span> <span class="fu">vec</span>(y<span class="op">*</span>y<span class="op">'</span>)</span>
-<span id="cb20-2"><a href="#cb20-2"></a>p̂ <span class="op">=</span> (<span class="fu">kron</span>(Φ,Φ)<span class="op">*</span>G)<span class="ch">' * ĉy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="94">
+<div class="cell" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1"></a>ĉy <span class="op">=</span> <span class="fu">vec</span>(y<span class="op">*</span>y<span class="op">'</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>p̂ <span class="op">=</span> (<span class="fu">kron</span>(Φ,Φ)<span class="op">*</span>G)<span class="ch">' * ĉy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="106">
 <pre><code>10-element Vector{ComplexF64}:
    3.759462826821233 + 0.0im
    2.765185174577697 - 2.0816681711721685e-17im
@@ -488,18 +479,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   0.1159481260680729 - 2.0816681711721685e-17im
   1.0773374147649915 + 0.0im
   2.7651851745776965 - 2.0816681711721685e-17im</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">plot</span>(<span class="fu">real</span>(p̂)[<span class="fl">2</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="96">
-<p><img src="2023-01-15-Chap-12.4_files/figure-html/cell-14-output-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">plot</span>(<span class="fu">real</span>(p̂)[<span class="fl">2</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="68">
-<p><img src="2023-01-15-Chap-12.4_files/figure-html/cell-15-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 
