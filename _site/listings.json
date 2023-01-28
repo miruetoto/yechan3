@@ -1,7 +1,9 @@
 [
   {
     "listing": "/3_researches_hst.html",
-    "items": []
+    "items": [
+      "/posts/3. Researches/HST/2023-01-23-CommunityDetection.html"
+    ]
   },
   {
     "listing": "/4_reviews.html",
@@ -33,6 +35,9 @@
   {
     "listing": "/2_study_essays.html",
     "items": [
+      "/posts/2. Let's Study/Essays/Untitled1.html",
+      "/posts/2. Let's Study/Essays/2023-01-20-Estimation.html",
+      "/posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html",
       "/posts/2. Let's Study/Essays/2022-01-12-Topology.html",
       "/posts/2. Let's Study/Essays/2023-01-11-Inequality.html",
       "/posts/2. Let's Study/Essays/2023-01-07-RealAnalysis.html"

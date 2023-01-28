@@ -373,7 +373,7 @@ div.csl-indent {
 
 
 
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span>, <span class="bu">Plots</span>, <span class="bu">FFTW</span>, <span class="bu">Statistics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="preliminary-study" class="level1">
@@ -654,8 +654,8 @@ a_{n1}{\bf B} &amp; a_{n2}{\bf B} &amp; \dots &amp; a_{nm}{\bf B} \\
 <p>왜 ACF의 모든정보를 <span class="math inline">\({\bf C}_{\bf x}\)</span>로 부터 알수 있는지 코드를 통하여 실습하여 보자. (바로 이해된다면 사실 이 예제는 스킵해도 무방함) 아래와 같은 모형을 가정하자.</p>
 <p><span class="math display">\[x_{t} = 0.5 x_{t-1} +\epsilon_t\]</span></p>
 <p>여기에서 <span class="math inline">\(\epsilon_t\)</span>는 서로 독립인 표준정규분포를 따른다. 이 모형에서 길이가 100인 시계열을 임의로 발생시키자.</p>
-<div class="cell" data-execution_count="438">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1"></a>x <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">100</span>)</span>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1"></a>x <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">100</span><span class="op">*</span><span class="fl">1000</span>)</span>
 <span id="cb18-2"><a href="#cb18-2"></a>x[<span class="fl">1</span>] <span class="op">=</span> <span class="fu">randn</span>()</span>
 <span id="cb18-3"><a href="#cb18-3"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fl">100</span></span>
 <span id="cb18-4"><a href="#cb18-4"></a>    x[t] <span class="op">=</span> <span class="fl">0.5</span><span class="op">*</span>x[t<span class="op">-</span><span class="fl">1</span>] <span class="op">+</span> <span class="fu">randn</span>()</span>
