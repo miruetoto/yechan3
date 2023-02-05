@@ -385,11 +385,151 @@
     "text": "Choosing the threshold\n\\(X_i\\)의 marginal density는\n\\((1-w)\\phi(x) +w(\\gamma \\star \\phi)(x)\\)\n\\(l(w) = \\sum_{i=1}^{n}\\log \\big\\{(1-w)\\phi(X_i)+wg(X_i) \\big\\}\\)\n와 같이 정의가능하다. 단, 여기에서 \\(g:= \\gamma\\star \\phi\\) 이다.\n이제 우리는 아래의 식을 풀면된다.\n\\[\\underset{w}{\\operatorname{argmax}} l(w)\\quad\\quad \\text{subject to}\\quad t(w) \\leq \\sqrt{2\\log n}\\]\n여기에서 \\(\\sqrt{2\\log n}\\)은 흔히 말하는 universal threshold 이다.\n만약에 \\(w\\)이외에 \\(a\\)도 추정해야 한다면 아래와 같이 추정할 수 있다.\n\\[\\underset{w}{\\operatorname{argmax}} l(w)\\quad\\quad \\text{subject to}\\quad t(w) \\leq \\sqrt{2\\log n}\\]"
   },
   {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "",
+    "text": "Try to divide train and test(GNAR fivenet)"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "1) ST-GCN",
+    "text": "1) ST-GCN\n\nmean_f_fiveVTS_train = torch.tensor(fiveVTS_train_mean).reshape(160,5,1).float()\n\n/home/cgb2/anaconda3/envs/py37/lib/python3.7/site-packages/ipykernel_launcher.py:1: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).\n  \"\"\"Entry point for launching an IPython kernel.\n\n\n\nmean_X_fiveVTS = mean_f_fiveVTS_train[:159,:,:]\nmean_y_fiveVTS = mean_f_fiveVTS_train[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(mean_X_fiveVTS,mean_y_fiveVTS)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n100%|██████████| 50/50 [00:24<00:00,  2.02it/s]\n\n\n\nmean_fhat_fiveVTS = torch.stack([model(xt, edge_index, edge_attr) for xt in mean_X_fiveVTS]).detach().numpy()\n\n\nfiveVTS_test.float()\n\ntensor([[-1.3798,  0.1459,  0.9158,  1.4848, -3.5004],\n        [-0.6878, -0.9167,  1.2704,  1.0167, -0.3307],\n        [ 0.7200,  2.8028,  1.6711, -0.6230,  0.5819],\n        [ 0.7209, -0.4410,  1.3555,  0.1693,  1.3739],\n        [ 1.2559,  1.2374, -1.2614,  1.1569,  1.3480],\n        [ 1.7057, -2.0821,  1.1786,  0.0351,  2.3181],\n        [-1.2413, -1.8109,  0.4296, -1.6056,  1.8224],\n        [-1.7336, -1.5126, -0.6606, -0.5410, -0.5155],\n        [ 0.7925,  1.1118, -0.0874, -0.4713, -1.4689],\n        [-1.3085, -0.8209, -1.0603, -0.8488,  0.6158],\n        [-0.1514, -1.7553, -2.1784, -1.1333, -0.7315],\n        [-1.4409, -1.7015,  0.0866, -0.5748, -0.9676],\n        [-0.6027,  0.0888, -1.5058, -1.1654, -0.7148],\n        [ 1.2753, -0.4101,  0.4946, -2.9917, -1.2779],\n        [-1.4045, -0.2712,  0.4429, -0.2222, -0.7184],\n        [-0.6562,  1.2038,  0.9780,  0.1263, -1.9698],\n        [-0.3942, -0.1619,  2.1763,  0.6952,  0.8985],\n        [ 0.9426,  0.6274,  1.4339, -0.3655,  0.6060],\n        [-0.0232,  1.3773, -0.4090,  1.0618, -0.2948],\n        [ 0.3657,  1.2116, -1.9235,  0.2128,  0.9628],\n        [-0.0054, -0.7658, -1.5171,  0.9022, -0.3424],\n        [ 0.0250,  0.0988, -0.2425,  0.2302,  2.5867],\n        [ 0.8274, -0.0193,  1.6451, -0.5173,  1.9787],\n        [ 0.4465, -0.6417,  0.1839,  0.1950,  0.6193],\n        [-0.8528, -0.1507, -1.1756, -0.7493, -0.1694],\n        [ 0.5451, -0.1640, -0.7052, -2.2439, -0.0902],\n        [-1.2375,  0.6400, -0.0717,  0.8026,  0.3689],\n        [-0.4006, -0.4902,  1.2855,  0.5666, -0.7605],\n        [-0.3460, -0.0311,  0.4690, -0.6269, -0.5895],\n        [-0.2426, -0.6435,  0.6376,  0.7295, -2.5957],\n        [ 1.9069,  1.2954, -0.4734,  0.0094, -0.4509],\n        [ 0.2476,  0.3806,  0.5114, -0.3037, -0.3522],\n        [ 0.1092, -1.0953, -1.1172,  0.2607,  0.6302],\n        [-0.4281,  0.9575,  1.1477, -1.8067,  0.2051],\n        [-2.3917,  1.0070,  0.4690, -1.0293, -1.2361],\n        [-2.2108, -1.4035,  0.5568, -0.6005, -2.4205],\n        [-0.7226, -0.4141,  0.9886, -0.6103,  0.5877],\n        [-2.9386, -0.5597,  0.0786,  0.0106, -2.3684],\n        [-0.9860,  0.2154, -0.1190,  0.7797, -2.9880],\n        [ 0.4472,  0.4042,  0.7200, -0.4425, -1.7816]])\n\n\n\nxt_test = fiveVTS_test.float().reshape(40,5,1)[:-1,:,:]\n\n\nmean_fhat_fiveVTS_forecast = torch.stack([model(xt, edge_index, edge_attr) for xt in xt_test]).detach().numpy()\n\n\nvis2(fiveVTS_test[1:],mean_fhat_fiveVTS_forecast);\n\n\n\n\n\nvis2(fiveVTS_train_mean,mean_fhat_fiveVTS);"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "2) Fourier transform",
+    "text": "2) Fourier transform\n\nw=np.zeros((159*N,159*N))\n\n\nfor i in range(159*N):\n    for j in range(159*N):\n        if i==j :\n            w[i,j] = 0\n        elif np.abs(i-j) <= 1 : \n            w[i,j] = 1\n\n\n# #w= edges\n# d = np.array(w.sum(axis=1))\n# L = np.array(np.diag(1/np.sqrt(d)) @ (D-w) @ np.diag(1/np.sqrt(d)))\n# lamb, Psi = np.linalg.eigh(L)\n# Lamb = np.diag(lamb)\n\n\n# np.fft(mean_fhat_fiveVTS[:,0,0])\n\n\n# mean_fhat_fiveVTS.shape\n\n\n# fft_result =np.stack([np.fft.fft(mean_fhat_fiveVTS[:,n,0]) for n in range(N)]).T\n\n\n# plt.plot(abs(fft_result[:,0])**2)\n\n\nd = np.array(w.sum(axis=1))\nD = np.diag(d)\nL = np.array(np.diag(1/np.sqrt(d)) @ (D-w) @ np.diag(1/np.sqrt(d)))\nlamb, Psi = np.linalg.eigh(L)\nLamb = np.diag(lamb)\n\n\nfhatbar = Psi.T @ mean_fhat_fiveVTS.reshape(159*N,1)\npower = fhatbar**2"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "3) Ebayes",
+    "text": "3) Ebayes\n\nplt.plot(fhatbar.reshape(159,5)[:,0]**2)\n\n\n\n\n\nebayesthresh = importr('EbayesThresh').ebayesthresh\n#power_threshed=np.array([np.array(ebayesthresh(FloatVector(fhatbar[i]**2))) for i in range(159*N)])\nfhatbar_threshed = ebayesthresh(FloatVector(fhatbar))\n\n\nebayesthresh(FloatVector(fhatbar))\n\n\n\n        FloatVector with 795 elements.\n        \n        \n          \n          \n            \n            1.229290\n            \n          \n            \n            0.000000\n            \n          \n            \n            -0.204739\n            \n          \n            \n            ...\n            \n          \n            \n            0.000000\n            \n          \n            \n            0.000000\n            \n          \n            \n            0.000000\n            \n          \n          \n        \n        \n        \n\n\n\nebayesthresh(FloatVector([1,2,3,444,0]))\n\n\n\n        FloatVector with 5 elements.\n        \n        \n          \n          \n            \n            0.000000\n            \n          \n            \n            0.000000\n            \n          \n            \n            0.000000\n            \n          \n            \n            442.517400\n            \n          \n            \n            0.000000\n            \n          \n          \n        \n        \n        \n\n\n\nplt.plot(fhatbar)\nplt.plot(fhatbar_threshed)"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "4) Inverse Fourier transform",
+    "text": "4) Inverse Fourier transform\n\nfhatbarhat = Psi @ fhatbar_threshed\nfhatbarhat_mean_spatio_temporal = fhatbarhat.reshape(159,N,1)\n\n# fhatbarhat = Psi @ fhatbar\n# fhatbarhat_mean_spatio_temporal = fhatbarhat.reshape(159,N,1)\n\n\nvis2(mean_fhat_fiveVTS,fhatbarhat_mean_spatio_temporal.reshape(159,5));"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-1",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-1",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "5) ST-GCN",
+    "text": "5) ST-GCN\n\nmean_spatio_temporal = torch.tensor(fhatbarhat_mean_spatio_temporal).reshape(159,5,1).float()\n\n\nmean_X_spatio_temporal = mean_spatio_temporal[:158,:,:]\nmean_y_spatio_temporal = mean_spatio_temporal[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(mean_X_spatio_temporal,mean_y_spatio_temporal)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n\nmean_X_spatio_temporal_fore = mean_spatio_temporal[119:,:,:]\n\n\nmean_fhat_spatio_temporal = torch.stack([model(xt, edge_index, edge_attr) for xt in mean_X_spatio_temporal_fore]).detach().numpy()\n\n\nBox plot\n\nsum((mean_fhat_spatio_temporal.reshape(40,5) -  fiveVTS_test)**2)\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot((mean_fhat_spatio_temporal.reshape(40,5) -  fiveVTS_test))\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot(((mean_fhat_spatio_temporal.reshape(40,5) -  fiveVTS_test)).reshape(200,1))"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-1",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-1",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "6) Fourier transform",
+    "text": "6) Fourier transform\n\nmean_fhat_spatio_temporal = torch.stack([model(xt, edge_index, edge_attr) for xt in mean_spatio_temporal]).detach().numpy()\n\n\nw=np.zeros((159*N,159*N))\n\n\nfor i in range(159*N):\n    for j in range(159*N):\n        if i==j :\n            w[i,j] = 0\n        elif np.abs(i-j) <= 1 : \n            w[i,j] = 1\n\n\nd = np.array(w.sum(axis=1))\nD = np.diag(d)\nL = np.array(np.diag(1/np.sqrt(d)) @ (D-w) @ np.diag(1/np.sqrt(d)))\nlamb, Psi = np.linalg.eigh(L)\nLamb = np.diag(lamb)\nfhatbar = Psi @ mean_fhat_spatio_temporal.reshape(159*N,1)\npower = fhatbar**2"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-1",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-1",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "7) Ebayes",
+    "text": "7) Ebayes\n\nebayesthresh = importr('EbayesThresh').ebayesthresh\npower_threshed=np.array([np.array(ebayesthresh(FloatVector(fhatbar[i]**2))) for i in range(159*N)])\nfhatbar_threshed = np.where(power_threshed>0,fhatbar,0)"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-1",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-1",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "8) Inverse Fourier transform",
+    "text": "8) Inverse Fourier transform\n\nfhatbarhat = Psi @ fhatbar_threshed\nfhatbarhat_mean_spatio_temporal = fhatbarhat.reshape(159,N,1)"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-2",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-2",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "9) ST-GCN",
+    "text": "9) ST-GCN\n\nmean_spatio_temporal2 = torch.tensor(fhatbarhat_mean_spatio_temporal).reshape(159,5,1).float()\n\n\nmean_X_spatio_temporal2 = mean_spatio_temporal2[:158,:,:]\nmean_y_spatio_temporal2 = mean_spatio_temporal2[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(mean_X_spatio_temporal2,mean_y_spatio_temporal2)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n\nmean_X_spatio_temporal_fore2 = mean_spatio_temporal2[119:,:,:]\n\n\nmean_fhat_spatio_temporal2 = torch.stack([model(xt, edge_index, edge_attr) for xt in mean_X_spatio_temporal_fore2]).detach().numpy()\n\n\nBox plot\n\nsum((mean_fhat_spatio_temporal2.reshape(40,5) -  fiveVTS_test)**2)\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot((mean_fhat_spatio_temporal2.reshape(40,5) -  fiveVTS_test))\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot(((mean_fhat_spatio_temporal2.reshape(40,5) -  fiveVTS_test)).reshape(200,1))"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-3",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-3",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "1) ST-GCN",
+    "text": "1) ST-GCN\n\nlinear_f_fiveVTS_train = torch.tensor(linear_fiveVTS_train).reshape(160,5,1).float()\n\n\nlinear_X_fiveVTS = linear_f_fiveVTS_train[:159,:,:]\nlinear_y_fiveVTS = linear_f_fiveVTS_train[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(linear_X_fiveVTS,linear_y_fiveVTS)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n\nlinear_fhat_fiveVTS = torch.stack([model(xt, edge_index, edge_attr) for xt in linear_X_fiveVTS]).detach().numpy()"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-2",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-2",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "2) Fourier transform",
+    "text": "2) Fourier transform\n\nw=np.zeros((159*N,159*N))\n\n\nfor i in range(159*N):\n    for j in range(159*N):\n        if i==j :\n            w[i,j] = 0\n        elif np.abs(i-j) <= 1 : \n            w[i,j] = 1\n\n\nd = np.array(w.sum(axis=1))\nD = np.diag(d)\nL = np.array(np.diag(1/np.sqrt(d)) @ (D-w) @ np.diag(1/np.sqrt(d)))\nlamb, Psi = np.linalg.eigh(L)\nLamb = np.diag(lamb)\nfhatbar = Psi @ linear_fhat_fiveVTS.reshape(159*N,1)\npower = fhatbar**2"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-2",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-2",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "3) Ebayes",
+    "text": "3) Ebayes\n\nebayesthresh = importr('EbayesThresh').ebayesthresh\npower_threshed=np.array([np.array(ebayesthresh(FloatVector(fhatbar[i]**2))) for i in range(159*N)])\nfhatbar_threshed = np.where(power_threshed>0,fhatbar,0)"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-2",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-2",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "4) Inverse Fourier transform",
+    "text": "4) Inverse Fourier transform\n\nfhatbarhat = Psi @ fhatbar_threshed\nfhatbarhat_linear_spatio_temporal = fhatbarhat.reshape(159,N,1)"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-4",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-4",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "5) ST-GCN",
+    "text": "5) ST-GCN\n\nlinear_spatio_temporal = torch.tensor(fhatbarhat_linear_spatio_temporal).reshape(159,5,1).float()\n\n\nlinear_X_spatio_temporal = linear_spatio_temporal[:158,:,:]\nlinear_y_spatio_temporal = linear_spatio_temporal[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(linear_X_spatio_temporal,linear_y_spatio_temporal)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n\n\nlinear_X_spatio_temporal_fore = linear_spatio_temporal[119:,:,:]\n\n\nlinear_fhat_spatio_temporal = torch.stack([model(xt, edge_index, edge_attr) for xt in linear_X_spatio_temporal_fore]).detach().numpy()\n\n\nBox plot\n\nplt.figure(figsize=(20, 8))\nplt.boxplot((linear_fhat_spatio_temporal.reshape(40,5) -  fiveVTS_test))\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot(((linear_fhat_spatio_temporal.reshape(40,5) -  fiveVTS_test)).reshape(200,1))"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-3",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-3",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "6) Fourier transform",
+    "text": "6) Fourier transform\n\nlinear_fhat_spatio_temporal = torch.stack([model(xt, edge_index, edge_attr) for xt in linear_spatio_temporal]).detach().numpy()\n\n\nw=np.zeros((159*N,159*N))\n\n\nfor i in range(159*N):\n    for j in range(159*N):\n        if i==j :\n            w[i,j] = 0\n        elif np.abs(i-j) <= 1 : \n            w[i,j] = 1\n\n\nd = np.array(w.sum(axis=1))\nD = np.diag(d)\nL = np.array(np.diag(1/np.sqrt(d)) @ (D-w) @ np.diag(1/np.sqrt(d)))\nlamb, Psi = np.linalg.eigh(L)\nLamb = np.diag(lamb)\nfhatbar = Psi @ linear_fhat_fiveVTS.reshape(159*N,1)\npower = fhatbar**2"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-3",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-3",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "7) Ebayes",
+    "text": "7) Ebayes\n\nebayesthresh = importr('EbayesThresh').ebayesthresh\npower_threshed=np.array([np.array(ebayesthresh(FloatVector(fhatbar[i]**2))) for i in range(159*N)])\nfhatbar_threshed = np.where(power_threshed>0,fhatbar,0)"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-3",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-3",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "8) Inverse Fourier transform",
+    "text": "8) Inverse Fourier transform\n\nfhatbarhat = Psi @ fhatbar_threshed\nfhatbarhat_linear_spatio_temporal = fhatbarhat.reshape(159,N,1)"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-5",
+    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-5",
+    "title": "1st ST-GCN Example dividing train and test",
+    "section": "9) ST-GCN",
+    "text": "9) ST-GCN\n\nlinear_spatio_temporal2 = torch.tensor(fhatbarhat_linear_spatio_temporal).reshape(159,5,1).float()\n\n\nlinear_X_spatio_temporal2 = linear_spatio_temporal2[:158,:,:]\nlinear_y_spatio_temporal2 = linear_spatio_temporal2[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(linear_X_spatio_temporal2,linear_y_spatio_temporal2)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n\nlinear_X_spatio_temporal_fore2 = linear_spatio_temporal2[119:,:,:]\n\n\nlinear_fhat_spatio_temporal2 = torch.stack([model(xt, edge_index, edge_attr) for xt in linear_X_spatio_temporal_fore2]).detach().numpy()\n\n\nBox plot\n\nplt.figure(figsize=(20, 8))\nplt.boxplot((linear_fhat_spatio_temporal2.reshape(40,5) -  fiveVTS_test))\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot(((linear_fhat_spatio_temporal2.reshape(40,5) -  fiveVTS_test)).reshape(200,1))"
+  },
+  {
     "objectID": "posts/2. Let's Study/Essays/2023-01-11-Inequality.html",
     "href": "posts/2. Let's Study/Essays/2023-01-11-Inequality.html",
     "title": "부등식",
     "section": "",
     "text": "부등식\n\n(베르누이 부등식) \\(\\forall n \\in N, h>-1 \\Rightarrow (1+h)^n \\geq 1+nh\\)"
+  },
+  {
+    "objectID": "posts/2. Let's Study/Essays/2023-01-20-Estimation.html",
+    "href": "posts/2. Let's Study/Essays/2023-01-20-Estimation.html",
+    "title": "추정",
+    "section": "",
+    "text": "using Distributions, Plots\n\n\n추정\n데이터로부터 모수 혹은 모수의 함수를 추측하는 일을 추정이라고 한다.\n(예시)\n아래와 같은 베르누이 분포에서 데이터 \\({\\bf x}=(x_1,\\dots,x_{10})\\)을 얻었다고 하자.\n\nx = rand(Bernoulli(0.37),10)\nx\n\n10-element Vector{Bool}:\n 0\n 0\n 1\n 0\n 1\n 0\n 1\n 0\n 0\n 0\n\n\n이러한 데이터로부터 평균 \\(p\\)와 분산 \\(p(1-p)\\)를 추측할 수 있는데 이를 추정이라고 한다. 여기에서 평균은 모수 \\(p\\)이고 분산은 모수 \\(p\\)의 함수이다."
   },
   {
     "objectID": "posts/2. Let's Study/Essays/2023-01-07-RealAnalysis.html",
@@ -672,6 +812,13 @@
     "text": "예제의 차원 조사\n\nfor time, snapshot in enumerate(train_dataset):\n    _x = snapshot.x \n    _edge_index = snapshot.edge_index \n    _edge_attr = snapshot.edge_attr\n    _y = snapshot.y\n    break\n\n\n_x.shape\n\ntorch.Size([1068, 14])\n\n\n\n1068: number of nodes // 1068개의 노드가 있음\n14: number of features // 하나의 노드에 맵핑된 차원의수\n\n\n_edge_index.shape\n\ntorch.Size([2, 27079])\n\n\n\n_edge_attr.shape\n\ntorch.Size([27079])\n\n\n\n_y.shape\n\ntorch.Size([1068])\n\n\n\n1068: number of nodes\n\n\n_x.shape\n\ntorch.Size([1068, 14])"
   },
   {
+    "objectID": "posts/3. Researches/HST/2023-01-23-CommunityDetection.html",
+    "href": "posts/3. Researches/HST/2023-01-23-CommunityDetection.html",
+    "title": "CommunityDetection",
+    "section": "",
+    "text": "ref\n- Roddenberry et al. (2020)\n\nhttps://arxiv.org/pdf/2001.10944.pdf\nintro에 그래프는 single correct한 structure를 알 수 없다는 이야기가 있는데 이를 이용해야함.\n\n\n\n\n\n\n\n\n\n방법론\n\nRoddenberry, T Mitchell, Michael T Schaub, Hoi-To Wai, and Santiago Segarra. 2020. “Exact Blind Community Detection from Signals on Multiple Graphs.” IEEE Transactions on Signal Processing 68: 5016–30."
+  },
+  {
     "objectID": "3_researches_hst.html",
     "href": "3_researches_hst.html",
     "title": "HST",
@@ -718,7 +865,7 @@
     "href": "2_study_essays.html",
     "title": "Essays",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJan 20, 2023\n\n\n추정\n\n\n신록예찬\n\n\n\n\nJan 17, 2023\n\n\n1st ST-GCN Example dividing train and test\n\n\nSEOYEON CHOI\n\n\n\n\nJan 12, 2023\n\n\n토폴로지\n\n\n신록예찬\n\n\n\n\nJan 11, 2023\n\n\n부등식\n\n\n신록예찬\n\n\n\n\nJan 7, 2023\n\n\n해석학\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJan 20, 2023\n\n\nSpectral Theory of Stationary Process\n\n\n신록예찬\n\n\n\n\nJan 20, 2023\n\n\n추정\n\n\n신록예찬\n\n\n\n\nJan 17, 2023\n\n\n1st ST-GCN Example dividing train and test\n\n\nSEOYEON CHOI\n\n\n\n\nJan 12, 2023\n\n\n토폴로지\n\n\n신록예찬\n\n\n\n\nJan 11, 2023\n\n\n부등식\n\n\n신록예찬\n\n\n\n\nJan 7, 2023\n\n\n해석학\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "5_notes.html",
@@ -733,173 +880,5 @@
     "title": "PyTorch Lightning",
     "section": "",
     "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 21, 2022\n\n\nLesson1: 단순선형회귀\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "",
-    "text": "Try to divide train and test(GNAR fivenet)"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "1) ST-GCN",
-    "text": "1) ST-GCN\n\nmean_f_fiveVTS_train = torch.tensor(fiveVTS_train_mean).reshape(160,5,1).float()\n\n/home/cgb2/anaconda3/envs/py37/lib/python3.7/site-packages/ipykernel_launcher.py:1: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).\n  \"\"\"Entry point for launching an IPython kernel.\n\n\n\nmean_X_fiveVTS = mean_f_fiveVTS_train[:159,:,:]\nmean_y_fiveVTS = mean_f_fiveVTS_train[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(mean_X_fiveVTS,mean_y_fiveVTS)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n100%|██████████| 50/50 [00:24<00:00,  2.02it/s]\n\n\n\nmean_fhat_fiveVTS = torch.stack([model(xt, edge_index, edge_attr) for xt in mean_X_fiveVTS]).detach().numpy()\n\n\nfiveVTS_test.float()\n\ntensor([[-1.3798,  0.1459,  0.9158,  1.4848, -3.5004],\n        [-0.6878, -0.9167,  1.2704,  1.0167, -0.3307],\n        [ 0.7200,  2.8028,  1.6711, -0.6230,  0.5819],\n        [ 0.7209, -0.4410,  1.3555,  0.1693,  1.3739],\n        [ 1.2559,  1.2374, -1.2614,  1.1569,  1.3480],\n        [ 1.7057, -2.0821,  1.1786,  0.0351,  2.3181],\n        [-1.2413, -1.8109,  0.4296, -1.6056,  1.8224],\n        [-1.7336, -1.5126, -0.6606, -0.5410, -0.5155],\n        [ 0.7925,  1.1118, -0.0874, -0.4713, -1.4689],\n        [-1.3085, -0.8209, -1.0603, -0.8488,  0.6158],\n        [-0.1514, -1.7553, -2.1784, -1.1333, -0.7315],\n        [-1.4409, -1.7015,  0.0866, -0.5748, -0.9676],\n        [-0.6027,  0.0888, -1.5058, -1.1654, -0.7148],\n        [ 1.2753, -0.4101,  0.4946, -2.9917, -1.2779],\n        [-1.4045, -0.2712,  0.4429, -0.2222, -0.7184],\n        [-0.6562,  1.2038,  0.9780,  0.1263, -1.9698],\n        [-0.3942, -0.1619,  2.1763,  0.6952,  0.8985],\n        [ 0.9426,  0.6274,  1.4339, -0.3655,  0.6060],\n        [-0.0232,  1.3773, -0.4090,  1.0618, -0.2948],\n        [ 0.3657,  1.2116, -1.9235,  0.2128,  0.9628],\n        [-0.0054, -0.7658, -1.5171,  0.9022, -0.3424],\n        [ 0.0250,  0.0988, -0.2425,  0.2302,  2.5867],\n        [ 0.8274, -0.0193,  1.6451, -0.5173,  1.9787],\n        [ 0.4465, -0.6417,  0.1839,  0.1950,  0.6193],\n        [-0.8528, -0.1507, -1.1756, -0.7493, -0.1694],\n        [ 0.5451, -0.1640, -0.7052, -2.2439, -0.0902],\n        [-1.2375,  0.6400, -0.0717,  0.8026,  0.3689],\n        [-0.4006, -0.4902,  1.2855,  0.5666, -0.7605],\n        [-0.3460, -0.0311,  0.4690, -0.6269, -0.5895],\n        [-0.2426, -0.6435,  0.6376,  0.7295, -2.5957],\n        [ 1.9069,  1.2954, -0.4734,  0.0094, -0.4509],\n        [ 0.2476,  0.3806,  0.5114, -0.3037, -0.3522],\n        [ 0.1092, -1.0953, -1.1172,  0.2607,  0.6302],\n        [-0.4281,  0.9575,  1.1477, -1.8067,  0.2051],\n        [-2.3917,  1.0070,  0.4690, -1.0293, -1.2361],\n        [-2.2108, -1.4035,  0.5568, -0.6005, -2.4205],\n        [-0.7226, -0.4141,  0.9886, -0.6103,  0.5877],\n        [-2.9386, -0.5597,  0.0786,  0.0106, -2.3684],\n        [-0.9860,  0.2154, -0.1190,  0.7797, -2.9880],\n        [ 0.4472,  0.4042,  0.7200, -0.4425, -1.7816]])\n\n\n\nxt_test = fiveVTS_test.float().reshape(40,5,1)[:-1,:,:]\n\n\nmean_fhat_fiveVTS_forecast = torch.stack([model(xt, edge_index, edge_attr) for xt in xt_test]).detach().numpy()\n\n\nvis2(fiveVTS_test[1:],mean_fhat_fiveVTS_forecast);\n\n\n\n\n\nvis2(fiveVTS_train_mean,mean_fhat_fiveVTS);"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "2) Fourier transform",
-    "text": "2) Fourier transform\n\nw=np.zeros((159*N,159*N))\n\n\nfor i in range(159*N):\n    for j in range(159*N):\n        if i==j :\n            w[i,j] = 0\n        elif np.abs(i-j) <= 1 : \n            w[i,j] = 1\n\n\n# #w= edges\n# d = np.array(w.sum(axis=1))\n# L = np.array(np.diag(1/np.sqrt(d)) @ (D-w) @ np.diag(1/np.sqrt(d)))\n# lamb, Psi = np.linalg.eigh(L)\n# Lamb = np.diag(lamb)\n\n\n# np.fft(mean_fhat_fiveVTS[:,0,0])\n\n\n# mean_fhat_fiveVTS.shape\n\n\n# fft_result =np.stack([np.fft.fft(mean_fhat_fiveVTS[:,n,0]) for n in range(N)]).T\n\n\n# plt.plot(abs(fft_result[:,0])**2)\n\n\nd = np.array(w.sum(axis=1))\nD = np.diag(d)\nL = np.array(np.diag(1/np.sqrt(d)) @ (D-w) @ np.diag(1/np.sqrt(d)))\nlamb, Psi = np.linalg.eigh(L)\nLamb = np.diag(lamb)\n\n\nfhatbar = Psi.T @ mean_fhat_fiveVTS.reshape(159*N,1)\npower = fhatbar**2"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "3) Ebayes",
-    "text": "3) Ebayes\n\nplt.plot(fhatbar.reshape(159,5)[:,0]**2)\n\n\n\n\n\nebayesthresh = importr('EbayesThresh').ebayesthresh\n#power_threshed=np.array([np.array(ebayesthresh(FloatVector(fhatbar[i]**2))) for i in range(159*N)])\nfhatbar_threshed = ebayesthresh(FloatVector(fhatbar))\n\n\nebayesthresh(FloatVector(fhatbar))\n\n\n\n        FloatVector with 795 elements.\n        \n        \n          \n          \n            \n            1.229290\n            \n          \n            \n            0.000000\n            \n          \n            \n            -0.204739\n            \n          \n            \n            ...\n            \n          \n            \n            0.000000\n            \n          \n            \n            0.000000\n            \n          \n            \n            0.000000\n            \n          \n          \n        \n        \n        \n\n\n\nebayesthresh(FloatVector([1,2,3,444,0]))\n\n\n\n        FloatVector with 5 elements.\n        \n        \n          \n          \n            \n            0.000000\n            \n          \n            \n            0.000000\n            \n          \n            \n            0.000000\n            \n          \n            \n            442.517400\n            \n          \n            \n            0.000000\n            \n          \n          \n        \n        \n        \n\n\n\nplt.plot(fhatbar)\nplt.plot(fhatbar_threshed)"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "4) Inverse Fourier transform",
-    "text": "4) Inverse Fourier transform\n\nfhatbarhat = Psi @ fhatbar_threshed\nfhatbarhat_mean_spatio_temporal = fhatbarhat.reshape(159,N,1)\n\n# fhatbarhat = Psi @ fhatbar\n# fhatbarhat_mean_spatio_temporal = fhatbarhat.reshape(159,N,1)\n\n\nvis2(mean_fhat_fiveVTS,fhatbarhat_mean_spatio_temporal.reshape(159,5));"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-1",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-1",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "5) ST-GCN",
-    "text": "5) ST-GCN\n\nmean_spatio_temporal = torch.tensor(fhatbarhat_mean_spatio_temporal).reshape(159,5,1).float()\n\n\nmean_X_spatio_temporal = mean_spatio_temporal[:158,:,:]\nmean_y_spatio_temporal = mean_spatio_temporal[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(mean_X_spatio_temporal,mean_y_spatio_temporal)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n\nmean_X_spatio_temporal_fore = mean_spatio_temporal[119:,:,:]\n\n\nmean_fhat_spatio_temporal = torch.stack([model(xt, edge_index, edge_attr) for xt in mean_X_spatio_temporal_fore]).detach().numpy()\n\n\nBox plot\n\nsum((mean_fhat_spatio_temporal.reshape(40,5) -  fiveVTS_test)**2)\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot((mean_fhat_spatio_temporal.reshape(40,5) -  fiveVTS_test))\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot(((mean_fhat_spatio_temporal.reshape(40,5) -  fiveVTS_test)).reshape(200,1))"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-1",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-1",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "6) Fourier transform",
-    "text": "6) Fourier transform\n\nmean_fhat_spatio_temporal = torch.stack([model(xt, edge_index, edge_attr) for xt in mean_spatio_temporal]).detach().numpy()\n\n\nw=np.zeros((159*N,159*N))\n\n\nfor i in range(159*N):\n    for j in range(159*N):\n        if i==j :\n            w[i,j] = 0\n        elif np.abs(i-j) <= 1 : \n            w[i,j] = 1\n\n\nd = np.array(w.sum(axis=1))\nD = np.diag(d)\nL = np.array(np.diag(1/np.sqrt(d)) @ (D-w) @ np.diag(1/np.sqrt(d)))\nlamb, Psi = np.linalg.eigh(L)\nLamb = np.diag(lamb)\nfhatbar = Psi @ mean_fhat_spatio_temporal.reshape(159*N,1)\npower = fhatbar**2"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-1",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-1",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "7) Ebayes",
-    "text": "7) Ebayes\n\nebayesthresh = importr('EbayesThresh').ebayesthresh\npower_threshed=np.array([np.array(ebayesthresh(FloatVector(fhatbar[i]**2))) for i in range(159*N)])\nfhatbar_threshed = np.where(power_threshed>0,fhatbar,0)"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-1",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-1",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "8) Inverse Fourier transform",
-    "text": "8) Inverse Fourier transform\n\nfhatbarhat = Psi @ fhatbar_threshed\nfhatbarhat_mean_spatio_temporal = fhatbarhat.reshape(159,N,1)"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-2",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-2",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "9) ST-GCN",
-    "text": "9) ST-GCN\n\nmean_spatio_temporal2 = torch.tensor(fhatbarhat_mean_spatio_temporal).reshape(159,5,1).float()\n\n\nmean_X_spatio_temporal2 = mean_spatio_temporal2[:158,:,:]\nmean_y_spatio_temporal2 = mean_spatio_temporal2[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(mean_X_spatio_temporal2,mean_y_spatio_temporal2)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n\nmean_X_spatio_temporal_fore2 = mean_spatio_temporal2[119:,:,:]\n\n\nmean_fhat_spatio_temporal2 = torch.stack([model(xt, edge_index, edge_attr) for xt in mean_X_spatio_temporal_fore2]).detach().numpy()\n\n\nBox plot\n\nsum((mean_fhat_spatio_temporal2.reshape(40,5) -  fiveVTS_test)**2)\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot((mean_fhat_spatio_temporal2.reshape(40,5) -  fiveVTS_test))\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot(((mean_fhat_spatio_temporal2.reshape(40,5) -  fiveVTS_test)).reshape(200,1))"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-3",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-3",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "1) ST-GCN",
-    "text": "1) ST-GCN\n\nlinear_f_fiveVTS_train = torch.tensor(linear_fiveVTS_train).reshape(160,5,1).float()\n\n\nlinear_X_fiveVTS = linear_f_fiveVTS_train[:159,:,:]\nlinear_y_fiveVTS = linear_f_fiveVTS_train[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(linear_X_fiveVTS,linear_y_fiveVTS)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n\nlinear_fhat_fiveVTS = torch.stack([model(xt, edge_index, edge_attr) for xt in linear_X_fiveVTS]).detach().numpy()"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-2",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-2",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "2) Fourier transform",
-    "text": "2) Fourier transform\n\nw=np.zeros((159*N,159*N))\n\n\nfor i in range(159*N):\n    for j in range(159*N):\n        if i==j :\n            w[i,j] = 0\n        elif np.abs(i-j) <= 1 : \n            w[i,j] = 1\n\n\nd = np.array(w.sum(axis=1))\nD = np.diag(d)\nL = np.array(np.diag(1/np.sqrt(d)) @ (D-w) @ np.diag(1/np.sqrt(d)))\nlamb, Psi = np.linalg.eigh(L)\nLamb = np.diag(lamb)\nfhatbar = Psi @ linear_fhat_fiveVTS.reshape(159*N,1)\npower = fhatbar**2"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-2",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-2",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "3) Ebayes",
-    "text": "3) Ebayes\n\nebayesthresh = importr('EbayesThresh').ebayesthresh\npower_threshed=np.array([np.array(ebayesthresh(FloatVector(fhatbar[i]**2))) for i in range(159*N)])\nfhatbar_threshed = np.where(power_threshed>0,fhatbar,0)"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-2",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-2",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "4) Inverse Fourier transform",
-    "text": "4) Inverse Fourier transform\n\nfhatbarhat = Psi @ fhatbar_threshed\nfhatbarhat_linear_spatio_temporal = fhatbarhat.reshape(159,N,1)"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-4",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-4",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "5) ST-GCN",
-    "text": "5) ST-GCN\n\nlinear_spatio_temporal = torch.tensor(fhatbarhat_linear_spatio_temporal).reshape(159,5,1).float()\n\n\nlinear_X_spatio_temporal = linear_spatio_temporal[:158,:,:]\nlinear_y_spatio_temporal = linear_spatio_temporal[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(linear_X_spatio_temporal,linear_y_spatio_temporal)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n\n\nlinear_X_spatio_temporal_fore = linear_spatio_temporal[119:,:,:]\n\n\nlinear_fhat_spatio_temporal = torch.stack([model(xt, edge_index, edge_attr) for xt in linear_X_spatio_temporal_fore]).detach().numpy()\n\n\nBox plot\n\nplt.figure(figsize=(20, 8))\nplt.boxplot((linear_fhat_spatio_temporal.reshape(40,5) -  fiveVTS_test))\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot(((linear_fhat_spatio_temporal.reshape(40,5) -  fiveVTS_test)).reshape(200,1))"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-3",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#fourier-transform-3",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "6) Fourier transform",
-    "text": "6) Fourier transform\n\nlinear_fhat_spatio_temporal = torch.stack([model(xt, edge_index, edge_attr) for xt in linear_spatio_temporal]).detach().numpy()\n\n\nw=np.zeros((159*N,159*N))\n\n\nfor i in range(159*N):\n    for j in range(159*N):\n        if i==j :\n            w[i,j] = 0\n        elif np.abs(i-j) <= 1 : \n            w[i,j] = 1\n\n\nd = np.array(w.sum(axis=1))\nD = np.diag(d)\nL = np.array(np.diag(1/np.sqrt(d)) @ (D-w) @ np.diag(1/np.sqrt(d)))\nlamb, Psi = np.linalg.eigh(L)\nLamb = np.diag(lamb)\nfhatbar = Psi @ linear_fhat_fiveVTS.reshape(159*N,1)\npower = fhatbar**2"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-3",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#ebayes-3",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "7) Ebayes",
-    "text": "7) Ebayes\n\nebayesthresh = importr('EbayesThresh').ebayesthresh\npower_threshed=np.array([np.array(ebayesthresh(FloatVector(fhatbar[i]**2))) for i in range(159*N)])\nfhatbar_threshed = np.where(power_threshed>0,fhatbar,0)"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-3",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#inverse-fourier-transform-3",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "8) Inverse Fourier transform",
-    "text": "8) Inverse Fourier transform\n\nfhatbarhat = Psi @ fhatbar_threshed\nfhatbarhat_linear_spatio_temporal = fhatbarhat.reshape(159,N,1)"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-5",
-    "href": "posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html#st-gcn-5",
-    "title": "1st ST-GCN Example dividing train and test",
-    "section": "9) ST-GCN",
-    "text": "9) ST-GCN\n\nlinear_spatio_temporal2 = torch.tensor(fhatbarhat_linear_spatio_temporal).reshape(159,5,1).float()\n\n\nlinear_X_spatio_temporal2 = linear_spatio_temporal2[:158,:,:]\nlinear_y_spatio_temporal2 = linear_spatio_temporal2[1:,:,:]\n\n\nmodel = RecurrentGCN(node_features=1, filters=4)\n\noptimizer = torch.optim.Adam(model.parameters(), lr=0.01)\n\nmodel.train()\n\nfor epoch in tqdm(range(50)):\n    for time, (xt,yt) in enumerate(zip(linear_X_spatio_temporal2,linear_y_spatio_temporal2)):\n        y_hat = model(xt, edge_index, edge_attr)\n        cost = torch.mean((y_hat-yt)**2)\n        cost.backward()\n        optimizer.step()\n        optimizer.zero_grad()\n\n\nlinear_X_spatio_temporal_fore2 = linear_spatio_temporal2[119:,:,:]\n\n\nlinear_fhat_spatio_temporal2 = torch.stack([model(xt, edge_index, edge_attr) for xt in linear_X_spatio_temporal_fore2]).detach().numpy()\n\n\nBox plot\n\nplt.figure(figsize=(20, 8))\nplt.boxplot((linear_fhat_spatio_temporal2.reshape(40,5) -  fiveVTS_test))\n\n\nplt.figure(figsize=(20, 8))\nplt.boxplot(((linear_fhat_spatio_temporal2.reshape(40,5) -  fiveVTS_test)).reshape(200,1))"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/Untitled3.html",
-    "href": "posts/2. Let's Study/Essays/Untitled3.html",
-    "title": "신록예찬's Blog",
-    "section": "",
-    "text": "1+1\n\n2\n\n\n- 그나마 여기에서 가장 잘되는 것 같음…"
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/Untitled.html",
-    "href": "posts/2. Let's Study/Essays/Untitled.html",
-    "title": "추정",
-    "section": "",
-    "text": "using Distributions, Plots\n\n\n추정\n데이터로부터 모수 혹은 모수의 함수를 추측하는 일을 추정이라고 한다.\n(예시)\n아래와 같은 베르누이 분포에서 데이터 \\({\\bf x}=(x_1,\\dots,x_{10})\\)을 얻었다고 하자.\n\nx = rand(Bernoulli(0.37),10)\nx\n\n10-element Vector{Bool}:\n 0\n 0\n 1\n 0\n 1\n 0\n 1\n 0\n 0\n 0\n\n\n이러한 데이터로부터 평균 \\(p\\)와 분산 \\(p(1-p)\\)를 추측할 수 있는데 이를 추정이라고 한다. 여기에서 평균은 모수 \\(p\\)이고 분산은 모수 \\(p\\)의 함수이다."
-  },
-  {
-    "objectID": "posts/3. Researches/HST/Untitled.html",
-    "href": "posts/3. Researches/HST/Untitled.html",
-    "title": "HST Example",
-    "section": "",
-    "text": "1+1\n\n2"
-  },
-  {
-    "objectID": "posts/3. Researches/HST/2023-01-23-CommunityDetection.html",
-    "href": "posts/3. Researches/HST/2023-01-23-CommunityDetection.html",
-    "title": "CommunityDetection",
-    "section": "",
-    "text": "ref\n- Roddenberry et al. (2020)\n\nhttps://arxiv.org/pdf/2001.10944.pdf\nintro에 그래프는 single correct한 structure를 알 수 없다는 이야기가 있는데 이를 이용해야함.\n\n\n\n\n\n\n\n\n\n방법론\n\nRoddenberry, T Mitchell, Michael T Schaub, Hoi-To Wai, and Santiago Segarra. 2020. “Exact Blind Community Detection from Signals on Multiple Graphs.” IEEE Transactions on Signal Processing 68: 5016–30."
-  },
-  {
-    "objectID": "posts/2. Let's Study/Essays/2023-01-20-Estimation.html",
-    "href": "posts/2. Let's Study/Essays/2023-01-20-Estimation.html",
-    "title": "추정",
-    "section": "",
-    "text": "using Distributions, Plots\n\n\n추정\n데이터로부터 모수 혹은 모수의 함수를 추측하는 일을 추정이라고 한다.\n(예시)\n아래와 같은 베르누이 분포에서 데이터 \\({\\bf x}=(x_1,\\dots,x_{10})\\)을 얻었다고 하자.\n\nx = rand(Bernoulli(0.37),10)\nx\n\n10-element Vector{Bool}:\n 0\n 0\n 1\n 0\n 1\n 0\n 1\n 0\n 0\n 0\n\n\n이러한 데이터로부터 평균 \\(p\\)와 분산 \\(p(1-p)\\)를 추측할 수 있는데 이를 추정이라고 한다. 여기에서 평균은 모수 \\(p\\)이고 분산은 모수 \\(p\\)의 함수이다."
   }
 ]
