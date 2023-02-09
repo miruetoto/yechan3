@@ -688,9 +688,9 @@
   {
     "objectID": "posts/1_Essays/2023-01-11-여러가지 부등식.html",
     "href": "posts/1_Essays/2023-01-11-여러가지 부등식.html",
-    "title": "부등식",
+    "title": "여러가지 부등식",
     "section": "",
-    "text": "부등식\n\n(베르누이 부등식) \\(\\forall n \\in N, h>-1 \\Rightarrow (1+h)^n \\geq 1+nh\\)"
+    "text": "여러가지 부등식 I\n\n(베르누이 부등식) \\(\\forall n \\in N, h>-1 \\Rightarrow (1+h)^n \\geq 1+nh\\)"
   },
   {
     "objectID": "posts/1_Essays/2023-01-20-추정.html",
@@ -698,6 +698,41 @@
     "title": "추정",
     "section": "",
     "text": "using Distributions, Plots\n\n\n추정\n데이터로부터 모수 혹은 모수의 함수를 추측하는 일을 추정이라고 한다.\n(예시)\n아래와 같은 베르누이 분포에서 데이터 \\({\\bf x}=(x_1,\\dots,x_{10})\\)을 얻었다고 하자.\n\nx = rand(Bernoulli(0.37),10)\nx\n\n10-element Vector{Bool}:\n 0\n 0\n 1\n 0\n 1\n 0\n 1\n 0\n 0\n 0\n\n\n이러한 데이터로부터 평균 \\(p\\)와 분산 \\(p(1-p)\\)를 추측할 수 있는데 이를 추정이라고 한다. 여기에서 평균은 모수 \\(p\\)이고 분산은 모수 \\(p\\)의 함수이다."
+  },
+  {
+    "objectID": "posts/1_Essays/2023-02-09-그래프머신러닝.html",
+    "href": "posts/1_Essays/2023-02-09-그래프머신러닝.html",
+    "title": "그래프 속성",
+    "section": "",
+    "text": "import networkx as nx\nimport matplotlib.pyplot as plt"
+  },
+  {
+    "objectID": "posts/1_Essays/2023-02-09-그래프머신러닝.html#통합측정지표",
+    "href": "posts/1_Essays/2023-02-09-그래프머신러닝.html#통합측정지표",
+    "title": "그래프 속성",
+    "section": "통합측정지표",
+    "text": "통합측정지표\n- 노드가 서로 상호 연결되는 경향을 측정\n\n최단경로, 최단경로길이\n- setup\n\nG = nx.Graph()\nV = {1:'Dublin',2:'Paris',3:'Milan',4:'Rome',5:'Naples',6:'Moscow',7:'Seoul'}\nG.add_nodes_from(V.keys())\nG.add_edges_from([(1,2),(1,3),(2,3),(3,4),(4,5),(5,6),(6,7),(7,5)])\n\n\nG.nodes\n\nNodeView((1, 2, 3, 4, 5, 6, 7))\n\n\n\nG.edges\n\nEdgeView([(1, 2), (1, 3), (2, 3), (3, 4), (4, 5), (5, 6), (5, 7), (6, 7)])\n\n\n\nnx.draw_networkx(G)\nprint(V)\n\n{1: 'Dublin', 2: 'Paris', 3: 'Milan', 4: 'Rome', 5: 'Naples', 6: 'Moscow', 7: 'Seoul'}\n\n\n\n\n\nFigure 1: 도시간의 연결을 나타내는 무향그래프\n\n\n\n\n- shortest path\n\npath = nx.shortest_path(G,source=1,target=7)\npath\n\n[1, 3, 4, 5, 7]\n\n\n\npath = nx.shortest_path(G,source=1,target=4)\npath\n\n[1, 3, 4]\n\n\n\npath = nx.shortest_path(G,source=4,target=6)\npath\n\n[4, 5, 6]\n\n\n- shortest path lenghth\n최단경로길이는 아래와 같이 구할수 있음\n\npath = nx.shortest_path(G,source=1,target=7)\nlen(path)\n\n5\n\n\n\n\n특성경로길이 (= 평균최단경로길이)\n- characteristic path length = average of shortest path lenght\n가능한 모든 노드 쌍 사이의 모든 최단경로 길이의 평균으로 정의한다.\n\\[\\text{characteristic path length}=\\frac{1}{|V|(|V|-1)}\\sum_{i \\in V} l_i\\]\n여기에서 \\(l_i\\)는 노드 \\(i\\)와 다른 모든 노드사이의 평균경로 길이로 정의한다. 특성경로길이가 더 짧은 네트워크는 정보를 더 빠르게 전송할 수 있다고 해석할 수 있다.\n\nG1 = nx.Graph()\nG2 = nx.Graph()\nV = {1,2,3,4}\nE1 = [(1,2),(2,3),(3,4),(4,1)]\nE2 = [(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)]\nG1.add_nodes_from(V)\nG2.add_nodes_from(V)\nG1.add_edges_from(E1)\nG2.add_edges_from(E2)\n\n\nnx.draw_networkx(G1)\n\n\n\n\nFigure 2: (G1) 링형태의 그래프\n\n\n\n\n\nnx.draw_networkx(G2)\n\n\n\n\nFigure 3: (G2) 완전연결된 그래프\n\n\n\n\n- 두 그래프 \\({\\cal G}_1\\)1와 \\({\\cal G}_2\\)2의 특성경로길이를 각각 계산하면 아래와 같다.\n\nnx.average_shortest_path_length(G1)\n\n1.3333333333333333\n\n\n\nnx.average_shortest_path_length(G2)\n\n1.0\n\n\n\n\n대역효율성\n모든 노드 쌍에 대한 역최단경로 (inverse shortest path) 길의의 평균을 의미이다. Figure 2, Figure 3 의 그래프에서 이 값을 계산하면 아래와 같다.\n\nnx.draw_networkx(G1)\nprint(\"대역효율성:\", nx.global_efficiency(G1))\n\n대역효율성: 0.8333333333333334\n\n\n\n\n\nFigure 4: (G1) 링형태의 그래프 + 대역효율성\n\n\n\n\n\nnx.draw_networkx(G2)\nprint(\"대역효율성:\",nx.global_efficiency(G2))\n\n대역효율성: 1.0\n\n\n\n\n\nFigure 5: (G2) 완저연결된 그래프 + 대역효율성"
+  },
+  {
+    "objectID": "posts/1_Essays/2023-02-09-그래프머신러닝.html#분리측정지표",
+    "href": "posts/1_Essays/2023-02-09-그래프머신러닝.html#분리측정지표",
+    "title": "그래프 속성",
+    "section": "분리측정지표",
+    "text": "분리측정지표\n- 네트워크 내에서 커뮤니티 또는 모듈로 알려진 상호 연결된 노드 그룹의 존재를 정량화"
+  },
+  {
+    "objectID": "posts/1_Essays/2023-02-09-그래프머신러닝.html#중심성측정지표",
+    "href": "posts/1_Essays/2023-02-09-그래프머신러닝.html#중심성측정지표",
+    "title": "그래프 속성",
+    "section": "중심성측정지표",
+    "text": "중심성측정지표\n- 네트워크 내부의 개별 노드의 중요성을 평가"
+  },
+  {
+    "objectID": "posts/1_Essays/2023-02-09-그래프머신러닝.html#탄력성측정지표",
+    "href": "posts/1_Essays/2023-02-09-그래프머신러닝.html#탄력성측정지표",
+    "title": "그래프 속성",
+    "section": "탄력성측정지표",
+    "text": "탄력성측정지표\n- 네트워크가 장애 또는 기타 불리한 조건에 직면했을 때 운영 성능을 얼마나 유지하고 조정할 수 있는지 평가"
   },
   {
     "objectID": "3_hst.html",
@@ -732,7 +767,7 @@
     "href": "1_essays.html",
     "title": "Essays",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJan 20, 2023\n\n\n시계열의 주파수영역 분석\n\n\n신록예찬\n\n\n\n\nJan 20, 2023\n\n\n추정\n\n\n신록예찬\n\n\n\n\nJan 20, 2023\n\n\n그래프 머신러닝\n\n\n신록예찬\n\n\n\n\nJan 12, 2023\n\n\n토폴로지\n\n\n신록예찬\n\n\n\n\nJan 11, 2023\n\n\n부등식\n\n\n신록예찬\n\n\n\n\nJan 7, 2023\n\n\n해석학\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 9, 2023\n\n\n칸토어 집합, 칸토어 함수, 르벡분해\n\n\n신록예찬\n\n\n\n\nFeb 9, 2023\n\n\n그래프 속성\n\n\n신록예찬\n\n\n\n\nJan 20, 2023\n\n\n추정\n\n\n신록예찬\n\n\n\n\nJan 20, 2023\n\n\n시계열의 주파수영역 분석\n\n\n신록예찬\n\n\n\n\nJan 12, 2023\n\n\n토폴로지\n\n\n신록예찬\n\n\n\n\nJan 11, 2023\n\n\n여러가지 부등식\n\n\n신록예찬\n\n\n\n\nJan 7, 2023\n\n\n해석학\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "2_cgsp.html",
@@ -746,7 +781,7 @@
     "href": "index.html",
     "title": "신록예찬's Blog",
     "section": "",
-    "text": "About this blog\nThis blog was created for my personal research, study and lecture preparation. Therefore, the contents of the blog can be thought of as my practice notes. As a result, sometimes the content of a post may be left unstructured or unfinished. The blog is named after my favorite essay ‘신록예찬’, which is also a nickname I use informally. You can check the written article in the sidebar on the left. It is a great honor for me if these posts can help others to learn and research.\n\nSome urls that help me\nfirst bunch\n\nchatGPT: https://openai.com/blog/chatgpt/\nmatplotlib: https://matplotlib.org/stable/gallery/index.html\njupyterlab: https://jupyterlab.readthedocs.io/en/stable/index.html\npandas: https://pandas.pydata.org/docs/user_guide/index.html#user-guide\njulia: https://docs.julialang.org/en/v1/\nkeras: https://keras.io/examples/\njulia plots: https://docs.juliaplots.org/stable/\npytorch lightning: https://www.pytorchlightning.ai/\nplotly: https://plotly.com/graphing-libraries/\nquarto: https://quarto.org/\n\nsecond bunch\n\nlatex: https://editor.codecogs.com/\ntable: https://www.tablesgenerator.com/\npytorch lightning (book): https://github.com/PacktPublishing/Deep-Learning-with-PyTorch-Lightning\nPyG: https://github.com/rusty1s/pytorch_geometric\nrayshader: https://www.rayshader.com/reference/plot_gg.html\nSouth Korea (map): https://github.com/southkorea\nregexp: https://zvon.org/comp/m/regexp.html\nrpy2: https://rpy2.github.io/doc/v3.1.x/html/index.html\npywave: https://pywavelets.readthedocs.io/en/latest/ref/wavelets.html\nPyGSP: https://pygsp.readthedocs.io/en/stable/#\nlatex (neural networks): https://tikz.net/neural_networks/\nplotly overview: https://plotly.com/python/plotly-express/\nfastai (official): https://docs.fast.ai/\nfastai (lecture): https://course.fast.ai/#\nfastai (github codes): https://github.com/fastai/fastai/tree/master/dev_nbs/course\n\nlectures notes\n\nhttp://personal.psu.edu/drh20/asymp/fall2006/lectures/\n\nblogs run by acquaintance\n\nhttps://seoyeonc.github.io/md/\nhttps://seoyeonc.github.io/blog/\nhttps://boram-coco.github.io/coco/"
+    "text": "About this blog\nThis blog was created for my personal research, study and lecture preparation. Therefore, the contents of the blog can be thought of as my practice notes. As a result, sometimes the content of a post may be left unstructured or unfinished. The blog is named after my favorite essay ‘신록예찬’, which is also a nickname I use informally. You can check the written article in the sidebar on the left. It is a great honor for me if these posts can help others to learn and research.\n\nSome links that help me\nblogs\n\nhttps://seoyeonc.github.io/md/\nhttps://seoyeonc.github.io/blog/\nhttps://boram-coco.github.io/coco/\n\nfirst url bunch\n\nchatGPT: https://openai.com/blog/chatgpt/\nmatplotlib: https://matplotlib.org/stable/gallery/index.html\njupyterlab: https://jupyterlab.readthedocs.io/en/stable/index.html\npandas: https://pandas.pydata.org/docs/user_guide/index.html#user-guide\njulia: https://docs.julialang.org/en/v1/\nkeras: https://keras.io/examples/\njulia plots: https://docs.juliaplots.org/stable/\npytorch lightning: https://www.pytorchlightning.ai/\nplotly: https://plotly.com/graphing-libraries/\nquarto: https://quarto.org/\n\nsecond url bunch\n\nlatex: https://editor.codecogs.com/\ntable: https://www.tablesgenerator.com/\npytorch lightning (codes in book): https://github.com/PacktPublishing/Deep-Learning-with-PyTorch-Lightning\nPyG: https://github.com/rusty1s/pytorch_geometric\nrayshader: https://www.rayshader.com/reference/plot_gg.html\nSouth Korea (map): https://github.com/southkorea\nregexp: https://zvon.org/comp/m/regexp.html\nrpy2: https://rpy2.github.io/doc/v3.1.x/html/index.html\npywave: https://pywavelets.readthedocs.io/en/latest/ref/wavelets.html\nPyGSP: https://pygsp.readthedocs.io/en/stable/#\nlatex (neural networks): https://tikz.net/neural_networks/\nplotly overview: https://plotly.com/python/plotly-express/\nfastai (official): https://docs.fast.ai/\nfastai (lecture): https://course.fast.ai/#\nfastai (github codes): https://github.com/fastai/fastai/tree/master/dev_nbs/course\nGML (codes in book): https://github.com/PacktPublishing/Graph-Machine-Learning\nGMLKOR (codes in book): https://github.com/AcornPublishing/graph-ml\n\nlectures notes\n\nhttp://personal.psu.edu/drh20/asymp/fall2006/lectures/"
   },
   {
     "objectID": "2_notes.html",
@@ -754,5 +789,47 @@
     "title": "Notes",
     "section": "",
     "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJan 8, 2000\n\n\n깃(Git)\n\n\n신록예찬\n\n\n\n\nJan 7, 2000\n\n\n줄리아 설치 및 실행\n\n\n신록예찬\n\n\n\n\nJan 6, 2000\n\n\n주피터랩: 설정 및 몇가지 팁\n\n\n신록예찬\n\n\n\n\nJan 5, 2000\n\n\n주피터랩(터미널)\n\n\n신록예찬\n\n\n\n\nJan 4, 2000\n\n\n우분투\n\n\n신록예찬\n\n\n\n\nJan 1, 2000\n\n\n우분투 포맷 및 개발용 서버 셋팅\n\n\n신록예찬\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/1_Essays/2023-02-09-그래프머신러닝.html",
+    "href": "posts/1_Essays/2023-02-09-그래프머신러닝.html",
+    "title": "그래프 속성",
+    "section": "",
+    "text": "import networkx as nx\nimport matplotlib.pyplot as plt"
+  },
+  {
+    "objectID": "posts/1_Essays/2023-02-09-그래프머신러닝.html#통합측정지표",
+    "href": "posts/1_Essays/2023-02-09-그래프머신러닝.html#통합측정지표",
+    "title": "그래프 속성",
+    "section": "통합측정지표",
+    "text": "통합측정지표\n- 노드가 서로 상호 연결되는 경향을 측정\n\n최단경로, 최단경로길이\n- setup\n\nG = nx.Graph()\nV = {1:'Dublin',2:'Paris',3:'Milan',4:'Rome',5:'Naples',6:'Moscow',7:'Seoul'}\nG.add_nodes_from(V.keys())\nG.add_edges_from([(1,2),(1,3),(2,3),(3,4),(4,5),(5,6),(6,7),(7,5)])\n\n\nG.nodes\n\nNodeView((1, 2, 3, 4, 5, 6, 7))\n\n\n\nG.edges\n\nEdgeView([(1, 2), (1, 3), (2, 3), (3, 4), (4, 5), (5, 6), (5, 7), (6, 7)])\n\n\n\nnx.draw_networkx(G)\nprint(V)\n\n{1: 'Dublin', 2: 'Paris', 3: 'Milan', 4: 'Rome', 5: 'Naples', 6: 'Moscow', 7: 'Seoul'}\n\n\n\n\n\nFigure 1: 도시간의 연결을 나타내는 무향그래프\n\n\n\n\n- shortest path\n\npath = nx.shortest_path(G,source=1,target=7)\npath\n\n[1, 3, 4, 5, 7]\n\n\n\npath = nx.shortest_path(G,source=1,target=4)\npath\n\n[1, 3, 4]\n\n\n\npath = nx.shortest_path(G,source=4,target=6)\npath\n\n[4, 5, 6]\n\n\n- shortest path lenghth\n최단경로길이는 아래와 같이 구할수 있음\n\npath = nx.shortest_path(G,source=1,target=7)\nlen(path)\n\n5\n\n\n\n\n특성경로길이 (= 평균최단경로길이)\n- characteristic path length = average of shortest path lenght\n가능한 모든 노드 쌍 사이의 모든 최단경로 길이의 평균으로 정의한다.\n\\[\\text{characteristic path length}=\\frac{1}{|V|(|V|-1)}\\sum_{i \\in V} l_i\\]\n여기에서 \\(l_i\\)는 노드 \\(i\\)와 다른 모든 노드사이의 평균경로 길이로 정의한다. 특성경로길이가 더 짧은 네트워크는 정보를 더 빠르게 전송할 수 있다고 해석할 수 있다.\n\nG1 = nx.Graph()\nG2 = nx.Graph()\nV = {1,2,3,4}\nE1 = [(1,2),(2,3),(3,4),(4,1)]\nE2 = [(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)]\nG1.add_nodes_from(V)\nG2.add_nodes_from(V)\nG1.add_edges_from(E1)\nG2.add_edges_from(E2)\n\n\nnx.draw_networkx(G1)\n\n\n\n\nFigure 2: (G1) 링형태의 그래프\n\n\n\n\n\nnx.draw_networkx(G2)\n\n\n\n\nFigure 3: (G2) 완전연결된 그래프\n\n\n\n\n- 두 그래프 \\({\\cal G}_1\\)1와 \\({\\cal G}_2\\)2의 특성경로길이를 각각 계산하면 아래와 같다.\n\nnx.average_shortest_path_length(G1)\n\n1.3333333333333333\n\n\n\nnx.average_shortest_path_length(G2)\n\n1.0\n\n\n\n\n대역효율성\n모든 노드 쌍에 대한 역최단경로 (inverse shortest path) 길의의 평균을 의미이다. Figure 2, Figure 3 의 그래프에서 이 값을 계산하면 아래와 같다.\n\nnx.draw_networkx(G1)\nprint(\"대역효율성:\", nx.global_efficiency(G1))\n\n대역효율성: 0.8333333333333334\n\n\n\n\n\nFigure 4: (G1) 링형태의 그래프 + 대역효율성\n\n\n\n\n\nnx.draw_networkx(G2)\nprint(\"대역효율성:\",nx.global_efficiency(G2))\n\n대역효율성: 1.0\n\n\n\n\n\nFigure 5: (G2) 완저연결된 그래프 + 대역효율성"
+  },
+  {
+    "objectID": "posts/1_Essays/2023-02-09-그래프머신러닝.html#분리측정지표",
+    "href": "posts/1_Essays/2023-02-09-그래프머신러닝.html#분리측정지표",
+    "title": "그래프 속성",
+    "section": "분리측정지표",
+    "text": "분리측정지표\n- 네트워크 내에서 커뮤니티 또는 모듈로 알려진 상호 연결된 노드 그룹의 존재를 정량화"
+  },
+  {
+    "objectID": "posts/1_Essays/2023-02-09-그래프머신러닝.html#중심성측정지표",
+    "href": "posts/1_Essays/2023-02-09-그래프머신러닝.html#중심성측정지표",
+    "title": "그래프 속성",
+    "section": "중심성측정지표",
+    "text": "중심성측정지표\n- 네트워크 내부의 개별 노드의 중요성을 평가"
+  },
+  {
+    "objectID": "posts/1_Essays/2023-02-09-그래프머신러닝.html#탄력성측정지표",
+    "href": "posts/1_Essays/2023-02-09-그래프머신러닝.html#탄력성측정지표",
+    "title": "그래프 속성",
+    "section": "탄력성측정지표",
+    "text": "탄력성측정지표\n- 네트워크가 장애 또는 기타 불리한 조건에 직면했을 때 운영 성능을 얼마나 유지하고 조정할 수 있는지 평가"
+  },
+  {
+    "objectID": "posts/1_Essays/2023-02-05-시계열의 주파수 영역분석.html",
+    "href": "posts/1_Essays/2023-02-05-시계열의 주파수 영역분석.html",
+    "title": "시계열의 주파수영역 분석",
+    "section": "",
+    "text": "이 포스트는 Wei (2006) 의 CHAPTER 12 Spectral Theory of Stationary Processes 를 요약한 것이다\n\n\\(Z_t\\)를 real-valued stationary process 라고 하자. 그리고 \\(\\gamma_k\\)를 \\(Z_t\\)의 autocovariance sequence 라고 하자. 만약에 \\(\\gamma_k\\) 가 absolutely summable 하다면1 아래와 같은 표현이 존재한다.\n\\[\nf(\\omega)=\\frac{1}{2\\pi}\\sum_{k=-\\infty}^{\\infty}\\gamma_k e^{-i\\omega k}=\\frac{1}{2\\pi}\\gamma_0 + \\frac{1}{\\pi}\\sum_{k=1}^{\\infty}\\gamma_k\\cos(\\omega k)\n\\]\n첫 등호에서 두번째 등호로 넘어갈때 아래의 성질들이 이용되었다.\n\n\\(e^{i\\theta} = \\cos \\theta + i \\sin\\theta\\)\n\\(\\gamma_k = \\gamma_{-k}\\)\n\\(\\sin \\omega(-k) = - \\sin \\omega k\\)\n\\(\\cos \\omega(-k) = \\cos \\omega k\\)\n\n여기에서 \\(f(\\omega)\\)는 \\(\\gamma_k\\)를 퓨리에변환한 결과이다. \\(f(\\omega)\\)를 역 퓨리에변환하면 다시 \\(\\gamma_k\\)를 얻을 수 있는데 이를 수식으로 표현하면 아래와 같다.\n\\[\\gamma_k = \\int_{-\\pi}^{\\pi}f(\\omega) e^{i\\omega k}d\\omega\\]\n만약에 \\(\\gamma_k\\)가 absolutely summable 하지 않으면 \\(f(\\omega)\\)의 존재성을 장담할 수 없다. 따라서 위와 같은 표현은 불가능하다. 대신 아래와 같이 Fourier-Stieltjes integral 의 형으로는 표현가능하다.\n\\[\\gamma_k = \\int_{-\\pi}^{\\pi}e^{i\\omega k}dF(\\omega)\\]\n여기에서 \\(F(\\omega)\\)는 spectral distribution function 이라고 한다. \\(F(\\omega)\\)는 nondecreasing function 이다. \\(F(\\omega)\\)는 아래와 같은 3가지 컴포넌트의 합으로 표현할 수 있다.\n\n유한개의 jump만을 가지는 step function\nabsolutely continuous function\nsigular function\n\n여기에서 3은 대부분의 응용분야에서 중요하지 않으므로 결국 \\(F(\\omega)\\)는 아래와 같이 표현할 수 있다.\n\\[F(\\omega) \\approx F_s(\\omega) + F_c(\\omega)\\]\n여기에서 \\(F_s(\\omega)\\)는 유한개의 jump를 가지는 step function 이고 \\(F_c(\\omega)\\)는 absolutely continuous 한 함수이다.\n만약에 시계열이 absolutely summable 하다면 \\(F(\\omega) = F_c(\\omega)\\) 이며 이경우에는 \\(dF(\\omega) = f(\\omega)d\\omega\\) 로 표현할 수 있다.\n여기에서 step spectral distribution function에 대하여 설명하기 위하여 아래와 같은 모형2를 고려하자.\n\\[Z_t = \\sum_{i=1}^{M}A_i \\sin(\\omega_i t + \\Theta_i)\\]\n여기에서 \\(A_i\\)는 constant 이며 \\(\\Theta_i \\sim U(-\\pi,\\pi)\\) 이다.\n여기에서 \\(Z_t\\)는 stationary process 이다.\n일반적으로 stationary process는 아래와 같이 표현할 수 있다.\n\\[Z_t = A \\sin\\left(\\frac{2\\pi t}{12}+\\lambda \\right)+\\left[\\frac{\\theta(B)}{\\phi(B)}\\right]a_t\\]\n여기에서 \\(A\\)는 상수이며 \\(\\lambda\\)는 uniform \\([-\\pi,\\pi]\\)을 따르는 랜덤변수이다.\nWold (1938)는 임의의 covariance stationary process 는 아래와 같이 표현 할 수 있다는 것을 알아냈다.\n\\[Z_t = Z_t^{(d)} + Z_t^{(n)}\\]\n여기에서 \\(Z_t^{(d)}\\)는 purely deterministic component 이고 \\(Z_t^{(n)}\\)는 purely nondeterministic component 이다.\n이 분해는 아래의 수식에서 다룬 바 있던 spectral distribution function 의 decomposition 과 유사하다.\n\\[F(\\omega) \\approx F_s(\\omega) + F_c(\\omega)\\]\n왜냐하면 \\(Z_t^{(d)}\\)는 step spectral distribution 을 가지고 \\(Z_t^{(n)}\\)은 absolutely continuous spectral distribution 을 가진다. 따라서 \\(Z_t^{(d)}\\)를\n\n\n\n\n\nReferences\n\nWei, William WS. 2006. “Time Series Analysis: Univariate and Multivariate.” Methods. Boston, MA: Pearson Addison Wesley.\n\nFootnotes\n\n\n\\(\\sum_{k=-\\infty}^{\\infty}|\\gamma_k| <\\infty\\) 이라는 의미↩︎\ngeneral linear cyclical model 이라고 하는듯↩︎"
   }
 ]

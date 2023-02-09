@@ -5,9 +5,16 @@ This blog was created for my personal research, study and lecture preparation. T
 
 ---
 
-**Some urls that help me**
+**Some links that help me**
 
-*first bunch*
+
+*blogs*
+
+- <https://seoyeonc.github.io/md/>
+- <https://seoyeonc.github.io/blog/>
+- <https://boram-coco.github.io/coco/>
+
+*first url bunch*
 
 - **chatGPT**: <https://openai.com/blog/chatgpt/> 
 - **matplotlib**: <https://matplotlib.org/stable/gallery/index.html> 
@@ -20,11 +27,11 @@ This blog was created for my personal research, study and lecture preparation. T
 - **plotly**: <https://plotly.com/graphing-libraries/>
 - **quarto**: <https://quarto.org/> 
 
-*second bunch*
+*second url bunch*
 
 - **latex**: <https://editor.codecogs.com/> 
 - **table**: <https://www.tablesgenerator.com/> 
-- **pytorch lightning (book)**: <https://github.com/PacktPublishing/Deep-Learning-with-PyTorch-Lightning> 
+- **pytorch lightning (codes in book)**: <https://github.com/PacktPublishing/Deep-Learning-with-PyTorch-Lightning> 
 - **PyG**: <https://github.com/rusty1s/pytorch_geometric> 
 - **rayshader**: <https://www.rayshader.com/reference/plot_gg.html> 
 - **South Korea (map)**: <https://github.com/southkorea> 
@@ -37,13 +44,9 @@ This blog was created for my personal research, study and lecture preparation. T
 - **fastai (official)**: <https://docs.fast.ai/>
 - **fastai (lecture)**: <https://course.fast.ai/#> 
 - **fastai (github codes)**: <https://github.com/fastai/fastai/tree/master/dev_nbs/course> 
+- **GML (codes in book)**: <https://github.com/PacktPublishing/Graph-Machine-Learning>
+- **GMLKOR (codes in book)**: <https://github.com/AcornPublishing/graph-ml>
 
 *lectures notes*
 
 - <http://personal.psu.edu/drh20/asymp/fall2006/lectures/> 
-
-*blogs run by acquaintance*
-
-- <https://seoyeonc.github.io/md/>
-- <https://seoyeonc.github.io/blog/>
-- <https://boram-coco.github.io/coco/>
