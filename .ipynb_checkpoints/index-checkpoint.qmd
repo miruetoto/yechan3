@@ -1,3 +1,4 @@
+
 **About this blog**
 
 This blog was created for my personal research, study and lecture preparation. Therefore, the contents of the blog can be thought of as my practice notes. As a result, sometimes the content of a post may be left unstructured or unfinished. The blog is named after my favorite essay ‘신록예찬’, which is also a nickname I use informally. You can check the written article in the sidebar on the left. It is a great honor for me if these posts can help others to learn and research.
@@ -8,35 +9,34 @@ This blog was created for my personal research, study and lecture preparation. T
 
 *first bunch*
 
-- <https://openai.com/blog/chatgpt/> 
-- <https://matplotlib.org/stable/gallery/index.html> 
-- <https://jupyterlab.readthedocs.io/en/stable/index.html> 
-- <https://pandas.pydata.org/docs/user_guide/index.html#user-guide>
-- <https://docs.julialang.org/en/v1/> 
-- <https://keras.io/examples/>
-- <https://docs.juliaplots.org/stable/> 
-- <http://personal.psu.edu/drh20/asymp/fall2006/lectures/>
-- <https://www.pytorchlightning.ai/> 
-- <https://plotly.com/graphing-libraries/>
-- <https://quarto.org/> 
+- **chatGPT**: <https://openai.com/blog/chatgpt/> 
+- **matplotlib**: <https://matplotlib.org/stable/gallery/index.html> 
+- **jupyterlab**: <https://jupyterlab.readthedocs.io/en/stable/index.html> 
+- **pandas**: <https://pandas.pydata.org/docs/user_guide/index.html#user-guide>
+- **julia**: <https://docs.julialang.org/en/v1/> 
+- **keras**: <https://keras.io/examples/>
+- **julia plots**: <https://docs.juliaplots.org/stable/> 
+- **pytorch lightning**: <https://www.pytorchlightning.ai/> 
+- **plotly**: <https://plotly.com/graphing-libraries/>
+- **quarto**: <https://quarto.org/> 
 
 *second bunch*
 
-- <https://editor.codecogs.com/> 
-- <https://www.tablesgenerator.com/> 
-- <https://github.com/PacktPublishing/Deep-Learning-with-PyTorch-Lightning> 
-- <https://github.com/rusty1s/pytorch_geometric> 
-- <https://www.rayshader.com/reference/plot_gg.html> 
-- <https://github.com/southkorea> 
-- <https://zvon.org/> 
-- <https://rpy2.github.io/doc/v3.1.x/html/index.html>
-- <https://pywavelets.readthedocs.io/en/latest/ref/wavelets.html>
-- <https://pygsp.readthedocs.io/en/stable/#>
-- <https://tikz.net/neural_networks/> 
-- <https://plotly.com/python/plotly-express/>
-- <https://docs.fast.ai/>
-- <https://course.fast.ai/#> 
-- <https://github.com/fastai/fastai/tree/master/dev_nbs/course> 
+- **latex**: <https://editor.codecogs.com/> 
+- **table**: <https://www.tablesgenerator.com/> 
+- **pytorch lightning (book)**: <https://github.com/PacktPublishing/Deep-Learning-with-PyTorch-Lightning> 
+- **PyG**: <https://github.com/rusty1s/pytorch_geometric> 
+- **rayshader**: <https://www.rayshader.com/reference/plot_gg.html> 
+- **South Korea (map)**: <https://github.com/southkorea> 
+- **regexp**: <https://zvon.org/comp/m/regexp.html> 
+- **rpy2**: <https://rpy2.github.io/doc/v3.1.x/html/index.html>
+- **pywave**: <https://pywavelets.readthedocs.io/en/latest/ref/wavelets.html>
+- **PyGSP**: <https://pygsp.readthedocs.io/en/stable/#>
+- **latex (neural networks)**: <https://tikz.net/neural_networks/> 
+- **plotly overview**: <https://plotly.com/python/plotly-express/>
+- **fastai (official)**: <https://docs.fast.ai/>
+- **fastai (lecture)**: <https://course.fast.ai/#> 
+- **fastai (github codes)**: <https://github.com/fastai/fastai/tree/master/dev_nbs/course> 
 
 *lectures notes*
 
@@ -44,16 +44,6 @@ This blog was created for my personal research, study and lecture preparation. T
 
 *blogs run by acquaintance*
 
-- <https://kimha02.github.io/ham/> 
-- <https://simjaein.github.io/ji1598/>
 - <https://seoyeonc.github.io/md/>
 - <https://seoyeonc.github.io/blog/>
-- <https://seoyeonc.github.io/ms/> *suspension
-- <https://seoyeonc.github.io/chch/> *suspension
-
-
-
-
-
-
-
+- <https://boram-coco.github.io/coco/>

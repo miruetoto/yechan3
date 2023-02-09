@@ -1,63 +1,63 @@
 [
   {
-    "listing": "/3_researches_hst.html",
+    "listing": "/2_pl.html",
     "items": [
-      "/posts/3. Researches/HST/2023-01-23-CommunityDetection.html"
+      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
     ]
   },
   {
-    "listing": "/4_reviews.html",
+    "listing": "/3_hst.html",
     "items": [
-      "/posts/4. Reviews/2022-12-23-Ebayesthresh.html"
+      "/posts/3_Researches/HST/2023-01-23-CommunityDetection.html"
     ]
   },
   {
-    "listing": "/1_codes_python.html",
+    "listing": "/2_python.html",
     "items": [
-      "/posts/1. Codes/Python/2000-04-05-Numpy.html"
+      "/posts/2_Studies/Python/2000-04-05-Numpy.html"
     ]
   },
   {
-    "listing": "/3_researches_stgcn.html",
+    "listing": "/2_reviews.html",
     "items": [
-      "/posts/3. Researches/STGCN/2022-12-30-STGCN-Toy Example.html"
+      "/posts/2_Studies/Reviews/2022-12-23-Ebayesthresh.html"
     ]
   },
   {
-    "listing": "/2_study_cgsp.html",
+    "listing": "/3_stgcn.html",
     "items": [
-      "/posts/2. Let's Study/CGSP/2023-01-15-Chap-12.4.html",
-      "/posts/2. Let's Study/CGSP/2022-12-27-Chap-12.2.1~12.3.1.html",
-      "/posts/2. Let's Study/CGSP/2022-12-26-Chap-12.2.html",
-      "/posts/2. Let's Study/CGSP/2022-12-24-Chap 8.3.html"
+      "/posts/3_Researches/STGCN/2022-12-30-STGCN-Toy Example.html"
     ]
   },
   {
-    "listing": "/2_study_essays.html",
+    "listing": "/1_essays.html",
     "items": [
-      "/posts/2. Let's Study/Essays/2023-02-05-Spectral Theory of Stationary Process.html",
-      "/posts/2. Let's Study/Essays/2023-01-20-Estimation.html",
-      "/posts/2. Let's Study/Essays/2023-01-17-Algorithm_traintest.html",
-      "/posts/2. Let's Study/Essays/2022-01-12-Topology.html",
-      "/posts/2. Let's Study/Essays/2023-01-11-Inequality.html",
-      "/posts/2. Let's Study/Essays/2023-01-07-RealAnalysis.html"
+      "/posts/1_Essays/2023-02-05-시계열의 주파수 영역분석.html",
+      "/posts/1_Essays/2023-01-20-추정.html",
+      "/posts/1_Essays/2023-02-09-그래프머신러닝.html",
+      "/posts/1_Essays/2022-01-12-토폴로지.html",
+      "/posts/1_Essays/2023-01-11-여러가지 부등식.html",
+      "/posts/1_Essays/2023-01-07-해석학.html"
     ]
   },
   {
-    "listing": "/5_notes.html",
+    "listing": "/2_cgsp.html",
     "items": [
-      "/posts/5. Notes/2000-01-08-Git.html",
-      "/posts/5. Notes/2000-01-07-JuliaInstall.html",
-      "/posts/5. Notes/2000-01-06-JupyterLab(2).html",
-      "/posts/5. Notes/2000-01-05-JupyterLab(1).html",
-      "/posts/5. Notes/2000-01-04-Ubuntu.html",
-      "/posts/5. Notes/2000-01-01-UbuntuSetting.html"
+      "/posts/2_Studies/CGSP/2023-01-15-Chap-12.4.html",
+      "/posts/2_Studies/CGSP/2022-12-27-Chap-12.2.1~12.3.1.html",
+      "/posts/2_Studies/CGSP/2022-12-26-Chap-12.2.html",
+      "/posts/2_Studies/CGSP/2022-12-24-Chap 8.3.html"
     ]
   },
   {
-    "listing": "/1_codes_pl.html",
+    "listing": "/2_notes.html",
     "items": [
-      "/posts/1. Codes/PyTorchLightning/2022-11-29-Lesson1.html"
+      "/posts/2_Studies/Notes/2000-01-08-Git.html",
+      "/posts/2_Studies/Notes/2000-01-07-JuliaInstall.html",
+      "/posts/2_Studies/Notes/2000-01-06-JupyterLab(2).html",
+      "/posts/2_Studies/Notes/2000-01-05-JupyterLab(1).html",
+      "/posts/2_Studies/Notes/2000-01-04-Ubuntu.html",
+      "/posts/2_Studies/Notes/2000-01-01-UbuntuSetting.html"
     ]
   }
 ]

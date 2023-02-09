@@ -28,27 +28,25 @@ website:
 
 
     right: 
-      - text: git-repo
+      - icon: github
         href: https://github.com/miruetoto/yechan3
 
   sidebar:
     style: "docked"
     search: true
     contents:
-      - section: "Codes"
-        contents:
-          - 1_codes_pl.qmd
-          - 1_codes_python.qmd
+      - 1_essays.qmd
       - section: "Let's Study"
         contents:
-          - 2_study_cgsp.qmd
-          - 2_study_essays.qmd
+          - 2_cgsp.qmd
+          - 2_python.qmd                  
+          - 2_pl.qmd          
+          - 2_reviews.qmd
+          - 2_notes.qmd          
       - section: "Researches"
         contents:
-          - 3_researches_hst.qmd
-          - 3_researches_stgcn.qmd
-      - 4_reviews.qmd
-      - 5_notes.qmd
+          - 3_hst.qmd
+          - 3_stgcn.qmd
 
 format:
   html:
