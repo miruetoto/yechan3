@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -315,13 +315,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#pyg-의-data-자료형" id="toc-pyg-의-data-자료형" class="nav-link" data-scroll-target="#pyg-의-data-자료형">PyG 의 Data 자료형</a></li>
   <li><a href="#pytorch-geometric-temporal-의-자료형" id="toc-pytorch-geometric-temporal-의-자료형" class="nav-link" data-scroll-target="#pytorch-geometric-temporal-의-자료형">PyTorch Geometric Temporal 의 자료형</a></li>
   </ul></li>
-  <li><a href="#데이터셋-소개-학습" id="toc-데이터셋-소개-학습" class="nav-link" data-scroll-target="#데이터셋-소개-학습">데이터셋 소개 + 학습</a>
-  <ul class="collapse">
-  <li><a href="#chickenpoxdatasetloader" id="toc-chickenpoxdatasetloader" class="nav-link" data-scroll-target="#chickenpoxdatasetloader">ChickenpoxDatasetLoader</a>
+  <li><a href="#chickenpoxdataset-분석" id="toc-chickenpoxdataset-분석" class="nav-link" data-scroll-target="#chickenpoxdataset-분석">ChickenpoxDataset 분석</a>
   <ul class="collapse">
   <li><a href="#summary-of-data" id="toc-summary-of-data" class="nav-link" data-scroll-target="#summary-of-data">summary of data</a></li>
+  <li><a href="#learn" id="toc-learn" class="nav-link" data-scroll-target="#learn">learn</a></li>
   <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">visualization</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -332,6 +330,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<p><a href="https://colab.research.google.com/github/miruetoto/yechan3/blob/main/posts/3_Researches/STGCN/2023-02-11-STGCN-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC(%EC%B5%9C%EC%84%9C%EC%97%B0).ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt=""></a></p>
 <section id="about-this-doc" class="level1">
 <h1>About this doc</h1>
 <p><code>-</code> 이 문서는 공식홈페이지의 예제와 최서연학생의 블로그 내용을 재구성하여 만듬</p>
@@ -721,13 +720,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </section>
 </section>
-<section id="데이터셋-소개-학습" class="level1">
-<h1>데이터셋 소개 + 학습</h1>
-<section id="chickenpoxdatasetloader" class="level2">
-<h2 class="anchored" data-anchor-id="chickenpoxdatasetloader">ChickenpoxDatasetLoader</h2>
+<section id="chickenpoxdataset-분석" class="level1">
+<h1>ChickenpoxDataset 분석</h1>
 <p>A dataset of county level chicken pox cases in Hungary between 2004 and 2014. We made it public during the development of PyTorch Geometric Temporal. The underlying graph is static - vertices are counties and edges are neighbourhoods. Vertex features are lagged weekly counts of the chickenpox cases (we included 4 lags). The target is the weekly number of cases for the upcoming week (signed integers). Our dataset consist of more than 500 snapshots (weeks).</p>
-<section id="summary-of-data" class="level3">
-<h3 class="anchored" data-anchor-id="summary-of-data">summary of data</h3>
+<section id="summary-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-data">summary of data</h2>
 <ul>
 <li><span class="math inline">\(T\)</span> = 519</li>
 <li><span class="math inline">\(N\)</span> = 20 # number of nodes</li>
@@ -757,8 +754,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb37-2"><a href="#cb37-2"></a>dataset <span class="op">=</span> loader.get_dataset(lags<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb37-3"><a href="#cb37-3"></a>train_dataset, test_dataset <span class="op">=</span> temporal_signal_split(dataset, train_ratio<span class="op">=</span><span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="learn" class="level4">
-<h4 class="anchored" data-anchor-id="learn">learn</h4>
+</section>
+<section id="learn" class="level2">
+<h2 class="anchored" data-anchor-id="learn">learn</h2>
 <div class="cell" data-execution_count="346">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span><span class="dv">4</span>, filters<span class="op">=</span><span class="dv">32</span>)</span>
 <span id="cb38-2"><a href="#cb38-2"></a>optimizer <span class="op">=</span> torch.optim.Adam(model.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
@@ -776,9 +774,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-</section>
-<section id="visualization" class="level3">
-<h3 class="anchored" data-anchor-id="visualization">visualization</h3>
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">visualization</h2>
 <div class="cell" data-execution_count="344">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>model.<span class="bu">eval</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="344">
@@ -812,13 +809,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb44-7"><a href="#cb44-7"></a>    ax[k].legend()</span>
 <span id="cb44-8"><a href="#cb44-8"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-02-11-STGCN-튜토리얼(최서연)_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+<p><img src="2023-02-11-STGCN-튜토리얼(최서연)_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>적합결과: 그냥 그렇네? (몰라 공식홈페이지 예제임)</p>
 
 
-</section>
 </section>
 </section>
 
