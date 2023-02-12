@@ -39,10 +39,12 @@ website:
       - section: "Let's Study"
         contents:
           - 2_cgsp.qmd
+          - 2_gml.qmd      
           - 2_python.qmd                  
           - 2_pl.qmd          
           - 2_reviews.qmd
           - 2_notes.qmd          
+          
       - section: "Researches"
         contents:
           - 3_hst.qmd

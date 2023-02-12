@@ -2,7 +2,7 @@
 title: "CGSP"
 listing:
   contents: posts/2_Studies/CGSP
-  sort: "date desc"
+  sort: "date"
   type: table
   categories: false
   sort-ui: false

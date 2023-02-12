@@ -1,0 +1,13 @@
+---
+title: "GML"
+listing:
+  contents: posts/2_Studies/GML
+  sort: [date,title]
+  type: table
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  page-size: 9999
+page-layout: full
+title-block-banner: false
+---
