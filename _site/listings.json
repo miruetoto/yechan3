@@ -22,14 +22,15 @@
   {
     "listing": "/1_essays.html",
     "items": [
+      "/posts/1_Essays/Untitled.html",
       "/posts/1_Essays/2023-02-09-르벡분해.html",
       "/posts/1_Essays/2023-01-20-추정.html",
       "/posts/1_Essays/2023-02-05-시계열의주파수영역분석.html",
       "/posts/1_Essays/2022-01-12-토폴로지.html",
       "/posts/1_Essays/2023-01-11-여러가지부등식.html",
       "/posts/1_Essays/2023-01-07-해석학.html",
-      "/posts/1_Essays/2020-03-12-확률, 확률변수, 시계열, 정상성.html",
-      "/posts/1_Essays/2019-04-26-퓨리에 변환.html"
+      "/posts/1_Essays/2020-03-12-확률_확률변수_시계열_정상성.html",
+      "/posts/1_Essays/2019-04-26-퓨리에변환.html"
     ]
   },
   {
