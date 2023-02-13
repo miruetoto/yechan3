@@ -345,6 +345,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>STGCN을 실습할 코드를 확보한다.</li>
 </ul>
 <p><code>-</code> 코랩에서 실습하기 위해서는 아래를 설치해야한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">!</span>pip install torch<span class="op">-</span>geometric</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">!</span>pip install torch<span class="op">-</span>geometric<span class="op">-</span>temporal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="ref" class="level1">
 <h1>ref</h1>
@@ -359,23 +363,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>imports</h1>
 <p><code>-</code> 필요한 패키지 임포트</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 일반적인 모듈 </span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> networkx <span class="im">as</span> nx </span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm </span>
-<span id="cb1-6"><a href="#cb1-6"></a></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># 파이토치 관련 </span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="im">import</span> torch</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># PyG 관련 </span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="im">from</span> torch_geometric.data <span class="im">import</span> Data</span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co"># STGCN 관련 </span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> torch_geometric_temporal</span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="im">from</span> torch_geometric_temporal.nn.recurrent <span class="im">import</span> GConvGRU</span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="im">from</span> torch_geometric_temporal.signal <span class="im">import</span> temporal_signal_split </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 일반적인 모듈 </span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="im">import</span> networkx <span class="im">as</span> nx </span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm </span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># 파이토치 관련 </span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="im">import</span> torch</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># PyG 관련 </span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="im">from</span> torch_geometric.data <span class="im">import</span> Data</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co"># STGCN 관련 </span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="im">import</span> torch_geometric_temporal</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="im">from</span> torch_geometric_temporal.nn.recurrent <span class="im">import</span> GConvGRU</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="im">from</span> torch_geometric_temporal.signal <span class="im">import</span> temporal_signal_split </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>tdqm</code>: for문의 진행상태를 확인하기 위한 패키지</li>
@@ -388,17 +392,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><code>-</code> STGCN의 학습을 위한 클래스선언</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> RecurrentGCN(torch.nn.Module):</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, node_features, filters):</span>
-<span id="cb2-3"><a href="#cb2-3"></a>        <span class="bu">super</span>(RecurrentGCN, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
-<span id="cb2-4"><a href="#cb2-4"></a>        <span class="va">self</span>.recurrent <span class="op">=</span> GConvGRU(node_features, filters, <span class="dv">2</span>)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>        <span class="va">self</span>.linear <span class="op">=</span> torch.nn.Linear(filters, <span class="dv">1</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x, edge_index, edge_weight):</span>
-<span id="cb2-8"><a href="#cb2-8"></a>        h <span class="op">=</span> <span class="va">self</span>.recurrent(x, edge_index, edge_weight)</span>
-<span id="cb2-9"><a href="#cb2-9"></a>        h <span class="op">=</span> F.relu(h)</span>
-<span id="cb2-10"><a href="#cb2-10"></a>        h <span class="op">=</span> <span class="va">self</span>.linear(h)</span>
-<span id="cb2-11"><a href="#cb2-11"></a>        <span class="cf">return</span> h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> RecurrentGCN(torch.nn.Module):</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, node_features, filters):</span>
+<span id="cb3-3"><a href="#cb3-3"></a>        <span class="bu">super</span>(RecurrentGCN, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb3-4"><a href="#cb3-4"></a>        <span class="va">self</span>.recurrent <span class="op">=</span> GConvGRU(node_features, filters, <span class="dv">2</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>        <span class="va">self</span>.linear <span class="op">=</span> torch.nn.Linear(filters, <span class="dv">1</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x, edge_index, edge_weight):</span>
+<span id="cb3-8"><a href="#cb3-8"></a>        h <span class="op">=</span> <span class="va">self</span>.recurrent(x, edge_index, edge_weight)</span>
+<span id="cb3-9"><a href="#cb3-9"></a>        h <span class="op">=</span> F.relu(h)</span>
+<span id="cb3-10"><a href="#cb3-10"></a>        h <span class="op">=</span> <span class="va">self</span>.linear(h)</span>
+<span id="cb3-11"><a href="#cb3-11"></a>        <span class="cf">return</span> h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="notaions-ofr-stgcn" class="level1">
@@ -425,19 +429,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="https://pytorch-geometric.readthedocs.io/en/latest/_images/graph.svg" class="img-fluid"></p>
 <p>이러한 자료형은 아래와 같은 형식으로 저장한다.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>],</span>
-<span id="cb3-2"><a href="#cb3-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
-<span id="cb3-4"><a href="#cb3-4"></a>data <span class="op">=</span> Data(x<span class="op">=</span>x, edge_index<span class="op">=</span>edge_index) <span class="co"># Data는 그래프자료형을 만드는 클래스</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb4-2"><a href="#cb4-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>data <span class="op">=</span> Data(x<span class="op">=</span>x, edge_index<span class="op">=</span>edge_index) <span class="co"># Data는 그래프자료형을 만드는 클래스</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">type</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">type</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>torch_geometric.data.data.Data</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>data.x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>data.x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>tensor([[-1.],
         [ 0.],
@@ -445,7 +449,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>data.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>data.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>tensor([[0, 1, 1, 2],
         [1, 0, 2, 1]])</code></pre>
@@ -458,14 +462,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>ref: <a href="https://pytorch-geometric-temporal.readthedocs.io/en/latest/modules/signal.html#torch_geometric_temporal.signal.static_graph_temporal_signal.StaticGraphTemporalSignal">PyTorch Geometric Temporal Signal</a></p>
 </blockquote>
 <p>아래의 클래스들중 하나를 이용하여 만든다.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">## Temporal Signal Iterators</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>torch_geometric_temporal.signal.StaticGraphTemporalSignal</span>
-<span id="cb10-3"><a href="#cb10-3"></a>torch_geometric_temporal.signal.DynamicGraphTemporalSignal</span>
-<span id="cb10-4"><a href="#cb10-4"></a>torch_geometric_temporal.signal.DynamicGraphStaticSignal</span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="co">## Heterogeneous Temporal Signal Iterators</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>torch_geometric_temporal.signal.StaticHeteroGraphTemporalSignal</span>
-<span id="cb10-7"><a href="#cb10-7"></a>torch_geometric_temporal.signal.DynamicHeteroGraphTemporalSignal</span>
-<span id="cb10-8"><a href="#cb10-8"></a>torch_geometric_temporal.signal.DynamicHeteroGraphStaticSignal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">## Temporal Signal Iterators</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>torch_geometric_temporal.signal.StaticGraphTemporalSignal</span>
+<span id="cb11-3"><a href="#cb11-3"></a>torch_geometric_temporal.signal.DynamicGraphTemporalSignal</span>
+<span id="cb11-4"><a href="#cb11-4"></a>torch_geometric_temporal.signal.DynamicGraphStaticSignal</span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co">## Heterogeneous Temporal Signal Iterators</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>torch_geometric_temporal.signal.StaticHeteroGraphTemporalSignal</span>
+<span id="cb11-7"><a href="#cb11-7"></a>torch_geometric_temporal.signal.DynamicHeteroGraphTemporalSignal</span>
+<span id="cb11-8"><a href="#cb11-8"></a>torch_geometric_temporal.signal.DynamicHeteroGraphStaticSignal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>이중 “Heterogeneous Temporal Signal” 은 우리가 관심이 있는 신호가 아니므로 사실상 아래의 3개만 고려하면 된다.</p>
 <ul>
 <li><code>torch_geometric_temporal.signal.StaticGraphTemporalSignal</code></li>
@@ -476,23 +480,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>(예제1)</strong> StaticGraphTemporalSignal 를 이용하여 데이터 셋 만들기</p>
 <p><code>-</code> json data <span class="math inline">\(\to\)</span> dict</p>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> json</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="im">import</span> urllib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> json</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> urllib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/benedekrozemberczki/pytorch_geometric_temporal/master/dataset/chickenpox.json"</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>data_dict <span class="op">=</span> json.loads(urllib.request.urlopen(url).read())</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="co"># data_dict 출력이 김</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/benedekrozemberczki/pytorch_geometric_temporal/master/dataset/chickenpox.json"</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>data_dict <span class="op">=</span> json.loads(urllib.request.urlopen(url).read())</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co"># data_dict 출력이 김</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>data_dict.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>data_dict.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>dict_keys(['edges', 'node_ids', 'FX'])</code></pre>
 </div>
 </div>
 <p><code>-</code> 살펴보기</p>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>np.array(data_dict[<span class="st">'edges'</span>]).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>np.array(data_dict[<span class="st">'edges'</span>]).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>array([[ 0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  2,  2,  2,  2,  3,
          3,  3,  3,  3,  3,  4,  4,  5,  5,  5,  5,  6,  6,  6,  6,  6,
@@ -515,7 +519,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>혹은 <span class="math inline">\({\cal E} = \{(\tt{BACS},\tt{JASZ}), ({\tt BACS},{\tt FEJER}), \dots, (\tt{ZALA},\tt{VAS})\}\)</span></li>
 </ul>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>data_dict[<span class="st">'node_ids'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>data_dict[<span class="st">'node_ids'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>{'BACS': 0,
  'BARANYA': 1,
@@ -543,7 +547,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\({\cal V}=\{\tt{BACS},\tt{BARANYA} \dots, \tt{ZALA}\}\)</span></li>
 </ul>
 <div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>np.array(data_dict[<span class="st">'FX'</span>]), np.array(data_dict[<span class="st">'FX'</span>]).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>np.array(data_dict[<span class="st">'FX'</span>]), np.array(data_dict[<span class="st">'FX'</span>]).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>(array([[-1.08135724e-03, -7.11136085e-01, -3.22808515e+00, ...,
           1.09445310e+00, -7.08747750e-01, -1.82280792e+00],
@@ -608,9 +612,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p><code>-</code> 주어진 자료를 정리하여 그래프신호 <span class="math inline">\(\big(\{{\cal V},{\cal E},{\bf W}\},{\bf f}\big)\)</span>를 만들면 아래와 같다.</p>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>edges <span class="op">=</span> np.array(data_dict[<span class="st">"edges"</span>]).T</span>
-<span id="cb21-2"><a href="#cb21-2"></a>edge_weight <span class="op">=</span> np.ones(edges.shape[<span class="dv">1</span>])</span>
-<span id="cb21-3"><a href="#cb21-3"></a>f <span class="op">=</span> np.array(data_dict[<span class="st">"FX"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>edges <span class="op">=</span> np.array(data_dict[<span class="st">"edges"</span>]).T</span>
+<span id="cb22-2"><a href="#cb22-2"></a>edge_weight <span class="op">=</span> np.ones(edges.shape[<span class="dv">1</span>])</span>
+<span id="cb22-3"><a href="#cb22-3"></a>f <span class="op">=</span> np.array(data_dict[<span class="st">"FX"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>여기에서 <code>edges</code>는 <span class="math inline">\({\cal E}\)</span>에 대한 정보를</li>
@@ -622,12 +626,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p><code>-</code> <code>data_dict</code> <span class="math inline">\(\to\)</span> <code>dl</code></p>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>lags <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>features <span class="op">=</span> [f[i : i <span class="op">+</span> lags, :].T <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(f.shape[<span class="dv">0</span>] <span class="op">-</span> lags)]</span>
-<span id="cb22-3"><a href="#cb22-3"></a>targets <span class="op">=</span> [f[i <span class="op">+</span> lags, :].T <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(f.shape[<span class="dv">0</span>] <span class="op">-</span> lags)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>lags <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>features <span class="op">=</span> [f[i : i <span class="op">+</span> lags, :].T <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(f.shape[<span class="dv">0</span>] <span class="op">-</span> lags)]</span>
+<span id="cb23-3"><a href="#cb23-3"></a>targets <span class="op">=</span> [f[i <span class="op">+</span> lags, :].T <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(f.shape[<span class="dv">0</span>] <span class="op">-</span> lags)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>np.array(features).shape, np.array(targets).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>np.array(features).shape, np.array(targets).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>((517, 20, 4), (517, 20))</code></pre>
 </div>
@@ -654,39 +658,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>AR 느낌으로 표현하면 AR(4) 임</li>
 </ul>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>dataset <span class="op">=</span> torch_geometric_temporal.signal.StaticGraphTemporalSignal(</span>
-<span id="cb25-2"><a href="#cb25-2"></a>    edge_index<span class="op">=</span> edges,</span>
-<span id="cb25-3"><a href="#cb25-3"></a>    edge_weight <span class="op">=</span> edge_weight,</span>
-<span id="cb25-4"><a href="#cb25-4"></a>    features <span class="op">=</span> features,</span>
-<span id="cb25-5"><a href="#cb25-5"></a>    targets <span class="op">=</span> targets</span>
-<span id="cb25-6"><a href="#cb25-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>dataset <span class="op">=</span> torch_geometric_temporal.signal.StaticGraphTemporalSignal(</span>
+<span id="cb26-2"><a href="#cb26-2"></a>    edge_index<span class="op">=</span> edges,</span>
+<span id="cb26-3"><a href="#cb26-3"></a>    edge_weight <span class="op">=</span> edge_weight,</span>
+<span id="cb26-4"><a href="#cb26-4"></a>    features <span class="op">=</span> features,</span>
+<span id="cb26-5"><a href="#cb26-5"></a>    targets <span class="op">=</span> targets</span>
+<span id="cb26-6"><a href="#cb26-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>&lt;torch_geometric_temporal.signal.static_graph_temporal_signal.StaticGraphTemporalSignal at 0x7f3423668bd0&gt;</code></pre>
 </div>
 </div>
 <p><code>-</code> 그런데 이 과정을 아래와 같이 할 수도 있음</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># PyTorch Geometric Temporal 공식홈페이지에 소개된 코드</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a>loader <span class="op">=</span> torch_geometric_temporal.dataset.ChickenpoxDatasetLoader()</span>
-<span id="cb28-3"><a href="#cb28-3"></a>dataset<span class="op">=</span>loader.get_dataset(lags<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># PyTorch Geometric Temporal 공식홈페이지에 소개된 코드</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>loader <span class="op">=</span> torch_geometric_temporal.dataset.ChickenpoxDatasetLoader()</span>
+<span id="cb29-3"><a href="#cb29-3"></a>dataset<span class="op">=</span>loader.get_dataset(lags<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> dataset은 <code>dataset[0]</code>, <span class="math inline">\(\dots\)</span> , <code>dataset[516]</code>과 같은 방식으로 각 시점별 자료에 접근가능</p>
 <div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>dataset[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>dataset[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>Data(x=[20, 4], edge_index=[2, 102], edge_attr=[102], y=[20])</code></pre>
 </div>
 </div>
 <p>각 시점에 대한 자료형은 아까 살펴보았던 PyG의 Data 자료형과 같음</p>
 <div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="bu">type</span>(dataset[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">type</span>(dataset[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>torch_geometric.data.data.Data</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>dataset[<span class="dv">0</span>].x </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>dataset[<span class="dv">0</span>].x </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>tensor([[-1.0814e-03,  2.8571e-02,  3.5474e-01,  2.9544e-01],
         [-7.1114e-01, -5.9843e-01,  1.9051e-01,  1.0922e+00],
@@ -714,7 +718,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>이 값들은 <code>features[0]</code>의 값들과 같음. 즉 <span class="math inline">\([{\bf f}_1~ {\bf f}_2~ {\bf f}_3~ {\bf f}_4]\)</span>를 의미함</li>
 </ul>
 <div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>dataset[<span class="dv">0</span>].y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>dataset[<span class="dv">0</span>].y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>tensor([ 0.7106, -0.0725,  2.6099,  1.7870,  0.8024, -0.2614, -0.8370,  1.9674,
         -0.4212,  0.1655,  1.2519,  2.3743,  0.7877,  0.4531, -0.1721, -0.0614,
@@ -756,25 +760,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>per weeks</li>
 </ul>
 <div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>loader <span class="op">=</span> torch_geometric_temporal.dataset.ChickenpoxDatasetLoader()</span>
-<span id="cb37-2"><a href="#cb37-2"></a>dataset <span class="op">=</span> loader.get_dataset(lags<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb37-3"><a href="#cb37-3"></a>train_dataset, test_dataset <span class="op">=</span> temporal_signal_split(dataset, train_ratio<span class="op">=</span><span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>loader <span class="op">=</span> torch_geometric_temporal.dataset.ChickenpoxDatasetLoader()</span>
+<span id="cb38-2"><a href="#cb38-2"></a>dataset <span class="op">=</span> loader.get_dataset(lags<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb38-3"><a href="#cb38-3"></a>train_dataset, test_dataset <span class="op">=</span> temporal_signal_split(dataset, train_ratio<span class="op">=</span><span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="learn" class="level2">
 <h2 class="anchored" data-anchor-id="learn">learn</h2>
 <div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span><span class="dv">4</span>, filters<span class="op">=</span><span class="dv">32</span>)</span>
-<span id="cb38-2"><a href="#cb38-2"></a>optimizer <span class="op">=</span> torch.optim.Adam(model.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
-<span id="cb38-3"><a href="#cb38-3"></a>model.train()</span>
-<span id="cb38-4"><a href="#cb38-4"></a></span>
-<span id="cb38-5"><a href="#cb38-5"></a><span class="cf">for</span> epoch <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">50</span>)):</span>
-<span id="cb38-6"><a href="#cb38-6"></a>    <span class="cf">for</span> t, snapshot <span class="kw">in</span> <span class="bu">enumerate</span>(train_dataset):</span>
-<span id="cb38-7"><a href="#cb38-7"></a>        yt_hat <span class="op">=</span> model(snapshot.x, snapshot.edge_index, snapshot.edge_attr)</span>
-<span id="cb38-8"><a href="#cb38-8"></a>        cost <span class="op">=</span> torch.mean((yt_hat<span class="op">-</span>snapshot.y)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb38-9"><a href="#cb38-9"></a>        cost.backward()</span>
-<span id="cb38-10"><a href="#cb38-10"></a>        optimizer.step()</span>
-<span id="cb38-11"><a href="#cb38-11"></a>        optimizer.zero_grad()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span><span class="dv">4</span>, filters<span class="op">=</span><span class="dv">32</span>)</span>
+<span id="cb39-2"><a href="#cb39-2"></a>optimizer <span class="op">=</span> torch.optim.Adam(model.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb39-3"><a href="#cb39-3"></a>model.train()</span>
+<span id="cb39-4"><a href="#cb39-4"></a></span>
+<span id="cb39-5"><a href="#cb39-5"></a><span class="cf">for</span> epoch <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">50</span>)):</span>
+<span id="cb39-6"><a href="#cb39-6"></a>    <span class="cf">for</span> t, snapshot <span class="kw">in</span> <span class="bu">enumerate</span>(train_dataset):</span>
+<span id="cb39-7"><a href="#cb39-7"></a>        yt_hat <span class="op">=</span> model(snapshot.x, snapshot.edge_index, snapshot.edge_attr)</span>
+<span id="cb39-8"><a href="#cb39-8"></a>        cost <span class="op">=</span> torch.mean((yt_hat<span class="op">-</span>snapshot.y)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb39-9"><a href="#cb39-9"></a>        cost.backward()</span>
+<span id="cb39-10"><a href="#cb39-10"></a>        optimizer.step()</span>
+<span id="cb39-11"><a href="#cb39-11"></a>        optimizer.zero_grad()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>100%|██████████| 50/50 [00:57&lt;00:00,  1.15s/it]</code></pre>
 </div>
@@ -783,7 +787,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="visualization" class="level2">
 <h2 class="anchored" data-anchor-id="visualization">visualization</h2>
 <div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>model.<span class="bu">eval</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>model.<span class="bu">eval</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>RecurrentGCN(
   (recurrent): GConvGRU(
@@ -799,23 +803,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>yhat_train <span class="op">=</span> torch.stack([model(snapshot.x,snapshot.edge_index, snapshot.edge_attr) <span class="cf">for</span> snapshot <span class="kw">in</span> train_dataset]).detach().numpy()</span>
-<span id="cb42-2"><a href="#cb42-2"></a>yhat_test <span class="op">=</span> torch.stack([model(snapshot.x,snapshot.edge_index, snapshot.edge_attr) <span class="cf">for</span> snapshot <span class="kw">in</span> test_dataset]).detach().numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>yhat_train <span class="op">=</span> torch.stack([model(snapshot.x,snapshot.edge_index, snapshot.edge_attr) <span class="cf">for</span> snapshot <span class="kw">in</span> train_dataset]).detach().numpy()</span>
+<span id="cb43-2"><a href="#cb43-2"></a>yhat_test <span class="op">=</span> torch.stack([model(snapshot.x,snapshot.edge_index, snapshot.edge_attr) <span class="cf">for</span> snapshot <span class="kw">in</span> test_dataset]).detach().numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>V <span class="op">=</span> <span class="bu">list</span>(data_dict[<span class="st">'node_ids'</span>].keys())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>V <span class="op">=</span> <span class="bu">list</span>(data_dict[<span class="st">'node_ids'</span>].keys())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>fig,ax <span class="op">=</span> plt.subplots(<span class="dv">20</span>,<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">50</span>))</span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>):</span>
-<span id="cb44-3"><a href="#cb44-3"></a>    ax[k].plot(f[:,k],<span class="st">'--'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>,label<span class="op">=</span><span class="st">'observed'</span>)</span>
-<span id="cb44-4"><a href="#cb44-4"></a>    ax[k].set_title(<span class="st">'node: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(V[k]))</span>
-<span id="cb44-5"><a href="#cb44-5"></a>    ax[k].plot(yhat_train[:,k],label<span class="op">=</span><span class="st">'predicted (tr)'</span>)</span>
-<span id="cb44-6"><a href="#cb44-6"></a>    ax[k].plot(<span class="bu">range</span>(yhat_train.shape[<span class="dv">0</span>],yhat_train.shape[<span class="dv">0</span>]<span class="op">+</span>yhat_test.shape[<span class="dv">0</span>]),yhat_test[:,k],label<span class="op">=</span><span class="st">'predicted (test)'</span>)</span>
-<span id="cb44-7"><a href="#cb44-7"></a>    ax[k].legend()</span>
-<span id="cb44-8"><a href="#cb44-8"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>fig,ax <span class="op">=</span> plt.subplots(<span class="dv">20</span>,<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">50</span>))</span>
+<span id="cb45-2"><a href="#cb45-2"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>):</span>
+<span id="cb45-3"><a href="#cb45-3"></a>    ax[k].plot(f[:,k],<span class="st">'--'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>,label<span class="op">=</span><span class="st">'observed'</span>)</span>
+<span id="cb45-4"><a href="#cb45-4"></a>    ax[k].set_title(<span class="st">'node: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(V[k]))</span>
+<span id="cb45-5"><a href="#cb45-5"></a>    ax[k].plot(yhat_train[:,k],label<span class="op">=</span><span class="st">'predicted (tr)'</span>)</span>
+<span id="cb45-6"><a href="#cb45-6"></a>    ax[k].plot(<span class="bu">range</span>(yhat_train.shape[<span class="dv">0</span>],yhat_train.shape[<span class="dv">0</span>]<span class="op">+</span>yhat_test.shape[<span class="dv">0</span>]),yhat_test[:,k],label<span class="op">=</span><span class="st">'predicted (test)'</span>)</span>
+<span id="cb45-7"><a href="#cb45-7"></a>    ax[k].legend()</span>
+<span id="cb45-8"><a href="#cb45-8"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-02-11-STGCN-tutorial_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+<p><img src="2023-02-11-STGCN-tutorial_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 
