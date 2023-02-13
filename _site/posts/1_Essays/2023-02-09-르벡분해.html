@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -250,6 +250,11 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#cantor-set" id="toc-cantor-set" class="nav-link active" data-scroll-target="#cantor-set">Cantor set</a></li>
   <li><a href="#cantor-function" id="toc-cantor-function" class="nav-link" data-scroll-target="#cantor-function">Cantor function</a></li>
+  <li><a href="#sigma-finite-signed-measure" id="toc-sigma-finite-signed-measure" class="nav-link" data-scroll-target="#sigma-finite-signed-measure"><span class="math inline">\(\sigma\)</span>-finite signed measure</a>
+  <ul class="collapse">
+  <li><a href="#finite-measure-sigma-finite-measure" id="toc-finite-measure-sigma-finite-measure" class="nav-link" data-scroll-target="#finite-measure-sigma-finite-measure">finite measure, <span class="math inline">\(\sigma\)</span>-finite measure</a></li>
+  <li><a href="#signed-measure" id="toc-signed-measure" class="nav-link" data-scroll-target="#signed-measure">Signed measure</a></li>
+  </ul></li>
   <li><a href="#lebesgues-decomposition-theorem" id="toc-lebesgues-decomposition-theorem" class="nav-link" data-scroll-target="#lebesgues-decomposition-theorem">Lebesgue’s decomposition theorem</a>
   <ul class="collapse">
   <li><a href="#refinement" id="toc-refinement" class="nav-link" data-scroll-target="#refinement">Refinement</a></li>
@@ -309,6 +314,32 @@ ul.task-list li input[type="checkbox"] {
 <li>칸토어 함수는 특이함수의 일반적인 예시이다.</li>
 </ol>
 </section>
+<section id="sigma-finite-signed-measure" class="level1">
+<h1><span class="math inline">\(\sigma\)</span>-finite signed measure</h1>
+<section id="finite-measure-sigma-finite-measure" class="level2">
+<h2 class="anchored" data-anchor-id="finite-measure-sigma-finite-measure"><a href="https://en.wikipedia.org/wiki/Σ-finite_measure">finite measure, <span class="math inline">\(\sigma\)</span>-finite measure</a></h2>
+<p><code>-</code> 느낌: 메져 <span class="math inline">\(m\)</span>이 measurable space <span class="math inline">\((X,{\cal A})\)</span>에서 finite measure라는 뜻은 모든 <span class="math inline">\(A \in {\cal A}\)</span>에 대하여 <span class="math inline">\(m(A)&lt;\infty\)</span>가 성립하는 measure이다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><strong>(예제)</strong> 르벡메져는 <span class="math inline">\((\mathbb{R},{\cal R})\)</span>에서 finite measure가 아니다. 왜냐하면 <span class="math inline">\(m(\mathbb{R})=\infty\)</span> 이기 때문!</p>
+<p>당연히 finite measure는 일반적인 measure 보다 이론적 성질을 전개하기 용이하다. 하지만 때로는 이 조건이 너무 만족하기 어려워 이것보다 약한 조건<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>을 고려하고 싶을 경우가 있는데, 그것이 바로 <span class="math inline">\(\sigma\)</span>-finite measure의 개념이다.</p>
+<p><code>-</code> 느낌: <span class="math inline">\(m(X) =\infty\)</span> 이라고 해도, <span class="math inline">\(X\)</span>를 길이가 유한인<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> 집합들의 countable-many-union으로 “덮을” 수 있다면 <span class="math inline">\((X,{\cal A},m)\)</span> 을 <span class="math inline">\(\sigma\)</span>-finite measure space 라고 한다.</p>
+<p><strong>(예제)</strong> 예를들면 실수 집합 <span class="math inline">\(\mathbb{R}\)</span>은</p>
+<p><span class="math display">\[\mathbb{R} = \bigcup_{k \in \mathbb{Z}}[k, k+1)\]</span></p>
+<p>와 같이 집합 <span class="math inline">\([k,k+1) ~ k \in \mathbb{Z}\)</span>로 “덮을” 수 있고 <span class="math inline">\(m([k,k+1))=1\)</span> 이므로 <span class="math inline">\((\mathbb{R},{\cal R})\)</span>에서의 르벡메져 <span class="math inline">\(m\)</span>은 <span class="math inline">\(\sigma\)</span>-finite measure가 된다.</p>
+<blockquote class="blockquote">
+<p>요약하면 가측공간 <span class="math inline">\((X,{\cal A})\)</span>에서 르벡메져는 finite한 측도는 아니지만 <span class="math inline">\(\sigma\)</span>-finite한 측도이다.</p>
+</blockquote>
+</section>
+<section id="signed-measure" class="level2">
+<h2 class="anchored" data-anchor-id="signed-measure"><a href="https://en.wikipedia.org/wiki/Signed_measure">Signed measure</a></h2>
+<p><code>-</code> 느낌: measure는 어떠한 집합들의 집합을 정의역으로 양의 실수를 치역으로 가지는 set function이다. 즉 measure는 항상 그 값이 양수가 나와야 한다. 그런데 때로는 음의 값을 가지는 set function을 생각하고 싶을 때도 있다. 이러한 동기로 signed measure를 고안하였다.</p>
+<p><code>-</code> 조심: 책마다 signed measure 에 대한 정의가 다르다. 교재에 따라서 <span class="math inline">\(-\infty\)</span>의 값을 허용하는 교재도 있고 아닌 교재도 있는데 구분을 위해서</p>
+<ul>
+<li>“finite signed measures”</li>
+<li>“extended signed measures”</li>
+</ul>
+<p>와 같이 명시하여 서술하는 것이 좋다.</p>
+</section>
+</section>
 <section id="lebesgues-decomposition-theorem" class="level1">
 <h1><a href="https://en.wikipedia.org/wiki/Lebesgue%27s_decomposition_theorem">Lebesgue’s decomposition theorem</a></h1>
 <p>In mathematics, more precisely in measure theory, Lebesgue’s decomposition theorem states that for every two <span class="math inline">\(\sigma\)</span>-finite signed measures <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> on a measurable space <span class="math inline">\((\Omega,\Sigma)\)</span> there exist two σ-finite signed measures <span class="math inline">\(\nu_{0}\)</span> and <span class="math inline">\(\nu_1\)</span> such that:</p>
@@ -340,6 +371,9 @@ ul.task-list li input[type="checkbox"] {
 
 <ol>
 <li id="fn1"><p>구간 <span class="math inline">\([0,1]\)</span>사이의 수를 모두 2진수로 바꾼 집합을 <span class="math inline">\(A\)</span>라고 하고 3진법으로 표현된 칸토어 수에서 <span class="math inline">\(2\)</span>를 <span class="math inline">\(1\)</span>로 바꾼수의 집합을 <span class="math inline">\(B\)</span>라고 하면 <span class="math inline">\(A\)</span>와 <span class="math inline">\(B\)</span>사이에는 적당한 전단사 함수를 잡을 수 있다.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>따라서 그냥 <span class="math inline">\(m(X)&lt;\infty\)</span> 이면 이 조건이 만족한다.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>만족하기 쉬운 조건<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>메져 <span class="math inline">\(m\)</span>으로 쟀을때 길이가 유한인<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
