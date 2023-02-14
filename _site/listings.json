@@ -1,0 +1,93 @@
+[
+  {
+    "listing": "/2_notes.html",
+    "items": [
+      "/posts/2_Studies/Notes/2000-01-08-Git.html",
+      "/posts/2_Studies/Notes/2000-01-07-JuliaInstall.html",
+      "/posts/2_Studies/Notes/2000-01-06-JupyterLab(2).html",
+      "/posts/2_Studies/Notes/2000-01-05-JupyterLab(1).html",
+      "/posts/2_Studies/Notes/2000-01-04-Ubuntu.html",
+      "/posts/2_Studies/Notes/2000-01-01-UbuntuSetting.html"
+    ]
+  },
+  {
+    "listing": "/2_cgsp.html",
+    "items": [
+      "/posts/2_Studies/CGSP/2022-12-24-Chap 8.3.html",
+      "/posts/2_Studies/CGSP/2022-12-26-Chap-12.2.html",
+      "/posts/2_Studies/CGSP/2022-12-27-Chap-12.2.1~12.3.1.html",
+      "/posts/2_Studies/CGSP/2023-01-15-Chap-12.4.html"
+    ]
+  },
+  {
+    "listing": "/1_essays.html",
+    "items": [
+      "/posts/1_Essays/2023-02-09-르벡분해.html",
+      "/posts/1_Essays/2023-02-05-Frequency domain analysis of time series.html",
+      "/posts/1_Essays/2023-01-20-추정.html",
+      "/posts/1_Essays/2022-01-12-토폴로지.html",
+      "/posts/1_Essays/2023-02-14-LRTtest_in_Exp.html",
+      "/posts/1_Essays/2023-01-11-여러가지 부등식.html",
+      "/posts/1_Essays/2023-01-07-해석학.html",
+      "/posts/1_Essays/2020-03-12-Frequency domain analysis of time series.html",
+      "/posts/1_Essays/2019-04-26-FourierTransform.html"
+    ]
+  },
+  {
+    "listing": "/2_python.html",
+    "items": [
+      "/posts/2_Studies/Python/2000-04-05-Numpy.html"
+    ]
+  },
+  {
+    "listing": "/2_reviews.html",
+    "items": [
+      "/posts/2_Studies/Reviews/2022-12-23-Ebayesthresh.html"
+    ]
+  },
+  {
+    "listing": "/2_gml.html",
+    "items": [
+      "/posts/2_Studies/GML/Chapter01/02_Graph_metrics.html",
+      "/posts/2_Studies/GML/Chapter01/01_Introduction_Networkx.html",
+      "/posts/2_Studies/GML/Chapter01/03_Graphs_Benchmarks.html",
+      "/posts/2_Studies/GML/Chapter02/01_embedding_examples.html",
+      "/posts/2_Studies/GML/Chapter03/02_Autoencoders.html",
+      "/posts/2_Studies/GML/Chapter03/04_Graph_Neural_Network.html",
+      "/posts/2_Studies/GML/Chapter03/01_Shallow_Embeddings.html",
+      "/posts/2_Studies/GML/Chapter03/03_Structural_deep_neural_embeddings.html",
+      "/posts/2_Studies/GML/Chapter04/04_Graph_Neural_Networks.html",
+      "/posts/2_Studies/GML/Chapter04/03_Graph_regularization_graph_neural_training.html",
+      "/posts/2_Studies/GML/Chapter04/02_Shallow_embeddings.html",
+      "/posts/2_Studies/GML/Chapter04/01_Feature_based_methods.html",
+      "/posts/2_Studies/GML/Chapter05/01_link_prediction.html",
+      "/posts/2_Studies/GML/Chapter05/02_community_detection_algorithms.html",
+      "/posts/2_Studies/GML/Chapter06/01_Social_network_analysis.html",
+      "/posts/2_Studies/GML/Chapter07/03_supervised_classsification_graphSAGE-TFIDF.html",
+      "/posts/2_Studies/GML/Chapter07/02_supervised_classification-embeddings.html",
+      "/posts/2_Studies/GML/Chapter07/01_nlp_graph_creation.html",
+      "/posts/2_Studies/GML/Chapter08/01_Credit_card_edges_classification.html",
+      "/posts/2_Studies/GML/Chapter09/01_Neo4j_bindings.html"
+    ]
+  },
+  {
+    "listing": "/2_pl.html",
+    "items": [
+      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
+    ]
+  },
+  {
+    "listing": "/3_stgcn.html",
+    "items": [
+      "/posts/3_Researches/STGCN/2022-12-30-STGCN-Toy Example.html",
+      "/posts/3_Researches/STGCN/2023-02-14-Tables.html",
+      "/posts/3_Researches/STGCN/2022-12-29-STGCN-tutorial.html"
+    ]
+  },
+  {
+    "listing": "/3_hst.html",
+    "items": [
+      "/posts/3_Researches/HST/2023-01-23-CommunityDetection.html"
+    ]
+  }
+]
