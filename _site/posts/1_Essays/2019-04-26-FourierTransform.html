@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="신록예찬">
-<meta name="dcterms.date" content="2023-02-09">
+<meta name="dcterms.date" content="2019-04-26">
 
-<title>신록예찬’s Blog - 칸토어 집합, 칸토어 함수, 르벡분해</title>
+<title>신록예찬’s Blog - 퓨리에 변환</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">칸토어 집합, 칸토어 함수, 르벡분해</h1>
+      <h1 class="quarto-secondary-nav-title">퓨리에 변환</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">칸토어 집합, 칸토어 함수, 르벡분해</h1>
+      <h1 class="title d-none d-lg-block">퓨리에 변환</h1>
                       </div>
   </div>
     
@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 9, 2023</p>
+        <p class="date">April 26, 2019</p>
       </div>
     </div>
     
@@ -248,17 +248,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cantor-set" id="toc-cantor-set" class="nav-link active" data-scroll-target="#cantor-set">Cantor set</a></li>
-  <li><a href="#cantor-function" id="toc-cantor-function" class="nav-link" data-scroll-target="#cantor-function">Cantor function</a></li>
-  <li><a href="#sigma-finite-signed-measure" id="toc-sigma-finite-signed-measure" class="nav-link" data-scroll-target="#sigma-finite-signed-measure"><span class="math inline">\(\sigma\)</span>-finite signed measure</a>
-  <ul class="collapse">
-  <li><a href="#finite-measure-sigma-finite-measure" id="toc-finite-measure-sigma-finite-measure" class="nav-link" data-scroll-target="#finite-measure-sigma-finite-measure">finite measure, <span class="math inline">\(\sigma\)</span>-finite measure</a></li>
-  <li><a href="#signed-measure" id="toc-signed-measure" class="nav-link" data-scroll-target="#signed-measure">Signed measure</a></li>
-  </ul></li>
-  <li><a href="#lebesgues-decomposition-theorem" id="toc-lebesgues-decomposition-theorem" class="nav-link" data-scroll-target="#lebesgues-decomposition-theorem">Lebesgue’s decomposition theorem</a>
-  <ul class="collapse">
-  <li><a href="#refinement" id="toc-refinement" class="nav-link" data-scroll-target="#refinement">Refinement</a></li>
-  </ul></li>
+  <li><a href="#about-this-doc" id="toc-about-this-doc" class="nav-link active" data-scroll-target="#about-this-doc">About this doc</a></li>
+  <li><a href="#들어가며" id="toc-들어가며" class="nav-link" data-scroll-target="#들어가며">들어가며</a></li>
+  <li><a href="#퓨리에표현들" id="toc-퓨리에표현들" class="nav-link" data-scroll-target="#퓨리에표현들">퓨리에표현들</a></li>
   </ul>
 </nav>
     </div>
@@ -268,112 +260,130 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="cantor-set" class="level1">
-<h1><a href="https://en.wikipedia.org/wiki/Cantor_set">Cantor set</a></h1>
-<p>아래와 같은 과정으로 얻어지는 집합열 <span class="math inline">\(C_0,C_1,\dots\)</span> 을 고려하자.</p>
+<section id="about-this-doc" class="level3">
+<h3 class="anchored" data-anchor-id="about-this-doc">About this doc</h3>
+<p><code>-</code> 이번에는 퓨리에 표현들을 정리하도록 하겠다. 내생각엔 퓨리에 표현들도 벡터의 미분만큼 복잡한 것 같다. 정의가 너무 많고 그게 그거 같아서 그렇다. 이번기회에 깔끔하게 정리하도록 하자. 참고한 문헌은 아래와 같다.</p>
 <ul>
-<li><span class="math inline">\(C_0 := [0,1]\)</span></li>
-<li><span class="math inline">\(C_n:=\frac{C_{n-1}}{3} \cup (\frac{2}{3} + \frac{C_{n-1}}{3})\)</span></li>
+<li>Haykin, S., &amp; Van Veen, B. (2007). Signals and systems. John Wiley &amp; Sons.</li>
 </ul>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Cantor_set_in_seven_iterations.svg/2560px-Cantor_set_in_seven_iterations.svg.png" class="img-fluid"></p>
-<p>이러한 과정은 각 직선의 open middle third를 반복적으로 제거하여 얻어진다. 칸토어 집합 <span class="math inline">\({\cal C}\)</span>는 위와 같은 집합열의 극한으로 정의한다. 즉</p>
-<p><span class="math display">\[{\cal C} = \lim_{n\to \infty} C_n\]</span></p>
-<p>칸토어 집합은 아래와 같은 성질이 있다.</p>
-<ol type="1">
-<li>[0,1] 사이의 모든 실수를 3진법을 표현한다고 생각하자. <span class="math inline">\(C_1\)</span>은 <span class="math inline">\(0.1xxxx\dots_{(3)}\)</span>와 같은 숫자가 빠지고, <span class="math inline">\(C_2\)</span>에서는 <span class="math inline">\(0.01xxx\dots_{(3)}\)</span> 혹은 <span class="math inline">\(0.21xxx\dots_{(3)}\)</span> 에 대응하는 숫자가 빠지는 과정이 반복적으로 일어난다고 볼 수 있다.</li>
-<li>1의 결과를 잘 생각하면 칸토어 집합에 포함되는 수는 삼진법 소수로 표기했을 때 모든 자리수가 0 또는 2가 된다는 점을 쉽게 눈치챌 수 있다.</li>
-<li>칸토어 집합의 수는 [0,1] 사이의 모든 실수와 일대응대응(전단사)시킬 수 있다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-<li>3에 의하여 칸토어 집합은 비가산집합이며, 크기는 <span class="math inline">\(2^{\aleph_0}\)</span> 이다.</li>
-<li>칸토어 집합을 만드는 과정에서 빠지는 구간의 길이는 <span class="math inline">\(1/3, 2/9, 4/27 \dots\)</span> 이고 이 길이를 모두 합치면 1이다.</li>
-<li>따라서 칸토어 집합은 르벡측도가 0이다.</li>
-<li>4와6에 의하여 칸토어 집합은 르벡측도가 0인 비가산집합이 된다.</li>
-<li>칸토어집합은 조밀한 곳이 없는 집합이다.</li>
-<li>그 밖에 성질도 있는 듯 하나 이해할 수 없음</li>
-</ol>
 </section>
-<section id="cantor-function" class="level1">
-<h1><a href="https://en.wikipedia.org/wiki/Cantor_function">Cantor function</a></h1>
-<p><code>-</code> 칸토어 함수는 아래와 같은 과정으로 얻어진다.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Cantor_function.gif" class="img-fluid"></p>
-<p>이를 좀 더 수학적으로 설명하면 아래와 같다.</p>
-<ol type="1">
-<li>[0,1] 사이의 임이의 점 <span class="math inline">\(x\)</span>를 삼진법으로 나타낸다.</li>
-<li><span class="math inline">\(x\)</span>에 1이 있을 경우, 첫번째 1 이후의 모든 자리수를 0으로 바꾼다.</li>
-<li>모든 2를 1로 바꾼다.</li>
-<li>결과를 이진법으로 해석하고 이를 다시 십진법의 수로 바꾸면 <span class="math inline">\(c(x)\)</span>가 된다.</li>
-</ol>
-<p><code>-</code> 칸토어 함수의 특징</p>
-<ol type="1">
-<li>이 함수는 칸토어 집합의 외부에서 상수함수이다.즉 칸토어 집합의 외부에서는 기울기가 0이다.</li>
-<li>이 함수는 어디서나 기울기가 0이다. 즉 함수가 증가할 확률이 0%이다.</li>
-<li>이 함수는 어디서나 연속이다. (왜?)</li>
-<li><span class="math inline">\(x\)</span>가 0에서 1로 감에 따라서 <span class="math inline">\(c(x)\)</span>도 0에서 1로 가며, 그 사이의 모든 값들을 지난다. (연속이니까)</li>
-<li>칸토어 함수는 균등 연속이지만 절대 연속은 아닌 함수이다.</li>
-<li>칸토어 집합에서는 미분계수가 존재하지 않는다. ??</li>
-<li>그렇지만 칸토어 집합에서 jump가 있는 것은 아니다. 즉 칸토어 함수는 비약 불연속점이 없다.</li>
-<li>칸토어 함수는 특이함수의 일반적인 예시이다.</li>
-</ol>
-</section>
-<section id="sigma-finite-signed-measure" class="level1">
-<h1><span class="math inline">\(\sigma\)</span>-finite signed measure</h1>
-<section id="finite-measure-sigma-finite-measure" class="level2">
-<h2 class="anchored" data-anchor-id="finite-measure-sigma-finite-measure"><a href="https://en.wikipedia.org/wiki/Σ-finite_measure">finite measure, <span class="math inline">\(\sigma\)</span>-finite measure</a></h2>
-<p><code>-</code> 느낌: 메져 <span class="math inline">\(m\)</span>이 measurable space <span class="math inline">\((X,{\cal A})\)</span>에서 finite measure라는 뜻은 모든 <span class="math inline">\(A \in {\cal A}\)</span>에 대하여 <span class="math inline">\(m(A)&lt;\infty\)</span>가 성립하는 measure이다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<p><strong>(예제)</strong> 르벡메져는 <span class="math inline">\((\mathbb{R},{\cal R})\)</span>에서 finite measure가 아니다. 왜냐하면 <span class="math inline">\(m(\mathbb{R})=\infty\)</span> 이기 때문!</p>
-<p>당연히 finite measure는 일반적인 measure 보다 이론적 성질을 전개하기 용이하다. 하지만 때로는 이 조건이 너무 만족하기 어려워 이것보다 약한 조건<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>을 고려하고 싶을 경우가 있는데, 그것이 바로 <span class="math inline">\(\sigma\)</span>-finite measure의 개념이다.</p>
-<p><code>-</code> 느낌: <span class="math inline">\(m(X) =\infty\)</span> 이라고 해도, <span class="math inline">\(X\)</span>를 길이가 유한인<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> 집합들의 countable-many-union으로 “덮을” 수 있다면 <span class="math inline">\((X,{\cal A},m)\)</span> 을 <span class="math inline">\(\sigma\)</span>-finite measure space 라고 한다.</p>
-<p><strong>(예제)</strong> 예를들면 실수 집합 <span class="math inline">\(\mathbb{R}\)</span>은</p>
-<p><span class="math display">\[\mathbb{R} = \bigcup_{k \in \mathbb{Z}}[k, k+1)\]</span></p>
-<p>와 같이 집합 <span class="math inline">\([k,k+1) ~ k \in \mathbb{Z}\)</span>로 “덮을” 수 있고 <span class="math inline">\(m([k,k+1))=1\)</span> 이므로 <span class="math inline">\((\mathbb{R},{\cal R})\)</span>에서의 르벡메져 <span class="math inline">\(m\)</span>은 <span class="math inline">\(\sigma\)</span>-finite measure가 된다.</p>
-<blockquote class="blockquote">
-<p>요약하면 가측공간 <span class="math inline">\((X,{\cal A})\)</span>에서 르벡메져는 finite한 측도는 아니지만 <span class="math inline">\(\sigma\)</span>-finite한 측도이다.</p>
-</blockquote>
-</section>
-<section id="signed-measure" class="level2">
-<h2 class="anchored" data-anchor-id="signed-measure"><a href="https://en.wikipedia.org/wiki/Signed_measure">Signed measure</a></h2>
-<p><code>-</code> 느낌: measure는 어떠한 집합들의 집합을 정의역으로 양의 실수를 치역으로 가지는 set function이다. 즉 measure는 항상 그 값이 양수가 나와야 한다. 그런데 때로는 음의 값을 가지는 set function을 생각하고 싶을 때도 있다. 이러한 동기로 signed measure를 고안하였다.</p>
-<p><code>-</code> 조심: 책마다 signed measure 에 대한 정의가 다르다. 교재에 따라서 <span class="math inline">\(-\infty\)</span>의 값을 허용하는 교재도 있고 아닌 교재도 있는데 구분을 위해서</p>
+<section id="들어가며" class="level3">
+<h3 class="anchored" data-anchor-id="들어가며">들어가며</h3>
+<p><code>-</code> 우선 신호와 하나의 신호값을 구분하는 notation을 생각하자. 우리가 다루는 신호 즉 데이터는 값들의 집합이다. 우리가 시계열자료를 다룬다면 데이터는 아래와 같이 표현한다.</p>
 <ul>
-<li>“finite signed measures”</li>
-<li>“extended signed measures”</li>
+<li><span class="math inline">\(\{x_i: i \in \mathbb{Z}\}\)</span></li>
 </ul>
-<p>와 같이 명시하여 서술하는 것이 좋다.</p>
-</section>
-</section>
-<section id="lebesgues-decomposition-theorem" class="level1">
-<h1><a href="https://en.wikipedia.org/wiki/Lebesgue%27s_decomposition_theorem">Lebesgue’s decomposition theorem</a></h1>
-<p>In mathematics, more precisely in measure theory, Lebesgue’s decomposition theorem states that for every two <span class="math inline">\(\sigma\)</span>-finite signed measures <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> on a measurable space <span class="math inline">\((\Omega,\Sigma)\)</span> there exist two σ-finite signed measures <span class="math inline">\(\nu_{0}\)</span> and <span class="math inline">\(\nu_1\)</span> such that:</p>
+<p>이와 유시하게 우리가 다루는 자료가 <span class="math inline">\(t \in \mathbb{R}\)</span>인 연속신호라면 아래와 같이 표현한다.</p>
 <ul>
-<li><span class="math inline">\(\nu =\nu _{0}+\nu _{1}\)</span>,</li>
-<li><span class="math inline">\(\nu _{0}\ll \mu\)</span> (that is <span class="math inline">\(\nu_{0}\)</span> is absolutely continuous with respect to <span class="math inline">\(\mu\)</span>)</li>
-<li><span class="math inline">\(\nu_{1} \perp \mu\)</span> (that is, <span class="math inline">\(\nu_1\)</span> and <span class="math inline">\(\mu\)</span> are singular).</li>
+<li><span class="math inline">\(\{x(t): t \in \mathbb{R}\}\)</span></li>
 </ul>
-<p>These two measures are uniquely determined by <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span>.</p>
-<section id="refinement" class="level2">
-<h2 class="anchored" data-anchor-id="refinement">Refinement</h2>
-<p>Lebesgue’s decomposition theorem can be refined in a number of ways.</p>
-<p>First, the decomposition of the singular part of a regular Borel measure on the real line can be refined:</p>
-<p><span class="math display">\[{\bf \nu}={\bf \nu}_{\text{cont}}+{\bf \nu}_{\text{sing}}+{\bf \nu}_{\text{pp}}\]</span></p>
-<p>where</p>
+<p>우리가 모든 <span class="math inline">\(i \in \mathbb{Z}\)</span> 혹은 모든 <span class="math inline">\(t \in \mathbb{R}\)</span>에서 신호를 다룰 생각이 없다면 아래와 같은 표현도 얼마든지 가능하다.</p>
 <ul>
-<li><span class="math inline">\({\bf \nu}_{\text{cont}}\)</span> is the absolutely continuous part</li>
-<li><span class="math inline">\({\bf \nu}_{\text{sing}}\)</span> is the singular continuous part</li>
-<li><span class="math inline">\({\bf \nu}_{\text{pp}}\)</span> is the pure point part (a discrete measure)</li>
+<li><span class="math inline">\(\{x_i: i=0,1,\dots, \xi-1 \}\)</span></li>
+<li><span class="math inline">\(\{x(t):t \in (0,\zeta) \}\)</span></li>
 </ul>
-<p>Second, absolutely continuous measures are classified by the Radon–Nikodym theorem, and discrete measures are easily understood. Hence (singular continuous measures aside), Lebesgue decomposition gives a very explicit description of measures. The Cantor measure (the probability measure on the real line whose cumulative distribution function is the Cantor function) is an example of a singular continuous measure.</p>
+<p><code>-</code> 위와 같이 집합의 표현 없이 단독으로 <span class="math inline">\(x_i\)</span>, <span class="math inline">\(x(t)\)</span>와 같이 쓰면 하나의 고정된 값 <span class="math inline">\(i,t\)</span>에 대한 <span class="math inline">\(x_i\)</span>, <span class="math inline">\(x(t)\)</span>로 이해하자. 솔직히 이렇게 꼭 신호를 엄밀하게 집합으로 정의하는게 유별나 보일수도 있다. 일반적으로 사람들은 <span class="math inline">\(\{x(t): ~t \in \mathbb{R} \}\)</span> 대신에 보통 <span class="math inline">\(x(t)\)</span>로 간단하게 줄여서 쓰곤한다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 하지만 이 포스팅에 한정하여 위와 같이 집합의 형태로 엄밀하게 구분해 쓰도록 하자. 처음에는 익숙하지 않지만 나중에는 편리하다.</p>
+</section>
+<section id="퓨리에표현들" class="level3">
+<h3 class="anchored" data-anchor-id="퓨리에표현들">퓨리에표현들</h3>
+<p><code>-</code> 지금부터 우리가 고려하는 모든 신호들은 기본적으로 <strong>(1)</strong> <strong>infinity range</strong>에서 정의된 신호라고 가정한다. 즉 연속신호이면 <span class="math inline">\(\mathbb{R}\)</span>에서 정의된다고 가정하고 이산신호면 <span class="math inline">\(\mathbb{Z}\)</span>에서 정의된다고 가정한다. 또한 우리가 분석하고자 하는 신호는 <strong>(2)</strong> <strong>integrable</strong> 하다고 가정한다. 이건 퓨리에표현들이 적분 혹은 무한합의 형태로 표현된다는 것을 상기하면 타당하여 보인다.</p>
+<p><code>-</code> 즉 우리가 고려하는 신호는 <strong>인피니티-레인지</strong>에서 정의되며 <strong>인피니티-레인지</strong>에서 적분값이 유한한 연속신호 혹은 이산신호 임을 알 수 있다. 이러한 신호는 구체적으로는 아래와 같이 쓸 수 있다.</p>
+<ul>
+<li><span class="math inline">\(\left\{x(t): \int_{-\infty}^{\infty} |x(t)| dt &lt;\infty,~ t \in \mathbb{R} \right\}\)</span></li>
+<li><span class="math inline">\(\left\{x_i: \sum_{i=-\infty}^{\infty} |x_i| &lt;\infty,~ i \in \mathbb{Z} \right\}\)</span></li>
+</ul>
+<p><code>-</code> 그런데 <strong>integrable</strong> 한 함수들만을 고려하다 보면 우리가 다룰 수 있는 신호의 범위가 확 줄어들게 된다. 가령 예를 들어서 아래와 같은 신호는 적분을 하면 무한대가 나오기 때문에 <strong>intergrable</strong> 하지 않다.</p>
+<ul>
+<li><span class="math inline">\(\left\{x(t): x(t)=\sin(t)+1 ,~ t \in \mathbb{R} \right\}\)</span></li>
+</ul>
+<p>이것은 좀 불합리해 보이는데 위의 신호는 주기신호라서 한 주기의 패턴만 분석하면 될것 같이 보이기 때문이다. 위의 신호는 <strong>intergrable</strong> 하지않지만 아래의 신호는 <strong>intergrable</strong> 하다.</p>
+<ul>
+<li><span class="math inline">\(\left\{x(t): x(t)=\sin(t)+1 ,~ t \in (0,2\pi) \right\}\)</span></li>
+</ul>
+<p>우리는 이런신호까지 분석하기로 한다. 이런신호를 분석할 수 있는 이유는 해석학 교재를 참고하면 된다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><code>-</code> 아무튼 우리는 <strong>(1) 인피니티-레인지에서 정의되는 가지는 신호 (2) 인피니티-레인지에서 적분값이 잘 정의되는 신호, 혹은 한 주기만 적분해 보았을때 그 값이 잘 정의되는 주기신호</strong> 를 타겟팅해 분석한다. 즉 분석하는 신호는 구체적으로 아래의 4가지이다.</p>
+<p><strong>case 1: 연속-비주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x(t): \int_{-\infty}^{\infty} |x(t)| dt &lt;\infty,~ t \in \mathbb{R} \right\}.\)</span></li>
+</ul>
+<p><strong>case 2: 연속-주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x(t): \int_{0}^{\zeta} |x(t)| dt &lt;\infty, ~ , x(t)=x(t+\zeta), ~ t \in \mathbb{R}, \right\}.\)</span></li>
+</ul>
+<p><strong>case 3: 이산-비주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x_i: \sum_{i=-\infty}^{\infty} |x_i| &lt;\infty,~ i \in \mathbb{Z} \right\}.\)</span></li>
+</ul>
+<p><strong>case 4: 이산-주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x_i: \sum_{i=0}^{\xi-1} |x_i| &lt;\infty,~ i, x_i=x_{i+\xi},~ i \in \mathbb{Z} \right\}.\)</span></li>
+</ul>
+<p><code>-</code> 표현들을 정리하기에 앞서서 몇 가지 알아두어야 할 사항이 있다. <strong>(1)</strong> 시간축에서 연속인 신호는 주파수측에서는 비주기신호가 나온다. <strong>(2)</strong> 시간축에서 디스크릿한 신호는 주파수측에서는 주기신호이다. <strong>(3)</strong> 시간축에서 주기인 신호는 주파수에서는 디스크릿하다. <strong>(4)</strong> 시간축에서 비주기신호는 주파수에서 연속이다. 이 사실들을 종합하면 각각의 경우에 해당하는 퓨리에 표현들은 아래와 같은 특징을 가지고 있음을 알 수 있다.</p>
+<p><strong>case 1: 연속-비주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x(t): \int_{-\infty}^{\infty} |x(t)| dt &lt;\infty,~ t \in \mathbb{R} \right\} \\ \overset{FT}{\Longleftrightarrow} \left\{\hat x(\omega): \int_{-\infty}^{\infty} |\hat x(\omega)| d\omega &lt;\infty,~ \omega \in \mathbb{R} \right\}\)</span></li>
+</ul>
+<p><strong>case 2: 연속-주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x(t): \int_{0}^{\zeta} |x(t)| dt &lt;\infty,~ x(t)=x(t+\zeta),~ t \in \mathbb{R} \right\} \\ \overset{FS}{\Longleftrightarrow} \left\{\hat x_k: \sum_{k=-\infty}^{\infty} |\hat x_k| &lt;\infty,~ k \in \mathbb{Z} \right\}\)</span></li>
+</ul>
+<p><strong>case 3: 이산-비주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x_i: \sum_{i=-\infty}^{\infty} |x_i| &lt;\infty,~ i \in \mathbb{Z} \right\} \\ \overset{DTFT}{\Longleftrightarrow} \left\{\hat x(\omega): \int_{0}^{2\pi} |\hat x(\omega)| d\omega &lt;\infty,~ \hat x(\omega)=\hat x(\omega+2\pi),~ \omega \in \mathbb{R} \right\}.\)</span></li>
+</ul>
+<p><strong>case 4: 이산-주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x_i: \sum_{i=0}^{\xi-1} |x_i| &lt;\infty,~ x_i=x_{i+\xi},~ i \in \mathbb{R} \right\} \\ \overset{DTFS}{\Longleftrightarrow} \left\{\hat x_k: \sum_{k=0}^{\xi-1} |\hat x_k| &lt;\infty,~\hat x_k = \hat x_{k+\xi} ,~ k \in \mathbb{Z} \right\}.\)</span></li>
+</ul>
+<p><code>-</code> 여기에서 <span class="math inline">\(\zeta\)</span>는 (시간축에서) 연속신호의 주기라고 정의하고 <span class="math inline">\(\xi\)</span>는 (시간축에서) 이산신호의 주기라고 약속하자. 주파수영역이 디스크릿하게 나오면 FS라고 부르고 주파수영역이 컨티뉴어스하게 나오면 FT라고 부른다. 특이한점은 비주기-이산신호에 대한 FS <span class="math inline">\(\hat x(\omega)\)</span>는 주파수 영역에서 주기가 <span class="math inline">\(2\pi\)</span>임을 파악할 수 있다. 이유는 궁금해하지말자. (내생각에 그냥 <span class="math inline">\(\omega\)</span>를 적당히 스케일링하여 주기를 <span class="math inline">\(2\pi\)</span>로 맞췄을 거다.)</p>
+<p><code>-</code> 이제 짜증나는 적분가능조건따위는 버리도록 하자. 대신에 각 경우에 퓨리에변환(혹은series)과 그 역이 어떻게 정의되는지 알아보자. 그리고 외우자. 각 신호가 어떠한 도메인에서 정의되는지만 잘 파악하면 <strong>의외로</strong> 외우기 쉽다.</p>
+<p><strong>case 1. 연속-비주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x(t): x(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty} \hat x(\omega)e^{j\omega t} d\omega,~ t \in \mathbb{R} \right\} \\ \overset{FT}{\Longleftrightarrow} \left\{\hat x(\omega): \hat x(\omega)=\int_{-\infty}^{\infty} x(t)e^{-j\omega t} dt,~ \omega \in \mathbb{R} \right\}.\)</span></li>
+</ul>
+<p><strong>case 2. 연속-주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x(t): x(t)= \sum_{k=-\infty}^{\infty} \hat x_k e^{j \frac{2\pi}{\zeta} t} ,~ t \in \mathbb{R} \right\} \\ \overset{FS}{\Longleftrightarrow} \left\{\hat x_k: \hat x_k= \frac{1}{\zeta}\int_{0}^{\zeta}x(t)e^{-j \frac{2\pi k}{\zeta}t}dt,~ k \in \mathbb{Z} \right\}.\)</span></li>
+</ul>
+<p><strong>case 3. 이산-비주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x_i: x_i=\frac{1}{2\pi}\int_{0}^{2\pi}\hat x(\omega)e^{j \omega i}d\omega, ~ i \in \mathbb{Z} \right\} \\ \overset{DTFT}{\Longleftrightarrow} \left\{\hat x(\omega): \hat x(\omega)=\sum_{i=-\infty}^{\infty}x_ie^{-j\omega i}, ~\omega \in \mathbb{R} \right\}.\)</span></li>
+</ul>
+<p><strong>case 4. 이산-주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x_i: x_i=\sum_{k=0}^{\xi-1} \hat x_k e^{-j\frac{2\pi k}{\xi}i},~ i \in \mathbb{Z} \right\} \\ \overset{DTFS}{\Longleftrightarrow} \left\{\hat x_k: \hat x_k= \frac{1}{\xi}\sum_{i=0}^{\xi-1} x_i e^{-j\frac{2\pi k}{\xi}i},~ k \in \mathbb{Z} \right\}.\)</span></li>
+</ul>
+<p><code>-</code> 주기함수는 (그것이 이산이든 연속이든) 주파수영역에서의 값이 디스크릿하다. 즉 위에서 case2와 case4인 경우는 주파수영역에서 값이 디스크릿하다. 이것을 연속함수인것처럼 바꿔보면 아래와 같이 쓸 수 있다.</p>
+<p><strong>case 2. 연속-주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x(t): x(t)= \frac{1}{2\pi}\int_{-\infty}^{\infty} \hat x(\omega)e^{j\omega t} d\omega,~ t \in \mathbb{R} \right\} \\ \overset{FT}{\Longleftrightarrow} \left\{\hat x(\omega): 2\pi\sum_{k=-\infty}^{\infty}\left[\frac{1}{\zeta}\int_{0}^{\zeta}x(t)e^{-j \frac{2\pi k}{\zeta}t}dt\right]\delta\left(\omega-\frac{2\pi k}{\zeta}\right), ~ k \in \mathbb{Z} \right\}.\)</span></li>
+</ul>
+<p><strong>case 4. 이산-주기</strong></p>
+<ul>
+<li><span class="math inline">\(\left\{x_i: x_i=\frac{1}{2\pi}\int_{0}^{2\pi}\hat x(\omega)e^{j \omega i}d\omega,,~ i \in \mathbb{Z} \right\} \\ \overset{DTFT}{\Longleftrightarrow} \left\{\hat x(\omega): 2\pi\sum_{k=-\infty}^{\infty}\left[\frac{1}{\xi}\sum_{i=0}^{\xi-1} x_i e^{-j\frac{2\pi k}{\xi}i}\right]\delta\left(\omega-\frac{2\pi k}{\xi}\right),~ k \in \mathbb{Z} \right\}.\)</span></li>
+</ul>
+<p><code>-</code> 주목할것은 주기가 <span class="math inline">\(\zeta\)</span> 혹은 <span class="math inline">\(\xi\)</span> 인 함수의 주파수 응답은 오로지</p>
+<ul>
+<li><span class="math inline">\(\omega \in \left\{\frac{2 \pi k}{\zeta}, k \in \mathbb{Z}\right\}\)</span></li>
+</ul>
+<p>혹은</p>
+<ul>
+<li><span class="math inline">\(\omega \in \left\{\frac{2 \pi k}{\xi}, k \in \mathbb{Z}\right\}\)</span></li>
+</ul>
+<p>에서만 존재한다는 점이다. 또한 이산신호의 경우 <span class="math inline">\(x_i\)</span>의 주기가 <span class="math inline">\(\xi\)</span> 이면 <span class="math inline">\(\hat{x}(\omega)\)</span>의 주기역시 <span class="math inline">\(\xi\)</span> 라는점 역시 주목할만한 부분이다.</p>
+<p><code>-</code> 주파수영역에서 디스크릿한 함수를 연속인것처럼 표현했듯이 시간영역에서 디스크릿한 함수 역시 연속인것처럼 표현할 수 있다. 예를들면 <span class="math inline">\(\{x_i: x_i=x(iT),~i \in \mathbb{Z}\}\)</span> 와 같은 관계가 있는 경우 아래와 같이 표현 가능하다.</p>
+<p><span class="math display">\[x_{\delta}(t)=\sum_{i=-\infty}^{\infty}x_i\delta(t-iT).\]</span></p>
+<p>이거 엄청 중요하다.</p>
 
 
-</section>
 </section>
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>구간 <span class="math inline">\([0,1]\)</span>사이의 수를 모두 2진수로 바꾼 집합을 <span class="math inline">\(A\)</span>라고 하고 3진법으로 표현된 칸토어 수에서 <span class="math inline">\(2\)</span>를 <span class="math inline">\(1\)</span>로 바꾼수의 집합을 <span class="math inline">\(B\)</span>라고 하면 <span class="math inline">\(A\)</span>와 <span class="math inline">\(B\)</span>사이에는 적당한 전단사 함수를 잡을 수 있다.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>따라서 그냥 <span class="math inline">\(m(X)&lt;\infty\)</span> 이면 이 조건이 만족한다.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>만족하기 쉬운 조건<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>메져 <span class="math inline">\(m\)</span>으로 쟀을때 길이가 유한인<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>나도 그렇다.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>사실 나도 잘 모름 (뭐 <strong>quotient group</strong>이런거 알아야 하는데 공부하려면 꽤 걸릴듯)<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
