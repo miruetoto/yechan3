@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -311,7 +311,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#추정" id="toc-추정" class="nav-link active" data-scroll-target="#추정">추정</a></li>
+  <li><a href="#mme와-mle" id="toc-mme와-mle" class="nav-link active" data-scroll-target="#mme와-mle">MME와 MLE</a></li>
+  <li><a href="#hatthetamle의-일치성" id="toc-hatthetamle의-일치성" class="nav-link" data-scroll-target="#hatthetamle의-일치성"><span class="math inline">\(\hat{\theta}^{MLE}\)</span>의 일치성</a></li>
+  <li><a href="#hatthetamle의-점근분포" id="toc-hatthetamle의-점근분포" class="nav-link" data-scroll-target="#hatthetamle의-점근분포"><span class="math inline">\(\hat{\theta}^{MLE}\)</span>의 점근분포</a>
+  <ul class="collapse">
+  <li><a href="#mle의-일치성에-대한-구체적인-논의" id="toc-mle의-일치성에-대한-구체적인-논의" class="nav-link" data-scroll-target="#mle의-일치성에-대한-구체적인-논의">MLE의 일치성에 대한 구체적인 논의</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -321,37 +326,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">Distributions</span>, <span class="bu">Plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="추정" class="level1">
-<h1>추정</h1>
-<p>데이터로부터 모수 혹은 모수의 함수를 추측하는 일을 추정이라고 한다.</p>
-<p>(예시)</p>
-<p>아래와 같은 베르누이 분포에서 데이터 <span class="math inline">\({\bf x}=(x_1,\dots,x_{10})\)</span>을 얻었다고 하자.</p>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">Bernoulli</span>(<span class="fl">0.37</span>),<span class="fl">10</span>)</span>
+<section id="mme와-mle" class="level1">
+<h1>MME와 MLE</h1>
+<p>데이터로부터 모수 혹은 모수의 함수를 추측하는 일을 추정이라고 한다. 교과서에서 가장 처음으로 배우는 것은 적률추정(MME)이다. 적률추정량은 구하기가 쉽고<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 일치성을 가진다는 장점이 있는 반면 추정량이 유일하지 않다는 단점이 존재한다.</p>
+<p>보통 통계학과에서는 적률추정량보다 최대가능도 추정량(MLE)을 더 선호하게 된다. MLE는 일반적으로 MME보다 구하기 어렵다. 그래서 MLE를 구하는 여러가지 연습문제를 풀 필요성이 있다.</p>
+</section>
+<section id="hatthetamle의-일치성" class="level1">
+<h1><span class="math inline">\(\hat{\theta}^{MLE}\)</span>의 일치성</h1>
+<p>MME는 일치성을 가졌는데, MLE는 어떠할까? 일반적으로 MLE 역시 일치성을 가짐을 보일 수 있다. 이걸 증명하는게 좀 까다로운데 증명을 생략하고 직관만 얻어보자. 먼저 <span class="math inline">\(X_1,\dots,X_n\)</span>가 모수가 <span class="math inline">\(\theta_0\)</span>인 어떠한 분포의 <strong><em>iid</em></strong> random sample이라면 <span class="math inline">\(X_1,\dots,X_n\)</span>을 바탕으로 MLE를 아래와 같이 추정할 수 있다.</p>
+<p><span class="math display">\[\hat{\theta}^{MLE}=\underset{\theta \in \Omega}{\operatorname{argmax}} l(\theta)=\underset{\theta \in \Omega}{\operatorname{argmax}} \sum_{i=1}^{n}\log f(X_i;\theta)\]</span></p>
+<p>여기에서 <span class="math inline">\(l(\theta)\)</span>는 <span class="math inline">\(\theta\)</span>에 대한 로그가능도 함수라고 한다. 그런데 <span class="math inline">\(l(\theta)\)</span>를 최대화하는 일은 <span class="math inline">\(\frac{1}{n}l(\theta)\)</span>를 최대화하는 일과 같으므로 <span class="math inline">\(\hat{\theta}^{MLE}\)</span>는 아래와 같이 쓸 수 있다.</p>
+<p><span class="math display">\[\hat{\theta}^{MLE}=\underset{\theta \in \Omega}{\operatorname{argmax}}\frac{1}{n}l(\theta)=\underset{\theta \in \Omega}{\operatorname{argmax}}\frac{1}{n}\sum_{i=1}^{n}\log f(X_i; \theta)\]</span></p>
+<p>이제 <span class="math inline">\(\log f(X_i;\theta)\)</span>자체를 하나의 확률변수 <span class="math inline">\(Y_i\)</span>라고 생각하면 <span class="math inline">\(\frac{1}{n}\sum_{i=1}^{n}\log f(X_i;\theta) = \frac{1}{n}\sum_{i=1}^{n} Y_i\)</span>의 꼴이므로 WLLN을 쓸 수 있다. 즉 아래를 보일 수 있다.</p>
+<p><span class="math display">\[\frac{1}{n}\sum_{i=1}^{n}Y_i  \overset{P_{\theta_0}}{\to} \mathbb{E}(Y_1)\]</span></p>
+<p>왠지 위의 식이 성립하니까 아래도 성립할 것 같다.</p>
+<p><span class="math display">\[\hat{\theta}^{MLE}=\underset{\theta \in \Omega}{\operatorname{argmax}}\frac{1}{n}\sum_{i=1}^{n}Y_i \overset{P_{\theta_0}}{\longrightarrow}\underset{\theta \in \Omega}{\operatorname{argmax}}\mathbb{E}(Y_1)\]</span></p>
+<p>마치 <span class="math inline">\(\text{argmax}\)</span>를 하나의 함수 <span class="math inline">\(g\)</span>로 생각하면 <span class="math inline">\(\bar{Y} \overset{P_{\theta_0}}{\to} E(Y_1)\)</span> 일때 <span class="math inline">\(g\big(\bar{Y}\big) \overset{P_{\theta_0}}{\to} g\big(E(Y_1)\big)\)</span> 이 성립한다는 논리이다. 당연히 이러한 논리는 항상 성립하는 것이 아니고 “균등확률수렴성”이라는 강한 조건이 필요하다. 균등수렴성에 대한 자세한 내용은 생략하고 일단</p>
+<p><span class="math display">\[\hat{\theta}^{MLE} \overset{P_{\theta_0}}{\longrightarrow}\underset{\theta \in \Omega}{\operatorname{argmax}}\mathbb{E}(Y_1)\]</span></p>
+<p>와 같은 식이 성립한다고만 알고 있자.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 우리는 MLE의 일치성을 조사하고 싶으므로 결국 아래를 증명하면 된다.</p>
+<p><span class="math display">\[\underset{\theta \in \Omega}{\operatorname{argmax}}\mathbb{E}(Y_1) = \underset{\theta \in \Omega}{\operatorname{argmax}}\mathbb{E}\big[\log f(X_1,\theta)\big] = \theta_{0}\]</span></p>
+<p>결국 <span class="math inline">\(\underset{\theta \in \Omega}{\operatorname{argmax}}\mathbb{E}\big[\log f(X_1,\theta)\big] = \theta_0\)</span>임을 증명하면 되는데 이것은 (1) pdf가 모수 <span class="math inline">\(\theta\)</span>에 대하여 identifiable이고<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> (2) pdf의 support가 <span class="math inline">\(\theta\)</span>에 depend하지 않는 경우 성립한다고 알려져 있다.</p>
+<blockquote class="blockquote">
+<p>사실 이러한 조건은 당연한게 identifiable이 아니라면 제대로된 pdf가 아니라는 의미이겠고 pdf의 support가 <span class="math inline">\(\theta\)</span>에 depend 한다면 <span class="math inline">\(U[\theta-1,\theta+1]\)</span>과 같은 분포처럼 <span class="math inline">\(\theta\)</span>의 MLE가 유일하지 않을 수도 있다는 의미이므로 이러한 두 조건은 합리적으로 보임</p>
+</blockquote>
+</section>
+<section id="hatthetamle의-점근분포" class="level1">
+<h1><span class="math inline">\(\hat{\theta}^{MLE}\)</span>의 점근분포</h1>
+<p><span class="math inline">\(\frac{1}{n}\dot{l}(\hat{\theta})\)</span>의 값을 테일러 정리에 의한 일차근사로 추정하면 아래와 같다.</p>
+<p><span class="math display">\[\frac{1}{n}\dot{l}(\hat{\theta}) \approx \frac{1}{n}\dot{l}(\theta) + \frac{1}{n}\ddot{l}(\theta)(\hat{\theta}-\theta)\]</span></p>
+<section id="mle의-일치성에-대한-구체적인-논의" class="level2">
+<h2 class="anchored" data-anchor-id="mle의-일치성에-대한-구체적인-논의">MLE의 일치성에 대한 구체적인 논의</h2>
+<p><span class="math inline">\(X_1,\dots,X_{10} \overset{i.i.d.}{\sim} Ber(\theta)\)</span> 이라고 하자.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">Bernoulli</span>(<span class="fl">0.3</span>),<span class="fl">10</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>10-element Vector{Bool}:
  0
  0
  1
- 0
+ 1
+ 1
  1
  0
- 1
  0
  0
  0</code></pre>
 </div>
 </div>
-<p>이러한 데이터로부터 평균 <span class="math inline">\(p\)</span>와 분산 <span class="math inline">\(p(1-p)\)</span>를 추측할 수 있는데 이를 추정이라고 한다. 여기에서 평균은 모수 <span class="math inline">\(p\)</span>이고 분산은 모수 <span class="math inline">\(p\)</span>의 함수이다.</p>
+<p>여기에서 <span class="math inline">\(\theta\)</span>는 추정해야할 미지의 모수이지만 우리는 시뮬레이션의 편의상 <span class="math inline">\(\theta\)</span>의 참값을 <span class="math inline">\(\theta_0=\frac{1}{3}\)</span>로 알고 있다고 하자. MLE를 논의함에 있어 핵심적인 역할을 하는 것은 <span class="math inline">\(Y_1=\log f(X_1;\theta)\)</span>이다. 아래는 <span class="math inline">\(Y_1\)</span>에 대한 몇가지 코멘트이다.</p>
+<p><strong>(1)</strong> <span class="math inline">\(Y_1\)</span>은 <span class="math inline">\(X_1\)</span>와 <span class="math inline">\(\theta\)</span>의 함수이다.</p>
+<ul>
+<li>우선 <span class="math inline">\(X_1\)</span>의 함수이므로 <span class="math inline">\(Y_1\)</span>역시 확률변수이다. 따라서 <span class="math inline">\(Y_1\)</span>에 대하여 평균등을 취할 수 있으며 LLN을 쓸 수 있다.</li>
+<li><span class="math inline">\(Y_1\)</span>은 <span class="math inline">\(\theta\)</span>에 대한 함수이므로 <span class="math inline">\(\theta\)</span>에 대하여 미분할 수 있다.</li>
+</ul>
+<p><strong>(베르누이 예제)</strong></p>
+<p>우리의 베르누이 예제에서 <span class="math inline">\(Y_1\)</span>은 아래와 같이 계산된다.</p>
+<p><span class="math display">\[Y_1 = \log f(X_1;\theta)= X_1 \log \theta + (1-X_1)\log(1-\theta)\]</span></p>
+<p>보는 것 처럼 <span class="math inline">\(Y_1\)</span>은 <span class="math inline">\(X_1\)</span>와 <span class="math inline">\(\theta\)</span>의 함수임</p>
+<p><strong>(2)</strong> <span class="math inline">\(\mathbb{E}_{\theta_0}(Y_1)\)</span>은 <span class="math inline">\(\theta\)</span> 만의 함수이다. 적당한 조건<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>이 만족된다면 <span class="math inline">\(\mathbb{E}_{\theta_0}(Y_1)\)</span>은 <span class="math inline">\(\theta_0\)</span> 에서 최대화 된다.</p>
+<p><strong>(베르누이 예제)</strong></p>
+<p><span class="math inline">\(\mathbb{E}_{\theta_0}(Y_1) = \mathbb{E}_{\theta_0}(X_1)\log\theta + (1-\mathbb{E}_{\theta_0}(X_1))\log(1-\theta) = \frac{1}{3} \log\theta + (1-\frac{1}{3})\log(1-\theta)\)</span></p>
+<blockquote class="blockquote">
+<p>일반적인 상황에서는 참모수를 모르지만 우리는 시뮬레이션을 <span class="math inline">\(\theta=1/3\)</span>에서 하였으므로 참모수 <span class="math inline">\(\theta_0=\mathbb{E}_{\theta_0}(X_1)=\frac{1}{3}\)</span>을 알고 있다고 가정한다.</p>
+</blockquote>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">plot</span>(θ <span class="op">-&gt;</span> (<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>)<span class="fu">*log</span>(θ) <span class="op">+</span> (<span class="fl">1</span><span class="op">-</span><span class="fl">1</span><span class="op">/</span><span class="fl">3</span>)<span class="fu">*log</span>(<span class="fl">1</span><span class="op">-</span>θ)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<p><img src="2023-01-20-estimation_files/figure-html/cell-4-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<p>보는것처럼 이 함수 <span class="math inline">\(\mathbb{E}_{\theta_0}(Y_1)\)</span>은 <span class="math inline">\(\theta=\theta_0=\frac{1}{3}\)</span> 에서 최대값을 가진다.</p>
+<p><strong>(3)</strong> <span class="math inline">\(\frac{\partial}{\partial \theta}Y_1\)</span> 역시 <span class="math inline">\(X_1\)</span>와 <span class="math inline">\(\theta\)</span>의 함수이다.</p>
+<ul>
+<li>따라서 <span class="math inline">\(\frac{\partial}{\partial \theta}Y_1\)</span> 역시 확률변수이고 <span class="math inline">\(\frac{\partial}{\partial \theta}Y_1\)</span>에 대하여 평균등을 취할 수 있으며 LLN을 쓸 수 있다.</li>
+</ul>
+<p><strong>(베르누이 예제)</strong></p>
+<p><span class="math inline">\(\frac{\partial}{\partial\theta}Y_1 = X_1\frac{1}{\theta} + (1-X_1)\frac{-1}{1-\theta}\)</span></p>
+<p><strong>(4)</strong> <span class="math inline">\(\mathbb{E}_{\theta}[\frac{\partial}{\partial \theta}Y_1]=0\)</span> 이다.</p>
+<p><strong>(베르누이 예제)</strong></p>
+<p><span class="math inline">\(\mathbb{E}_{\theta}[\frac{\partial}{\partial\theta}Y_1] = \theta\frac{1}{\theta} + (1-\theta)\frac{-1}{1-\theta}=0\)</span></p>
+<p><strong>(5)</strong> <span class="math inline">\(\mathbb{V}_{\theta}[\frac{\partial}{\partial\theta}Y_1]=\mathbb{E}_{\theta}[-\frac{\partial^2}{\partial \theta^2}Y_1]=I(\theta)\)</span></p>
+<p><strong>(베르누이 예제)</strong></p>
+<p><span class="math inline">\(\mathbb{V}_{\theta}\big[\frac{\partial}{\partial\theta}Y_1\big]=\mathbb{E}_{\theta}\big[(\frac{\partial}{\partial\theta}Y_1)^2\big]=\mathbb{E}_{\theta}\big[-\frac{\partial^2}{\partial\theta^2}Y_1\big]=\frac{1}{\theta(1-\theta)}\)</span></p>
+<ul>
+<li>두번째 등호는 <span class="math inline">\(\mathbb{E}_{\theta}[\frac{\partial}{\partial\theta}Y_1]=0\)</span>을 이용하여 증명가능하다.</li>
+<li>언뜻 보면 <span class="math inline">\(\mathbb{V}_{\theta}\big[\frac{\partial}{\partial\theta}Y_1\big]\)</span>를 계산하는 것이 <span class="math inline">\(\mathbb{E}_{\theta}\big[-\frac{\partial^2}{\partial\theta^2}Y_1\big]\)</span>를 계산하는것보다 훨씬 쉬워보인다. 그런데 <span class="math inline">\(X_1\)</span>와 <span class="math inline">\(1-X_1\)</span>이 독립이 아니라서 <span class="math inline">\(\mathbb{V}(X+Y)=\mathbb{V}(X)+\mathbb{V}(V)+2\text{Cov}(X,Y)\)</span>와 같이 공분산 term을 계산해야 하므로 계산이 까다롭다.</li>
+</ul>
+<blockquote class="blockquote">
+<p>베르누이에 대한 피셔정보량은 <a href="https://en.wikipedia.org/wiki/Fisher_information" class="uri">https://en.wikipedia.org/wiki/Fisher_information</a> 에서 확인할 수 있음</p>
+</blockquote>
+<hr>
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>거의 암산가능<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>균등확률수렴성은 로그가능도함수가 strictly convex일 경우 성립한다는 것이 알려져 있음<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://en.wikipedia.org/wiki/Identifiability" class="uri">https://en.wikipedia.org/wiki/Identifiability</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>identifiable &amp; common support<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
