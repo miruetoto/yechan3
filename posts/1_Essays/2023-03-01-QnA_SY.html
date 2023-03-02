@@ -243,12 +243,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../1_essays.html" class="sidebar-item-text sidebar-link">Essays</a>
+  <a href="../../1_essays.html" class="sidebar-item-text sidebar-link"><strong>Essays</strong></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Studies</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><strong>Studies</strong></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -283,7 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Researches</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true"><strong>Researches</strong></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -303,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../4_notes.html" class="sidebar-item-text sidebar-link">–<em>Notes</em>–</a>
+  <a href="../../4_notes.html" class="sidebar-item-text sidebar-link"><strong><em>Notes</em></strong></a>
   </div>
 </li>
     </ul>
@@ -383,7 +383,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong><em><span class="math inline">\(\alpha\)</span>를 구해보자. (이론)</em></strong></p>
 <p><span class="math inline">\(T(X_1,X_2) = \frac{0.25\exp(-0.5X_1 -0.5X_2)}{\exp(-X_1-X_2)}=0.25\exp(0.5X_1+0.5X_2)\)</span></p>
 <p>$T(X_1,X_2)&lt; (0.5X_1+0.5X_2) &lt; 2 X_1+X_2&lt; 2 $</p>
-<p>그런데 $X_1+X_2 ^2(4) $ under <span class="math inline">\(H_0\)</span></p>
+<p>그런데 <span class="math inline">\(X_1+X_2 \sim \chi^2(4)\)</span> under <span class="math inline">\(H_0\)</span></p>
 <p><span class="math inline">\(P(X_1+X_2 &lt; 2\ln2) = \int_0^{2\ln2} \frac{1}{4\Gamma(2)}x e^{-x/2}dx=\int_0^{\ln2} t e^{-t}dt=\big[t(-e^{-t})-e^{-t}\big]_0^{\ln2}\)</span></p>
 <div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1"></a>t <span class="op">=</span> <span class="fu">log</span>(<span class="fl">2</span>) </span>
@@ -402,7 +402,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><strong><em><span class="math inline">\(\beta\)</span>를 구해보자. (이론)</em></strong></p>
 <p>$T(X_1,X_2)&gt; (0.5X_1+0.5X_2) &gt; 2 (X_1+X_2)&gt; 4 $</p>
-<p>그런데 $2(X_1+X_2) ^2(4) $ under <span class="math inline">\(H_1\)</span></p>
+<p>그런데 <span class="math inline">\(2(X_1+X_2) \sim \chi^2(4)\)</span> under <span class="math inline">\(H_1\)</span></p>
 <p><span class="math inline">\(P(2(X_1+X_2) &gt; 4\ln2) = \int_{4\ln2}^{\infty}\frac{1}{4\Gamma(2)}x e^{-x/2}dx=\int_{2\ln2}^{\infty} t e^{-t}dt=\big[t(-e^{-t})-e^{-t}\big]_{2\ln2}^{\infty}\)</span></p>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1"></a>u <span class="op">=</span> <span class="fl">0</span></span>
