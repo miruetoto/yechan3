@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="신록예찬">
-<meta name="dcterms.date" content="2023-02-10">
+<meta name="dcterms.date" content="2000-01-06">
 
-<title>신록예찬’s Blog - [GML] Chap3: 비지도 그래프 학습 - Structural Deep Network Embedding</title>
+<title>신록예찬’s Blog - [Note] 주피터랩: 설정 및 몇가지 팁</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,22 +88,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../../">
-<script src="../../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script>
 
 
-<link rel="stylesheet" href="../../../../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">신록예찬’s Blog</span>
     </a>
   </div>
@@ -179,7 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../../about.html">
+    <a class="nav-link" href="../../about.html">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -194,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><strong>[GML]</strong> Chap3: 비지도 그래프 학습 - Structural Deep Network Embedding</h1>
+      <h1 class="quarto-secondary-nav-title"><strong>[Note]</strong> 주피터랩: 설정 및 몇가지 팁</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -205,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><strong>[GML]</strong> Chap3: 비지도 그래프 학습 - Structural Deep Network Embedding</h1>
+      <h1 class="title d-none d-lg-block"><strong>[Note]</strong> 주피터랩: 설정 및 몇가지 팁</h1>
                       </div>
   </div>
     
@@ -222,7 +222,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 10, 2023</p>
+        <p class="date">January 6, 2000</p>
       </div>
     </div>
     
@@ -242,7 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../1_essays.html" class="sidebar-item-text sidebar-link">Essays</a>
+  <a href="../../1_essays.html" class="sidebar-item-text sidebar-link">Essays</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -255,27 +255,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../2_cgsp.html" class="sidebar-item-text sidebar-link">CGSP</a>
+  <a href="../../2_cgsp.html" class="sidebar-item-text sidebar-link">CGSP</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../2_gml.html" class="sidebar-item-text sidebar-link">GML</a>
+  <a href="../../2_gml.html" class="sidebar-item-text sidebar-link">GML</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../2_python.html" class="sidebar-item-text sidebar-link">Python</a>
+  <a href="../../2_python.html" class="sidebar-item-text sidebar-link">Python</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../2_pl.html" class="sidebar-item-text sidebar-link">PyTorch Lightning</a>
+  <a href="../../2_pl.html" class="sidebar-item-text sidebar-link">PyTorch Lightning</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../2_reviews.html" class="sidebar-item-text sidebar-link">Reviews</a>
+  <a href="../../2_reviews.html" class="sidebar-item-text sidebar-link">Reviews</a>
   </div>
 </li>
       </ul>
@@ -290,19 +290,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../3_hst.html" class="sidebar-item-text sidebar-link">HST</a>
+  <a href="../../3_hst.html" class="sidebar-item-text sidebar-link">HST</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../3_stgcn.html" class="sidebar-item-text sidebar-link">STGCN</a>
+  <a href="../../3_stgcn.html" class="sidebar-item-text sidebar-link">STGCN</a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../4_notes.html" class="sidebar-item-text sidebar-link">–<em>Notes</em>–</a>
+  <a href="../../4_notes.html" class="sidebar-item-text sidebar-link">–<em>Notes</em>–</a>
   </div>
 </li>
     </ul>
@@ -314,7 +314,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#structural-deep-network-embedding" id="toc-structural-deep-network-embedding" class="nav-link active" data-scroll-target="#structural-deep-network-embedding">Structural Deep Network Embedding</a></li>
+  <li><a href="#주피터에-r커널을-연결할-경우-그림크기-조정" id="toc-주피터에-r커널을-연결할-경우-그림크기-조정" class="nav-link active" data-scroll-target="#주피터에-r커널을-연결할-경우-그림크기-조정">주피터에 R커널을 연결할 경우 그림크기 조정</a></li>
+  <li><a href="#깃허브에서-.py파일-불러오기" id="toc-깃허브에서-.py파일-불러오기" class="nav-link" data-scroll-target="#깃허브에서-.py파일-불러오기">깃허브에서 <code>*.py</code>파일 불러오기</a></li>
+  <li><a href="#rpy2-magic" id="toc-rpy2-magic" class="nav-link" data-scroll-target="#rpy2-magic">rpy2 magic</a></li>
+  <li><a href="#깃허브에서-.r파일-불러오기" id="toc-깃허브에서-.r파일-불러오기" class="nav-link" data-scroll-target="#깃허브에서-.r파일-불러오기">깃허브에서 <code>*.R</code>파일 불러오기</a></li>
+  <li><a href="#matplotlib-그림크기조정" id="toc-matplotlib-그림크기조정" class="nav-link" data-scroll-target="#matplotlib-그림크기조정">matplotlib 그림크기조정</a></li>
+  <li><a href="#gpu-사용여부-체크" id="toc-gpu-사용여부-체크" class="nav-link" data-scroll-target="#gpu-사용여부-체크">GPU 사용여부 체크</a></li>
+  <li><a href="#깃랩관련-회사아니면-필요없음" id="toc-깃랩관련-회사아니면-필요없음" class="nav-link" data-scroll-target="#깃랩관련-회사아니면-필요없음">깃랩관련 (회사아니면 필요없음)</a></li>
   </ul>
 </nav>
     </div>
@@ -324,42 +330,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="structural-deep-network-embedding" class="level1">
-<h1>Structural Deep Network Embedding</h1>
-<p>import tensorflow as tf</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> gem.embedding.sdne <span class="im">import</span> SDNE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>graph <span class="op">=</span> nx.karate_club_graph()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>m1 <span class="op">=</span> SDNE(d<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">1e-5</span>, nu1<span class="op">=</span><span class="fl">1e-6</span>, nu2<span class="op">=</span><span class="fl">1e-6</span>, K<span class="op">=</span><span class="dv">3</span>,n_units<span class="op">=</span>[<span class="dv">50</span>, <span class="dv">15</span>,], rho<span class="op">=</span><span class="fl">0.3</span>, n_iter<span class="op">=</span><span class="dv">10</span>, </span>
-<span id="cb4-2"><a href="#cb4-2"></a>          xeta<span class="op">=</span><span class="fl">0.01</span>,n_batch<span class="op">=</span><span class="dv">50</span>,</span>
-<span id="cb4-3"><a href="#cb4-3"></a>          modelfile<span class="op">=</span>[<span class="st">'enc_model.json'</span>, <span class="st">'dec_model.json'</span>],</span>
-<span id="cb4-4"><a href="#cb4-4"></a>          weightfile<span class="op">=</span>[<span class="st">'enc_weights.hdf5'</span>, <span class="st">'dec_weights.hdf5'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>m1 <span class="op">=</span> SDNE(d<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">1e-5</span>, nu1<span class="op">=</span><span class="fl">1e-6</span>, nu2<span class="op">=</span><span class="fl">1e-6</span>, K<span class="op">=</span><span class="dv">3</span>,n_units<span class="op">=</span>[<span class="dv">50</span>, <span class="dv">15</span>,], rho<span class="op">=</span><span class="fl">0.3</span>, n_iter<span class="op">=</span><span class="dv">50</span>, </span>
-<span id="cb5-2"><a href="#cb5-2"></a>          xeta<span class="op">=</span><span class="fl">0.01</span>,n_batch<span class="op">=</span><span class="dv">100</span>,</span>
-<span id="cb5-3"><a href="#cb5-3"></a>          modelfile<span class="op">=</span>[<span class="st">'enc_model.json'</span>, <span class="st">'dec_model.json'</span>],</span>
-<span id="cb5-4"><a href="#cb5-4"></a>          weightfile<span class="op">=</span>[<span class="st">'enc_weights.hdf5'</span>, <span class="st">'dec_weights.hdf5'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>m1.learn_embedding(graph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>x, y <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(<span class="op">*</span>m1.get_embedding()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>plt.plot(x, y, <span class="st">'o'</span>,linewidth<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="주피터에-r커널을-연결할-경우-그림크기-조정" class="level1">
+<h1>주피터에 R커널을 연결할 경우 그림크기 조정</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>options(repr.plot.width=10, repr.plot.height=3,repr.plot.res=300)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="깃허브에서-.py파일-불러오기" class="level1">
+<h1>깃허브에서 <code>*.py</code>파일 불러오기</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> requests</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="bu">exec</span>(requests.get(<span class="st">'http://miruetoto.github.io/my_code/datahandling.py'</span>).text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="rpy2-magic" class="level1">
+<h1>rpy2 magic</h1>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> rpy2</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="op">%</span>load_ext rpy2.ipython</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="깃허브에서-.r파일-불러오기" class="level1">
+<h1>깃허브에서 <code>*.R</code>파일 불러오기</h1>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> rpy2</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="op">%</span>load_ext rpy2.ipython</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="op">%</span>R library(devtools)</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="op">%</span>R source_url(<span class="st">"http://miruetoto.github.io/my_code/datahandling.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="matplotlib-그림크기조정" class="level1">
+<h1>matplotlib 그림크기조정</h1>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl </span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb5-3"><a href="#cb5-3"></a>Ipython_default<span class="op">=</span>plt.rcParams.copy() <span class="co"># save initial value </span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="im">from</span> matplotlib <span class="im">import</span> cycler</span>
+<span id="cb5-5"><a href="#cb5-5"></a>plt.rc(<span class="st">'figure'</span>,dpi<span class="op">=</span><span class="dv">150</span>) <span class="co"># default value 4 figure.dpi is 72.0 </span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># plt.rcParams.update(Ipython_default) # load initial value </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="gpu-사용여부-체크" class="level1">
+<h1>GPU 사용여부 체크</h1>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> keras <span class="im">import</span> backend <span class="im">as</span> K</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="bu">print</span>(<span class="st">'GPU check 4 Keras: '</span><span class="op">+</span> <span class="bu">str</span>(K.tensorflow_backend._get_available_gpus()))</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="im">import</span> torch</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="bu">print</span>(<span class="st">'GPU check 4 Pytorch: '</span><span class="op">+</span> <span class="bu">str</span>(torch.cuda.get_device_name(<span class="dv">0</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="깃랩관련-회사아니면-필요없음" class="level1">
+<h1>깃랩관련 (회사아니면 필요없음)</h1>
+<p><code>-</code> <strong><em>load <code>*.py</code> from gitlab</em></strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> gitlab</span>
+<span id="cb7-2"><a href="#cb7-2"></a>gl <span class="op">=</span> gitlab.Gitlab(<span class="st">'http://10.178.145.54:9000'</span>, private_token<span class="op">=</span><span class="st">'RkZz465zdyyEChamLKy8'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>gl.auth()</span>
+<span id="cb7-4"><a href="#cb7-4"></a>project <span class="op">=</span> gl.projects.get(<span class="dv">2</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># (1) load RF.py, RF_withGIT.py, RF_withR.py</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>RF_py <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'modeling/RF.py'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
+<span id="cb7-8"><a href="#cb7-8"></a>RF_GIT_py <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'utils/RF_withGIT.py'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
+<span id="cb7-9"><a href="#cb7-9"></a>RF_R_py <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'utils/RF_withR.py'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="bu">exec</span>(<span class="bu">str</span>(RF_py, <span class="st">'utf-8'</span>))</span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="bu">exec</span>(<span class="bu">str</span>(RF_GIT_py, <span class="st">'utf-8'</span>))</span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="bu">exec</span>(<span class="bu">str</span>(RF_R_py, <span class="st">'utf-8'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-</code> <strong><em>load <code>*.R</code> in gitlab</em></strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> gitlab</span>
+<span id="cb8-2"><a href="#cb8-2"></a>gl <span class="op">=</span> gitlab.Gitlab(<span class="st">'http://10.178.145.54:9000'</span>, private_token<span class="op">=</span><span class="st">'RkZz465zdyyEChamLKy8'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>gl.auth()</span>
+<span id="cb8-4"><a href="#cb8-4"></a>project <span class="op">=</span> gl.projects.get(<span class="dv">2</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a>RF_R_rcode <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'utils/RF_Rfunctions.r'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="co"># tricks for source('Rfunctions.r')</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>file1 <span class="op">=</span> <span class="bu">open</span>(<span class="st">"RF_Rfunctions.r"</span>,<span class="st">"w"</span>) </span>
+<span id="cb8-8"><a href="#cb8-8"></a>file1.write(<span class="bu">str</span>(RF_R_rcode, <span class="st">'utf-8'</span>))</span>
+<span id="cb8-9"><a href="#cb8-9"></a>file1.close() </span>
+<span id="cb8-10"><a href="#cb8-10"></a>ro.r(<span class="st">"source('RF_Rfunctions.r')"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="im">import</span> os</span>
+<span id="cb8-12"><a href="#cb8-12"></a>os.remove(<span class="st">'RF_Rfunctions.r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

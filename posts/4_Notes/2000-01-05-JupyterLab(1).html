@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="신록예찬">
-<meta name="dcterms.date" content="2023-02-10">
+<meta name="dcterms.date" content="2000-01-05">
 
-<title>신록예찬’s Blog - [GML] Chap3: 비지도 그래프 학습 - Structural Deep Network Embedding</title>
+<title>신록예찬’s Blog - [Note] 주피터랩(터미널)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,22 +88,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../../">
-<script src="../../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script>
 
 
-<link rel="stylesheet" href="../../../../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">신록예찬’s Blog</span>
     </a>
   </div>
@@ -179,7 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../../about.html">
+    <a class="nav-link" href="../../about.html">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -194,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><strong>[GML]</strong> Chap3: 비지도 그래프 학습 - Structural Deep Network Embedding</h1>
+      <h1 class="quarto-secondary-nav-title"><strong>[Note]</strong> 주피터랩(터미널)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -205,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><strong>[GML]</strong> Chap3: 비지도 그래프 학습 - Structural Deep Network Embedding</h1>
+      <h1 class="title d-none d-lg-block"><strong>[Note]</strong> 주피터랩(터미널)</h1>
                       </div>
   </div>
     
@@ -222,7 +222,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 10, 2023</p>
+        <p class="date">January 5, 2000</p>
       </div>
     </div>
     
@@ -242,7 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../1_essays.html" class="sidebar-item-text sidebar-link">Essays</a>
+  <a href="../../1_essays.html" class="sidebar-item-text sidebar-link">Essays</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -255,27 +255,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../2_cgsp.html" class="sidebar-item-text sidebar-link">CGSP</a>
+  <a href="../../2_cgsp.html" class="sidebar-item-text sidebar-link">CGSP</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../2_gml.html" class="sidebar-item-text sidebar-link">GML</a>
+  <a href="../../2_gml.html" class="sidebar-item-text sidebar-link">GML</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../2_python.html" class="sidebar-item-text sidebar-link">Python</a>
+  <a href="../../2_python.html" class="sidebar-item-text sidebar-link">Python</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../2_pl.html" class="sidebar-item-text sidebar-link">PyTorch Lightning</a>
+  <a href="../../2_pl.html" class="sidebar-item-text sidebar-link">PyTorch Lightning</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../2_reviews.html" class="sidebar-item-text sidebar-link">Reviews</a>
+  <a href="../../2_reviews.html" class="sidebar-item-text sidebar-link">Reviews</a>
   </div>
 </li>
       </ul>
@@ -290,19 +290,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../3_hst.html" class="sidebar-item-text sidebar-link">HST</a>
+  <a href="../../3_hst.html" class="sidebar-item-text sidebar-link">HST</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../3_stgcn.html" class="sidebar-item-text sidebar-link">STGCN</a>
+  <a href="../../3_stgcn.html" class="sidebar-item-text sidebar-link">STGCN</a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../4_notes.html" class="sidebar-item-text sidebar-link">–<em>Notes</em>–</a>
+  <a href="../../4_notes.html" class="sidebar-item-text sidebar-link">–<em>Notes</em>–</a>
   </div>
 </li>
     </ul>
@@ -314,7 +314,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#structural-deep-network-embedding" id="toc-structural-deep-network-embedding" class="nav-link active" data-scroll-target="#structural-deep-network-embedding">Structural Deep Network Embedding</a></li>
+  <li><a href="#옵션으로-주피터-실행" id="toc-옵션으로-주피터-실행" class="nav-link active" data-scroll-target="#옵션으로-주피터-실행"><code>&amp;</code> 옵션으로 주피터 실행</a></li>
+  <li><a href="#옵션으로-실행한-주피터프로세스-죽이기" id="toc-옵션으로-실행한-주피터프로세스-죽이기" class="nav-link" data-scroll-target="#옵션으로-실행한-주피터프로세스-죽이기"><code>&amp;</code> 옵션으로 실행한 주피터프로세스 죽이기</a></li>
+  <li><a href="#패스워드-없이-주피터-실행" id="toc-패스워드-없이-주피터-실행" class="nav-link" data-scroll-target="#패스워드-없이-주피터-실행">패스워드 없이 주피터 실행</a></li>
   </ul>
 </nav>
     </div>
@@ -324,42 +326,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="structural-deep-network-embedding" class="level1">
-<h1>Structural Deep Network Embedding</h1>
-<p>import tensorflow as tf</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> gem.embedding.sdne <span class="im">import</span> SDNE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>graph <span class="op">=</span> nx.karate_club_graph()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>m1 <span class="op">=</span> SDNE(d<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">1e-5</span>, nu1<span class="op">=</span><span class="fl">1e-6</span>, nu2<span class="op">=</span><span class="fl">1e-6</span>, K<span class="op">=</span><span class="dv">3</span>,n_units<span class="op">=</span>[<span class="dv">50</span>, <span class="dv">15</span>,], rho<span class="op">=</span><span class="fl">0.3</span>, n_iter<span class="op">=</span><span class="dv">10</span>, </span>
-<span id="cb4-2"><a href="#cb4-2"></a>          xeta<span class="op">=</span><span class="fl">0.01</span>,n_batch<span class="op">=</span><span class="dv">50</span>,</span>
-<span id="cb4-3"><a href="#cb4-3"></a>          modelfile<span class="op">=</span>[<span class="st">'enc_model.json'</span>, <span class="st">'dec_model.json'</span>],</span>
-<span id="cb4-4"><a href="#cb4-4"></a>          weightfile<span class="op">=</span>[<span class="st">'enc_weights.hdf5'</span>, <span class="st">'dec_weights.hdf5'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>m1 <span class="op">=</span> SDNE(d<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">1e-5</span>, nu1<span class="op">=</span><span class="fl">1e-6</span>, nu2<span class="op">=</span><span class="fl">1e-6</span>, K<span class="op">=</span><span class="dv">3</span>,n_units<span class="op">=</span>[<span class="dv">50</span>, <span class="dv">15</span>,], rho<span class="op">=</span><span class="fl">0.3</span>, n_iter<span class="op">=</span><span class="dv">50</span>, </span>
-<span id="cb5-2"><a href="#cb5-2"></a>          xeta<span class="op">=</span><span class="fl">0.01</span>,n_batch<span class="op">=</span><span class="dv">100</span>,</span>
-<span id="cb5-3"><a href="#cb5-3"></a>          modelfile<span class="op">=</span>[<span class="st">'enc_model.json'</span>, <span class="st">'dec_model.json'</span>],</span>
-<span id="cb5-4"><a href="#cb5-4"></a>          weightfile<span class="op">=</span>[<span class="st">'enc_weights.hdf5'</span>, <span class="st">'dec_weights.hdf5'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>m1.learn_embedding(graph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>x, y <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(<span class="op">*</span>m1.get_embedding()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>plt.plot(x, y, <span class="st">'o'</span>,linewidth<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="옵션으로-주피터-실행" class="level1">
+<h1><code>&amp;</code> 옵션으로 주피터 실행</h1>
+<p><code>-</code> 서버에 접속한다.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>ssh lgcgb@10.178.144.65</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>아래와 같이 끝에 <code>&amp;</code>을 붙이면 된다.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1"></a>conda activate py20190129</span>
+<span id="cb2-2"><a href="#cb2-2"></a>jupyter lab &amp;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>실행하고 난뒤에는 엔터를 쳐서 빠져나온다.</strong> 이렇게 하면 서버자체에 모니터를 연결하고 커널창을 띄운것과 같은 효과를 준다. 즉 서버에 접속한 컴퓨터를 끄는것과 상관없이 서버에서는 항상 주피터가 열려 있게 된다.</p>
+</section>
+<section id="옵션으로-실행한-주피터프로세스-죽이기" class="level1">
+<h1><code>&amp;</code> 옵션으로 실행한 주피터프로세스 죽이기</h1>
+<p><code>-</code> 서버에 접속한다.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1"></a>ssh lgcgb@10.178.144.65</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>실행된 프로세스를 찾기위해 아래를 실행한다.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1"></a>ps aux | grep jupyter-lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>결과는 아래와 같이 나온다.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1"></a>lgcgb    26888  0.2  0.1 326760 86724 ?        Sl   10:14   0:12 /home/lgcgb/anaconda3/envs/py20190129/bin/python3.7 /home/lgcgb/anaconda3/envs/py20190129/bin/jupyter-lab</span>
+<span id="cb5-2"><a href="#cb5-2"></a>lgcgb    27146  0.0  0.0  15720  1008 pts/3    S+   11:56   0:00 grep --color=auto jupyter-lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>26888에 해당하는 것이 주피터를 띄운 커널이다. 이 번호를 기억했다가 프로세스를 아래와 같은 명령으로 죽인다.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1"></a>kill 26888</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="패스워드-없이-주피터-실행" class="level1">
+<h1>패스워드 없이 주피터 실행</h1>
+<p><code>-</code> 아래와 같이 하면 외부에서 접속할때 패스워드를 입력하지 않음.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1"></a>jupyter lab --LabApp.token='' --LabApp.password=''</span>
+<span id="cb7-2"><a href="#cb7-2"></a>jupyter notebook --NotebookApp.token='' --NotebookApp.password='' </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
