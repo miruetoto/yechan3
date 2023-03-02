@@ -1,5 +1,5 @@
 ---
-title: "Essays"
+title: "**Essays**"
 listing:
   contents: posts/1_Essays
   sort: "date desc"
