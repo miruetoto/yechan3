@@ -28,6 +28,7 @@ website:
 
 
     right: 
+      - about.qmd
       - icon: github
         href: https://github.com/miruetoto/yechan3
 
@@ -36,19 +37,18 @@ website:
     search: true
     contents:
       - 1_essays.qmd
-      - section: "Let's Study"
+      - section: "Studies"
         contents:
           - 2_cgsp.qmd
           - 2_gml.qmd      
           - 2_python.qmd                  
           - 2_pl.qmd          
-          - 2_reviews.qmd
-          - 2_notes.qmd          
-          
+          - 2_reviews.qmd    
       - section: "Researches"
         contents:
           - 3_hst.qmd
           - 3_stgcn.qmd
+      - 4_notes.qmd
 
 format:
   html:
