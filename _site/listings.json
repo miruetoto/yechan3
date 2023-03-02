@@ -52,47 +52,6 @@
     ]
   },
   {
-    "listing": "/2_pl.html",
-    "items": [
-      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
-    ]
-  },
-  {
-    "listing": "/2_notes.html",
-    "items": [
-      "/posts/2_Studies/Notes/2000-01-08-Git.html",
-      "/posts/2_Studies/Notes/2000-01-07-JuliaInstall.html",
-      "/posts/2_Studies/Notes/2000-01-06-JupyterLab(2).html",
-      "/posts/2_Studies/Notes/2000-01-05-JupyterLab(1).html",
-      "/posts/2_Studies/Notes/2000-01-04-Ubuntu.html",
-      "/posts/2_Studies/Notes/2000-01-01-UbuntuSetting.html"
-    ]
-  },
-  {
-    "listing": "/2_cgsp.html",
-    "items": [
-      "/posts/2_Studies/CGSP/2022-12-24-Chap 8.3.html",
-      "/posts/2_Studies/CGSP/2022-12-26-Chap-12.2.html",
-      "/posts/2_Studies/CGSP/2022-12-27-Chap-12.2.1~12.3.1.html",
-      "/posts/2_Studies/CGSP/2023-01-15-Chap-12.4.html"
-    ]
-  },
-  {
-    "listing": "/1_essays.html",
-    "items": [
-      "/posts/1_Essays/2023-03-01-QnA_SY.html",
-      "/posts/1_Essays/2023-02-09-Lebesgue's decomposition.html",
-      "/posts/1_Essays/2023-02-05-frequency domain analysis of time series.html",
-      "/posts/1_Essays/2023-01-20-estimation.html",
-      "/posts/1_Essays/2023-02-14-LRTtest_in_Exp.html",
-      "/posts/1_Essays/2022-01-12-topology.html",
-      "/posts/1_Essays/2023-01-11-inequalities.html",
-      "/posts/1_Essays/2023-01-07-real-analysis.html",
-      "/posts/1_Essays/2020-03-12-probability measure.html",
-      "/posts/1_Essays/2019-04-26-FourierTransform.html"
-    ]
-  },
-  {
     "listing": "/index.html",
     "items": [
       "/posts/1_Essays/2023-03-01-QnA_SY.html",
@@ -154,6 +113,36 @@
       "/posts/4_Notes/2000-01-05-JupyterLab(1).html",
       "/posts/4_Notes/2000-01-04-Ubuntu.html",
       "/posts/4_Notes/2000-01-01-UbuntuSetting.html"
+    ]
+  },
+  {
+    "listing": "/2_pl.html",
+    "items": [
+      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
+    ]
+  },
+  {
+    "listing": "/2_cgsp.html",
+    "items": [
+      "/posts/2_Studies/CGSP/2022-12-24-Chap 8.3.html",
+      "/posts/2_Studies/CGSP/2022-12-26-Chap-12.2.html",
+      "/posts/2_Studies/CGSP/2022-12-27-Chap-12.2.1~12.3.1.html",
+      "/posts/2_Studies/CGSP/2023-01-15-Chap-12.4.html"
+    ]
+  },
+  {
+    "listing": "/1_essays.html",
+    "items": [
+      "/posts/1_Essays/2023-03-01-QnA_SY.html",
+      "/posts/1_Essays/2023-02-09-Lebesgue's decomposition.html",
+      "/posts/1_Essays/2023-02-05-frequency domain analysis of time series.html",
+      "/posts/1_Essays/2023-01-20-estimation.html",
+      "/posts/1_Essays/2023-02-14-LRTtest_in_Exp.html",
+      "/posts/1_Essays/2022-01-12-topology.html",
+      "/posts/1_Essays/2023-01-11-inequalities.html",
+      "/posts/1_Essays/2023-01-07-real-analysis.html",
+      "/posts/1_Essays/2020-03-12-probability measure.html",
+      "/posts/1_Essays/2019-04-26-FourierTransform.html"
     ]
   }
 ]
