@@ -47,7 +47,7 @@ website:
       - section: "**Researches**"
         contents:
           - 3_hst.qmd
-          - 3_stgcn.qmd
+          - 3_itstgcn.qmd
       - 4_notes.qmd
 
 format:
