@@ -302,9 +302,9 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p>하는데 이것은 생각보다 쉬운일이 아니다. 또한 정의한 확률은 확률의 공리를 적용하였을때 모순이 없어야 한다. 확률의 공리는 간단하게 말하면</p>
 <ol type="1">
-<li>모든 확률은 0보다 크며</li>
+<li>모든 확률은 0보다 크고 1보다 작으며</li>
 <li>전체사건이 일어날 확률은 1이고</li>
-<li>서로소인 사건에 대하여 <span class="math inline">\(\sigma\)</span>-additive 가 성립해야 한다.</li>
+<li>서로소인 사건에 대하여 <span class="math inline">\(\sigma\)</span>-additive<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>가 성립해야 한다.</li>
 </ol>
 <p>확률의 공리에 대한 좀더 정확한 state는 김우철 수리통계교재 혹은 위키피디아를 참고하여 스스로 확인해 보길 바란다.</p>
 <p><code>-</code> 확률의 공리는 너무 당연해서 확률을 정의하면 저절로 성립할것 같다. 하지만 예제2의 경우 그렇게 당연하지 않다. 이에 대하여 좀 더 자세히 살펴보자. 예제2에서는 <span class="math inline">\(\Omega=[0,2\pi)\)</span>라고 생각하고 확률은 길이의 비율로 정의하였다. 예를들어서 <span class="math inline">\(\Omega^* \in [0,\pi)\)</span>일 확률은</p>
@@ -334,9 +334,9 @@ ul.task-list li input[type="checkbox"] {
 <p><code>-</code> 길이는 일단 0보다 커야하고 <span class="math inline">\(\pi\)</span>보다 작아야함은 자명하므로 그 사이에 있는 어떤 값이 길이라고 주장하자. (구체적으로 어떤값인지는 모른다고 하자.) 따라서 (질문4)에 대한 답은 ‘’구체적으로 얼마인지는 모르겠지만 길이가 분명 존재하고 그 길이는 0 보다 크고 <span class="math inline">\(\pi\)</span> 보다는 작은 어떠한 값 <span class="math inline">\(a\)</span>이다.’’ 정도로 정리할 수 있다.</p>
 <p><code>(질문5)</code> 질문4로부터 만들어지는 논리는 아래의 질문을 적절하게 대답하지 못한다. (질문이 좀 길어서 나누어서 설명합니다)</p>
 <p><strong>(빌드업1)</strong></p>
-<p><span class="math inline">\(\mathbb{Q}\)</span>의 모든점에 <span class="math inline">\(\sqrt{2}\)</span>를 더한다. 이 점들로 집합을 만들어 <span class="math inline">\(\mathbb{Q}_{\sqrt{2}}\)</span>를 만든다. 여기에서 <span class="math inline">\(\mathbb{Q}_{\sqrt{2}}\)</span>는 <span class="math inline">\(\Omega\)</span>의 부분집합이다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 따라서 <span class="math inline">\(\mathbb{Q}_{\sqrt{2}}\)</span>는 길이를 <strong>명확하고 모순없이</strong> 정의할 수 있어야 한다. 사실 이건 별로 어려운 일이 아니다. 평행이동은 길이를 변화시키지 않는다는 점을 상기하면 별로 어렵지 않게</p>
+<p><span class="math inline">\(\mathbb{Q}\)</span>의 모든점에 <span class="math inline">\(\sqrt{2}\)</span>를 더한다. 이 점들로 집합을 만들어 <span class="math inline">\(\mathbb{Q}_{\sqrt{2}}\)</span>를 만든다. 여기에서 <span class="math inline">\(\mathbb{Q}_{\sqrt{2}}\)</span>는 <span class="math inline">\(\Omega\)</span>의 부분집합이다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 따라서 <span class="math inline">\(\mathbb{Q}_{\sqrt{2}}\)</span>는 길이를 <strong>명확하고 모순없이</strong> 정의할 수 있어야 한다. 사실 이건 별로 어려운 일이 아니다. 평행이동은 길이를 변화시키지 않는다는 점을 상기하면 별로 어렵지 않게</p>
 <p><span class="math display">\[m(\mathbb{Q}_{\sqrt{2}})=\alpha\]</span></p>
-<p>라고 정의할 수 있다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>라고 정의할 수 있다.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p><strong>(빌드업2)</strong></p>
 <p>이제 좀 더 일반적으로 구간 <span class="math inline">\([0,\pi)\)</span>에 있는 모든 무리수의 집합 <span class="math inline">\(\mathbb{Q}^c:=[0,\pi) -\mathbb{Q}\)</span> 를 생각하자. 이 집합의 서로 다른 임의의 원소 <span class="math inline">\(x,y,z\)</span>에 대하여 <span class="math inline">\(\mathbb{Q}_{x},\mathbb{Q}_{y},\mathbb{Q}_{z}\)</span>를 생각하자. 아래의 성질을 관찰할 수 있다.</p>
 <ul>
@@ -707,8 +707,9 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p><span class="math inline">\(\mathbb{Q}_{\sqrt{2}}\)</span>는 구간 <span class="math inline">\(\big[\sqrt{2},~~ \sqrt{2}+\pi\big)\)</span>에 속하므로<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>당연한거 아냐? <span class="math inline">\(m(\mathbb{Q})=\alpha\)</span>이고 <span class="math inline">\(\mathbb{Q}_{\sqrt{2}}\)</span>는 단지 <span class="math inline">\(\mathbb{Q}\)</span>를 <span class="math inline">\(\sqrt{2}\)</span>만큼 평행이동한 집합일 뿐이니까 길이는 변화없음<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>그 우리가 맨날 쓰는거..<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><span class="math inline">\(\mathbb{Q}_{\sqrt{2}}\)</span>는 구간 <span class="math inline">\(\big[\sqrt{2},~~ \sqrt{2}+\pi\big)\)</span>에 속하므로<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>당연한거 아냐? <span class="math inline">\(m(\mathbb{Q})=\alpha\)</span>이고 <span class="math inline">\(\mathbb{Q}_{\sqrt{2}}\)</span>는 단지 <span class="math inline">\(\mathbb{Q}\)</span>를 <span class="math inline">\(\sqrt{2}\)</span>만큼 평행이동한 집합일 뿐이니까 길이는 변화없음<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

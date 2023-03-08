@@ -19,7 +19,12 @@
   },
   {
     "listing": "/3_itstgcn.html",
-    "items": []
+    "items": [
+      "/posts/3_Researches/ITSTGCN/2023-02-20-IT-STGCN_guebin.html",
+      "/posts/3_Researches/ITSTGCN/2022-12-30-STGCN-Toy Example.html",
+      "/posts/3_Researches/ITSTGCN/2023-02-14-Tables.html",
+      "/posts/3_Researches/ITSTGCN/2022-12-29-STGCN-tutorial.html"
+    ]
   },
   {
     "listing": "/2_gml.html",
@@ -50,7 +55,8 @@
     "listing": "/index.html",
     "items": [
       "/posts/1_Essays/2023-03-01-QnA_SY.html",
-      "/posts/3_Researches/STGCN/2023-02-20-IT-STGCN_guebin.html",
+      "/posts/1_Essays/2023-03-07-측도론(1).html",
+      "/posts/3_Researches/ITSTGCN/2023-02-20-IT-STGCN_guebin.html",
       "/posts/2_Studies/GML/Chapter01/02_Graph_metrics.html",
       "/posts/2_Studies/GML/Chapter01/01_Introduction_Networkx.html",
       "/posts/2_Studies/GML/Chapter01/03_Graphs_Benchmarks.html",
@@ -80,9 +86,9 @@
       "/posts/1_Essays/2022-01-12-topology.html",
       "/posts/1_Essays/2023-01-11-inequalities.html",
       "/posts/1_Essays/2023-01-07-real-analysis.html",
-      "/posts/3_Researches/STGCN/2022-12-30-STGCN-Toy Example.html",
-      "/posts/3_Researches/STGCN/2022-12-29-STGCN-tutorial.html",
-      "/posts/3_Researches/STGCN/2023-02-14-Tables.html",
+      "/posts/3_Researches/ITSTGCN/2022-12-30-STGCN-Toy Example.html",
+      "/posts/3_Researches/ITSTGCN/2022-12-29-STGCN-tutorial.html",
+      "/posts/3_Researches/ITSTGCN/2023-02-14-Tables.html",
       "/posts/2_Studies/CGSP/2022-12-27-Chap-12.2.1~12.3.1.html",
       "/posts/2_Studies/CGSP/2022-12-26-Chap-12.2.html",
       "/posts/2_Studies/CGSP/2022-12-24-Chap 8.3.html",
@@ -129,6 +135,7 @@
     "listing": "/1_essays.html",
     "items": [
       "/posts/1_Essays/2023-03-01-QnA_SY.html",
+      "/posts/1_Essays/2023-03-07-측도론(1).html",
       "/posts/1_Essays/2023-02-09-Lebesgue's decomposition.html",
       "/posts/1_Essays/2023-02-05-frequency domain analysis of time series.html",
       "/posts/1_Essays/2023-01-20-estimation.html",
