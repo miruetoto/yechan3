@@ -124,6 +124,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -316,6 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#about-this-doc" id="toc-about-this-doc" class="nav-link active" data-scroll-target="#about-this-doc">About this doc</a></li>
   <li><a href="#우분투설치" id="toc-우분투설치" class="nav-link" data-scroll-target="#우분투설치">우분투설치</a></li>
+  <li><a href="#네트워크-설정" id="toc-네트워크-설정" class="nav-link" data-scroll-target="#네트워크-설정">네트워크 설정</a></li>
   <li><a href="#한글설정-개발용-서버일-경우-생략-가능" id="toc-한글설정-개발용-서버일-경우-생략-가능" class="nav-link" data-scroll-target="#한글설정-개발용-서버일-경우-생략-가능">한글설정 (개발용 서버일 경우 생략 가능)</a></li>
   <li><a href="#그래픽카드-드라이버설치" id="toc-그래픽카드-드라이버설치" class="nav-link" data-scroll-target="#그래픽카드-드라이버설치">그래픽카드 드라이버설치</a></li>
   <li><a href="#아나콘다" id="toc-아나콘다" class="nav-link" data-scroll-target="#아나콘다">아나콘다</a></li>
@@ -345,11 +347,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>-</code> 이 포스트는 R과 파이썬을 동시에 쓰는 사람에게 유용하다.</p>
 <p><code>-</code> 이 포스트는 Rstudio, Jupyter Lab을 동시에 쓰는 사람에게 유용하다.</p>
 <p><code>-</code> 매년 조금씩 셋팅방법이 다른것 같다.</p>
-<p><code>-</code> 가장 최근에는 2022년 2월5일에 이 블로그 내용으로 셋팅해보았음.</p>
+<p><code>-</code> 가장 최근에는 2023년 3월8일에 이 블로그 내용으로 셋팅해보았음.</p>
 </section>
 <section id="우분투설치" class="level1">
 <h1>우분투설치</h1>
 <p><code>-</code> 22.04부터는 파티션 나누지 않고 그냥 설치해도 잘 되는것 같다.</p>
+</section>
+<section id="네트워크-설정" class="level1">
+<h1>네트워크 설정</h1>
+<p><code>-</code> <code>?</code>표시있는 아이콘 <span class="math inline">\(\to\)</span> Wired Connected <span class="math inline">\(\to\)</span> Wired Settings <span class="math inline">\(\to\)</span> Connection의 설정 <span class="math inline">\(\to\)</span> IPv4 <span class="math inline">\(\to\)</span> Manual <span class="math inline">\(\to\)</span> Address, Netmask, Gateway, DNS 설정 <span class="math inline">\(\to\)</span> 네트워크 토글</p>
 </section>
 <section id="한글설정-개발용-서버일-경우-생략-가능" class="level1">
 <h1>한글설정 (개발용 서버일 경우 생략 가능)</h1>
@@ -363,11 +369,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>그래픽카드 드라이버설치</h1>
 <p><code>-</code> 전체적인 내용은 <a href="https://gist.github.com/bendangnuksung/981408031699e0ddc50a6f6fdcf185c2">여기</a>를 참고하자.</p>
 <p><code>-</code> 준비작업</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1"></a>sudo apt install gcc</span>
-<span id="cb2-2"><a href="#cb2-2"></a>sudo apt install build-essential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Note: gcc, build-essential이 설치되지 않을경우 우분투 업그레이드가 필요할수있음. 그럴때는 sudo apt update 를 실행하면 된다.</li>
-</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1"></a>sudo apt update </span>
+<span id="cb2-2"><a href="#cb2-2"></a>sudo apt install gcc</span>
+<span id="cb2-3"><a href="#cb2-3"></a>sudo apt install build-essential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 우선 <code>gedit</code>를 열고 아래를 복사해서 붙여넣는다.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1"></a>blacklist nouveau</span>
 <span id="cb3-2"><a href="#cb3-2"></a>options nouveau modeset=0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
