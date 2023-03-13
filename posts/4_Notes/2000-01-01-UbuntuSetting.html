@@ -508,10 +508,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb31-3"><a href="#cb31-3"></a>sudo apt-get install r-base</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> tidyverse 설치 (R studio 설치전에 tidyverse 설치해야함)</p>
 <p><code>-</code> Rstudio 설치: <a href="https://www.rstudio.com/products/rstudio/download-server/debian-ubuntu/" class="uri">https://www.rstudio.com/products/rstudio/download-server/debian-ubuntu/</a></p>
+<blockquote class="blockquote">
+<p>우분투22로 설정할것!!</p>
+</blockquote>
 <div class="sourceCode" id="cb32"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb32-1"><a href="#cb32-1"></a>sudo apt remove rstudio-server</span>
 <span id="cb32-2"><a href="#cb32-2"></a>sudo apt-get install gdebi-core</span>
-<span id="cb32-3"><a href="#cb32-3"></a>wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-2021.09.2-382-amd64.deb</span>
-<span id="cb32-4"><a href="#cb32-4"></a>sudo gdebi rstudio-server-2021.09.2-382-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-3"><a href="#cb32-3"></a>wget https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2022.12.0-353-amd64.deb</span>
+<span id="cb32-4"><a href="#cb32-4"></a>sudo gdebi rstudio-server-2022.12.0-353-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> Rstudio를 설치하면 <code>~/R/x86_64-conda-linux-gnu-library/4.1</code>이 새로 생성된다.</p>
 <ul>
 <li>Rstudio에서 설치한 패키지는 이 폴더에 저장된다.</li>
