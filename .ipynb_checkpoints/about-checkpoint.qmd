@@ -51,6 +51,7 @@ This blog was created for my personal research, study and lecture preparation. T
 - **fastai (github codes)**: <https://github.com/fastai/fastai/tree/master/dev_nbs/course> 
 - **GML (codes in book)**: <https://github.com/PacktPublishing/Graph-Machine-Learning>
 - **GMLKOR (codes in book)**: <https://github.com/AcornPublishing/graph-ml>
+- **mathNET** <https://gtribello.github.io/mathNET/index.html>
 
 *lectures notes*
 
