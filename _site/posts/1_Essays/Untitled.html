@@ -2,14 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="신록예찬">
-<meta name="dcterms.date" content="2023-01-20">
 
-<title>신록예찬’s Blog - [Essays] 시계열의 주파수영역 분석</title>
+<title>신록예찬's Blog – untitled</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,25 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
-}
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
 }
 </style>
 
@@ -151,7 +130,7 @@ div.csl-indent {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><strong>[Essays]</strong> 시계열의 주파수영역 분석</h1>
+      <h1 class="quarto-secondary-nav-title"></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -159,35 +138,7 @@ div.csl-indent {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><strong>[Essays]</strong> 시계열의 주파수영역 분석</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>신록예찬 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">January 20, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -272,71 +223,67 @@ div.csl-indent {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#세미알지브라" id="toc-세미알지브라" class="nav-link active" data-scroll-target="#세미알지브라">세미알지브라</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-
-<blockquote class="blockquote">
-<p>이 포스트는 <span class="citation" data-cites="wei2006time">Wei (<a href="#ref-wei2006time" role="doc-biblioref">2006</a>)</span> 의 CHAPTER 12 Spectral Theory of Stationary Processes 를 요약한 것이다</p>
-</blockquote>
-<p><span class="math inline">\(Z_t\)</span>를 real-valued stationary process 라고 하자. 그리고 <span class="math inline">\(\gamma_k\)</span>를 <span class="math inline">\(Z_t\)</span>의 autocovariance sequence 라고 하자. 만약에 <span class="math inline">\(\gamma_k\)</span> 가 absolutely summable 하다면<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 아래와 같은 표현이 존재한다.</p>
-<p><span class="math display">\[
-f(\omega)=\frac{1}{2\pi}\sum_{k=-\infty}^{\infty}\gamma_k e^{-i\omega k}=\frac{1}{2\pi}\gamma_0 + \frac{1}{\pi}\sum_{k=1}^{\infty}\gamma_k\cos(\omega k)
-\]</span></p>
-<p>첫 등호에서 두번째 등호로 넘어갈때 아래의 성질들이 이용되었다.</p>
-<ul>
-<li><span class="math inline">\(e^{i\theta} = \cos \theta + i \sin\theta\)</span></li>
-<li><span class="math inline">\(\gamma_k = \gamma_{-k}\)</span></li>
-<li><span class="math inline">\(\sin \omega(-k) = - \sin \omega k\)</span></li>
-<li><span class="math inline">\(\cos \omega(-k) = \cos \omega k\)</span></li>
-</ul>
-<p>여기에서 <span class="math inline">\(f(\omega)\)</span>는 <span class="math inline">\(\gamma_k\)</span>를 퓨리에변환한 결과이다. <span class="math inline">\(f(\omega)\)</span>를 역 퓨리에변환하면 다시 <span class="math inline">\(\gamma_k\)</span>를 얻을 수 있는데 이를 수식으로 표현하면 아래와 같다.</p>
-<p><span class="math display">\[\gamma_k = \int_{-\pi}^{\pi}f(\omega) e^{i\omega k}d\omega\]</span></p>
-<p>만약에 <span class="math inline">\(\gamma_k\)</span>가 absolutely summable 하지 않으면 <span class="math inline">\(f(\omega)\)</span>의 존재성을 장담할 수 없다. 따라서 위와 같은 표현은 불가능하다. 대신 아래와 같이 Fourier-Stieltjes integral 의 형으로는 표현가능하다.</p>
-<p><span class="math display">\[\gamma_k = \int_{-\pi}^{\pi}e^{i\omega k}dF(\omega)\]</span></p>
-<p>여기에서 <span class="math inline">\(F(\omega)\)</span>는 spectral distribution function 이라고 한다. <span class="math inline">\(F(\omega)\)</span>는 nondecreasing function 이다. <span class="math inline">\(F(\omega)\)</span>는 아래와 같은 3가지 컴포넌트의 합으로 표현할 수 있다.</p>
-<ol type="1">
-<li>유한개의 jump만을 가지는 step function</li>
-<li>absolutely continuous function</li>
-<li>sigular function</li>
-</ol>
-<p>여기에서 3은 대부분의 응용분야에서 중요하지 않으므로 결국 <span class="math inline">\(F(\omega)\)</span>는 아래와 같이 표현할 수 있다.</p>
-<p><span class="math display">\[F(\omega) \approx F_s(\omega) + F_c(\omega)\]</span></p>
-<p>여기에서 <span class="math inline">\(F_s(\omega)\)</span>는 유한개의 jump를 가지는 step function 이고 <span class="math inline">\(F_c(\omega)\)</span>는 absolutely continuous 한 함수이다.</p>
-<p>만약에 시계열이 absolutely summable 하다면 <span class="math inline">\(F(\omega) = F_c(\omega)\)</span> 이며 이경우에는 <span class="math inline">\(dF(\omega) = f(\omega)d\omega\)</span> 로 표현할 수 있다.</p>
-<p>여기에서 step spectral distribution function에 대하여 설명하기 위하여 아래와 같은 모형<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>를 고려하자.</p>
-<p><span class="math display">\[Z_t = \sum_{i=1}^{M}A_i \sin(\omega_i t + \Theta_i)\]</span></p>
-<p>여기에서 <span class="math inline">\(A_i\)</span>는 constant 이며 <span class="math inline">\(\Theta_i \sim U(-\pi,\pi)\)</span> 이다.</p>
-<p>여기에서 <span class="math inline">\(Z_t\)</span>는 stationary process 이다.</p>
-<p>일반적으로 stationary process는 아래와 같이 표현할 수 있다.</p>
-<p><span class="math display">\[Z_t = A \sin\left(\frac{2\pi t}{12}+\lambda \right)+\left[\frac{\theta(B)}{\phi(B)}\right]a_t\]</span></p>
-<p>여기에서 <span class="math inline">\(A\)</span>는 상수이며 <span class="math inline">\(\lambda\)</span>는 uniform <span class="math inline">\([-\pi,\pi]\)</span>을 따르는 랜덤변수이다.</p>
-<p>Wold (1938)는 임의의 covariance stationary process 는 아래와 같이 표현 할 수 있다는 것을 알아냈다.</p>
-<p><span class="math display">\[Z_t = Z_t^{(d)} + Z_t^{(n)}\]</span></p>
-<p>여기에서 <span class="math inline">\(Z_t^{(d)}\)</span>는 purely deterministic component 이고 <span class="math inline">\(Z_t^{(n)}\)</span>는 purely nondeterministic component 이다.</p>
-<p>이 분해는 아래의 수식에서 다룬 바 있던 spectral distribution function 의 decomposition 과 유사하다.</p>
-<p><span class="math display">\[F(\omega) \approx F_s(\omega) + F_c(\omega)\]</span></p>
-<p>왜냐하면 <span class="math inline">\(Z_t^{(d)}\)</span>는 step spectral distribution 을 가지고 <span class="math inline">\(Z_t^{(n)}\)</span>은 absolutely continuous spectral distribution 을 가진다. 따라서 <span class="math inline">\(Z_t^{(d)}\)</span>를</p>
-
-
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-wei2006time" class="csl-entry" role="doc-biblioentry">
-Wei, William WS. 2006. <span>“Time Series Analysis: Univariate and Multivariate.”</span> <em>Methods. Boston, MA: Pearson Addison Wesley</em>.
+<section id="세미알지브라" class="level1">
+<h1>세미알지브라</h1>
+<p><code>-</code> 정의1: <a href="https://services.math.duke.edu/~rtd/PTE/PTE5_011119.pdf">durret</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Untitled_files/figure-html/3c09be68-e468-4061-b987-5bc8fab6b320-1-21052cf5-2805-453e-9a17-73d285ff3ef3.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
 </div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<p><code>-</code> 정의2: <a href="https://en.wikibooks.org/wiki/Measure_Theory/Basic_Structures_And_Definitions/Semialgebras,_Algebras_and_%CF%83-algebras">wikibooks</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Untitled_files/figure-html/8f59ca96-3765-4bd7-b06a-e6562fc72732-1-ca12eb05-c495-4da0-ae2b-e92e5309756f.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p><code>-</code> 정의3: <a href="https://en.wikipedia.org/wiki/Semiring">wiki</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Untitled_files/figure-html/cd3e73d9-5f20-4615-88bf-34af9f1ace5d-1-f9f8cef2-d430-47e2-8d07-7cc555649c59.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p><code>-</code> 질문: 전체집합은 semi-algebra에 포함되는가?</p>
+<ul>
+<li>공집합은 <a href="https://en.wikipedia.org/wiki/Semiring">wiki</a>의 논리에 의하여 들어간다는 사실을 이해함.</li>
+</ul>
+<p><code>-</code> <span class="math inline">\(\Omega\)</span>가 semi-algebra에 들어간다??</p>
+<ul>
+<li>정의2에 의하면 들어가야함.</li>
+<li>아래의 <a href="https://s2pnd-matematika.fkip.unpatti.ac.id/wp-content/uploads/2019/03/Real-Analysis-4th-Ed-Royden.pdf">교재</a>에 의하면 들어가야함.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Untitled_files/figure-html/0101c588-5e11-482d-be2c-be79546fcc77-1-7950cb66-de70-4720-a5df-3f7ec9737bf0.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p><code>-</code> <span class="math inline">\(\Omega\)</span>가 들어가지 말아야한다?</p>
+<ul>
+<li>정의1,3에 의하면 딱히 들어갈 이유를 모르겠음.</li>
+<li>예를들어 <span class="math inline">\(\Omega=\{1,2\}\)</span>, <span class="math inline">\({\cal A} = \{\emptyset, \{1\}, \{2\}\}\)</span> 이면 semi-algbra의 정의를 만족함. (하지만 <span class="math inline">\(\Omega\)</span>는 들어가지 않음) // ref: <a href="https://math.stackexchange.com/questions/4290570/empty-set-and-whole-set-belongs-in-every-semi-algebra">stack overflow</a></li>
+</ul>
 
-<ol>
-<li id="fn1"><p><span class="math inline">\(\sum_{k=-\infty}^{\infty}|\gamma_k| &lt;\infty\)</span> 이라는 의미<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>general linear cyclical model 이라고 하는듯<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

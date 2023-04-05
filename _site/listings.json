@@ -51,10 +51,7 @@
   {
     "listing": "/1_essays.html",
     "items": [
-      "/posts/1_Essays/조인.html",
-      "/posts/1_Essays/2023-03-30-에르고딕정리,에르고딕과정,정상과정.html",
-      "/posts/1_Essays/2023-03-20-딘킨의 π-λ thm.html",
-      "/posts/1_Essays/2023-03-19-시그마필드.html",
+      "/posts/1_Essays/2023-03-20-딘킨의 π-λ thm.html",
       "/posts/1_Essays/2023-03-01-수통문제-Type1 Err, Type2 Err.html",
       "/posts/1_Essays/2023-02-09-칸토어집합,칸토어함수,르벡분해.html",
       "/posts/1_Essays/2023-02-05-시계열의 주파수영역 분석.html",
@@ -89,16 +86,12 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/1_Essays/조인.html",
       "/posts/3_Researches/SOLAR/2023-04-04-EPT.html",
-      "/posts/3_Researches/SOLAR/2023-04-03-일사량.html",
-      "/posts/1_Essays/2023-03-30-에르고딕정리,에르고딕과정,정상과정.html",
-      "/posts/1_Essays/2023-03-20-딘킨의 π-λ thm.html",
-      "/posts/1_Essays/2023-03-19-시그마필드.html",
+      "/posts/3_Researches/SOLAR/2023-04-03-일사량.html",
+      "/posts/1_Essays/2023-03-20-딘킨의 π-λ thm.html",
       "/posts/3_Researches/ITSTGCN/2023-03-18-SimulationPlanner-Tutorial.html",
       "/posts/3_Researches/ITSTGCN/2023-03-17-ITSTGCN-Tutorial.html",
       "/posts/1_Essays/2023-03-01-수통문제-Type1 Err, Type2 Err.html",
-      "/posts/3_Researches/ITSTGCN/2023-02-20-IT-STGCN_guebin.html",
       "/posts/2_Studies/GML/Chapter01/02_Graph_metrics.html",
       "/posts/2_Studies/GML/Chapter01/01_Introduction_Networkx.html",
       "/posts/2_Studies/GML/Chapter01/03_Graphs_Benchmarks.html",
@@ -151,7 +144,6 @@
     "items": [
       "/posts/3_Researches/ITSTGCN/2023-03-18-SimulationPlanner-Tutorial.html",
       "/posts/3_Researches/ITSTGCN/2023-03-17-ITSTGCN-Tutorial.html",
-      "/posts/3_Researches/ITSTGCN/2023-02-20-IT-STGCN_guebin.html",
       "/posts/3_Researches/ITSTGCN/2022-12-30-STGCN-Toy Example.html",
       "/posts/3_Researches/ITSTGCN/2022-12-29-STGCN-tutorial.html",
       "/posts/3_Researches/ITSTGCN/2023-02-14-Tables.html"
@@ -161,7 +153,7 @@
     "listing": "/3_solar.html",
     "items": [
       "/posts/3_Researches/SOLAR/2023-04-04-EPT.html",
-      "/posts/3_Researches/SOLAR/2023-04-03-일사량.html"
+      "/posts/3_Researches/SOLAR/2023-04-03-일사량.html"
     ]
   }
 ]
