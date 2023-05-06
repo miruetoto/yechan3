@@ -47,6 +47,7 @@ website:
           - 3_hst.qmd
           - 3_itstgcn.qmd
           - 3_solar.qmd
+          - 3_boram.qmd
       - 4_notes.qmd
 
 format:
