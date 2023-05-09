@@ -16,7 +16,7 @@ This blog was created for my personal research, study and lecture preparation. T
 - <https://seoyeonc.github.io/md/>
 - <https://seoyeonc.github.io/blog/>
 - <https://boram-coco.github.io/coco/>
-- <https://pinkocto.github.io/mm/>
+- <https://pinkocto.github.io/noteda/>
 - <https://pinkocto.github.io/Quarto-Blog/>
 
 *first url bunch*
@@ -56,3 +56,4 @@ This blog was created for my personal research, study and lecture preparation. T
 *lectures notes*
 
 - <http://personal.psu.edu/drh20/asymp/fall2006/lectures/> 
+- <https://web.ma.utexas.edu/users/gordanz/lecture_notes_page.html> 
