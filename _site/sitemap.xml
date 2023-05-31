@@ -2,226 +2,294 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://miruetoto.github.io/yechan3/2_pl.html</loc>
-    <lastmod>2023-05-19T10:02:43.789Z</lastmod>
+    <lastmod>2023-05-26T09:14:36.472Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/about.html</loc>
-    <lastmod>2023-05-19T10:02:43.989Z</lastmod>
+    <lastmod>2023-05-26T09:14:36.684Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/3_boram.html</loc>
-    <lastmod>2023-05-19T10:02:44.189Z</lastmod>
+    <lastmod>2023-05-26T09:14:36.912Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/2_gml.html</loc>
-    <lastmod>2023-05-19T10:02:44.497Z</lastmod>
+    <lastmod>2023-05-26T09:14:37.184Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2099-01-01-notes2.html</loc>
-    <lastmod>2023-05-19T10:02:44.765Z</lastmod>
+    <lastmod>2023-05-26T09:14:37.428Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2099-01-01-notes1.html</loc>
-    <lastmod>2023-05-19T10:02:45.397Z</lastmod>
+    <lastmod>2023-05-26T09:14:38.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/Reviews/2022-12-23-Ebayesthresh.html</loc>
+    <lastmod>2023-05-26T09:14:38.284Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/Python/2000-04-05-넘파이.html</loc>
+    <lastmod>2023-05-26T09:14:39.192Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/CGSP/2022-12-24-Chap 8.3.html</loc>
+    <lastmod>2023-05-26T09:14:39.636Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/CGSP/2022-12-27-Chap-12.2.1~12.3.1.html</loc>
+    <lastmod>2023-05-26T09:14:40.432Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/CGSP/2023-01-15-Chap-12.4.html</loc>
-    <lastmod>2023-05-19T10:02:45.629Z</lastmod>
+    <lastmod>2023-05-26T09:14:40.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/CGSP/2022-12-26-Chap-12.2.html</loc>
+    <lastmod>2023-05-26T09:14:40.996Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html</loc>
-    <lastmod>2023-05-19T10:02:45.861Z</lastmod>
+    <lastmod>2023-05-26T09:14:41.220Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter02/01_embedding_examples.html</loc>
-    <lastmod>2023-05-19T10:02:46.073Z</lastmod>
+    <lastmod>2023-05-26T09:14:41.428Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter08/01_Credit_card_edges_classification.html</loc>
-    <lastmod>2023-05-19T10:02:46.337Z</lastmod>
+    <lastmod>2023-05-26T09:14:41.696Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter07/02_supervised_classification-embeddings.html</loc>
-    <lastmod>2023-05-19T10:02:46.569Z</lastmod>
+    <lastmod>2023-05-26T09:14:41.928Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter07/03_supervised_classsification_graphSAGE-TFIDF.html</loc>
-    <lastmod>2023-05-19T10:02:46.905Z</lastmod>
+    <lastmod>2023-05-26T09:14:42.252Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter07/01_nlp_graph_creation.html</loc>
+    <lastmod>2023-05-26T09:14:42.796Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter01/01_Introduction_Networkx.html</loc>
+    <lastmod>2023-05-26T09:14:43.064Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter01/03_Graphs_Benchmarks.html</loc>
+    <lastmod>2023-05-26T09:14:43.360Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter01/02_Graph_metrics.html</loc>
+    <lastmod>2023-05-26T09:14:43.688Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter09/01_Neo4j_bindings.html</loc>
-    <lastmod>2023-05-19T10:02:47.105Z</lastmod>
+    <lastmod>2023-05-26T09:14:43.888Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter04/02_Shallow_embeddings.html</loc>
-    <lastmod>2023-05-19T10:02:47.369Z</lastmod>
+    <lastmod>2023-05-26T09:14:44.140Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter04/01_Feature_based_methods.html</loc>
-    <lastmod>2023-05-19T10:02:47.573Z</lastmod>
+    <lastmod>2023-05-26T09:14:44.348Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter04/04_Graph_Neural_Networks.html</loc>
-    <lastmod>2023-05-19T10:02:47.841Z</lastmod>
+    <lastmod>2023-05-26T09:14:44.620Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter04/03_Graph_regularization_graph_neural_training.html</loc>
-    <lastmod>2023-05-19T10:02:48.117Z</lastmod>
+    <lastmod>2023-05-26T09:14:44.896Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter06/01_Social_network_analysis.html</loc>
-    <lastmod>2023-05-19T10:02:48.473Z</lastmod>
+    <lastmod>2023-05-26T09:14:45.244Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter05/01_link_prediction.html</loc>
-    <lastmod>2023-05-19T10:02:48.713Z</lastmod>
+    <lastmod>2023-05-26T09:14:45.484Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter05/02_community_detection_algorithms.html</loc>
-    <lastmod>2023-05-19T10:02:48.957Z</lastmod>
+    <lastmod>2023-05-26T09:14:45.744Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter03/04_Graph_Neural_Network.html</loc>
-    <lastmod>2023-05-19T10:02:49.209Z</lastmod>
+    <lastmod>2023-05-26T09:14:46.000Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter03/02_Autoencoders.html</loc>
-    <lastmod>2023-05-19T10:02:49.493Z</lastmod>
+    <lastmod>2023-05-26T09:14:46.280Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter03/01_Shallow_Embeddings.html</loc>
-    <lastmod>2023-05-19T10:02:49.733Z</lastmod>
+    <lastmod>2023-05-26T09:14:46.508Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/2_Studies/GML/Chapter03/03_Structural_deep_neural_embeddings.html</loc>
-    <lastmod>2023-05-19T10:02:49.933Z</lastmod>
+    <lastmod>2023-05-26T09:14:46.704Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/4_Notes/2000-01-01-우분투 포맷 및 개발용 서버 셋팅.html</loc>
-    <lastmod>2023-05-19T10:02:50.337Z</lastmod>
+    <lastmod>2023-05-26T09:14:47.104Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/4_Notes/2000-01-06-주피터랩- 설정 및 몇가지 팁.html</loc>
-    <lastmod>2023-05-19T10:02:50.553Z</lastmod>
+    <lastmod>2023-05-26T09:14:47.316Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/4_Notes/2000-01-07-줄리아 설치 및 실행.html</loc>
-    <lastmod>2023-05-19T10:02:50.761Z</lastmod>
+    <lastmod>2023-05-26T09:14:47.524Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/4_Notes/2000-01-08-깃(Git).html</loc>
-    <lastmod>2023-05-19T10:02:50.973Z</lastmod>
+    <lastmod>2023-05-26T09:14:47.720Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/4_Notes/2000-01-04-우분투 익히기.html</loc>
-    <lastmod>2023-05-19T10:02:51.201Z</lastmod>
+    <lastmod>2023-05-26T09:14:47.956Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/ITSTGCN/2023-03-18-SimulationPlanner-Tutorial.html</loc>
-    <lastmod>2023-05-19T10:02:51.429Z</lastmod>
+    <lastmod>2023-05-26T09:14:48.180Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/ITSTGCN/2023-03-17-ITSTGCN-Tutorial.html</loc>
+    <lastmod>2023-05-26T09:14:48.588Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/ITSTGCN/2022-12-29-STGCN-tutorial.html</loc>
+    <lastmod>2023-05-26T09:14:48.904Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/ITSTGCN/2022-12-30-STGCN-Toy Example.html</loc>
-    <lastmod>2023-05-19T10:02:51.681Z</lastmod>
+    <lastmod>2023-05-26T09:14:49.152Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/ITSTGCN/2023-04-27-toy_example_figure2.html</loc>
+    <lastmod>2023-05-26T09:14:49.388Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/ITSTGCN/2023-02-14-Tables.html</loc>
-    <lastmod>2023-05-19T10:02:51.893Z</lastmod>
+    <lastmod>2023-05-26T09:14:49.592Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/HST/2023-01-23-CommunityDetection.html</loc>
-    <lastmod>2023-05-19T10:02:52.097Z</lastmod>
+    <lastmod>2023-05-26T09:14:49.780Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/BORAM/2023-05-24-try2변형.html</loc>
+    <lastmod>2023-05-26T09:14:50.088Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/BORAM/2023-05-12-try1.html</loc>
-    <lastmod>2023-05-19T10:02:52.433Z</lastmod>
+    <lastmod>2023-05-26T09:14:50.420Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/BORAM/2023-05-06-start.html</loc>
+    <lastmod>2023-05-26T09:14:50.840Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/BORAM/2023-05-24-try1변형.html</loc>
+    <lastmod>2023-05-26T09:14:51.176Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/BORAM/2023-05-19-try2.html</loc>
-    <lastmod>2023-05-19T10:02:52.781Z</lastmod>
+    <lastmod>2023-05-26T09:14:51.524Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/SOLAR/2023-04-03-일사량.html</loc>
-    <lastmod>2023-05-19T10:02:53.029Z</lastmod>
+    <lastmod>2023-05-26T09:14:51.772Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/3_Researches/SOLAR/2023-04-04-EPT.html</loc>
+    <lastmod>2023-05-26T09:14:52.084Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2019-04-26-퓨리에 변환.html</loc>
-    <lastmod>2023-05-19T10:02:53.273Z</lastmod>
+    <lastmod>2023-05-26T09:14:52.312Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2023-02-14-수통문제-지수분포평균검정.html</loc>
+    <lastmod>2023-05-26T09:14:52.560Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2023-01-07-해석학(1).html</loc>
-    <lastmod>2023-05-19T10:02:53.525Z</lastmod>
+    <lastmod>2023-05-26T09:14:52.804Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2023-02-05-시계열의 주파수영역 분석.html</loc>
-    <lastmod>2023-05-19T10:02:53.741Z</lastmod>
+    <lastmod>2023-05-26T09:14:53.004Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2023-01-11-여러가지 부등식.html</loc>
-    <lastmod>2023-05-19T10:02:53.929Z</lastmod>
+    <lastmod>2023-05-26T09:14:53.184Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2023-01-20-추정.html</loc>
-    <lastmod>2023-05-19T10:02:54.169Z</lastmod>
+    <lastmod>2023-05-26T09:14:53.420Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2023-05-13-적분의 Notations.html</loc>
-    <lastmod>2023-05-19T10:02:54.357Z</lastmod>
+    <lastmod>2023-05-26T09:14:53.608Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2022-01-12-토폴로지(1).html</loc>
-    <lastmod>2023-05-19T10:02:54.669Z</lastmod>
+    <lastmod>2023-05-26T09:14:53.908Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2023-02-09-칸토어집합,칸토어함수,르벡분해.html</loc>
-    <lastmod>2023-05-19T10:02:54.889Z</lastmod>
+    <lastmod>2023-05-26T09:14:54.132Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2023-04-13-마코프체인 인트로.html</loc>
-    <lastmod>2023-05-19T10:02:55.153Z</lastmod>
+    <lastmod>2023-05-26T09:14:54.384Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2020-03-12-확률,확률변수,시계열,정상성.html</loc>
-    <lastmod>2023-05-19T10:02:55.637Z</lastmod>
+    <lastmod>2023-05-26T09:14:54.864Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/posts/1_Essays/2023-03-01-수통문제-Type1 Err, Type2 Err.html</loc>
-    <lastmod>2023-05-19T10:02:55.885Z</lastmod>
+    <lastmod>2023-05-26T09:14:55.124Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/3_hst.html</loc>
-    <lastmod>2023-05-19T10:02:56.077Z</lastmod>
+    <lastmod>2023-05-26T09:14:55.312Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/2_python.html</loc>
-    <lastmod>2023-05-19T10:02:56.257Z</lastmod>
+    <lastmod>2023-05-26T09:14:55.496Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/2_reviews.html</loc>
-    <lastmod>2023-05-19T10:02:56.433Z</lastmod>
+    <lastmod>2023-05-26T09:14:55.676Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/1_essays.html</loc>
-    <lastmod>2023-05-19T10:02:56.681Z</lastmod>
+    <lastmod>2023-05-26T09:14:55.920Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/4_notes.html</loc>
-    <lastmod>2023-05-19T10:02:56.881Z</lastmod>
+    <lastmod>2023-05-26T09:14:56.120Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/2_cgsp.html</loc>
-    <lastmod>2023-05-19T10:02:57.061Z</lastmod>
+    <lastmod>2023-05-26T09:14:56.320Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/index.html</loc>
-    <lastmod>2023-05-19T10:02:57.421Z</lastmod>
+    <lastmod>2023-05-26T09:14:56.772Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/3_itstgcn.html</loc>
-    <lastmod>2023-05-19T10:02:57.617Z</lastmod>
+    <lastmod>2023-05-26T09:14:56.972Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/3_solar.html</loc>
-    <lastmod>2023-05-19T10:02:57.809Z</lastmod>
+    <lastmod>2023-05-26T09:14:57.168Z</lastmod>
   </url>
 </urlset>
