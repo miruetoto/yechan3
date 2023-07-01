@@ -48,6 +48,7 @@ website:
           - 3_itstgcn.qmd
           - 3_solar.qmd
           - 3_boram.qmd
+          - 3_pinkocto.qmd          
       - 4_notes.qmd
 
 format:
