@@ -41,6 +41,7 @@ website:
           - 2_gml.qmd      
           - 2_python.qmd                  
           - 2_pl.qmd          
+          - 2_pyg.qmd
           - 2_reviews.qmd    
       - section: "**Researches**"
         contents:
@@ -49,7 +50,6 @@ website:
           - 3_solar.qmd
           - 3_boram.qmd
           - 3_pinkocto.qmd
-          - 3_pyg.qmd
       - 4_notes.qmd
 
 format:
