@@ -8,6 +8,7 @@
   {
     "listing": "/2_pyg.html",
     "items": [
+      "/posts/2_Studies/PyG/2023-07-07-lesson2.html",
       "/posts/2_Studies/PyG/2023-07-02-lesson1.html"
     ]
   },
@@ -56,6 +57,7 @@
   {
     "listing": "/1_essays.html",
     "items": [
+      "/posts/1_Essays/2023-07-07-다중척도방법.html",
       "/posts/1_Essays/2023-07-04-토폴로지(1).html",
       "/posts/1_Essays/2023-04-13-마코프체인 인트로.html",
       "/posts/1_Essays/2023-03-01-수통문제-Type1 Err, Type2 Err.html",
@@ -92,6 +94,8 @@
     "items": [
       "/posts/3_Researches/SOLAR/2023-07-03-.html",
       "/posts/3_Researches/BORAM/2023-07-03-CTGAN_신용카드.html",
+      "/posts/1_Essays/2023-07-07-다중척도방법.html",
+      "/posts/2_Studies/PyG/2023-07-07-lesson2.html",
       "/posts/1_Essays/2023-07-04-토폴로지(1).html",
       "/posts/2_Studies/PyG/2023-07-02-lesson1.html",
       "/posts/3_Researches/BORAM/2023-07-01-CTGAN.html",

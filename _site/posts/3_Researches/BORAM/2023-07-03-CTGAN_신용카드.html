@@ -352,21 +352,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="imports" class="level1">
 <h1>imports</h1>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> ctgan <span class="im">import</span> CTGAN</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="im">from</span> ctgan <span class="im">import</span> load_demo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># from ctgan import CTGAN</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># from ctgan import load_demo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> sklearn <span class="im">import</span> model_selection <span class="co"># split함수이용</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> sklearn <span class="im">import</span> ensemble <span class="co"># RF,GBM</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> down_sample_textbook(df):</span>
 <span id="cb4-2"><a href="#cb4-2"></a>    df_majority <span class="op">=</span> df[df.is_fraud<span class="op">==</span><span class="dv">0</span>].copy()</span>
 <span id="cb4-3"><a href="#cb4-3"></a>    df_minority <span class="op">=</span> df[df.is_fraud<span class="op">==</span><span class="dv">1</span>].copy()</span>
@@ -445,41 +445,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p><code>-</code> fraudTrain</p>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fraudTrain <span class="op">=</span> pd.read_csv(<span class="st">"fraudTrain.csv"</span>).iloc[:,<span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>fraudTrain.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>fraudTrain.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>Index(['trans_date_trans_time', 'cc_num', 'merchant', 'category', 'amt',
+       'first', 'last', 'gender', 'street', 'city', 'state', 'zip', 'lat',
+       'long', 'city_pop', 'job', 'dob', 'trans_num', 'unix_time', 'merch_lat',
+       'merch_long', 'is_fraud'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>fraudTrain[<span class="st">'is_fraud'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>0          0
+1          0
+2          0
+3          0
+4          0
+          ..
+1048570    0
+1048571    0
+1048572    0
+1048573    0
+1048574    0
+Name: is_fraud, Length: 1048575, dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>fraudTrain.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>0.00573</code></pre>
 </div>
 </div>
 <p><code>-</code> df20</p>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>_df1 <span class="op">=</span> fraudTrain[fraudTrain[<span class="st">"is_fraud"</span>] <span class="op">==</span> <span class="dv">0</span>].sample(frac<span class="op">=</span><span class="fl">0.20</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>_df2 <span class="op">=</span> fraudTrain[fraudTrain[<span class="st">"is_fraud"</span>] <span class="op">==</span> <span class="dv">1</span>]</span>
-<span id="cb8-3"><a href="#cb8-3"></a>df02 <span class="op">=</span> pd.concat([_df1,_df2])</span>
-<span id="cb8-4"><a href="#cb8-4"></a>df02.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>_df1 <span class="op">=</span> fraudTrain[fraudTrain[<span class="st">"is_fraud"</span>] <span class="op">==</span> <span class="dv">0</span>].sample(frac<span class="op">=</span><span class="fl">0.20</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>_df2 <span class="op">=</span> fraudTrain[fraudTrain[<span class="st">"is_fraud"</span>] <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb12-3"><a href="#cb12-3"></a>df02 <span class="op">=</span> pd.concat([_df1,_df2])</span>
+<span id="cb12-4"><a href="#cb12-4"></a>df02.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>(214520, 22)</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df02.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df02.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>0.028</code></pre>
 </div>
 </div>
 <p><code>-</code> df50</p>
 <div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df50 <span class="op">=</span> down_sample_textbook(df02)</span>
-<span id="cb12-2"><a href="#cb12-2"></a>df50.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df50 <span class="op">=</span> down_sample_textbook(df02)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>df50.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>(12012, 22)</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df50</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df50</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 
 <div>
@@ -783,34 +810,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df50.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>df50.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>0.5</code></pre>
 </div>
 </div>
 <p><code>-</code> df50_tr, df50_test</p>
 <div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df50_tr,df50_test <span class="op">=</span> sklearn.model_selection.train_test_split(df50, random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>df50_tr,df50_test <span class="op">=</span> sklearn.model_selection.train_test_split(df50, random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df50_tr.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>), df50_test.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df50_tr.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>), df50_test.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>(0.49828, 0.50516)</code></pre>
 </div>
 </div>
 <p><code>-</code> df02_tr, fraudTrain_tr</p>
 <div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df02_tr <span class="op">=</span> df02.loc[[i <span class="kw">not</span> <span class="kw">in</span> df50_test.index <span class="cf">for</span> i <span class="kw">in</span> df02.index],:].copy()</span>
-<span id="cb20-2"><a href="#cb20-2"></a>fraudTrain_tr <span class="op">=</span> fraudTrain.loc[[i <span class="kw">not</span> <span class="kw">in</span> df50_test.index <span class="cf">for</span> i <span class="kw">in</span> fraudTrain.index],:].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df02_tr <span class="op">=</span> df02.loc[[i <span class="kw">not</span> <span class="kw">in</span> df50_test.index <span class="cf">for</span> i <span class="kw">in</span> df02.index],:].copy()</span>
+<span id="cb24-2"><a href="#cb24-2"></a>fraudTrain_tr <span class="op">=</span> fraudTrain.loc[[i <span class="kw">not</span> <span class="kw">in</span> df50_test.index <span class="cf">for</span> i <span class="kw">in</span> fraudTrain.index],:].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>df02_tr.shape, fraudTrain_tr.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>df02_tr.shape, fraudTrain_tr.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>((211517, 22), (1045572, 22))</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df02_tr.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>), fraudTrain_tr.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>df02_tr.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>), fraudTrain_tr.is_fraud.mean().<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>(0.02122, 0.00429)</code></pre>
 </div>
@@ -854,37 +881,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>분석1</h1>
 <p><code>-</code> step1: data</p>
 <div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>X <span class="op">=</span> np.array(df02_tr.loc[:,[<span class="st">'amt'</span>]])</span>
-<span id="cb25-2"><a href="#cb25-2"></a>XX <span class="op">=</span> np.array(df50_test.loc[:,[<span class="st">'amt'</span>]])</span>
-<span id="cb25-3"><a href="#cb25-3"></a>y <span class="op">=</span> np.array(df02_tr.is_fraud)</span>
-<span id="cb25-4"><a href="#cb25-4"></a>yy <span class="op">=</span> np.array(df50_test.is_fraud)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>X <span class="op">=</span> np.array(df02_tr.loc[:,[<span class="st">'amt'</span>]])</span>
+<span id="cb29-2"><a href="#cb29-2"></a>XX <span class="op">=</span> np.array(df50_test.loc[:,[<span class="st">'amt'</span>]])</span>
+<span id="cb29-3"><a href="#cb29-3"></a>y <span class="op">=</span> np.array(df02_tr.is_fraud)</span>
+<span id="cb29-4"><a href="#cb29-4"></a>yy <span class="op">=</span> np.array(df50_test.is_fraud)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> step2: lrnr 생성</p>
 <div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>lrnr <span class="op">=</span> ensemble.GradientBoostingClassifier()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>lrnr <span class="op">=</span> ensemble.GradientBoostingClassifier()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> step3: fit</p>
 <div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>lrnr.fit(X,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>lrnr.fit(X,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GradientBoostingClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">GradientBoostingClassifier</label><div class="sk-toggleable__content"><pre>GradientBoostingClassifier()</pre></div></div></div></div></div>
 </div>
 </div>
 <p><code>-</code> step4: evaluate</p>
 <div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>thresh <span class="op">=</span> y.mean()</span>
-<span id="cb28-2"><a href="#cb28-2"></a>yyhat <span class="op">=</span> (lrnr.predict_proba(XX)<span class="op">&gt;</span> thresh)[:,<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb28-3"><a href="#cb28-3"></a><span class="co">#yyhat = lrnr.predict(XX) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>thresh <span class="op">=</span> y.mean()</span>
+<span id="cb32-2"><a href="#cb32-2"></a>yyhat <span class="op">=</span> (lrnr.predict_proba(XX)<span class="op">&gt;</span> thresh)[:,<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="co">#yyhat = lrnr.predict(XX) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>metrics <span class="op">=</span> [sklearn.metrics.accuracy_score,</span>
-<span id="cb29-2"><a href="#cb29-2"></a>           sklearn.metrics.precision_score,</span>
-<span id="cb29-3"><a href="#cb29-3"></a>           sklearn.metrics.recall_score,</span>
-<span id="cb29-4"><a href="#cb29-4"></a>           sklearn.metrics.f1_score]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>metrics <span class="op">=</span> [sklearn.metrics.accuracy_score,</span>
+<span id="cb33-2"><a href="#cb33-2"></a>           sklearn.metrics.precision_score,</span>
+<span id="cb33-3"><a href="#cb33-3"></a>           sklearn.metrics.recall_score,</span>
+<span id="cb33-4"><a href="#cb33-4"></a>           sklearn.metrics.f1_score]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>_results2<span class="op">=</span> pd.DataFrame({m.<span class="va">__name__</span>:[m(yy,yyhat).<span class="bu">round</span>(<span class="dv">6</span>)] <span class="cf">for</span> m <span class="kw">in</span> metrics},index<span class="op">=</span>[<span class="st">'분석2'</span>])</span>
-<span id="cb30-2"><a href="#cb30-2"></a>_results2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>_results2<span class="op">=</span> pd.DataFrame({m.<span class="va">__name__</span>:[m(yy,yyhat).<span class="bu">round</span>(<span class="dv">6</span>)] <span class="cf">for</span> m <span class="kw">in</span> metrics},index<span class="op">=</span>[<span class="st">'분석2'</span>])</span>
+<span id="cb34-2"><a href="#cb34-2"></a>_results2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 
 <div>
@@ -917,16 +944,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>분석2</h1>
 <p><code>-</code> step1: data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Names of the columns that are discrete</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a>discrete_columns <span class="op">=</span> [<span class="st">'trans_date_trans_time'</span>, <span class="st">'cc_num'</span>, <span class="st">'merchant'</span>, <span class="st">'category'</span>, <span class="st">'first'</span>, <span class="st">'last'</span>, <span class="st">'gender'</span>, <span class="st">'street'</span>, <span class="st">'city'</span>, <span class="st">'state'</span>, <span class="st">'zip'</span>, <span class="st">'job'</span>, <span class="st">'dob'</span>, <span class="st">'trans_num'</span>, <span class="st">'is_fraud'</span>]</span>
-<span id="cb31-3"><a href="#cb31-3"></a>ctgan <span class="op">=</span> CTGAN(epochs<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb31-4"><a href="#cb31-4"></a>ctgan.fit(df, discrete_columns)</span>
-<span id="cb31-5"><a href="#cb31-5"></a></span>
-<span id="cb31-6"><a href="#cb31-6"></a><span class="co"># Create synthetic data</span></span>
-<span id="cb31-7"><a href="#cb31-7"></a>df2 <span class="op">=</span> ctgan.sample(<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Names of the columns that are discrete</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>discrete_columns <span class="op">=</span> [<span class="st">'trans_date_trans_time'</span>, <span class="st">'cc_num'</span>, <span class="st">'merchant'</span>, <span class="st">'category'</span>, <span class="st">'first'</span>, <span class="st">'last'</span>, <span class="st">'gender'</span>, <span class="st">'street'</span>, <span class="st">'city'</span>, <span class="st">'state'</span>, <span class="st">'zip'</span>, <span class="st">'job'</span>, <span class="st">'dob'</span>, <span class="st">'trans_num'</span>, <span class="st">'is_fraud'</span>]</span>
+<span id="cb35-3"><a href="#cb35-3"></a>ctgan <span class="op">=</span> CTGAN(epochs<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb35-4"><a href="#cb35-4"></a>ctgan.fit(df, discrete_columns)</span>
+<span id="cb35-5"><a href="#cb35-5"></a></span>
+<span id="cb35-6"><a href="#cb35-6"></a><span class="co"># Create synthetic data</span></span>
+<span id="cb35-7"><a href="#cb35-7"></a>df2 <span class="op">=</span> ctgan.sample(<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>df02_tr.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>df02_tr.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>Index(['trans_date_trans_time', 'cc_num', 'merchant', 'category', 'amt',
        'first', 'last', 'gender', 'street', 'city', 'state', 'zip', 'lat',
@@ -936,10 +963,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>[<span class="st">'trans_date_trans_time'</span>, <span class="st">'cc_num'</span>, <span class="st">'merchant'</span>, <span class="st">'category'</span>, <span class="st">'first'</span>, <span class="st">'last'</span>, <span class="st">'gender'</span>, <span class="st">'street'</span>, <span class="st">'city'</span>, <span class="st">'state'</span>, <span class="st">'zip'</span>, <span class="st">'job'</span>, <span class="st">'dob'</span>, <span class="st">'trans_num'</span>, <span class="st">'is_fraud'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>[<span class="st">'trans_date_trans_time'</span>, <span class="st">'cc_num'</span>, <span class="st">'merchant'</span>, <span class="st">'category'</span>, <span class="st">'first'</span>, <span class="st">'last'</span>, <span class="st">'gender'</span>, <span class="st">'street'</span>, <span class="st">'city'</span>, <span class="st">'state'</span>, <span class="st">'zip'</span>, <span class="st">'job'</span>, <span class="st">'dob'</span>, <span class="st">'trans_num'</span>, <span class="st">'is_fraud'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>df02_tr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>df02_tr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 
 <div>
@@ -1243,37 +1270,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>X <span class="op">=</span> np.array(df02_tr.loc[:,[<span class="st">'amt'</span>]])</span>
-<span id="cb36-2"><a href="#cb36-2"></a>XX <span class="op">=</span> np.array(df50_test.loc[:,[<span class="st">'amt'</span>]])</span>
-<span id="cb36-3"><a href="#cb36-3"></a>y <span class="op">=</span> np.array(df02_tr.is_fraud)</span>
-<span id="cb36-4"><a href="#cb36-4"></a>yy <span class="op">=</span> np.array(df50_test.is_fraud)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>X <span class="op">=</span> np.array(df02_tr.loc[:,[<span class="st">'amt'</span>]])</span>
+<span id="cb40-2"><a href="#cb40-2"></a>XX <span class="op">=</span> np.array(df50_test.loc[:,[<span class="st">'amt'</span>]])</span>
+<span id="cb40-3"><a href="#cb40-3"></a>y <span class="op">=</span> np.array(df02_tr.is_fraud)</span>
+<span id="cb40-4"><a href="#cb40-4"></a>yy <span class="op">=</span> np.array(df50_test.is_fraud)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> step2: lrnr 생성</p>
 <div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>lrnr <span class="op">=</span> ensemble.GradientBoostingClassifier()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>lrnr <span class="op">=</span> ensemble.GradientBoostingClassifier()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> step3: fit</p>
 <div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>lrnr.fit(X,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>lrnr.fit(X,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GradientBoostingClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">GradientBoostingClassifier</label><div class="sk-toggleable__content"><pre>GradientBoostingClassifier()</pre></div></div></div></div></div>
 </div>
 </div>
 <p><code>-</code> step4: evaluate</p>
 <div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>thresh <span class="op">=</span> y.mean()</span>
-<span id="cb39-2"><a href="#cb39-2"></a>yyhat <span class="op">=</span> (lrnr.predict_proba(XX)<span class="op">&gt;</span> thresh)[:,<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb39-3"><a href="#cb39-3"></a><span class="co">#yyhat = lrnr.predict(XX) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>thresh <span class="op">=</span> y.mean()</span>
+<span id="cb43-2"><a href="#cb43-2"></a>yyhat <span class="op">=</span> (lrnr.predict_proba(XX)<span class="op">&gt;</span> thresh)[:,<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb43-3"><a href="#cb43-3"></a><span class="co">#yyhat = lrnr.predict(XX) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>metrics <span class="op">=</span> [sklearn.metrics.accuracy_score,</span>
-<span id="cb40-2"><a href="#cb40-2"></a>           sklearn.metrics.precision_score,</span>
-<span id="cb40-3"><a href="#cb40-3"></a>           sklearn.metrics.recall_score,</span>
-<span id="cb40-4"><a href="#cb40-4"></a>           sklearn.metrics.f1_score]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>metrics <span class="op">=</span> [sklearn.metrics.accuracy_score,</span>
+<span id="cb44-2"><a href="#cb44-2"></a>           sklearn.metrics.precision_score,</span>
+<span id="cb44-3"><a href="#cb44-3"></a>           sklearn.metrics.recall_score,</span>
+<span id="cb44-4"><a href="#cb44-4"></a>           sklearn.metrics.f1_score]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>_results2<span class="op">=</span> pd.DataFrame({m.<span class="va">__name__</span>:[m(yy,yyhat).<span class="bu">round</span>(<span class="dv">6</span>)] <span class="cf">for</span> m <span class="kw">in</span> metrics},index<span class="op">=</span>[<span class="st">'분석2'</span>])</span>
-<span id="cb41-2"><a href="#cb41-2"></a>_results2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>_results2<span class="op">=</span> pd.DataFrame({m.<span class="va">__name__</span>:[m(yy,yyhat).<span class="bu">round</span>(<span class="dv">6</span>)] <span class="cf">for</span> m <span class="kw">in</span> metrics},index<span class="op">=</span>[<span class="st">'분석2'</span>])</span>
+<span id="cb45-2"><a href="#cb45-2"></a>_results2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 
 <div>
