@@ -10,3 +10,5 @@ title-block-banner: true
 comments: 
   utterances: 
     repo: miruetoto/yechan3
+
+notebook-links: true
