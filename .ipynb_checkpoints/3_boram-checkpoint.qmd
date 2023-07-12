@@ -1,5 +1,5 @@
 ---
-title: "BORAM"
+title: "BORAM-COCO"
 listing:
   contents: posts/3_Researches/BORAM
   sort: "date desc"

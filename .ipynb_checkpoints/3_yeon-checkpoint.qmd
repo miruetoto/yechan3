@@ -1,7 +1,7 @@
 ---
-title: "IT-STGCN"
+title: "SEOYEONC"
 listing:
-  contents: posts/3_Researches/ITSTGCN
+  contents: posts/3_Researches/YEON
   sort: "date desc"
   type: table
   categories: false
