@@ -287,6 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#download-notebook" id="toc-download-notebook" class="nav-link active" data-scroll-target="#download-notebook">Download notebook</a></li>
   <li><a href="#ref" id="toc-ref" class="nav-link" data-scroll-target="#ref">Ref</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">data</a></li>
+  <li><a href="#fraud-data에-활용" id="toc-fraud-data에-활용" class="nav-link" data-scroll-target="#fraud-data에-활용">FRAUD data에 활용?</a></li>
   </ul>
 </nav>
     </div>
@@ -366,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-18"><a href="#cb5-18"></a></span>
 <span id="cb5-19"><a href="#cb5-19"></a>        <span class="cf">return</span> F.log_softmax(x, dim<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="57327f9e-3e0c-4f97-9dfc-28d82a3634eb" class="cell" data-execution_count="3">
+<div id="57327f9e-3e0c-4f97-9dfc-28d82a3634eb" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>device <span class="op">=</span> torch.device(<span class="st">'cuda'</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">'cpu'</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>model <span class="op">=</span> GCN().to(device)</span>
 <span id="cb6-3"><a href="#cb6-3"></a>data <span class="op">=</span> dataset[<span class="dv">0</span>].to(device)</span>
@@ -376,20 +377,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-7"><a href="#cb6-7"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">200</span>):</span>
 <span id="cb6-8"><a href="#cb6-8"></a>    optimizer.zero_grad()</span>
 <span id="cb6-9"><a href="#cb6-9"></a>    out <span class="op">=</span> model(data)</span>
-<span id="cb6-10"><a href="#cb6-10"></a>    loss <span class="op">=</span> F.nll_loss(out[data.train_mask], data.y[data.train_mask])</span>
+<span id="cb6-10"><a href="#cb6-10"></a>    loss <span class="op">=</span> F.nll_loss(out[data.train_mask], data.y[data.train_mask]) <span class="co"># train에 대한 loss만 따로 처리해야함</span></span>
 <span id="cb6-11"><a href="#cb6-11"></a>    loss.backward()</span>
 <span id="cb6-12"><a href="#cb6-12"></a>    optimizer.step()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0995a97c-5967-4903-8100-4e4096b0ddfa" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>model.<span class="bu">eval</span>()</span>
-<span id="cb7-2"><a href="#cb7-2"></a>pred <span class="op">=</span> model(data).argmax(dim<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>correct <span class="op">=</span> (pred[data.test_mask] <span class="op">==</span> data.y[data.test_mask]).<span class="bu">sum</span>()</span>
-<span id="cb7-4"><a href="#cb7-4"></a>acc <span class="op">=</span> <span class="bu">int</span>(correct) <span class="op">/</span> <span class="bu">int</span>(data.test_mask.<span class="bu">sum</span>())</span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="bu">print</span>(<span class="ss">f'Accuracy: </span><span class="sc">{</span>acc<span class="sc">:.4f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8fe2788d-4302-4a88-a5ff-8180a1982000" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>out.shape <span class="co"># 카테고리가 7개</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>torch.Size([2708, 7])</code></pre>
+</div>
+</div>
+<div id="02606716-33f5-4f33-854b-49db2d0f67bb" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>data.y.unique() <span class="co"># 카테고리가 7개</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>tensor([0, 1, 2, 3, 4, 5, 6], device='cuda:0')</code></pre>
+</div>
+</div>
+<div id="0995a97c-5967-4903-8100-4e4096b0ddfa" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>model.<span class="bu">eval</span>()</span>
+<span id="cb11-2"><a href="#cb11-2"></a>pred <span class="op">=</span> model(data).argmax(dim<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a>correct <span class="op">=</span> (pred[data.test_mask] <span class="op">==</span> data.y[data.test_mask]).<span class="bu">sum</span>() <span class="co"># 애큐러시는 test</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>acc <span class="op">=</span> <span class="bu">int</span>(correct) <span class="op">/</span> <span class="bu">int</span>(data.test_mask.<span class="bu">sum</span>())</span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="bu">print</span>(<span class="ss">f'Accuracy: </span><span class="sc">{</span>acc<span class="sc">:.4f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Accuracy: 0.8080</code></pre>
+<pre><code>Accuracy: 0.8050</code></pre>
 </div>
 </div>
+</section>
+<section id="fraud-data에-활용" class="level1">
+<h1>FRAUD data에 활용?</h1>
+<ol type="1">
+<li>고객정보별로 그래프생성</li>
+<li>커다란 하나의 그래프 생성</li>
+</ol>
 
 
 </section>
