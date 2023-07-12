@@ -286,7 +286,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#벤치마크-데이터셋" id="toc-벤치마크-데이터셋" class="nav-link active" data-scroll-target="#벤치마크-데이터셋">벤치마크 데이터셋</a></li>
+  <li><a href="#download-notebook" id="toc-download-notebook" class="nav-link active" data-scroll-target="#download-notebook">Download notebook</a></li>
+  <li><a href="#ref" id="toc-ref" class="nav-link" data-scroll-target="#ref">Ref</a></li>
+  <li><a href="#벤치마크-데이터셋" id="toc-벤치마크-데이터셋" class="nav-link" data-scroll-target="#벤치마크-데이터셋">벤치마크 데이터셋</a></li>
   <li><a href="#데이터셋1-tudataset" id="toc-데이터셋1-tudataset" class="nav-link" data-scroll-target="#데이터셋1-tudataset"><strong>데이터셋1</strong>: TUDataset</a>
   <ul class="collapse">
   <li><a href="#정보" id="toc-정보" class="nav-link" data-scroll-target="#정보">정보</a></li>
@@ -332,11 +334,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="download-notebook" class="level1">
+<h1>Download notebook</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>!wget https://raw.githubusercontent.com/miruetoto/yechan3/main/posts/2_Studies/PyG/ls2.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ref" class="level1">
+<h1>Ref</h1>
+<ul>
+<li><a href="https://pytorch-geometric.readthedocs.io/en/latest/get_started/introduction.html" class="uri">https://pytorch-geometric.readthedocs.io/en/latest/get_started/introduction.html</a></li>
+<li><a href="https://pytorch-geometric.readthedocs.io/en/latest/cheatsheet/data_cheatsheet.html" class="uri">https://pytorch-geometric.readthedocs.io/en/latest/cheatsheet/data_cheatsheet.html</a></li>
+</ul>
+</section>
 <section id="벤치마크-데이터셋" class="level1">
 <h1>벤치마크 데이터셋</h1>
 <p><code>-</code> 데이터셋은 아래의 모듈안에 정리되어 있음</p>
 <div id="39fb8fd6-7dbc-4525-8913-9d42bbea329c" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="bu">dir</span>(torch_geometric.datasets)[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">dir</span>(torch_geometric.datasets)[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>['AMiner', 'AQSOL', 'Actor', 'AirfRANS', 'Airports']</code></pre>
 </div>
@@ -346,10 +359,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1><strong>데이터셋1</strong>: TUDataset</h1>
 <p><code>-</code> 다운로드</p>
 <div id="4d8aaec4-6056-466e-b30c-dec74abc72ee" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>dataset <span class="op">=</span> torch_geometric.datasets.TUDataset(root<span class="op">=</span><span class="st">'/tmp/ENZYMES'</span>, name<span class="op">=</span><span class="st">'ENZYMES'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>dataset <span class="op">=</span> torch_geometric.datasets.TUDataset(root<span class="op">=</span><span class="st">'/tmp/ENZYMES'</span>, name<span class="op">=</span><span class="st">'ENZYMES'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="8ffca1b8-bf9c-4036-add6-a0c319e17207" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">!</span>ls <span class="op">/</span>tmp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">!</span>ls <span class="op">/</span>tmp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ENZYMES
 Rtmp2NzDbx
@@ -389,32 +402,32 @@ tracker-extract-files.125</code></pre>
 <p>(ChatGPT) ENZYMES는 그래프 분류를 위한 벤치마크 데이터셋 중 하나입니다. 이 데이터셋은 600개의 그래프로 구성되어 있으며, 6개의 클래스로 분류됩니다. 각 그래프는 효소(enzyme) 분자의 구조를 나타내며, 그래프의 노드는 원자(atom)를 나타내고, 엣지(edge)는 원자 간의 연결을 나타냅니다. ENZYMES 데이터셋은 화학 및 생물 정보학 분야에서 그래프 분류 알고리즘의 성능을 평가하기 위해 사용될 수 있습니다. 그래프 분류 알고리즘은 주어진 그래프를 특정 클래스 레이블로 분류하는 작업을 수행하는데 사용됩니다. 예를 들어, ENZYMES 데이터셋의 그래프는 특정 효소 종류를 나타내며, 그래프 분류 알고리즘은 주어진 효소 그래프가 어떤 종류의 효소인지 예측할 수 있습니다. PyG를 사용하여 ENZYMES 데이터셋을 초기화하면 해당 데이터셋을 다운로드하고 필요한 전처리를 자동으로 수행할 수 있습니다. 그래프 데이터를 다루는 머신 러닝 모델을 구축하고 훈련시키기 위해 ENZYMES 데이터셋을 사용할 수 있습니다.</p>
 </blockquote>
 <div id="5f8bb4a6-9b2c-4942-8a5a-472332a9f9da" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>dataset <span class="co"># 데이터셋 이름</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>dataset <span class="co"># 데이터셋 이름</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>ENZYMES(600)</code></pre>
 </div>
 </div>
 <div id="705120a8-1d4c-45a4-a6d7-24741b0dbde4" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">len</span>(dataset) <span class="co"># 이 데이터셋에는 600개의 그래프가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="bu">len</span>(dataset) <span class="co"># 이 데이터셋에는 600개의 그래프가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>600</code></pre>
 </div>
 </div>
 <div id="e8d99470-cc2e-4b33-93c4-9cea3d0a0a31" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>dataset.num_classes <span class="co"># 6개의 클래스</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>dataset.num_classes <span class="co"># 6개의 클래스</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>6</code></pre>
 </div>
 </div>
 <div id="145b90c8-eb1f-401a-bbf2-0f1f4891850c" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>dataset.num_node_features <span class="co"># 각 노드에는 3개의 피처가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>dataset.num_node_features <span class="co"># 각 노드에는 3개의 피처가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>3</code></pre>
 </div>
 </div>
 <p><code>-</code> 600개의 그래프중 첫번째 그래프에 접근</p>
 <div id="f2dee83e-37b1-4cad-8bc2-057268bdc495" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>dataset[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>dataset[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>Data(edge_index=[2, 168], x=[37, 3], y=[1])</code></pre>
 </div>
@@ -428,8 +441,8 @@ tracker-extract-files.125</code></pre>
 <h2 class="anchored" data-anchor-id="traintest-분리">Train/Test 분리</h2>
 <p><code>-</code> 600개의 그래프중 540를 train으로, 60개를 test로</p>
 <div id="9dd87618-121f-432e-bd22-44d6c0d1647a" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>train_dataset <span class="op">=</span> dataset[:<span class="dv">540</span>]</span>
-<span id="cb16-2"><a href="#cb16-2"></a>test_dataset <span class="op">=</span> dataset[<span class="dv">540</span>:] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>train_dataset <span class="op">=</span> dataset[:<span class="dv">540</span>]</span>
+<span id="cb17-2"><a href="#cb17-2"></a>test_dataset <span class="op">=</span> dataset[<span class="dv">540</span>:] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -437,7 +450,7 @@ tracker-extract-files.125</code></pre>
 <h1><strong>데이터셋2</strong>: Cora</h1>
 <p><code>-</code> 다운로드</p>
 <div id="86cf2f19-8dc3-459e-a2d1-4b41a8d3260f" class="cell" data-execution_count="114">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>dataset <span class="op">=</span> torch_geometric.datasets.Planetoid(root<span class="op">=</span><span class="st">'/tmp/Cora'</span>, name<span class="op">=</span><span class="st">'Cora'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>dataset <span class="op">=</span> torch_geometric.datasets.Planetoid(root<span class="op">=</span><span class="st">'/tmp/Cora'</span>, name<span class="op">=</span><span class="st">'Cora'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.x
 Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.tx
@@ -458,26 +471,26 @@ Done!</code></pre>
 </blockquote>
 <p><code>-</code> 기본정보</p>
 <div id="1dbbf891-1185-4d20-b1e5-476f93fc8b2e" class="cell" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="bu">len</span>(dataset) <span class="co"># 하나의 그래프가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="bu">len</span>(dataset) <span class="co"># 하나의 그래프가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="116">
 <pre><code>1</code></pre>
 </div>
 </div>
 <div id="90ce480e-e877-4cbb-ab83-adf3bd3e6fb1" class="cell" data-execution_count="118">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>dataset.num_classes <span class="co"># 7개의 클래스가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>dataset.num_classes <span class="co"># 7개의 클래스가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="118">
 <pre><code>7</code></pre>
 </div>
 </div>
 <div id="e965c6a5-b869-4e36-8eeb-6124da19558e" class="cell" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>dataset.num_node_features <span class="co"># 각 노드는 1433개의 특징이 있음. (논문에 포함된 단어등 다양한 특성이 담겨있을 수 있음) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>dataset.num_node_features <span class="co"># 각 노드는 1433개의 특징이 있음. (논문에 포함된 단어등 다양한 특성이 담겨있을 수 있음) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="123">
 <pre><code>1433</code></pre>
 </div>
 </div>
 <p><code>-</code> 그래프에 접근</p>
 <div id="43bbdb7f-4364-4230-8a4e-fa47a95d2a58" class="cell" data-execution_count="134">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>dataset[<span class="dv">0</span>] <span class="co"># 기본정보</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>dataset[<span class="dv">0</span>] <span class="co"># 기본정보</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="134">
 <pre><code>Data(x=[2708, 1433], edge_index=[2, 10556], y=[2708], train_mask=[2708], val_mask=[2708], test_mask=[2708])</code></pre>
 </div>
@@ -488,13 +501,13 @@ Done!</code></pre>
 <li><code>y=[2708]</code>:</li>
 </ul>
 <div id="54134d06-d056-4f3f-93d9-d5e2250e16ee" class="cell" data-execution_count="131">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>dataset[<span class="dv">0</span>].x.shape <span class="co"># 2708개의 논문이 있고 1433개의 특징벡터를 가짐</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>dataset[<span class="dv">0</span>].x.shape <span class="co"># 2708개의 논문이 있고 1433개의 특징벡터를 가짐</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="131">
 <pre><code>torch.Size([2708, 1433])</code></pre>
 </div>
 </div>
 <div id="cf1a3e04-da71-4c0a-a1ee-6fe8f3a4cace" class="cell" data-execution_count="129">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>dataset[<span class="dv">0</span>].y.unique() <span class="co"># 논문이 7개의 카테고리로 분류되는듯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>dataset[<span class="dv">0</span>].y.unique() <span class="co"># 논문이 7개의 카테고리로 분류되는듯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="129">
 <pre><code>tensor([0, 1, 2, 3, 4, 5, 6])</code></pre>
 </div>
@@ -503,27 +516,27 @@ Done!</code></pre>
 <section id="traintest-이미-분리되어-있음" class="level2">
 <h2 class="anchored" data-anchor-id="traintest-이미-분리되어-있음">Train/Test (이미 분리되어 있음)</h2>
 <div id="4877157e-389d-46f3-89fe-f2cf66555b74" class="cell" data-execution_count="138">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>dataset[<span class="dv">0</span>].train_mask </span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="co"># dataset[0].train_mask 는 True, False로 이루어져 있는 길이가 2708(=노드수=논문수)인 벡터</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="co"># 여기에서 True인 노드만 훈련함</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>dataset[<span class="dv">0</span>].train_mask </span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="co"># dataset[0].train_mask 는 True, False로 이루어져 있는 길이가 2708(=노드수=논문수)인 벡터</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="co"># 여기에서 True인 노드만 훈련함</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="138">
 <pre><code>tensor([ True,  True,  True,  ..., False, False, False])</code></pre>
 </div>
 </div>
 <div id="0e17b790-3677-44e5-b5a1-939480bbf95b" class="cell" data-execution_count="141">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>dataset[<span class="dv">0</span>].train_mask.<span class="bu">sum</span>() <span class="co"># 140개의 노드만 훈련함? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>dataset[<span class="dv">0</span>].train_mask.<span class="bu">sum</span>() <span class="co"># 140개의 노드만 훈련함? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="141">
 <pre><code>tensor(140)</code></pre>
 </div>
 </div>
 <div id="4896026c-df7f-48e3-b530-e76fc3c0016c" class="cell" data-execution_count="143">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>dataset[<span class="dv">0</span>].val_mask.<span class="bu">sum</span>() <span class="co"># val은 500개의 노드?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>dataset[<span class="dv">0</span>].val_mask.<span class="bu">sum</span>() <span class="co"># val은 500개의 노드?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="143">
 <pre><code>tensor(500)</code></pre>
 </div>
 </div>
 <div id="d6ea59ec-07e7-40aa-acbe-d0ae7acd08aa" class="cell" data-execution_count="144">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>dataset[<span class="dv">0</span>].test_mask.<span class="bu">sum</span>() <span class="co"># test set은 1000?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>dataset[<span class="dv">0</span>].test_mask.<span class="bu">sum</span>() <span class="co"># test set은 1000?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="144">
 <pre><code>tensor(1000)</code></pre>
 </div>

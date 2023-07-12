@@ -286,7 +286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#pyg-의-data-자료형" id="toc-pyg-의-data-자료형" class="nav-link active" data-scroll-target="#pyg-의-data-자료형">PyG 의 Data 자료형</a>
+  <li><a href="#download-notebook" id="toc-download-notebook" class="nav-link active" data-scroll-target="#download-notebook">Download notebook</a></li>
+  <li><a href="#pyg-의-data-자료형" id="toc-pyg-의-data-자료형" class="nav-link" data-scroll-target="#pyg-의-data-자료형">PyG 의 Data 자료형</a>
   <ul class="collapse">
   <li><a href="#예제1-아래와-같은-그래프자료를-고려하자." id="toc-예제1-아래와-같은-그래프자료를-고려하자." class="nav-link" data-scroll-target="#예제1-아래와-같은-그래프자료를-고려하자."><strong>예제1</strong>: 아래와 같은 그래프자료를 고려하자.</a></li>
   <li><a href="#예제2-잘못된-사용" id="toc-예제2-잘못된-사용" class="nav-link" data-scroll-target="#예제2-잘못된-사용"><strong>예제2</strong>: 잘못된 사용</a></li>
@@ -331,6 +332,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> torch_geometric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="download-notebook" class="level1">
+<h1>Download notebook</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1"></a>!wget https://raw.githubusercontent.com/miruetoto/yechan3/main/posts/2_Studies/PyG/ls1.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="pyg-의-data-자료형" class="level1 page-columns page-full">
 <h1>PyG 의 Data 자료형</h1>
 <blockquote class="blockquote">
@@ -342,21 +347,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="https://pytorch-geometric.readthedocs.io/en/latest/_images/graph.svg" class="img-fluid"></p>
 <p><code>-</code> 이러한 자료형은 아래와 같은 형식으로 저장한다.</p>
 <div id="27ade98b-01dd-4808-ae61-c51afcf06863" class="cell" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>],</span>
-<span id="cb2-2"><a href="#cb2-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>data <span class="op">=</span> torch_geometric.data.Data(x<span class="op">=</span>x, edge_index<span class="op">=</span>edge_index) <span class="co"># torch_geometric.data.Data는 그래프자료형을 만드는 클래스</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb3-2"><a href="#cb3-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>data <span class="op">=</span> torch_geometric.data.Data(x<span class="op">=</span>x, edge_index<span class="op">=</span>edge_index) <span class="co"># torch_geometric.data.Data는 그래프자료형을 만드는 클래스</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> data 의 자료형</p>
 <div id="a671b4e0-8f7c-4106-afa9-a0e4784ab3ea" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">type</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">type</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>torch_geometric.data.data.Data</code></pre>
 </div>
 </div>
 <p><code>-</code> data의 <code>__str__</code></p>
 <div id="3751985b-9c7a-482b-8760-5e58559b6c84" class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="83">
 <pre><code>Data(x=[3, 1], edge_index=[2, 4])</code></pre>
 </div>
@@ -367,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><code>-</code> 각 노드의 feature를 확인하는 방법 (즉 <span class="math inline">\(f:{\cal V} \to \mathbb{R}^k\)</span>를 확인하는 방법)</p>
 <div id="b4955ade-1059-43a8-9841-a0f2a46b0d93" class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>data.x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>data.x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>tensor([[-1.],
         [ 0.],
@@ -376,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> <span class="math inline">\({\cal E}\)</span>를 확인하는 방법</p>
 <div id="c8964557-b9ca-4002-8221-f6ae80fdb05c" class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>data.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>data.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>tensor([[0, 1, 1, 2],
         [1, 0, 2, 1]])</code></pre>
@@ -384,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code></p>
 <div id="8a195534-117d-4714-a2db-1151cfa190b4" class="cell" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="bu">len</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="bu">len</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="86">
 <pre><code>2</code></pre>
 </div>
@@ -394,17 +399,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="예제2-잘못된-사용"><strong>예제2</strong>: 잘못된 사용</h2>
 <p><code>-</code> <code>edge_index</code>는 예제1과 같이 <span class="math inline">\([2,|{\cal E}|]\)</span> 의 shape으로 넣어야 한다. 그렇지 않으면 에러가 난다.</p>
 <div id="0278aff0-9ff6-4243-92ab-a86be0d189c6" class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>],</span>
-<span id="cb13-2"><a href="#cb13-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb13-3"><a href="#cb13-3"></a>                           [<span class="dv">1</span>, <span class="dv">2</span>],</span>
-<span id="cb13-4"><a href="#cb13-4"></a>                           [<span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
-<span id="cb13-5"><a href="#cb13-5"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
-<span id="cb13-6"><a href="#cb13-6"></a></span>
-<span id="cb13-7"><a href="#cb13-7"></a>data <span class="op">=</span> torch_geometric.data.Data(x<span class="op">=</span>x, edge_index<span class="op">=</span>edge_index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb14-2"><a href="#cb14-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb14-3"><a href="#cb14-3"></a>                           [<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb14-4"><a href="#cb14-4"></a>                           [<span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb14-5"><a href="#cb14-5"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb14-6"><a href="#cb14-6"></a></span>
+<span id="cb14-7"><a href="#cb14-7"></a>data <span class="op">=</span> torch_geometric.data.Data(x<span class="op">=</span>x, edge_index<span class="op">=</span>edge_index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="e211094b-148a-4f1f-bc96-ea870cc3ad84" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#data.validate(raise_on_error=True)</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>data.validate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#data.validate(raise_on_error=True)</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>data.validate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>ValueError: 'edge_index' needs to be of shape [2, num_edges] in 'Data' (found torch.Size([4, 2]))</code></pre>
 </div>
@@ -414,20 +419,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="예제3-예제2의-수정"><strong>예제3</strong>: 예제2의 수정</h2>
 <p><code>-</code> <code>edge_index</code>의 shape이 <span class="math inline">\([|{\cal E}|,2]\)</span> 꼴로 저장되어 있었을 경우 트랜스포즈이후 countiguous()함수를 사용하면 된다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;그런데 그냥 transpose만 해도되는것 같음</p></li></div><div id="0d524691-1adf-498e-b01b-d954ee1dece3" class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>],</span>
-<span id="cb16-2"><a href="#cb16-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb16-3"><a href="#cb16-3"></a>                           [<span class="dv">1</span>, <span class="dv">2</span>],</span>
-<span id="cb16-4"><a href="#cb16-4"></a>                           [<span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
-<span id="cb16-5"><a href="#cb16-5"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
-<span id="cb16-6"><a href="#cb16-6"></a></span>
-<span id="cb16-7"><a href="#cb16-7"></a>data <span class="op">=</span> torch_geometric.data.Data(</span>
-<span id="cb16-8"><a href="#cb16-8"></a>    x<span class="op">=</span>x, </span>
-<span id="cb16-9"><a href="#cb16-9"></a>    edge_index<span class="op">=</span>edge_index.t().contiguous()</span>
-<span id="cb16-10"><a href="#cb16-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb17-2"><a href="#cb17-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb17-3"><a href="#cb17-3"></a>                           [<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb17-4"><a href="#cb17-4"></a>                           [<span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb17-5"><a href="#cb17-5"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb17-6"><a href="#cb17-6"></a></span>
+<span id="cb17-7"><a href="#cb17-7"></a>data <span class="op">=</span> torch_geometric.data.Data(</span>
+<span id="cb17-8"><a href="#cb17-8"></a>    x<span class="op">=</span>x, </span>
+<span id="cb17-9"><a href="#cb17-9"></a>    edge_index<span class="op">=</span>edge_index.t().contiguous()</span>
+<span id="cb17-10"><a href="#cb17-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="13b76fed-bdb4-435a-a287-664b9d8078fc" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#data.validate(raise_on_error=True)</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>data.validate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#data.validate(raise_on_error=True)</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>data.validate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>True</code></pre>
 </div>
