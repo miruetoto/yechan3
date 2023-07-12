@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.193">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,6 +82,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,10 +96,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
@@ -135,65 +113,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">신록예찬’s Blog</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DL2022/">
+    <a class="nav-link" href="https://guebin.github.io/DL2022/" rel="" target="">
  <span class="menu-text">DL2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DV2022/">
+    <a class="nav-link" href="https://guebin.github.io/DV2022/" rel="" target="">
  <span class="menu-text">DV2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IP2022/">
+    <a class="nav-link" href="https://guebin.github.io/IP2022/" rel="" target="">
  <span class="menu-text">IP2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/SC2022/">
+    <a class="nav-link" href="https://guebin.github.io/SC2022/" rel="" target="">
  <span class="menu-text">SC2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DS2022/">
+    <a class="nav-link" href="https://guebin.github.io/DS2022/" rel="" target="">
  <span class="menu-text">DS2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IR2021/">
+    <a class="nav-link" href="https://guebin.github.io/IR2021/" rel="" target="">
  <span class="menu-text">IR2021</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan/" rel="" target="">
  <span class="menu-text">yechan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan2/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan2/" rel="" target="">
  <span class="menu-text">yechan2</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/miruetoto/yechan3"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/miruetoto/yechan3" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><strong>[Essays]</strong> 수통문제: type1 err, type2 err</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>[Essays]</strong> 수통문제: type1 err, type2 err</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -202,7 +187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><strong>[Essays]</strong> 수통문제: type1 err, type2 err</h1>
+      <h1 class="title"><strong>[Essays]</strong> 수통문제: type1 err, type2 err</h1>
                       </div>
   </div>
     
@@ -229,102 +214,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../1_essays.html" class="sidebar-item-text sidebar-link"><strong>Essays</strong></a>
+  <a href="../../1_essays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Essays</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><strong>Studies</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Studies</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2_cgsp.html" class="sidebar-item-text sidebar-link">CGSP</a>
+  <a href="../../2_cgsp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CGSP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2_gml.html" class="sidebar-item-text sidebar-link">GML</a>
+  <a href="../../2_pl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyTorch Lightning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2_python.html" class="sidebar-item-text sidebar-link">Python</a>
+  <a href="../../2_pyg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyG</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2_pl.html" class="sidebar-item-text sidebar-link">PyTorch Lightning</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../2_pyg.html" class="sidebar-item-text sidebar-link">PyG</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../2_reviews.html" class="sidebar-item-text sidebar-link">Reviews</a>
+  <a href="../../2_reviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reviews</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true"><strong>Researches</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Researches</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_hst.html" class="sidebar-item-text sidebar-link">HST</a>
+  <a href="../../3_hst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HST</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_itstgcn.html" class="sidebar-item-text sidebar-link">IT-STGCN</a>
+  <a href="../../3_itstgcn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IT-STGCN</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_solar.html" class="sidebar-item-text sidebar-link">SOLAR</a>
+  <a href="../../3_solar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SOLAR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_boram.html" class="sidebar-item-text sidebar-link">BORAM</a>
+  <a href="../../3_boram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BORAM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_pinkocto.html" class="sidebar-item-text sidebar-link">PINKOCTO</a>
+  <a href="../../3_pinkocto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PINKOCTO</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../4_notes.html" class="sidebar-item-text sidebar-link"><strong><em>Notes</em></strong></a>
+  <a href="../../4_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong><em>Notes</em></strong></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
@@ -335,7 +324,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<div class="cell" data-execution_count="1">
+<div id="f9c44c98-a645-4eb4-a6b9-148e06cc03e4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">Distributions</span>, <span class="bu">Plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>(문제)</strong> <span class="math inline">\(X_1,X_2\)</span>가 평균이 <span class="math inline">\(\theta\)</span>인 지수분포에서 추출한 랜덤표본이라고 하자. 가설 <span class="math inline">\(H_0: \theta=2\)</span> vs <span class="math inline">\(H_1:\theta=1\)</span> 에 대하여, <span class="math inline">\(H_0\)</span>에 대한 기각영역을</p>
@@ -350,14 +339,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><span class="math inline">\(\beta = P(\text{Accept $H_0$|$H_1$ is true}) = P(T&gt;\frac{1}{2} | \text{$H_1$ is true})\)</span></p></li>
 </ul>
 <p>풀이시작</p>
-<div class="cell" data-execution_count="2">
+<div id="cecea0cf-3eea-4bb9-a000-88b4055978a6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1"></a>T<span class="op">=</span> x <span class="op">-&gt;</span> <span class="fl">0.5</span><span class="fu">*exp</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>x[<span class="fl">1</span>]) <span class="op">*</span> <span class="fl">0.5</span><span class="fu">*exp</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>x[<span class="fl">2</span>])  <span class="op">/</span> (<span class="fu">exp</span>(<span class="op">-</span>x[<span class="fl">1</span>])<span class="fu">*exp</span>(<span class="op">-</span>x[<span class="fl">2</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>#1 (generic function with 1 method)</code></pre>
 </div>
 </div>
 <p><strong><em><span class="math inline">\(\alpha\)</span>를 구해보자. (시뮬)</em></strong></p>
-<div class="cell" data-execution_count="3">
+<div id="5aae6efb-eaa1-48d6-ab93-d87b64715738" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1"></a>θ<span class="op">=</span><span class="fl">2</span> </span>
 <span id="cb4-2"><a href="#cb4-2"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -366,13 +355,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  3.904496314340747</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="4">
+<div id="2a0b7463-98fd-45e7-bfcd-6b0febd20c49" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">T</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>3.715796051759978</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="24e6c2f0-5a33-40d3-bd4d-7f7741a288fd" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1"></a>Ts <span class="op">=</span> [<span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>) <span class="op">|&gt;</span> T for i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1400000</span>]</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="fu">mean</span>(Ts <span class="op">.&lt;</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -380,7 +369,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p><strong><em><span class="math inline">\(\beta\)</span>를 구해보자. (시뮬)</em></strong></p>
-<div class="cell" data-execution_count="6">
+<div id="cb901206-3d06-4ebb-aca3-4323d7fd80a3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1"></a>θ<span class="op">=</span><span class="fl">1</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -389,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  3.322182470278192</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div id="b2e58bc3-898e-451e-abd5-f16ecd2fe561" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1"></a>Ts <span class="op">=</span> [<span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>) <span class="op">|&gt;</span> T for i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1400000</span>]</span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="fu">mean</span>(Ts <span class="op">.&gt;</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -401,7 +390,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>$T(X_1,X_2)&lt; (0.5X_1+0.5X_2) &lt; 2 X_1+X_2&lt; 2 $</p>
 <p>그런데 <span class="math inline">\(X_1+X_2 \sim \chi^2(4)\)</span> under <span class="math inline">\(H_0\)</span></p>
 <p><span class="math inline">\(P(X_1+X_2 &lt; 2\ln2) = \int_0^{2\ln2} \frac{1}{4\Gamma(2)}x e^{-x/2}dx=\int_0^{\ln2} t e^{-t}dt=\big[t(-e^{-t})-e^{-t}\big]_0^{\ln2}\)</span></p>
-<div class="cell" data-execution_count="8">
+<div id="50082583-d375-45e7-9265-03861b2497a9" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1"></a>t <span class="op">=</span> <span class="fu">log</span>(<span class="fl">2</span>) </span>
 <span id="cb14-2"><a href="#cb14-2"></a>u <span class="op">=</span> <span class="fu">t*</span>(<span class="fu">-exp</span>(<span class="op">-</span>t)) <span class="op">-</span> <span class="fu">exp</span>(<span class="op">-</span>t)</span>
 <span id="cb14-3"><a href="#cb14-3"></a>t <span class="op">=</span> <span class="fl">0</span></span>
@@ -410,7 +399,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>-1.0</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="9">
+<div id="ec29e33f-ae25-498a-9ed6-b44fad256808" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1"></a>u<span class="op">-</span>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>0.1534264097200273</code></pre>
@@ -420,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>$T(X_1,X_2)&gt; (0.5X_1+0.5X_2) &gt; 2 (X_1+X_2)&gt; 4 $</p>
 <p>그런데 <span class="math inline">\(2(X_1+X_2) \sim \chi^2(4)\)</span> under <span class="math inline">\(H_1\)</span></p>
 <p><span class="math inline">\(P(2(X_1+X_2) &gt; 4\ln2) = \int_{4\ln2}^{\infty}\frac{1}{4\Gamma(2)}x e^{-x/2}dx=\int_{2\ln2}^{\infty} t e^{-t}dt=\big[t(-e^{-t})-e^{-t}\big]_{2\ln2}^{\infty}\)</span></p>
-<div class="cell" data-execution_count="10">
+<div id="e4dc4347-8921-4659-b1ee-4daa8da7a43b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1"></a>u <span class="op">=</span> <span class="fl">0</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a>t <span class="op">=</span> <span class="fl">2</span><span class="fu">*log</span>(<span class="fl">2</span>)</span>
 <span id="cb18-3"><a href="#cb18-3"></a>l <span class="op">=</span> <span class="fu">t*</span>(<span class="fu">-exp</span>(<span class="op">-</span>t)) <span class="op">-</span> <span class="fu">exp</span>(<span class="op">-</span>t)</span>
@@ -460,9 +449,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -498,10 +501,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -511,8 +513,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -527,6 +538,147 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -569,6 +721,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="miruetoto/yechan3" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
+
 
 
 

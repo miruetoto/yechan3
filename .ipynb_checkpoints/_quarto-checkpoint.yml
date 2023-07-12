@@ -37,8 +37,6 @@ website:
       - section: "**Studies**"
         contents:
           - 2_cgsp.qmd
-          - 2_gml.qmd      
-          - 2_python.qmd                  
           - 2_pl.qmd          
           - 2_pyg.qmd
           - 2_reviews.qmd    
@@ -59,4 +57,3 @@ format:
     code-fold: false
     code-line-numbers: true
     code-copy: true
-    

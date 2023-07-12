@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.193">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,10 +19,63 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -48,6 +101,11 @@ ul.task-list li input[type="checkbox"] {
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -57,211 +115,196 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">신록예찬’s Blog</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DL2022/">
+    <a class="nav-link" href="https://guebin.github.io/DL2022/" rel="" target="">
  <span class="menu-text">DL2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DV2022/">
+    <a class="nav-link" href="https://guebin.github.io/DV2022/" rel="" target="">
  <span class="menu-text">DV2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IP2022/">
+    <a class="nav-link" href="https://guebin.github.io/IP2022/" rel="" target="">
  <span class="menu-text">IP2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/SC2022/">
+    <a class="nav-link" href="https://guebin.github.io/SC2022/" rel="" target="">
  <span class="menu-text">SC2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DS2022/">
+    <a class="nav-link" href="https://guebin.github.io/DS2022/" rel="" target="">
  <span class="menu-text">DS2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IR2021/">
+    <a class="nav-link" href="https://guebin.github.io/IR2021/" rel="" target="">
  <span class="menu-text">IR2021</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan/" rel="" target="">
  <span class="menu-text">yechan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan2/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan2/" rel="" target="">
  <span class="menu-text">yechan2</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/miruetoto/yechan3"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/miruetoto/yechan3" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><strong>[Essays]</strong> 다중척도방법</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>[Essays]</strong> 다중척도방법</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><strong>[Essays]</strong> 다중척도방법</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>신록예찬 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">July 7, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../1_essays.html" class="sidebar-item-text sidebar-link"><strong>Essays</strong></a>
+  <a href="../../1_essays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Essays</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><strong>Studies</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Studies</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2_cgsp.html" class="sidebar-item-text sidebar-link">CGSP</a>
+  <a href="../../2_cgsp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CGSP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2_gml.html" class="sidebar-item-text sidebar-link">GML</a>
+  <a href="../../2_pl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyTorch Lightning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2_python.html" class="sidebar-item-text sidebar-link">Python</a>
+  <a href="../../2_pyg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyG</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2_pl.html" class="sidebar-item-text sidebar-link">PyTorch Lightning</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../2_pyg.html" class="sidebar-item-text sidebar-link">PyG</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../2_reviews.html" class="sidebar-item-text sidebar-link">Reviews</a>
+  <a href="../../2_reviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reviews</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true"><strong>Researches</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Researches</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_hst.html" class="sidebar-item-text sidebar-link">HST</a>
+  <a href="../../3_hst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HST</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_itstgcn.html" class="sidebar-item-text sidebar-link">IT-STGCN</a>
+  <a href="../../3_itstgcn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IT-STGCN</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_solar.html" class="sidebar-item-text sidebar-link">SOLAR</a>
+  <a href="../../3_solar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SOLAR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_boram.html" class="sidebar-item-text sidebar-link">BORAM</a>
+  <a href="../../3_boram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BORAM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_pinkocto.html" class="sidebar-item-text sidebar-link">PINKOCTO</a>
+  <a href="../../3_pinkocto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PINKOCTO</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../4_notes.html" class="sidebar-item-text sidebar-link"><strong><em>Notes</em></strong></a>
+  <a href="../../4_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong><em>Notes</em></strong></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -281,12 +324,38 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>[Essays]</strong> 다중척도방법</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="생각의-정리" class="level1">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>신록예찬 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 7, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="생각의-정리" class="level1 page-columns page-full">
 <h1>생각의 정리</h1>
 <p><code>-</code> 멀티스케일 컨셉</p>
 <ul>
@@ -294,10 +363,16 @@ ul.task-list li input[type="checkbox"] {
 <li>VMD는 확실히 멀티스케일 컨셉을 가지고 있으며 여러스케일을 동시에 관찰. 멀티스케일 파라메터는 신호의 power가 주파수도메인에서 밀집된 곳으로 선택한다.</li>
 <li>TPT와 EBT는 데이터를 다양한 스케일로 관찰하는데 목표가 있음. 멀티스케일 파라메터가 명시적으로 존재한다. 여러 멀티스케일 파라메터를 모두 고려하며, 특정한 기준에 따라 파라메터를 선택하기도 하고 그렇지 않을수도 있다. 스케일별로 신호를 변환시켜해석한다.</li>
 </ul>
+<div id="8be33834-39fc-447f-9b1f-70e8954f44b1" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><code>-</code></p>
 <p>IMF based method</p>
 <p>Transform based method</p>
-<p><code>-</code> Theory:</p>
+<p><span class="citation" data-cites="durrett2012essentials">(<a href="#ref-durrett2012essentials" role="doc-biblioref">Durrett 2012</a>)</span></p>
+<div class="no-row-height column-margin column-container"><div id="ref-durrett2012essentials" class="csl-entry" role="listitem">
+Durrett, R. 2012. <em>Essentials of Stochastic Processes</em>. Springer Texts in Statistics. Springer New York. <a href="https://books.google.co.kr/books?id=i\_Ovy6OvI54C">https://books.google.co.kr/books?id=i\_Ovy6OvI54C</a>.
+</div></div><p><code>-</code> Theory:</p>
 <ul>
 <li>EMD: shift 알고리즘</li>
 <li>VMD</li>
@@ -335,7 +410,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>This talk focuses on the data-adaptive procedure.</p>
 </section>
-<section id="emd" class="level1">
+<section id="emd" class="level1 page-columns page-full">
 <h1>EMD</h1>
 <p><code>-</code> EMD provides a data-driven approach to decompose a signal into so-called intrinsic mode functions (IMFs) according to the local oscillation magnitude in the physical domain.</p>
 <p><code>-</code> IMFs can be considered as empirical basis functions.</p>
@@ -352,19 +427,19 @@ z(t)=a(t)\exp(i\psi(t)),
 <p><code>-</code> <em>Instantaneous frequency</em> is defined as the derivative of time-varying phase, <span class="math display">\[
 \frac{d\psi(t)}{dt}.
 \]</span></p>
-<section id="motivation-of-emd" class="level2">
+<section id="motivation-of-emd" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="motivation-of-emd">Motivation of EMD</h2>
 <p><code>-</code> A necessary condition to define a meaningful instantaneous frequency is that signals are symmetric with respect to the local zero mean.</p>
 <p><code>-</code> EMD is developed to decompose signals so that HT works well.</p>
 <p><code>-</code> Suppose we have a signal <span class="math inline">\(x(t) = 0.5 t + \sin(\pi t) + \sin(2 \pi t) + \sin(6 \pi t)\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-07-07-다중척도방법_files/figure-html/018ac4ec-f9be-4333-8f3b-cbcd3c36e065-1-221ee147-5795-4898-8ea1-1e03ca759165.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">image.png</figcaption>
 </figure>
 </div>
 </section>
-<section id="sifting-process-for-extracting-imfs" class="level2">
+<section id="sifting-process-for-extracting-imfs" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="sifting-process-for-extracting-imfs">Sifting process for extracting IMF’s</h2>
 <ol type="1">
 <li>Identify local extrema.</li>
@@ -372,10 +447,10 @@ z(t)=a(t)\exp(i\psi(t)),
 <li>Take an average of envelopes.</li>
 <li>An oscillated signal is extracted by subtracting the envelope mean from the original signal <span class="math inline">\(x(t)\)</span>.</li>
 </ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-07-07-다중척도방법_files/figure-html/9f05989f-0d2c-449f-9a31-6394d994cf02-1-5959313b-253b-4613-9b3c-04ad99939ebd.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">image.png</figcaption>
 </figure>
 </div>
 <p><code>-</code> One iteration of the above procedure does not guarantee that the signal is an IMF. The same procedure is applied to the signal until the properties of IMF are satisfied</p>
@@ -384,22 +459,22 @@ z(t)=a(t)\exp(i\psi(t)),
 <p><code>-</code> Finally, we have <span class="math inline">\(L\)</span> empirical modes and a residue, <span class="math display">\[
 x(t) = \sum_{\ell=1}^{L} \text{imf}_\ell(t) + r(t).
 \]</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-07-07-다중척도방법_files/figure-html/072e9da0-de6a-4fcd-8484-fd52f4c40e80-1-c70847e9-6e7c-4ad0-9953-afece1234527.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">image.png</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-07-07-다중척도방법_files/figure-html/6dd9616e-aa06-482f-9210-21cec6403436-1-bd771fdf-beef-4703-8527-6066b77b4b84.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">image.png</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-07-07-다중척도방법_files/figure-html/532f4c33-c3f2-4c1d-a768-fdcb405ac22c-1-f2807e8c-0c7c-419e-886b-893f9c027bbd.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -418,13 +493,13 @@ x(t) = \sum_{\ell=1}^{L} \text{imf}_\ell(t) + r(t).
 <li>extractimf2d() implements 2-D EMD.</li>
 </ul>
 </section>
-<section id="thick-pen-transform" class="level1">
+<section id="thick-pen-transform" class="level1 page-columns page-full">
 <h1>Thick-pen transform</h1>
 <p>Traditional visualization of a process <span class="math inline">\(X_t\)</span>: plotting the values of <span class="math inline">\((t,X_t)\)</span> and “connecting the dots”.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-07-07-다중척도방법_files/figure-html/0d66492e-c577-4c0d-b36d-a94f77f0c06b-1-886d2812-14b3-4d4f-aa3c-7afd7edbed5d.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">image.png</figcaption>
 </figure>
 </div>
 <p><code>-</code> Moving away from the left-hand plot, the sine wave disappears. This does not happen with the right-hand plot, where the slow sinusoid is Figure 1: White noise followed by slow wave, plotted with pen of thickness 1 (left plot) and plotted using a thicker pen.</p>
@@ -433,10 +508,10 @@ x(t) = \sum_{\ell=1}^{L} \text{imf}_\ell(t) + r(t).
 <p><code>-</code> Motivated by the above discussion, we propose thick-pen transform (TPT) to visualize a time series using pens of various thicknesses.</p>
 <p><code>-</code> TPT is multiscale, with thicker pens bringing out coarse-scale features of the data and vice versa.</p>
 <p><code>-</code> The same time series plotted with pens of two thicknesses 5 and 30.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-07-07-다중척도방법_files/figure-html/d14f6494-bb31-4623-a48c-5c94b703c1cd-1-10573008-32f0-4229-9746-7074a0f5c9ac.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">image.png</figcaption>
 </figure>
 </div>
 <p><code>-</code> Let <span class="math inline">\(\{X_t\}_{t=1}^{n}\)</span> be a real-valued univariate process, and <span class="math inline">\({\cal T}\)</span> denote a set of thickness parameters.</p>
@@ -453,6 +528,7 @@ U_{t}^\tau &amp;=&amp; \max_k\{X_{t+k}+\sqrt{\tau^2/4-k^2}\},\\
 L_{t}^\tau &amp;=&amp; \min_k\{X_{t+k}-\sqrt{\tau^2/4-k^2}\}.
 \end{eqnarray*}\]</span></p>
 <p><code>-</code> There is a connection between the above formulae and kernel smoothing.</p>
+
 
 
 </section>
@@ -485,9 +561,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -523,10 +613,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -536,8 +625,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -552,6 +650,147 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -594,6 +833,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="miruetoto/yechan3" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
+
 
 
 

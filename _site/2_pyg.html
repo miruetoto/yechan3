@@ -76,9 +76,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -212,18 +212,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_gml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GML</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2_python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./2_pl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PyTorch Lightning</span></a>
   </div>
@@ -325,40 +313,9 @@ ul.task-list li input[type="checkbox"] {
 <table class="quarto-listing-table table">
 <thead>
 <tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Author
-</th>
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-date-sort="1688655600000" data-listing-file-modified-sort="1688870297384" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="**[PyG]** lesson2:" data-listing-filename-sort="2023-07-07-lesson2.ipynb">
-<td>
-<span class="listing-date">Jul 7, 2023</span>
-</td>
-<td>
-<a href="./posts/2_Studies/PyG/2023-07-07-lesson2.html" class="title listing-title"><strong>[PyG]</strong> lesson2:</a>
-</td>
-<td>
-<span class="listing-author">신록예찬 </span>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1688223600000" data-listing-file-modified-sort="1688865636480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="**[PyG]** lesson1: 자료형, 데이터셋" data-listing-filename-sort="2023-07-02-lesson1.ipynb">
-<td>
-<span class="listing-date">Jul 2, 2023</span>
-</td>
-<td>
-<a href="./posts/2_Studies/PyG/2023-07-02-lesson1.html" class="title listing-title"><strong>[PyG]</strong> lesson1: 자료형, 데이터셋</a>
-</td>
-<td>
-<span class="listing-author">신록예찬 </span>
-</td>
-</tr>
 </tbody>
 </table>
 <div class="listing-no-matching d-none">

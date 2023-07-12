@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.193">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,6 +82,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,10 +96,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
@@ -135,65 +113,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">신록예찬’s Blog</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DL2022/">
+    <a class="nav-link" href="https://guebin.github.io/DL2022/" rel="" target="">
  <span class="menu-text">DL2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DV2022/">
+    <a class="nav-link" href="https://guebin.github.io/DV2022/" rel="" target="">
  <span class="menu-text">DV2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IP2022/">
+    <a class="nav-link" href="https://guebin.github.io/IP2022/" rel="" target="">
  <span class="menu-text">IP2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/SC2022/">
+    <a class="nav-link" href="https://guebin.github.io/SC2022/" rel="" target="">
  <span class="menu-text">SC2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DS2022/">
+    <a class="nav-link" href="https://guebin.github.io/DS2022/" rel="" target="">
  <span class="menu-text">DS2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IR2021/">
+    <a class="nav-link" href="https://guebin.github.io/IR2021/" rel="" target="">
  <span class="menu-text">IR2021</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan/" rel="" target="">
  <span class="menu-text">yechan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan2/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan2/" rel="" target="">
  <span class="menu-text">yechan2</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/miruetoto/yechan3"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/miruetoto/yechan3" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><strong>[IT-STGCN]</strong> STGCN 튜토리얼</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>[IT-STGCN]</strong> STGCN 튜토리얼</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -202,7 +187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><strong>[IT-STGCN]</strong> STGCN 튜토리얼</h1>
+      <h1 class="title"><strong>[IT-STGCN]</strong> STGCN 튜토리얼</h1>
                       </div>
   </div>
     
@@ -229,102 +214,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../1_essays.html" class="sidebar-item-text sidebar-link"><strong>Essays</strong></a>
+  <a href="../../../1_essays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Essays</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><strong>Studies</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Studies</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_cgsp.html" class="sidebar-item-text sidebar-link">CGSP</a>
+  <a href="../../../2_cgsp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CGSP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_gml.html" class="sidebar-item-text sidebar-link">GML</a>
+  <a href="../../../2_pl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyTorch Lightning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_python.html" class="sidebar-item-text sidebar-link">Python</a>
+  <a href="../../../2_pyg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyG</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_pl.html" class="sidebar-item-text sidebar-link">PyTorch Lightning</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../2_pyg.html" class="sidebar-item-text sidebar-link">PyG</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../2_reviews.html" class="sidebar-item-text sidebar-link">Reviews</a>
+  <a href="../../../2_reviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reviews</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true"><strong>Researches</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Researches</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_hst.html" class="sidebar-item-text sidebar-link">HST</a>
+  <a href="../../../3_hst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HST</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_itstgcn.html" class="sidebar-item-text sidebar-link">IT-STGCN</a>
+  <a href="../../../3_itstgcn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IT-STGCN</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_solar.html" class="sidebar-item-text sidebar-link">SOLAR</a>
+  <a href="../../../3_solar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SOLAR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_boram.html" class="sidebar-item-text sidebar-link">BORAM</a>
+  <a href="../../../3_boram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BORAM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_pinkocto.html" class="sidebar-item-text sidebar-link">PINKOCTO</a>
+  <a href="../../../3_pinkocto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PINKOCTO</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../4_notes.html" class="sidebar-item-text sidebar-link"><strong><em>Notes</em></strong></a>
+  <a href="../../../4_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong><em>Notes</em></strong></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -365,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>STGCN을 실습할 코드를 확보한다.</li>
 </ul>
 <p><code>-</code> 코랩에서 실습하기 위해서는 아래를 설치해야한다.</p>
-<div class="cell">
+<div id="0a58b72f-19a9-4a01-a124-db9aa8ae29fa" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">!</span>pip install torch<span class="op">-</span>geometric</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="op">!</span>pip install torch<span class="op">-</span>geometric<span class="op">-</span>temporal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -382,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="imports" class="level1">
 <h1>imports</h1>
 <p><code>-</code> 필요한 패키지 임포트</p>
-<div class="cell" data-execution_count="1">
+<div id="0821adb3-bb59-4ede-9762-a9f80d811de2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 일반적인 모듈 </span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
@@ -411,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>temporal_signal_split</code>: STGCN dataset 을 train/test 형태로 분리하는 기능이 있는 “함수”</li>
 </ul>
 <p><code>-</code> STGCN의 학습을 위한 클래스선언</p>
-<div class="cell" data-execution_count="2">
+<div id="c78d147a-cf39-471a-bed9-40522919c7ee" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> RecurrentGCN(torch.nn.Module):</span>
 <span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, node_features, filters):</span>
 <span id="cb3-3"><a href="#cb3-3"></a>        <span class="bu">super</span>(RecurrentGCN, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
@@ -448,19 +437,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>(예제) 아래와 같은 그래프자료를 고려하자.</p>
 <p><img src="https://pytorch-geometric.readthedocs.io/en/latest/_images/graph.svg" class="img-fluid"></p>
 <p>이러한 자료형은 아래와 같은 형식으로 저장한다.</p>
-<div class="cell" data-execution_count="3">
+<div id="07892a21-d38c-4d34-8ac3-a5a8ad822bbf" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb4-2"><a href="#cb4-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
 <span id="cb4-4"><a href="#cb4-4"></a>data <span class="op">=</span> Data(x<span class="op">=</span>x, edge_index<span class="op">=</span>edge_index) <span class="co"># Data는 그래프자료형을 만드는 클래스</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="4">
+<div id="e4f6e453-4ea8-47b4-b5ff-ba6373e65081" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">type</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>torch_geometric.data.data.Data</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="195d045b-2cb1-42ef-935c-430e4e3c5bd2" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>data.x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>tensor([[-1.],
@@ -468,7 +457,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         [ 1.]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+<div id="fd6f79d9-7c21-490a-83c7-7ec8ccbe5d56" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>data.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>tensor([[0, 1, 1, 2],
@@ -499,23 +488,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>여기에서 <code>StaticGraphTemporalSignal</code> 는 시간에 따라서 그래프 구조가 일정한 경우, 즉 <span class="math inline">\({\cal G}_t=\{{\cal V},{\cal E}\}\)</span>와 같은 구조를 의미한다.</p>
 <p><strong>(예제1)</strong> StaticGraphTemporalSignal 를 이용하여 데이터 셋 만들기</p>
 <p><code>-</code> json data <span class="math inline">\(\to\)</span> dict</p>
-<div class="cell" data-execution_count="7">
+<div id="64c84235-bd42-4ee6-9357-7426dc8b6568" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> json</span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> urllib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="1c1dbc53-8598-4828-9ac8-bebb8e13a467" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/benedekrozemberczki/pytorch_geometric_temporal/master/dataset/chickenpox.json"</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>data_dict <span class="op">=</span> json.loads(urllib.request.urlopen(url).read())</span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="co"># data_dict 출력이 김</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="9">
+<div id="e280f9e4-ac80-44e0-a79f-6844cf63a45d" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>data_dict.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>dict_keys(['edges', 'node_ids', 'FX'])</code></pre>
 </div>
 </div>
 <p><code>-</code> 살펴보기</p>
-<div class="cell" data-execution_count="10">
+<div id="bcb34cbe-aff9-4d04-bd8a-ec44a2d5d032" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>np.array(data_dict[<span class="st">'edges'</span>]).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>array([[ 0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  2,  2,  2,  2,  3,
@@ -538,7 +527,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\({\cal E} = \{(0,10),(0,6), \dots, (19,17)\}\)</span></li>
 <li>혹은 <span class="math inline">\({\cal E} = \{(\tt{BACS},\tt{JASZ}), ({\tt BACS},{\tt FEJER}), \dots, (\tt{ZALA},\tt{VAS})\}\)</span></li>
 </ul>
-<div class="cell" data-execution_count="11">
+<div id="65f4752f-7a08-4589-bf24-29c08e03ef71" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>data_dict[<span class="st">'node_ids'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>{'BACS': 0,
@@ -566,7 +555,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><span class="math inline">\({\cal V}=\{\tt{BACS},\tt{BARANYA} \dots, \tt{ZALA}\}\)</span></li>
 </ul>
-<div class="cell" data-execution_count="12">
+<div id="d76a650a-79d2-4eba-9ded-ee1daf1745bc" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>np.array(data_dict[<span class="st">'FX'</span>]), np.array(data_dict[<span class="st">'FX'</span>]).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>(array([[-1.08135724e-03, -7.11136085e-01, -3.22808515e+00, ...,
@@ -631,7 +620,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p><code>-</code> 주어진 자료를 정리하여 그래프신호 <span class="math inline">\(\big(\{{\cal V},{\cal E},{\bf W}\},{\bf f}\big)\)</span>를 만들면 아래와 같다.</p>
-<div class="cell" data-execution_count="14">
+<div id="2e218031-7a8a-400b-9743-85f44500480d" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>edges <span class="op">=</span> np.array(data_dict[<span class="st">"edges"</span>]).T</span>
 <span id="cb22-2"><a href="#cb22-2"></a>edge_weight <span class="op">=</span> np.ones(edges.shape[<span class="dv">1</span>])</span>
 <span id="cb22-3"><a href="#cb22-3"></a>f <span class="op">=</span> np.array(data_dict[<span class="st">"FX"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -645,12 +634,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Note: 이때 <span class="math inline">\({\bf W}={\bf E}\)</span> 로 정의한다. (하지만 꼭 이래야 하는건 아니야)</p>
 </blockquote>
 <p><code>-</code> <code>data_dict</code> <span class="math inline">\(\to\)</span> <code>dl</code></p>
-<div class="cell" data-execution_count="16">
+<div id="44ab12fb-3f87-4b9f-92f6-271e3bb7129a" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>lags <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a>features <span class="op">=</span> [f[i : i <span class="op">+</span> lags, :].T <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(f.shape[<span class="dv">0</span>] <span class="op">-</span> lags)]</span>
 <span id="cb23-3"><a href="#cb23-3"></a>targets <span class="op">=</span> [f[i <span class="op">+</span> lags, :].T <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(f.shape[<span class="dv">0</span>] <span class="op">-</span> lags)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="17">
+<div id="f3c6b17e-5f74-404e-94c0-541aa25dd816" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>np.array(features).shape, np.array(targets).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>((517, 20, 4), (517, 20))</code></pre>
@@ -677,7 +666,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>AR 느낌으로 표현하면 AR(4) 임</li>
 </ul>
-<div class="cell" data-execution_count="18">
+<div id="e9523d9a-61c9-4e96-99c5-58b6551cde4a" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>dataset <span class="op">=</span> torch_geometric_temporal.signal.StaticGraphTemporalSignal(</span>
 <span id="cb26-2"><a href="#cb26-2"></a>    edge_index<span class="op">=</span> edges,</span>
 <span id="cb26-3"><a href="#cb26-3"></a>    edge_weight <span class="op">=</span> edge_weight,</span>
@@ -685,7 +674,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb26-5"><a href="#cb26-5"></a>    targets <span class="op">=</span> targets</span>
 <span id="cb26-6"><a href="#cb26-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="19">
+<div id="b172f075-0e18-4189-87d2-9eeda9679d1c" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>&lt;torch_geometric_temporal.signal.static_graph_temporal_signal.StaticGraphTemporalSignal at 0x7faad2716a60&gt;</code></pre>
@@ -696,20 +685,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb29-2"><a href="#cb29-2"></a>loader <span class="op">=</span> torch_geometric_temporal.dataset.ChickenpoxDatasetLoader()</span>
 <span id="cb29-3"><a href="#cb29-3"></a>dataset<span class="op">=</span>loader.get_dataset(lags<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> dataset은 <code>dataset[0]</code>, <span class="math inline">\(\dots\)</span> , <code>dataset[516]</code>과 같은 방식으로 각 시점별 자료에 접근가능</p>
-<div class="cell" data-execution_count="30">
+<div id="5da3308f-cc2f-47d1-8343-f128d0bd2e5a" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>dataset[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>Data(x=[20, 4], edge_index=[2, 102], edge_attr=[102], y=[20])</code></pre>
 </div>
 </div>
 <p>각 시점에 대한 자료형은 아까 살펴보았던 PyG의 Data 자료형과 같음</p>
-<div class="cell" data-execution_count="31">
+<div id="c15d8623-116a-44fe-b41c-6af385f381de" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">type</span>(dataset[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>torch_geometric.data.data.Data</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="32">
+<div id="e1c9eade-6f10-4b84-b558-6a874d803910" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>dataset[<span class="dv">0</span>].x </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>tensor([[-1.0814e-03,  2.8571e-02,  3.5474e-01,  2.9544e-01],
@@ -737,7 +726,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>이 값들은 <code>features[0]</code>의 값들과 같음. 즉 <span class="math inline">\([{\bf f}_1~ {\bf f}_2~ {\bf f}_3~ {\bf f}_4]\)</span>를 의미함</li>
 </ul>
-<div class="cell" data-execution_count="33">
+<div id="dd0f311f-2be4-4963-baae-a90eeb33f0f6" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>dataset[<span class="dv">0</span>].y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>tensor([ 0.7106, -0.0725,  2.6099,  1.7870,  0.8024, -0.2614, -0.8370,  1.9674,
@@ -779,7 +768,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>between 2004 and 2014</li>
 <li>per weeks</li>
 </ul>
-<div class="cell" data-execution_count="34">
+<div id="ce4c1c1d-cc47-4a9f-bbc5-efdc3a145aa8" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>loader <span class="op">=</span> torch_geometric_temporal.dataset.ChickenpoxDatasetLoader()</span>
 <span id="cb38-2"><a href="#cb38-2"></a>dataset <span class="op">=</span> loader.get_dataset(lags<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb38-3"><a href="#cb38-3"></a>train_dataset, test_dataset <span class="op">=</span> temporal_signal_split(dataset, train_ratio<span class="op">=</span><span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -787,7 +776,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="learn" class="level2">
 <h2 class="anchored" data-anchor-id="learn">learn</h2>
-<div class="cell" data-execution_count="36">
+<div id="ff395a3b-bcbe-4f9c-9e1a-a05b7c04d0b3" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span><span class="dv">4</span>, filters<span class="op">=</span><span class="dv">32</span>)</span>
 <span id="cb39-2"><a href="#cb39-2"></a>optimizer <span class="op">=</span> torch.optim.Adam(model.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
 <span id="cb39-3"><a href="#cb39-3"></a>model.train()</span>
@@ -803,7 +792,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>100%|██████████| 50/50 [01:16&lt;00:00,  1.52s/it]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="42">
+<div id="4bda513b-81dc-4fe0-8a04-bc62419c571c" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>dataset.features[<span class="dv">0</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>(20, 4)</code></pre>
@@ -812,7 +801,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="visualization" class="level2">
 <h2 class="anchored" data-anchor-id="visualization">visualization</h2>
-<div class="cell" data-execution_count="24">
+<div id="9a1a44c3-0fea-49eb-ae04-3471b9af8ade" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>model.<span class="bu">eval</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>RecurrentGCN(
@@ -828,14 +817,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 )</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="25">
+<div id="ffa2ecde-b979-40c9-aa72-dd87349e77ef" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>yhat_train <span class="op">=</span> torch.stack([model(snapshot.x,snapshot.edge_index, snapshot.edge_attr) <span class="cf">for</span> snapshot <span class="kw">in</span> train_dataset]).detach().numpy()</span>
 <span id="cb45-2"><a href="#cb45-2"></a>yhat_test <span class="op">=</span> torch.stack([model(snapshot.x,snapshot.edge_index, snapshot.edge_attr) <span class="cf">for</span> snapshot <span class="kw">in</span> test_dataset]).detach().numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="26">
+<div id="ed6c8d0b-38e2-4a59-93fa-e014da9ac9ce" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>V <span class="op">=</span> <span class="bu">list</span>(data_dict[<span class="st">'node_ids'</span>].keys())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="27">
+<div id="0214334a-2d66-4698-ba15-7830048214f6" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>fig,ax <span class="op">=</span> plt.subplots(<span class="dv">20</span>,<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">50</span>))</span>
 <span id="cb47-2"><a href="#cb47-2"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>):</span>
 <span id="cb47-3"><a href="#cb47-3"></a>    ax[k].plot(f[:,k],<span class="st">'--'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>,label<span class="op">=</span><span class="st">'observed'</span>)</span>
@@ -854,13 +843,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>일반적인 기하학적 딥러닝을 위한 파이토치 패키지<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>STGCN을 위한 패키지<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section></div></main> <!-- /main -->
+</aside></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -888,9 +877,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -926,10 +929,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -939,8 +941,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -955,6 +966,147 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -997,6 +1149,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="miruetoto/yechan3" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
+
 
 
 

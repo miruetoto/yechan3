@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.193">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,48 +49,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -103,8 +75,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -130,6 +101,11 @@ div.csl-indent {
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -139,211 +115,196 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">신록예찬’s Blog</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DL2022/">
+    <a class="nav-link" href="https://guebin.github.io/DL2022/" rel="" target="">
  <span class="menu-text">DL2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DV2022/">
+    <a class="nav-link" href="https://guebin.github.io/DV2022/" rel="" target="">
  <span class="menu-text">DV2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IP2022/">
+    <a class="nav-link" href="https://guebin.github.io/IP2022/" rel="" target="">
  <span class="menu-text">IP2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/SC2022/">
+    <a class="nav-link" href="https://guebin.github.io/SC2022/" rel="" target="">
  <span class="menu-text">SC2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DS2022/">
+    <a class="nav-link" href="https://guebin.github.io/DS2022/" rel="" target="">
  <span class="menu-text">DS2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IR2021/">
+    <a class="nav-link" href="https://guebin.github.io/IR2021/" rel="" target="">
  <span class="menu-text">IR2021</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan/" rel="" target="">
  <span class="menu-text">yechan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan2/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan2/" rel="" target="">
  <span class="menu-text">yechan2</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/miruetoto/yechan3"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/miruetoto/yechan3" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><strong>[CGSP]</strong> Chap 8.3: Discrete Fourier Transform</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>[CGSP]</strong> Chap 8.3: Discrete Fourier Transform</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><strong>[CGSP]</strong> Chap 8.3: Discrete Fourier Transform</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>신록예찬 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">December 24, 2022</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../1_essays.html" class="sidebar-item-text sidebar-link"><strong>Essays</strong></a>
+  <a href="../../../1_essays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Essays</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><strong>Studies</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Studies</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_cgsp.html" class="sidebar-item-text sidebar-link">CGSP</a>
+  <a href="../../../2_cgsp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CGSP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_gml.html" class="sidebar-item-text sidebar-link">GML</a>
+  <a href="../../../2_pl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyTorch Lightning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_python.html" class="sidebar-item-text sidebar-link">Python</a>
+  <a href="../../../2_pyg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyG</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_pl.html" class="sidebar-item-text sidebar-link">PyTorch Lightning</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../2_pyg.html" class="sidebar-item-text sidebar-link">PyG</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../2_reviews.html" class="sidebar-item-text sidebar-link">Reviews</a>
+  <a href="../../../2_reviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reviews</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true"><strong>Researches</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Researches</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_hst.html" class="sidebar-item-text sidebar-link">HST</a>
+  <a href="../../../3_hst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HST</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_itstgcn.html" class="sidebar-item-text sidebar-link">IT-STGCN</a>
+  <a href="../../../3_itstgcn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IT-STGCN</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_solar.html" class="sidebar-item-text sidebar-link">SOLAR</a>
+  <a href="../../../3_solar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SOLAR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_boram.html" class="sidebar-item-text sidebar-link">BORAM</a>
+  <a href="../../../3_boram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BORAM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_pinkocto.html" class="sidebar-item-text sidebar-link">PINKOCTO</a>
+  <a href="../../../3_pinkocto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PINKOCTO</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../4_notes.html" class="sidebar-item-text sidebar-link"><strong><em>Notes</em></strong></a>
+  <a href="../../../4_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong><em>Notes</em></strong></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -367,12 +328,38 @@ div.csl-indent {
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>[CGSP]</strong> Chap 8.3: Discrete Fourier Transform</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<div class="cell" data-execution_count="513">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>신록예찬 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 24, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div id="c46edd98-9fc9-4818-a774-fc646b84024d" class="cell" data-execution_count="513">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span>, <span class="bu">FFTW</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="discrete-fourier-transform" class="level1">
@@ -383,7 +370,7 @@ div.csl-indent {
 <section id="cyclic-shfit-operator-bf-b" class="level2">
 <h2 class="anchored" data-anchor-id="cyclic-shfit-operator-bf-b">Cyclic shfit operator <span class="math inline">\({\bf B}\)</span></h2>
 <p>The matrix <span class="math inline">\({\bf B}\)</span> representing the periodic shift is</p>
-<div class="cell" data-execution_count="511">
+<div id="646f06be-b4fb-42da-bb31-862d33450a75" class="cell" data-execution_count="511">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1"></a>B<span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> </span>
 <span id="cb2-3"><a href="#cb2-3"></a>    <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span></span>
@@ -400,7 +387,7 @@ div.csl-indent {
 </div>
 <p>This matrix is the cyclic shift.</p>
 <p><em>note</em>: <span class="math inline">\({\bf B}\)</span> is orthogonal matrix.</p>
-<div class="cell" data-execution_count="477">
+<div id="95e745ae-0c73-4b0a-a249-2fc2e5bc1762" class="cell" data-execution_count="477">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1"></a>B<span class="op">'</span>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="477">
 <pre><code>5×5 Matrix{Int64}:
@@ -412,7 +399,7 @@ div.csl-indent {
 </div>
 </div>
 <p>(ex1) Define <span class="math inline">\({\bf s}\)</span> as</p>
-<div class="cell" data-execution_count="478">
+<div id="50a3f25e-5ab3-40cf-9888-795a7d7b7af4" class="cell" data-execution_count="478">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1"></a>s <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>]</span>
 <span id="cb6-2"><a href="#cb6-2"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="478">
@@ -425,7 +412,7 @@ div.csl-indent {
 </div>
 </div>
 <p>Observe that</p>
-<div class="cell" data-execution_count="481">
+<div id="650dcfc8-4c13-4a20-9efd-7581de006e7a" class="cell" data-execution_count="481">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1"></a>B<span class="op">*</span>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="481">
 <pre><code>5-element Vector{Int64}:
@@ -436,7 +423,7 @@ div.csl-indent {
  4</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="482">
+<div id="04b4674a-9981-4a52-aa71-904f492d6d3f" class="cell" data-execution_count="482">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1"></a>B<span class="op">^</span><span class="fl">2</span><span class="op">*</span>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="482">
 <pre><code>5-element Vector{Int64}:
@@ -447,7 +434,7 @@ div.csl-indent {
  3</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="483">
+<div id="3e28e0a3-1346-442d-a8a7-71181351d723" class="cell" data-execution_count="483">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1"></a>B<span class="op">^</span><span class="fl">3</span><span class="op">*</span>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="483">
 <pre><code>5-element Vector{Int64}:
@@ -470,7 +457,7 @@ div.csl-indent {
 <p>The matrix <span class="math inline">\({\bf B}\)</span> can be expressed as</p>
 <p><span class="math inline">\({\bf B}={\bf DFT}^\ast \cdot {\bf \Lambda} \cdot {\bf DFT}\)</span></p>
 <p>where <span class="math inline">\({\bf DFT}\)</span> is unitary and symmetric matrix and <span class="math inline">\(\bf \Lambda\)</span> is diagonal matrix.</p>
-<div class="cell" data-execution_count="484">
+<div id="771a033a-2b1d-4d81-97be-225f402cdf2e" class="cell" data-execution_count="484">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1"></a>λ, Ψ <span class="op">=</span> <span class="fu">eigen</span>(B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="484">
 <pre><code>Eigen{ComplexF64, ComplexF64, Matrix{ComplexF64}, Vector{ComplexF64}}
@@ -490,14 +477,14 @@ vectors:
   0.138197-0.425325im   0.138197+0.425325im     0.447214+0.0im</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="486">
+<div id="6f4b30dc-4d32-46f9-a90e-e40a2f1f8d1e" class="cell" data-execution_count="486">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1"></a>B <span class="op">≈</span> Ψ <span class="op">*</span> <span class="fu">Diagonal</span>(λ) <span class="op">*</span> Ψ<span class="ch">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="486">
 <pre><code>true</code></pre>
 </div>
 </div>
 <p>Define <span class="math inline">\({\boldsymbol \Psi}^\ast={\bf DFT}\)</span>.</p>
-<div class="cell" data-execution_count="487">
+<div id="232d7690-fa90-4f8a-9435-46e5d140d217" class="cell" data-execution_count="487">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1"></a>DFT <span class="op">=</span> Ψ<span class="ch">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="487">
 <pre><code>5×5 adjoint(::Matrix{ComplexF64}) with eltype ComplexF64:
@@ -509,25 +496,25 @@ vectors:
 </div>
 </div>
 <p>Note that the eigenvalues are not ordered in julia.</p>
-<div class="cell" data-execution_count="488">
+<div id="844c4a46-d13b-48fc-8bd1-942707334ad2" class="cell" data-execution_count="488">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1"></a>λ[<span class="fl">5</span>], <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span><span class="op">*</span> <span class="fl">2</span>π<span class="op">/</span><span class="fl">5</span> <span class="op">*</span> <span class="fl">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="488">
 <pre><code>(0.9999999999999998 + 0.0im, 1.0 - 0.0im)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="489">
+<div id="8c7ff0b2-570a-4959-ac76-090795447c90" class="cell" data-execution_count="489">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1"></a>λ[<span class="fl">3</span>], <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span><span class="op">*</span> <span class="fl">2</span>π<span class="op">/</span><span class="fl">5</span> <span class="op">*</span> <span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="489">
 <pre><code>(0.30901699437494734 - 0.9510565162951536im, 0.30901699437494745 - 0.9510565162951535im)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="490">
+<div id="6d3050fb-3fa7-45b3-b90a-54492e1bd3c2" class="cell" data-execution_count="490">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1"></a>λ[<span class="fl">1</span>], <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span><span class="op">*</span> <span class="fl">2</span>π<span class="op">/</span><span class="fl">5</span> <span class="op">*</span> <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="490">
 <pre><code>(-0.8090169943749472 - 0.5877852522924725im, -0.8090169943749473 - 0.5877852522924732im)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="491">
+<div id="3563717f-0058-4997-acb0-17960a575442" class="cell" data-execution_count="491">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1"></a>λ[<span class="fl">2</span>], <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span><span class="op">*</span> <span class="fl">2</span>π<span class="op">/</span><span class="fl">5</span> <span class="op">*</span> <span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="491">
 <pre><code>(-0.8090169943749472 + 0.5877852522924725im, -0.8090169943749475 + 0.587785252292473im)</code></pre>
@@ -548,15 +535,15 @@ vectors:
 <p>The <span class="math inline">\(N\)</span> (time) frequencies <span class="math inline">\(\Omega_k\)</span> are all distinct, positive, equally spaced, and increasing from <span class="math inline">\(0\)</span> to <span class="math inline">\(\frac{N-1}{N}\)</span>. The spectral components are the complex exponential sinusiodal functions. For example, corresponding to the zero frequency is the DC spectral component (a vector whose entries are constant and all equal to <span class="math inline">\(\frac{1}{\sqrt{N}}\)</span>).</p>
 </section>
 </section>
-<section id="내-마음대로-summary" class="level1">
+<section id="내-마음대로-summary" class="level1 page-columns page-full">
 <h1>내 마음대로 Summary</h1>
-<section id="dft-1" class="level2">
+<section id="dft-1" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="dft-1">DFT</h2>
 <p>일반적으로 우리가 알고있는 DFT<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>는 아래와 같다. (이 그림은 <a href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">위키피디아</a>에서 캡쳐한 것이다)</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2022-12-24-Chap 8.3_files/figure-html/d3025f89-333d-4e4d-8710-662dccf51cf5-1-c02def0a-947e-4239-b928-bf699d496cbb.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">그림1: 위키에서 긁어온 DFT의 정의</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">그림1: 위키에서 긁어온 DFT의 정의</figcaption>
 </figure>
 </div>
 <p>즉 DFT는 임의의 신호 <span class="math inline">\(\{{\bf x}_n\}:=x_0,x_1,\dots,x_{N-1}\)</span>를 적당한 규칙<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>에 따라서 <span class="math inline">\(\{{\bf X}_k\}:=X_0,X_1,\dots,X_{N-1}\)</span>로 바꾸는 변환을 이라고 이해할 수 있다. 이때 사용되는 적당한 규칙은 구체적으로 아래의 수식을 의미한다.</p>
@@ -592,14 +579,14 @@ vectors:
     \end{bmatrix}\]</span></p>
 <hr>
 <p><strong>예제1</strong> 아래는 위키에서 긁어온 예제이다. 이 예제를 따라가보자.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2022-12-24-Chap 8.3_files/figure-html/dbcb0d0c-518c-4f75-8392-bf0b263deb68-1-f5239d47-a397-4efe-aa7f-31a026383ac2.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">그림2: 위키에서 긁어온 예제이미지</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">그림2: 위키에서 긁어온 예제이미지</figcaption>
 </figure>
 </div>
 <p>예제를 풀기위해서 우선 아래와 같은 벡터를 선언하다.</p>
-<div class="cell" data-execution_count="514">
+<div id="b8792912-4e5a-4ee9-8380-d195380b6984" class="cell" data-execution_count="514">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1"></a>x <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span><span class="op">-</span><span class="cn">im</span>, <span class="op">-</span><span class="cn">im</span>, <span class="op">-</span><span class="fl">1</span><span class="op">+</span><span class="fl">2im</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="514">
 <pre><code>4-element Vector{Complex{Int64}}:
@@ -612,7 +599,7 @@ vectors:
 <p>(풀이1)</p>
 <p><span class="math inline">\(4\times 4\)</span>의 크기를 가지는 DFT행렬을 선언한다.</p>
 <p>(step1) 아래의 매트릭스 생성</p>
-<div class="cell" data-execution_count="515">
+<div id="885d894a-86ba-44d4-aa2e-a2da08f250cd" class="cell" data-execution_count="515">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1"></a>_DFT <span class="op">=</span> <span class="fu">reshape</span>([i<span class="op">*</span>j for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span> for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span>], (<span class="fl">4</span>,<span class="fl">4</span>))</span>
 <span id="cb30-2"><a href="#cb30-2"></a>_DFT</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="515">
@@ -624,7 +611,7 @@ vectors:
 </div>
 </div>
 <p>(step2) <code>_DFT</code>의 각 원소에 함수 <span class="math inline">\(f: x \to \exp(-i\frac{2\pi}{4}x)\)</span>를 취함</p>
-<div class="cell" data-execution_count="516">
+<div id="bc1e08cc-da9a-4818-b269-2494f1a9e322" class="cell" data-execution_count="516">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1"></a>f <span class="op">=</span> x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)</span>
 <span id="cb32-2"><a href="#cb32-2"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="516">
@@ -636,7 +623,7 @@ vectors:
 </div>
 </div>
 <p>이제 <span class="math inline">\({\bf X}\)</span>를 구하면 아래와 같다.</p>
-<div class="cell" data-execution_count="517">
+<div id="374d3c92-210c-48c6-9a6e-f5636707036d" class="cell" data-execution_count="517">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1"></a>DFT <span class="op">*</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="517">
 <pre><code>4-element Vector{ComplexF64}:
@@ -649,7 +636,7 @@ vectors:
 <p>위키의 답이 잘 나옴</p>
 <p>(풀이2)</p>
 <p>참고로 아래와 같이 패키지를 이용하여 구할 수도 있다.</p>
-<div class="cell" data-execution_count="518">
+<div id="000648e1-c06a-4fd6-a97f-e2166b0e4617" class="cell" data-execution_count="518">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">fft</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="518">
 <pre><code>4-element Vector{ComplexF64}:
@@ -672,7 +659,7 @@ vectors:
     \end{bmatrix}\]</span></p>
 <p><span class="math inline">\({\bf DFT}\)</span>행렬에는 몇 가지 특징이 있다.</p>
 <p><strong>특징1:</strong> 유니터리행렬이다. 즉 <span class="math inline">\({\bf DFT}^\ast \cdot {\bf DFT} = {\bf DFT}^\ast \cdot{\bf DFT} = {\bf I}\)</span> 이다.</p>
-<div class="cell" data-execution_count="469">
+<div id="8ecd82dd-a62c-4fbc-869f-2c06c545ccf7" class="cell" data-execution_count="469">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1"></a>_DFT <span class="op">=</span> <span class="fu">reshape</span>([i<span class="op">*</span>j for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span> for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span>], (<span class="fl">4</span>,<span class="fl">4</span>))</span>
 <span id="cb38-2"><a href="#cb38-2"></a>f <span class="op">=</span> x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)</span>
 <span id="cb38-3"><a href="#cb38-3"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> f</span>
@@ -685,7 +672,7 @@ vectors:
  1.0-0.0im  -1.83697e-16+1.0im              5.51091e-16-1.0im</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="470">
+<div id="b2752706-2cc9-4b57-935a-3c31735ad4fb" class="cell" data-execution_count="470">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1"></a>DFT <span class="op">=</span> (<span class="fl">1</span><span class="op">/</span>√<span class="fl">4</span>)<span class="op">*</span>DFT <span class="co"># 새로운 DFT의 정의 </span></span>
 <span id="cb40-2"><a href="#cb40-2"></a>DFT<span class="op">'</span>DFT <span class="op">.|&gt;</span> round <span class="co"># 유니터리행렬임을 확인!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="470">
@@ -710,7 +697,7 @@ vectors:
 <section id="dft의-또-다른-정의" class="level2">
 <h2 class="anchored" data-anchor-id="dft의-또-다른-정의">DFT의 또 다른 정의</h2>
 <p>이번에는 <span class="math inline">\({\bf DFT}\)</span>에 대한 다른 정의를 생각해보자. 우선 아래와 같은 행렬 <span class="math inline">\({\bf B}\)</span>를 고려하자.</p>
-<div class="cell" data-execution_count="512">
+<div id="31f2e5a7-11ee-40e3-bc45-adfe1b5447dc" class="cell" data-execution_count="512">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1"></a>B<span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> </span>
 <span id="cb42-2"><a href="#cb42-2"></a>    <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> </span>
 <span id="cb42-3"><a href="#cb42-3"></a>    <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span></span>
@@ -724,7 +711,7 @@ vectors:
 </div>
 </div>
 <p>이것은 길이가 4인 임의의 column vector를 아래로 한칸씩 이동시키는 매트릭스이다.</p>
-<div class="cell" data-execution_count="499">
+<div id="22e3f491-1997-44a0-ba52-87ed6bb064de" class="cell" data-execution_count="499">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1"></a>x <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span><span class="op">-</span><span class="cn">im</span>, <span class="op">-</span><span class="cn">im</span>, <span class="op">-</span><span class="fl">1</span><span class="op">+</span><span class="fl">2im</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="499">
 <pre><code>4-element Vector{Complex{Int64}}:
@@ -734,7 +721,7 @@ vectors:
  -1 + 2im</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="500">
+<div id="456b5994-4ad3-44a3-bac7-22d39ff2a02a" class="cell" data-execution_count="500">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1"></a>B<span class="op">*</span>x <span class="co"># 아래로 한칸이동 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="500">
 <pre><code>4-element Vector{Complex{Int64}}:
@@ -744,7 +731,7 @@ vectors:
   0 - 1im</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="501">
+<div id="a7dc5890-ee20-40f9-b913-d7248dedb505" class="cell" data-execution_count="501">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1"></a>B<span class="op">^</span><span class="fl">2</span><span class="op">*</span>x <span class="co"># 아래로 두칸이동, B^2*x = B*(Bx) 이므로 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="501">
 <pre><code>4-element Vector{Complex{Int64}}:
@@ -760,7 +747,7 @@ vectors:
 <li><span class="math inline">\({\bf \Psi}\)</span>: make <span class="math inline">\(\frac{1}{\sqrt{N}}[e^{\sqrt{-1} \frac{2\pi}{N} ij}~\text{ for }~ i=0,1,2,\dots,N-1~\text{ for }~j=0,1,2,\dots,N-1]\)</span> and apply <code>reshape</code> function with <span class="math inline">\((N,N)\)</span>.</li>
 <li><span class="math inline">\({\bf \Lambda}\)</span>: make <span class="math inline">\([e^{-\sqrt{-1}\frac{2\pi}{N}i}~\text{ for }~ i=0,1,2\dots,N-1]\)</span> and apply <code>Diagonal</code> function.</li>
 </ul>
-<div class="cell" data-execution_count="510">
+<div id="08326266-a871-4379-8347-8c61339b3053" class="cell" data-execution_count="510">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1"></a>N <span class="op">=</span> <span class="fl">4</span> </span>
 <span id="cb50-2"><a href="#cb50-2"></a>λ <span class="op">=</span> [<span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span>N) <span class="op">*</span>i) for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>)]</span>
 <span id="cb50-3"><a href="#cb50-3"></a>Λ <span class="op">=</span> <span class="fu">Diagonal</span>(λ)</span>
@@ -772,7 +759,7 @@ vectors:
 </div>
 </div>
 <p>그런데 위에서 정의된 <span class="math inline">\({\bf \Psi}^\ast\)</span>는 우리가 그전에 정의하였던 <span class="math inline">\({\bf DFT}\)</span>의 행렬과 같다.</p>
-<div class="cell" data-execution_count="505">
+<div id="da21f4ff-7297-457d-838f-946fcb57d73a" class="cell" data-execution_count="505">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1"></a>_DFT <span class="op">=</span> <span class="fu">reshape</span>([i<span class="op">*</span>j for i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span> for j <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">3</span>], (<span class="fl">4</span>,<span class="fl">4</span>))</span>
 <span id="cb52-2"><a href="#cb52-2"></a>DFT <span class="op">=</span> _DFT <span class="op">.|&gt;</span> (x <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span><span class="cn">im</span> <span class="op">*</span> (<span class="fl">2</span>π<span class="op">/</span><span class="fl">4</span>) <span class="op">*</span> x)) </span>
 <span id="cb52-3"><a href="#cb52-3"></a>DFT <span class="op">=</span> DFT <span class="op">*</span> <span class="fl">1</span><span class="op">/</span>√N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -784,7 +771,7 @@ vectors:
  0.5-0.0im  -9.18485e-17+0.5im              2.75546e-16-0.5im</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="506">
+<div id="637c2c4b-ca04-4505-bf33-e6ad934081f2" class="cell" data-execution_count="506">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1"></a>Ψ<span class="ch">' == DFT </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="506">
 <pre><code>true</code></pre>
@@ -800,14 +787,14 @@ vectors:
 <section id="spectral-component-and-frequencies" class="level2">
 <h2 class="anchored" data-anchor-id="spectral-component-and-frequencies">Spectral component and Frequencies</h2>
 <p><span class="math inline">\({\bf A}\)</span>의 고유벡터 <span class="math inline">\({\bf \Psi}\)</span>의 각 column을 spectral component라고 부른다.</p>
-<div class="cell" data-execution_count="507">
+<div id="a4f57f51-d36a-4e76-9fb9-9296368b0b91" class="cell" data-execution_count="507">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb56-1"><a href="#cb56-1"></a>ψ₁ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">1</span>] <span class="co"># ψ₁ is first spectral component </span></span>
 <span id="cb56-2"><a href="#cb56-2"></a>ψ₂ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">2</span>] <span class="co"># ψ₂ is seconde spectral component </span></span>
 <span id="cb56-3"><a href="#cb56-3"></a>ψ₃ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">3</span>] <span class="co"># ψ₃ is third spectral component </span></span>
 <span id="cb56-4"><a href="#cb56-4"></a>ψ₄ <span class="op">=</span> Ψ[<span class="op">:</span>,<span class="fl">4</span>] <span class="co"># ψ₄ is last spectral component</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>그리고 아래와 같은 수열을 <span class="math inline">\(\Omega_{k}=\frac{k}{N}\)</span>을 frequency 라고 부른다.</p>
-<div class="cell" data-execution_count="508">
+<div id="69135b90-fe33-42d0-b312-036aa30ca4f4" class="cell" data-execution_count="508">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb57-1"><a href="#cb57-1"></a>N<span class="op">=</span><span class="fl">4</span> </span>
 <span id="cb57-2"><a href="#cb57-2"></a>Ω <span class="op">=</span> [k<span class="op">/</span>N for k <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>)]</span>
 <span id="cb57-3"><a href="#cb57-3"></a>Ω</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -826,11 +813,11 @@ vectors:
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-djuric2018cooperative" class="csl-entry" role="doc-biblioentry">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-djuric2018cooperative" class="csl-entry" role="listitem">
 Djuric, Petar, and Cédric Richard. 2018. <em>Cooperative and Graph Signal Processing: Principles and Applications</em>. Academic Press.
 </div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+</div></section><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>discrete Fourier transform<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -839,7 +826,7 @@ Djuric, Petar, and Cédric Richard. 2018. <em>Cooperative and Graph Signal Proce
 <li id="fn4"><p>고유벡터행렬은 고유값 <span class="math inline">\(e^{-\sqrt{-1}\frac{2\pi}{N}i}\)</span>에 의하여 정렬되어 있어야 함.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>사실 이미 대칭행렬이므로 conjugate matrix만 구하면 된다.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section></div></main> <!-- /main -->
+</aside></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -867,9 +854,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -905,10 +906,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -918,8 +918,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -934,6 +943,147 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -976,6 +1126,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="miruetoto/yechan3" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
+
 
 
 

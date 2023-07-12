@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.193">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="신록예찬">
 <meta name="dcterms.date" content="2023-07-07">
 
-<title>신록예찬’s Blog - [PyG] lesson2:</title>
+<title>신록예찬’s Blog - [PyG] lesson2: 벤치마크 데이터셋 (train/test분리)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,6 +82,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,10 +96,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
@@ -135,298 +113,431 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">신록예찬’s Blog</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DL2022/">
+    <a class="nav-link" href="https://guebin.github.io/DL2022/" rel="" target="">
  <span class="menu-text">DL2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DV2022/">
+    <a class="nav-link" href="https://guebin.github.io/DV2022/" rel="" target="">
  <span class="menu-text">DV2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IP2022/">
+    <a class="nav-link" href="https://guebin.github.io/IP2022/" rel="" target="">
  <span class="menu-text">IP2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/SC2022/">
+    <a class="nav-link" href="https://guebin.github.io/SC2022/" rel="" target="">
  <span class="menu-text">SC2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DS2022/">
+    <a class="nav-link" href="https://guebin.github.io/DS2022/" rel="" target="">
  <span class="menu-text">DS2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IR2021/">
+    <a class="nav-link" href="https://guebin.github.io/IR2021/" rel="" target="">
  <span class="menu-text">IR2021</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan/" rel="" target="">
  <span class="menu-text">yechan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan2/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan2/" rel="" target="">
  <span class="menu-text">yechan2</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/miruetoto/yechan3"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/miruetoto/yechan3" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><strong>[PyG]</strong> lesson2:</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>[PyG]</strong> lesson2: 벤치마크 데이터셋 (train/test분리)</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><strong>[PyG]</strong> lesson2:</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>신록예찬 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">July 7, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../1_essays.html" class="sidebar-item-text sidebar-link"><strong>Essays</strong></a>
+  <a href="../../../1_essays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Essays</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><strong>Studies</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Studies</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_cgsp.html" class="sidebar-item-text sidebar-link">CGSP</a>
+  <a href="../../../2_cgsp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CGSP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_gml.html" class="sidebar-item-text sidebar-link">GML</a>
+  <a href="../../../2_pl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyTorch Lightning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_python.html" class="sidebar-item-text sidebar-link">Python</a>
+  <a href="../../../2_pyg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyG</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_pl.html" class="sidebar-item-text sidebar-link">PyTorch Lightning</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../2_pyg.html" class="sidebar-item-text sidebar-link">PyG</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../2_reviews.html" class="sidebar-item-text sidebar-link">Reviews</a>
+  <a href="../../../2_reviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reviews</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true"><strong>Researches</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Researches</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_hst.html" class="sidebar-item-text sidebar-link">HST</a>
+  <a href="../../../3_hst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HST</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_itstgcn.html" class="sidebar-item-text sidebar-link">IT-STGCN</a>
+  <a href="../../../3_itstgcn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IT-STGCN</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_solar.html" class="sidebar-item-text sidebar-link">SOLAR</a>
+  <a href="../../../3_solar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SOLAR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_boram.html" class="sidebar-item-text sidebar-link">BORAM</a>
+  <a href="../../../3_boram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BORAM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_pinkocto.html" class="sidebar-item-text sidebar-link">PINKOCTO</a>
+  <a href="../../../3_pinkocto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PINKOCTO</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../4_notes.html" class="sidebar-item-text sidebar-link"><strong><em>Notes</em></strong></a>
+  <a href="../../../4_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong><em>Notes</em></strong></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#벤치마크-데이터셋" id="toc-벤치마크-데이터셋" class="nav-link active" data-scroll-target="#벤치마크-데이터셋">벤치마크 데이터셋</a></li>
+  <li><a href="#데이터셋1-tudataset" id="toc-데이터셋1-tudataset" class="nav-link" data-scroll-target="#데이터셋1-tudataset"><strong>데이터셋1</strong>: TUDataset</a>
+  <ul class="collapse">
+  <li><a href="#정보" id="toc-정보" class="nav-link" data-scroll-target="#정보">정보</a></li>
+  <li><a href="#traintest-분리" id="toc-traintest-분리" class="nav-link" data-scroll-target="#traintest-분리">Train/Test 분리</a></li>
+  </ul></li>
+  <li><a href="#데이터셋2-cora" id="toc-데이터셋2-cora" class="nav-link" data-scroll-target="#데이터셋2-cora"><strong>데이터셋2</strong>: Cora</a>
+  <ul class="collapse">
+  <li><a href="#정보-1" id="toc-정보-1" class="nav-link" data-scroll-target="#정보-1">정보</a></li>
+  <li><a href="#traintest-이미-분리되어-있음" id="toc-traintest-이미-분리되어-있음" class="nav-link" data-scroll-target="#traintest-이미-분리되어-있음">Train/Test (이미 분리되어 있음)</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-
-
-
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch_geometric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>[PyG]</strong> lesson2: 벤치마크 데이터셋 (train/test분리)</h1>
 </div>
-<div class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>dataset <span class="op">=</span> torch_geometric.datasets.TUDataset(</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    root<span class="op">=</span><span class="st">'/tmp/ENZYMES'</span>, </span>
-<span id="cb2-3"><a href="#cb2-3"></a>    name<span class="op">=</span><span class="st">'ENZYMES'</span>, </span>
-<span id="cb2-4"><a href="#cb2-4"></a>    use_node_attr<span class="op">=</span><span class="va">True</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>신록예찬 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 7, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="벤치마크-데이터셋" class="level1">
+<h1>벤치마크 데이터셋</h1>
+<p><code>-</code> 데이터셋은 아래의 모듈안에 정리되어 있음</p>
+<div id="39fb8fd6-7dbc-4525-8913-9d42bbea329c" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="bu">dir</span>(torch_geometric.datasets)[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
+<pre><code>['AMiner', 'AQSOL', 'Actor', 'AirfRANS', 'Airports']</code></pre>
 </div>
+</div>
+</section>
+<section id="데이터셋1-tudataset" class="level1">
+<h1><strong>데이터셋1</strong>: TUDataset</h1>
+<p><code>-</code> 다운로드</p>
+<div id="4d8aaec4-6056-466e-b30c-dec74abc72ee" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>dataset <span class="op">=</span> torch_geometric.datasets.TUDataset(root<span class="op">=</span><span class="st">'/tmp/ENZYMES'</span>, name<span class="op">=</span><span class="st">'ENZYMES'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="8ffca1b8-bf9c-4036-add6-a0c319e17207" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">!</span>ls <span class="op">/</span>tmp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ENZYMES
+Rtmp2NzDbx
+RtmpE0eUV0
+RtmpzPrKxS
+dvipdfmx.YVx1Yj
+quarto-session77ab51ab
+snap-private-tmp
+systemd-private-082bb119a9fe49feb865729146bf7e72-ModemManager.service-Bi87zh
+systemd-private-082bb119a9fe49feb865729146bf7e72-colord.service-Co3G1h
+systemd-private-082bb119a9fe49feb865729146bf7e72-switcheroo-control.service-pLSKbj
+systemd-private-082bb119a9fe49feb865729146bf7e72-systemd-logind.service-doeGDh
+systemd-private-082bb119a9fe49feb865729146bf7e72-systemd-resolved.service-NcBdUh
+systemd-private-082bb119a9fe49feb865729146bf7e72-systemd-timesyncd.service-RVf8gf
+systemd-private-082bb119a9fe49feb865729146bf7e72-upower.service-Vn8Cki
+tmp2xh03b7a
+tmp4rjd_cj0
+tmp682z699f
+tmp7novtu5y
+tmpd6ge_3fj
+tmpiyln9pkg
+tmpjl_pp0vc
+tmpp_jdm5y_
+tmpv0lj2ydz
+tmpz07b745r
+tracker-extract-files.1000
+tracker-extract-files.125</code></pre>
+</div>
+</div>
+<ul>
+<li><code>/tmp</code> 에 다운로드되어있음</li>
+</ul>
+<section id="정보" class="level2">
+<h2 class="anchored" data-anchor-id="정보">정보</h2>
+<p><code>-</code> 기본정보: ENZYMES dataset</p>
 <blockquote class="blockquote">
 <p>(ChatGPT) ENZYMES는 그래프 분류를 위한 벤치마크 데이터셋 중 하나입니다. 이 데이터셋은 600개의 그래프로 구성되어 있으며, 6개의 클래스로 분류됩니다. 각 그래프는 효소(enzyme) 분자의 구조를 나타내며, 그래프의 노드는 원자(atom)를 나타내고, 엣지(edge)는 원자 간의 연결을 나타냅니다. ENZYMES 데이터셋은 화학 및 생물 정보학 분야에서 그래프 분류 알고리즘의 성능을 평가하기 위해 사용될 수 있습니다. 그래프 분류 알고리즘은 주어진 그래프를 특정 클래스 레이블로 분류하는 작업을 수행하는데 사용됩니다. 예를 들어, ENZYMES 데이터셋의 그래프는 특정 효소 종류를 나타내며, 그래프 분류 알고리즘은 주어진 효소 그래프가 어떤 종류의 효소인지 예측할 수 있습니다. PyG를 사용하여 ENZYMES 데이터셋을 초기화하면 해당 데이터셋을 다운로드하고 필요한 전처리를 자동으로 수행할 수 있습니다. 그래프 데이터를 다루는 머신 러닝 모델을 구축하고 훈련시키기 위해 ENZYMES 데이터셋을 사용할 수 있습니다.</p>
 </blockquote>
-<div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">len</span>(dataset) <span class="co"># 이 데이터셋에는 600개의 그래프가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
+<div id="5f8bb4a6-9b2c-4942-8a5a-472332a9f9da" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>dataset <span class="co"># 데이터셋 이름</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>ENZYMES(600)</code></pre>
+</div>
+</div>
+<div id="705120a8-1d4c-45a4-a6d7-24741b0dbde4" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">len</span>(dataset) <span class="co"># 이 데이터셋에는 600개의 그래프가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>600</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>dataset.num_classes <span class="co"># 6개의 클래스</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
+<div id="e8d99470-cc2e-4b33-93c4-9cea3d0a0a31" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>dataset.num_classes <span class="co"># 6개의 클래스</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>6</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>dataset.num_node_features <span class="co"># 각 노드에는 3개의 피처가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
-<pre><code>21</code></pre>
+<div id="145b90c8-eb1f-401a-bbf2-0f1f4891850c" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>dataset.num_node_features <span class="co"># 각 노드에는 3개의 피처가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>3</code></pre>
 </div>
 </div>
 <p><code>-</code> 600개의 그래프중 첫번째 그래프에 접근</p>
-<div class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>dataset[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
-<pre><code>Data(edge_index=[2, 168], x=[37, 21], y=[1])</code></pre>
+<div id="f2dee83e-37b1-4cad-8bc2-057268bdc495" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>dataset[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>Data(edge_index=[2, 168], x=[37, 3], y=[1])</code></pre>
 </div>
 </div>
 <ul>
 <li><code>x=[37, 3]</code>: <span class="math inline">\(|{\cal V}|=37\)</span>, <span class="math inline">\(f \in \mathbb{R}^3\)</span></li>
 <li><code>edge_index=[2, 168]</code>: <span class="math inline">\(|{\cal E}|=168\)</span></li>
 </ul>
-<p><code>-</code> dataset <span class="math inline">\(\to\)</span> loader</p>
-<div class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>loader <span class="op">=</span> torch_geometric.loader.DataLoader(dataset, batch_size<span class="op">=</span><span class="dv">32</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="traintest-분리" class="level2">
+<h2 class="anchored" data-anchor-id="traintest-분리">Train/Test 분리</h2>
+<p><code>-</code> 600개의 그래프중 540를 train으로, 60개를 test로</p>
+<div id="9dd87618-121f-432e-bd22-44d6c0d1647a" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>train_dataset <span class="op">=</span> dataset[:<span class="dv">540</span>]</span>
+<span id="cb16-2"><a href="#cb16-2"></a>test_dataset <span class="op">=</span> dataset[<span class="dv">540</span>:] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">for</span> i,batch <span class="kw">in</span> <span class="bu">enumerate</span>(loader):</span>
-<span id="cb12-2"><a href="#cb12-2"></a>    <span class="bu">print</span>(i,batch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0 DataBatch(edge_index=[2, 3638], x=[963, 21], y=[32], batch=[963], ptr=[33])
-1 DataBatch(edge_index=[2, 4268], x=[1073, 21], y=[32], batch=[1073], ptr=[33])
-2 DataBatch(edge_index=[2, 3848], x=[997, 21], y=[32], batch=[997], ptr=[33])
-3 DataBatch(edge_index=[2, 4378], x=[1096, 21], y=[32], batch=[1096], ptr=[33])
-4 DataBatch(edge_index=[2, 3998], x=[1045, 21], y=[32], batch=[1045], ptr=[33])
-5 DataBatch(edge_index=[2, 4006], x=[1043, 21], y=[32], batch=[1043], ptr=[33])
-6 DataBatch(edge_index=[2, 4412], x=[1154, 21], y=[32], batch=[1154], ptr=[33])
-7 DataBatch(edge_index=[2, 3998], x=[1043, 21], y=[32], batch=[1043], ptr=[33])
-8 DataBatch(edge_index=[2, 4388], x=[1205, 21], y=[32], batch=[1205], ptr=[33])
-9 DataBatch(edge_index=[2, 3606], x=[1054, 21], y=[32], batch=[1054], ptr=[33])
-10 DataBatch(edge_index=[2, 3848], x=[997, 21], y=[32], batch=[997], ptr=[33])
-11 DataBatch(edge_index=[2, 3736], x=[991, 21], y=[32], batch=[991], ptr=[33])
-12 DataBatch(edge_index=[2, 3908], x=[1017, 21], y=[32], batch=[1017], ptr=[33])
-13 DataBatch(edge_index=[2, 3902], x=[1040, 21], y=[32], batch=[1040], ptr=[33])
-14 DataBatch(edge_index=[2, 3956], x=[1026, 21], y=[32], batch=[1026], ptr=[33])
-15 DataBatch(edge_index=[2, 3872], x=[1010, 21], y=[32], batch=[1010], ptr=[33])
-16 DataBatch(edge_index=[2, 3892], x=[992, 21], y=[32], batch=[992], ptr=[33])
-17 DataBatch(edge_index=[2, 4048], x=[1064, 21], y=[32], batch=[1064], ptr=[33])
-18 DataBatch(edge_index=[2, 2862], x=[770, 21], y=[24], batch=[770], ptr=[25])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="dv">600</span><span class="op">/</span><span class="dv">32</span> <span class="co"># 600개 그래프를 32개씩 쪼개서 배치를 만듬</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
-<pre><code>18.75</code></pre>
+</section>
+</section>
+<section id="데이터셋2-cora" class="level1">
+<h1><strong>데이터셋2</strong>: Cora</h1>
+<p><code>-</code> 다운로드</p>
+<div id="86cf2f19-8dc3-459e-a2d1-4b41a8d3260f" class="cell" data-execution_count="114">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>dataset <span class="op">=</span> torch_geometric.datasets.Planetoid(root<span class="op">=</span><span class="st">'/tmp/Cora'</span>, name<span class="op">=</span><span class="st">'Cora'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.x
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.tx
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.allx
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.y
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.ty
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.ally
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.graph
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.test.index
+Processing...
+Done!</code></pre>
 </div>
 </div>
-<p><code>-</code> batch에 대하여 알아보자.</p>
-<div class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="bu">type</span>(batch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="52">
-<pre><code>torch_geometric.data.batch.DataBatch</code></pre>
+<section id="정보-1" class="level2">
+<h2 class="anchored" data-anchor-id="정보-1">정보</h2>
+<blockquote class="blockquote">
+<p>ChatGPT: Cora는 그래프 분류를 위한 벤치마크 데이터셋 중 하나로, PyG에서도 사용할 수 있습니다. 이 데이터셋은 기계 학습 및 정보 검색 분야에서 널리 사용되는 학술 논문들의 인용 네트워크를 나타냅니다. Cora 데이터셋은 컴퓨터 과학 분야의 논문을 대상으로 합니다. 각 논문은 그래프의 노드로 표현되며, 노드는 논문을 나타냅니다. 노드 간의 엣지는 논문들 사이의 인용 관계를 나타냅니다. 따라서 Cora 데이터셋은 논문의 텍스트 기반 정보와 인용 관계에 대한 그래프 구조를 제공합니다. Cora 데이터셋은 7개의 클래스로 분류되며, 각 논문은 특성 벡터(feature vector)로 표현됩니다. 이 특성 벡터에는 논문의 단어 등 다양한 정보가 포함될 수 있습니다. PyG를 사용하여 Cora 데이터셋을 초기화하면 해당 데이터셋을 다운로드하고 전처리를 자동으로 수행할 수 있습니다. 이를 통해 머신 러닝 모델을 훈련시켜 Cora 데이터셋의 논문을 분류하거나 다양한 작업을 수행할 수 있습니다.</p>
+</blockquote>
+<p><code>-</code> 기본정보</p>
+<div id="1dbbf891-1185-4d20-b1e5-476f93fc8b2e" class="cell" data-execution_count="116">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="bu">len</span>(dataset) <span class="co"># 하나의 그래프가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="116">
+<pre><code>1</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>dataset[<span class="dv">0</span>].x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="66">
-<pre><code>torch.Size([37, 21])</code></pre>
+<div id="90ce480e-e877-4cbb-ab83-adf3bd3e6fb1" class="cell" data-execution_count="118">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>dataset.num_classes <span class="co"># 7개의 클래스가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="118">
+<pre><code>7</code></pre>
+</div>
+</div>
+<div id="e965c6a5-b869-4e36-8eeb-6124da19558e" class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>dataset.num_node_features <span class="co"># 각 노드는 1433개의 특징이 있음. (논문에 포함된 단어등 다양한 특성이 담겨있을 수 있음) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="123">
+<pre><code>1433</code></pre>
+</div>
+</div>
+<p><code>-</code> 그래프에 접근</p>
+<div id="43bbdb7f-4364-4230-8a4e-fa47a95d2a58" class="cell" data-execution_count="134">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>dataset[<span class="dv">0</span>] <span class="co"># 기본정보</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="134">
+<pre><code>Data(x=[2708, 1433], edge_index=[2, 10556], y=[2708], train_mask=[2708], val_mask=[2708], test_mask=[2708])</code></pre>
+</div>
+</div>
+<ul>
+<li><code>x=[2708, 1433]</code>: 2708개의 논문이 있고, 각 논문은 1433개의 특징벡터들로 이루어져 있음.</li>
+<li><code>edge_index=[2, 10556]</code>: 논문간의 인용은 약 10556.</li>
+<li><code>y=[2708]</code>:</li>
+</ul>
+<div id="54134d06-d056-4f3f-93d9-d5e2250e16ee" class="cell" data-execution_count="131">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>dataset[<span class="dv">0</span>].x.shape <span class="co"># 2708개의 논문이 있고 1433개의 특징벡터를 가짐</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="131">
+<pre><code>torch.Size([2708, 1433])</code></pre>
+</div>
+</div>
+<div id="cf1a3e04-da71-4c0a-a1ee-6fe8f3a4cace" class="cell" data-execution_count="129">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>dataset[<span class="dv">0</span>].y.unique() <span class="co"># 논문이 7개의 카테고리로 분류되는듯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="129">
+<pre><code>tensor([0, 1, 2, 3, 4, 5, 6])</code></pre>
+</div>
+</div>
+</section>
+<section id="traintest-이미-분리되어-있음" class="level2">
+<h2 class="anchored" data-anchor-id="traintest-이미-분리되어-있음">Train/Test (이미 분리되어 있음)</h2>
+<div id="4877157e-389d-46f3-89fe-f2cf66555b74" class="cell" data-execution_count="138">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>dataset[<span class="dv">0</span>].train_mask </span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="co"># dataset[0].train_mask 는 True, False로 이루어져 있는 길이가 2708(=노드수=논문수)인 벡터</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="co"># 여기에서 True인 노드만 훈련함</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="138">
+<pre><code>tensor([ True,  True,  True,  ..., False, False, False])</code></pre>
+</div>
+</div>
+<div id="0e17b790-3677-44e5-b5a1-939480bbf95b" class="cell" data-execution_count="141">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>dataset[<span class="dv">0</span>].train_mask.<span class="bu">sum</span>() <span class="co"># 140개의 노드만 훈련함? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="141">
+<pre><code>tensor(140)</code></pre>
+</div>
+</div>
+<div id="4896026c-df7f-48e3-b530-e76fc3c0016c" class="cell" data-execution_count="143">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>dataset[<span class="dv">0</span>].val_mask.<span class="bu">sum</span>() <span class="co"># val은 500개의 노드?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="143">
+<pre><code>tensor(500)</code></pre>
+</div>
+</div>
+<div id="d6ea59ec-07e7-40aa-acbe-d0ae7acd08aa" class="cell" data-execution_count="144">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>dataset[<span class="dv">0</span>].test_mask.<span class="bu">sum</span>() <span class="co"># test set은 1000?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="144">
+<pre><code>tensor(1000)</code></pre>
 </div>
 </div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -456,9 +567,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -494,10 +619,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -507,8 +631,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -523,6 +656,147 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -565,6 +839,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="miruetoto/yechan3" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
+
 
 
 

@@ -2,13 +2,16 @@
 
 # freeze computational output
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
-freeze: true
+execute:
+  freeze: auto  # re-render only when source changes
 
 # Enable banner style title blocks
-title-block-banner: true
+title-block-banner: false
 
 comments: 
   utterances: 
     repo: miruetoto/yechan3
 
 notebook-links: true
+cap-location: margin
+bibliography: ref.bib

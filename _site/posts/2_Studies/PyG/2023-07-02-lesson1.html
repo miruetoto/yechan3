@@ -9,7 +9,7 @@
 <meta name="author" content="신록예찬">
 <meta name="dcterms.date" content="2023-07-02">
 
-<title>신록예찬’s Blog - [PyG] lesson1: 자료형, 데이터셋</title>
+<title>신록예찬’s Blog - [PyG] lesson1: 자료형</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -174,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>[PyG]</strong> lesson1: 자료형, 데이터셋</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>[PyG]</strong> lesson1: 자료형</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -184,35 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title"><strong>[PyG]</strong> lesson1: 자료형, 데이터셋</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>신록예찬 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">July 2, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -241,18 +213,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../../2_cgsp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CGSP</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../2_gml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GML</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../2_python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -332,29 +292,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#pyg-의-data-자료형" id="toc-pyg-의-data-자료형" class="nav-link active" data-scroll-target="#pyg-의-data-자료형">PyG 의 Data 자료형</a></li>
-  <li><a href="#벤치마크-데이터셋" id="toc-벤치마크-데이터셋" class="nav-link" data-scroll-target="#벤치마크-데이터셋">벤치마크 데이터셋</a></li>
+  <li><a href="#pyg-의-data-자료형" id="toc-pyg-의-data-자료형" class="nav-link active" data-scroll-target="#pyg-의-data-자료형">PyG 의 Data 자료형</a>
+  <ul class="collapse">
+  <li><a href="#예제1-아래와-같은-그래프자료를-고려하자." id="toc-예제1-아래와-같은-그래프자료를-고려하자." class="nav-link" data-scroll-target="#예제1-아래와-같은-그래프자료를-고려하자."><strong>예제1</strong>: 아래와 같은 그래프자료를 고려하자.</a></li>
+  <li><a href="#예제2-잘못된-사용" id="toc-예제2-잘못된-사용" class="nav-link" data-scroll-target="#예제2-잘못된-사용"><strong>예제2</strong>: 잘못된 사용</a></li>
+  <li><a href="#예제3-예제2의-수정" id="toc-예제3-예제2의-수정" class="nav-link" data-scroll-target="#예제3-예제2의-수정"><strong>예제3</strong>: 예제2의 수정</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>[PyG]</strong> lesson1: 자료형</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<div id="2a8986a8-899c-438c-b865-18ea6152f2e4" class="cell" data-execution_count="6">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>신록예찬 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 2, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div id="2a8986a8-899c-438c-b865-18ea6152f2e4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> torch_geometric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="pyg-의-data-자료형" class="level1">
+<section id="pyg-의-data-자료형" class="level1 page-columns page-full">
 <h1>PyG 의 Data 자료형</h1>
 <blockquote class="blockquote">
 <p>ref: <a href="https://pytorch-geometric.readthedocs.io/en/latest/notes/introduction.html#data-handling-of-graphs" class="uri">https://pytorch-geometric.readthedocs.io/en/latest/notes/introduction.html#data-handling-of-graphs</a></p>
 </blockquote>
 <p><code>-</code> 자료는 <a href="https://pytorch-geometric.readthedocs.io/en/latest/notes/introduction.html#data-handling-of-graphs">PyG의 Data 오브젝트</a>를 기반으로 한다.</p>
-<section id="예제1-아래와-같은-그래프자료를-고려하자." class="level5">
-<h5 class="anchored" data-anchor-id="예제1-아래와-같은-그래프자료를-고려하자."><strong>예제1</strong>: 아래와 같은 그래프자료를 고려하자.</h5>
+<section id="예제1-아래와-같은-그래프자료를-고려하자." class="level2">
+<h2 class="anchored" data-anchor-id="예제1-아래와-같은-그래프자료를-고려하자."><strong>예제1</strong>: 아래와 같은 그래프자료를 고려하자.</h2>
 <p><img src="https://pytorch-geometric.readthedocs.io/en/latest/_images/graph.svg" class="img-fluid"></p>
 <p><code>-</code> 이러한 자료형은 아래와 같은 형식으로 저장한다.</p>
 <div id="27ade98b-01dd-4808-ae61-c51afcf06863" class="cell" data-execution_count="81">
@@ -406,8 +396,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="예제2-잘못된-사용" class="level5">
-<h5 class="anchored" data-anchor-id="예제2-잘못된-사용"><strong>예제2</strong>: 잘못된 사용</h5>
+<section id="예제2-잘못된-사용" class="level2">
+<h2 class="anchored" data-anchor-id="예제2-잘못된-사용"><strong>예제2</strong>: 잘못된 사용</h2>
 <p><code>-</code> <code>edge_index</code>는 예제1과 같이 <span class="math inline">\([2,|{\cal E}|]\)</span> 의 shape으로 넣어야 한다. 그렇지 않으면 에러가 난다.</p>
 <div id="0278aff0-9ff6-4243-92ab-a86be0d189c6" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>],</span>
@@ -426,10 +416,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="예제3-예제2의-수정" class="level5">
-<h5 class="anchored" data-anchor-id="예제3-예제2의-수정"><strong>예제3</strong>: 예제2의 수정</h5>
+<section id="예제3-예제2의-수정" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="예제3-예제2의-수정"><strong>예제3</strong>: 예제2의 수정</h2>
 <p><code>-</code> <code>edge_index</code>의 shape이 <span class="math inline">\([|{\cal E}|,2]\)</span> 꼴로 저장되어 있었을 경우 트랜스포즈이후 countiguous()함수를 사용하면 된다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<div id="0d524691-1adf-498e-b01b-d954ee1dece3" class="cell" data-execution_count="50">
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;그런데 그냥 transpose만 해도되는것 같음</p></li></div><div id="0d524691-1adf-498e-b01b-d954ee1dece3" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>],</span>
 <span id="cb16-2"><a href="#cb16-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>],</span>
 <span id="cb16-3"><a href="#cb16-3"></a>                           [<span class="dv">1</span>, <span class="dv">2</span>],</span>
@@ -448,196 +438,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>True</code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="벤치마크-데이터셋" class="level1">
-<h1>벤치마크 데이터셋</h1>
-<p><code>-</code> 데이터셋은 아래의 모듈안에 정리되어 있음</p>
-<div id="c723c175-93b2-49a3-996f-ec7b31db11a7" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="bu">dir</span>(torch_geometric.datasets)[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="55">
-<pre><code>['AMiner', 'AQSOL', 'Actor', 'AirfRANS', 'Airports']</code></pre>
-</div>
-</div>
-<section id="데이터셋1-tudataset" class="level5">
-<h5 class="anchored" data-anchor-id="데이터셋1-tudataset"><strong>데이터셋1</strong>: TUDataset</h5>
-<p><code>-</code> 다운로드</p>
-<div id="8e3bce3b-0fd9-4e14-8824-2005855f91f1" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>dataset <span class="op">=</span> torch_geometric.datasets.TUDataset(root<span class="op">=</span><span class="st">'/tmp/ENZYMES'</span>, name<span class="op">=</span><span class="st">'ENZYMES'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Downloading https://www.chrsmrrs.com/graphkerneldatasets/ENZYMES.zip
-Extracting /tmp/ENZYMES/ENZYMES/ENZYMES.zip
-Processing...
-Done!</code></pre>
-</div>
-</div>
-<div id="926f18a8-1d68-464d-b7f3-8dc674f8a9c0" class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">!</span>ls <span class="op">/</span>tmp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>ENZYMES
-quarto-sessiond5b3ef79
-snap-private-tmp
-systemd-private-4f024f2d80b94518847be2e97856b876-ModemManager.service-1Qybgi
-systemd-private-4f024f2d80b94518847be2e97856b876-colord.service-mq8m9i
-systemd-private-4f024f2d80b94518847be2e97856b876-switcheroo-control.service-Rmqqbh
-systemd-private-4f024f2d80b94518847be2e97856b876-systemd-logind.service-yAqcVf
-systemd-private-4f024f2d80b94518847be2e97856b876-systemd-resolved.service-Zl6rij
-systemd-private-4f024f2d80b94518847be2e97856b876-systemd-timesyncd.service-VuyXbh
-systemd-private-4f024f2d80b94518847be2e97856b876-upower.service-LtEUgj
-tracker-extract-files.1000
-tracker-extract-files.125</code></pre>
-</div>
-</div>
-<ul>
-<li><code>/tmp</code> 에 다운로드되어있음</li>
-</ul>
-<p><code>-</code> 기본정보: ENZYMES dataset</p>
-<blockquote class="blockquote">
-<p>(ChatGPT) ENZYMES는 그래프 분류를 위한 벤치마크 데이터셋 중 하나입니다. 이 데이터셋은 600개의 그래프로 구성되어 있으며, 6개의 클래스로 분류됩니다. 각 그래프는 효소(enzyme) 분자의 구조를 나타내며, 그래프의 노드는 원자(atom)를 나타내고, 엣지(edge)는 원자 간의 연결을 나타냅니다. ENZYMES 데이터셋은 화학 및 생물 정보학 분야에서 그래프 분류 알고리즘의 성능을 평가하기 위해 사용될 수 있습니다. 그래프 분류 알고리즘은 주어진 그래프를 특정 클래스 레이블로 분류하는 작업을 수행하는데 사용됩니다. 예를 들어, ENZYMES 데이터셋의 그래프는 특정 효소 종류를 나타내며, 그래프 분류 알고리즘은 주어진 효소 그래프가 어떤 종류의 효소인지 예측할 수 있습니다. PyG를 사용하여 ENZYMES 데이터셋을 초기화하면 해당 데이터셋을 다운로드하고 필요한 전처리를 자동으로 수행할 수 있습니다. 그래프 데이터를 다루는 머신 러닝 모델을 구축하고 훈련시키기 위해 ENZYMES 데이터셋을 사용할 수 있습니다.</p>
-</blockquote>
-<div id="d759f993-027b-4bf3-888b-c49f5bfbb679" class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>dataset <span class="co"># 데이터셋 이름</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="104">
-<pre><code>ENZYMES(600)</code></pre>
-</div>
-</div>
-<div id="ac487661-258a-44dc-af6c-c0db90ca6c38" class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">len</span>(dataset) <span class="co"># 이 데이터셋에는 600개의 그래프가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="105">
-<pre><code>600</code></pre>
-</div>
-</div>
-<div id="77dd6aae-f03a-4945-ae29-3271f957359e" class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>dataset.num_classes <span class="co"># 6개의 클래스</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="106">
-<pre><code>6</code></pre>
-</div>
-</div>
-<div id="521668ac-f7d9-4a5e-9a68-61643d0a753b" class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>dataset.num_node_features <span class="co"># 각 노드에는 3개의 피처가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="107">
-<pre><code>3</code></pre>
-</div>
-</div>
-<p><code>-</code> 600개의 그래프중 첫번째 그래프에 접근</p>
-<div id="79e418a1-f0fe-47d9-9f97-612302ece08e" class="cell" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>dataset[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="111">
-<pre><code>Data(edge_index=[2, 168], x=[37, 3], y=[1])</code></pre>
-</div>
-</div>
-<ul>
-<li><code>x=[37, 3]</code>: <span class="math inline">\(|{\cal V}|=37\)</span>, <span class="math inline">\(f \in \mathbb{R}^3\)</span></li>
-<li><code>edge_index=[2, 168]</code>: <span class="math inline">\(|{\cal E}|=168\)</span></li>
-</ul>
-<p><code>-</code> 600개의 그래프중 540를 train으로, 60개를 test로</p>
-<div id="ecb777e1-058c-4d21-9823-74fc61aedef6" class="cell" data-execution_count="113">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>train_dataset <span class="op">=</span> dataset[:<span class="dv">540</span>]</span>
-<span id="cb35-2"><a href="#cb35-2"></a>test_dataset <span class="op">=</span> dataset[<span class="dv">540</span>:] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="데이터셋2-cora" class="level5">
-<h5 class="anchored" data-anchor-id="데이터셋2-cora"><strong>데이터셋2</strong>: Cora</h5>
-<blockquote class="blockquote">
-<p>ChatGPT: Cora는 그래프 분류를 위한 벤치마크 데이터셋 중 하나로, PyG에서도 사용할 수 있습니다. 이 데이터셋은 기계 학습 및 정보 검색 분야에서 널리 사용되는 학술 논문들의 인용 네트워크를 나타냅니다. Cora 데이터셋은 컴퓨터 과학 분야의 논문을 대상으로 합니다. 각 논문은 그래프의 노드로 표현되며, 노드는 논문을 나타냅니다. 노드 간의 엣지는 논문들 사이의 인용 관계를 나타냅니다. 따라서 Cora 데이터셋은 논문의 텍스트 기반 정보와 인용 관계에 대한 그래프 구조를 제공합니다. Cora 데이터셋은 7개의 클래스로 분류되며, 각 논문은 특성 벡터(feature vector)로 표현됩니다. 이 특성 벡터에는 논문의 단어 등 다양한 정보가 포함될 수 있습니다. PyG를 사용하여 Cora 데이터셋을 초기화하면 해당 데이터셋을 다운로드하고 전처리를 자동으로 수행할 수 있습니다. 이를 통해 머신 러닝 모델을 훈련시켜 Cora 데이터셋의 논문을 분류하거나 다양한 작업을 수행할 수 있습니다.</p>
-</blockquote>
-<p><code>-</code> 다운로드</p>
-<div id="bea3fff7-c391-41be-9a68-d83ec850d482" class="cell" data-execution_count="114">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>dataset <span class="op">=</span> torch_geometric.datasets.Planetoid(root<span class="op">=</span><span class="st">'/tmp/Cora'</span>, name<span class="op">=</span><span class="st">'Cora'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.x
-Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.tx
-Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.allx
-Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.y
-Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.ty
-Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.ally
-Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.graph
-Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.test.index
-Processing...
-Done!</code></pre>
-</div>
-</div>
-<p><code>-</code> 기본정보</p>
-<div id="6436961b-4acf-4209-bc12-3e2cf79c3839" class="cell" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="bu">len</span>(dataset) <span class="co"># 하나의 그래프가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="116">
-<pre><code>1</code></pre>
-</div>
-</div>
-<div id="0a967e22-e557-450a-911f-e6f47a5ca5d9" class="cell" data-execution_count="118">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>dataset.num_classes <span class="co"># 7개의 클래스가 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="118">
-<pre><code>7</code></pre>
-</div>
-</div>
-<div id="7c7840e2-7081-4334-b3b9-06f1ba607c4a" class="cell" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>dataset.num_node_features <span class="co"># 각 노드는 1433개의 특징이 있음. (논문에 포함된 단어등 다양한 특성이 담겨있을 수 있음) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="123">
-<pre><code>1433</code></pre>
-</div>
-</div>
-<p><code>-</code> 그래프에 접근</p>
-<div id="2e73ca58-0c3c-4bc7-8bc4-74d8f5978b6a" class="cell" data-execution_count="134">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>dataset[<span class="dv">0</span>] <span class="co"># 기본정보</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="134">
-<pre><code>Data(x=[2708, 1433], edge_index=[2, 10556], y=[2708], train_mask=[2708], val_mask=[2708], test_mask=[2708])</code></pre>
-</div>
-</div>
-<ul>
-<li><code>x=[2708, 1433]</code>: 2708개의 논문이 있고, 각 논문은 1433개의 특징벡터들로 이루어져 있음.</li>
-<li><code>edge_index=[2, 10556]</code>: 논문간의 인용은 약 10556.</li>
-<li><code>y=[2708]</code>:</li>
-</ul>
-<div id="67314c78-7c0d-4772-8101-69df7ced179e" class="cell" data-execution_count="131">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>dataset[<span class="dv">0</span>].x.shape <span class="co"># 2708개의 논문이 있고 1433개의 특징벡터를 가짐</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="131">
-<pre><code>torch.Size([2708, 1433])</code></pre>
-</div>
-</div>
-<div id="8e314f95-8826-4d99-98c3-3e2dd8004114" class="cell" data-execution_count="129">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>dataset[<span class="dv">0</span>].y.unique() <span class="co"># 논문이 7개의 카테고리로 분류되는듯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="129">
-<pre><code>tensor([0, 1, 2, 3, 4, 5, 6])</code></pre>
-</div>
-</div>
-<div id="dbf82b7f-c8f1-42ac-bb62-05037b926b2e" class="cell" data-execution_count="138">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>dataset[<span class="dv">0</span>].train_mask </span>
-<span id="cb50-2"><a href="#cb50-2"></a><span class="co"># dataset[0].train_mask 는 True, False로 이루어져 있는 길이가 2708(=노드수=논문수)인 벡터</span></span>
-<span id="cb50-3"><a href="#cb50-3"></a><span class="co"># 여기에서 True인 노드만 훈련함</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="138">
-<pre><code>tensor([ True,  True,  True,  ..., False, False, False])</code></pre>
-</div>
-</div>
-<div id="0fc01350-2f6d-485e-8d3e-04dc99d3fe61" class="cell" data-execution_count="141">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>dataset[<span class="dv">0</span>].train_mask.<span class="bu">sum</span>() <span class="co"># 140개의 노드만 훈련함? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="141">
-<pre><code>tensor(140)</code></pre>
-</div>
-</div>
-<div id="6b3d9178-4e85-492d-992e-b5a7c192af91" class="cell" data-execution_count="143">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>dataset[<span class="dv">0</span>].val_mask.<span class="bu">sum</span>() <span class="co"># val은 500개의 노드?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="143">
-<pre><code>tensor(500)</code></pre>
-</div>
-</div>
-<div id="e3a326fd-21df-4a59-9cfc-29ab6bd46bf7" class="cell" data-execution_count="144">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>dataset[<span class="dv">0</span>].test_mask.<span class="bu">sum</span>() <span class="co"># test set은 1000?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="144">
-<pre><code>tensor(1000)</code></pre>
-</div>
-</div>
 
 
 </section>
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>그런데 그냥 transpose만 해도되는것 같음<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

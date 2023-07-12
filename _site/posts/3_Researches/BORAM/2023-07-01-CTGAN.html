@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.193">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,6 +82,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,7 +96,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -137,65 +114,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">신록예찬’s Blog</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DL2022/">
+    <a class="nav-link" href="https://guebin.github.io/DL2022/" rel="" target="">
  <span class="menu-text">DL2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DV2022/">
+    <a class="nav-link" href="https://guebin.github.io/DV2022/" rel="" target="">
  <span class="menu-text">DV2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IP2022/">
+    <a class="nav-link" href="https://guebin.github.io/IP2022/" rel="" target="">
  <span class="menu-text">IP2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/SC2022/">
+    <a class="nav-link" href="https://guebin.github.io/SC2022/" rel="" target="">
  <span class="menu-text">SC2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DS2022/">
+    <a class="nav-link" href="https://guebin.github.io/DS2022/" rel="" target="">
  <span class="menu-text">DS2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/IR2021/">
+    <a class="nav-link" href="https://guebin.github.io/IR2021/" rel="" target="">
  <span class="menu-text">IR2021</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan/" rel="" target="">
  <span class="menu-text">yechan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://miruetoto.github.io/yechan2/">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan2/" rel="" target="">
  <span class="menu-text">yechan2</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/miruetoto/yechan3"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/miruetoto/yechan3" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><strong>[BORAM]</strong> CTGAN</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>[BORAM]</strong> CTGAN</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -204,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block"><strong>[BORAM]</strong> CTGAN</h1>
+      <h1 class="title"><strong>[BORAM]</strong> CTGAN</h1>
                       </div>
   </div>
     
@@ -231,102 +215,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../1_essays.html" class="sidebar-item-text sidebar-link"><strong>Essays</strong></a>
+  <a href="../../../1_essays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Essays</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><strong>Studies</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Studies</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_cgsp.html" class="sidebar-item-text sidebar-link">CGSP</a>
+  <a href="../../../2_cgsp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CGSP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_gml.html" class="sidebar-item-text sidebar-link">GML</a>
+  <a href="../../../2_pl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyTorch Lightning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_python.html" class="sidebar-item-text sidebar-link">Python</a>
+  <a href="../../../2_pyg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyG</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../2_pl.html" class="sidebar-item-text sidebar-link">PyTorch Lightning</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../2_pyg.html" class="sidebar-item-text sidebar-link">PyG</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../2_reviews.html" class="sidebar-item-text sidebar-link">Reviews</a>
+  <a href="../../../2_reviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reviews</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true"><strong>Researches</strong></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Researches</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_hst.html" class="sidebar-item-text sidebar-link">HST</a>
+  <a href="../../../3_hst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HST</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_itstgcn.html" class="sidebar-item-text sidebar-link">IT-STGCN</a>
+  <a href="../../../3_itstgcn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IT-STGCN</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_solar.html" class="sidebar-item-text sidebar-link">SOLAR</a>
+  <a href="../../../3_solar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SOLAR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_boram.html" class="sidebar-item-text sidebar-link">BORAM</a>
+  <a href="../../../3_boram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BORAM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_pinkocto.html" class="sidebar-item-text sidebar-link">PINKOCTO</a>
+  <a href="../../../3_pinkocto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PINKOCTO</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../4_notes.html" class="sidebar-item-text sidebar-link"><strong><em>Notes</em></strong></a>
+  <a href="../../../4_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong><em>Notes</em></strong></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
@@ -337,7 +325,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<div class="cell" data-execution_count="2">
+<div id="03a0311e-5c53-467e-afbc-5dcaeb9b3a43" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">!</span>conda env <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># conda environments:
@@ -350,7 +338,7 @@ stgcn                    /home/cgb2/anaconda3/envs/stgcn
 </div>
 </div>
 <p><code>-</code> Ref: <a href="https://github.com/sdv-dev/CTGAN" class="uri">https://github.com/sdv-dev/CTGAN</a></p>
-<div class="cell" data-execution_count="3">
+<div id="ba16c64d-6b67-4831-aab3-ca7135307e20" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> ctgan <span class="im">import</span> CTGAN</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> ctgan <span class="im">import</span> load_demo</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -392,467 +380,469 @@ stgcn                    /home/cgb2/anaconda3/envs/stgcn
 </div>
 </div>
 <p><code>-</code> 실제자료</p>
-<div class="cell" data-execution_count="5">
+<div id="9b421b89-d026-443c-80c7-1246ea6c365b" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>real_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>age</th>
-      <th>workclass</th>
-      <th>fnlwgt</th>
-      <th>education</th>
-      <th>education-num</th>
-      <th>marital-status</th>
-      <th>occupation</th>
-      <th>relationship</th>
-      <th>race</th>
-      <th>sex</th>
-      <th>capital-gain</th>
-      <th>capital-loss</th>
-      <th>hours-per-week</th>
-      <th>native-country</th>
-      <th>income</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>39</td>
-      <td>State-gov</td>
-      <td>77516</td>
-      <td>Bachelors</td>
-      <td>13</td>
-      <td>Never-married</td>
-      <td>Adm-clerical</td>
-      <td>Not-in-family</td>
-      <td>White</td>
-      <td>Male</td>
-      <td>2174</td>
-      <td>0</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>50</td>
-      <td>Self-emp-not-inc</td>
-      <td>83311</td>
-      <td>Bachelors</td>
-      <td>13</td>
-      <td>Married-civ-spouse</td>
-      <td>Exec-managerial</td>
-      <td>Husband</td>
-      <td>White</td>
-      <td>Male</td>
-      <td>0</td>
-      <td>0</td>
-      <td>13</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>38</td>
-      <td>Private</td>
-      <td>215646</td>
-      <td>HS-grad</td>
-      <td>9</td>
-      <td>Divorced</td>
-      <td>Handlers-cleaners</td>
-      <td>Not-in-family</td>
-      <td>White</td>
-      <td>Male</td>
-      <td>0</td>
-      <td>0</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>53</td>
-      <td>Private</td>
-      <td>234721</td>
-      <td>11th</td>
-      <td>7</td>
-      <td>Married-civ-spouse</td>
-      <td>Handlers-cleaners</td>
-      <td>Husband</td>
-      <td>Black</td>
-      <td>Male</td>
-      <td>0</td>
-      <td>0</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>28</td>
-      <td>Private</td>
-      <td>338409</td>
-      <td>Bachelors</td>
-      <td>13</td>
-      <td>Married-civ-spouse</td>
-      <td>Prof-specialty</td>
-      <td>Wife</td>
-      <td>Black</td>
-      <td>Female</td>
-      <td>0</td>
-      <td>0</td>
-      <td>40</td>
-      <td>Cuba</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>32556</th>
-      <td>27</td>
-      <td>Private</td>
-      <td>257302</td>
-      <td>Assoc-acdm</td>
-      <td>12</td>
-      <td>Married-civ-spouse</td>
-      <td>Tech-support</td>
-      <td>Wife</td>
-      <td>White</td>
-      <td>Female</td>
-      <td>0</td>
-      <td>0</td>
-      <td>38</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>32557</th>
-      <td>40</td>
-      <td>Private</td>
-      <td>154374</td>
-      <td>HS-grad</td>
-      <td>9</td>
-      <td>Married-civ-spouse</td>
-      <td>Machine-op-inspct</td>
-      <td>Husband</td>
-      <td>White</td>
-      <td>Male</td>
-      <td>0</td>
-      <td>0</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&gt;50K</td>
-    </tr>
-    <tr>
-      <th>32558</th>
-      <td>58</td>
-      <td>Private</td>
-      <td>151910</td>
-      <td>HS-grad</td>
-      <td>9</td>
-      <td>Widowed</td>
-      <td>Adm-clerical</td>
-      <td>Unmarried</td>
-      <td>White</td>
-      <td>Female</td>
-      <td>0</td>
-      <td>0</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>32559</th>
-      <td>22</td>
-      <td>Private</td>
-      <td>201490</td>
-      <td>HS-grad</td>
-      <td>9</td>
-      <td>Never-married</td>
-      <td>Adm-clerical</td>
-      <td>Own-child</td>
-      <td>White</td>
-      <td>Male</td>
-      <td>0</td>
-      <td>0</td>
-      <td>20</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>32560</th>
-      <td>52</td>
-      <td>Self-emp-inc</td>
-      <td>287927</td>
-      <td>HS-grad</td>
-      <td>9</td>
-      <td>Married-civ-spouse</td>
-      <td>Exec-managerial</td>
-      <td>Wife</td>
-      <td>White</td>
-      <td>Female</td>
-      <td>15024</td>
-      <td>0</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&gt;50K</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">workclass</th>
+<th data-quarto-table-cell-role="th">fnlwgt</th>
+<th data-quarto-table-cell-role="th">education</th>
+<th data-quarto-table-cell-role="th">education-num</th>
+<th data-quarto-table-cell-role="th">marital-status</th>
+<th data-quarto-table-cell-role="th">occupation</th>
+<th data-quarto-table-cell-role="th">relationship</th>
+<th data-quarto-table-cell-role="th">race</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">capital-gain</th>
+<th data-quarto-table-cell-role="th">capital-loss</th>
+<th data-quarto-table-cell-role="th">hours-per-week</th>
+<th data-quarto-table-cell-role="th">native-country</th>
+<th data-quarto-table-cell-role="th">income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>39</td>
+<td>State-gov</td>
+<td>77516</td>
+<td>Bachelors</td>
+<td>13</td>
+<td>Never-married</td>
+<td>Adm-clerical</td>
+<td>Not-in-family</td>
+<td>White</td>
+<td>Male</td>
+<td>2174</td>
+<td>0</td>
+<td>40</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>50</td>
+<td>Self-emp-not-inc</td>
+<td>83311</td>
+<td>Bachelors</td>
+<td>13</td>
+<td>Married-civ-spouse</td>
+<td>Exec-managerial</td>
+<td>Husband</td>
+<td>White</td>
+<td>Male</td>
+<td>0</td>
+<td>0</td>
+<td>13</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>38</td>
+<td>Private</td>
+<td>215646</td>
+<td>HS-grad</td>
+<td>9</td>
+<td>Divorced</td>
+<td>Handlers-cleaners</td>
+<td>Not-in-family</td>
+<td>White</td>
+<td>Male</td>
+<td>0</td>
+<td>0</td>
+<td>40</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>53</td>
+<td>Private</td>
+<td>234721</td>
+<td>11th</td>
+<td>7</td>
+<td>Married-civ-spouse</td>
+<td>Handlers-cleaners</td>
+<td>Husband</td>
+<td>Black</td>
+<td>Male</td>
+<td>0</td>
+<td>0</td>
+<td>40</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>28</td>
+<td>Private</td>
+<td>338409</td>
+<td>Bachelors</td>
+<td>13</td>
+<td>Married-civ-spouse</td>
+<td>Prof-specialty</td>
+<td>Wife</td>
+<td>Black</td>
+<td>Female</td>
+<td>0</td>
+<td>0</td>
+<td>40</td>
+<td>Cuba</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32556</td>
+<td>27</td>
+<td>Private</td>
+<td>257302</td>
+<td>Assoc-acdm</td>
+<td>12</td>
+<td>Married-civ-spouse</td>
+<td>Tech-support</td>
+<td>Wife</td>
+<td>White</td>
+<td>Female</td>
+<td>0</td>
+<td>0</td>
+<td>38</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32557</td>
+<td>40</td>
+<td>Private</td>
+<td>154374</td>
+<td>HS-grad</td>
+<td>9</td>
+<td>Married-civ-spouse</td>
+<td>Machine-op-inspct</td>
+<td>Husband</td>
+<td>White</td>
+<td>Male</td>
+<td>0</td>
+<td>0</td>
+<td>40</td>
+<td>United-States</td>
+<td>&gt;50K</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32558</td>
+<td>58</td>
+<td>Private</td>
+<td>151910</td>
+<td>HS-grad</td>
+<td>9</td>
+<td>Widowed</td>
+<td>Adm-clerical</td>
+<td>Unmarried</td>
+<td>White</td>
+<td>Female</td>
+<td>0</td>
+<td>0</td>
+<td>40</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32559</td>
+<td>22</td>
+<td>Private</td>
+<td>201490</td>
+<td>HS-grad</td>
+<td>9</td>
+<td>Never-married</td>
+<td>Adm-clerical</td>
+<td>Own-child</td>
+<td>White</td>
+<td>Male</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32560</td>
+<td>52</td>
+<td>Self-emp-inc</td>
+<td>287927</td>
+<td>HS-grad</td>
+<td>9</td>
+<td>Married-civ-spouse</td>
+<td>Exec-managerial</td>
+<td>Wife</td>
+<td>White</td>
+<td>Female</td>
+<td>15024</td>
+<td>0</td>
+<td>40</td>
+<td>United-States</td>
+<td>&gt;50K</td>
+</tr>
+</tbody>
 </table>
+
 <p>32561 rows × 15 columns</p>
 </div>
 </div>
 </div>
 <p><code>-</code> 합성된자료</p>
-<div class="cell" data-execution_count="4">
+<div id="8e9a2697-a0b7-4020-81e2-8f3340e58d76" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>synthetic_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>age</th>
-      <th>workclass</th>
-      <th>fnlwgt</th>
-      <th>education</th>
-      <th>education-num</th>
-      <th>marital-status</th>
-      <th>occupation</th>
-      <th>relationship</th>
-      <th>race</th>
-      <th>sex</th>
-      <th>capital-gain</th>
-      <th>capital-loss</th>
-      <th>hours-per-week</th>
-      <th>native-country</th>
-      <th>income</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>31</td>
-      <td>Private</td>
-      <td>317142</td>
-      <td>Assoc-acdm</td>
-      <td>10</td>
-      <td>Married-spouse-absent</td>
-      <td>Transport-moving</td>
-      <td>Own-child</td>
-      <td>White</td>
-      <td>Male</td>
-      <td>92</td>
-      <td>0</td>
-      <td>56</td>
-      <td>China</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>40</td>
-      <td>Private</td>
-      <td>248817</td>
-      <td>Some-college</td>
-      <td>11</td>
-      <td>Married-civ-spouse</td>
-      <td>Prof-specialty</td>
-      <td>Own-child</td>
-      <td>White</td>
-      <td>Male</td>
-      <td>-101</td>
-      <td>4</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>21</td>
-      <td>Private</td>
-      <td>201022</td>
-      <td>Bachelors</td>
-      <td>2</td>
-      <td>Never-married</td>
-      <td>Other-service</td>
-      <td>Own-child</td>
-      <td>White</td>
-      <td>Male</td>
-      <td>-20</td>
-      <td>-4</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>33</td>
-      <td>Federal-gov</td>
-      <td>407226</td>
-      <td>Masters</td>
-      <td>5</td>
-      <td>Never-married</td>
-      <td>Other-service</td>
-      <td>Not-in-family</td>
-      <td>White</td>
-      <td>Female</td>
-      <td>-103</td>
-      <td>1683</td>
-      <td>61</td>
-      <td>Yugoslavia</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>49</td>
-      <td>Federal-gov</td>
-      <td>261481</td>
-      <td>Some-college</td>
-      <td>14</td>
-      <td>Never-married</td>
-      <td>Farming-fishing</td>
-      <td>Own-child</td>
-      <td>White</td>
-      <td>Female</td>
-      <td>5</td>
-      <td>-4</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>995</th>
-      <td>39</td>
-      <td>Private</td>
-      <td>228408</td>
-      <td>HS-grad</td>
-      <td>13</td>
-      <td>Married-civ-spouse</td>
-      <td>Prof-specialty</td>
-      <td>Not-in-family</td>
-      <td>Asian-Pac-Islander</td>
-      <td>Female</td>
-      <td>-73</td>
-      <td>-2</td>
-      <td>16</td>
-      <td>Philippines</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>996</th>
-      <td>31</td>
-      <td>Private</td>
-      <td>125109</td>
-      <td>HS-grad</td>
-      <td>0</td>
-      <td>Never-married</td>
-      <td>Craft-repair</td>
-      <td>Not-in-family</td>
-      <td>White</td>
-      <td>Female</td>
-      <td>-86</td>
-      <td>-4</td>
-      <td>59</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>997</th>
-      <td>31</td>
-      <td>Private</td>
-      <td>291146</td>
-      <td>11th</td>
-      <td>13</td>
-      <td>Never-married</td>
-      <td>Adm-clerical</td>
-      <td>Wife</td>
-      <td>Black</td>
-      <td>Female</td>
-      <td>-52</td>
-      <td>5</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&gt;50K</td>
-    </tr>
-    <tr>
-      <th>998</th>
-      <td>25</td>
-      <td>Private</td>
-      <td>170115</td>
-      <td>Some-college</td>
-      <td>13</td>
-      <td>Never-married</td>
-      <td>Machine-op-inspct</td>
-      <td>Own-child</td>
-      <td>White</td>
-      <td>Female</td>
-      <td>-124</td>
-      <td>-4</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&lt;=50K</td>
-    </tr>
-    <tr>
-      <th>999</th>
-      <td>37</td>
-      <td>Without-pay</td>
-      <td>363805</td>
-      <td>Prof-school</td>
-      <td>10</td>
-      <td>Married-civ-spouse</td>
-      <td>Sales</td>
-      <td>Unmarried</td>
-      <td>White</td>
-      <td>Female</td>
-      <td>51</td>
-      <td>-5</td>
-      <td>40</td>
-      <td>Iran</td>
-      <td>&lt;=50K</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">workclass</th>
+<th data-quarto-table-cell-role="th">fnlwgt</th>
+<th data-quarto-table-cell-role="th">education</th>
+<th data-quarto-table-cell-role="th">education-num</th>
+<th data-quarto-table-cell-role="th">marital-status</th>
+<th data-quarto-table-cell-role="th">occupation</th>
+<th data-quarto-table-cell-role="th">relationship</th>
+<th data-quarto-table-cell-role="th">race</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">capital-gain</th>
+<th data-quarto-table-cell-role="th">capital-loss</th>
+<th data-quarto-table-cell-role="th">hours-per-week</th>
+<th data-quarto-table-cell-role="th">native-country</th>
+<th data-quarto-table-cell-role="th">income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>31</td>
+<td>Private</td>
+<td>317142</td>
+<td>Assoc-acdm</td>
+<td>10</td>
+<td>Married-spouse-absent</td>
+<td>Transport-moving</td>
+<td>Own-child</td>
+<td>White</td>
+<td>Male</td>
+<td>92</td>
+<td>0</td>
+<td>56</td>
+<td>China</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>40</td>
+<td>Private</td>
+<td>248817</td>
+<td>Some-college</td>
+<td>11</td>
+<td>Married-civ-spouse</td>
+<td>Prof-specialty</td>
+<td>Own-child</td>
+<td>White</td>
+<td>Male</td>
+<td>-101</td>
+<td>4</td>
+<td>40</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>21</td>
+<td>Private</td>
+<td>201022</td>
+<td>Bachelors</td>
+<td>2</td>
+<td>Never-married</td>
+<td>Other-service</td>
+<td>Own-child</td>
+<td>White</td>
+<td>Male</td>
+<td>-20</td>
+<td>-4</td>
+<td>40</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>33</td>
+<td>Federal-gov</td>
+<td>407226</td>
+<td>Masters</td>
+<td>5</td>
+<td>Never-married</td>
+<td>Other-service</td>
+<td>Not-in-family</td>
+<td>White</td>
+<td>Female</td>
+<td>-103</td>
+<td>1683</td>
+<td>61</td>
+<td>Yugoslavia</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>49</td>
+<td>Federal-gov</td>
+<td>261481</td>
+<td>Some-college</td>
+<td>14</td>
+<td>Never-married</td>
+<td>Farming-fishing</td>
+<td>Own-child</td>
+<td>White</td>
+<td>Female</td>
+<td>5</td>
+<td>-4</td>
+<td>40</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">995</td>
+<td>39</td>
+<td>Private</td>
+<td>228408</td>
+<td>HS-grad</td>
+<td>13</td>
+<td>Married-civ-spouse</td>
+<td>Prof-specialty</td>
+<td>Not-in-family</td>
+<td>Asian-Pac-Islander</td>
+<td>Female</td>
+<td>-73</td>
+<td>-2</td>
+<td>16</td>
+<td>Philippines</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">996</td>
+<td>31</td>
+<td>Private</td>
+<td>125109</td>
+<td>HS-grad</td>
+<td>0</td>
+<td>Never-married</td>
+<td>Craft-repair</td>
+<td>Not-in-family</td>
+<td>White</td>
+<td>Female</td>
+<td>-86</td>
+<td>-4</td>
+<td>59</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">997</td>
+<td>31</td>
+<td>Private</td>
+<td>291146</td>
+<td>11th</td>
+<td>13</td>
+<td>Never-married</td>
+<td>Adm-clerical</td>
+<td>Wife</td>
+<td>Black</td>
+<td>Female</td>
+<td>-52</td>
+<td>5</td>
+<td>40</td>
+<td>United-States</td>
+<td>&gt;50K</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">998</td>
+<td>25</td>
+<td>Private</td>
+<td>170115</td>
+<td>Some-college</td>
+<td>13</td>
+<td>Never-married</td>
+<td>Machine-op-inspct</td>
+<td>Own-child</td>
+<td>White</td>
+<td>Female</td>
+<td>-124</td>
+<td>-4</td>
+<td>40</td>
+<td>United-States</td>
+<td>&lt;=50K</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">999</td>
+<td>37</td>
+<td>Without-pay</td>
+<td>363805</td>
+<td>Prof-school</td>
+<td>10</td>
+<td>Married-civ-spouse</td>
+<td>Sales</td>
+<td>Unmarried</td>
+<td>White</td>
+<td>Female</td>
+<td>51</td>
+<td>-5</td>
+<td>40</td>
+<td>Iran</td>
+<td>&lt;=50K</td>
+</tr>
+</tbody>
 </table>
+
 <p>1000 rows × 15 columns</p>
 </div>
 </div>
@@ -888,9 +878,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -926,10 +930,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -939,8 +942,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -955,6 +967,147 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -997,6 +1150,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="miruetoto/yechan3" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
+
 
 
 
