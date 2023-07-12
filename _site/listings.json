@@ -3,11 +3,11 @@
     "listing": "/index.html",
     "items": [
       "/posts/3_Researches/BORAM/FRAUD/2023-07-03-CTGAN_신용카드.html",
-      "/posts/2_Studies/PyG/2023-07-12-lesson3.html",
+      "/posts/2_Studies/PyG/ls3.html",
       "/posts/1_Essays/2023-07-07-다중척도방법.html",
-      "/posts/2_Studies/PyG/2023-07-07-lesson2.html",
+      "/posts/2_Studies/PyG/ls2.html",
       "/posts/1_Essays/2023-07-04-토폴로지(1).html",
-      "/posts/2_Studies/PyG/2023-07-02-lesson1.html",
+      "/posts/2_Studies/PyG/ls1.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-07-01-CTGAN.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-07-02-CTGAN-TOY.html",
       "/posts/3_Researches/PINKOCTO/2023-06-28-커널리그레션.html",
@@ -75,9 +75,9 @@
   {
     "listing": "/2_pyg.html",
     "items": [
-      "/posts/2_Studies/PyG/2023-07-12-lesson3.html",
-      "/posts/2_Studies/PyG/2023-07-07-lesson2.html",
-      "/posts/2_Studies/PyG/2023-07-02-lesson1.html"
+      "/posts/2_Studies/PyG/ls3.html",
+      "/posts/2_Studies/PyG/ls2.html",
+      "/posts/2_Studies/PyG/ls1.html"
     ]
   },
   {

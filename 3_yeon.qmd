@@ -11,3 +11,7 @@ listing:
 page-layout: full
 title-block-banner: false
 ---
+
+- <https://github.com/seoyeonc> 
+- <https://seoyeonc.github.io/md/>
+- <https://seoyeonc.github.io/blog/>

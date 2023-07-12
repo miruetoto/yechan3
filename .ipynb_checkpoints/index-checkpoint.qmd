@@ -19,17 +19,8 @@ This blog was created for my personal research, study and lecture preparation. T
 
 **Some links that help me**
 
-*blogs*
-
-- <https://seoyeonc.github.io/md/>
-- <https://seoyeonc.github.io/blog/>
-- <https://boram-coco.github.io/coco/>
-- <https://pinkocto.github.io/noteda/>
-- <https://pinkocto.github.io/Quarto-Blog/>
-
 *first url bunch*
 
-- **chatGPT**: <https://openai.com/blog/chatgpt/> 
 - **matplotlib**: <https://matplotlib.org/stable/gallery/index.html> 
 - **jupyterlab**: <https://jupyterlab.readthedocs.io/en/stable/index.html> 
 - **pandas**: <https://pandas.pydata.org/docs/user_guide/index.html#user-guide>

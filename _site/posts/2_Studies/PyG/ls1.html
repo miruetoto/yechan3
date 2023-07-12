@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="신록예찬">
+<meta name="dcterms.date" content="2023-07-02">
 
-<title>신록예찬’s Blog - PyG</title>
+<title>신록예찬’s Blog - [PyG] lesson1: 자료형</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +22,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -66,50 +100,21 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">신록예찬’s Blog</span>
     </a>
   </div>
@@ -169,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_cgsp.html"><strong>Studies</strong></a></li><li class="breadcrumb-item"><a href="./2_pyg.html">PyG</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>[PyG]</strong> lesson1: 자료형</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -179,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -191,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./1_essays.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../1_essays.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>Essays</strong></span></a>
   </div>
 </li>
@@ -206,25 +211,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_cgsp.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../2_cgsp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CGSP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_pl.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../2_pl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PyTorch Lightning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_pyg.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../2_pyg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PyG</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_reviews.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../2_reviews.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reviews</span></a>
   </div>
 </li>
@@ -241,25 +246,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./3_yechan.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../3_yechan.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">YECHAN</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./3_yeon.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../3_yeon.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SEOYEONC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./3_boram.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../3_boram.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BORAM-COCO</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./3_pinkocto.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../3_pinkocto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PINKOCTO</span></a>
   </div>
 </li>
@@ -267,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./4_notes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../4_notes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong><em>Notes</em></strong></span></a>
   </div>
 </li>
@@ -276,22 +281,45 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#pyg-의-data-자료형" id="toc-pyg-의-data-자료형" class="nav-link active" data-scroll-target="#pyg-의-data-자료형">PyG 의 Data 자료형</a>
+  <ul class="collapse">
+  <li><a href="#예제1-아래와-같은-그래프자료를-고려하자." id="toc-예제1-아래와-같은-그래프자료를-고려하자." class="nav-link" data-scroll-target="#예제1-아래와-같은-그래프자료를-고려하자."><strong>예제1</strong>: 아래와 같은 그래프자료를 고려하자.</a></li>
+  <li><a href="#예제2-잘못된-사용" id="toc-예제2-잘못된-사용" class="nav-link" data-scroll-target="#예제2-잘못된-사용"><strong>예제2</strong>: 잘못된 사용</a></li>
+  <li><a href="#예제3-예제2의-수정" id="toc-예제3-예제2의-수정" class="nav-link" data-scroll-target="#예제3-예제2의-수정"><strong>예제3</strong>: 예제2의 수정</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_cgsp.html"><strong>Studies</strong></a></li><li class="breadcrumb-item"><a href="./2_pyg.html">PyG</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PyG</h1>
+<h1 class="title"><strong>[PyG]</strong> lesson1: 자료형</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>신록예찬 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 2, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -299,65 +327,118 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Author
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1689087600000" data-listing-file-modified-sort="1689125802558" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="**[PyG]** lesson3: 미니배치" data-listing-filename-sort="ls3.ipynb">
-<td>
-<span class="listing-date">Jul 12, 2023</span>
-</td>
-<td>
-<a href="./posts/2_Studies/PyG/ls3.html" class="title listing-title"><strong>[PyG]</strong> lesson3: 미니배치</a>
-</td>
-<td>
-<span class="listing-author">신록예찬 </span>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1688655600000" data-listing-file-modified-sort="1689128030888" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="**[PyG]** lesson2: 벤치마크 데이터셋 (train/test분리)" data-listing-filename-sort="ls2.ipynb">
-<td>
-<span class="listing-date">Jul 7, 2023</span>
-</td>
-<td>
-<a href="./posts/2_Studies/PyG/ls2.html" class="title listing-title"><strong>[PyG]</strong> lesson2: 벤치마크 데이터셋 (train/test분리)</a>
-</td>
-<td>
-<span class="listing-author">신록예찬 </span>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1688223600000" data-listing-file-modified-sort="1689125515269" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="**[PyG]** lesson1: 자료형" data-listing-filename-sort="ls1.ipynb">
-<td>
-<span class="listing-date">Jul 2, 2023</span>
-</td>
-<td>
-<a href="./posts/2_Studies/PyG/ls1.html" class="title listing-title"><strong>[PyG]</strong> lesson1: 자료형</a>
-</td>
-<td>
-<span class="listing-author">신록예찬 </span>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<div id="2a8986a8-899c-438c-b865-18ea6152f2e4" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> torch_geometric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div></main> <!-- /main -->
+<section id="pyg-의-data-자료형" class="level1 page-columns page-full">
+<h1>PyG 의 Data 자료형</h1>
+<blockquote class="blockquote">
+<p>ref: <a href="https://pytorch-geometric.readthedocs.io/en/latest/notes/introduction.html#data-handling-of-graphs" class="uri">https://pytorch-geometric.readthedocs.io/en/latest/notes/introduction.html#data-handling-of-graphs</a></p>
+</blockquote>
+<p><code>-</code> 자료는 <a href="https://pytorch-geometric.readthedocs.io/en/latest/notes/introduction.html#data-handling-of-graphs">PyG의 Data 오브젝트</a>를 기반으로 한다.</p>
+<section id="예제1-아래와-같은-그래프자료를-고려하자." class="level2">
+<h2 class="anchored" data-anchor-id="예제1-아래와-같은-그래프자료를-고려하자."><strong>예제1</strong>: 아래와 같은 그래프자료를 고려하자.</h2>
+<p><img src="https://pytorch-geometric.readthedocs.io/en/latest/_images/graph.svg" class="img-fluid"></p>
+<p><code>-</code> 이러한 자료형은 아래와 같은 형식으로 저장한다.</p>
+<div id="27ade98b-01dd-4808-ae61-c51afcf06863" class="cell" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb2-2"><a href="#cb2-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>data <span class="op">=</span> torch_geometric.data.Data(x<span class="op">=</span>x, edge_index<span class="op">=</span>edge_index) <span class="co"># torch_geometric.data.Data는 그래프자료형을 만드는 클래스</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> data 의 자료형</p>
+<div id="a671b4e0-8f7c-4106-afa9-a0e4784ab3ea" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">type</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>torch_geometric.data.data.Data</code></pre>
+</div>
+</div>
+<p><code>-</code> data의 <code>__str__</code></p>
+<div id="3751985b-9c7a-482b-8760-5e58559b6c84" class="cell" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="83">
+<pre><code>Data(x=[3, 1], edge_index=[2, 4])</code></pre>
+</div>
+</div>
+<ul>
+<li><code>x=[3, 1]</code>: 이 자료는 3개의 노드가 있으며, 각 노드에는 1개의 feature가 있음</li>
+<li><code>edge_index=[2, 4]</code>: <span class="math inline">\({\cal E}\)</span>는 총 4개의 원소가 있음.</li>
+</ul>
+<p><code>-</code> 각 노드의 feature를 확인하는 방법 (즉 <span class="math inline">\(f:{\cal V} \to \mathbb{R}^k\)</span>를 확인하는 방법)</p>
+<div id="b4955ade-1059-43a8-9841-a0f2a46b0d93" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>data.x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>tensor([[-1.],
+        [ 0.],
+        [ 1.]])</code></pre>
+</div>
+</div>
+<p><code>-</code> <span class="math inline">\({\cal E}\)</span>를 확인하는 방법</p>
+<div id="c8964557-b9ca-4002-8221-f6ae80fdb05c" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>data.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>tensor([[0, 1, 1, 2],
+        [1, 0, 2, 1]])</code></pre>
+</div>
+</div>
+<p><code>-</code></p>
+<div id="8a195534-117d-4714-a2db-1151cfa190b4" class="cell" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="bu">len</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="86">
+<pre><code>2</code></pre>
+</div>
+</div>
+</section>
+<section id="예제2-잘못된-사용" class="level2">
+<h2 class="anchored" data-anchor-id="예제2-잘못된-사용"><strong>예제2</strong>: 잘못된 사용</h2>
+<p><code>-</code> <code>edge_index</code>는 예제1과 같이 <span class="math inline">\([2,|{\cal E}|]\)</span> 의 shape으로 넣어야 한다. 그렇지 않으면 에러가 난다.</p>
+<div id="0278aff0-9ff6-4243-92ab-a86be0d189c6" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb13-2"><a href="#cb13-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb13-3"><a href="#cb13-3"></a>                           [<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb13-4"><a href="#cb13-4"></a>                           [<span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb13-6"><a href="#cb13-6"></a></span>
+<span id="cb13-7"><a href="#cb13-7"></a>data <span class="op">=</span> torch_geometric.data.Data(x<span class="op">=</span>x, edge_index<span class="op">=</span>edge_index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="e211094b-148a-4f1f-bc96-ea870cc3ad84" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#data.validate(raise_on_error=True)</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>data.validate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>ValueError: 'edge_index' needs to be of shape [2, num_edges] in 'Data' (found torch.Size([4, 2]))</code></pre>
+</div>
+</div>
+</section>
+<section id="예제3-예제2의-수정" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="예제3-예제2의-수정"><strong>예제3</strong>: 예제2의 수정</h2>
+<p><code>-</code> <code>edge_index</code>의 shape이 <span class="math inline">\([|{\cal E}|,2]\)</span> 꼴로 저장되어 있었을 경우 트랜스포즈이후 countiguous()함수를 사용하면 된다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;그런데 그냥 transpose만 해도되는것 같음</p></li></div><div id="0d524691-1adf-498e-b01b-d954ee1dece3" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb16-2"><a href="#cb16-2"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb16-3"><a href="#cb16-3"></a>                           [<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb16-4"><a href="#cb16-4"></a>                           [<span class="dv">2</span>, <span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb16-5"><a href="#cb16-5"></a>x <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-7"><a href="#cb16-7"></a>data <span class="op">=</span> torch_geometric.data.Data(</span>
+<span id="cb16-8"><a href="#cb16-8"></a>    x<span class="op">=</span>x, </span>
+<span id="cb16-9"><a href="#cb16-9"></a>    edge_index<span class="op">=</span>edge_index.t().contiguous()</span>
+<span id="cb16-10"><a href="#cb16-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="13b76fed-bdb4-435a-a287-664b9d8078fc" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#data.validate(raise_on_error=True)</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>data.validate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
+<pre><code>True</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -653,6 +734,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="miruetoto/yechan3" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 

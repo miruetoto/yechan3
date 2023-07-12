@@ -350,67 +350,67 @@
     "text": "Spectral component and Frequencies\n\\({\\bf A}\\)의 고유벡터 \\({\\bf \\Psi}\\)의 각 column을 spectral component라고 부른다.\n\nψ₁ = Ψ[:,1] # ψ₁ is first spectral component \nψ₂ = Ψ[:,2] # ψ₂ is seconde spectral component \nψ₃ = Ψ[:,3] # ψ₃ is third spectral component \nψ₄ = Ψ[:,4] # ψ₄ is last spectral component\n\n그리고 아래와 같은 수열을 \\(\\Omega_{k}=\\frac{k}{N}\\)을 frequency 라고 부른다.\n\nN=4 \nΩ = [k/N for k in 0:(N-1)]\nΩ\n\n4-element Vector{Float64}:\n 0.0\n 0.25\n 0.5\n 0.75"
   },
   {
-    "objectID": "posts/2_Studies/PyG/2023-07-02-lesson1.html",
-    "href": "posts/2_Studies/PyG/2023-07-02-lesson1.html",
-    "title": "[PyG] lesson1: 자료형",
-    "section": "",
-    "text": "import torch\nimport torch_geometric"
-  },
-  {
-    "objectID": "posts/2_Studies/PyG/2023-07-02-lesson1.html#예제1-아래와-같은-그래프자료를-고려하자.",
-    "href": "posts/2_Studies/PyG/2023-07-02-lesson1.html#예제1-아래와-같은-그래프자료를-고려하자.",
-    "title": "[PyG] lesson1: 자료형",
-    "section": "예제1: 아래와 같은 그래프자료를 고려하자.",
-    "text": "예제1: 아래와 같은 그래프자료를 고려하자.\n\n- 이러한 자료형은 아래와 같은 형식으로 저장한다.\n\nedge_index = torch.tensor([[0, 1, 1, 2],\n                           [1, 0, 2, 1]], dtype=torch.long)\nx = torch.tensor([[-1], [0], [1]], dtype=torch.float)\ndata = torch_geometric.data.Data(x=x, edge_index=edge_index) # torch_geometric.data.Data는 그래프자료형을 만드는 클래스\n\n- data 의 자료형\n\ntype(data)\n\ntorch_geometric.data.data.Data\n\n\n- data의 __str__\n\ndata\n\nData(x=[3, 1], edge_index=[2, 4])\n\n\n\nx=[3, 1]: 이 자료는 3개의 노드가 있으며, 각 노드에는 1개의 feature가 있음\nedge_index=[2, 4]: \\({\\cal E}\\)는 총 4개의 원소가 있음.\n\n- 각 노드의 feature를 확인하는 방법 (즉 \\(f:{\\cal V} \\to \\mathbb{R}^k\\)를 확인하는 방법)\n\ndata.x\n\ntensor([[-1.],\n        [ 0.],\n        [ 1.]])\n\n\n- \\({\\cal E}\\)를 확인하는 방법\n\ndata.edge_index\n\ntensor([[0, 1, 1, 2],\n        [1, 0, 2, 1]])\n\n\n-\n\nlen(data)\n\n2"
-  },
-  {
-    "objectID": "posts/2_Studies/PyG/2023-07-02-lesson1.html#예제2-잘못된-사용",
-    "href": "posts/2_Studies/PyG/2023-07-02-lesson1.html#예제2-잘못된-사용",
-    "title": "[PyG] lesson1: 자료형",
-    "section": "예제2: 잘못된 사용",
-    "text": "예제2: 잘못된 사용\n- edge_index는 예제1과 같이 \\([2,|{\\cal E}|]\\) 의 shape으로 넣어야 한다. 그렇지 않으면 에러가 난다.\n\nedge_index = torch.tensor([[0, 1],\n                           [1, 0],\n                           [1, 2],\n                           [2, 1]], dtype=torch.long)\nx = torch.tensor([[-1], [0], [1]], dtype=torch.float)\n\ndata = torch_geometric.data.Data(x=x, edge_index=edge_index)\n\n\n#data.validate(raise_on_error=True)\ndata.validate()\n\nValueError: 'edge_index' needs to be of shape [2, num_edges] in 'Data' (found torch.Size([4, 2]))"
-  },
-  {
-    "objectID": "posts/2_Studies/PyG/2023-07-02-lesson1.html#예제3-예제2의-수정",
-    "href": "posts/2_Studies/PyG/2023-07-02-lesson1.html#예제3-예제2의-수정",
-    "title": "[PyG] lesson1: 자료형",
-    "section": "예제3: 예제2의 수정",
-    "text": "예제3: 예제2의 수정\n- edge_index의 shape이 \\([|{\\cal E}|,2]\\) 꼴로 저장되어 있었을 경우 트랜스포즈이후 countiguous()함수를 사용하면 된다.1\n1 그런데 그냥 transpose만 해도되는것 같음\nedge_index = torch.tensor([[0, 1],\n                           [1, 0],\n                           [1, 2],\n                           [2, 1]], dtype=torch.long)\nx = torch.tensor([[-1], [0], [1]], dtype=torch.float)\n\ndata = torch_geometric.data.Data(\n    x=x, \n    edge_index=edge_index.t().contiguous()\n)\n\n\n#data.validate(raise_on_error=True)\ndata.validate()\n\nTrue"
-  },
-  {
-    "objectID": "posts/2_Studies/PyG/2023-07-07-lesson2.html",
-    "href": "posts/2_Studies/PyG/2023-07-07-lesson2.html",
+    "objectID": "posts/2_Studies/PyG/ls2.html",
+    "href": "posts/2_Studies/PyG/ls2.html",
     "title": "[PyG] lesson2: 벤치마크 데이터셋 (train/test분리)",
     "section": "",
     "text": "- 데이터셋은 아래의 모듈안에 정리되어 있음\n\ndir(torch_geometric.datasets)[:5]\n\n['AMiner', 'AQSOL', 'Actor', 'AirfRANS', 'Airports']"
   },
   {
-    "objectID": "posts/2_Studies/PyG/2023-07-07-lesson2.html#정보",
-    "href": "posts/2_Studies/PyG/2023-07-07-lesson2.html#정보",
+    "objectID": "posts/2_Studies/PyG/ls2.html#정보",
+    "href": "posts/2_Studies/PyG/ls2.html#정보",
     "title": "[PyG] lesson2: 벤치마크 데이터셋 (train/test분리)",
     "section": "정보",
     "text": "정보\n- 기본정보: ENZYMES dataset\n\n(ChatGPT) ENZYMES는 그래프 분류를 위한 벤치마크 데이터셋 중 하나입니다. 이 데이터셋은 600개의 그래프로 구성되어 있으며, 6개의 클래스로 분류됩니다. 각 그래프는 효소(enzyme) 분자의 구조를 나타내며, 그래프의 노드는 원자(atom)를 나타내고, 엣지(edge)는 원자 간의 연결을 나타냅니다. ENZYMES 데이터셋은 화학 및 생물 정보학 분야에서 그래프 분류 알고리즘의 성능을 평가하기 위해 사용될 수 있습니다. 그래프 분류 알고리즘은 주어진 그래프를 특정 클래스 레이블로 분류하는 작업을 수행하는데 사용됩니다. 예를 들어, ENZYMES 데이터셋의 그래프는 특정 효소 종류를 나타내며, 그래프 분류 알고리즘은 주어진 효소 그래프가 어떤 종류의 효소인지 예측할 수 있습니다. PyG를 사용하여 ENZYMES 데이터셋을 초기화하면 해당 데이터셋을 다운로드하고 필요한 전처리를 자동으로 수행할 수 있습니다. 그래프 데이터를 다루는 머신 러닝 모델을 구축하고 훈련시키기 위해 ENZYMES 데이터셋을 사용할 수 있습니다.\n\n\ndataset # 데이터셋 이름\n\nENZYMES(600)\n\n\n\nlen(dataset) # 이 데이터셋에는 600개의 그래프가 있음\n\n600\n\n\n\ndataset.num_classes # 6개의 클래스\n\n6\n\n\n\ndataset.num_node_features # 각 노드에는 3개의 피처가 있음\n\n3\n\n\n- 600개의 그래프중 첫번째 그래프에 접근\n\ndataset[0]\n\nData(edge_index=[2, 168], x=[37, 3], y=[1])\n\n\n\nx=[37, 3]: \\(|{\\cal V}|=37\\), \\(f \\in \\mathbb{R}^3\\)\nedge_index=[2, 168]: \\(|{\\cal E}|=168\\)"
   },
   {
-    "objectID": "posts/2_Studies/PyG/2023-07-07-lesson2.html#traintest-분리",
-    "href": "posts/2_Studies/PyG/2023-07-07-lesson2.html#traintest-분리",
+    "objectID": "posts/2_Studies/PyG/ls2.html#traintest-분리",
+    "href": "posts/2_Studies/PyG/ls2.html#traintest-분리",
     "title": "[PyG] lesson2: 벤치마크 데이터셋 (train/test분리)",
     "section": "Train/Test 분리",
     "text": "Train/Test 분리\n- 600개의 그래프중 540를 train으로, 60개를 test로\n\ntrain_dataset = dataset[:540]\ntest_dataset = dataset[540:]"
   },
   {
-    "objectID": "posts/2_Studies/PyG/2023-07-07-lesson2.html#정보-1",
-    "href": "posts/2_Studies/PyG/2023-07-07-lesson2.html#정보-1",
+    "objectID": "posts/2_Studies/PyG/ls2.html#정보-1",
+    "href": "posts/2_Studies/PyG/ls2.html#정보-1",
     "title": "[PyG] lesson2: 벤치마크 데이터셋 (train/test분리)",
     "section": "정보",
     "text": "정보\n\nChatGPT: Cora는 그래프 분류를 위한 벤치마크 데이터셋 중 하나로, PyG에서도 사용할 수 있습니다. 이 데이터셋은 기계 학습 및 정보 검색 분야에서 널리 사용되는 학술 논문들의 인용 네트워크를 나타냅니다. Cora 데이터셋은 컴퓨터 과학 분야의 논문을 대상으로 합니다. 각 논문은 그래프의 노드로 표현되며, 노드는 논문을 나타냅니다. 노드 간의 엣지는 논문들 사이의 인용 관계를 나타냅니다. 따라서 Cora 데이터셋은 논문의 텍스트 기반 정보와 인용 관계에 대한 그래프 구조를 제공합니다. Cora 데이터셋은 7개의 클래스로 분류되며, 각 논문은 특성 벡터(feature vector)로 표현됩니다. 이 특성 벡터에는 논문의 단어 등 다양한 정보가 포함될 수 있습니다. PyG를 사용하여 Cora 데이터셋을 초기화하면 해당 데이터셋을 다운로드하고 전처리를 자동으로 수행할 수 있습니다. 이를 통해 머신 러닝 모델을 훈련시켜 Cora 데이터셋의 논문을 분류하거나 다양한 작업을 수행할 수 있습니다.\n\n- 기본정보\n\nlen(dataset) # 하나의 그래프가 있음\n\n1\n\n\n\ndataset.num_classes # 7개의 클래스가 있음\n\n7\n\n\n\ndataset.num_node_features # 각 노드는 1433개의 특징이 있음. (논문에 포함된 단어등 다양한 특성이 담겨있을 수 있음) \n\n1433\n\n\n- 그래프에 접근\n\ndataset[0] # 기본정보\n\nData(x=[2708, 1433], edge_index=[2, 10556], y=[2708], train_mask=[2708], val_mask=[2708], test_mask=[2708])\n\n\n\nx=[2708, 1433]: 2708개의 논문이 있고, 각 논문은 1433개의 특징벡터들로 이루어져 있음.\nedge_index=[2, 10556]: 논문간의 인용은 약 10556.\ny=[2708]:\n\n\ndataset[0].x.shape # 2708개의 논문이 있고 1433개의 특징벡터를 가짐\n\ntorch.Size([2708, 1433])\n\n\n\ndataset[0].y.unique() # 논문이 7개의 카테고리로 분류되는듯\n\ntensor([0, 1, 2, 3, 4, 5, 6])"
   },
   {
-    "objectID": "posts/2_Studies/PyG/2023-07-07-lesson2.html#traintest-이미-분리되어-있음",
-    "href": "posts/2_Studies/PyG/2023-07-07-lesson2.html#traintest-이미-분리되어-있음",
+    "objectID": "posts/2_Studies/PyG/ls2.html#traintest-이미-분리되어-있음",
+    "href": "posts/2_Studies/PyG/ls2.html#traintest-이미-분리되어-있음",
     "title": "[PyG] lesson2: 벤치마크 데이터셋 (train/test분리)",
     "section": "Train/Test (이미 분리되어 있음)",
     "text": "Train/Test (이미 분리되어 있음)\n\ndataset[0].train_mask \n# dataset[0].train_mask 는 True, False로 이루어져 있는 길이가 2708(=노드수=논문수)인 벡터\n# 여기에서 True인 노드만 훈련함\n\ntensor([ True,  True,  True,  ..., False, False, False])\n\n\n\ndataset[0].train_mask.sum() # 140개의 노드만 훈련함? \n\ntensor(140)\n\n\n\ndataset[0].val_mask.sum() # val은 500개의 노드?\n\ntensor(500)\n\n\n\ndataset[0].test_mask.sum() # test set은 1000?\n\ntensor(1000)"
+  },
+  {
+    "objectID": "posts/2_Studies/PyG/ls1.html",
+    "href": "posts/2_Studies/PyG/ls1.html",
+    "title": "[PyG] lesson1: 자료형",
+    "section": "",
+    "text": "import torch\nimport torch_geometric"
+  },
+  {
+    "objectID": "posts/2_Studies/PyG/ls1.html#예제1-아래와-같은-그래프자료를-고려하자.",
+    "href": "posts/2_Studies/PyG/ls1.html#예제1-아래와-같은-그래프자료를-고려하자.",
+    "title": "[PyG] lesson1: 자료형",
+    "section": "예제1: 아래와 같은 그래프자료를 고려하자.",
+    "text": "예제1: 아래와 같은 그래프자료를 고려하자.\n\n- 이러한 자료형은 아래와 같은 형식으로 저장한다.\n\nedge_index = torch.tensor([[0, 1, 1, 2],\n                           [1, 0, 2, 1]], dtype=torch.long)\nx = torch.tensor([[-1], [0], [1]], dtype=torch.float)\ndata = torch_geometric.data.Data(x=x, edge_index=edge_index) # torch_geometric.data.Data는 그래프자료형을 만드는 클래스\n\n- data 의 자료형\n\ntype(data)\n\ntorch_geometric.data.data.Data\n\n\n- data의 __str__\n\ndata\n\nData(x=[3, 1], edge_index=[2, 4])\n\n\n\nx=[3, 1]: 이 자료는 3개의 노드가 있으며, 각 노드에는 1개의 feature가 있음\nedge_index=[2, 4]: \\({\\cal E}\\)는 총 4개의 원소가 있음.\n\n- 각 노드의 feature를 확인하는 방법 (즉 \\(f:{\\cal V} \\to \\mathbb{R}^k\\)를 확인하는 방법)\n\ndata.x\n\ntensor([[-1.],\n        [ 0.],\n        [ 1.]])\n\n\n- \\({\\cal E}\\)를 확인하는 방법\n\ndata.edge_index\n\ntensor([[0, 1, 1, 2],\n        [1, 0, 2, 1]])\n\n\n-\n\nlen(data)\n\n2"
+  },
+  {
+    "objectID": "posts/2_Studies/PyG/ls1.html#예제2-잘못된-사용",
+    "href": "posts/2_Studies/PyG/ls1.html#예제2-잘못된-사용",
+    "title": "[PyG] lesson1: 자료형",
+    "section": "예제2: 잘못된 사용",
+    "text": "예제2: 잘못된 사용\n- edge_index는 예제1과 같이 \\([2,|{\\cal E}|]\\) 의 shape으로 넣어야 한다. 그렇지 않으면 에러가 난다.\n\nedge_index = torch.tensor([[0, 1],\n                           [1, 0],\n                           [1, 2],\n                           [2, 1]], dtype=torch.long)\nx = torch.tensor([[-1], [0], [1]], dtype=torch.float)\n\ndata = torch_geometric.data.Data(x=x, edge_index=edge_index)\n\n\n#data.validate(raise_on_error=True)\ndata.validate()\n\nValueError: 'edge_index' needs to be of shape [2, num_edges] in 'Data' (found torch.Size([4, 2]))"
+  },
+  {
+    "objectID": "posts/2_Studies/PyG/ls1.html#예제3-예제2의-수정",
+    "href": "posts/2_Studies/PyG/ls1.html#예제3-예제2의-수정",
+    "title": "[PyG] lesson1: 자료형",
+    "section": "예제3: 예제2의 수정",
+    "text": "예제3: 예제2의 수정\n- edge_index의 shape이 \\([|{\\cal E}|,2]\\) 꼴로 저장되어 있었을 경우 트랜스포즈이후 countiguous()함수를 사용하면 된다.1\n1 그런데 그냥 transpose만 해도되는것 같음\nedge_index = torch.tensor([[0, 1],\n                           [1, 0],\n                           [1, 2],\n                           [2, 1]], dtype=torch.long)\nx = torch.tensor([[-1], [0], [1]], dtype=torch.float)\n\ndata = torch_geometric.data.Data(\n    x=x, \n    edge_index=edge_index.t().contiguous()\n)\n\n\n#data.validate(raise_on_error=True)\ndata.validate()\n\nTrue"
   },
   {
     "objectID": "2_pyg.html",
@@ -434,8 +434,8 @@
     "text": "https://github.com/boram-coco\nhttps://boram-coco.github.io/coco/\nhttps://boram-coco.github.io/Scribbling/\n\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJul 30, 2023\n\n\n[BORAM] 신용카드 거래 사기탐지 CTGAN 이용 (하다가 말았음)\n\n\n신록예찬 \n\n\n\n\nJul 1, 2023\n\n\n[BORAM] CTGAN\n\n\n신록예찬 \n\n\n\n\nJul 1, 2023\n\n\n[BORAM] CTGAN ToyEX\n\n\n신록예찬 \n\n\n\n\nMay 19, 2023\n\n\n[BORAM] 신용카드 거래 사기탐지 Try2 변형\n\n\n신록예찬 \n\n\n\n\nMay 19, 2023\n\n\n[BORAM] 신용카드 거래 사기탐지 Try2\n\n\n신록예찬 \n\n\n\n\nMay 12, 2023\n\n\n[BORAM] 신용카드 거래 사기탐지 Try1\n\n\n신록예찬 \n\n\n\n\nMay 12, 2023\n\n\n[BORAM] 신용카드 거래 사기탐지 Try1 변형\n\n\n신록예찬 \n\n\n\n\nMay 6, 2023\n\n\n[BORAM] 신용카드 거래 사기탐지 Start\n\n\n신록예찬 \n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/2_Studies/PyG/2023-07-12-lesson3.html",
-    "href": "posts/2_Studies/PyG/2023-07-12-lesson3.html",
+    "objectID": "posts/2_Studies/PyG/ls3.html",
+    "href": "posts/2_Studies/PyG/ls3.html",
     "title": "[PyG] lesson3: 미니배치",
     "section": "",
     "text": "import torch_geometric\n\n\ndataset = torch_geometric.datasets.TUDataset(\n    root='/tmp/ENZYMES', \n    name='ENZYMES'\n)\n\n\n(ChatGPT) ENZYMES는 그래프 분류를 위한 벤치마크 데이터셋 중 하나입니다. 이 데이터셋은 600개의 그래프로 구성되어 있으며, 6개의 클래스로 분류됩니다. 각 그래프는 효소(enzyme) 분자의 구조를 나타내며, 그래프의 노드는 원자(atom)를 나타내고, 엣지(edge)는 원자 간의 연결을 나타냅니다. ENZYMES 데이터셋은 화학 및 생물 정보학 분야에서 그래프 분류 알고리즘의 성능을 평가하기 위해 사용될 수 있습니다. 그래프 분류 알고리즘은 주어진 그래프를 특정 클래스 레이블로 분류하는 작업을 수행하는데 사용됩니다. 예를 들어, ENZYMES 데이터셋의 그래프는 특정 효소 종류를 나타내며, 그래프 분류 알고리즘은 주어진 효소 그래프가 어떤 종류의 효소인지 예측할 수 있습니다. PyG를 사용하여 ENZYMES 데이터셋을 초기화하면 해당 데이터셋을 다운로드하고 필요한 전처리를 자동으로 수행할 수 있습니다. 그래프 데이터를 다루는 머신 러닝 모델을 구축하고 훈련시키기 위해 ENZYMES 데이터셋을 사용할 수 있습니다.\n\n\nlen(dataset) # 이 데이터셋에는 600개의 그래프가 있음\n\n600\n\n\n\ndataset.num_classes # 6개의 클래스\n\n6\n\n\n\ndataset.num_node_features # 각 노드에는 3개의 피처가 있음\n\n3\n\n\n- 600개의 그래프중 첫번째 그래프에 접근\n\ndataset[0]\n\nData(edge_index=[2, 168], x=[37, 3], y=[1])\n\n\n\nx=[37, 3]: \\(|{\\cal V}|=37\\), \\(f \\in \\mathbb{R}^3\\)\nedge_index=[2, 168]: \\(|{\\cal E}|=168\\)\n\n- 600개중에서 두번째 그래프에 접근\n\ndataset[1]\n\nData(edge_index=[2, 102], x=[23, 3], y=[1])\n\n\n\nx=[23, 3]: \\(|{\\cal V}|=23\\), \\(f \\in \\mathbb{R}^3\\)\nedge_index=[2, 102]: \\(|{\\cal E}|=102\\)\n\n- dataset \\(\\to\\) loader\n\nloader = torch_geometric.loader.DataLoader(dataset, batch_size=32, shuffle=True)\n\n\nfor i,batch in enumerate(loader):\n    print(i,batch)\n\n0 DataBatch(edge_index=[2, 3596], x=[907, 3], y=[32], batch=[907], ptr=[33])\n1 DataBatch(edge_index=[2, 4512], x=[1209, 3], y=[32], batch=[1209], ptr=[33])\n2 DataBatch(edge_index=[2, 4034], x=[1094, 3], y=[32], batch=[1094], ptr=[33])\n3 DataBatch(edge_index=[2, 4028], x=[1027, 3], y=[32], batch=[1027], ptr=[33])\n4 DataBatch(edge_index=[2, 3640], x=[923, 3], y=[32], batch=[923], ptr=[33])\n5 DataBatch(edge_index=[2, 4320], x=[1186, 3], y=[32], batch=[1186], ptr=[33])\n6 DataBatch(edge_index=[2, 3960], x=[1120, 3], y=[32], batch=[1120], ptr=[33])\n7 DataBatch(edge_index=[2, 3984], x=[1048, 3], y=[32], batch=[1048], ptr=[33])\n8 DataBatch(edge_index=[2, 4642], x=[1268, 3], y=[32], batch=[1268], ptr=[33])\n9 DataBatch(edge_index=[2, 3780], x=[984, 3], y=[32], batch=[984], ptr=[33])\n10 DataBatch(edge_index=[2, 3916], x=[986, 3], y=[32], batch=[986], ptr=[33])\n11 DataBatch(edge_index=[2, 4128], x=[1083, 3], y=[32], batch=[1083], ptr=[33])\n12 DataBatch(edge_index=[2, 3342], x=[840, 3], y=[32], batch=[840], ptr=[33])\n13 DataBatch(edge_index=[2, 3836], x=[1000, 3], y=[32], batch=[1000], ptr=[33])\n14 DataBatch(edge_index=[2, 3986], x=[1018, 3], y=[32], batch=[1018], ptr=[33])\n15 DataBatch(edge_index=[2, 3688], x=[973, 3], y=[32], batch=[973], ptr=[33])\n16 DataBatch(edge_index=[2, 3564], x=[931, 3], y=[32], batch=[931], ptr=[33])\n17 DataBatch(edge_index=[2, 4468], x=[1172, 3], y=[32], batch=[1172], ptr=[33])\n18 DataBatch(edge_index=[2, 3140], x=[811, 3], y=[24], batch=[811], ptr=[25])\n\n\n\n600/32 # 600개 그래프를 32개씩 쪼개서 배치를 만듬\n\n18.75\n\n\n- batch에 대하여 알아보자.\n\ntype(batch)\n\ntorch_geometric.data.batch.DataBatch\n\n\n\ndataset[0].x.shape\n\ntorch.Size([37, 21])"
@@ -844,7 +844,7 @@
     "href": "3_yeon.html",
     "title": "SEOYEONC",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nApr 27, 2023\n\n\n[IT-STGCN] Toy Example Figure(Intro)\n\n\n최서연 \n\n\n\n\nMar 18, 2023\n\n\n[IT-STGCN] SimualtionPlanner-Tutorial\n\n\nSEOYEON CHOI\n\n\n\n\nMar 17, 2023\n\n\n[IT-STGCN] ITSTGCN-Tutorial\n\n\nSEOYEON CHOI\n\n\n\n\nMar 1, 2023\n\n\n[SEOYEONC] type1 err, type2 err\n\n\n신록예찬 \n\n\n\n\nJan 12, 2023\n\n\n[SEOYEONC] 지수분포 평균검정\n\n\n신록예찬 \n\n\n\n\nDec 30, 2022\n\n\n[IT-STGCN] STGCN: Toy Example\n\n\n신록예찬 \n\n\n\n\nDec 29, 2022\n\n\n[IT-STGCN] STGCN 튜토리얼\n\n\n신록예찬, 최서연\n\n\n\n\nDec 29, 2022\n\n\n[IT-STGCN] Tables\n\n\n신록예찬 \n\n\n\n\n\nNo matching items"
+    "text": "https://github.com/seoyeonc\nhttps://seoyeonc.github.io/md/\nhttps://seoyeonc.github.io/blog/\n\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nApr 27, 2023\n\n\n[IT-STGCN] Toy Example Figure(Intro)\n\n\n최서연 \n\n\n\n\nMar 18, 2023\n\n\n[IT-STGCN] SimualtionPlanner-Tutorial\n\n\nSEOYEON CHOI\n\n\n\n\nMar 17, 2023\n\n\n[IT-STGCN] ITSTGCN-Tutorial\n\n\nSEOYEON CHOI\n\n\n\n\nMar 1, 2023\n\n\n[SEOYEONC] type1 err, type2 err\n\n\n신록예찬 \n\n\n\n\nJan 12, 2023\n\n\n[SEOYEONC] 지수분포 평균검정\n\n\n신록예찬 \n\n\n\n\nDec 30, 2022\n\n\n[IT-STGCN] STGCN: Toy Example\n\n\n신록예찬 \n\n\n\n\nDec 29, 2022\n\n\n[IT-STGCN] STGCN 튜토리얼\n\n\n신록예찬, 최서연\n\n\n\n\nDec 29, 2022\n\n\n[IT-STGCN] Tables\n\n\n신록예찬 \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "1_essays.html",
