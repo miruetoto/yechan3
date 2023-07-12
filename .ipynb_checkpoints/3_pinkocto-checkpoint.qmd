@@ -11,3 +11,7 @@ listing:
 page-layout: full
 title-block-banner: false
 ---
+
+- <https://github.com/pinkocto>
+- <https://pinkocto.github.io/noteda/>
+- <https://pinkocto.github.io/Quarto-Blog/>

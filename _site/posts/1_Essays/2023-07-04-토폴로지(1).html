@@ -92,7 +92,7 @@ div.csl-indent {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -169,35 +169,7 @@ div.csl-indent {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title"><strong>[Essays]</strong> 토폴로지</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>신록예찬 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">July 4, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -259,20 +231,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_hst.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">HST</span></a>
+  <a href="../../3_yechan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">신록예찬</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_itstgcn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">IT-STGCN</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../3_solar.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SOLAR</span></a>
+  <a href="../../3_yeon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SEOYEONC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -316,10 +282,36 @@ div.csl-indent {
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>[Essays]</strong> 토폴로지</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>신록예찬 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 4, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
 
 <section id="about-this-doc" class="level1">
 <h1>About this doc</h1>
@@ -328,15 +320,15 @@ div.csl-indent {
 <p><code>-</code> 이 문서는 논문을 읽을때 등장하는 <strong><em>topology</em></strong> 용어들을 좀더 명확하게 이해하고 싶어서 작성하였다. 가볍게 정의만 훑어보는 것이라 깊게 들어가지는 않을 예정이다. 교재는 Schaum’s General Topology 를 참고하였다. - Lipschutz, S. (1965). Schaum’s outline of theory and problems of general topology. Schaum’s Outline Series.</p>
 <p><code>-</code> 여기에서는 토폴로지의 정의와 메트릭스페이스의 정의 그리고 컴플리션의 정의에 대하여 다룬다.</p>
 </section>
-<section id="chap-5-토폴로지" class="level1">
+<section id="chap-5-토폴로지" class="level1 page-columns page-full">
 <h1>Chap 5: 토폴로지</h1>
-<p><code>-</code> <strong>(<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, p.66)</strong> <span class="math inline">\({\cal T}\)</span> 가 <span class="math inline">\(X\)</span> 의 subset 으로 이루어진 collection 이라고 하자. <span class="math inline">\({\cal T}\)</span> 가 <span class="math inline">\(X\)</span> 를 포함하며 <strong><em>uncountable union</em></strong> 에 닫혀있고 <strong><em>finite intersection</em></strong> 에 닫혀있다면 <span class="math inline">\({\cal T}\)</span> 를 <span class="math inline">\(X\)</span> 의 topology 라고 한다. 그리고 <span class="math inline">\((X,{\cal T})\)</span> 를 <strong><em>topological space</em></strong> 라고 한다. <span class="math inline">\({\cal T}\)</span> 가 <span class="math inline">\(X\)</span>의 토플로지일때 <span class="math inline">\({\cal T}\)</span> 의 원소를 <strong><em><span class="math inline">\({\cal T}\)</span>-open set</em></strong> 이라고 한다. 따라서 원래 오픈셋은 마치 확률변수처럼 단독으로 정의할 수 없고 어떠한 토폴로지 <span class="math inline">\({\cal T}\)</span>와 같이 정의된다.</p>
-<p><code>-</code> <strong>(<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, p.66)</strong> 아래와 같은 collection 을 생각하자.</p>
+<div class="page-columns page-full"><p><code>-</code> <strong>(<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, p.66)</strong> <span class="math inline">\({\cal T}\)</span> 가 <span class="math inline">\(X\)</span> 의 subset 으로 이루어진 collection 이라고 하자. <span class="math inline">\({\cal T}\)</span> 가 <span class="math inline">\(X\)</span> 를 포함하며 <strong><em>uncountable union</em></strong> 에 닫혀있고 <strong><em>finite intersection</em></strong> 에 닫혀있다면 <span class="math inline">\({\cal T}\)</span> 를 <span class="math inline">\(X\)</span> 의 topology 라고 한다. 그리고 <span class="math inline">\((X,{\cal T})\)</span> 를 <strong><em>topological space</em></strong> 라고 한다. <span class="math inline">\({\cal T}\)</span> 가 <span class="math inline">\(X\)</span>의 토플로지일때 <span class="math inline">\({\cal T}\)</span> 의 원소를 <strong><em><span class="math inline">\({\cal T}\)</span>-open set</em></strong> 이라고 한다. 따라서 원래 오픈셋은 마치 확률변수처럼 단독으로 정의할 수 없고 어떠한 토폴로지 <span class="math inline">\({\cal T}\)</span>와 같이 정의된다.</p><div class="no-row-height column-margin column-container"></div></div>
+<div class="page-columns page-full"><p><code>-</code> <strong>(<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, p.66)</strong> 아래와 같은 collection 을 생각하자.</p><div class="no-row-height column-margin column-container"></div></div>
 <p><span class="math display">\[{\cal O}:=\{O: O=\cup_i(a_i,b_i), a_i,b_i \in \mathbb{R} \} \]</span></p>
 <p>컬렉션 <span class="math inline">\({\cal O}\)</span> 는 <span class="math inline">\(\mathbb{R}\)</span> 의 토폴로지가 된다. (증명은 알아서..) 이러한 토폴로지(=오픈인터벌의 카운터블-유니온으로 표현가능한 집합들의 모임)을 특별히 <strong><em>usual topology</em></strong> 라고 한다. 그리고 이 토폴로지의 원소를 <span class="math inline">\({\cal O}\)</span>-오픈셋이라고 부른다. 따라서 어떤 집합 <span class="math inline">\(O\)</span> 가 <span class="math inline">\({\cal O}\)</span>-오픈셋 이라는 말은 그 집합이 오픈인터벌의 카운터블-유니온으로 표현가능한 집합임을 의미한다.</p>
 <p><code>-</code> 참고로 <span class="math inline">\({\cal O}\)</span> 가 우리가 일반적으로 생각하는 ‘오픈셋들의 모임’ 이고 <span class="math inline">\({\cal O}\)</span>-오픈셋이 보통 우리가 일반적으로 유클리드 공간에서 상상하는 오픈셋이다. <strong>그래서 앞으로 특별한 언급없이 그냥 ‘오픈셋’ 이라고 부르면 토폴로지 <span class="math inline">\((\mathbb{R},{\cal O})\)</span> 에서 정의가능한 ‘<span class="math inline">\({\cal O}\)</span>-오픈셋’ 을 의미하는 것이라고 생각하면 된다.</strong></p>
 <p><code>-</code> 즉 우리가 일반적으로 생각하는 오픈셋<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>은 오픈인터벌 <span class="math inline">\((a,b)\)</span> 의 <strong><em>countable-many union</em></strong> 으로 표현가능한 집합이라고 이해해도 된다.</p>
-<p><code>-</code> 오픈셋 <span class="math inline">\(O\)</span>의 원소를 <strong><em>interior point of <span class="math inline">\(O\)</span></em></strong> 라고 한다. <span class="math inline">\({\cal O}\)</span>의 정의에 의해서 인테리어포인트는 모두 아래의 성질을 만족한다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;정확하게는 <span class="math inline">\(\cal O\)</span>-오픈셋</p></li></div><p><code>-</code> 오픈셋 <span class="math inline">\(O\)</span>의 원소를 <strong><em>interior point of <span class="math inline">\(O\)</span></em></strong> 라고 한다. <span class="math inline">\({\cal O}\)</span>의 정의에 의해서 인테리어포인트는 모두 아래의 성질을 만족한다.</p>
 <p><span class="math display">\[\forall o \in O ~ \exists a,b \in \mathbb{R}~ st.~  o \in (a,b)\]</span></p>
 <p>증명은 귀류법을 쓰면 쉽게 된다.</p>
 <p><code>-</code> 저 정리가 생각보다 중요하다. 그리고 이 정리를 <strong>나이테정리</strong> 라고 기억하자. 이 정리는 <span class="math inline">\({\cal O}\)</span>-오픈셋이 아닌 일반적인 <span class="math inline">\({\cal T}\)</span>-오픈셋에 대하여서도 성립한다. 즉 <span class="math inline">\((X,{\cal T})\)</span>가 위상공간이고 <span class="math inline">\(T\)</span>가 <span class="math inline">\({\cal T}\)</span>의 임의의 집합이라 하자. <span class="math inline">\(T\)</span>의 임의의 원소 <span class="math inline">\(p\)</span>에 대하여 (1) <span class="math inline">\(p\)</span> 를 포함하지만 (2) <span class="math inline">\(T\)</span> 보다 작은 다른 <span class="math inline">\({\cal T}\)</span>-오픈셋이 항상 존재한다.</p>
@@ -345,13 +337,13 @@ div.csl-indent {
 <p><code>-</code> 어떠한 construction을 사용하든지 아래의 사실들이 성립한다. 따로 설명을 쓰지 않은 것은 아주 약간의 머리를 쓰면 쉽게 증명할 수 있는 것들이다. (하지만 그냥 받아들이거나 외우는 것이 편하다.) 참고로 아래의 모든 사실들은 보통위상공간 즉 <span class="math inline">\((\mathbb{R},{\cal O})\)</span> 를 전제하고 서술한 것이다.</p>
 <p><strong>(1)</strong> <span class="math inline">\((a,b)\)</span> 는 오픈셋이다.</p>
 <p><strong>(2)</strong> <span class="math inline">\(\mathbb{R}\)</span> 은 오픈셋이다. 동시에 클로즈드셋이다<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
-<p><strong>(3)</strong> <span class="math inline">\(\emptyset\)</span> 은 오픈셋이다. 동시에 클로즈드셋이다<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;공집합이 오픈셋이므로</p></li><li id="fn3"><p><sup>3</sup>&nbsp;<span class="math inline">\(\mathbb{R}\)</span>이 오픈셋이므로</p></li></div><p><strong>(3)</strong> <span class="math inline">\(\emptyset\)</span> 은 오픈셋이다. 동시에 클로즈드셋이다<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 <p><strong>(4)</strong> 오픈셋은 <strong><em>uncountable union</em></strong> 에 닫혀있다. 즉 <span class="math inline">\(O_t\)</span>가 각각 오픈셋일때 <span class="math inline">\(\cup_t O_t\)</span> 역시 오픈셋이다.</p>
 <p><strong>(5)</strong> 오픈셋은 <strong><em>finite intersection</em></strong> 에 닫혀있다. 즉 <span class="math inline">\(O_i\)</span>가 각각 오픈셋이면 <span class="math inline">\(\cap_{i=1}^{n} O_i\)</span> 역시 오픈셋이다</p>
 <p><strong>(6)</strong> 한점 <span class="math inline">\(p\)</span>로 이루어진 집합 <span class="math inline">\(\{p\}\)</span>는 오픈셋이 아니다. 이것이 오픈셋이 되려면 <span class="math inline">\(\{p\}\)</span>의 모든원소(라고 해봤자 <span class="math inline">\(p\)</span> 밖에 없음)가 내점이어야 하고 <span class="math inline">\(p\)</span>가 <span class="math inline">\(\{p\}\)</span>의 내점이려면 <span class="math inline">\(p\)</span>를 포함하는 오픈인터벌 <span class="math inline">\((a,b)\)</span>가 <span class="math inline">\(\{p\}\)</span>의 부분집합으로 존재해야하는데 이것이 불가능하기 때문이다. <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-<p><strong>(7)</strong> 오픈셋의 <strong><em>countable-many intersection</em></strong> 은 오픈셋이 아니다. 왜냐하면 <span class="math inline">\(\cap_{n=1}^{\infty}(-1/n,1/n)=\{0\}\)</span> 인데 <span class="math inline">\(\{0\}\)</span>은 오픈셋이 아니기 때문이다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;다만 이것은 위상공간을 <span class="math inline">\((\mathbb{R},{\cal O})\)</span>로 생각하였을때 이야기이고 위상공간을 <span class="math inline">\((\mathbb{R},2^{\mathbb{R}})\)</span>로 생각한다면 <span class="math inline">\(\{p\}\)</span> 도 오픈셋이 된다.</p></li></div><p><strong>(7)</strong> 오픈셋의 <strong><em>countable-many intersection</em></strong> 은 오픈셋이 아니다. 왜냐하면 <span class="math inline">\(\cap_{n=1}^{\infty}(-1/n,1/n)=\{0\}\)</span> 인데 <span class="math inline">\(\{0\}\)</span>은 오픈셋이 아니기 때문이다.</p>
 <p><code>-</code> (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, p.&nbsp;69) 위상공간 <span class="math inline">\((X,{\cal T})\)</span> 를 상상하자. <span class="math inline">\(X\)</span>의 부분집합 <span class="math inline">\(A\)</span>를 상상하자. <strong><em>“집합 <span class="math inline">\(A\)</span>가 <span class="math inline">\(X\)</span>에서 dense 하다”</em></strong> 라는 의미는 <span class="math inline">\(\bar{A}=X\)</span>라는 의미이다. 가장 빈번하게 사용하는 표현은 “유리수집합 <span class="math inline">\(\mathbb{Q}\)</span>는 실수 <span class="math inline">\(\mathbb{R}\)</span>에서 dense 하다” 인데 이것은<span class="math inline">\(\bar{\mathbb{Q}}=\mathbb{R}\)</span>이 성립하기 때문이다 (예제 4.3).</p>
-</section>
+<div class="no-row-height column-margin column-container"></div></section>
 <section id="chap-6-기저" class="level1">
 <h1>Chap 6: 기저</h1>
 <p><code>-</code> 오픈인터벌 <span class="math inline">\((a,b)\)</span>를 적당히 countable-many union 하면 <span class="math inline">\(\mathbb{R}\)</span> 에 존재하는 어떠한 오픈셋 <span class="math inline">\(O\)</span>도 표현할 수 있다. 이럴때 <span class="math inline">\((a,b)\)</span> 모아놓은 collection <span class="math inline">\({\cal B}:=\{(a,b): a&lt;b \in \mathbb{R}\}\)</span> 를 토폴로지 <span class="math inline">\({\cal O}\)</span>의 <strong><em>base</em></strong> 라고 한다. 이처럼 어떠한 위상공간 <span class="math inline">\((X,{\cal T})\)</span> 가 있을때 토폴로지 <span class="math inline">\({\cal T}\)</span> 의 임의의 집합을 <span class="math inline">\({\cal B}\)</span>의 원소들의 uncountable union 으로 표현가능때 <span class="math inline">\({\cal B}\)</span>를 <span class="math inline">\({\cal T}\)</span>의 <strong><em>base</em></strong> 라고 한다. 그리고 추가적으로 base의 모든 원소는 <span class="math inline">\({\cal T}\)</span>-오픈셋이어야 한다는 조건도 포함된다.</p>
@@ -405,19 +397,19 @@ d(a,b) = 0 &amp; a=b
 <p><strong>(ii)</strong> <span class="math inline">\((X,d_1) \overset{ism}{\sim} (Y,d_2)\)</span> implies <span class="math inline">\((Y,d_2) \overset{ism}{\sim} (X,d_1)\)</span>,</p>
 <p><strong>(iii)</strong> <span class="math inline">\((X,d_1) \overset{ism}{\sim} (Y,d_2)\)</span> and <span class="math inline">\((Y,d_2) \overset{ism}{\sim} (Z,d_3)\)</span> imply <span class="math inline">\((X,d_1) \overset{ism}{\sim} (Z,d_3)\)</span>.</p>
 </section>
-<section id="chap-9-countability" class="level1">
+<section id="chap-9-countability" class="level1 page-columns page-full">
 <h1>Chap 9: Countability</h1>
 <p><code>-</code> (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, p.&nbsp;132) 위상공간 <span class="math inline">\((X,{\cal T})\)</span>가 <strong><em>separable</em></strong> 하다는 의미는 <span class="math inline">\((X,{\cal T})\)</span> countable dense subset 을 가진다는 의미이다.</p>
-<p><code>-</code> 위상공간 <span class="math inline">\((\mathbb{R}, {\cal O})\)</span>를 상상하자.</p>
+<div class="no-row-height column-margin column-container"></div><p><code>-</code> 위상공간 <span class="math inline">\((\mathbb{R}, {\cal O})\)</span>를 상상하자.</p>
 <ul>
 <li><span class="math inline">\(A_n = [-n,n] \cap \mathbb{Q}\)</span></li>
 </ul>
 <p>라고 한다면 (1) <span class="math inline">\({\cal A} = \{A_n\}\)</span> 은 countable 하고 (2) <span class="math inline">\(A_n\)</span>은 모두 (<span class="math inline">\([-n,n]\)</span>에서) dense 하다. 따라서 <span class="math inline">\(\mathbb{R}\)</span>은 countable한 dense subset을 가진다. 따라서 <span class="math inline">\((\mathbb{R},{\cal O})\)</span>는 seperable 하다.</p>
 </section>
-<section id="chap-10-separation-axioms" class="level1">
+<section id="chap-10-separation-axioms" class="level1 page-columns page-full">
 <h1>Chap 10: Separation Axioms</h1>
 <p><code>-</code> 예비학습1: 위상공간 <span class="math inline">\((X,{\cal T})\)</span>를 고려하자. <span class="math inline">\(X\)</span>의 임의의 닫힌집합 <span class="math inline">\(F\)</span>를 상상하자. 그리고 <span class="math inline">\(F\)</span>에 소속되지 않은 한 점 <span class="math inline">\(p \in X\)</span>를 상상하자. 이제 닫힌집합 <span class="math inline">\(F\)</span>를 포함하는 아주 작은 열린집합 <span class="math inline">\(G\)</span>와 <span class="math inline">\(p\)</span>를 포함하는 아주 작은 열린집합 <span class="math inline">\(H\)</span>를 상상하자. 위상공간 <span class="math inline">\((X,{\cal T})\)</span>에서 임의의 <span class="math inline">\(F\)</span>와 <span class="math inline">\(p\)</span>에 대하여서도 두 열린집합 <span class="math inline">\(G\)</span>,<span class="math inline">\(H\)</span>가 서로소가 되도록 선택할 수 있다면 그 위상공간은 <strong><em>regular</em></strong> 하다고 표현한다 (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, p.&nbsp;140).</p>
-<p><strong><em>이해를 위한 예시</em></strong></p>
+<div class="no-row-height column-margin column-container"></div><p><strong><em>이해를 위한 예시</em></strong></p>
 <ul>
 <li><span class="math inline">\(F= [0,1]\)</span></li>
 <li><span class="math inline">\(p = 1.01\)</span></li>
@@ -425,16 +417,18 @@ d(a,b) = 0 &amp; a=b
 <li><span class="math inline">\(H= (1.009,1.011)\)</span></li>
 </ul>
 <p><code>-</code> 예비학습2: 위상공간 <span class="math inline">\((X,{\cal T})\)</span>를 고려하자. <span class="math inline">\(X\)</span>의 부분집합중 서로소인 닫힌집합 <span class="math inline">\(F_1,F_2\)</span>를 상상하자.이제 닫힌집합 <span class="math inline">\(F_1\)</span>를 포함하는 아주 작은 열린집합 <span class="math inline">\(G\)</span>와 <span class="math inline">\(F_2\)</span>를 포함하는 아주 작은 열린집합 <span class="math inline">\(H\)</span>를 상상하자. 위상공간 <span class="math inline">\((X,{\cal T})\)</span>에서 임의의 <span class="math inline">\(F_1\)</span>와 <span class="math inline">\(F_2\)</span>에 대하여서도 두 열린집합 <span class="math inline">\(G\)</span>,<span class="math inline">\(H\)</span>가 서로소가 되도록 선택할 수 있다면 그 위상공간은 <strong><em>normal</em></strong> 하다고 표현한다 (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, p.&nbsp;141).</p>
-<p><code>-</code> 위상공간 <span class="math inline">\((X,{\cal T})\)</span> 에는 얼마나 많은 (혹은 다양한) 열린집합이 있을까? 위상공간 <span class="math inline">\((X,{\cal T}_1)\)</span>이 <span class="math inline">\(T_1\)</span>-space라는 의미는 서로 다른 <span class="math inline">\(a,b \in X\)</span>에 대하여 <span class="math inline">\(a\)</span>만 포함하는 열린집합 혹은 <span class="math inline">\(b\)</span>만 포함하는 열린집합이 각각 존재한다는 의미이다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 위상공간 <span class="math inline">\((X,{\cal T}_2)\)</span>이 <span class="math inline">\(T_2\)</span>-space 혹은 Hausdorff space라는 의미는 <span class="math inline">\(T_1\)</span>-space에서, <span class="math inline">\(a\)</span>만 포함하는 열린집합과 <span class="math inline">\(b\)</span>만 포함하는 열린집합이 서로 disjoint한 경우를 의미한다. 위상공간 <span class="math inline">\((X,{\cal T}_3)\)</span>이 <span class="math inline">\(T_3\)</span>-space 라는 의미는 <span class="math inline">\(T_1\)</span>이고 <strong><em>regular space</em></strong> 라는 의미이다. 위상공간 <span class="math inline">\((X,{\cal T}_4)\)</span>이 <span class="math inline">\(T_4\)</span>-space 라는 의미는 <span class="math inline">\(T_1\)</span>이고 <strong><em>normal space</em></strong> 라는 의미이다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;<span class="math inline">\({\cal T}=\{\emptyset, X\}\)</span>로 설정한다면 이 조건은 당연히 성립하지 않겠지?</p></li></div><p><code>-</code> 위상공간 <span class="math inline">\((X,{\cal T})\)</span> 에는 얼마나 많은 (혹은 다양한) 열린집합이 있을까? 위상공간 <span class="math inline">\((X,{\cal T}_1)\)</span>이 <span class="math inline">\(T_1\)</span>-space라는 의미는 서로 다른 <span class="math inline">\(a,b \in X\)</span>에 대하여 <span class="math inline">\(a\)</span>만 포함하는 열린집합 혹은 <span class="math inline">\(b\)</span>만 포함하는 열린집합이 각각 존재한다는 의미이다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 위상공간 <span class="math inline">\((X,{\cal T}_2)\)</span>이 <span class="math inline">\(T_2\)</span>-space 혹은 Hausdorff space라는 의미는 <span class="math inline">\(T_1\)</span>-space에서, <span class="math inline">\(a\)</span>만 포함하는 열린집합과 <span class="math inline">\(b\)</span>만 포함하는 열린집합이 서로 disjoint한 경우를 의미한다. 위상공간 <span class="math inline">\((X,{\cal T}_3)\)</span>이 <span class="math inline">\(T_3\)</span>-space 라는 의미는 <span class="math inline">\(T_1\)</span>이고 <strong><em>regular space</em></strong> 라는 의미이다. 위상공간 <span class="math inline">\((X,{\cal T}_4)\)</span>이 <span class="math inline">\(T_4\)</span>-space 라는 의미는 <span class="math inline">\(T_1\)</span>이고 <strong><em>normal space</em></strong> 라는 의미이다.</p>
 <p><code>-</code> 포함관계: <span class="math inline">\(T_1\)</span>-space는 <span class="math inline">\(T_2\)</span>-space를 포함하고, <span class="math inline">\(T_2\)</span>-space는 <span class="math inline">\(T_3\)</span>-space를, <span class="math inline">\(T_3\)</span>-space는 <span class="math inline">\(T_4\)</span>-space를 포함한다 (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, p.&nbsp;141 그림). 그리고 metric space는 <span class="math inline">\(T_4\)</span> space에 포함된다.</p>
-<p><code>-</code> <span class="math inline">\(T_1\)</span> 위상공간에서는 “singleton = closed set” 이라고 주장할 수 있다. (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, Thm 10.1) <span class="math inline">\(T_2\)</span> 위상공간에서는 “convergent sequence has a unique limit” 을 주장할 수 있다 (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, Thm 10.3). <span class="math inline">\(T_3\)</span> 위상공간은 특별히 기억할만한 부분이 없어보인다. <span class="math inline">\(T_4\)</span> 위상공간은 우리손레마 (urysohn lemma) 가 성립하는 공간이다 (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, Thm 10.7).</p>
+<div class="no-row-height column-margin column-container"></div><p><code>-</code> <span class="math inline">\(T_1\)</span> 위상공간에서는 “singleton = closed set” 이라고 주장할 수 있다. (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, Thm 10.1) <span class="math inline">\(T_2\)</span> 위상공간에서는 “convergent sequence has a unique limit” 을 주장할 수 있다 (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, Thm 10.3). <span class="math inline">\(T_3\)</span> 위상공간은 특별히 기억할만한 부분이 없어보인다. <span class="math inline">\(T_4\)</span> 위상공간은 우리손레마 (urysohn lemma) 가 성립하는 공간이다 (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, Thm 10.7).</p>
 <p><code>-</code> <strong>우리손레마</strong>: <span class="math inline">\(T_4\)</span> 위상공간 <span class="math inline">\((X,{\cal T}_4)\)</span>를 상상하자. 그리고 <span class="math inline">\(X\)</span>의 부분집합 중 서로소인 닫힌 부분집합 <span class="math inline">\(F_1,F_2\)</span>를 상상하자. 우리손레마에 의하면 어떠한 <span class="math inline">\(F_1,F_2\)</span>에 대하여서도,</p>
 <ul>
 <li><span class="math inline">\(f(F_1)=\{0\}\)</span></li>
 <li><span class="math inline">\(f(F_1)=\{1\}\)</span></li>
 </ul>
 <p>를 만족하는 적당한 연속함수 <span class="math inline">\(f:X \to [0,1]\)</span>이 항상 존재함이 알려져 있다 (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, Thm 10.7). 이것은 <span class="math inline">\(F_1,F_2\)</span>를 구분할 수 있는 어떠한 함수 <span class="math inline">\(f\)</span>가 항상 존재함을 의미하는데 이는 <span class="math inline">\((X,{\cal T}_4)\)</span>를 거리공간화 하는데 이용할 수 있다. 구체적으로 위상공간 <span class="math inline">\((X,{\cal T}_4)\)</span>가 추가적으로 <strong><em>second coutable</em></strong> 조건을 만족한다면<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> <span class="math inline">\((X,{\cal T}_4)\)</span> 는 거리공간으로 바꿀 수 있음이 알려져 있다 (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, Thm 10.8).</p>
-<p><code>-</code> 위상공간 <span class="math inline">\((X,{\cal T})\)</span>가 <span class="math inline">\(T_4\)</span>-space이고 추가적으로 <strong><em>second coutable space</em></strong> 라면 <span class="math inline">\((X,{\cal T})\)</span>는 Hilbert cube 와 호모몰픽(homeomorphic) 하다는 것이 알려져 있다 (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, p.&nbsp;142).</p>
+<div class="no-row-height column-margin column-container"><div id="ref-lipschutz1965schaum" class="csl-entry" role="listitem">
+Lipschutz, Seymour. 1965. <span>“Schaum’s Outline of Theory and Problems of General Topology.”</span> <em>(No Title)</em>.
+</div><li id="fn6"><p><sup>6</sup>&nbsp;즉 <span class="math inline">\((X,{\cal T}_4)\)</span>가 countable한 base를 가진다면</p></li></div><p><code>-</code> 위상공간 <span class="math inline">\((X,{\cal T})\)</span>가 <span class="math inline">\(T_4\)</span>-space이고 추가적으로 <strong><em>second coutable space</em></strong> 라면 <span class="math inline">\((X,{\cal T})\)</span>는 Hilbert cube 와 호모몰픽(homeomorphic) 하다는 것이 알려져 있다 (<span class="citation" data-cites="lipschutz1965schaum">Lipschutz (<a href="#ref-lipschutz1965schaum" role="doc-biblioref">1965</a>)</span>, p.&nbsp;142).</p>
 </section>
 <section id="chap-14-complete-metric-spaces" class="level1">
 <h1>Chap 14: Complete Metric Spaces</h1>
@@ -483,21 +477,7 @@ d(a,b) = 0 &amp; a=b
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-lipschutz1965schaum" class="csl-entry" role="listitem">
-Lipschutz, Seymour. 1965. <span>“Schaum’s Outline of Theory and Problems of General Topology.”</span> <em>(No Title)</em>.
-</div>
-</div></section><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>정확하게는 <span class="math inline">\(\cal O\)</span>-오픈셋<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>공집합이 오픈셋이므로<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><span class="math inline">\(\mathbb{R}\)</span>이 오픈셋이므로<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>다만 이것은 위상공간을 <span class="math inline">\((\mathbb{R},{\cal O})\)</span>로 생각하였을때 이야기이고 위상공간을 <span class="math inline">\((\mathbb{R},2^{\mathbb{R}})\)</span>로 생각한다면 <span class="math inline">\(\{p\}\)</span> 도 오픈셋이 된다.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p><span class="math inline">\({\cal T}=\{\emptyset, X\}\)</span>로 설정한다면 이 조건은 당연히 성립하지 않겠지?<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>즉 <span class="math inline">\((X,{\cal T}_4)\)</span>가 countable한 base를 가진다면<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

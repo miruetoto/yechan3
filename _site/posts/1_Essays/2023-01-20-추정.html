@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -184,35 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title"><strong>[Essays]</strong> 추정</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>신록예찬 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">January 20, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -274,20 +246,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_hst.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">HST</span></a>
+  <a href="../../3_yechan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">신록예찬</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../3_itstgcn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">IT-STGCN</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../3_solar.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SOLAR</span></a>
+  <a href="../../3_yeon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SEOYEONC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -330,20 +296,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>[Essays]</strong> 추정</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>신록예찬 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 20, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
 
 <div id="0eb1edc7-2fde-472a-bb3f-2aa5d1d4643f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">Distributions</span>, <span class="bu">Plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="mme와-mle" class="level1">
+<section id="mme와-mle" class="level1 page-columns page-full">
 <h1>MME와 MLE</h1>
 <p>데이터로부터 모수 혹은 모수의 함수를 추측하는 일을 추정이라고 한다. 교과서에서 가장 처음으로 배우는 것은 적률추정(MME)이다. 적률추정량은 구하기가 쉽고<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 일치성을 가진다는 장점이 있는 반면 추정량이 유일하지 않다는 단점이 존재한다.</p>
-<p>보통 통계학과에서는 적률추정량보다 최대가능도 추정량(MLE)을 더 선호하게 된다. MLE는 일반적으로 MME보다 구하기 어렵다. 그래서 MLE를 구하는 여러가지 연습문제를 풀 필요성이 있다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;거의 암산가능</p></li></div><p>보통 통계학과에서는 적률추정량보다 최대가능도 추정량(MLE)을 더 선호하게 된다. MLE는 일반적으로 MME보다 구하기 어렵다. 그래서 MLE를 구하는 여러가지 연습문제를 풀 필요성이 있다.</p>
 </section>
-<section id="hatthetamle의-일치성" class="level1">
+<section id="hatthetamle의-일치성" class="level1 page-columns page-full">
 <h1><span class="math inline">\(\hat{\theta}^{MLE}\)</span>의 일치성</h1>
 <p>MME는 일치성을 가졌는데, MLE는 어떠할까? 일반적으로 MLE 역시 일치성을 가짐을 보일 수 있다. 이걸 증명하는게 좀 까다로운데 증명을 생략하고 직관만 얻어보자. 먼저 <span class="math inline">\(X_1,\dots,X_n\)</span>가 모수가 <span class="math inline">\(\theta_0\)</span>인 어떠한 분포의 <strong><em>iid</em></strong> random sample이라면 <span class="math inline">\(X_1,\dots,X_n\)</span>을 바탕으로 MLE를 아래와 같이 추정할 수 있다.</p>
 <p><span class="math display">\[\hat{\theta}^{MLE}=\underset{\theta \in \Omega}{\operatorname{argmax}} l(\theta)=\underset{\theta \in \Omega}{\operatorname{argmax}} \sum_{i=1}^{n}\log f(X_i;\theta)\]</span></p>
@@ -356,17 +348,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>마치 <span class="math inline">\(\text{argmax}\)</span>를 하나의 함수 <span class="math inline">\(g\)</span>로 생각하면 <span class="math inline">\(\bar{Y} \overset{P_{\theta_0}}{\to} E(Y_1)\)</span> 일때 <span class="math inline">\(g\big(\bar{Y}\big) \overset{P_{\theta_0}}{\to} g\big(E(Y_1)\big)\)</span> 이 성립한다는 논리이다. 당연히 이러한 논리는 항상 성립하는 것이 아니고 “균등확률수렴성”이라는 강한 조건이 필요하다. 균등수렴성에 대한 자세한 내용은 생략하고 일단</p>
 <p><span class="math display">\[\hat{\theta}^{MLE} \overset{P_{\theta_0}}{\longrightarrow}\underset{\theta \in \Omega}{\operatorname{argmax}}\mathbb{E}(Y_1)\]</span></p>
 <p>와 같은 식이 성립한다고만 알고 있자.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 우리는 MLE의 일치성을 조사하고 싶으므로 결국 아래를 증명하면 된다.</p>
-<p><span class="math display">\[\underset{\theta \in \Omega}{\operatorname{argmax}}\mathbb{E}(Y_1) = \underset{\theta \in \Omega}{\operatorname{argmax}}\mathbb{E}\big[\log f(X_1,\theta)\big] = \theta_{0}\]</span></p>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;균등확률수렴성은 로그가능도함수가 strictly convex일 경우 성립한다는 것이 알려져 있음</p></li></div><p><span class="math display">\[\underset{\theta \in \Omega}{\operatorname{argmax}}\mathbb{E}(Y_1) = \underset{\theta \in \Omega}{\operatorname{argmax}}\mathbb{E}\big[\log f(X_1,\theta)\big] = \theta_{0}\]</span></p>
 <p>결국 <span class="math inline">\(\underset{\theta \in \Omega}{\operatorname{argmax}}\mathbb{E}\big[\log f(X_1,\theta)\big] = \theta_0\)</span>임을 증명하면 되는데 이것은 (1) pdf가 모수 <span class="math inline">\(\theta\)</span>에 대하여 identifiable이고<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> (2) pdf의 support가 <span class="math inline">\(\theta\)</span>에 depend하지 않는 경우 성립한다고 알려져 있다.</p>
-<blockquote class="blockquote">
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;<a href="https://en.wikipedia.org/wiki/Identifiability" class="uri">https://en.wikipedia.org/wiki/Identifiability</a></p></li></div><blockquote class="blockquote">
 <p>사실 이러한 조건은 당연한게 identifiable이 아니라면 제대로된 pdf가 아니라는 의미이겠고 pdf의 support가 <span class="math inline">\(\theta\)</span>에 depend 한다면 <span class="math inline">\(U[\theta-1,\theta+1]\)</span>과 같은 분포처럼 <span class="math inline">\(\theta\)</span>의 MLE가 유일하지 않을 수도 있다는 의미이므로 이러한 두 조건은 합리적으로 보임</p>
 </blockquote>
 </section>
-<section id="hatthetamle의-점근분포" class="level1">
+<section id="hatthetamle의-점근분포" class="level1 page-columns page-full">
 <h1><span class="math inline">\(\hat{\theta}^{MLE}\)</span>의 점근분포</h1>
 <p><span class="math inline">\(\frac{1}{n}\dot{l}(\hat{\theta})\)</span>의 값을 테일러 정리에 의한 일차근사로 추정하면 아래와 같다.</p>
 <p><span class="math display">\[\frac{1}{n}\dot{l}(\hat{\theta}) \approx \frac{1}{n}\dot{l}(\theta) + \frac{1}{n}\ddot{l}(\theta)(\hat{\theta}-\theta)\]</span></p>
-<section id="mle의-일치성에-대한-구체적인-논의" class="level2">
+<section id="mle의-일치성에-대한-구체적인-논의" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="mle의-일치성에-대한-구체적인-논의">MLE의 일치성에 대한 구체적인 논의</h2>
 <p><span class="math inline">\(X_1,\dots,X_{10} \overset{i.i.d.}{\sim} Ber(\theta)\)</span> 이라고 하자.</p>
 <div id="39aaf9ef" class="cell" data-execution_count="7">
@@ -397,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[Y_1 = \log f(X_1;\theta)= X_1 \log \theta + (1-X_1)\log(1-\theta)\]</span></p>
 <p>보는 것 처럼 <span class="math inline">\(Y_1\)</span>은 <span class="math inline">\(X_1\)</span>와 <span class="math inline">\(\theta\)</span>의 함수임</p>
 <p><strong>(2)</strong> <span class="math inline">\(\mathbb{E}_{\theta_0}(Y_1)\)</span>은 <span class="math inline">\(\theta\)</span> 만의 함수이다. 적당한 조건<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>이 만족된다면 <span class="math inline">\(\mathbb{E}_{\theta_0}(Y_1)\)</span>은 <span class="math inline">\(\theta_0\)</span> 에서 최대화 된다.</p>
-<p><strong>(베르누이 예제)</strong></p>
+<div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;identifiable &amp; common support</p></li></div><p><strong>(베르누이 예제)</strong></p>
 <p><span class="math inline">\(\mathbb{E}_{\theta_0}(Y_1) = \mathbb{E}_{\theta_0}(X_1)\log\theta + (1-\mathbb{E}_{\theta_0}(X_1))\log(1-\theta) = \frac{1}{3} \log\theta + (1-\frac{1}{3})\log(1-\theta)\)</span></p>
 <blockquote class="blockquote">
 <p>일반적인 상황에서는 참모수를 모르지만 우리는 시뮬레이션을 <span class="math inline">\(\theta=1/3\)</span>에서 하였으므로 참모수 <span class="math inline">\(\theta_0=\mathbb{E}_{\theta_0}(X_1)=\frac{1}{3}\)</span>을 알고 있다고 가정한다.</p>
@@ -435,15 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>거의 암산가능<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>균등확률수렴성은 로그가능도함수가 strictly convex일 경우 성립한다는 것이 알려져 있음<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><a href="https://en.wikipedia.org/wiki/Identifiability" class="uri">https://en.wikipedia.org/wiki/Identifiability</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>identifiable &amp; common support<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

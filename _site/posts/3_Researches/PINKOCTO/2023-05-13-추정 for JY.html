@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -150,35 +150,7 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title"><strong>[PINKOCTO]</strong> 추정 for JY</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>신록예찬 </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">June 14, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -240,20 +212,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_hst.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">HST</span></a>
+  <a href="../../../3_yechan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">신록예찬</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../3_itstgcn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">IT-STGCN</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../3_solar.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SOLAR</span></a>
+  <a href="../../../3_yeon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SEOYEONC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -297,12 +263,38 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>[PINKOCTO]</strong> 추정 for JY</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="intro" class="level1">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>신록예찬 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 14, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="intro" class="level1 page-columns page-full">
 <h1>Intro</h1>
 <p><code>-</code> 비편향추정량(UB)란 <span class="math inline">\(\theta\)</span>의 추정량 중</p>
 <p><span class="math display">\[\forall \theta\in \Theta:~ E(\hat{\theta})=\theta\]</span></p>
@@ -334,7 +326,7 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(\theta\)</span>에 대한 모든 비편향추정량을 구한다. 즉 집합 <span class="math inline">\(\hat{\Theta}_{UB}\)</span>를 구한다. 그리고 <span class="math inline">\(\forall \hat{\theta} \in \hat{\Theta}_{UB}\)</span> 에 대하여 <span class="math inline">\(V(\hat{\theta})\)</span> 를 구한 뒤 <span class="math inline">\(V(\hat{\theta})\)</span>가 가장 작은 <span class="math inline">\(\hat{\theta}\)</span>를 선택한다.</p>
 </blockquote>
 <p><code>-</code> 이론: 크래머라오 하한값(편의상 <span class="math inline">\(L^\star\)</span>이라고 하자)이라고 있는데, 이는 <span class="math inline">\({\Theta}_{UB}\)</span>에 존재하는 모든 추정량에 대한 분산의 하한값을 제공한다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 즉 아래가 성립한다.</p>
-<ul>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;(사실 <span class="math inline">\({\Theta}_{UB}\)</span>가 아닌 집합에 대해서도 하한값을 제공함, 그런데 교재에서는 <span class="math inline">\({\Theta}_{UB}\)</span>에 대한 하한값만 다루는듯</p></li></div><ul>
 <li><span class="math inline">\(L^\star\)</span> is Cramer-Rao lower bound <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\forall \hat{\theta} \in {\Theta}_{UB}:~ V(\hat{\theta}) \geq L^\star\)</span></li>
 </ul>
 <p>역은 성립하지 않음을 주의하자. 즉 아래를 만족하는 <span class="math inline">\(L\)</span>이 존재할 수 있다.</p>
@@ -517,7 +509,7 @@ ul.task-list li input[type="checkbox"] {
 <p><code>-</code> 충분통계량을 줬을때 <span class="math inline">\(\hat{\theta}\)</span>의 업그레이드 방법은</p>
 <p><span class="math display">\[\hat{\theta}^{new}:=E(\hat{\theta}|S)\]</span></p>
 <p>와 같이 할 수 있는데 이는 충분통계량 <span class="math inline">\(S\)</span>의 정보를 받아서 어떠한 방식으로 업데이트된 <span class="math inline">\(\hat{\theta}\)</span> 이므로 <span class="math inline">\(S\)</span>의 함수라 해석할 수 있다.</p>
-<p><code>-</code> 이론 (라오블랙웰, <span class="citation" data-cites="Thm">@Thm</span>, 4.5): <span class="math inline">\(\hat{\theta}\)</span>가 UB일때 충분통계량의 값을 알려주면 <span class="math inline">\(\hat{\theta}^{new}:=E(\hat{\theta}|S)\)</span>와 같이 <span class="math inline">\(\hat{\theta}\)</span>를 업그레이드 할 수 있다.</p>
+<p><code>-</code> 이론 (라오블랙웰, <span class="citation" data-cites="Thm">(<a href="#ref-Thm" role="doc-biblioref"><strong>Thm?</strong></a>)</span>, 4.5): <span class="math inline">\(\hat{\theta}\)</span>가 UB일때 충분통계량의 값을 알려주면 <span class="math inline">\(\hat{\theta}^{new}:=E(\hat{\theta}|S)\)</span>와 같이 <span class="math inline">\(\hat{\theta}\)</span>를 업그레이드 할 수 있다.</p>
 </section>
 <section id="레만쉐페정리" class="level2">
 <h2 class="anchored" data-anchor-id="레만쉐페정리">레만쉐페정리</h2>
@@ -525,19 +517,14 @@ ul.task-list li input[type="checkbox"] {
 <p><code>-</code> 충분통계량을 줬을때 <span class="math inline">\(\hat{\theta}\)</span>의 업그레이드 방법은</p>
 <p><span class="math display">\[\hat{\theta}^{new}:=E(\hat{\theta}|S)\]</span></p>
 <p>와 같이 할 수 있는데 이는 충분통계량 <span class="math inline">\(S\)</span>의 정보를 받아서 어떠한 방식으로 업데이트된 <span class="math inline">\(\hat{\theta}\)</span> 이므로 <span class="math inline">\(S\)</span>의 함수라 해석할 수 있다.</p>
-<p><code>-</code> 이론 (라오블랙웰, <span class="citation" data-cites="Thm">@Thm</span>, 4.5): <span class="math inline">\(\hat{\theta}\)</span>가 UB일때 충분통계량의 값을 알려주면 <span class="math inline">\(\hat{\theta}^{new}:=E(\hat{\theta}|S)\)</span>와 같이 <span class="math inline">\(\hat{\theta}\)</span>를 업그레이드 할 수 있다.</p>
+<p><code>-</code> 이론 (라오블랙웰, <span class="citation" data-cites="Thm">(<a href="#ref-Thm" role="doc-biblioref"><strong>Thm?</strong></a>)</span>, 4.5): <span class="math inline">\(\hat{\theta}\)</span>가 UB일때 충분통계량의 값을 알려주면 <span class="math inline">\(\hat{\theta}^{new}:=E(\hat{\theta}|S)\)</span>와 같이 <span class="math inline">\(\hat{\theta}\)</span>를 업그레이드 할 수 있다.</p>
 
 
 </section>
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>(사실 <span class="math inline">\({\Theta}_{UB}\)</span>가 아닌 집합에 대해서도 하한값을 제공함, 그런데 교재에서는 <span class="math inline">\({\Theta}_{UB}\)</span>에 대한 하한값만 다루는듯<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
