@@ -46,7 +46,7 @@
     "href": "posts/1_Essays/2023-07-07-다중척도방법.html",
     "title": "[Essays] 다중척도방법",
     "section": "",
-    "text": "asd;lkfj;lkasjdfl;kjals;dkfjl;aksdjf;lkajsdfl;k"
+    "text": "\\({\\boldsymbol y}={\\boldsymbol X}^\\top\\)\n\n이 논문에서는 몇 가지 멀티스케일 방법을 리뷰하고자 한다.\n멀티스케일 방법이란 ~ + 왜 멀티스케일 방법을 써야하는가.\n우리는 그중에서 시각화와 분해에 관심이 있다. + 다른 접근법들도 소개\n시각화가 사용되는 사례, 어떻게 이용할 수 있는가?\n분해가 이용되는 사례, 어떻게 이용할 수 있는가?\n많은 멀티스케일 방법 중 우리는 TPT, EPT, EBT 를 중점적으로 소개하는데 초점을 맞출 것이다.\n각각의 transform은 어떠한 공통점이 있는가?\n왜 이렇게 많은 트랜스폼이 있어야하는가?\n미래에는 어떠한 트랜스폼을 만드는 것이 좋을까?"
   },
   {
     "objectID": "posts/1_Essays/2023-07-07-다중척도방법.html#motivation-of-emd",
