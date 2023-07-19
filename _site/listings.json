@@ -2,7 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/3_Researches/PINKOCTO/SOLAR/eptstgcn/Untitled.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-07-03-CTGAN_신용카드.html",
+      "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-17-EPT-RGCN.html",
       "/posts/2_Studies/PyG/ls5.html",
       "/posts/2_Studies/PyG/ls3.html",
       "/posts/2_Studies/PyG/ls4.html",
@@ -31,6 +33,7 @@
       "/posts/1_Essays/2023-01-20-추정.html",
       "/posts/2_Studies/CGSP/2023-01-15-Chap-12.4.html",
       "/posts/3_Researches/YEON/2023-02-14-수통문제-지수분포평균검정.html",
+      "/posts/3_Researches/PINKOCTO/2023-01-01-notes.html",
       "/posts/3_Researches/YEON/ITSTGCN/2022-12-30-STGCN-Toy Example.html",
       "/posts/3_Researches/YEON/ITSTGCN/2022-12-29-STGCN-tutorial.html",
       "/posts/3_Researches/YEON/ITSTGCN/2023-02-14-Tables.html",
@@ -40,7 +43,6 @@
       "/posts/2_Studies/Reviews/2022-12-23-Ebayesthresh.html",
       "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html",
       "/posts/1_Essays/2019-04-26-퓨리에변환.html",
-      "/posts/1_Essays/test.html",
       "/posts/4_Notes/2000-01-08-깃(Git).html",
       "/posts/4_Notes/2000-01-07-줄리아 설치 및 실행.html",
       "/posts/4_Notes/2000-01-06-주피터랩- 설정 및 몇가지 팁.html",
@@ -67,12 +69,15 @@
   {
     "listing": "/3_pinkocto.html",
     "items": [
+      "/posts/3_Researches/PINKOCTO/SOLAR/eptstgcn/Untitled.html",
+      "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-17-EPT-RGCN.html",
       "/posts/3_Researches/PINKOCTO/2023-06-23-퓨리에변환4jy.html",
       "/posts/3_Researches/PINKOCTO/2023-06-28-퓨리에변환(detailed).html",
       "/posts/3_Researches/PINKOCTO/2023-06-28-커널리그레션.html",
       "/posts/3_Researches/PINKOCTO/2023-05-13-추정 for JY.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-04-EPT.html",
-      "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-03-일사량.html"
+      "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-03-일사량.html",
+      "/posts/3_Researches/PINKOCTO/2023-01-01-notes.html"
     ]
   },
   {
@@ -129,8 +134,7 @@
       "/posts/1_Essays/2023-07-07-다중척도방법.html",
       "/posts/1_Essays/2023-07-04-토폴로지(1).html",
       "/posts/1_Essays/2023-01-20-추정.html",
-      "/posts/1_Essays/2019-04-26-퓨리에변환.html",
-      "/posts/1_Essays/test.html"
+      "/posts/1_Essays/2019-04-26-퓨리에변환.html"
     ]
   },
   {

@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -305,7 +271,8 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#생각의-정리" id="toc-생각의-정리" class="nav-link active" data-scroll-target="#생각의-정리">생각의 정리</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#생각의-정리" id="toc-생각의-정리" class="nav-link" data-scroll-target="#생각의-정리">생각의 정리</a></li>
   <li><a href="#intro" id="toc-intro" class="nav-link" data-scroll-target="#intro">Intro</a></li>
   <li><a href="#emd" id="toc-emd" class="nav-link" data-scroll-target="#emd">EMD</a>
   <ul class="collapse">
@@ -322,7 +289,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><strong>[Essays]</strong> 다중척도방법</h1>
+<div class="quarto-title-block"><div><h1 class="title"><strong>[Essays]</strong> 다중척도방법</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/miruetoto/yechan3/blob/main/posts/1_Essays/2023-07-07-다중척도방법.ipynb"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -349,17 +316,39 @@ div.csl-indent {
 
 </header>
 
+<p>asd;lkfj;lkasjdfl;kjals;dkfjl;aksdjf;lkajsdfl;k</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/iqaIqO0Wn7Y" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/XlwSIZPcBpM?list=PLQqh36zP38-wncjcGApF-lIg9Xibea8cP" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/XlwSIZPcBpM?list=PLQqh36zP38-wncjcGApF-lIg9Xibea8cP" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/XlwSIZPcBpM?list=PLQqh36zP38-zlQzcT1FJ8lBWRGkqBIsEu" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<ul>
+<li>이 논문에서는 몇 가지 멀티스케일 방법을 리뷰하고자 한다.</li>
+<li>멀티스케일 방법이란 ~ + 왜 멀티스케일 방법을 써야하는가.</li>
+<li>우리는 그중에서 시각화와 분해에 관심이 있다. + 다른 접근법들도 소개</li>
+<li>시각화가 사용되는 사례, 어떻게 이용할 수 있는가?</li>
+<li>분해가 이용되는 사례, 어떻게 이용할 수 있는가?</li>
+<li>많은 멀티스케일 방법 중 우리는 TPT, EPT, EBT 를 중점적으로 소개하는데 초점을 맞출 것이다.</li>
+<li>각각의 transform은 어떠한 공통점이 있는가?</li>
+<li>왜 이렇게 많은 트랜스폼이 있어야하는가?</li>
+<li>미래에는 어떠한 트랜스폼을 만드는 것이 좋을까?</li>
+</ul>
+</section>
 <section id="생각의-정리" class="level1 page-columns page-full">
 <h1>생각의 정리</h1>
 <p><code>-</code> 멀티스케일 컨셉</p>
 <ul>
 <li>EMD는 멀티스케일의 컨셉을 가지고 있음. 스케일별로 신호를 걸러낸다. 멀티스케일 파라메터를 선택하지 않음.</li>
-<li>VMD는 확실히 멀티스케일 컨셉을 가지고 있으며 여러스케일을 동시에 관찰. 멀티스케일 파라메터는 신호의 power가 주파수도메인에서 밀집된 곳으로 선택한다.</li>
+<li>VMD는 확실히 멀티스케일 컨셉을 가지고 있으며 여러스케일을 동시에 관찰. 멀티스케일 파라메터는 신호의 power가 주파수도메인에서 밀집된 곳으로 선택한다. 멀티스케일 파라메터는 퓨리에analysis에서의 frequency에 대응함</li>
 <li>TPT와 EBT는 데이터를 다양한 스케일로 관찰하는데 목표가 있음. 멀티스케일 파라메터가 명시적으로 존재한다. 여러 멀티스케일 파라메터를 모두 고려하며, 특정한 기준에 따라 파라메터를 선택하기도 하고 그렇지 않을수도 있다. 스케일별로 신호를 변환시켜해석한다.</li>
 </ul>
-<div id="8be33834-39fc-447f-9b1f-70e8954f44b1" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p><code>-</code> EMD</p>
+<ul>
+<li>멀티스케일 파라메터: 존재하지 않음 -&gt; data에 따라서 emprical 하게 선택된다.</li>
+<li></li>
+</ul>
+<p><code>-</code></p>
 <p><code>-</code></p>
 <p>IMF based method</p>
 <p>Transform based method</p>
@@ -607,6 +596,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
