@@ -2,7 +2,6 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/3_Researches/PINKOCTO/SOLAR/eptstgcn/Untitled.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-07-03-CTGAN_신용카드.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-17-EPT-RGCN.html",
       "/posts/2_Studies/PyG/ls5.html",
@@ -25,7 +24,7 @@
       "/posts/3_Researches/BORAM/FRAUD/2023-05-06-start.html",
       "/posts/3_Researches/YEON/ITSTGCN/2023-04-27-toy_example_figure2.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-04-EPT.html",
-      "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-03-일사량.html",
+      "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-03-일사량자료정리.html",
       "/posts/3_Researches/YEON/ITSTGCN/2023-03-18-SimulationPlanner-Tutorial.html",
       "/posts/3_Researches/YEON/ITSTGCN/2023-03-17-ITSTGCN-Tutorial.html",
       "/posts/3_Researches/YEON/2023-03-01-수통문제-Type1 Err, Type2 Err.html",
@@ -33,7 +32,7 @@
       "/posts/1_Essays/2023-01-20-추정.html",
       "/posts/2_Studies/CGSP/2023-01-15-Chap-12.4.html",
       "/posts/3_Researches/YEON/2023-02-14-수통문제-지수분포평균검정.html",
-      "/posts/3_Researches/PINKOCTO/2023-01-01-notes.html",
+      "/posts/3_Researches/PINKOCTO/2023-01-01-면담.html",
       "/posts/3_Researches/YEON/ITSTGCN/2022-12-30-STGCN-Toy Example.html",
       "/posts/3_Researches/YEON/ITSTGCN/2022-12-29-STGCN-tutorial.html",
       "/posts/3_Researches/YEON/ITSTGCN/2023-02-14-Tables.html",
@@ -69,15 +68,30 @@
   {
     "listing": "/3_pinkocto.html",
     "items": [
-      "/posts/3_Researches/PINKOCTO/SOLAR/eptstgcn/Untitled.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-17-EPT-RGCN.html",
       "/posts/3_Researches/PINKOCTO/2023-06-23-퓨리에변환4jy.html",
       "/posts/3_Researches/PINKOCTO/2023-06-28-퓨리에변환(detailed).html",
       "/posts/3_Researches/PINKOCTO/2023-06-28-커널리그레션.html",
       "/posts/3_Researches/PINKOCTO/2023-05-13-추정 for JY.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-04-EPT.html",
-      "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-03-일사량.html",
-      "/posts/3_Researches/PINKOCTO/2023-01-01-notes.html"
+      "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-03-일사량자료정리.html",
+      "/posts/3_Researches/PINKOCTO/2023-01-01-면담.html"
+    ]
+  },
+  {
+    "listing": "/2_pyg.html",
+    "items": [
+      "/posts/2_Studies/PyG/ls5.html",
+      "/posts/2_Studies/PyG/ls4.html",
+      "/posts/2_Studies/PyG/ls3.html",
+      "/posts/2_Studies/PyG/ls2.html",
+      "/posts/2_Studies/PyG/ls1.html"
+    ]
+  },
+  {
+    "listing": "/2_pl.html",
+    "items": [
+      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
     ]
   },
   {
@@ -91,22 +105,6 @@
       "/posts/3_Researches/BORAM/FRAUD/2023-05-12-try1.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-05-24-try1변형.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-05-06-start.html"
-    ]
-  },
-  {
-    "listing": "/2_pl.html",
-    "items": [
-      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
-    ]
-  },
-  {
-    "listing": "/2_pyg.html",
-    "items": [
-      "/posts/2_Studies/PyG/ls5.html",
-      "/posts/2_Studies/PyG/ls4.html",
-      "/posts/2_Studies/PyG/ls3.html",
-      "/posts/2_Studies/PyG/ls2.html",
-      "/posts/2_Studies/PyG/ls1.html"
     ]
   },
   {
