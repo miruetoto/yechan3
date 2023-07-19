@@ -3,6 +3,8 @@
     "listing": "/index.html",
     "items": [
       "/posts/3_Researches/BORAM/FRAUD/2023-07-03-CTGAN_신용카드.html",
+      "/posts/2_Studies/PyG/ls6.html",
+      "/posts/2_Studies/Reviews/2023-07-19-사기탐지 + 그래프 관련연구.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-17-EPT-RGCN.html",
       "/posts/2_Studies/PyG/ls5.html",
       "/posts/2_Studies/PyG/ls3.html",
@@ -62,6 +64,7 @@
   {
     "listing": "/2_reviews.html",
     "items": [
+      "/posts/2_Studies/Reviews/2023-07-19-사기탐지 + 그래프 관련연구.html",
       "/posts/2_Studies/Reviews/2022-12-23-Ebayesthresh.html"
     ]
   },
@@ -81,6 +84,7 @@
   {
     "listing": "/2_pyg.html",
     "items": [
+      "/posts/2_Studies/PyG/ls6.html",
       "/posts/2_Studies/PyG/ls5.html",
       "/posts/2_Studies/PyG/ls4.html",
       "/posts/2_Studies/PyG/ls3.html",
