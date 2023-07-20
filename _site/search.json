@@ -634,7 +634,7 @@
     "href": "posts/3_Researches/PINKOCTO/notes.html",
     "title": "[PINKOCTO] 면담",
     "section": "",
-    "text": "23-07-17\n- 실험해볼것 (모형, 필터/lag, 에폭 변화하여서) 50번정도..\n\n에폭이 적을수록 우리가 잘맞았음.\n필터나 lag도 단순할수록 괜찮았음\nlag은 24를 넘길 필요는 없음.\n필터는 64이상은 필요없는듯\n\n- quarto 팁\nquarto preview --host 210.117.173.182 --no-browser\n- 파라메트릭 vs 넌파 vs 세미\n- 비트시그널\n- 발표자료 + 페이퍼작업\n- 레퍼런스정리\n\nGNN -&gt; GCN / RGNN -&gt; STGCN, ST-GCN\n\n23-07-20\n- 라마: https://www.youtube.com/watch?v=OZbarkziC14\n- 저널 vs 학회:\n\n원래개념: SCIE (~10) &gt;&gt;&gt;&gt;&gt;&gt; SCIE (10~50) &gt;&gt; SCIE(50~) &gt;&gt;&gt;&gt;&gt;&gt; KCI &gt;&gt; 컨퍼런스\nAI분야 한정: SCIE (~10), 일부top컨퍼런스 (NIPS, AAAI, ICML, ICLR) &gt;&gt;&gt;&gt;&gt;&gt; SCIE (10~50) &gt;&gt; SCIE(50~) &gt;&gt;&gt;&gt;&gt;&gt; KCI &gt;&gt; 컨퍼런스"
+    "text": "23-07-17\n- 실험해볼것 (모형, 필터/lag, 에폭 변화하여서) 50번정도..\n\n에폭이 적을수록 우리가 잘맞았음.\n필터나 lag도 단순할수록 괜찮았음\nlag은 24를 넘길 필요는 없음.\n필터는 64이상은 필요없는듯\n\n- quarto 팁\nquarto preview --host 210.117.173.182 --no-browser\n- 파라메트릭 vs 넌파 vs 세미\n- 비트시그널\n- 발표자료 + 페이퍼작업\n- 레퍼런스정리\n\nGNN -&gt; GCN / RGNN -&gt; STGCN, ST-GCN\n\n23-07-20\n- 라마: https://www.youtube.com/watch?v=OZbarkziC14\n- 저널 vs 학회:\n\n원래개념: SCIE (~10) &gt;&gt;&gt;&gt;&gt;&gt; SCIE (10~50) &gt;&gt; SCIE(50~) &gt;&gt;&gt;&gt;&gt;&gt; KCI &gt;&gt; 컨퍼런스\nAI분야 한정: SCIE (~10), 일부top컨퍼런스 (NIPS, AAAI, ICML, ICLR) &gt;&gt;&gt;&gt;&gt;&gt; SCIE (10~50) &gt;&gt; SCIE(50~) &gt;&gt;&gt;&gt;&gt;&gt; KCI &gt;&gt; 컨퍼런스\n\n- 오타발견시알려주세요\n\nhttps://guebin.github.io/PP2023SUM/"
   },
   {
     "objectID": "posts/3_Researches/PINKOCTO/2023-05-13-추정 for JY.html",
