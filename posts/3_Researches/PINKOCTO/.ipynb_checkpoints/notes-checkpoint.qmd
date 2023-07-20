@@ -36,3 +36,7 @@ quarto preview --host 210.117.173.182 --no-browser
 
 - 원래개념: SCIE (~10) >>>>>> SCIE (10~50) >> SCIE(50~) >>>>>>  KCI >> 컨퍼런스 
 - AI분야 한정: SCIE (~10), 일부top컨퍼런스 (NIPS, AAAI, ICML, ICLR)  >>>>>> SCIE (10~50) >> SCIE(50~) >>>>>> KCI >> 컨퍼런스 
+
+`-` 오타발견시알려주세요
+
+- <https://guebin.github.io/PP2023SUM/>
