@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/3_Researches/BORAM/FRAUD/2023-07-03-CTGAN_신용카드.html",
+      "/posts/3_Researches/BORAM/FRAUD/2023-07-19-그래프자료로 데이터정리.html",
       "/posts/2_Studies/PyG/ls6.html",
       "/posts/2_Studies/Reviews/2023-07-19-사기탐지 + 그래프 관련연구.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-17-EPT-RGCN.html",
@@ -82,14 +83,17 @@
     ]
   },
   {
-    "listing": "/2_pyg.html",
+    "listing": "/3_boram.html",
     "items": [
-      "/posts/2_Studies/PyG/ls6.html",
-      "/posts/2_Studies/PyG/ls5.html",
-      "/posts/2_Studies/PyG/ls4.html",
-      "/posts/2_Studies/PyG/ls3.html",
-      "/posts/2_Studies/PyG/ls2.html",
-      "/posts/2_Studies/PyG/ls1.html"
+      "/posts/3_Researches/BORAM/FRAUD/2023-07-03-CTGAN_신용카드.html",
+      "/posts/3_Researches/BORAM/FRAUD/2023-07-19-그래프자료로 데이터정리.html",
+      "/posts/3_Researches/BORAM/FRAUD/2023-07-01-CTGAN.html",
+      "/posts/3_Researches/BORAM/FRAUD/2023-07-02-CTGAN-TOY.html",
+      "/posts/3_Researches/BORAM/FRAUD/2023-05-24-try2변형.html",
+      "/posts/3_Researches/BORAM/FRAUD/2023-05-19-try2.html",
+      "/posts/3_Researches/BORAM/FRAUD/2023-05-12-try1.html",
+      "/posts/3_Researches/BORAM/FRAUD/2023-05-24-try1변형.html",
+      "/posts/3_Researches/BORAM/FRAUD/2023-05-06-start.html"
     ]
   },
   {
@@ -99,16 +103,14 @@
     ]
   },
   {
-    "listing": "/3_boram.html",
+    "listing": "/2_pyg.html",
     "items": [
-      "/posts/3_Researches/BORAM/FRAUD/2023-07-03-CTGAN_신용카드.html",
-      "/posts/3_Researches/BORAM/FRAUD/2023-07-01-CTGAN.html",
-      "/posts/3_Researches/BORAM/FRAUD/2023-07-02-CTGAN-TOY.html",
-      "/posts/3_Researches/BORAM/FRAUD/2023-05-24-try2변형.html",
-      "/posts/3_Researches/BORAM/FRAUD/2023-05-19-try2.html",
-      "/posts/3_Researches/BORAM/FRAUD/2023-05-12-try1.html",
-      "/posts/3_Researches/BORAM/FRAUD/2023-05-24-try1변형.html",
-      "/posts/3_Researches/BORAM/FRAUD/2023-05-06-start.html"
+      "/posts/2_Studies/PyG/ls6.html",
+      "/posts/2_Studies/PyG/ls5.html",
+      "/posts/2_Studies/PyG/ls4.html",
+      "/posts/2_Studies/PyG/ls3.html",
+      "/posts/2_Studies/PyG/ls2.html",
+      "/posts/2_Studies/PyG/ls1.html"
     ]
   },
   {

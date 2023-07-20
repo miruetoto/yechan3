@@ -1,0 +1,33 @@
+---
+title: "**[PINKOCTO]** 면담"
+author: "신록예찬"
+date: "01/01/2023"
+---
+**23-07-17**
+
+`-` 실험해볼것 (모형, 필터/lag, 에폭 변화하여서) 50번정도.. 
+
+- 에폭이 적을수록 우리가 잘맞았음.
+- 필터나 lag도 단순할수록 괜찮았음 
+- lag은 24를 넘길 필요는 없음. 
+- 필터는 64이상은 필요없는듯 
+
+`-` quarto 팁 
+
+```default
+quarto preview --host 210.117.173.182 --no-browser
+```
+
+`-` 파라메트릭 vs 넌파 vs 세미
+
+`-` 비트시그널 
+
+`-` 발표자료 + 페이퍼작업 
+
+`-` 레퍼런스정리
+
+- GNN -> GCN / RGNN -> STGCN, ST-GCN  
+
+**23-07-20**
+
+`-` 라마: <https://www.youtube.com/watch?v=OZbarkziC14>
