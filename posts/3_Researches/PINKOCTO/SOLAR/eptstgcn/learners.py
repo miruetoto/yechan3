@@ -29,8 +29,6 @@ import copy
 # from .utils import convert_train_dataset
 from .utils import DatasetLoader
 
-
-
 class RecurrentGCN(torch.nn.Module):
     def __init__(self, node_features, filters):
         super(RecurrentGCN, self).__init__()

@@ -119,10 +119,6 @@ class DatasetLoader(object):
         )
         return dataset
     
-    
-
-    
-    
 class Evaluator():
     def __init__(self,learner,train_dataset,test_dataset):
         self.learner = learner
@@ -348,9 +344,6 @@ class Evaluator():
         fig.tight_layout()
         return fig
     
-    
-    
-
 ### Toy Example용
 class ToyEvaluator():
     def __init__(self,learner,train_dataset,test_dataset):
