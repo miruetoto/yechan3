@@ -419,8 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="패스워드-없이-주피터-실행" class="level1">
 <h1>패스워드 없이 주피터 실행</h1>
 <p><code>-</code> 아래와 같이 하면 외부에서 접속할때 패스워드를 입력하지 않음.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1"></a>jupyter lab --LabApp.token='' --LabApp.password=''</span>
-<span id="cb15-2"><a href="#cb15-2"></a>jupyter notebook --NotebookApp.token='' --NotebookApp.password='' </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1"></a>jupyter notebook --ServerApp.token='' --ServerApp.password='' </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
