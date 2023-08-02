@@ -293,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#그래픽카드-드라이버설치" id="toc-그래픽카드-드라이버설치" class="nav-link" data-scroll-target="#그래픽카드-드라이버설치">그래픽카드 드라이버설치</a></li>
   <li><a href="#아나콘다" id="toc-아나콘다" class="nav-link" data-scroll-target="#아나콘다">아나콘다</a></li>
   <li><a href="#ssh연결" id="toc-ssh연결" class="nav-link" data-scroll-target="#ssh연결">ssh연결</a></li>
-  <li><a href="#주피터랩-원격제어" id="toc-주피터랩-원격제어" class="nav-link" data-scroll-target="#주피터랩-원격제어">주피터랩 원격제어</a></li>
+  <li><a href="#주피터-원격제어" id="toc-주피터-원격제어" class="nav-link" data-scroll-target="#주피터-원격제어">주피터 원격제어</a></li>
   <li><a href="#주피터노트북-원격제어" id="toc-주피터노트북-원격제어" class="nav-link" data-scroll-target="#주피터노트북-원격제어">주피터노트북 원격제어</a></li>
   <li><a href="#r설치ver1-base에-설치" id="toc-r설치ver1-base에-설치" class="nav-link" data-scroll-target="#r설치ver1-base에-설치">R설치ver1: (base)에 설치</a></li>
   <li><a href="#r설치ver2-py38r40에-설치" id="toc-r설치ver2-py38r40에-설치" class="nav-link" data-scroll-target="#r설치ver2-py38r40에-설치">R설치ver2: (py38r40)에 설치</a></li>
@@ -418,9 +418,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb14"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1"></a>sudo systemctl restart ssh.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> step4: 수정한 포트로 ssh접속</p>
 </section>
-<section id="주피터랩-원격제어" class="level1">
-<h1>주피터랩 원격제어</h1>
-<p><code>-</code> 1단계: 주피터랩설치</p>
+<section id="주피터-원격제어" class="level1">
+<h1>주피터 원격제어</h1>
+<p><code>-</code> 1단계: 주피랩설치</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1"></a>(py38) conda install -c conda-forge jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Note: 사실 위에서 주피터랩을 따로 설치안해도 주피터랩이 잘만 실행된다. 하지만 이렇게하니까 나중에 R커널을 만들기위해 <code>IRkernel::installspec()</code>을 실행할때 에러가 난다.</li>
