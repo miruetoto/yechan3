@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/1_Essays/2023-07-27-plotly.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-07-03-CTGAN_신용카드.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-20-시뮬레이션.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-07-19-그래프자료로 데이터정리.html",
@@ -87,6 +88,23 @@
     ]
   },
   {
+    "listing": "/2_pyg.html",
+    "items": [
+      "/posts/2_Studies/PyG/ls6.html",
+      "/posts/2_Studies/PyG/ls5.html",
+      "/posts/2_Studies/PyG/ls4.html",
+      "/posts/2_Studies/PyG/ls3.html",
+      "/posts/2_Studies/PyG/ls2.html",
+      "/posts/2_Studies/PyG/ls1.html"
+    ]
+  },
+  {
+    "listing": "/2_pl.html",
+    "items": [
+      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
+    ]
+  },
+  {
     "listing": "/3_boram.html",
     "items": [
       "/posts/3_Researches/BORAM/FRAUD/2023-07-03-CTGAN_신용카드.html",
@@ -98,23 +116,6 @@
       "/posts/3_Researches/BORAM/FRAUD/2023-05-12-try1.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-05-24-try1변형.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-05-06-start.html"
-    ]
-  },
-  {
-    "listing": "/2_pl.html",
-    "items": [
-      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
-    ]
-  },
-  {
-    "listing": "/2_pyg.html",
-    "items": [
-      "/posts/2_Studies/PyG/ls6.html",
-      "/posts/2_Studies/PyG/ls5.html",
-      "/posts/2_Studies/PyG/ls4.html",
-      "/posts/2_Studies/PyG/ls3.html",
-      "/posts/2_Studies/PyG/ls2.html",
-      "/posts/2_Studies/PyG/ls1.html"
     ]
   },
   {
@@ -139,6 +140,7 @@
   {
     "listing": "/1_essays.html",
     "items": [
+      "/posts/1_Essays/2023-07-27-plotly.html",
       "/posts/1_Essays/2023-07-07-다중척도방법.html",
       "/posts/1_Essays/2023-07-04-토폴로지(1).html",
       "/posts/1_Essays/2023-01-20-추정.html",

@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -292,9 +292,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#그래픽카드-드라이버설치" id="toc-그래픽카드-드라이버설치" class="nav-link" data-scroll-target="#그래픽카드-드라이버설치">그래픽카드 드라이버설치</a></li>
   <li><a href="#ssh연결" id="toc-ssh연결" class="nav-link" data-scroll-target="#ssh연결">ssh연결</a></li>
   <li><a href="#아나콘다" id="toc-아나콘다" class="nav-link" data-scroll-target="#아나콘다">아나콘다</a></li>
-  <li><a href="#개발환경" id="toc-개발환경" class="nav-link" data-scroll-target="#개발환경">개발환경</a></li>
+  <li><a href="#개발환경" id="toc-개발환경" class="nav-link" data-scroll-target="#개발환경">개발환경</a>
+  <ul class="collapse">
+  <li><a href="#rpython-사용가능한-개발환경" id="toc-rpython-사용가능한-개발환경" class="nav-link" data-scroll-target="#rpython-사용가능한-개발환경"><code>1</code>. R+Python 사용가능한 개발환경</a></li>
+  <li><a href="#pytorch를-사용이-가능한-개발환경" id="toc-pytorch를-사용이-가능한-개발환경" class="nav-link" data-scroll-target="#pytorch를-사용이-가능한-개발환경"><code>2</code>. PyTorch를 사용이 가능한 개발환경</a></li>
+  </ul></li>
   <li><a href="#주피터-원격제어-설정" id="toc-주피터-원격제어-설정" class="nav-link" data-scroll-target="#주피터-원격제어-설정">주피터 원격제어 설정</a></li>
-  <li><a href="#자주-설치하는-패키지-리스트" id="toc-자주-설치하는-패키지-리스트" class="nav-link" data-scroll-target="#자주-설치하는-패키지-리스트">자주 설치하는 패키지 리스트</a></li>
+  <li><a href="#설치하면-좋은것들" id="toc-설치하면-좋은것들" class="nav-link" data-scroll-target="#설치하면-좋은것들">설치하면 좋은것들</a></li>
   <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a>
   <ul class="collapse">
   <li><a href="#r-삭제하는-방법" id="toc-r-삭제하는-방법" class="nav-link" data-scroll-target="#r-삭제하는-방법">R 삭제하는 방법</a></li>
@@ -306,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2000-01-02-우분투 포맷 및 개발용 서버 셋팅2pynb.out.ipynb" download="2000-01-02-우분투 포맷 및 개발용 서버 셋팅2pynb.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -401,51 +405,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1"></a>bash Anaconda3-2019.03-Linux-x86_64.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>대충 <code>bash Ana</code> 정도까지만 치고 <code>tab</code>을 누르면 알아서 완성된다.</p>
 </section>
-<section id="개발환경" class="level1">
+<section id="개발환경" class="level1 page-columns page-full">
 <h1>개발환경</h1>
+<section id="rpython-사용가능한-개발환경" class="level2">
+<h2 class="anchored" data-anchor-id="rpython-사용가능한-개발환경"><code>1</code>. R+Python 사용가능한 개발환경</h2>
 <p><code>-</code> 아래를 실행</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1"></a>(base) conda create -n rpy </span>
 <span id="cb13-2"><a href="#cb13-2"></a>(base) conda activate rpy</span>
-<span id="cb13-3"><a href="#cb13-3"></a>(rpy) conda install -c conda-forge r-essentials</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href="#cb13-3"></a>(rpy) conda install -c conda-forge r-essentials</span>
+<span id="cb13-4"><a href="#cb13-4"></a>(rpy) conda install -c conda-forge plotly</span>
+<span id="cb13-5"><a href="#cb13-5"></a>(rpy) pip install ryp2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 여기에서 <code>conda install -c conda-forge r-essentials</code>로 인하여 R, Python, Jupyter 가 모두 최신버전으로 설치된다.</p>
 <p><code>-</code> 또한 R에는 이미 <code>tidyverse</code>, <code>IRkernel</code> 등의 패키지가 기본으로 깔려있다.</p>
+</section>
+<section id="pytorch를-사용이-가능한-개발환경" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="pytorch를-사용이-가능한-개발환경"><code>2</code>. PyTorch를 사용이 가능한 개발환경</h2>
+<p><code>-</code> 아래를 실행</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1"></a>(base) conda create -n torch</span>
+<span id="cb14-2"><a href="#cb14-2"></a>(base) conda activate torch</span>
+<span id="cb14-3"><a href="#cb14-3"></a>(torch) conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia</span>
+<span id="cb14-4"><a href="#cb14-4"></a>(torch) conda install -c conda-forge notebook </span>
+<span id="cb14-5"><a href="#cb14-5"></a>(torch) conda install -c conda-forge plotly </span>
+<span id="cb14-6"><a href="#cb14-6"></a>(torch) conda install pyg -c pyg </span>
+<span id="cb14-7"><a href="#cb14-7"></a>(torch) pip install torch-geometric-temporal</span>
+<span id="cb14-8"><a href="#cb14-8"></a>(torch) conda install -c pytorch -c conda-forge ctgan</span>
+<span id="cb14-9"><a href="#cb14-9"></a>(torch) pip install gymnasium </span>
+<span id="cb14-10"><a href="#cb14-10"></a>(torch) pip install gymnasium[box2d]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>refs</strong> - PyTorch: <a href="https://pytorch.org/get-started/locally/" class="uri">https://pytorch.org/get-started/locally/</a> - PyG: <a href="https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html" class="uri">https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html</a> - PyTorch Geometric Temporal<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>: <a href="https://pytorch-geometric-temporal.readthedocs.io/en/latest/notes/installation.html" class="uri">https://pytorch-geometric-temporal.readthedocs.io/en/latest/notes/installation.html</a> - CTGAN: <a href="https://github.com/sdv-dev/CTGAN" class="uri">https://github.com/sdv-dev/CTGAN</a> - Gymnasium: <a href="https://gymnasium.farama.org/index.html" class="uri">https://gymnasium.farama.org/index.html</a><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;이 패키지는 꼭 PyG 이후에 설치할것</p></li><li id="fn2"><p><sup>2</sup>&nbsp;설치방법은 따로 없음..</p></li></div></section>
 </section>
 <section id="주피터-원격제어-설정" class="level1">
 <h1>주피터 원격제어 설정</h1>
 <p><code>-</code> 설정파일 생성</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1"></a>(rpy) jupyter notebook --generate-config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1"></a>(rpy) jupyter notebook --generate-config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 패스워드 설정</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1"></a>(rpy) jupyter notebook password</span>
-<span id="cb15-2"><a href="#cb15-2"></a>## 패스워드 치고</span>
-<span id="cb15-3"><a href="#cb15-3"></a>## 확인해야함</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1"></a>(rpy) jupyter notebook password</span>
+<span id="cb16-2"><a href="#cb16-2"></a>## 패스워드 치고</span>
+<span id="cb16-3"><a href="#cb16-3"></a>## 확인해야함</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 설정파일을 열고</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1"></a>nano /home/cgb2/.jupyter/jupyter_notebook_config.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1"></a>nano /home/cgb2/.jupyter/jupyter_notebook_config.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>아래의 내용을 수정한다.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1"></a>c.ServerApp.ip = '192.168.0.4'</span>
-<span id="cb17-2"><a href="#cb17-2"></a>c.ServerApp.port = 1306</span>
-<span id="cb17-3"><a href="#cb17-3"></a>c.ServerApp.open_browser=False </span>
-<span id="cb17-4"><a href="#cb17-4"></a>c.ExtensionApp.open_browser=False</span>
-<span id="cb17-5"><a href="#cb17-5"></a>c.ServerApp.allow_origin = '*'</span>
-<span id="cb17-6"><a href="#cb17-6"></a>c.ServerApp.allow_remote_access = True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1"></a>c.ServerApp.ip = '192.168.0.4'</span>
+<span id="cb18-2"><a href="#cb18-2"></a>c.ServerApp.port = 1306</span>
+<span id="cb18-3"><a href="#cb18-3"></a>c.ServerApp.open_browser=False </span>
+<span id="cb18-4"><a href="#cb18-4"></a>c.ExtensionApp.open_browser=False</span>
+<span id="cb18-5"><a href="#cb18-5"></a>c.ServerApp.allow_origin = '*'</span>
+<span id="cb18-6"><a href="#cb18-6"></a>c.ServerApp.allow_remote_access = True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="자주-설치하는-패키지-리스트" class="level1">
-<h1>자주 설치하는 패키지 리스트</h1>
-<p><code>-</code> 아래를 미리 깔아두자..</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1"></a># conda install -c conda-forge notebook</span>
-<span id="cb18-2"><a href="#cb18-2"></a>conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch</span>
-<span id="cb18-3"><a href="#cb18-3"></a>conda install -c conda-forge plotly </span>
-<span id="cb18-4"><a href="#cb18-4"></a>pip install plotnine</span>
-<span id="cb18-5"><a href="#cb18-5"></a>pip install seaborn</span>
-<span id="cb18-6"><a href="#cb18-6"></a>pip install opencv-python</span>
-<span id="cb18-7"><a href="#cb18-7"></a>pip install folium</span>
-<span id="cb18-8"><a href="#cb18-8"></a>pip install pandas_datareader</span>
-<span id="cb18-9"><a href="#cb18-9"></a>conda install -c conda-forge r-essentials=4 </span>
-<span id="cb18-10"><a href="#cb18-10"></a>pip install rpy2</span>
-<span id="cb18-11"><a href="#cb18-11"></a>conda install -c conda-forge python-graphviz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> tensorflow-gpu 는 현재(2022-03-06) python=3.10 에서 동작함</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb19-1"><a href="#cb19-1"></a>conda create -n py310 python=3.10 </span>
-<span id="cb19-2"><a href="#cb19-2"></a>conda activate py310 </span>
-<span id="cb19-3"><a href="#cb19-3"></a>conda install -c conda-forge tensorflow-gpu </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="설치하면-좋은것들" class="level1">
+<h1>설치하면 좋은것들</h1>
+<p><code>-</code> 데이터과학을 위한 패키지들</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb19-1"><a href="#cb19-1"></a>pip install plotnine</span>
+<span id="cb19-2"><a href="#cb19-2"></a>pip install seaborn</span>
+<span id="cb19-3"><a href="#cb19-3"></a>pip install opencv-python</span>
+<span id="cb19-4"><a href="#cb19-4"></a>pip install folium</span>
+<span id="cb19-5"><a href="#cb19-5"></a>pip install pandas_datareader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 아래를 설치하면 좋음</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1"></a>sudo apt install mc </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
@@ -510,6 +524,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </section>
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
