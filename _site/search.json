@@ -1055,5 +1055,236 @@
     "title": "CGSP",
     "section": "",
     "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 24, 2022\n\n\n[CGSP] Chap 8.3: Discrete Fourier Transform\n\n\n신록예찬 \n\n\n\n\nDec 26, 2022\n\n\n[CGSP] Chap 12.2: Weakly Stationary Graph Processes\n\n\n신록예찬 \n\n\n\n\nDec 27, 2022\n\n\n[CGSP] Chap 12.2 ~ 3: Power Spectral Density and its Estimators\n\n\n신록예찬 \n\n\n\n\nJan 15, 2023\n\n\n[CGSP] Chap 12.4: Node Subsampling for PSD Estimation\n\n\n신록예찬 \n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#date-cal",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#date-cal",
+    "title": "[Note] 우분투 익히기",
+    "section": "date, cal",
+    "text": "date, cal\n- 날짜\n(base) cgb2@cgb2-desktop:~$ date\n2023. 08. 03. (목) 16:10:38 KST\n- 달력\n(base) cgb2@cgb2-desktop:~$ cal\n      8월 2023         \n일 월 화 수 목 금 토  \n       1  2  3  4  5  \n 6  7  8  9 10 11 12  \n13 14 15 16 17 18 19  \n20 21 22 23 24 25 26  \n27 28 29 30 31"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#echo",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#echo",
+    "title": "[Note] 우분투 익히기",
+    "section": "echo",
+    "text": "echo\n- echo 기본기능\ncgb2@cgb2-desktop:~/Dropbox/temppp$ echo test\ntest\n- echo + * : *가 현재 디렉토리에 있는 모든 파일이름으로 확장된이후에 echo가 동작함.\n(base) cgb2@cgb2-desktop:~/Dropbox/temppp$ ls\ncolab.txt  sample.txt\n(base) cgb2@cgb2-desktop:~/Dropbox/temppp$ echo *\ncolab.txt sample.txt\n- 응용\n(base) cgb2@cgb2-desktop:~$ echo D*\nDesktop Documents Downloads Dropbox\n- 응용2\n(base) cgb2@cgb2-desktop:~$ echo /usr/*\n/usr/bin /usr/games /usr/include /usr/lib /usr/lib32 /usr/lib64 /usr/libexec /usr/libx32 /usr/local /usr/sbin /usr/share /usr/src\n- 응용3\n(base) cgb2@cgb2-desktop:~$ echo ~\n/home/cgb2\n- 응용4\n(base) cgb2@cgb2-desktop:~/Dropbox$ echo $((2+2))\n4"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제1",
+    "text": "예제1\n파일생성 \\(\\to\\) 편집모드 \\(\\to\\) asdf 입력 \\(\\to\\) 편집모드해제 \\(\\to\\) 저장 및 종료\n- step1: 파일생성\nvim test230803.txt \n\n- step2: i를 누른다.\n\n- step3: asdf 입력\n\n\n\nimage.png\n\n\n- step4: esc 입력\n\n\n\nimage.png\n\n\n- step5: :wq + Enter 입력"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1-파일만들기-asdf-입력후-저장",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1-파일만들기-asdf-입력후-저장",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제1: 파일만들기 + asdf 입력후 저장",
+    "text": "예제1: 파일만들기 + asdf 입력후 저장\n- step1: 파일생성\nvim test230803.txt \n\n- step2: i를 누른다.\n\n- step3: asdf 입력\n\n\n\nimage.png\n\n\n- step4: esc 입력\n\n\n\nimage.png\n\n\n- step5: :wq + Enter 입력"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제2:",
+    "text": "예제2:\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제 \n- 파일여는법/만드는법 (sudo는 읽기전용 파일을 만들수있음)\nsudo vim /etc/apt/sources.list\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-라인복사하여-붙여넣기",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-라인복사하여-붙여넣기",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제2: 라인복사하여 붙여넣기",
+    "text": "예제2: 라인복사하여 붙여넣기\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제 \n- 파일여는법/만드는법 (sudo는 읽기전용 파일을 만들수있음)\nsudo vim /etc/apt/sources.list\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-위아래로-이동",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-위아래로-이동",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제2: 위아래로 이동",
+    "text": "예제2: 위아래로 이동\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제 \n- 파일여는법/만드는법 (sudo는 읽기전용 파일을 만들수있음)\nsudo vim /etc/apt/sources.list\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-좌우로-이동해보기-hl",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-좌우로-이동해보기-hl",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제2: 좌우로 이동해보기 (hl)",
+    "text": "예제2: 좌우로 이동해보기 (hl)\n- step1: 생성된 파일로 들어가기\nvim test230803.txt \n\n- step2: l을 세번눌러서 오른쪽으로 3칸 이동2\n2 한글로 설정되어있으면 이동하지 않음\n- step3: h을 세번눌러서 왼쪽으로 3칸 이동3\n3 한글로 설정되어 있으면 이동하지 않음\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제 \n- 파일여는법/만드는법 (sudo는 읽기전용 파일을 만들수있음)\nsudo vim /etc/apt/sources.list\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-생성된-파일로-들어가기-좌우로-이동해보기-hl",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-생성된-파일로-들어가기-좌우로-이동해보기-hl",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제2: 생성된 파일로 들어가기 + 좌우로 이동해보기 (hl)",
+    "text": "예제2: 생성된 파일로 들어가기 + 좌우로 이동해보기 (hl)\n- step1: 생성된 파일로 들어가기\nvim test230803.txt \n\n- step2: l을 세번눌러서 오른쪽으로 3칸 이동1\n1 한글로 설정되어있으면 이동하지 않음\n- step3: h을 세번눌러서 왼쪽으로 3칸 이동2\n2 한글로 설정되어 있으면 이동하지 않음"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제3-현재커서-위치-다음라인에서-빈줄을-만들고-asdf2를-입력",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제3-현재커서-위치-다음라인에서-빈줄을-만들고-asdf2를-입력",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제3: 현재커서 위치 다음라인에서 빈줄을 만들고 asdf2를 입력",
+    "text": "예제3: 현재커서 위치 다음라인에서 빈줄을 만들고 asdf2를 입력\n- step1: 생성된 파일로 들어가기\nvim test230803.txt \n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제 \n- 파일여는법/만드는법 (sudo는 읽기전용 파일을 만들수있음)\nsudo vim /etc/apt/sources.list\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제3-현재커서-위치-다음라인에서-빈줄을-만듬-asdf2를-입력",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제3-현재커서-위치-다음라인에서-빈줄을-만듬-asdf2를-입력",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제3: 현재커서 위치 다음라인에서 빈줄을 만듬 + asdf2를 입력",
+    "text": "예제3: 현재커서 위치 다음라인에서 빈줄을 만듬 + asdf2를 입력\n- step1: o를 누르면? 편집모드로 전환 + 새로운 라인이 추가\n\n- step2: asdf2입력\n\n- step3: esc 입력\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제 \n- 파일여는법/만드는법 (sudo는 읽기전용 파일을 만들수있음)\nsudo vim /etc/apt/sources.list\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제3-편집모드-to-다음라인에-빈줄을-만듬-to-asdf2를-입력-to-편집모드-해제",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제3-편집모드-to-다음라인에-빈줄을-만듬-to-asdf2를-입력-to-편집모드-해제",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제3: 편집모드 \\(\\to\\) 다음라인에 빈줄을 만듬 \\(\\to\\) asdf2를 입력 \\(\\to\\) 편집모드 해제",
+    "text": "예제3: 편집모드 \\(\\to\\) 다음라인에 빈줄을 만듬 \\(\\to\\) asdf2를 입력 \\(\\to\\) 편집모드 해제\n- step1: o를 누르면? 편집모드로 전환 + 새로운 라인이 추가\n\n- step2: asdf2입력\n\n- step3: esc 입력\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제 \n- 파일여는법/만드는법 (sudo는 읽기전용 파일을 만들수있음)\nsudo vim /etc/apt/sources.list\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제3-편집모드-다음라인에-빈줄을-만듬-to-asdf2를-입력-to-편집모드-해제",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제3-편집모드-다음라인에-빈줄을-만듬-to-asdf2를-입력-to-편집모드-해제",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제3: 편집모드 + 다음라인에 빈줄을 만듬 \\(\\to\\) asdf2를 입력 \\(\\to\\) 편집모드 해제",
+    "text": "예제3: 편집모드 + 다음라인에 빈줄을 만듬 \\(\\to\\) asdf2를 입력 \\(\\to\\) 편집모드 해제\n- step1: o를 누르면? 편집모드로 전환 + 새로운 라인이 추가\n\n- step2: asdf2입력\n\n- step3: esc 입력\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제 \n- 파일여는법/만드는법 (sudo는 읽기전용 파일을 만들수있음)\nsudo vim /etc/apt/sources.list\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-생성된-파일로-들어가기-to-좌우로-이동해보기-hl",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-생성된-파일로-들어가기-to-좌우로-이동해보기-hl",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제2: 생성된 파일로 들어가기 \\(\\to\\) 좌우로 이동해보기 (hl)",
+    "text": "예제2: 생성된 파일로 들어가기 \\(\\to\\) 좌우로 이동해보기 (hl)\n- step1: 생성된 파일로 들어가기\nvim test230803.txt \n\n- step2: l을 세번눌러서 오른쪽으로 3칸 이동1\n1 한글로 설정되어있으면 이동하지 않음\n- step3: h을 세번눌러서 왼쪽으로 3칸 이동2\n2 한글로 설정되어 있으면 이동하지 않음"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1-파일만들기-to-asdf-입력-후-저장",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1-파일만들기-to-asdf-입력-후-저장",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제1: 파일만들기 \\(\\to\\) asdf 입력 후 저장",
+    "text": "예제1: 파일만들기 \\(\\to\\) asdf 입력 후 저장\n- step1: 파일생성\nvim test230803.txt \n\n- step2: i를 누른다.\n\n- step3: asdf 입력\n\n\n\nimage.png\n\n\n- step4: esc 입력\n\n\n\nimage.png\n\n\n- step5: :wq + Enter 입력"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1-파일생성-to-편집모드-to-asdf-입력-to-저장-및-종료",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1-파일생성-to-편집모드-to-asdf-입력-to-저장-및-종료",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제1: 파일생성 \\(\\to\\) 편집모드 \\(\\to\\) asdf 입력 \\(\\to\\) 저장 및 종료",
+    "text": "예제1: 파일생성 \\(\\to\\) 편집모드 \\(\\to\\) asdf 입력 \\(\\to\\) 저장 및 종료\n- step1: 파일생성\nvim test230803.txt \n\n- step2: i를 누른다.\n\n- step3: asdf 입력\n\n\n\nimage.png\n\n\n- step4: esc 입력\n\n\n\nimage.png\n\n\n- step5: :wq + Enter 입력"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1-파일생성-to-편집모드-to-asdf-입력-to-편집모드해제-to-저장-및-종료",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1-파일생성-to-편집모드-to-asdf-입력-to-편집모드해제-to-저장-및-종료",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제1: 파일생성 \\(\\to\\) 편집모드 \\(\\to\\) asdf 입력 \\(\\to\\) 편집모드해제 \\(\\to\\) 저장 및 종료",
+    "text": "예제1: 파일생성 \\(\\to\\) 편집모드 \\(\\to\\) asdf 입력 \\(\\to\\) 편집모드해제 \\(\\to\\) 저장 및 종료\n- step1: 파일생성\nvim test230803.txt \n\n- step2: i를 누른다.\n\n- step3: asdf 입력\n\n\n\nimage.png\n\n\n- step4: esc 입력\n\n\n\nimage.png\n\n\n- step5: :wq + Enter 입력"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1-파일만들고-asdf-입력-후-저장-및-종료",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제1-파일만들고-asdf-입력-후-저장-및-종료",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제1: 파일만들고 asdf 입력 후 저장 및 종료",
+    "text": "예제1: 파일만들고 asdf 입력 후 저장 및 종료\n- step1: 파일생성\nvim test230803.txt \n\n- step2: i를 누른다.\n\n- step3: asdf 입력\n\n- step4: esc 입력\n\n- step5: :wq + Enter 입력"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-생성된-파일로-들어가서-좌우로-커서-이동",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-생성된-파일로-들어가서-좌우로-커서-이동",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제2: 생성된 파일로 들어가서 좌우로 커서 이동",
+    "text": "예제2: 생성된 파일로 들어가서 좌우로 커서 이동\n- step1: 생성된 파일로 들어가기\nvim test230803.txt \n\n- step2: l을 세번눌러서 오른쪽으로 3칸 이동1\n1 한글로 설정되어있으면 이동하지 않음\n- step3: h을 세번눌러서 왼쪽으로 3칸 이동2\n2 한글로 설정되어 있으면 이동하지 않음"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제3-다음라인에-asdf2입력",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제3-다음라인에-asdf2입력",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제3: 다음라인에 asdf2입력",
+    "text": "예제3: 다음라인에 asdf2입력\n- step1: o를 누르면? 편집모드로 전환 + 새로운 라인이 추가\n\n- step2: asdf2입력\n\n- step3: esc 입력하여 편집모드 해제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-좌우로-커서-이동",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제2-좌우로-커서-이동",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제2: 좌우로 커서 이동",
+    "text": "예제2: 좌우로 커서 이동\n- step1: 생성된 파일로 들어가기\nvim test230803.txt \n\n- step2: l을 세번눌러서 오른쪽으로 3칸 이동1\n1 한글로 설정되어있으면 이동하지 않음\n- step3: h을 세번눌러서 왼쪽으로 3칸 이동2\n2 한글로 설정되어 있으면 이동하지 않음"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제4-위아래-이동",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제4-위아래-이동",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제4: 위아래 이동",
+    "text": "예제4: 위아래 이동\n- step1: jk를 눌러서 위아래 이동해봄\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제 \n- 파일여는법/만드는법 (sudo는 읽기전용 파일을 만들수있음)\nsudo vim /etc/apt/sources.list\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제4-위-아래-이동",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제4-위-아래-이동",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제4: 위 아래 이동",
+    "text": "예제4: 위 아래 이동\n- jk를 이용"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제5-위-아래-이동",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제5-위-아래-이동",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제5: 위 아래 이동",
+    "text": "예제5: 위 아래 이동\n- step1: jk를 눌러서 위아래 이동해봄\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제 \n- 파일여는법/만드는법 (sudo는 읽기전용 파일을 만들수있음)\nsudo vim /etc/apt/sources.list\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제5-homeend와-같은-기능",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제5-homeend와-같은-기능",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제5: home/end와 같은 기능",
+    "text": "예제5: home/end와 같은 기능\n- 아래의 상황을 고려하자.\n\n- 라인의 맨 마지막으로 가고싶다면? $를 입력한다.\n\n- 다시 라인의 맨 처음으로 가고싶다면? 숫자 0을 입력한다."
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제7",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제7",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제7:",
+    "text": "예제7:\n- 아래의 상황을 고려하자.\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제7-라인복사-붙여넣기",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제7-라인복사-붙여넣기",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제7: 라인복사 + 붙여넣기",
+    "text": "예제7: 라인복사 + 붙여넣기\n- step1: 복사하고싶은 라인으로 이동 + yy 입력\n\n- step2: 아래로 붙여넣을 라인으로 이동\n\n- step3: p 입력"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제8-단어복사-붙여넣기",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제8-단어복사-붙여넣기",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제8: 단어복사 붙여넣기",
+    "text": "예제8: 단어복사 붙여넣기\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제8-다음단어-이전단어로-점프",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제8-다음단어-이전단어로-점프",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제8: 다음단어 + 이전단어로 점프",
+    "text": "예제8: 다음단어 + 이전단어로 점프\n- wb를 이용"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제9-현재단어-선택-복사",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제9-현재단어-선택-복사",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제9: 현재단어 선택 + 복사",
+    "text": "예제9: 현재단어 선택 + 복사\n- step1: 복사하고 싶은 단어 맨 앞글자에 커서를 위치한다.\n\n- step2: yw 입력\n\n\ny는 복사를 의미\nw는 현재단어를 선택하는 명령\n\n- step3: 붙여넣을 위치로 이동\n\n- step4: p 입력"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예졔10-단어-찾기",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예졔10-단어-찾기",
+    "title": "[Note] 우분투 익히기",
+    "section": "예졔10: 단어 찾기",
+    "text": "예졔10: 단어 찾기\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예졔10-asdf2-단어-찾기",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예졔10-asdf2-단어-찾기",
+    "title": "[Note] 우분투 익히기",
+    "section": "예졔10: asdf2 단어 찾기",
+    "text": "예졔10: asdf2 단어 찾기\n- 에디터에서 사용법\ni \nESC \n:w \n:q\n:wq\n/keyword  \ndd # 현재행삭제"
+  },
+  {
+    "objectID": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제10-asdf2-단어-찾기",
+    "href": "posts/4_Notes/2000-01-04-우분투 익히기.html#예제10-asdf2-단어-찾기",
+    "title": "[Note] 우분투 익히기",
+    "section": "예제10: asdf2 단어 찾기",
+    "text": "예제10: asdf2 단어 찾기\n- step1: /asdf2 입력\n\n- step2: Enter 입력\n\n- step3: n 입력하여 다음단어로 이동\n\n- step4: N 입력하여 이전단어로 이동\n\n\n?로 검색할 경우 n와 N의 역할이 뒤바뀐다."
   }
 ]

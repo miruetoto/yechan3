@@ -24,6 +24,4 @@ format:
     code-fold: false
     code-line-numbers: false
     code-copy: true
-    toggle: true
-    caption: none 
   ipynb: default
