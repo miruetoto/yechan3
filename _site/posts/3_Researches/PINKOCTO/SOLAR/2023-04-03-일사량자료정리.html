@@ -320,19 +320,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <div id="5e9092a0-e7b7-4923-909b-6f5915cb2589" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> itertools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="90acae10-e33f-4c0b-9726-580014f8de9a" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df0 <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/pinkocto/noteda/main/posts/data/OBS_ASOS_TIM_data0.csv'</span>, encoding<span class="op">=</span><span class="st">'cp949'</span>) <span class="co"># 2021-01-01 ~ 2021-12-31</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>df1 <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/pinkocto/noteda/main/posts/data/OBS_ASOS_TIM_data1.csv'</span>) <span class="co"># 2022-01-01 ~ 2023-12-31</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/pinkocto/noteda/main/posts/data/test_raw.csv'</span>, encoding<span class="op">=</span><span class="st">'cp949'</span>) <span class="co"># 2023-01-01 ~ 2023-01-15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df0 <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/pinkocto/noteda/main/posts/data/OBS_ASOS_TIM_data0.csv'</span>, encoding<span class="op">=</span><span class="st">'cp949'</span>) <span class="co"># 2021-01-01 ~ 2021-12-31</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/pinkocto/noteda/main/posts/data/OBS_ASOS_TIM_data1.csv'</span>) <span class="co"># 2022-01-01 ~ 2023-12-31</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/pinkocto/noteda/main/posts/data/test_raw.csv'</span>, encoding<span class="op">=</span><span class="st">'cp949'</span>) <span class="co"># 2023-01-01 ~ 2023-01-15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> df_raw</p>
 <div id="58e2cb1f-ffd8-4e7b-967b-de2871c8d457" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df_raw <span class="op">=</span> pd.concat([df0, df1])</span>
-<span id="cb3-2"><a href="#cb3-2"></a>df_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_raw <span class="op">=</span> pd.concat([df0, df1])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
@@ -434,10 +434,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 지점칼럼 삭제 // 일시 <span class="math inline">\(\to\)</span> 날짜,시간 으로 분리</p>
 <div id="952490ec-4b38-45e7-a45f-d3b521494861" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df_temp <span class="op">=</span> df_raw.assign(날짜<span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x[:<span class="dv">10</span>],df_raw[<span class="st">'일시'</span>])))<span class="op">\</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>.assign(시간<span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x[<span class="dv">11</span>:<span class="dv">16</span>],df_raw[<span class="st">'일시'</span>])))<span class="op">\</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>.drop([<span class="st">'일시'</span>,<span class="st">'지점'</span>],axis<span class="op">=</span><span class="dv">1</span>).rename({<span class="st">'일사(MJ/m2)'</span>:<span class="st">'일사'</span>},axis<span class="op">=</span><span class="dv">1</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>df_temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_temp <span class="op">=</span> df_raw.assign(날짜<span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x[:<span class="dv">10</span>],df_raw[<span class="st">'일시'</span>])))<span class="op">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>.assign(시간<span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x[<span class="dv">11</span>:<span class="dv">16</span>],df_raw[<span class="st">'일시'</span>])))<span class="op">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>.drop([<span class="st">'일시'</span>,<span class="st">'지점'</span>],axis<span class="op">=</span><span class="dv">1</span>).rename({<span class="st">'일사(MJ/m2)'</span>:<span class="st">'일사'</span>},axis<span class="op">=</span><span class="dv">1</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df_temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
@@ -539,8 +539,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 파주,상주,동두천,충주,제천은 삭제</p>
 <div id="122f5a76-731d-4de7-80a8-5b61c95e870f" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df_temp <span class="op">=</span> df_temp.query(<span class="st">"지점명 not in ['파주','상주','동두천','충주','제천']"</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>df_temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_temp <span class="op">=</span> df_temp.query(<span class="st">"지점명 not in ['파주','상주','동두천','충주','제천']"</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
@@ -642,14 +642,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 시간이 비어있지 않도록..</p>
 <div id="251c7660-9a94-4a58-ba9c-3c933b5d7c83" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>reg <span class="op">=</span> df_temp[<span class="st">'지점명'</span>].unique().tolist() </span>
-<span id="cb6-2"><a href="#cb6-2"></a>day <span class="op">=</span> df_temp[<span class="st">'날짜'</span>].unique().tolist() </span>
-<span id="cb6-3"><a href="#cb6-3"></a>time <span class="op">=</span> <span class="bu">list</span>(df_temp[<span class="st">'시간'</span>].unique())</span>
-<span id="cb6-4"><a href="#cb6-4"></a>time <span class="op">=</span> [<span class="st">'0</span><span class="sc">{}</span><span class="st">:00'</span>.<span class="bu">format</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">8</span>)] <span class="op">+</span> time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>reg <span class="op">=</span> df_temp[<span class="st">'지점명'</span>].unique().tolist() </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>day <span class="op">=</span> df_temp[<span class="st">'날짜'</span>].unique().tolist() </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> <span class="bu">list</span>(df_temp[<span class="st">'시간'</span>].unique())</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> [<span class="st">'0</span><span class="sc">{}</span><span class="st">:00'</span>.<span class="bu">format</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">8</span>)] <span class="op">+</span> time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="105ff468-b6d2-4e5a-9a78-3114d0b53226" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df_temp2 <span class="op">=</span> pd.DataFrame(itertools.product(reg,day,time)).rename({<span class="dv">0</span>:<span class="st">'지점명'</span>,<span class="dv">1</span>:<span class="st">'날짜'</span>,<span class="dv">2</span>:<span class="st">'시간'</span>},axis<span class="op">=</span><span class="dv">1</span>).merge(df_temp,how<span class="op">=</span><span class="st">'left'</span>).fillna(<span class="dv">0</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>df_temp2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_temp2 <span class="op">=</span> pd.DataFrame(itertools.product(reg,day,time)).rename({<span class="dv">0</span>:<span class="st">'지점명'</span>,<span class="dv">1</span>:<span class="st">'날짜'</span>,<span class="dv">2</span>:<span class="st">'시간'</span>},axis<span class="op">=</span><span class="dv">1</span>).merge(df_temp,how<span class="op">=</span><span class="st">'left'</span>).fillna(<span class="dv">0</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df_temp2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
@@ -750,7 +750,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="6e8e4f54-5fff-4491-88f3-5317ad713f36" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df_temp2[:<span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_temp2[:<span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
@@ -913,7 +913,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="fa3efa2e-b69c-45ee-a765-255c6a907e93" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df_temp2[<span class="op">-</span><span class="dv">20</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_temp2[<span class="op">-</span><span class="dv">20</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 
@@ -1076,7 +1076,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="ade5bd6e-6b74-49ba-a751-2cf64555f579" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df_temp2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_temp2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
@@ -1178,9 +1178,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 시간,날짜 <span class="math inline">\(\to\)</span> 일시</p>
 <div id="16da834a-4ce5-4d28-99e1-1492ec2d12d9" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df_temp3<span class="op">=</span>df_temp2.assign(일시 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x,y: x<span class="op">+</span><span class="st">'-'</span><span class="op">+</span>y,df_temp2[<span class="st">'날짜'</span>],df_temp2[<span class="st">'시간'</span>])))<span class="op">\</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>.drop([<span class="st">'날짜'</span>,<span class="st">'시간'</span>],axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb11-3"><a href="#cb11-3"></a>df_temp3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_temp3<span class="op">=</span>df_temp2.assign(일시 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x,y: x<span class="op">+</span><span class="st">'-'</span><span class="op">+</span>y,df_temp2[<span class="st">'날짜'</span>],df_temp2[<span class="st">'시간'</span>])))<span class="op">\</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>.drop([<span class="st">'날짜'</span>,<span class="st">'시간'</span>],axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df_temp3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
@@ -1270,7 +1270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 저장</p>
 <div id="71d2d6ad-aee4-41e4-9606-fdb6e541b67e" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df_temp3.rename({<span class="st">'지점명'</span>:<span class="st">'region'</span>,<span class="st">'일사'</span>:<span class="st">'solar_radiation'</span>,<span class="st">'일시'</span>:<span class="st">'date'</span>},axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_temp3.rename({<span class="st">'지점명'</span>:<span class="st">'region'</span>,<span class="st">'일사'</span>:<span class="st">'solar_radiation'</span>,<span class="st">'일시'</span>:<span class="st">'date'</span>},axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 
@@ -1359,11 +1359,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="a30d9ae9-e522-4900-8040-c329a3698aac" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df <span class="op">=</span> df_temp3.rename({<span class="st">'지점명'</span>:<span class="st">'region'</span>,<span class="st">'일사'</span>:<span class="st">'solar_radiation'</span>,<span class="st">'일시'</span>:<span class="st">'date'</span>},axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>df.to_csv(<span class="st">"solar_radiation.csv"</span>,index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="op">!</span>git add .</span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="op">!</span>git commit <span class="op">-</span>m .</span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="op">!</span>git push </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df_temp3.rename({<span class="st">'지점명'</span>:<span class="st">'region'</span>,<span class="st">'일사'</span>:<span class="st">'solar_radiation'</span>,<span class="st">'일시'</span>:<span class="st">'date'</span>},axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"solar_radiation.csv"</span>,index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git add .</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git commit <span class="op">-</span>m .</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git push </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[main 299d058] .
  3 files changed, 806273 insertions(+)
@@ -1383,8 +1383,8 @@ To https://github.com/miruetoto/yechan3.git
 </div>
 <p><code>-</code> 불러오기</p>
 <div id="fdd11828-a9ef-4695-8db3-e167b24ce3f6" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/miruetoto/yechan3/main/posts/3_Researches/SOLAR/solar_radiation.csv"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/miruetoto/yechan3/main/posts/3_Researches/SOLAR/solar_radiation.csv"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 
@@ -1473,7 +1473,7 @@ To https://github.com/miruetoto/yechan3.git
 </div>
 </div>
 <p><code>-</code> 다운로드</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1"></a>!wget https://raw.githubusercontent.com/miruetoto/yechan3/main/posts/3_Researches/SOLAR/solar_radiation.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>!wget https://raw.githubusercontent.com/miruetoto/yechan3/main/posts/3_Researches/SOLAR/solar_radiation.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 

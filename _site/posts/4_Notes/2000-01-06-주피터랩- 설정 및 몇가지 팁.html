@@ -331,95 +331,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="주피터에-r커널을-연결할-경우-그림크기-조정" class="level1">
 <h1>주피터에 R커널을 연결할 경우 그림크기 조정</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>options(repr.plot.width=10, repr.plot.height=3,repr.plot.res=300)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>options(repr.plot.width=10, repr.plot.height=3,repr.plot.res=300)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="깃허브에서-.py파일-불러오기" class="level1">
 <h1>깃허브에서 <code>*.py</code>파일 불러오기</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> requests</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="bu">exec</span>(requests.get(<span class="st">'http://miruetoto.github.io/my_code/datahandling.py'</span>).text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">exec</span>(requests.get(<span class="st">'http://miruetoto.github.io/my_code/datahandling.py'</span>).text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="rpy2-magic" class="level1">
 <h1>rpy2 magic</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> rpy2</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="op">%</span>load_ext rpy2.ipython</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rpy2</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext rpy2.ipython</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="깃허브에서-.r파일-불러오기" class="level1">
 <h1>깃허브에서 <code>*.R</code>파일 불러오기</h1>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> rpy2</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="op">%</span>load_ext rpy2.ipython</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="op">%</span>R library(devtools)</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="op">%</span>R source_url(<span class="st">"http://miruetoto.github.io/my_code/datahandling.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rpy2</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext rpy2.ipython</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R library(devtools)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R source_url(<span class="st">"http://miruetoto.github.io/my_code/datahandling.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="matplotlib-그림크기조정" class="level1">
 <h1>matplotlib 그림크기조정</h1>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl </span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
-<span id="cb5-3"><a href="#cb5-3"></a>Ipython_default<span class="op">=</span>plt.rcParams.copy() <span class="co"># save initial value </span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="im">from</span> matplotlib <span class="im">import</span> cycler</span>
-<span id="cb5-5"><a href="#cb5-5"></a>plt.rc(<span class="st">'figure'</span>,dpi<span class="op">=</span><span class="dv">150</span>) <span class="co"># default value 4 figure.dpi is 72.0 </span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># plt.rcParams.update(Ipython_default) # load initial value </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Ipython_default<span class="op">=</span>plt.rcParams.copy() <span class="co"># save initial value </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> cycler</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'figure'</span>,dpi<span class="op">=</span><span class="dv">150</span>) <span class="co"># default value 4 figure.dpi is 72.0 </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.rcParams.update(Ipython_default) # load initial value </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="gpu-사용여부-체크" class="level1">
 <h1>GPU 사용여부 체크</h1>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> keras <span class="im">import</span> backend <span class="im">as</span> K</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="bu">print</span>(<span class="st">'GPU check 4 Keras: '</span><span class="op">+</span> <span class="bu">str</span>(K.tensorflow_backend._get_available_gpus()))</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="im">import</span> torch</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="bu">print</span>(<span class="st">'GPU check 4 Pytorch: '</span><span class="op">+</span> <span class="bu">str</span>(torch.cuda.get_device_name(<span class="dv">0</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras <span class="im">import</span> backend <span class="im">as</span> K</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'GPU check 4 Keras: '</span><span class="op">+</span> <span class="bu">str</span>(K.tensorflow_backend._get_available_gpus()))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'GPU check 4 Pytorch: '</span><span class="op">+</span> <span class="bu">str</span>(torch.cuda.get_device_name(<span class="dv">0</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="깃랩관련-회사아니면-필요없음" class="level1">
 <h1>깃랩관련 (회사아니면 필요없음)</h1>
 <p><code>-</code> <strong><em>load <code>*.py</code> from gitlab</em></strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> gitlab</span>
-<span id="cb7-2"><a href="#cb7-2"></a>gl <span class="op">=</span> gitlab.Gitlab(<span class="st">'http://10.178.145.54:9000'</span>, private_token<span class="op">=</span><span class="st">'RkZz465zdyyEChamLKy8'</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>gl.auth()</span>
-<span id="cb7-4"><a href="#cb7-4"></a>project <span class="op">=</span> gl.projects.get(<span class="dv">2</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># (1) load RF.py, RF_withGIT.py, RF_withR.py</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>RF_py <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'modeling/RF.py'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
-<span id="cb7-8"><a href="#cb7-8"></a>RF_GIT_py <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'utils/RF_withGIT.py'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
-<span id="cb7-9"><a href="#cb7-9"></a>RF_R_py <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'utils/RF_withR.py'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="bu">exec</span>(<span class="bu">str</span>(RF_py, <span class="st">'utf-8'</span>))</span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="bu">exec</span>(<span class="bu">str</span>(RF_GIT_py, <span class="st">'utf-8'</span>))</span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="bu">exec</span>(<span class="bu">str</span>(RF_R_py, <span class="st">'utf-8'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gitlab</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>gl <span class="op">=</span> gitlab.Gitlab(<span class="st">'http://10.178.145.54:9000'</span>, private_token<span class="op">=</span><span class="st">'RkZz465zdyyEChamLKy8'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>gl.auth()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>project <span class="op">=</span> gl.projects.get(<span class="dv">2</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># (1) load RF.py, RF_withGIT.py, RF_withR.py</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>RF_py <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'modeling/RF.py'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>RF_GIT_py <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'utils/RF_withGIT.py'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>RF_R_py <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'utils/RF_withR.py'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">exec</span>(<span class="bu">str</span>(RF_py, <span class="st">'utf-8'</span>))</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">exec</span>(<span class="bu">str</span>(RF_GIT_py, <span class="st">'utf-8'</span>))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">exec</span>(<span class="bu">str</span>(RF_R_py, <span class="st">'utf-8'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> <strong><em>load <code>*.R</code> in gitlab</em></strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> gitlab</span>
-<span id="cb8-2"><a href="#cb8-2"></a>gl <span class="op">=</span> gitlab.Gitlab(<span class="st">'http://10.178.145.54:9000'</span>, private_token<span class="op">=</span><span class="st">'RkZz465zdyyEChamLKy8'</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>gl.auth()</span>
-<span id="cb8-4"><a href="#cb8-4"></a>project <span class="op">=</span> gl.projects.get(<span class="dv">2</span>)</span>
-<span id="cb8-5"><a href="#cb8-5"></a>RF_R_rcode <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'utils/RF_Rfunctions.r'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co"># tricks for source('Rfunctions.r')</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>file1 <span class="op">=</span> <span class="bu">open</span>(<span class="st">"RF_Rfunctions.r"</span>,<span class="st">"w"</span>) </span>
-<span id="cb8-8"><a href="#cb8-8"></a>file1.write(<span class="bu">str</span>(RF_R_rcode, <span class="st">'utf-8'</span>))</span>
-<span id="cb8-9"><a href="#cb8-9"></a>file1.close() </span>
-<span id="cb8-10"><a href="#cb8-10"></a>ro.r(<span class="st">"source('RF_Rfunctions.r')"</span>)</span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="im">import</span> os</span>
-<span id="cb8-12"><a href="#cb8-12"></a>os.remove(<span class="st">'RF_Rfunctions.r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gitlab</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gl <span class="op">=</span> gitlab.Gitlab(<span class="st">'http://10.178.145.54:9000'</span>, private_token<span class="op">=</span><span class="st">'RkZz465zdyyEChamLKy8'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>gl.auth()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>project <span class="op">=</span> gl.projects.get(<span class="dv">2</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>RF_R_rcode <span class="op">=</span> project.files.get(file_path<span class="op">=</span><span class="st">'utils/RF_Rfunctions.r'</span>, ref<span class="op">=</span><span class="st">'fridge'</span>).decode()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tricks for source('Rfunctions.r')</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>file1 <span class="op">=</span> <span class="bu">open</span>(<span class="st">"RF_Rfunctions.r"</span>,<span class="st">"w"</span>) </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>file1.write(<span class="bu">str</span>(RF_R_rcode, <span class="st">'utf-8'</span>))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>file1.close() </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>ro.r(<span class="st">"source('RF_Rfunctions.r')"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>os.remove(<span class="st">'RF_Rfunctions.r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="옵션으로-주피터-실행" class="level1">
 <h1><code>&amp;</code> 옵션으로 주피터 실행</h1>
 <p><code>-</code> 서버에 접속한다.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1"></a>ssh lgcgb@10.178.144.65</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ssh lgcgb@10.178.144.65</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>아래와 같이 끝에 <code>&amp;</code>을 붙이면 된다.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1"></a>conda activate py20190129</span>
-<span id="cb10-2"><a href="#cb10-2"></a>jupyter lab &amp;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>conda activate py20190129</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>jupyter lab &amp;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>실행하고 난뒤에는 엔터를 쳐서 빠져나온다.</strong> 이렇게 하면 서버자체에 모니터를 연결하고 커널창을 띄운것과 같은 효과를 준다. 즉 서버에 접속한 컴퓨터를 끄는것과 상관없이 서버에서는 항상 주피터가 열려 있게 된다.</p>
 </section>
 <section id="옵션으로-실행한-주피터프로세스-죽이기" class="level1">
 <h1><code>&amp;</code> 옵션으로 실행한 주피터프로세스 죽이기</h1>
 <p><code>-</code> 서버에 접속한다.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1"></a>ssh lgcgb@10.178.144.65</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ssh lgcgb@10.178.144.65</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>실행된 프로세스를 찾기위해 아래를 실행한다.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1"></a>ps aux | grep jupyter-lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ps aux | grep jupyter-lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>결과는 아래와 같이 나온다.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1"></a>lgcgb    26888  0.2  0.1 326760 86724 ?        Sl   10:14   0:12 /home/lgcgb/anaconda3/envs/py20190129/bin/python3.7 /home/lgcgb/anaconda3/envs/py20190129/bin/jupyter-lab</span>
-<span id="cb13-2"><a href="#cb13-2"></a>lgcgb    27146  0.0  0.0  15720  1008 pts/3    S+   11:56   0:00 grep --color=auto jupyter-lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lgcgb    26888  0.2  0.1 326760 86724 ?        Sl   10:14   0:12 /home/lgcgb/anaconda3/envs/py20190129/bin/python3.7 /home/lgcgb/anaconda3/envs/py20190129/bin/jupyter-lab</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>lgcgb    27146  0.0  0.0  15720  1008 pts/3    S+   11:56   0:00 grep --color=auto jupyter-lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>26888에 해당하는 것이 주피터를 띄운 커널이다. 이 번호를 기억했다가 프로세스를 아래와 같은 명령으로 죽인다.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1"></a>kill 26888</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>kill 26888</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="패스워드-없이-주피터-실행" class="level1">
 <h1>패스워드 없이 주피터 실행</h1>
 <p><code>-</code> 아래와 같이 하면 외부에서 접속할때 패스워드를 입력하지 않음.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1"></a>jupyter notebook --ServerApp.token='' --ServerApp.password='' </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>jupyter notebook --ServerApp.token='' --ServerApp.password='' </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

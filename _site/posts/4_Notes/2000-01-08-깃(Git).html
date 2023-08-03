@@ -334,47 +334,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>clone</h1>
 <p>github repository <span class="math inline">\(\to\)</span> code <span class="math inline">\(\to\)</span> clone tab, ssh를 복사 (<code>git@github.com:miruetoto/yechan.git</code>처럼 생김)</p>
 <p>터미널에서 아래를 입력</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>git clone git@github.com:miruetoto/yechan.git 01_yechan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>git clone git@github.com:miruetoto/yechan.git 01_yechan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pull" class="level1">
 <h1>pull</h1>
 <p><code>-</code> 깃이 설치된 가장 상위폴더(Documents/Github/miruetoto.github.io)에 가서 아래를 입력한다.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1"></a>git pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>git pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="branch" class="level1">
 <h1>branch</h1>
 <p><code>-</code> 서버에 이미 guebin이라는 브랜치가 있다면 아래와 같이 동기화 시킨다.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1"></a>git chechout guebin</span>
-<span id="cb3-2"><a href="#cb3-2"></a>git push -u origin guebin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>git chechout guebin</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>git push -u origin guebin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>여기에서 <code>git push -u origin guebin</code>을 안해도 동기화가 잘될때도 있는데 아닐때도 있다.</p>
 </section>
 <section id="remote" class="level1">
 <h1>remote</h1>
 <p><code>-</code> 깃이 설치된 가장 상위폴더(Documents/Github/miruetoto.github.io)에 가서 아래를 입력하면 깃허브의 url 주소를 확인할 수 있다.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1"></a>(base) lgcgb2@lgcgb2:~/Documents/GitHub/miruetoto.github.io$ git remote -v</span>
-<span id="cb4-2"><a href="#cb4-2"></a>origin https://github.com/miruetoto/miruetoto.github.io.git (fetch)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>origin https://github.com/miruetoto/miruetoto.github.io.git (push)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>upstream https://github.com/daattali/beautiful-jekyll.git (fetch)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>upstream https://github.com/daattali/beautiful-jekyll.git (push)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(base) lgcgb2@lgcgb2:~/Documents/GitHub/miruetoto.github.io$ git remote -v</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>origin https://github.com/miruetoto/miruetoto.github.io.git (fetch)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>origin https://github.com/miruetoto/miruetoto.github.io.git (push)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>upstream https://github.com/daattali/beautiful-jekyll.git (fetch)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>upstream https://github.com/daattali/beautiful-jekyll.git (push)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="config" class="level1">
 <h1>config</h1>
 <p><code>-</code> 설정보기</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1"></a>git config —list </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>git config —list </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 설정삭제</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1"></a>git config --unset user.name</span>
-<span id="cb6-2"><a href="#cb6-2"></a>git config --unser user.email</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>git config --unset user.name</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>git config --unser user.email</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 전역설정삭제</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1"></a>git config --unset --global user.name</span>
-<span id="cb7-2"><a href="#cb7-2"></a>git config --unset --global user.email</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>git config --unset --global user.name</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>git config --unset --global user.email</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 중복값 설정삭제</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1"></a>git config --unset-all user.name</span>
-<span id="cb8-2"><a href="#cb8-2"></a>git config --unset-all user.email</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>git config --unset-all user.name</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>git config --unset-all user.email</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 중복값 전역으로 설정삭제</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1"></a>git config --unset-all --global user.name</span>
-<span id="cb9-2"><a href="#cb9-2"></a>git config --unset-all --global user.email</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>git config --unset-all --global user.name</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>git config --unset-all --global user.email</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 비번안치고 푸쉬하는법?</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1"></a>git config credential.helper store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>git config credential.helper store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>입력이후에 <code>git push</code></p>
 </section>
 <section id="git-token" class="level1">

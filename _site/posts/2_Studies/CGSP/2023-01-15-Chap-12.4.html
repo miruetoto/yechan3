@@ -324,11 +324,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <div id="e8effb53-70b6-4f84-be55-96a8fc30e965" class="cell" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>using LinearAlgebra, Plots, FFTW, Statistics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>using LinearAlgebra, Plots, FFTW, Statistics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="aae00adb-706b-46b1-bdb8-07705ccfd22b" class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>columnwise_kron <span class="op">=</span> </span>
-<span id="cb2-2"><a href="#cb2-2"></a>(C,D) <span class="op">-&gt;</span> hcat([kron(C[:,i],D[:,i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">1</span>:size(C)[<span class="dv">2</span>]]...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>columnwise_kron <span class="op">=</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>(C,D) <span class="op">-&gt;</span> hcat([kron(C[:,i],D[:,i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">1</span>:size(C)[<span class="dv">2</span>]]...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="76">
 <pre><code>#49 (generic function with 1 method)</code></pre>
 </div>
@@ -337,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>12.4.1 The Sampling Problem</h1>
 <p>아래와 같이 길이가 <span class="math inline">\(N=10\)</span> 인 신호 <span class="math inline">\({\bf x}\)</span>를 고려하자.</p>
 <div id="a2df1de5-174b-4bfc-a8db-fab95afdb703" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="op">=</span> rand(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> rand(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>10-element Vector{Float64}:
  0.03235208758206609
@@ -354,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>여기에서 1,3,4,5 번째 원소만 추출하여길이가 <span class="math inline">\(K=4\)</span> 인 신호 <span class="math inline">\({\bf y}\)</span>를 만들고 싶다.</p>
 <div id="5bf0ac07-06b3-49b8-a7c6-f89e9bae28a3" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>y <span class="op">=</span> x[[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x[[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>4-element Vector{Float64}:
  0.03235208758206609
@@ -365,10 +365,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>이 과정은 아래와 같이 수행할 수도 있다.</p>
 <div id="761a6509-0a8b-41f3-a773-cffb681799f8" class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>Φ<span class="op">=</span> [<span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>    <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>    <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>    <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Φ<span class="op">=</span> [<span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>4×10 Matrix{Int64}:
  1  0  0  0  0  0  0  0  0  0
@@ -378,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="472e43d3-3a54-458f-a2cc-5c73a0ceb973" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>Φ<span class="op">*</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Φ<span class="op">*</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>4-element Vector{Float64}:
  0.03235208758206609
@@ -392,10 +392,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="compressed-ls-estimator" class="level1">
 <h1>12.4.2 Compressed LS Estimator</h1>
 <div id="483f97c6-93ea-4250-9801-741d6ae0b511" class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>N <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>V <span class="op">=</span> [i<span class="op">*</span>j <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">0</span>:(N<span class="op">-</span><span class="dv">1</span>) <span class="cf">for</span> j <span class="kw">in</span> <span class="dv">0</span>:(N<span class="op">-</span><span class="dv">1</span>)] <span class="op">|&gt;</span> </span>
-<span id="cb12-3"><a href="#cb12-3"></a>    x <span class="op">-&gt;</span> reshape(x,(N,N)) .<span class="op">|&gt;</span> </span>
-<span id="cb12-4"><a href="#cb12-4"></a>    x <span class="op">-&gt;</span> exp(im <span class="op">*</span> (<span class="dv">2</span><span class="er">π</span><span class="op">/</span>N) <span class="op">*</span> x) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> [i<span class="op">*</span>j <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">0</span>:(N<span class="op">-</span><span class="dv">1</span>) <span class="cf">for</span> j <span class="kw">in</span> <span class="dv">0</span>:(N<span class="op">-</span><span class="dv">1</span>)] <span class="op">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">-&gt;</span> reshape(x,(N,N)) .<span class="op">|&gt;</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">-&gt;</span> exp(im <span class="op">*</span> (<span class="dv">2</span><span class="er">π</span><span class="op">/</span>N) <span class="op">*</span> x) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="99">
 <pre><code>10×10 Matrix{ComplexF64}:
  1.0+0.0im        1.0+0.0im          …        1.0+0.0im
@@ -411,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="28d53404-47d7-4f2e-aff5-7c5a898a276f" class="cell" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>G <span class="op">=</span> columnwise_kron(conj(V),V)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> columnwise_kron(conj(V),V)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="100">
 <pre><code>100×10 Matrix{ComplexF64}:
  1.0+0.0im        1.0+0.0im          …        1.0+0.0im
@@ -444,8 +444,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 방법1</p>
 <div id="02c05239-1edf-423e-831f-87a41749d4f3" class="cell" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>ĉx <span class="op">=</span> vec(x<span class="op">*</span>x<span class="st">')</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="er">p̂ = inv</span>(G<span class="st">' * G) * G'</span> <span class="op">*</span> ĉx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ĉx <span class="op">=</span> vec(x<span class="op">*</span>x<span class="st">')</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="er">p̂ = inv</span>(G<span class="st">' * G) * G'</span> <span class="op">*</span> ĉx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="101">
 <pre><code>10-element Vector{ComplexF64}:
     0.25854107856772546 + 2.245922875954761e-20im
@@ -462,8 +462,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 방법2</p>
 <div id="bcf1d853-ec46-4bd6-b22f-47a7e7e64005" class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>ĉy <span class="op">=</span> vec(y<span class="op">*</span>y<span class="st">')</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="er">p̂ = </span>(kron(Φ,Φ)<span class="op">*</span>G)<span class="st">' * ĉy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ĉy <span class="op">=</span> vec(y<span class="op">*</span>y<span class="st">')</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="er">p̂ = </span>(kron(Φ,Φ)<span class="op">*</span>G)<span class="st">' * ĉy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="106">
 <pre><code>10-element Vector{ComplexF64}:
    3.759462826821233 + 0.0im

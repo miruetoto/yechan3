@@ -357,27 +357,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>그래픽카드 드라이버설치</h1>
 <p><code>-</code> 전체적인 내용은 <a href="https://gist.github.com/bendangnuksung/981408031699e0ddc50a6f6fdcf185c2">여기</a>를 참고하자.</p>
 <p><code>-</code> 준비작업</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>sudo apt update </span>
-<span id="cb1-2"><a href="#cb1-2"></a>sudo apt install gcc</span>
-<span id="cb1-3"><a href="#cb1-3"></a>sudo apt install build-essential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sudo apt update </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sudo apt install gcc</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sudo apt install build-essential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 우선 <code>gedit</code>를 열고 아래를 복사해서 붙여넣는다.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1"></a>blacklist nouveau</span>
-<span id="cb2-2"><a href="#cb2-2"></a>options nouveau modeset=0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>blacklist nouveau</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>options nouveau modeset=0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>파일이름을 <code>blacklist-nouveau.conf</code>로 <code>home</code>에 저장</p>
 <p><code>-</code> 루트권한획득</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1"></a>sudo -i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sudo -i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>아이디와 비밀번호를 입력하고 루트권한을 얻는다.</p>
 <p><code>-</code> 아래를 입력한다.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1"></a>sudo cp /home/cgb2/blacklist-nouveau.conf /etc/modprobe.d</span>
-<span id="cb4-2"><a href="#cb4-2"></a>sudo update-initramfs -u</span>
-<span id="cb4-3"><a href="#cb4-3"></a>sudo reboot </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sudo cp /home/cgb2/blacklist-nouveau.conf /etc/modprobe.d</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sudo update-initramfs -u</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sudo reboot </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 그래픽카드 다운로드: 드라이버 설치파일을 다운받는다. <a href="https://www.geforce.com/drivers">앤비디아공식홈페이지</a>에서 다운받자. OS를 리눅스 64-bit으로 선택하고 검색을 누르면 다운받아진다.</p>
 <p><code>-</code> 그래픽키다 설치: 다운받은뒤에는 파일이 있는 폴더로 이동하여</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1"></a>chmod +x NVIDIA-Linux-x86_64-410.78.run</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>chmod +x NVIDIA-Linux-x86_64-410.78.run</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>를 실행하자. 보통 <code>NVI</code>까지치고 적당히 <code>탭</code>을 누르면 알아서 뒷부분이 완성된다. 이 과정은 추후에 드라이버를 실행할수 있도록 권한을 풀어두는 것이다. 그리고 아래를 실행한다.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1"></a>sudo ./NVIDIA-Linux-x86_64-410.78.run</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sudo ./NVIDIA-Linux-x86_64-410.78.run</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>그 다음 드라이버가 잘 설치되었는지 확인한다.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1"></a>nvidia-smi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nvidia-smi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ssh연결" class="level1">
 <h1>ssh연결</h1>
@@ -385,24 +385,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>sudo apt install openssh-server</code></pre>
 <p><strong><em>22번포트 우회하기</em></strong></p>
 <p><code>-</code> step1: <code>/etc/ssh/sshd_config</code> 파일을 연다.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1"></a>sudo vi /etc/ssh/sshd_config </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sudo vi /etc/ssh/sshd_config </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> step2: Port 22 라고 된 부분의 주석을 풀고 원하는 포트번호 설정</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1"></a>...</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a>#Port 22</span>
-<span id="cb10-4"><a href="#cb10-4"></a>#AddressFamily any</span>
-<span id="cb10-5"><a href="#cb10-5"></a>#ListenAddress 0.0.0.0</span>
-<span id="cb10-6"><a href="#cb10-6"></a>#ListenAddress ::</span>
-<span id="cb10-7"><a href="#cb10-7"></a></span>
-<span id="cb10-8"><a href="#cb10-8"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>#Port 22</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>#AddressFamily any</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>#ListenAddress 0.0.0.0</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>#ListenAddress ::</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> step3: 수정내용을 적용</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1"></a>sudo systemctl restart ssh.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl restart ssh.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> step4: 수정한 포트로 ssh접속</p>
 </section>
 <section id="아나콘다" class="level1">
 <h1>아나콘다</h1>
 <p><code>-</code> (아나콘다 설치) 아나콘다를 다운받은 폴더로 가서 아래와 같이 실행한다.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1"></a>bash Anaconda3-2019.03-Linux-x86_64.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>bash Anaconda3-2019.03-Linux-x86_64.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>대충 <code>bash Ana</code> 정도까지만 치고 <code>tab</code>을 누르면 알아서 완성된다.</p>
 </section>
 <section id="개발환경" class="level1 page-columns page-full">
@@ -410,27 +410,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rpython-사용가능한-개발환경" class="level2">
 <h2 class="anchored" data-anchor-id="rpython-사용가능한-개발환경"><code>1</code>. R+Python 사용가능한 개발환경</h2>
 <p><code>-</code> 아래를 실행</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1"></a>(base) conda create -n rpy </span>
-<span id="cb13-2"><a href="#cb13-2"></a>(base) conda activate rpy</span>
-<span id="cb13-3"><a href="#cb13-3"></a>(rpy) conda install -c conda-forge r-essentials</span>
-<span id="cb13-4"><a href="#cb13-4"></a>(rpy) conda install -c conda-forge plotly</span>
-<span id="cb13-5"><a href="#cb13-5"></a>(rpy) pip install ryp2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(base) conda create -n rpy </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>(base) conda activate rpy</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>(rpy) conda install -c conda-forge r-essentials</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>(rpy) conda install -c conda-forge plotly</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>(rpy) pip install ryp2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 여기에서 <code>conda install -c conda-forge r-essentials</code>로 인하여 R, Python, Jupyter 가 모두 최신버전으로 설치된다.</p>
 <p><code>-</code> 또한 R에는 이미 <code>tidyverse</code>, <code>IRkernel</code> 등의 패키지가 기본으로 깔려있다.</p>
 </section>
 <section id="pytorch를-사용이-가능한-개발환경" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="pytorch를-사용이-가능한-개발환경"><code>2</code>. PyTorch를 사용이 가능한 개발환경</h2>
 <p><code>-</code> 아래를 실행</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1"></a>(base) conda create -n torch</span>
-<span id="cb14-2"><a href="#cb14-2"></a>(base) conda activate torch</span>
-<span id="cb14-3"><a href="#cb14-3"></a>(torch) conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia</span>
-<span id="cb14-4"><a href="#cb14-4"></a>(torch) conda install -c conda-forge notebook </span>
-<span id="cb14-5"><a href="#cb14-5"></a>(torch) conda install -c conda-forge plotly </span>
-<span id="cb14-6"><a href="#cb14-6"></a>(torch) conda install pyg -c pyg </span>
-<span id="cb14-7"><a href="#cb14-7"></a>(torch) pip install torch-geometric-temporal</span>
-<span id="cb14-8"><a href="#cb14-8"></a>(torch) conda install -c pytorch -c conda-forge ctgan</span>
-<span id="cb14-9"><a href="#cb14-9"></a>(torch) pip install gymnasium </span>
-<span id="cb14-10"><a href="#cb14-10"></a>(torch) pip install gymnasium[box2d]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(base) conda create -n torch</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>(base) conda activate torch</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>(torch) conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>(torch) conda install -c conda-forge notebook </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>(torch) conda install -c conda-forge plotly </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>(torch) conda install pyg -c pyg </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>(torch) pip install torch-geometric-temporal</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>(torch) conda install -c pytorch -c conda-forge ctgan</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>(torch) pip install gymnasium </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>(torch) pip install gymnasium[box2d]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>refs</strong></p>
 <ul>
 <li>PyTorch: <a href="https://pytorch.org/get-started/locally/" class="uri">https://pytorch.org/get-started/locally/</a></li>
@@ -444,46 +444,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="주피터-원격제어-설정" class="level1">
 <h1>주피터 원격제어 설정</h1>
 <p><code>-</code> 설정파일 생성</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1"></a>(rpy) jupyter notebook --generate-config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(rpy) jupyter notebook --generate-config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 패스워드 설정</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1"></a>(rpy) jupyter notebook password</span>
-<span id="cb16-2"><a href="#cb16-2"></a>## 패스워드 치고</span>
-<span id="cb16-3"><a href="#cb16-3"></a>## 확인해야함</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(rpy) jupyter notebook password</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>## 패스워드 치고</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>## 확인해야함</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 설정파일을 열고</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1"></a>nano /home/cgb2/.jupyter/jupyter_notebook_config.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>nano /home/cgb2/.jupyter/jupyter_notebook_config.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>아래의 내용을 수정한다.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1"></a>c.ServerApp.ip = '192.168.0.4'</span>
-<span id="cb18-2"><a href="#cb18-2"></a>c.ServerApp.port = 1306</span>
-<span id="cb18-3"><a href="#cb18-3"></a>c.ServerApp.open_browser=False </span>
-<span id="cb18-4"><a href="#cb18-4"></a>c.ExtensionApp.open_browser=False</span>
-<span id="cb18-5"><a href="#cb18-5"></a>c.ServerApp.allow_origin = '*'</span>
-<span id="cb18-6"><a href="#cb18-6"></a>c.ServerApp.allow_remote_access = True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>c.ServerApp.ip = '192.168.0.4'</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>c.ServerApp.port = 1306</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>c.ServerApp.open_browser=False </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>c.ExtensionApp.open_browser=False</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>c.ServerApp.allow_origin = '*'</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>c.ServerApp.allow_remote_access = True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="설치하면-좋은것들" class="level1">
 <h1>설치하면 좋은것들</h1>
 <p><code>-</code> 데이터과학을 위한 패키지들</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb19-1"><a href="#cb19-1"></a>pip install plotnine</span>
-<span id="cb19-2"><a href="#cb19-2"></a>pip install seaborn</span>
-<span id="cb19-3"><a href="#cb19-3"></a>pip install opencv-python</span>
-<span id="cb19-4"><a href="#cb19-4"></a>pip install folium</span>
-<span id="cb19-5"><a href="#cb19-5"></a>pip install pandas_datareader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pip install plotnine</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>pip install seaborn</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>pip install opencv-python</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>pip install folium</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>pip install pandas_datareader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 아래를 설치하면 좋음</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1"></a>sudo apt install mc </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sudo apt install mc </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="appendix" class="level1">
 <h1>Appendix</h1>
 <section id="r-삭제하는-방법" class="level2">
 <h2 class="anchored" data-anchor-id="r-삭제하는-방법">R 삭제하는 방법</h2>
 <p><code>-</code> R 삭제</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1"></a>conda remove r-base -y </span>
-<span id="cb21-2"><a href="#cb21-2"></a>sudo apt-get remove r-base-core </span>
-<span id="cb21-3"><a href="#cb21-3"></a>sudo apt purge r-base* r-recommended r-cran-*</span>
-<span id="cb21-4"><a href="#cb21-4"></a>sudo apt autoremove</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>conda remove r-base -y </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sudo apt-get remove r-base-core </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>sudo apt purge r-base* r-recommended r-cran-*</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>sudo apt autoremove</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="우분투를-주컴퓨터로-사용할-경우-한글설정" class="level2">
 <h2 class="anchored" data-anchor-id="우분투를-주컴퓨터로-사용할-경우-한글설정">우분투를 주컴퓨터로 사용할 경우 한글설정</h2>
 <p><code>-</code> 아래와 같이 커맨드에 친다.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb22-1"><a href="#cb22-1"></a>ibus-setup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ibus-setup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>이걸 치면 <code>IBus Preferences</code> 라는 창이 나오는데 여기에서 (1) <code>Input Method</code> 탭 클릭 (2) <code>Add</code> 버튼 클릭 (3) <code>Korean</code> 선택 (4) <code>Hangul</code> 선택을 한다.</p>
 <p><code>-</code> 위의 단계에서 <code>Korean</code>이 안보이면 <code>Language Support</code>로 가서 한국어팩을 설치하고 리부팅 하면 된다. (보통 실행하자마자 알아서 설치되더라.. 설치가 안되면 <code>Install / Remove Languages...</code> 이라는 탭을 클릭해서 설치하자) 리부팅을 꼭 해야한다는 것에 주의하자.</p>
 <p><code>-</code> 이제 <code>Region &amp; Language</code>로 가서 설정하면 된다.</p>
@@ -492,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="sublime-text-and-tex">sublime text and TeX</h2>
 <p><code>-</code> ‘Ubuntu Software’에 가서 ’sublime Text’를 치면 다운받을 수 있다. 다운받은뒤에 ’file’ -&gt; ’open folder’를 활용하여 깃허브의 로칼저장소를 열어두면 편리하다.</p>
 <p><code>-</code> 아래를 실행하여 TeX을 깐다.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1"></a>sudo apt install texlive-full</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sudo apt install texlive-full</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 이제 sublime과 latex을 연결하여보자. <a href="https://latextools.readthedocs.io/en/latest/install/#requirements-and-setup">여기</a>를 참고하자. (1) sublime을 키고 ‘컨트롤+쉬프트+p’를 눌러 ’Install Package Control’ 선택 (2) 다시 ‘컨트롤+쉬프트+p’ 를 눌러 ‘Package Control: Install Package’를 실행 (3) 그러면 바로 검색창이 나오는데 거기서 ’LaTeXTools’를 입력해서 실행 (4) 다시 ’컨트롤+쉬프트+p’를 누르고 ’LaTeXTools: Check system’ 선택. 모두 ’available’이 나오면 잘 설치된 것이다.</p>
 <p><code>-</code> <code>*.tex</code>파일을 열고 ’컨트롤+b’를 누르자. 처음이면 어떤 메뉴들이 보일텐데 그냥 ’Latex’을 선택하자. 그러면 코딩결과가 pdf로 나온다.</p>
 <p><code>-</code> (수식미리보기) ‘Perferences’ &gt; ‘Packages Setting’ &gt; ‘LaTeXTools’ &gt; ‘Settings-User’를 선택한다. ’93번째라인’에 ’preview_math_mode’를 “all”로 바꾼다. 그러면 수식들이 미리 출력된다. 그외에도 자유롭게 셋팅을 조정할 수 있다. 원래셋팅은 ’Perferences’ &gt; ‘Packages Setting’ &gt; ‘LaTeXTools’ &gt; ‘Settings-Defaults’ 에 있다.</p>
@@ -500,33 +500,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="터미널-예쁘게-만들기" class="level2">
 <h2 class="anchored" data-anchor-id="터미널-예쁘게-만들기">터미널 예쁘게 만들기</h2>
 <p><code>-</code> zsh 설치 + oh my zsh 설치</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1"></a>sudo install zsh </span>
-<span id="cb24-2"><a href="#cb24-2"></a>sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sudo install zsh </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 테마변경</p>
 <ol type="1">
 <li>.zshrc 파일 열기</li>
 </ol>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1"></a>nano ~/.zshrc </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>nano ~/.zshrc </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>아래의 내용 수정</li>
 </ol>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb26-1"><a href="#cb26-1"></a>...</span>
-<span id="cb26-2"><a href="#cb26-2"></a>ZSH_THEME="agnoster"</span>
-<span id="cb26-3"><a href="#cb26-3"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>ZSH_THEME="agnoster"</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 색상변경</p>
 <ol type="1">
 <li>아래의 파일 열기</li>
 </ol>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1"></a>cd ~/.oh-my-zsh/themes/</span>
-<span id="cb27-2"><a href="#cb27-2"></a>nano agnoster.zsh-theme  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cd ~/.oh-my-zsh/themes/</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>nano agnoster.zsh-theme  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>내용수정</li>
 </ol>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb28-1"><a href="#cb28-1"></a>...</span>
-<span id="cb28-2"><a href="#cb28-2"></a>prompt_dir() {</span>
-<span id="cb28-3"><a href="#cb28-3"></a>  prompt_segment 39d $CURRENT_FG '%~'</span>
-<span id="cb28-4"><a href="#cb28-4"></a>}</span>
-<span id="cb28-5"><a href="#cb28-5"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>prompt_dir() {</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  prompt_segment 39d $CURRENT_FG '%~'</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

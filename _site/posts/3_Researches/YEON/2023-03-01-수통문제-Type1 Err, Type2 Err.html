@@ -317,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <div id="f9c44c98-a645-4eb4-a6b9-148e06cc03e4" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">Distributions</span>, <span class="bu">Plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Distributions</span>, <span class="bu">Plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>(문제)</strong> <span class="math inline">\(X_1,X_2\)</span>가 평균이 <span class="math inline">\(\theta\)</span>인 지수분포에서 추출한 랜덤표본이라고 하자. 가설 <span class="math inline">\(H_0: \theta=2\)</span> vs <span class="math inline">\(H_1:\theta=1\)</span> 에 대하여, <span class="math inline">\(H_0\)</span>에 대한 기각영역을</p>
 <p><span class="math display">\[\frac{f(x_1;\theta=2)f(x_2;\theta=2)}{f(x_1;\theta=1)f(x_2;\theta=1)}&lt;\frac{1}{2}\]</span></p>
@@ -332,15 +332,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>풀이시작</p>
 <div id="cecea0cf-3eea-4bb9-a000-88b4055978a6" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1"></a>T<span class="op">=</span> x <span class="op">-&gt;</span> <span class="fl">0.5</span><span class="fu">*exp</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>x[<span class="fl">1</span>]) <span class="op">*</span> <span class="fl">0.5</span><span class="fu">*exp</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>x[<span class="fl">2</span>])  <span class="op">/</span> (<span class="fu">exp</span>(<span class="op">-</span>x[<span class="fl">1</span>])<span class="fu">*exp</span>(<span class="op">-</span>x[<span class="fl">2</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>T<span class="op">=</span> x <span class="op">-&gt;</span> <span class="fl">0.5</span><span class="fu">*exp</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>x[<span class="fl">1</span>]) <span class="op">*</span> <span class="fl">0.5</span><span class="fu">*exp</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>x[<span class="fl">2</span>])  <span class="op">/</span> (<span class="fu">exp</span>(<span class="op">-</span>x[<span class="fl">1</span>])<span class="fu">*exp</span>(<span class="op">-</span>x[<span class="fl">2</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>#1 (generic function with 1 method)</code></pre>
 </div>
 </div>
 <p><strong><em><span class="math inline">\(\alpha\)</span>를 구해보자. (시뮬)</em></strong></p>
 <div id="5aae6efb-eaa1-48d6-ab93-d87b64715738" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1"></a>θ<span class="op">=</span><span class="fl">2</span> </span>
-<span id="cb4-2"><a href="#cb4-2"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>θ<span class="op">=</span><span class="fl">2</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>2-element Vector{Float64}:
  1.4932782791687658
@@ -348,22 +348,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="2a0b7463-98fd-45e7-bfcd-6b0febd20c49" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">T</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">T</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>3.715796051759978</code></pre>
 </div>
 </div>
 <div id="24e6c2f0-5a33-40d3-bd4d-7f7741a288fd" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1"></a>Ts <span class="op">=</span> [<span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>) <span class="op">|&gt;</span> T for i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1400000</span>]</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">mean</span>(Ts <span class="op">.&lt;</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Ts <span class="op">=</span> [<span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>) <span class="op">|&gt;</span> T for i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1400000</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Ts <span class="op">.&lt;</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>0.1535007142857143</code></pre>
 </div>
 </div>
 <p><strong><em><span class="math inline">\(\beta\)</span>를 구해보자. (시뮬)</em></strong></p>
 <div id="cb901206-3d06-4ebb-aca3-4323d7fd80a3" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1"></a>θ<span class="op">=</span><span class="fl">1</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>θ<span class="op">=</span><span class="fl">1</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>2-element Vector{Float64}:
  1.0915718974295616
@@ -371,8 +371,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="b2e58bc3-898e-451e-abd5-f16ecd2fe561" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1"></a>Ts <span class="op">=</span> [<span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>) <span class="op">|&gt;</span> T for i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1400000</span>]</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">mean</span>(Ts <span class="op">.&gt;</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Ts <span class="op">=</span> [<span class="fu">rand</span>(<span class="fu">Exponential</span>(θ),<span class="fl">2</span>) <span class="op">|&gt;</span> T for i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1400000</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Ts <span class="op">.&gt;</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>0.5967985714285714</code></pre>
 </div>
@@ -383,16 +383,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>그런데 <span class="math inline">\(X_1+X_2 \sim \chi^2(4)\)</span> under <span class="math inline">\(H_0\)</span></p>
 <p><span class="math inline">\(P(X_1+X_2 &lt; 2\ln2) = \int_0^{2\ln2} \frac{1}{4\Gamma(2)}x e^{-x/2}dx=\int_0^{\ln2} t e^{-t}dt=\big[t(-e^{-t})-e^{-t}\big]_0^{\ln2}\)</span></p>
 <div id="50082583-d375-45e7-9265-03861b2497a9" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1"></a>t <span class="op">=</span> <span class="fu">log</span>(<span class="fl">2</span>) </span>
-<span id="cb14-2"><a href="#cb14-2"></a>u <span class="op">=</span> <span class="fu">t*</span>(<span class="fu">-exp</span>(<span class="op">-</span>t)) <span class="op">-</span> <span class="fu">exp</span>(<span class="op">-</span>t)</span>
-<span id="cb14-3"><a href="#cb14-3"></a>t <span class="op">=</span> <span class="fl">0</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>l <span class="op">=</span> <span class="fu">t*</span>(<span class="fu">-exp</span>(<span class="op">-</span>t)) <span class="op">-</span> <span class="fu">exp</span>(<span class="op">-</span>t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fu">log</span>(<span class="fl">2</span>) </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> <span class="fu">t*</span>(<span class="fu">-exp</span>(<span class="op">-</span>t)) <span class="op">-</span> <span class="fu">exp</span>(<span class="op">-</span>t)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">0</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="fu">t*</span>(<span class="fu">-exp</span>(<span class="op">-</span>t)) <span class="op">-</span> <span class="fu">exp</span>(<span class="op">-</span>t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>-1.0</code></pre>
 </div>
 </div>
 <div id="ec29e33f-ae25-498a-9ed6-b44fad256808" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1"></a>u<span class="op">-</span>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>u<span class="op">-</span>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>0.1534264097200273</code></pre>
 </div>
@@ -402,10 +402,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>그런데 <span class="math inline">\(2(X_1+X_2) \sim \chi^2(4)\)</span> under <span class="math inline">\(H_1\)</span></p>
 <p><span class="math inline">\(P(2(X_1+X_2) &gt; 4\ln2) = \int_{4\ln2}^{\infty}\frac{1}{4\Gamma(2)}x e^{-x/2}dx=\int_{2\ln2}^{\infty} t e^{-t}dt=\big[t(-e^{-t})-e^{-t}\big]_{2\ln2}^{\infty}\)</span></p>
 <div id="e4dc4347-8921-4659-b1ee-4daa8da7a43b" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1"></a>u <span class="op">=</span> <span class="fl">0</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>t <span class="op">=</span> <span class="fl">2</span><span class="fu">*log</span>(<span class="fl">2</span>)</span>
-<span id="cb18-3"><a href="#cb18-3"></a>l <span class="op">=</span> <span class="fu">t*</span>(<span class="fu">-exp</span>(<span class="op">-</span>t)) <span class="op">-</span> <span class="fu">exp</span>(<span class="op">-</span>t)</span>
-<span id="cb18-4"><a href="#cb18-4"></a>u<span class="op">-</span>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> <span class="fl">0</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">2</span><span class="fu">*log</span>(<span class="fl">2</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="fu">t*</span>(<span class="fu">-exp</span>(<span class="op">-</span>t)) <span class="op">-</span> <span class="fu">exp</span>(<span class="op">-</span>t)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>u<span class="op">-</span>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>0.5965735902799727</code></pre>
 </div>

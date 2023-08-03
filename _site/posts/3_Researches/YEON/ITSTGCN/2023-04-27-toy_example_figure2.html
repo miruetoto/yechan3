@@ -323,101 +323,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="import" class="level2">
 <h2 class="anchored" data-anchor-id="import">import</h2>
 <div id="6a0706bf-961a-4883-91bc-a4e795afb4a6" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> itstgcn </span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> torch</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itstgcn </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="59df403e-ae5f-4041-8b38-9f195d30fe60" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="888607d5-9754-4d84-87a0-9f3575397fc1" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> Eval_csy:</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,learner,train_dataset):</span>
-<span id="cb3-3"><a href="#cb3-3"></a>        <span class="va">self</span>.learner <span class="op">=</span> learner</span>
-<span id="cb3-4"><a href="#cb3-4"></a>        <span class="co"># self.learner.model.eval()</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>        <span class="cf">try</span>:<span class="va">self</span>.learner.model.<span class="bu">eval</span>()</span>
-<span id="cb3-6"><a href="#cb3-6"></a>        <span class="cf">except</span>:<span class="cf">pass</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>        <span class="va">self</span>.train_dataset <span class="op">=</span> train_dataset</span>
-<span id="cb3-8"><a href="#cb3-8"></a>        <span class="va">self</span>.lags <span class="op">=</span> <span class="va">self</span>.learner.lags</span>
-<span id="cb3-9"><a href="#cb3-9"></a>        rslt_tr <span class="op">=</span> <span class="va">self</span>.learner(<span class="va">self</span>.train_dataset) </span>
-<span id="cb3-10"><a href="#cb3-10"></a>        <span class="va">self</span>.X_tr <span class="op">=</span> rslt_tr[<span class="st">'X'</span>]</span>
-<span id="cb3-11"><a href="#cb3-11"></a>        <span class="va">self</span>.y_tr <span class="op">=</span> rslt_tr[<span class="st">'y'</span>]</span>
-<span id="cb3-12"><a href="#cb3-12"></a>        <span class="va">self</span>.f_tr <span class="op">=</span> torch.concat([<span class="va">self</span>.train_dataset[<span class="dv">0</span>].x.T,<span class="va">self</span>.y_tr],axis<span class="op">=</span><span class="dv">0</span>).<span class="bu">float</span>()</span>
-<span id="cb3-13"><a href="#cb3-13"></a>        <span class="va">self</span>.yhat_tr <span class="op">=</span> rslt_tr[<span class="st">'yhat'</span>]</span>
-<span id="cb3-14"><a href="#cb3-14"></a>        <span class="va">self</span>.fhat_tr <span class="op">=</span> torch.concat([<span class="va">self</span>.train_dataset[<span class="dv">0</span>].x.T,<span class="va">self</span>.yhat_tr],axis<span class="op">=</span><span class="dv">0</span>).<span class="bu">float</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Eval_csy:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,learner,train_dataset):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.learner <span class="op">=</span> learner</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># self.learner.model.eval()</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:<span class="va">self</span>.learner.model.<span class="bu">eval</span>()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:<span class="cf">pass</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.train_dataset <span class="op">=</span> train_dataset</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lags <span class="op">=</span> <span class="va">self</span>.learner.lags</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        rslt_tr <span class="op">=</span> <span class="va">self</span>.learner(<span class="va">self</span>.train_dataset) </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.X_tr <span class="op">=</span> rslt_tr[<span class="st">'X'</span>]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y_tr <span class="op">=</span> rslt_tr[<span class="st">'y'</span>]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.f_tr <span class="op">=</span> torch.concat([<span class="va">self</span>.train_dataset[<span class="dv">0</span>].x.T,<span class="va">self</span>.y_tr],axis<span class="op">=</span><span class="dv">0</span>).<span class="bu">float</span>()</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.yhat_tr <span class="op">=</span> rslt_tr[<span class="st">'yhat'</span>]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.fhat_tr <span class="op">=</span> torch.concat([<span class="va">self</span>.train_dataset[<span class="dv">0</span>].x.T,<span class="va">self</span>.yhat_tr],axis<span class="op">=</span><span class="dv">0</span>).<span class="bu">float</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="b709a929-c2b6-4e46-950b-24a462bd631a" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> pickle</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="221f62cc-c762-4b35-b45b-cf7a0e5865db" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> load_data(fname):</span>
-<span id="cb5-2"><a href="#cb5-2"></a>    <span class="cf">with</span> <span class="bu">open</span>(fname, <span class="st">'rb'</span>) <span class="im">as</span> outfile:</span>
-<span id="cb5-3"><a href="#cb5-3"></a>        data_dict <span class="op">=</span> pickle.load(outfile)</span>
-<span id="cb5-4"><a href="#cb5-4"></a>    <span class="cf">return</span> data_dict</span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="kw">def</span> save_data(data_dict,fname):</span>
-<span id="cb5-7"><a href="#cb5-7"></a>    <span class="cf">with</span> <span class="bu">open</span>(fname,<span class="st">'wb'</span>) <span class="im">as</span> outfile:</span>
-<span id="cb5-8"><a href="#cb5-8"></a>        pickle.dump(data_dict,outfile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_data(fname):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(fname, <span class="st">'rb'</span>) <span class="im">as</span> outfile:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        data_dict <span class="op">=</span> pickle.load(outfile)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data_dict</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> save_data(data_dict,fname):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(fname,<span class="st">'wb'</span>) <span class="im">as</span> outfile:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        pickle.dump(data_dict,outfile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="c3b89021-e756-4be5-82cb-1a524c857c75" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>T <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>t <span class="op">=</span> np.arange(T)<span class="op">/</span>T <span class="op">*</span> <span class="dv">10</span> </span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a>x <span class="op">=</span> <span class="fl">0.3</span><span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span>t)<span class="op">+</span><span class="fl">0.1</span><span class="op">*</span>np.sin(<span class="dv">4</span><span class="op">*</span>t)<span class="op">+</span><span class="fl">0.1</span><span class="op">*</span>np.sin(<span class="dv">8</span><span class="op">*</span>t)</span>
-<span id="cb6-5"><a href="#cb6-5"></a>eps_x  <span class="op">=</span> np.random.normal(size<span class="op">=</span>T)<span class="op">*</span><span class="dv">0</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>y <span class="op">=</span> x.copy()</span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,T):</span>
-<span id="cb6-8"><a href="#cb6-8"></a>    y[i] <span class="op">=</span> <span class="fl">0.35</span><span class="op">*</span>x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> <span class="fl">0.15</span><span class="op">*</span>x[i<span class="op">-</span><span class="dv">2</span>] <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>np.cos(<span class="fl">0.5</span><span class="op">*</span>t[i]) </span>
-<span id="cb6-9"><a href="#cb6-9"></a>eps_y  <span class="op">=</span> np.random.normal(size<span class="op">=</span>T)<span class="op">*</span><span class="dv">0</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a>x <span class="op">=</span> x</span>
-<span id="cb6-11"><a href="#cb6-11"></a>y <span class="op">=</span> y</span>
-<span id="cb6-12"><a href="#cb6-12"></a>plt.plot(t,x,color<span class="op">=</span><span class="st">'C0'</span>,lw<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb6-13"><a href="#cb6-13"></a>plt.plot(t,x<span class="op">+</span>eps_x,alpha<span class="op">=</span><span class="fl">0.5</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb6-14"><a href="#cb6-14"></a>plt.plot(t,y,color<span class="op">=</span><span class="st">'C1'</span>,lw<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb6-15"><a href="#cb6-15"></a>plt.plot(t,y<span class="op">+</span>eps_y,alpha<span class="op">=</span><span class="fl">0.5</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
-<span id="cb6-16"><a href="#cb6-16"></a>_node_ids <span class="op">=</span> {<span class="st">'node1'</span>:<span class="dv">0</span>, <span class="st">'node2'</span>:<span class="dv">1</span>}</span>
-<span id="cb6-17"><a href="#cb6-17"></a></span>
-<span id="cb6-18"><a href="#cb6-18"></a><span class="co"># _FX1 = np.stack([x,y],axis=1).tolist()</span></span>
-<span id="cb6-19"><a href="#cb6-19"></a>_FX1 <span class="op">=</span> np.stack([x<span class="op">+</span>eps_x,y<span class="op">+</span>eps_y],axis<span class="op">=</span><span class="dv">1</span>).tolist()</span>
-<span id="cb6-20"><a href="#cb6-20"></a></span>
-<span id="cb6-21"><a href="#cb6-21"></a>_edges1 <span class="op">=</span> torch.tensor([[<span class="dv">0</span>,<span class="dv">1</span>]]).tolist()</span>
-<span id="cb6-22"><a href="#cb6-22"></a></span>
-<span id="cb6-23"><a href="#cb6-23"></a>data_dict1 <span class="op">=</span> {<span class="st">'edges'</span>:_edges1, <span class="st">'node_ids'</span>:_node_ids, <span class="st">'FX'</span>:_FX1}</span>
-<span id="cb6-24"><a href="#cb6-24"></a><span class="co">#data_dict = itstgcn.load_data('./data/fivenodes.pkl')</span></span>
-<span id="cb6-25"><a href="#cb6-25"></a></span>
-<span id="cb6-26"><a href="#cb6-26"></a>save_data(data_dict1, <span class="st">'./data/toy_example1.pkl'</span>)</span>
-<span id="cb6-27"><a href="#cb6-27"></a></span>
-<span id="cb6-28"><a href="#cb6-28"></a>data1 <span class="op">=</span> pd.DataFrame({<span class="st">'x'</span>:x,<span class="st">'y'</span>:y,<span class="st">'xer'</span>:x,<span class="st">'yer'</span>:y})</span>
-<span id="cb6-29"><a href="#cb6-29"></a></span>
-<span id="cb6-30"><a href="#cb6-30"></a>save_data(data1, <span class="st">'./data/toy_example_true1.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(T)<span class="op">/</span>T <span class="op">*</span> <span class="dv">10</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.3</span><span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span>t)<span class="op">+</span><span class="fl">0.1</span><span class="op">*</span>np.sin(<span class="dv">4</span><span class="op">*</span>t)<span class="op">+</span><span class="fl">0.1</span><span class="op">*</span>np.sin(<span class="dv">8</span><span class="op">*</span>t)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>eps_x  <span class="op">=</span> np.random.normal(size<span class="op">=</span>T)<span class="op">*</span><span class="dv">0</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x.copy()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,T):</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    y[i] <span class="op">=</span> <span class="fl">0.35</span><span class="op">*</span>x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> <span class="fl">0.15</span><span class="op">*</span>x[i<span class="op">-</span><span class="dv">2</span>] <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>np.cos(<span class="fl">0.5</span><span class="op">*</span>t[i]) </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>eps_y  <span class="op">=</span> np.random.normal(size<span class="op">=</span>T)<span class="op">*</span><span class="dv">0</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.plot(t,x,color<span class="op">=</span><span class="st">'C0'</span>,lw<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.plot(t,x<span class="op">+</span>eps_x,alpha<span class="op">=</span><span class="fl">0.5</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.plot(t,y,color<span class="op">=</span><span class="st">'C1'</span>,lw<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.plot(t,y<span class="op">+</span>eps_y,alpha<span class="op">=</span><span class="fl">0.5</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>_node_ids <span class="op">=</span> {<span class="st">'node1'</span>:<span class="dv">0</span>, <span class="st">'node2'</span>:<span class="dv">1</span>}</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># _FX1 = np.stack([x,y],axis=1).tolist()</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>_FX1 <span class="op">=</span> np.stack([x<span class="op">+</span>eps_x,y<span class="op">+</span>eps_y],axis<span class="op">=</span><span class="dv">1</span>).tolist()</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>_edges1 <span class="op">=</span> torch.tensor([[<span class="dv">0</span>,<span class="dv">1</span>]]).tolist()</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>data_dict1 <span class="op">=</span> {<span class="st">'edges'</span>:_edges1, <span class="st">'node_ids'</span>:_node_ids, <span class="st">'FX'</span>:_FX1}</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#data_dict = itstgcn.load_data('./data/fivenodes.pkl')</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>save_data(data_dict1, <span class="st">'./data/toy_example1.pkl'</span>)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> pd.DataFrame({<span class="st">'x'</span>:x,<span class="st">'y'</span>:y,<span class="st">'xer'</span>:x,<span class="st">'yer'</span>:y})</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>save_data(data1, <span class="st">'./data/toy_example_true1.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-04-27-toy_example_figure2_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div id="a7b6ee83-a18e-4454-bee4-c6edbecdff43" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>data_dict1 <span class="op">=</span> itstgcn.load_data(<span class="st">'./data/toy_example1.pkl'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>loader1 <span class="op">=</span> itstgcn.DatasetLoader(data_dict1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data_dict1 <span class="op">=</span> itstgcn.load_data(<span class="st">'./data/toy_example1.pkl'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>loader1 <span class="op">=</span> itstgcn.DatasetLoader(data_dict1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="c3287705-e9ce-4a5e-a3c0-5d4269b7ab82" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>dataset05031 <span class="op">=</span> loader1.get_dataset(lags<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dataset05031 <span class="op">=</span> loader1.get_dataset(lags<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="717d6b13-a205-4eab-b206-c8bcacf700b8" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>mindex05031 <span class="op">=</span> itstgcn.rand_mindex(dataset05031,mrate<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb9-2"><a href="#cb9-2"></a>dataset_miss05031 <span class="op">=</span> itstgcn.miss(dataset05031,mindex05031,mtype<span class="op">=</span><span class="st">'rand'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mindex05031 <span class="op">=</span> itstgcn.rand_mindex(dataset05031,mrate<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dataset_miss05031 <span class="op">=</span> itstgcn.miss(dataset05031,mindex05031,mtype<span class="op">=</span><span class="st">'rand'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="6b874bab-58af-4156-9172-c35fc8d74469" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>dataset_miss05031.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dataset_miss05031.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>array([[0],
        [1]])</code></pre>
 </div>
 </div>
 <div id="251d28ec-5275-4bd2-a351-e74a62939a68" class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>dataset_padded_cubic05031 <span class="op">=</span> itstgcn.padding(dataset_miss05031,imputation_method<span class="op">=</span><span class="st">'cubic'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dataset_padded_cubic05031 <span class="op">=</span> itstgcn.padding(dataset_miss05031,imputation_method<span class="op">=</span><span class="st">'cubic'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="3888f53a-baab-49e8-b45b-16f6a69a139e" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>dataset_padded_cubic05031.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dataset_padded_cubic05031.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>array([[0],
        [1]])</code></pre>
@@ -425,10 +425,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 학습</p>
 <div id="44b457a4-3067-4e93-a3cc-82c1e963b427" class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>lrnr05031 <span class="op">=</span> itstgcn.StgcnLearner(dataset_padded_cubic05031)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lrnr05031 <span class="op">=</span> itstgcn.StgcnLearner(dataset_padded_cubic05031)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="ca110d22-1bb0-408d-8d14-317c82f8e123" class="cell" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>lrnr05031.train_dataset.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lrnr05031.train_dataset.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>array([[0],
        [1]])</code></pre>
@@ -440,49 +440,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>lags8/0.38/filter8</li>
 </ul>
 <div id="a80bef68-2ec5-4cb4-98b1-bf28230b7e2c" class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>lrnr05031.learn(filters<span class="op">=</span><span class="dv">16</span>,epoch<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lrnr05031.learn(filters<span class="op">=</span><span class="dv">16</span>,epoch<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>50/50</code></pre>
 </div>
 </div>
 <p><code>-</code> 모형 평가 및 시각화</p>
 <div id="952c5365-0bc3-46de-9777-96bb9c40ab8d" class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df1 <span class="op">=</span> itstgcn.load_data(<span class="st">'./data/toy_example_true1.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> itstgcn.load_data(<span class="st">'./data/toy_example_true1.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="30268e72-1323-4dfa-999c-14107a73aa25" class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>evtor05031 <span class="op">=</span> Eval_csy(lrnr05031,dataset_padded_cubic05031)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>evtor05031 <span class="op">=</span> Eval_csy(lrnr05031,dataset_padded_cubic05031)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="e692de83-3346-4ecf-b017-f03df403dac1" class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>evtor05031.train_dataset.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>evtor05031.train_dataset.edge_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>array([[0],
        [1]])</code></pre>
 </div>
 </div>
 <div id="4df9728b-cdf3-49e5-a513-8b67a7992764" class="cell" data-tags="[]" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6), (ax7, ax8), (ax9, ax10)) <span class="op">=</span> plt.subplots(<span class="dv">5</span>, <span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">30</span>,<span class="dv">20</span>))</span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="co"># fig.suptitle('Figure 1')</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a>ax1.plot(df1[<span class="st">'x'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb24-4"><a href="#cb24-4"></a>ax2.plot(df1[<span class="st">'y'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb24-5"><a href="#cb24-5"></a>ax3.plot(df1[<span class="st">'xer'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
-<span id="cb24-6"><a href="#cb24-6"></a>ax4.plot(df1[<span class="st">'yer'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
-<span id="cb24-7"><a href="#cb24-7"></a>ax5.plot(evtor05031.f_tr[:,<span class="dv">0</span>],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C2'</span>)</span>
-<span id="cb24-8"><a href="#cb24-8"></a>ax6.plot(evtor05031.f_tr[:,<span class="dv">1</span>],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C2'</span>)</span>
-<span id="cb24-9"><a href="#cb24-9"></a>ax7.plot(df1[<span class="st">'x'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb24-10"><a href="#cb24-10"></a>ax7.plot(evtor05031.fhat_tr[:,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'C3'</span>)</span>
-<span id="cb24-11"><a href="#cb24-11"></a>ax8.plot(df1[<span class="st">'y'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb24-12"><a href="#cb24-12"></a>ax8.plot(evtor05031.fhat_tr[:,<span class="dv">1</span>],color<span class="op">=</span><span class="st">'C3'</span>)</span>
-<span id="cb24-13"><a href="#cb24-13"></a>ax9.plot(df1[<span class="st">'x'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb24-14"><a href="#cb24-14"></a>ax9.plot(df1[<span class="st">'xer'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
-<span id="cb24-15"><a href="#cb24-15"></a>ax9.plot(evtor05031.f_tr[:,<span class="dv">0</span>],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C2'</span>)</span>
-<span id="cb24-16"><a href="#cb24-16"></a>ax9.plot(evtor05031.fhat_tr[:,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'C3'</span>)</span>
-<span id="cb24-17"><a href="#cb24-17"></a>ax10.plot(df1[<span class="st">'y'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb24-18"><a href="#cb24-18"></a>ax10.plot(df1[<span class="st">'yer'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
-<span id="cb24-19"><a href="#cb24-19"></a>ax10.plot(evtor05031.f_tr[:,<span class="dv">1</span>],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C2'</span>)</span>
-<span id="cb24-20"><a href="#cb24-20"></a>ax10.plot(evtor05031.fhat_tr[:,<span class="dv">1</span>],color<span class="op">=</span><span class="st">'C3'</span>)</span>
-<span id="cb24-21"><a href="#cb24-21"></a></span>
-<span id="cb24-22"><a href="#cb24-22"></a><span class="cf">for</span> ax <span class="kw">in</span> fig.get_axes():</span>
-<span id="cb24-23"><a href="#cb24-23"></a>    ax.label_outer()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6), (ax7, ax8), (ax9, ax10)) <span class="op">=</span> plt.subplots(<span class="dv">5</span>, <span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">30</span>,<span class="dv">20</span>))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fig.suptitle('Figure 1')</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ax1.plot(df1[<span class="st">'x'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>ax2.plot(df1[<span class="st">'y'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>ax3.plot(df1[<span class="st">'xer'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>ax4.plot(df1[<span class="st">'yer'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>ax5.plot(evtor05031.f_tr[:,<span class="dv">0</span>],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C2'</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>ax6.plot(evtor05031.f_tr[:,<span class="dv">1</span>],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C2'</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>ax7.plot(df1[<span class="st">'x'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>ax7.plot(evtor05031.fhat_tr[:,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'C3'</span>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>ax8.plot(df1[<span class="st">'y'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>ax8.plot(evtor05031.fhat_tr[:,<span class="dv">1</span>],color<span class="op">=</span><span class="st">'C3'</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>ax9.plot(df1[<span class="st">'x'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>ax9.plot(df1[<span class="st">'xer'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>ax9.plot(evtor05031.f_tr[:,<span class="dv">0</span>],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C2'</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>ax9.plot(evtor05031.fhat_tr[:,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'C3'</span>)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>ax10.plot(df1[<span class="st">'y'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>ax10.plot(df1[<span class="st">'yer'</span>][:],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>ax10.plot(evtor05031.f_tr[:,<span class="dv">1</span>],<span class="st">'.'</span>,color<span class="op">=</span><span class="st">'C2'</span>)</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>ax10.plot(evtor05031.fhat_tr[:,<span class="dv">1</span>],color<span class="op">=</span><span class="st">'C3'</span>)</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> fig.get_axes():</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    ax.label_outer()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-04-27-toy_example_figure2_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
 </div>

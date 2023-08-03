@@ -337,37 +337,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="imports" class="level2">
 <h2 class="anchored" data-anchor-id="imports">imports</h2>
 <div id="df6688cb-b243-4e39-80c3-3886d1481186" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> gymnasium <span class="im">as</span> gym</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">from</span> matplotlib.animation <span class="im">import</span> FuncAnimation</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> torch </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gymnasium <span class="im">as</span> gym</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.animation <span class="im">import</span> FuncAnimation</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="game1" class="level2">
 <h2 class="anchored" data-anchor-id="game1">Game1</h2>
 <p><code>-</code> 문제설명: 두개의 버튼이 있다. 버튼1을 누르면 1의 보상을, 버튼2를 누르면 100의 보상을 준다고 가정</p>
 <div id="d771a51a-0733-42df-bf20-b06444164b35" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>action <span class="op">=</span> np.random.choice([<span class="st">'button1'</span>,<span class="st">'button2'</span>])</span>
-<span id="cb2-2"><a href="#cb2-2"></a>action</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>action <span class="op">=</span> np.random.choice([<span class="st">'button1'</span>,<span class="st">'button2'</span>])</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>action</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>'button1'</code></pre>
 </div>
 </div>
 <div id="97ab8e9f-5d74-4600-bbc9-64ed47fec6d9" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">if</span> action <span class="op">==</span> <span class="st">'button1'</span>: </span>
-<span id="cb4-2"><a href="#cb4-2"></a>    reward <span class="op">=</span> <span class="dv">1</span> </span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="cf">else</span>:</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    reward <span class="op">=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> action <span class="op">==</span> <span class="st">'button1'</span>: </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    reward <span class="op">=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="afb693ba-a1f0-4886-88f2-093c8c632cbb" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb5-2"><a href="#cb5-2"></a>    action <span class="op">=</span> np.random.choice([<span class="st">'button1'</span>,<span class="st">'button2'</span>])</span>
-<span id="cb5-3"><a href="#cb5-3"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="st">'button1'</span>: </span>
-<span id="cb5-4"><a href="#cb5-4"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
-<span id="cb5-5"><a href="#cb5-5"></a>    <span class="cf">else</span>:</span>
-<span id="cb5-6"><a href="#cb5-6"></a>        reward <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>    <span class="bu">print</span>(action,reward)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> np.random.choice([<span class="st">'button1'</span>,<span class="st">'button2'</span>])</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="st">'button1'</span>: </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(action,reward)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>button2 100
 button2 100
@@ -389,34 +389,34 @@ button2 100</code></pre>
 <p><code>-</code> 문제설명: 에이전트는 현재 2의 위치에 있다. 에이전트는 (1) 정지 (2) 왼쪽으로 이동 (3) 오른쪽으로 이동 하는 3개의 행동을 할 수 있다. 에이전트가 4의 위치에 도달하면 100의 보상을 얻고 게임이 종료된다. 에이전트가 0의 위치에 도달하면 보상없이 게임이 종료된다.</p>
 <p><code>-</code> 에이전트와 환경의 상호작용 구현1</p>
 <div id="d753194b-c29d-408d-bbb4-6e82d6455be7" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>state <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>state <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="49be0f5a-2337-454b-ae5b-973628356a35" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>action <span class="op">=</span> np.random.choice([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>action <span class="op">=</span> np.random.choice([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="13527401-e8e7-4ded-be35-f6b25c83bc41" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="bu">print</span>(state,action)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(state,action)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2 2</code></pre>
 </div>
 </div>
 <div id="1e6c4ab7-15e9-491e-8b44-392491213600" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9999</span>): </span>
-<span id="cb11-2"><a href="#cb11-2"></a>    <span class="cf">if</span> state <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb11-3"><a href="#cb11-3"></a>        <span class="bu">print</span>(state)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>        reward <span class="op">=</span> <span class="dv">200</span>         </span>
-<span id="cb11-5"><a href="#cb11-5"></a>        <span class="bu">print</span>(<span class="st">"2의 위치에 도달, 보상 </span><span class="sc">{}</span><span class="st">점 획득"</span>.<span class="bu">format</span>(reward))</span>
-<span id="cb11-6"><a href="#cb11-6"></a>        <span class="cf">break</span> </span>
-<span id="cb11-7"><a href="#cb11-7"></a>    <span class="cf">elif</span> state <span class="op">==</span> <span class="op">-</span><span class="dv">2</span>:</span>
-<span id="cb11-8"><a href="#cb11-8"></a>        <span class="bu">print</span>(state)</span>
-<span id="cb11-9"><a href="#cb11-9"></a>        reward <span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb11-10"><a href="#cb11-10"></a>        <span class="bu">print</span>(<span class="st">"-2의 위치에 도달, 보상 </span><span class="sc">{}</span><span class="st">점 획득"</span>.<span class="bu">format</span>(reward))</span>
-<span id="cb11-11"><a href="#cb11-11"></a>        <span class="cf">break</span></span>
-<span id="cb11-12"><a href="#cb11-12"></a>    <span class="cf">else</span>:</span>
-<span id="cb11-13"><a href="#cb11-13"></a>        <span class="bu">print</span>(state,action)        </span>
-<span id="cb11-14"><a href="#cb11-14"></a>        state <span class="op">=</span> state <span class="op">+</span> action </span>
-<span id="cb11-15"><a href="#cb11-15"></a>        action <span class="op">=</span> np.random.choice([<span class="st">'&lt;-'</span>,<span class="st">'.'</span>,<span class="st">'-&gt;'</span>])</span>
-<span id="cb11-16"><a href="#cb11-16"></a>        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9999</span>): </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> state <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(state)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">200</span>         </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"2의 위치에 도달, 보상 </span><span class="sc">{}</span><span class="st">점 획득"</span>.<span class="bu">format</span>(reward))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span> </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> state <span class="op">==</span> <span class="op">-</span><span class="dv">2</span>:</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(state)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"-2의 위치에 도달, 보상 </span><span class="sc">{}</span><span class="st">점 획득"</span>.<span class="bu">format</span>(reward))</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(state,action)        </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        state <span class="op">=</span> state <span class="op">+</span> action </span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        action <span class="op">=</span> np.random.choice([<span class="st">'&lt;-'</span>,<span class="st">'.'</span>,<span class="st">'-&gt;'</span>])</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2
 2의 위치에 도달, 보상 200점 획득</code></pre>
@@ -424,13 +424,13 @@ button2 100</code></pre>
 </div>
 <p><code>-</code> 에이전트와 환경의 상호작용 구현2</p>
 <div id="982dc58a-b969-4086-8f3a-994467a0899e" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>gym.spaces.Discrete(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>gym.spaces.Discrete(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>Discrete(3)</code></pre>
 </div>
 </div>
 <div id="0577c8dd-546c-47e2-b6e8-86c4e3522e17" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>gym.spaces.Discrete?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>gym.spaces.Discrete?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">Init signature:</span>
@@ -464,33 +464,33 @@ Args:
 </div>
 </div>
 <div id="943478ae-efb4-461e-9ec8-47b48c1050bf" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">class</span> Game2(gym.Env):</span>
-<span id="cb16-2"><a href="#cb16-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb16-3"><a href="#cb16-3"></a>        <span class="va">self</span>.action_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">3</span>,start<span class="op">=-</span><span class="dv">1</span>) <span class="co"># Acition = {-1,0,1}  </span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>        <span class="va">self</span>.observation_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">5</span>,start<span class="op">=-</span><span class="dv">2</span>) <span class="co"># State = {-2,-1,0,1,2} </span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>        <span class="va">self</span>.state <span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb16-6"><a href="#cb16-6"></a>        <span class="va">self</span>.t <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a>    <span class="kw">def</span> step(<span class="va">self</span>,action):</span>
-<span id="cb16-8"><a href="#cb16-8"></a>        <span class="va">self</span>.state <span class="op">=</span> <span class="va">self</span>.state <span class="op">+</span> action</span>
-<span id="cb16-9"><a href="#cb16-9"></a>        <span class="va">self</span>.t <span class="op">=</span> <span class="va">self</span>.t <span class="op">+</span> <span class="dv">1</span> </span>
-<span id="cb16-10"><a href="#cb16-10"></a>        <span class="cf">if</span> <span class="va">self</span>.state <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb16-11"><a href="#cb16-11"></a>            reward <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb16-12"><a href="#cb16-12"></a>        <span class="cf">else</span>:</span>
-<span id="cb16-13"><a href="#cb16-13"></a>            reward <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb16-14"><a href="#cb16-14"></a>        info <span class="op">=</span> {}</span>
-<span id="cb16-15"><a href="#cb16-15"></a>        <span class="cf">if</span> <span class="va">self</span>.state <span class="op">==</span> <span class="op">-</span><span class="dv">2</span> <span class="kw">or</span> <span class="va">self</span>.state<span class="op">==</span><span class="dv">2</span>: </span>
-<span id="cb16-16"><a href="#cb16-16"></a>            done <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb16-17"><a href="#cb16-17"></a>        <span class="cf">else</span>: </span>
-<span id="cb16-18"><a href="#cb16-18"></a>            done <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb16-19"><a href="#cb16-19"></a>        <span class="cf">return</span> <span class="va">self</span>.state, reward, done, info</span>
-<span id="cb16-20"><a href="#cb16-20"></a>    <span class="kw">def</span> render(<span class="va">self</span>):</span>
-<span id="cb16-21"><a href="#cb16-21"></a>        <span class="bu">print</span>(<span class="st">'state: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(<span class="va">self</span>.state))</span>
-<span id="cb16-22"><a href="#cb16-22"></a>    <span class="kw">def</span> reset(<span class="va">self</span>):</span>
-<span id="cb16-23"><a href="#cb16-23"></a>        <span class="va">self</span>.state <span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb16-24"><a href="#cb16-24"></a>        <span class="cf">return</span> <span class="va">self</span>.state</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Game2(gym.Env):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">3</span>,start<span class="op">=-</span><span class="dv">1</span>) <span class="co"># Acition = {-1,0,1}  </span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.observation_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">5</span>,start<span class="op">=-</span><span class="dv">2</span>) <span class="co"># State = {-2,-1,0,1,2} </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.state <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.t <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> step(<span class="va">self</span>,action):</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.state <span class="op">=</span> <span class="va">self</span>.state <span class="op">+</span> action</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.t <span class="op">=</span> <span class="va">self</span>.t <span class="op">+</span> <span class="dv">1</span> </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.state <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>            reward <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>            reward <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        info <span class="op">=</span> {}</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.state <span class="op">==</span> <span class="op">-</span><span class="dv">2</span> <span class="kw">or</span> <span class="va">self</span>.state<span class="op">==</span><span class="dv">2</span>: </span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>            done <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>            done <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.state, reward, done, info</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> render(<span class="va">self</span>):</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'state: </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(<span class="va">self</span>.state))</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reset(<span class="va">self</span>):</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.state <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.state</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fa6c4fa4-f2bc-416d-9b2d-e635cfcff6ab" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>env<span class="op">=</span>Game2()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>env<span class="op">=</span>Game2()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="game3" class="level2">
@@ -502,11 +502,11 @@ Args:
 <h3 class="anchored" data-anchor-id="환경만들기">환경만들기</h3>
 <p><code>-</code> 환경을 만드는 방법은 아래와 같다.</p>
 <div id="3e085d50-9d39-4e75-9151-843deb6ee4e6" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>env <span class="op">=</span> gym.make(<span class="st">'LunarLander-v2'</span>,render_mode<span class="op">=</span><span class="st">'rgb_array'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> gym.make(<span class="st">'LunarLander-v2'</span>,render_mode<span class="op">=</span><span class="st">'rgb_array'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 환경에 대한 기본 정보를 조사하여 보자.</p>
 <div id="49e5d1b8-e68d-41da-9c08-26530b8fdacd" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>env.observation_space</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>env.observation_space</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>Box([-1.5       -1.5       -5.        -5.        -3.1415927 -5.
  -0.        -0.       ], [1.5       1.5       5.        5.        3.1415927 5.        1.
@@ -514,7 +514,7 @@ Args:
 </div>
 </div>
 <div id="cfde2681-4846-4aa0-87ce-66333cd7485a" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>env.action_space</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>env.action_space</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>Discrete(4)</code></pre>
 </div>
@@ -524,7 +524,7 @@ Args:
 <h3 class="anchored" data-anchor-id="환경관찰">환경관찰</h3>
 <p><code>-</code> 환경관찰</p>
 <div id="35312d3e-1276-4895-b94a-224a0053089b" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>env.reset()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>env.reset()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>(array([ 0.00517321,  1.3996556 ,  0.5239665 , -0.5006593 , -0.00598759,
         -0.11868618,  0.        ,  0.        ], dtype=float32),
@@ -532,7 +532,7 @@ Args:
 </div>
 </div>
 <div id="9fa82115-7a62-4916-b62c-76548737af76" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>env.step(<span class="dv">0</span>) <span class="co"># state, reward, done, _ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>env.step(<span class="dv">0</span>) <span class="co"># state, reward, done, _ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>(array([ 0.01034651,  1.3878149 ,  0.52325904, -0.5262889 , -0.01185256,
         -0.11730985,  0.        ,  0.        ], dtype=float32),
@@ -544,7 +544,7 @@ Args:
 </div>
 <p><code>-</code> action</p>
 <div id="37dafca5-cbbc-4b88-96a7-a180f77d9023" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>env.action_space.sample()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>env.action_space.sample()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>0</code></pre>
 </div>
@@ -554,7 +554,7 @@ Args:
 </ul>
 <p><code>-</code> action -&gt; nextstate, reward, done</p>
 <div id="23f3049d-0c1d-438f-8fcc-3854ee723c10" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>env.step(env.action_space.sample())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>env.step(env.action_space.sample())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>(array([ 0.01545191,  1.375376  ,  0.51473296, -0.5528772 , -0.01599996,
         -0.08295576,  0.        ,  0.        ], dtype=float32),
@@ -565,22 +565,22 @@ Args:
 </div>
 </div>
 <div id="3cb75d3b-016b-42ce-8497-93120341a230" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>frames <span class="op">=</span> []</span>
-<span id="cb31-2"><a href="#cb31-2"></a>env.reset()</span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">300</span>):</span>
-<span id="cb31-4"><a href="#cb31-4"></a>    frames.append(env.render())</span>
-<span id="cb31-5"><a href="#cb31-5"></a>    env.step(env.action_space.sample())</span>
-<span id="cb31-6"><a href="#cb31-6"></a>env.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>frames <span class="op">=</span> []</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>env.reset()</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">300</span>):</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    frames.append(env.render())</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    env.step(env.action_space.sample())</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>env.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="9ceab5f9-1e5a-457b-8464-20c9db84d769" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb32-2"><a href="#cb32-2"></a>ani <span class="op">=</span> FuncAnimation(fig,<span class="kw">lambda</span> i: ax.imshow(frames[::<span class="dv">100</span>][i]),frames<span class="op">=</span><span class="bu">len</span>(frames[::<span class="dv">100</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>ani <span class="op">=</span> FuncAnimation(fig,<span class="kw">lambda</span> i: ax.imshow(frames[::<span class="dv">100</span>][i]),frames<span class="op">=</span><span class="bu">len</span>(frames[::<span class="dv">100</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-08-02-강화학습_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div id="6fad79d6-2d16-49d1-b425-d2f7ad74896d" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>ani</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ani</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>&lt;matplotlib.animation.FuncAnimation at 0x7f32e4732050&gt;</code></pre>
 </div>
@@ -590,34 +590,34 @@ Args:
 <h3 class="anchored" data-anchor-id="replay-buffer">Replay Buffer</h3>
 <p><code>-</code> 랜덤액션을 연속적으로 생성하고 그 결과를 기록해보자.</p>
 <div id="ae71b487-9754-4f06-ba45-2acb2bdefda4" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>states <span class="op">=</span> []</span>
-<span id="cb35-2"><a href="#cb35-2"></a>actions <span class="op">=</span> []</span>
-<span id="cb35-3"><a href="#cb35-3"></a>rewards <span class="op">=</span> []</span>
-<span id="cb35-4"><a href="#cb35-4"></a>next_states <span class="op">=</span> []</span>
-<span id="cb35-5"><a href="#cb35-5"></a>dones <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> []</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>actions <span class="op">=</span> []</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>rewards <span class="op">=</span> []</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>next_states <span class="op">=</span> []</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>dones <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="6b950bc8-0ae9-461e-ba22-0e9e6139c4db" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>_state1 <span class="op">=</span> env.reset()</span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1500</span>):</span>
-<span id="cb36-3"><a href="#cb36-3"></a>    _action <span class="op">=</span> env.action_space.sample() </span>
-<span id="cb36-4"><a href="#cb36-4"></a>    _state2, _reward, _done, _ <span class="op">=</span> env.step(_action) </span>
-<span id="cb36-5"><a href="#cb36-5"></a>    <span class="co">## save code </span></span>
-<span id="cb36-6"><a href="#cb36-6"></a>    states.append(_state1.tolist()) </span>
-<span id="cb36-7"><a href="#cb36-7"></a>    actions.append(_action)</span>
-<span id="cb36-8"><a href="#cb36-8"></a>    rewards.append(_reward)</span>
-<span id="cb36-9"><a href="#cb36-9"></a>    next_states.append(_state2.tolist())</span>
-<span id="cb36-10"><a href="#cb36-10"></a>    dones.append(_done)</span>
-<span id="cb36-11"><a href="#cb36-11"></a>    <span class="co">## save code end </span></span>
-<span id="cb36-12"><a href="#cb36-12"></a>    _state1 <span class="op">=</span> _state2 </span>
-<span id="cb36-13"><a href="#cb36-13"></a>    <span class="cf">if</span> _done:</span>
-<span id="cb36-14"><a href="#cb36-14"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>_state1 <span class="op">=</span> env.reset()</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1500</span>):</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    _action <span class="op">=</span> env.action_space.sample() </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    _state2, _reward, _done, _ <span class="op">=</span> env.step(_action) </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">## save code </span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    states.append(_state1.tolist()) </span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    actions.append(_action)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    rewards.append(_reward)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    next_states.append(_state2.tolist())</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    dones.append(_done)</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">## save code end </span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    _state1 <span class="op">=</span> _state2 </span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> _done:</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>ValueError: too many values to unpack (expected 4)</code></pre>
 </div>
 </div>
 <p><code>-</code> 모인 히스토리를 확인해보자.</p>
 <div id="58524369-1817-4ee5-84ae-b05dfb323b81" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="bu">len</span>(states), <span class="bu">len</span>(actions), <span class="bu">len</span>(next_states), <span class="bu">len</span>(rewards), <span class="bu">len</span>(dones)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(states), <span class="bu">len</span>(actions), <span class="bu">len</span>(next_states), <span class="bu">len</span>(rewards), <span class="bu">len</span>(dones)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>(116, 116, 116, 116, 116)</code></pre>
 </div>
@@ -628,16 +628,16 @@ Args:
 <p><code>-</code> 네트워크의 목적: 내가 여기서 뭘 해야하는지 알려줘! = 내가 이 상태에서, 어떠한 액션을 해야하는지 알려줘 <span class="math inline">\(\to\)</span> 8개의 상태를 입력으로 받으면 4개의 액션에 대한 좋은 정도를 숫자로 표현하는 어떠한 함수를 만들자.</p>
 <p><code>-</code> net 설계</p>
 <div id="54860fb4-9cbd-4aab-9ce7-d716d07e0e7d" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>net <span class="op">=</span> torch.nn.Sequential(</span>
-<span id="cb40-2"><a href="#cb40-2"></a>    torch.nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">128</span>),</span>
-<span id="cb40-3"><a href="#cb40-3"></a>    torch.nn.ReLU(),</span>
-<span id="cb40-4"><a href="#cb40-4"></a>    torch.nn.Linear(in_features<span class="op">=</span><span class="dv">128</span>, out_features<span class="op">=</span><span class="dv">64</span>),</span>
-<span id="cb40-5"><a href="#cb40-5"></a>    torch.nn.ReLU(),</span>
-<span id="cb40-6"><a href="#cb40-6"></a>    torch.nn.Linear(in_features<span class="op">=</span><span class="dv">64</span>, out_features<span class="op">=</span><span class="dv">32</span>),</span>
-<span id="cb40-7"><a href="#cb40-7"></a>    torch.nn.ReLU(),</span>
-<span id="cb40-8"><a href="#cb40-8"></a>    torch.nn.Linear(in_features<span class="op">=</span><span class="dv">32</span>, out_features<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb40-9"><a href="#cb40-9"></a>)</span>
-<span id="cb40-10"><a href="#cb40-10"></a>net</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> torch.nn.Sequential(</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">128</span>),</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    torch.nn.ReLU(),</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(in_features<span class="op">=</span><span class="dv">128</span>, out_features<span class="op">=</span><span class="dv">64</span>),</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    torch.nn.ReLU(),</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(in_features<span class="op">=</span><span class="dv">64</span>, out_features<span class="op">=</span><span class="dv">32</span>),</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    torch.nn.ReLU(),</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(in_features<span class="op">=</span><span class="dv">32</span>, out_features<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>net</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>Sequential(
   (0): Linear(in_features=8, out_features=128, bias=True)
@@ -651,7 +651,7 @@ Args:
 </div>
 </div>
 <div id="ab62e365-d629-42c6-91e0-f492ff3a99d0" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>net(torch.tensor(states))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>net(torch.tensor(states))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>tensor([[ 0.1159, -0.1567, -0.1098, -0.1431],
         [ 0.1156, -0.1568, -0.1101, -0.1433],
@@ -776,7 +776,7 @@ Args:
 <h3 class="anchored" data-anchor-id="policy-설계">Policy 설계</h3>
 <p><code>-</code> 네트워크의 의미</p>
 <div id="78306592-ca58-4621-8e21-1acd4941278a" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>states[<span class="dv">0</span>],states[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>states[<span class="dv">0</span>],states[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>([-0.0028694153297692537,
   1.4209814071655273,
@@ -797,7 +797,7 @@ Args:
 </div>
 </div>
 <div id="4ba397f6-33b6-429c-b718-321f69c1f765" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>net(torch.tensor(states[<span class="dv">0</span>:<span class="dv">2</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>net(torch.tensor(states[<span class="dv">0</span>:<span class="dv">2</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>tensor([[ 0.1159, -0.1567, -0.1098, -0.1431],
         [ 0.1156, -0.1568, -0.1101, -0.1433]], grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
@@ -808,7 +808,7 @@ Args:
 </ul>
 <p><code>-</code> 따라서 Agent는 아래와 같이 행동해야 한다. (네트워크가 잘 학습되었다는 전제가 필요함) - state[0] -&gt; action = 0 - state[1] -&gt; action = 0</p>
 <div id="5b630b0e-bf3b-48a3-bce5-7fd135237ef5" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>net(torch.tensor(states[<span class="dv">0</span>:<span class="dv">2</span>])).<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>net(torch.tensor(states[<span class="dv">0</span>:<span class="dv">2</span>])).<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>torch.return_types.max(
 values=tensor([0.1159, 0.1156], grad_fn=&lt;MaxBackward0&gt;),
@@ -816,27 +816,27 @@ indices=tensor([0, 0]))</code></pre>
 </div>
 </div>
 <div id="4cbfbbec-8253-46de-8a60-de5ae1bb8e19" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>net(torch.tensor(states[<span class="dv">0</span>:<span class="dv">2</span>])).<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>)[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>net(torch.tensor(states[<span class="dv">0</span>:<span class="dv">2</span>])).<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>)[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>tensor([0, 0])</code></pre>
 </div>
 </div>
 <p><code>-</code> 네트워크가 있으므로 이제 어떠한 state에 대해서도 뭘 해야할지 (=어떤 액션을 해야할지) 알 수 있다.</p>
 <div id="5f604754-d57a-41b4-a1cb-387cd21a4311" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>_state1 <span class="co"># 어떤 state에 대해서도.. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>_state1 <span class="co"># 어떤 state에 대해서도.. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>array([-0.04434567, -0.00875275,  0.42108542,  0.08506536, -1.7435462 ,
        -0.67104954,  1.        ,  0.        ], dtype=float32)</code></pre>
 </div>
 </div>
 <div id="078f79b8-a357-4bea-be91-e7213beede86" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>net(torch.tensor(_state1)) <span class="co"># q-value를 계산할 수 있고 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>net(torch.tensor(_state1)) <span class="co"># q-value를 계산할 수 있고 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>tensor([ 0.1422, -0.1106, -0.0881, -0.1557], grad_fn=&lt;AddBackward0&gt;)</code></pre>
 </div>
 </div>
 <div id="7beb3de0-1ead-4e15-b15d-4ca6be971d75" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="bu">int</span>(torch.argmax(net(torch.tensor(_state1)))) <span class="co"># 그래서 다음에 우리가 어떤행동을 해야할 지 알 수 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(torch.argmax(net(torch.tensor(_state1)))) <span class="co"># 그래서 다음에 우리가 어떤행동을 해야할 지 알 수 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>0</code></pre>
 </div>
@@ -846,7 +846,7 @@ indices=tensor([0, 0]))</code></pre>
 <h3 class="anchored" data-anchor-id="학습">학습</h3>
 <p><code>-</code> 네트워크를 학습시키자.</p>
 <div id="2c71eee5-de1f-41c9-ab1b-23a8ba923a18" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>net.to(<span class="st">"cuda:0"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>net.to(<span class="st">"cuda:0"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>Sequential(
   (0): Linear(in_features=8, out_features=128, bias=True)
@@ -860,86 +860,86 @@ indices=tensor([0, 0]))</code></pre>
 </div>
 </div>
 <div id="9e0e9cba-2f10-4f55-bc0a-d20a6177725c" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>scores<span class="op">=</span>[]</span>
-<span id="cb60-2"><a href="#cb60-2"></a>playtimes<span class="op">=</span>[] </span>
-<span id="cb60-3"><a href="#cb60-3"></a>eps <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb60-4"><a href="#cb60-4"></a>opt <span class="op">=</span> torch.optim.Adam(net.parameters(),lr<span class="op">=</span><span class="fl">0.0001</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>scores<span class="op">=</span>[]</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>playtimes<span class="op">=</span>[] </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> torch.optim.Adam(net.parameters(),lr<span class="op">=</span><span class="fl">0.0001</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="54ac5087-13fb-443b-8fe5-68e7a7fc774c" class="cell" data-tags="[]">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a><span class="cf">for</span> epsd <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">2001</span>): <span class="co"># 게임 2000판 시켜줌.. </span></span>
-<span id="cb61-2"><a href="#cb61-2"></a>    state1 <span class="op">=</span> env.reset() <span class="co"># 환경리셋 + 초기화된 환경을 state라는 변수에 저장 </span></span>
-<span id="cb61-3"><a href="#cb61-3"></a>    score <span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb61-4"><a href="#cb61-4"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>): <span class="co"># 게임1판당 max 1000프레임만 할 수 있음</span></span>
-<span id="cb61-5"><a href="#cb61-5"></a>        <span class="co"># (step1) Agent: action </span></span>
-<span id="cb61-6"><a href="#cb61-6"></a>        <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> eps: </span>
-<span id="cb61-7"><a href="#cb61-7"></a>            action <span class="op">=</span> env.action_space.sample() <span class="co"># 랜덤액션을 뽑음 </span></span>
-<span id="cb61-8"><a href="#cb61-8"></a>        <span class="cf">else</span>:</span>
-<span id="cb61-9"><a href="#cb61-9"></a>            action <span class="op">=</span> <span class="bu">int</span>(torch.argmax(net(torch.tensor(state1).to(<span class="st">"cuda:0"</span>)))) <span class="co"># 네트워크가 알려주는 action을 뽑음 </span></span>
-<span id="cb61-10"><a href="#cb61-10"></a>        </span>
-<span id="cb61-11"><a href="#cb61-11"></a>        <span class="co"># (step2) Agent -&gt; Env // Env -&gt; Agent </span></span>
-<span id="cb61-12"><a href="#cb61-12"></a>        state2, reward, done, _ <span class="op">=</span> env.step(action) <span class="co"># 액션을 환경에 전달 -&gt; (next_state, reward, done) 을 받음 </span></span>
-<span id="cb61-13"><a href="#cb61-13"></a>        </span>
-<span id="cb61-14"><a href="#cb61-14"></a>        <span class="co"># (step3) Agnet: save data and learn </span></span>
-<span id="cb61-15"><a href="#cb61-15"></a>        <span class="co">## save data </span></span>
-<span id="cb61-16"><a href="#cb61-16"></a>        states.append(state1.tolist())</span>
-<span id="cb61-17"><a href="#cb61-17"></a>        actions.append(action)</span>
-<span id="cb61-18"><a href="#cb61-18"></a>        rewards.append(reward)</span>
-<span id="cb61-19"><a href="#cb61-19"></a>        next_states.append(state2.tolist())</span>
-<span id="cb61-20"><a href="#cb61-20"></a>        dones.append(done)</span>
-<span id="cb61-21"><a href="#cb61-21"></a>    </span>
-<span id="cb61-22"><a href="#cb61-22"></a>        <span class="co">## 최근 5000개의 자료만 준비함. </span></span>
-<span id="cb61-23"><a href="#cb61-23"></a>        <span class="cf">if</span> <span class="bu">len</span>(states)<span class="op">&gt;</span><span class="dv">5000</span>:</span>
-<span id="cb61-24"><a href="#cb61-24"></a>            _states <span class="op">=</span> torch.tensor(states[<span class="op">-</span><span class="dv">5000</span>:])</span>
-<span id="cb61-25"><a href="#cb61-25"></a>            _actions <span class="op">=</span> torch.tensor(actions[<span class="op">-</span><span class="dv">5000</span>:]).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb61-26"><a href="#cb61-26"></a>            _next_states <span class="op">=</span> torch.tensor(next_states[<span class="op">-</span><span class="dv">5000</span>:])</span>
-<span id="cb61-27"><a href="#cb61-27"></a>            _rewards <span class="op">=</span> torch.tensor(rewards[<span class="op">-</span><span class="dv">5000</span>:]).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb61-28"><a href="#cb61-28"></a>            _dones <span class="op">=</span> torch.tensor(dones[<span class="op">-</span><span class="dv">5000</span>:]).to(torch.<span class="bu">float</span>).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>) </span>
-<span id="cb61-29"><a href="#cb61-29"></a>        <span class="cf">else</span>:</span>
-<span id="cb61-30"><a href="#cb61-30"></a>            _states <span class="op">=</span> torch.tensor(states)</span>
-<span id="cb61-31"><a href="#cb61-31"></a>            _actions <span class="op">=</span> torch.tensor(actions).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb61-32"><a href="#cb61-32"></a>            _next_states <span class="op">=</span> torch.tensor(next_states)</span>
-<span id="cb61-33"><a href="#cb61-33"></a>            _rewards <span class="op">=</span> torch.tensor(rewards).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb61-34"><a href="#cb61-34"></a>            _dones <span class="op">=</span> torch.tensor(dones).to(torch.<span class="bu">float</span>).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb61-35"><a href="#cb61-35"></a></span>
-<span id="cb61-36"><a href="#cb61-36"></a>        <span class="co">## 최근 5000개의 자료에서 128개를 임의로 추출함. </span></span>
-<span id="cb61-37"><a href="#cb61-37"></a>        _n <span class="op">=</span> <span class="bu">len</span>(_states)</span>
-<span id="cb61-38"><a href="#cb61-38"></a>        _index <span class="op">=</span> np.random.choice(_n,<span class="dv">128</span>) <span class="co"># 128 is batch_size </span></span>
-<span id="cb61-39"><a href="#cb61-39"></a>        _states <span class="op">=</span> _states[_index]</span>
-<span id="cb61-40"><a href="#cb61-40"></a>        _actions <span class="op">=</span> _actions[_index]</span>
-<span id="cb61-41"><a href="#cb61-41"></a>        _next_states <span class="op">=</span> _next_states[_index]</span>
-<span id="cb61-42"><a href="#cb61-42"></a>        _rewards <span class="op">=</span> _rewards[_index]</span>
-<span id="cb61-43"><a href="#cb61-43"></a>        _dones <span class="op">=</span> _dones[_index]</span>
-<span id="cb61-44"><a href="#cb61-44"></a>        </span>
-<span id="cb61-45"><a href="#cb61-45"></a>        <span class="co">## GPU로 이동 </span></span>
-<span id="cb61-46"><a href="#cb61-46"></a>        _states <span class="op">=</span> _states.to(<span class="st">"cuda:0"</span>)</span>
-<span id="cb61-47"><a href="#cb61-47"></a>        _actions <span class="op">=</span> _actions.to(<span class="st">"cuda:0"</span>)</span>
-<span id="cb61-48"><a href="#cb61-48"></a>        _next_states <span class="op">=</span> _next_states.to(<span class="st">"cuda:0"</span>)</span>
-<span id="cb61-49"><a href="#cb61-49"></a>        _rewards <span class="op">=</span> _rewards.to(<span class="st">"cuda:0"</span>)</span>
-<span id="cb61-50"><a href="#cb61-50"></a>        _dones <span class="op">=</span> _dones.to(<span class="st">"cuda:0"</span>)</span>
-<span id="cb61-51"><a href="#cb61-51"></a>        </span>
-<span id="cb61-52"><a href="#cb61-52"></a>        <span class="co">## leanrn with pytorch </span></span>
-<span id="cb61-53"><a href="#cb61-53"></a>        yhat <span class="op">=</span> net(_states).gather(<span class="dv">1</span>,_actions) <span class="co">## (s,a) -&gt; q(s,a) // 내가 현재상태 state에서, 현재 action을 하여 얻을 것이라 예상하는 보상 (net가 알려주는) </span></span>
-<span id="cb61-54"><a href="#cb61-54"></a>        y <span class="op">=</span> _rewards <span class="op">+</span> <span class="fl">0.99</span> <span class="op">*</span> net(_next_states).detach().<span class="bu">max</span>(<span class="dv">1</span>)[<span class="dv">0</span>].reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>_dones) <span class="co">## 그런데 실제로는 이게 맞다고 봐야지~ </span></span>
-<span id="cb61-55"><a href="#cb61-55"></a>        loss <span class="op">=</span> torch.mean((y<span class="op">-</span>yhat)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb61-56"><a href="#cb61-56"></a>        loss.backward()</span>
-<span id="cb61-57"><a href="#cb61-57"></a>        </span>
-<span id="cb61-58"><a href="#cb61-58"></a>        opt.step()</span>
-<span id="cb61-59"><a href="#cb61-59"></a>        opt.zero_grad()</span>
-<span id="cb61-60"><a href="#cb61-60"></a></span>
-<span id="cb61-61"><a href="#cb61-61"></a>        <span class="co"># (step4) Agent: prepare next steps </span></span>
-<span id="cb61-62"><a href="#cb61-62"></a>        state1 <span class="op">=</span> state2  </span>
-<span id="cb61-63"><a href="#cb61-63"></a>        eps <span class="op">=</span> <span class="bu">max</span>(<span class="fl">0.05</span>, <span class="fl">0.99</span><span class="op">*</span>eps) </span>
-<span id="cb61-64"><a href="#cb61-64"></a>        score <span class="op">+=</span> reward</span>
-<span id="cb61-65"><a href="#cb61-65"></a>        </span>
-<span id="cb61-66"><a href="#cb61-66"></a>        <span class="co"># terminate </span></span>
-<span id="cb61-67"><a href="#cb61-67"></a>        <span class="cf">if</span> done:</span>
-<span id="cb61-68"><a href="#cb61-68"></a>            scores.append(score)</span>
-<span id="cb61-69"><a href="#cb61-69"></a>            playtimes.append(t)</span>
-<span id="cb61-70"><a href="#cb61-70"></a>            <span class="cf">break</span></span>
-<span id="cb61-71"><a href="#cb61-71"></a>            </span>
-<span id="cb61-72"><a href="#cb61-72"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="ch">\r</span><span class="st">Episode </span><span class="sc">{}</span><span class="ch">\t</span><span class="st">Score: </span><span class="sc">{:.2f}</span><span class="ch">\t</span><span class="st">Playtime: </span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>(epsd, scores[<span class="op">-</span><span class="dv">1</span>],playtimes[<span class="op">-</span><span class="dv">1</span>]), end<span class="op">=</span><span class="st">""</span>)</span>
-<span id="cb61-73"><a href="#cb61-73"></a>    <span class="cf">if</span> epsd <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb61-74"><a href="#cb61-74"></a>        <span class="bu">print</span>(<span class="st">'</span><span class="ch">\r</span><span class="st">Episode </span><span class="sc">{}</span><span class="ch">\t</span><span class="st">Score: </span><span class="sc">{:.2f}</span><span class="ch">\t</span><span class="st">Playtime: </span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>(epsd, np.mean(scores[<span class="op">-</span><span class="dv">100</span>:]),np.mean(playtimes[<span class="op">-</span><span class="dv">100</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epsd <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">2001</span>): <span class="co"># 게임 2000판 시켜줌.. </span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    state1 <span class="op">=</span> env.reset() <span class="co"># 환경리셋 + 초기화된 환경을 state라는 변수에 저장 </span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>): <span class="co"># 게임1판당 max 1000프레임만 할 수 있음</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># (step1) Agent: action </span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> eps: </span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>            action <span class="op">=</span> env.action_space.sample() <span class="co"># 랜덤액션을 뽑음 </span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>            action <span class="op">=</span> <span class="bu">int</span>(torch.argmax(net(torch.tensor(state1).to(<span class="st">"cuda:0"</span>)))) <span class="co"># 네트워크가 알려주는 action을 뽑음 </span></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># (step2) Agent -&gt; Env // Env -&gt; Agent </span></span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a>        state2, reward, done, _ <span class="op">=</span> env.step(action) <span class="co"># 액션을 환경에 전달 -&gt; (next_state, reward, done) 을 받음 </span></span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># (step3) Agnet: save data and learn </span></span>
+<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">## save data </span></span>
+<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a>        states.append(state1.tolist())</span>
+<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a>        actions.append(action)</span>
+<span id="cb61-18"><a href="#cb61-18" aria-hidden="true" tabindex="-1"></a>        rewards.append(reward)</span>
+<span id="cb61-19"><a href="#cb61-19" aria-hidden="true" tabindex="-1"></a>        next_states.append(state2.tolist())</span>
+<span id="cb61-20"><a href="#cb61-20" aria-hidden="true" tabindex="-1"></a>        dones.append(done)</span>
+<span id="cb61-21"><a href="#cb61-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb61-22"><a href="#cb61-22" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 최근 5000개의 자료만 준비함. </span></span>
+<span id="cb61-23"><a href="#cb61-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(states)<span class="op">&gt;</span><span class="dv">5000</span>:</span>
+<span id="cb61-24"><a href="#cb61-24" aria-hidden="true" tabindex="-1"></a>            _states <span class="op">=</span> torch.tensor(states[<span class="op">-</span><span class="dv">5000</span>:])</span>
+<span id="cb61-25"><a href="#cb61-25" aria-hidden="true" tabindex="-1"></a>            _actions <span class="op">=</span> torch.tensor(actions[<span class="op">-</span><span class="dv">5000</span>:]).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb61-26"><a href="#cb61-26" aria-hidden="true" tabindex="-1"></a>            _next_states <span class="op">=</span> torch.tensor(next_states[<span class="op">-</span><span class="dv">5000</span>:])</span>
+<span id="cb61-27"><a href="#cb61-27" aria-hidden="true" tabindex="-1"></a>            _rewards <span class="op">=</span> torch.tensor(rewards[<span class="op">-</span><span class="dv">5000</span>:]).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb61-28"><a href="#cb61-28" aria-hidden="true" tabindex="-1"></a>            _dones <span class="op">=</span> torch.tensor(dones[<span class="op">-</span><span class="dv">5000</span>:]).to(torch.<span class="bu">float</span>).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>) </span>
+<span id="cb61-29"><a href="#cb61-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb61-30"><a href="#cb61-30" aria-hidden="true" tabindex="-1"></a>            _states <span class="op">=</span> torch.tensor(states)</span>
+<span id="cb61-31"><a href="#cb61-31" aria-hidden="true" tabindex="-1"></a>            _actions <span class="op">=</span> torch.tensor(actions).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb61-32"><a href="#cb61-32" aria-hidden="true" tabindex="-1"></a>            _next_states <span class="op">=</span> torch.tensor(next_states)</span>
+<span id="cb61-33"><a href="#cb61-33" aria-hidden="true" tabindex="-1"></a>            _rewards <span class="op">=</span> torch.tensor(rewards).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb61-34"><a href="#cb61-34" aria-hidden="true" tabindex="-1"></a>            _dones <span class="op">=</span> torch.tensor(dones).to(torch.<span class="bu">float</span>).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb61-35"><a href="#cb61-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-36"><a href="#cb61-36" aria-hidden="true" tabindex="-1"></a>        <span class="co">## 최근 5000개의 자료에서 128개를 임의로 추출함. </span></span>
+<span id="cb61-37"><a href="#cb61-37" aria-hidden="true" tabindex="-1"></a>        _n <span class="op">=</span> <span class="bu">len</span>(_states)</span>
+<span id="cb61-38"><a href="#cb61-38" aria-hidden="true" tabindex="-1"></a>        _index <span class="op">=</span> np.random.choice(_n,<span class="dv">128</span>) <span class="co"># 128 is batch_size </span></span>
+<span id="cb61-39"><a href="#cb61-39" aria-hidden="true" tabindex="-1"></a>        _states <span class="op">=</span> _states[_index]</span>
+<span id="cb61-40"><a href="#cb61-40" aria-hidden="true" tabindex="-1"></a>        _actions <span class="op">=</span> _actions[_index]</span>
+<span id="cb61-41"><a href="#cb61-41" aria-hidden="true" tabindex="-1"></a>        _next_states <span class="op">=</span> _next_states[_index]</span>
+<span id="cb61-42"><a href="#cb61-42" aria-hidden="true" tabindex="-1"></a>        _rewards <span class="op">=</span> _rewards[_index]</span>
+<span id="cb61-43"><a href="#cb61-43" aria-hidden="true" tabindex="-1"></a>        _dones <span class="op">=</span> _dones[_index]</span>
+<span id="cb61-44"><a href="#cb61-44" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb61-45"><a href="#cb61-45" aria-hidden="true" tabindex="-1"></a>        <span class="co">## GPU로 이동 </span></span>
+<span id="cb61-46"><a href="#cb61-46" aria-hidden="true" tabindex="-1"></a>        _states <span class="op">=</span> _states.to(<span class="st">"cuda:0"</span>)</span>
+<span id="cb61-47"><a href="#cb61-47" aria-hidden="true" tabindex="-1"></a>        _actions <span class="op">=</span> _actions.to(<span class="st">"cuda:0"</span>)</span>
+<span id="cb61-48"><a href="#cb61-48" aria-hidden="true" tabindex="-1"></a>        _next_states <span class="op">=</span> _next_states.to(<span class="st">"cuda:0"</span>)</span>
+<span id="cb61-49"><a href="#cb61-49" aria-hidden="true" tabindex="-1"></a>        _rewards <span class="op">=</span> _rewards.to(<span class="st">"cuda:0"</span>)</span>
+<span id="cb61-50"><a href="#cb61-50" aria-hidden="true" tabindex="-1"></a>        _dones <span class="op">=</span> _dones.to(<span class="st">"cuda:0"</span>)</span>
+<span id="cb61-51"><a href="#cb61-51" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb61-52"><a href="#cb61-52" aria-hidden="true" tabindex="-1"></a>        <span class="co">## leanrn with pytorch </span></span>
+<span id="cb61-53"><a href="#cb61-53" aria-hidden="true" tabindex="-1"></a>        yhat <span class="op">=</span> net(_states).gather(<span class="dv">1</span>,_actions) <span class="co">## (s,a) -&gt; q(s,a) // 내가 현재상태 state에서, 현재 action을 하여 얻을 것이라 예상하는 보상 (net가 알려주는) </span></span>
+<span id="cb61-54"><a href="#cb61-54" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> _rewards <span class="op">+</span> <span class="fl">0.99</span> <span class="op">*</span> net(_next_states).detach().<span class="bu">max</span>(<span class="dv">1</span>)[<span class="dv">0</span>].reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>_dones) <span class="co">## 그런데 실제로는 이게 맞다고 봐야지~ </span></span>
+<span id="cb61-55"><a href="#cb61-55" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> torch.mean((y<span class="op">-</span>yhat)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb61-56"><a href="#cb61-56" aria-hidden="true" tabindex="-1"></a>        loss.backward()</span>
+<span id="cb61-57"><a href="#cb61-57" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb61-58"><a href="#cb61-58" aria-hidden="true" tabindex="-1"></a>        opt.step()</span>
+<span id="cb61-59"><a href="#cb61-59" aria-hidden="true" tabindex="-1"></a>        opt.zero_grad()</span>
+<span id="cb61-60"><a href="#cb61-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-61"><a href="#cb61-61" aria-hidden="true" tabindex="-1"></a>        <span class="co"># (step4) Agent: prepare next steps </span></span>
+<span id="cb61-62"><a href="#cb61-62" aria-hidden="true" tabindex="-1"></a>        state1 <span class="op">=</span> state2  </span>
+<span id="cb61-63"><a href="#cb61-63" aria-hidden="true" tabindex="-1"></a>        eps <span class="op">=</span> <span class="bu">max</span>(<span class="fl">0.05</span>, <span class="fl">0.99</span><span class="op">*</span>eps) </span>
+<span id="cb61-64"><a href="#cb61-64" aria-hidden="true" tabindex="-1"></a>        score <span class="op">+=</span> reward</span>
+<span id="cb61-65"><a href="#cb61-65" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb61-66"><a href="#cb61-66" aria-hidden="true" tabindex="-1"></a>        <span class="co"># terminate </span></span>
+<span id="cb61-67"><a href="#cb61-67" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> done:</span>
+<span id="cb61-68"><a href="#cb61-68" aria-hidden="true" tabindex="-1"></a>            scores.append(score)</span>
+<span id="cb61-69"><a href="#cb61-69" aria-hidden="true" tabindex="-1"></a>            playtimes.append(t)</span>
+<span id="cb61-70"><a href="#cb61-70" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb61-71"><a href="#cb61-71" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb61-72"><a href="#cb61-72" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="ch">\r</span><span class="st">Episode </span><span class="sc">{}</span><span class="ch">\t</span><span class="st">Score: </span><span class="sc">{:.2f}</span><span class="ch">\t</span><span class="st">Playtime: </span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>(epsd, scores[<span class="op">-</span><span class="dv">1</span>],playtimes[<span class="op">-</span><span class="dv">1</span>]), end<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb61-73"><a href="#cb61-73" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> epsd <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb61-74"><a href="#cb61-74" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'</span><span class="ch">\r</span><span class="st">Episode </span><span class="sc">{}</span><span class="ch">\t</span><span class="st">Score: </span><span class="sc">{:.2f}</span><span class="ch">\t</span><span class="st">Playtime: </span><span class="sc">{:.2f}</span><span class="st">'</span>.<span class="bu">format</span>(epsd, np.mean(scores[<span class="op">-</span><span class="dv">100</span>:]),np.mean(playtimes[<span class="op">-</span><span class="dv">100</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Episode 94  Score: -117.16  Playtime: 999.00</code></pre>
 </div>

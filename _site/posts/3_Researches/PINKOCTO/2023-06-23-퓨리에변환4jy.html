@@ -324,21 +324,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <div id="4736bdbc" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="회귀모형-1" class="level1">
 <h1>회귀모형 (1)</h1>
 <div id="bafef261" class="cell" data-execution_count="136">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">1000</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>x0 <span class="op">=</span> x<span class="op">*</span><span class="dv">0</span><span class="op">+</span><span class="dv">1</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>x1 <span class="op">=</span> x </span>
-<span id="cb2-4"><a href="#cb2-4"></a>beta0 <span class="op">=</span> <span class="dv">3</span> </span>
-<span id="cb2-5"><a href="#cb2-5"></a>beta1 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>y <span class="op">=</span> x0<span class="op">*</span>beta0<span class="op">+</span>x1<span class="op">*</span>beta1<span class="op">+</span>np.random.randn(<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">1000</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> x<span class="op">*</span><span class="dv">0</span><span class="op">+</span><span class="dv">1</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> x </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>beta0 <span class="op">=</span> <span class="dv">3</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>beta1 <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x0<span class="op">*</span>beta0<span class="op">+</span>x1<span class="op">*</span>beta1<span class="op">+</span>np.random.randn(<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="6b04c1b0" class="cell" data-execution_count="137">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-06-23-퓨리에변환4jy_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
 </div>
@@ -348,18 +348,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>회귀모형 (2)</h1>
 <p><code>-</code> 관측한자료</p>
 <div id="b42d5954" class="cell" data-execution_count="570">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>N<span class="op">=</span><span class="dv">1000</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>x<span class="op">=</span>np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,N)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>eps <span class="op">=</span> np.random.randn(N)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>X0 <span class="op">=</span> np.sin(x<span class="op">*</span><span class="dv">0</span><span class="op">*</span>np.pi)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>X1 <span class="op">=</span> np.sin(x<span class="op">*</span><span class="dv">2</span><span class="op">*</span>np.pi)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>X2 <span class="op">=</span> np.sin(x<span class="op">*</span><span class="dv">4</span><span class="op">*</span>np.pi)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>X3 <span class="op">=</span> np.sin(x<span class="op">*</span><span class="dv">6</span><span class="op">*</span>np.pi)</span>
-<span id="cb4-8"><a href="#cb4-8"></a></span>
-<span id="cb4-9"><a href="#cb4-9"></a>y<span class="op">=</span><span class="dv">2</span><span class="op">*</span>X1<span class="op">+</span><span class="dv">1</span><span class="op">*</span>X2<span class="op">+</span><span class="dv">3</span><span class="op">*</span>X3<span class="op">+</span>eps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>N<span class="op">=</span><span class="dv">1000</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,N)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> np.random.randn(N)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>X0 <span class="op">=</span> np.sin(x<span class="op">*</span><span class="dv">0</span><span class="op">*</span>np.pi)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> np.sin(x<span class="op">*</span><span class="dv">2</span><span class="op">*</span>np.pi)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>X2 <span class="op">=</span> np.sin(x<span class="op">*</span><span class="dv">4</span><span class="op">*</span>np.pi)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>X3 <span class="op">=</span> np.sin(x<span class="op">*</span><span class="dv">6</span><span class="op">*</span>np.pi)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span><span class="dv">2</span><span class="op">*</span>X1<span class="op">+</span><span class="dv">1</span><span class="op">*</span>X2<span class="op">+</span><span class="dv">3</span><span class="op">*</span>X3<span class="op">+</span>eps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="ecf7d3e5" class="cell" data-execution_count="571">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>plt.plot(x,y,<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-06-23-퓨리에변환4jy_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
@@ -369,56 +369,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><code>-</code> 위의 자료를 해석하는 방법</p>
 <div id="bb0cd171" class="cell" data-execution_count="572">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> spec(y):</span>
-<span id="cb6-2"><a href="#cb6-2"></a>    N<span class="op">=</span> <span class="bu">len</span>(y)</span>
-<span id="cb6-3"><a href="#cb6-3"></a>    <span class="cf">return</span> <span class="bu">abs</span>(np.fft.fft(y)<span class="op">/</span>N)<span class="op">*</span><span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> spec(y):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    N<span class="op">=</span> <span class="bu">len</span>(y)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">abs</span>(np.fft.fft(y)<span class="op">/</span>N)<span class="op">*</span><span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="efb30e56" class="cell" data-execution_count="573">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>y<span class="op">=</span><span class="dv">2</span><span class="op">*</span>X1<span class="op">+</span><span class="dv">1</span><span class="op">*</span>X2<span class="op">+</span><span class="dv">3</span><span class="op">*</span>X3<span class="op">+</span>eps</span>
-<span id="cb7-2"><a href="#cb7-2"></a>yfft <span class="op">=</span>spec(y) </span>
-<span id="cb7-3"><a href="#cb7-3"></a>y1<span class="op">=</span><span class="dv">2</span><span class="op">*</span>X1</span>
-<span id="cb7-4"><a href="#cb7-4"></a>y2<span class="op">=</span><span class="dv">1</span><span class="op">*</span>X2</span>
-<span id="cb7-5"><a href="#cb7-5"></a>y3<span class="op">=</span><span class="dv">3</span><span class="op">*</span>X3</span>
-<span id="cb7-6"><a href="#cb7-6"></a>yfft1<span class="op">=</span>spec(y1)</span>
-<span id="cb7-7"><a href="#cb7-7"></a>yfft2<span class="op">=</span>spec(y2)</span>
-<span id="cb7-8"><a href="#cb7-8"></a>yfft3<span class="op">=</span>spec(y3)</span>
-<span id="cb7-9"><a href="#cb7-9"></a>epsfft<span class="op">=</span>spec(eps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span><span class="dv">2</span><span class="op">*</span>X1<span class="op">+</span><span class="dv">1</span><span class="op">*</span>X2<span class="op">+</span><span class="dv">3</span><span class="op">*</span>X3<span class="op">+</span>eps</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>yfft <span class="op">=</span>spec(y) </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>y1<span class="op">=</span><span class="dv">2</span><span class="op">*</span>X1</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>y2<span class="op">=</span><span class="dv">1</span><span class="op">*</span>X2</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y3<span class="op">=</span><span class="dv">3</span><span class="op">*</span>X3</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>yfft1<span class="op">=</span>spec(y1)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>yfft2<span class="op">=</span>spec(y2)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>yfft3<span class="op">=</span>spec(y3)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>epsfft<span class="op">=</span>spec(eps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="b71e329e" class="cell" data-execution_count="574">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>plt.plot(yfft[:<span class="dv">20</span>],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>plt.plot(yfft1[:<span class="dv">20</span>],<span class="st">'x'</span>,alpha<span class="op">=</span><span class="dv">1</span>,)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>plt.plot(yfft2[:<span class="dv">20</span>],<span class="st">'x'</span>,alpha<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb8-4"><a href="#cb8-4"></a>plt.plot(yfft3[:<span class="dv">20</span>],<span class="st">'x'</span>,alpha<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb8-5"><a href="#cb8-5"></a>plt.plot(epsfft[:<span class="dv">20</span>],<span class="st">'x'</span>,alpha<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.plot(yfft[:<span class="dv">20</span>],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.plot(yfft1[:<span class="dv">20</span>],<span class="st">'x'</span>,alpha<span class="op">=</span><span class="dv">1</span>,)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.plot(yfft2[:<span class="dv">20</span>],<span class="st">'x'</span>,alpha<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.plot(yfft3[:<span class="dv">20</span>],<span class="st">'x'</span>,alpha<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.plot(epsfft[:<span class="dv">20</span>],<span class="st">'x'</span>,alpha<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-06-23-퓨리에변환4jy_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 퓨리에변환 -&gt; threshold -&gt; 역퓨리에변환을 이용한 스킬</p>
 <div id="6549e143" class="cell" data-execution_count="575">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>yfft<span class="op">=</span>np.fft.fft(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>yfft<span class="op">=</span>np.fft.fft(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="5584b719-3627-4044-ba9c-ad2b15794d28" class="cell" data-execution_count="576">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>plt.plot(<span class="bu">abs</span>(yfft[<span class="dv">1</span>:<span class="dv">50</span>]),<span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">abs</span>(yfft[<span class="dv">1</span>:<span class="dv">50</span>]),<span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-06-23-퓨리에변환4jy_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div id="25a6b723" class="cell" data-execution_count="577">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>yfft[<span class="bu">abs</span>(yfft)<span class="op">&lt;</span><span class="dv">100</span>] <span class="op">=</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>yfft[<span class="bu">abs</span>(yfft)<span class="op">&lt;</span><span class="dv">100</span>] <span class="op">=</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fd76defd" class="cell" data-execution_count="579">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>plt.plot(y,<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb12-2"><a href="#cb12-2"></a>yhat<span class="op">=</span>np.fft.ifft(yfft)</span>
-<span id="cb12-3"><a href="#cb12-3"></a>plt.plot(yhat,<span class="st">'--'</span>)</span>
-<span id="cb12-4"><a href="#cb12-4"></a>plt.plot(y<span class="op">-</span>eps,<span class="st">'-'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y,<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>yhat<span class="op">=</span>np.fft.ifft(yfft)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.plot(yhat,<span class="st">'--'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>plt.plot(y<span class="op">-</span>eps,<span class="st">'-'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-06-23-퓨리에변환4jy_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div id="ce846b02" class="cell" data-execution_count="580">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>plt.plot(spec2(y)[:<span class="dv">50</span>],<span class="st">'o'</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>plt.plot(spec2(yhat)[:<span class="dv">50</span>],<span class="st">'x'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.plot(spec2(y)[:<span class="dv">50</span>],<span class="st">'o'</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.plot(spec2(yhat)[:<span class="dv">50</span>],<span class="st">'x'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-06-23-퓨리에변환4jy_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
 </div>
@@ -428,35 +428,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>삼성전자 주가자료를 스무딩해보기</h1>
 <p><code>-</code> 삼성전자 자료</p>
 <div id="78b4978e-edc2-4c20-ab78-322544e3a32b" class="cell" data-execution_count="581">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="7e4723f2-54f8-4245-a551-ae6574b8b402" class="cell" data-execution_count="582">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>start_date <span class="op">=</span> <span class="st">"2023-01-01"</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>end_date <span class="op">=</span> <span class="st">"2023-05-02"</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>y <span class="op">=</span> yf.download(<span class="st">"005930.KS"</span>, start<span class="op">=</span>start_date, end<span class="op">=</span>end_date)[<span class="st">'Adj Close'</span>].to_numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> <span class="st">"2023-01-01"</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>end_date <span class="op">=</span> <span class="st">"2023-05-02"</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> yf.download(<span class="st">"005930.KS"</span>, start<span class="op">=</span>start_date, end<span class="op">=</span>end_date)[<span class="st">'Adj Close'</span>].to_numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[*********************100%***********************]  1 of 1 completed</code></pre>
 </div>
 </div>
 <div id="878049f7-a40d-41b6-880a-e4a3e6492feb" class="cell" data-execution_count="583">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>plt.plot(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-06-23-퓨리에변환4jy_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 스펙트럼</p>
 <div id="8e8a6d10-c2cf-4dc3-9765-10e4b29ca470" class="cell" data-execution_count="587">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>yfft <span class="op">=</span> np.fft.fft(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>yfft <span class="op">=</span> np.fft.fft(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="00cac385-0569-441f-a98c-8bb55cfee2a4" class="cell" data-execution_count="591">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>plt.plot(<span class="bu">abs</span>(yfft))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">abs</span>(yfft))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-06-23-퓨리에변환4jy_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 처음 50개정도만 관찰</p>
 <div id="4825380a-aa91-41d9-964e-52861acb66f3" class="cell" data-execution_count="592">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>plt.plot(<span class="bu">abs</span>(yfft[:<span class="dv">50</span>]),<span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">abs</span>(yfft[:<span class="dv">50</span>]),<span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-06-23-퓨리에변환4jy_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
 </div>
@@ -466,8 +466,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><code>-</code> 2번째부터 50번째까지만 관찰</p>
 <div id="bb52537b-cded-4a8b-abb1-a6b5a8c47261" class="cell" data-execution_count="597">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>plt.plot(<span class="bu">abs</span>(yfft)[<span class="dv">2</span>:<span class="dv">50</span>],<span class="st">'o'</span>)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>plt.axhline(y<span class="op">=</span><span class="dv">22500</span>, color<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">abs</span>(yfft)[<span class="dv">2</span>:<span class="dv">50</span>],<span class="st">'o'</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="dv">22500</span>, color<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="597">
 <pre><code>&lt;matplotlib.lines.Line2D at 0x7f6250d5bfd0&gt;</code></pre>
 </div>
@@ -480,15 +480,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><code>-</code> thresholded value</p>
 <div id="531e9ef9-60f6-4e7e-aa71-6631037421a9" class="cell" data-execution_count="598">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>tresh_value <span class="op">=</span> <span class="dv">22500</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tresh_value <span class="op">=</span> <span class="dv">22500</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="f1be2cb6-0f5b-4d8b-9f89-00131021474c" class="cell" data-execution_count="599">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>yfft[<span class="bu">abs</span>(yfft)<span class="op">&lt;</span>tresh_value] <span class="op">=</span><span class="dv">0</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>yfft[<span class="bu">abs</span>(yfft)<span class="op">&lt;</span>tresh_value] <span class="op">=</span><span class="dv">0</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 퓨리에역변환</p>
 <div id="dd3f4376-c46b-4dd2-b53f-e7aa5abeb159" class="cell" data-execution_count="600">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>yhat <span class="op">=</span> np.fft.ifft(yfft)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>yhat[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> np.fft.ifft(yfft)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>yhat[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="600">
 <pre><code>array([59664.72193044+8.87311904e-14j, 58572.98839934+8.87311904e-14j,
        58066.07369126+3.39894326e-14j, 58169.18671667-6.87747670e-14j,
@@ -497,8 +497,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>실수화</p>
 <div id="82a01102-5792-4f7a-9d12-e7a6a032e74e" class="cell" data-execution_count="601">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>yhat <span class="op">=</span> np.real(yhat)</span>
-<span id="cb27-2"><a href="#cb27-2"></a>yhat[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> np.real(yhat)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>yhat[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="601">
 <pre><code>array([59664.72193044, 58572.98839934, 58066.07369126, 58169.18671667,
        58706.41986821])</code></pre>
@@ -506,8 +506,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 적합결과 시각화</p>
 <div id="e7a24037-162b-4af7-9154-ba1cd07b61ab" class="cell" data-execution_count="602">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>plt.plot(y)</span>
-<span id="cb29-2"><a href="#cb29-2"></a>plt.plot(yhat,<span class="st">'--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.plot(yhat,<span class="st">'--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-06-23-퓨리에변환4jy_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
 </div>
@@ -518,13 +518,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>minor topics</h1>
 <p><code>-</code> y의 FFT 결과는 항상 y와 같은길이임</p>
 <div id="efa042d3-9ce4-4d17-b068-7ed46f03b304" class="cell" data-execution_count="603">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="603">
 <pre><code>82</code></pre>
 </div>
 </div>
 <div id="83cc9de0" class="cell" data-execution_count="604">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">len</span>(np.fft.fft(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(np.fft.fft(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="604">
 <pre><code>82</code></pre>
 </div>
@@ -532,23 +532,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>-</code> 에일리어싱: number of observation은 얼마나 세밀한 주파수까지 측정가능하냐를 결정함</p>
 <p><strong>예시1</strong>: 에일리어싱</p>
 <div id="5025ecf4-0384-45eb-96c2-ab8c8ff99c93" class="cell" data-execution_count="551">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">3.14</span>,<span class="fl">3.14</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">3.14</span>,<span class="fl">3.14</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="8b5ac46a-c1b0-4161-bc0f-bb4fbcf33104" class="cell" data-execution_count="552">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>x1 <span class="op">=</span> np.sin(<span class="dv">8</span><span class="op">*</span>x)</span>
-<span id="cb35-2"><a href="#cb35-2"></a>x2 <span class="op">=</span> np.sin(<span class="dv">10</span><span class="op">*</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.sin(<span class="dv">8</span><span class="op">*</span>x)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.sin(<span class="dv">10</span><span class="op">*</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="70459b10-57b0-4e42-8d41-f13feccf56f1" class="cell" data-execution_count="553">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>np.corrcoef([x1,x2])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>np.corrcoef([x1,x2])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="553">
 <pre><code>array([[ 1.        , -0.99975131],
        [-0.99975131,  1.        ]])</code></pre>
 </div>
 </div>
 <div id="e8aef731-6faa-4a93-b070-3203214944f0" class="cell" data-execution_count="554">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>plt.plot(x1,label<span class="op">=</span><span class="st">'x1'</span>)</span>
-<span id="cb38-2"><a href="#cb38-2"></a>plt.plot(x2,label<span class="op">=</span><span class="st">'x2'</span>)</span>
-<span id="cb38-3"><a href="#cb38-3"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x1,label<span class="op">=</span><span class="st">'x1'</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x2,label<span class="op">=</span><span class="st">'x2'</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="554">
 <pre><code>&lt;matplotlib.legend.Legend at 0x7f6252112ee0&gt;</code></pre>
 </div>
@@ -561,22 +561,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><strong>예시2</strong>: 에일리어싱이 없는 경우</p>
 <div id="1551b1df-e5cf-4f98-9644-c55389fa99ce" class="cell" data-execution_count="555">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">3.14</span>,<span class="fl">3.14</span>,<span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">3.14</span>,<span class="fl">3.14</span>,<span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="d7afc994-2089-41e7-92ca-c8eb365423dd" class="cell" data-execution_count="559">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>x1 <span class="op">=</span> np.sin(<span class="dv">8</span><span class="op">*</span>x)</span>
-<span id="cb41-2"><a href="#cb41-2"></a>x2 <span class="op">=</span> np.sin(<span class="dv">10</span><span class="op">*</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.sin(<span class="dv">8</span><span class="op">*</span>x)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.sin(<span class="dv">10</span><span class="op">*</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="481123d8-4a16-45bb-a830-5164e9d58883" class="cell" data-execution_count="560">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>np.corrcoef([x1,x2])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>np.corrcoef([x1,x2])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="560">
 <pre><code>array([[ 1.00000000e+00, -6.45767105e-08],
        [-6.45767105e-08,  1.00000000e+00]])</code></pre>
 </div>
 </div>
 <div id="68590124-71c0-4150-acd2-c303e3732bc7" class="cell" data-execution_count="561">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>plt.plot(x1)</span>
-<span id="cb44-2"><a href="#cb44-2"></a>plt.plot(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x1)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-06-23-퓨리에변환4jy_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
 </div>

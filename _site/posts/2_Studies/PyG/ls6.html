@@ -350,8 +350,8 @@ div.csl-indent {
 <h1>ref</h1>
 <p><span class="citation" data-cites="kipf2016semi">Kipf and Welling (<a href="#ref-kipf2016semi" role="doc-biblioref">2016</a>)</span>: <a href="https://arxiv.org/abs/1609.02907" class="uri">https://arxiv.org/abs/1609.02907</a></p>
 <div class="no-row-height column-margin column-container"></div><div id="ddd19a86-eccb-46b9-9421-3a20b08aeda2" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> torch_geometric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch_geometric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="layer-wise-progagation-rule" class="level1 page-columns page-full">
@@ -370,35 +370,35 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="예제">예제</h2>
 <p><code>-</code> data</p>
 <div id="81e0fdfb-89ac-4ca7-bd4b-a73ff85ba2a8" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> torch.tensor([[<span class="dv">20</span>],</span>
-<span id="cb2-2"><a href="#cb2-2"></a>                  [<span class="dv">21</span>],</span>
-<span id="cb2-3"><a href="#cb2-3"></a>                  [<span class="dv">19</span>],</span>
-<span id="cb2-4"><a href="#cb2-4"></a>                  [<span class="dv">1</span>],</span>
-<span id="cb2-5"><a href="#cb2-5"></a>                  [<span class="dv">2</span>],</span>
-<span id="cb2-6"><a href="#cb2-6"></a>                  [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
-<span id="cb2-7"><a href="#cb2-7"></a></span>
-<span id="cb2-8"><a href="#cb2-8"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>],</span>
-<span id="cb2-9"><a href="#cb2-9"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
-<span id="cb2-10"><a href="#cb2-10"></a></span>
-<span id="cb2-11"><a href="#cb2-11"></a>y <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>], dtype<span class="op">=</span>torch.int64)</span>
-<span id="cb2-12"><a href="#cb2-12"></a>data <span class="op">=</span> torch_geometric.data.Data(x<span class="op">=</span>x, edge_index<span class="op">=</span>edge_index, y<span class="op">=</span>y) </span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#data.train_mask = torch.tensor([True,False,True,True,False,True])</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#data.test_mask = torch.tensor([False,True,False,False,True,False])</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor([[<span class="dv">20</span>],</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                  [<span class="dv">21</span>],</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                  [<span class="dv">19</span>],</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                  [<span class="dv">1</span>],</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                  [<span class="dv">2</span>],</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                  [<span class="dv">1</span>]], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>edge_index <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>],</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                           [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>], dtype<span class="op">=</span>torch.int64)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> torch_geometric.data.Data(x<span class="op">=</span>x, edge_index<span class="op">=</span>edge_index, y<span class="op">=</span>y) </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#data.train_mask = torch.tensor([True,False,True,True,False,True])</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#data.test_mask = torch.tensor([False,True,False,False,True,False])</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>Data(x=[6, 1], edge_index=[2, 12], y=[6])</code></pre>
 </div>
 </div>
 <p><code>-</code> GCNConv</p>
 <div id="e3937830-f92b-47fd-b931-f34e677101d3" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>gconv <span class="op">=</span> torch_geometric.nn.GCNConv(<span class="dv">1</span>,<span class="dv">4</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>gconv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gconv <span class="op">=</span> torch_geometric.nn.GCNConv(<span class="dv">1</span>,<span class="dv">4</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>gconv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>GCNConv(1, 4)</code></pre>
 </div>
 </div>
 <div id="8bd29433-6870-44e8-99e0-a747a9e629e7" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>gconv(data.x, data.edge_index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gconv(data.x, data.edge_index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>tensor([[ 11.6402, -15.0337, -13.0234, -15.7613],
         [ 11.6402, -15.0337, -13.0234, -15.7613],
@@ -409,7 +409,7 @@ div.csl-indent {
 </div>
 </div>
 <div id="c9737c0d-eb2b-4f99-a2d6-e7f3b09014ed" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">list</span>(gconv.parameters())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(gconv.parameters())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>[Parameter containing:
  tensor([0., 0., 0., 0.], requires_grad=True),
@@ -421,8 +421,8 @@ div.csl-indent {
 </div>
 </div>
 <div id="da08b577-4c13-49c2-9480-698aefb9e359" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>_,W <span class="op">=</span> <span class="bu">list</span>(gconv.parameters())</span>
-<span id="cb10-2"><a href="#cb10-2"></a>W</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>_,W <span class="op">=</span> <span class="bu">list</span>(gconv.parameters())</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>W</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>Parameter containing:
 tensor([[ 0.5820],
@@ -432,14 +432,14 @@ tensor([[ 0.5820],
 </div>
 </div>
 <div id="6c57b57e-ed85-43b3-b7c4-669921962b8c" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>A <span class="op">=</span> torch.tensor([[<span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
-<span id="cb12-2"><a href="#cb12-2"></a>                  [<span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
-<span id="cb12-3"><a href="#cb12-3"></a>                  [<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
-<span id="cb12-4"><a href="#cb12-4"></a>                  [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>],</span>
-<span id="cb12-5"><a href="#cb12-5"></a>                  [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>],</span>
-<span id="cb12-6"><a href="#cb12-6"></a>                  [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>]])</span>
-<span id="cb12-7"><a href="#cb12-7"></a>Atilde <span class="op">=</span> A<span class="op">+</span>torch.eye(<span class="dv">6</span>)</span>
-<span id="cb12-8"><a href="#cb12-8"></a>Atilde</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> torch.tensor([[<span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                  [<span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                  [<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                  [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>],</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                  [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>],</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                  [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>]])</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>Atilde <span class="op">=</span> A<span class="op">+</span>torch.eye(<span class="dv">6</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>Atilde</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>tensor([[1., 1., 1., 0., 0., 0.],
         [1., 1., 1., 0., 0., 0.],
@@ -450,7 +450,7 @@ tensor([[ 0.5820],
 </div>
 </div>
 <div id="30299ec8-e0f6-47f8-b68b-ae79b8e3cb60" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>Atilde<span class="op">@</span>data.x<span class="op">@</span>W.T<span class="op">/</span><span class="dv">3</span>, gconv(data.x,data.edge_index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Atilde<span class="op">@</span>data.x<span class="op">@</span>W.T<span class="op">/</span><span class="dv">3</span>, gconv(data.x,data.edge_index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>(tensor([[ 11.6402, -15.0337, -13.0234, -15.7613],
          [ 11.6402, -15.0337, -13.0234, -15.7613],

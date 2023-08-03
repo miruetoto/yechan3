@@ -12,6 +12,7 @@ comments:
   utterances: 
     repo: miruetoto/yechan3
 
+notebook-links: true
 cap-location: margin
 reference-location: margin
 citation-location: margin
@@ -23,4 +24,6 @@ format:
     code-fold: false
     code-line-numbers: false
     code-copy: true
+    toggle: true
+    caption: none 
   ipynb: default

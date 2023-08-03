@@ -352,7 +352,7 @@ div.csl-indent {
 </header>
 
 <div id="c7b0b758-bf6a-4cce-b497-8eea9349146b" class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span>, <span class="bu">DSP</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span>, <span class="bu">DSP</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="preliminary-study" class="level1 page-columns page-full">
 <h1>Preliminary Study</h1>
@@ -403,13 +403,13 @@ Djuric, Petar, and Cédric Richard. 2018. <em>Cooperative and Graph Signal Proce
 <p><strong>Example</strong></p>
 <p>Let <span class="math inline">\({\bf B}\)</span> as</p>
 <div id="7719fd71-1b68-4e4c-89be-c991442d3ed1" class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1"></a>B<span class="op">=</span> [<span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> </span>
-<span id="cb2-3"><a href="#cb2-3"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> </span>
-<span id="cb2-4"><a href="#cb2-4"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> </span>
-<span id="cb2-5"><a href="#cb2-5"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> </span>
-<span id="cb2-6"><a href="#cb2-6"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> </span>
-<span id="cb2-7"><a href="#cb2-7"></a>    <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>B<span class="op">=</span> [<span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> <span class="fl">0</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>7×7 Matrix{Int64}:
  0  1  0  0  0  0  0
@@ -423,7 +423,7 @@ Djuric, Petar, and Cédric Richard. 2018. <em>Cooperative and Graph Signal Proce
 </div>
 <p>Define <span class="math inline">\({\boldsymbol h}\)</span> as</p>
 <div id="ba0e5579-0265-44dc-9bd6-6c2011591b13" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1"></a>h <span class="op">=</span> [<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> [<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>3-element Vector{Float64}:
  0.3333333333333333
@@ -433,7 +433,7 @@ Djuric, Petar, and Cédric Richard. 2018. <em>Cooperative and Graph Signal Proce
 </div>
 <p>Furthermore define <span class="math inline">\({\bf H}=h({\bf B})=h_0{\bf B}^0+h_1{\bf B}^1+h_2{\bf B}^2\)</span></p>
 <div id="26e8d20a-b032-44ec-a916-0001a9318f71" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1"></a>H <span class="op">=</span> (<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>)<span class="op">*</span>B<span class="op">^</span><span class="fl">0</span> <span class="op">+</span> (<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>)<span class="op">*</span>B<span class="op">^</span><span class="fl">1</span> <span class="op">+</span> (<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>)<span class="op">*</span>B<span class="op">^</span><span class="fl">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> (<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>)<span class="op">*</span>B<span class="op">^</span><span class="fl">0</span> <span class="op">+</span> (<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>)<span class="op">*</span>B<span class="op">^</span><span class="fl">1</span> <span class="op">+</span> (<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>)<span class="op">*</span>B<span class="op">^</span><span class="fl">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>7×7 Matrix{Float64}:
  0.333333  0.333333  0.333333  0.0       0.0       0.0       0.0
@@ -447,7 +447,7 @@ Djuric, Petar, and Cédric Richard. 2018. <em>Cooperative and Graph Signal Proce
 </div>
 <p>Observe following:</p>
 <div id="ffefd08f-107e-4608-ba04-9427b097d23e" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1"></a>B<span class="op">*</span>H <span class="op">==</span> H<span class="op">*</span>B </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>B<span class="op">*</span>H <span class="op">==</span> H<span class="op">*</span>B </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>true</code></pre>
 </div>
@@ -457,8 +457,8 @@ Djuric, Petar, and Cédric Richard. 2018. <em>Cooperative and Graph Signal Proce
 <p><em>note:</em> for any <span class="math inline">\({\bf x}\)</span>, <span class="math inline">\({\bf H}{\bf x}\)</span> is definded by</p>
 <p><span class="math display">\[\left[\frac{x_{n-1}+x_n+x_1}{3},\frac{x_n+x_1+x_2}{3},\dots,\frac{x_{n-3}+x_{n-2}+x_n}{3}\right].\]</span></p>
 <div id="2062d8c7-2519-4ccf-a270-621c8685f664" class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>]</span>
-<span id="cb10-2"><a href="#cb10-2"></a>H<span class="op">*</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>H<span class="op">*</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>7-element Vector{Float64}:
  1.0
@@ -472,7 +472,7 @@ Djuric, Petar, and Cédric Richard. 2018. <em>Cooperative and Graph Signal Proce
 </div>
 <p><em>note:</em> In some sense, the matrix <span class="math inline">\({\bf H}{\bf x}\)</span> can be thought as generalized version of <span class="math inline">\({\boldsymbol h}\star {\bf x}\)</span> where <span class="math inline">\(\star\)</span> is convolution up to shift</p>
 <div id="bf2c1294-ffda-42e4-9852-1782905df8c1" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">conv</span>(h,x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">conv</span>(h,x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>9-element Vector{Float64}:
  0.3333333333333334

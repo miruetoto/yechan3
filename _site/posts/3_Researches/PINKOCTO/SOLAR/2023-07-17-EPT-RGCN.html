@@ -327,39 +327,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="import" class="level1">
 <h1>Import</h1>
-<div id="90b87a88-2a36-4566-8c86-32c45f237bd2" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>run <span class="fl">0720.</span><span class="er">py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-</code> source</p>
+<ul>
+<li><a href="https://github.com/miruetoto/yechan3/blob/main/posts/3_Researches/PINKOCTO/SOLAR/0720.py" class="uri">https://github.com/miruetoto/yechan3/blob/main/posts/3_Researches/PINKOCTO/SOLAR/0720.py</a></li>
+</ul>
+<p><code>-</code> download source</p>
+<div id="949ee0b0-60f3-4675-92e5-3d3d42b2756b" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/miruetoto/yechan3/blob/main/posts/3_Researches/PINKOCTO/SOLAR/0720.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> run</p>
+<div id="90b87a88-2a36-4566-8c86-32c45f237bd2" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run <span class="fl">0720.</span><span class="er">py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="load-data" class="level1">
 <h1>Load data</h1>
-<div id="8d3d82a1-26a4-4606-91bb-39c0ca4bda34" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># read dataframe </span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data_eng_230710.csv'</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># make y, y_upper, y_period, time, regions </span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>y <span class="op">=</span> df.loc[:,<span class="st">'Bukchoncheon'</span>:<span class="st">'Gyeongju-si'</span>].to_numpy()</span>
-<span id="cb2-6"><a href="#cb2-6"></a>yU <span class="op">=</span> df.loc[:,<span class="st">'Bukchoncheon_Upper'</span>:<span class="st">'Gyeongju-si_Upper'</span>].to_numpy()</span>
-<span id="cb2-7"><a href="#cb2-7"></a>yP <span class="op">=</span> np.divide(y, yU<span class="op">+</span><span class="fl">1e-10</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a>t <span class="op">=</span> df.loc[:,<span class="st">'date'</span>]</span>
-<span id="cb2-9"><a href="#cb2-9"></a>regions <span class="op">=</span> <span class="bu">list</span>(df.loc[:,<span class="st">'Bukchoncheon'</span>:<span class="st">'Gyeongju-si'</span>].columns)</span>
-<span id="cb2-10"><a href="#cb2-10"></a></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># plot rawdata </span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>start <span class="op">=</span> <span class="dv">50</span> </span>
-<span id="cb2-13"><a href="#cb2-13"></a>end <span class="op">=</span> <span class="dv">50</span><span class="op">+</span><span class="dv">24</span><span class="op">*</span><span class="dv">3</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a>city <span class="op">=</span> <span class="dv">19</span> <span class="co"># 광주 </span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="cf">with</span> plt.style.context(<span class="st">'cyberpunk'</span>):</span>
-<span id="cb2-16"><a href="#cb2-16"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a>    plt.plot(t[start:end],y[start:end,city],<span class="st">'o'</span>,label<span class="op">=</span><span class="st">'y'</span>)</span>
-<span id="cb2-18"><a href="#cb2-18"></a>    plt.plot(t[start:end],yU[start:end,city],<span class="st">'--'</span>,label<span class="op">=</span><span class="st">'yU'</span>)</span>
-<span id="cb2-19"><a href="#cb2-19"></a>    plt.plot(t[start:end],yP[start:end,city],<span class="st">'o'</span>,label<span class="op">=</span><span class="st">'y/yU'</span>)</span>
-<span id="cb2-20"><a href="#cb2-20"></a>    tick_interval <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a>    plt.xticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(t) <span class="op">+</span> <span class="dv">1</span>, tick_interval),rotation<span class="op">=</span><span class="dv">25</span>)        </span>
-<span id="cb2-22"><a href="#cb2-22"></a>    plt.legend()</span>
-<span id="cb2-23"><a href="#cb2-23"></a>    plt.title(<span class="st">"The solar radiation data in </span><span class="sc">{}</span><span class="st"> from </span><span class="sc">{}</span><span class="st"> to </span><span class="sc">{}</span><span class="st"> "</span>.<span class="bu">format</span>(regions[city],t.to_list()[<span class="dv">0</span>][:<span class="dv">10</span>],t.to_list()[<span class="op">-</span><span class="dv">1</span>][:<span class="dv">10</span>]))</span>
-<span id="cb2-24"><a href="#cb2-24"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8d3d82a1-26a4-4606-91bb-39c0ca4bda34" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read dataframe </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'https://media.githubusercontent.com/media/miruetoto/yechan3/main/posts/3_Researches/PINKOCTO/SOLAR/data_eng_230710.csv'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make y, y_upper, y_period, time, regions </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df.loc[:,<span class="st">'Bukchoncheon'</span>:<span class="st">'Gyeongju-si'</span>].to_numpy()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>yU <span class="op">=</span> df.loc[:,<span class="st">'Bukchoncheon_Upper'</span>:<span class="st">'Gyeongju-si_Upper'</span>].to_numpy()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>yP <span class="op">=</span> np.divide(y, yU<span class="op">+</span><span class="fl">1e-10</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> df.loc[:,<span class="st">'date'</span>]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>regions <span class="op">=</span> <span class="bu">list</span>(df.loc[:,<span class="st">'Bukchoncheon'</span>:<span class="st">'Gyeongju-si'</span>].columns)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># plot rawdata </span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="dv">50</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="dv">50</span><span class="op">+</span><span class="dv">24</span><span class="op">*</span><span class="dv">3</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>city <span class="op">=</span> <span class="dv">19</span> <span class="co"># 광주 </span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'cyberpunk'</span>):</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    plt.plot(t[start:end],y[start:end,city],<span class="st">'o'</span>,label<span class="op">=</span><span class="st">'y'</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    plt.plot(t[start:end],yU[start:end,city],<span class="st">'--'</span>,label<span class="op">=</span><span class="st">'yU'</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    plt.plot(t[start:end],yP[start:end,city],<span class="st">'o'</span>,label<span class="op">=</span><span class="st">'y/yU'</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    tick_interval <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    plt.xticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(t) <span class="op">+</span> <span class="dv">1</span>, tick_interval),rotation<span class="op">=</span><span class="dv">25</span>)        </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"The solar radiation data in </span><span class="sc">{}</span><span class="st"> from </span><span class="sc">{}</span><span class="st"> to </span><span class="sc">{}</span><span class="st"> "</span>.<span class="bu">format</span>(regions[city],t.to_list()[<span class="dv">0</span>][:<span class="dv">10</span>],t.to_list()[<span class="op">-</span><span class="dv">1</span>][:<span class="dv">10</span>]))</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-07-17-EPT-RGCN_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+<p><img src="2023-07-17-EPT-RGCN_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -367,39 +376,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Learn</h1>
 <p><code>-</code> y <span class="math inline">\(\to\)</span> yhat</p>
 <div id="0d91a418-d095-4ed9-a558-6f39ac550e19" class="cell" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># hyper params</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>LAGS <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>FILTERS <span class="op">=</span> <span class="dv">8</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>EPOCH <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># global params</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>TRAIN_RATIO <span class="op">=</span> <span class="fl">0.8</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>T,N <span class="op">=</span> <span class="bu">len</span>(t),<span class="bu">len</span>(regions) </span>
-<span id="cb3-9"><a href="#cb3-9"></a>LEN_TEST <span class="op">=</span> <span class="bu">int</span>(np.floor(T<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>TRAIN_RATIO)))</span>
-<span id="cb3-10"><a href="#cb3-10"></a>LEN_TR <span class="op">=</span> T <span class="op">-</span> LEN_TEST</span>
-<span id="cb3-11"><a href="#cb3-11"></a></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co"># 방법1</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a>model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>LAGS, filters<span class="op">=</span>FILTERS)</span>
-<span id="cb3-14"><a href="#cb3-14"></a>yhat <span class="op">=</span> rgcn(y, model <span class="op">=</span> model, train_ratio <span class="op">=</span> TRAIN_RATIO, lags<span class="op">=</span>LAGS, epoch<span class="op">=</span>EPOCH)</span>
-<span id="cb3-15"><a href="#cb3-15"></a>yhat[yhat <span class="op">&lt;</span> <span class="dv">0</span>]<span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb3-16"><a href="#cb3-16"></a></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="co"># 방법2 </span></span>
-<span id="cb3-18"><a href="#cb3-18"></a>model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>LAGS, filters<span class="op">=</span>FILTERS)</span>
-<span id="cb3-19"><a href="#cb3-19"></a>yUhat <span class="op">=</span> rgcn(yU, model <span class="op">=</span> model, train_ratio <span class="op">=</span> TRAIN_RATIO, lags<span class="op">=</span>LAGS, epoch<span class="op">=</span>EPOCH)</span>
-<span id="cb3-20"><a href="#cb3-20"></a></span>
-<span id="cb3-21"><a href="#cb3-21"></a>model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>LAGS, filters<span class="op">=</span>FILTERS)</span>
-<span id="cb3-22"><a href="#cb3-22"></a>yPhat <span class="op">=</span> rgcn(yP, model <span class="op">=</span> model, train_ratio <span class="op">=</span> TRAIN_RATIO, lags<span class="op">=</span>LAGS, epoch<span class="op">=</span>EPOCH)</span>
-<span id="cb3-23"><a href="#cb3-23"></a>yPhat[yPhat <span class="op">&lt;</span> <span class="dv">0</span>] <span class="op">=</span><span class="dv">0</span> </span>
-<span id="cb3-24"><a href="#cb3-24"></a></span>
-<span id="cb3-25"><a href="#cb3-25"></a></span>
-<span id="cb3-26"><a href="#cb3-26"></a>classic <span class="op">=</span> ((y <span class="op">-</span> yhat)[LEN_TR:, :] <span class="op">**</span> <span class="dv">2</span>)</span>
-<span id="cb3-27"><a href="#cb3-27"></a>proposed <span class="op">=</span> ((y <span class="op">-</span> yUhat<span class="op">*</span>yPhat)[LEN_TR:, :] <span class="op">**</span> <span class="dv">2</span>)</span>
-<span id="cb3-28"><a href="#cb3-28"></a></span>
-<span id="cb3-29"><a href="#cb3-29"></a><span class="co"># print mse</span></span>
-<span id="cb3-30"><a href="#cb3-30"></a><span class="bu">print</span>(<span class="st">"""</span></span>
-<span id="cb3-31"><a href="#cb3-31"></a><span class="st">total_mse(classic): </span><span class="sc">{:.4f}</span></span>
-<span id="cb3-32"><a href="#cb3-32"></a><span class="st">total_mse(proposed): </span><span class="sc">{:.4f}</span></span>
-<span id="cb3-33"><a href="#cb3-33"></a><span class="st">"""</span>.<span class="bu">format</span>(classic.mean(), proposed.mean()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hyper params</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>LAGS <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>FILTERS <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>EPOCH <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># global params</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>TRAIN_RATIO <span class="op">=</span> <span class="fl">0.8</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>T,N <span class="op">=</span> <span class="bu">len</span>(t),<span class="bu">len</span>(regions) </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>LEN_TEST <span class="op">=</span> <span class="bu">int</span>(np.floor(T<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>TRAIN_RATIO)))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>LEN_TR <span class="op">=</span> T <span class="op">-</span> LEN_TEST</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 방법1</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>LAGS, filters<span class="op">=</span>FILTERS)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>yhat <span class="op">=</span> rgcn(y, model <span class="op">=</span> model, train_ratio <span class="op">=</span> TRAIN_RATIO, lags<span class="op">=</span>LAGS, epoch<span class="op">=</span>EPOCH)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>yhat[yhat <span class="op">&lt;</span> <span class="dv">0</span>]<span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 방법2 </span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>LAGS, filters<span class="op">=</span>FILTERS)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>yUhat <span class="op">=</span> rgcn(yU, model <span class="op">=</span> model, train_ratio <span class="op">=</span> TRAIN_RATIO, lags<span class="op">=</span>LAGS, epoch<span class="op">=</span>EPOCH)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>LAGS, filters<span class="op">=</span>FILTERS)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>yPhat <span class="op">=</span> rgcn(yP, model <span class="op">=</span> model, train_ratio <span class="op">=</span> TRAIN_RATIO, lags<span class="op">=</span>LAGS, epoch<span class="op">=</span>EPOCH)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>yPhat[yPhat <span class="op">&lt;</span> <span class="dv">0</span>] <span class="op">=</span><span class="dv">0</span> </span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>classic <span class="op">=</span> ((y <span class="op">-</span> yhat)[LEN_TR:, :] <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>proposed <span class="op">=</span> ((y <span class="op">-</span> yUhat<span class="op">*</span>yPhat)[LEN_TR:, :] <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co"># print mse</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"""</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="st">total_mse(classic): </span><span class="sc">{:.4f}</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="st">total_mse(proposed): </span><span class="sc">{:.4f}</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>.<span class="bu">format</span>(classic.mean(), proposed.mean()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>5/5
 total_mse(classic): 0.0573
@@ -408,29 +417,29 @@ total_mse(proposed): 0.0476
 </div>
 </div>
 <div id="0e4f3828-a726-471a-a33f-adb02438d3df" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># plot </span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>start <span class="op">=</span> LEN_TR </span>
-<span id="cb5-3"><a href="#cb5-3"></a>end <span class="op">=</span> LEN_TR <span class="op">+</span> LEN_TEST </span>
-<span id="cb5-4"><a href="#cb5-4"></a>city <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>tick_interval <span class="op">=</span> <span class="dv">24</span> </span>
-<span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a>classic <span class="op">=</span> (y <span class="op">-</span> yhat)[start:end, :] <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>proposed <span class="op">=</span> (y <span class="op">-</span> yUhat<span class="op">*</span>yPhat)[start:end, :] <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="bu">print</span>(<span class="st">"""</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="st">total_mse(classic): </span><span class="sc">{:.4f}</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="st">total_mse(proposed): </span><span class="sc">{:.4f}</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="st">"""</span>.<span class="bu">format</span>(classic.mean(), proposed.mean()))</span>
-<span id="cb5-14"><a href="#cb5-14"></a></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="cf">with</span> plt.style.context(<span class="st">'cyberpunk'</span>): </span>
-<span id="cb5-16"><a href="#cb5-16"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">4</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a>    plt.plot(t[start:end],y[start:end,city],<span class="st">'-'</span>,label<span class="op">=</span><span class="st">'real'</span>)</span>
-<span id="cb5-18"><a href="#cb5-18"></a>    plt.plot(t[start:end],yhat[start:end,city],<span class="st">'--'</span>,label<span class="op">=</span><span class="st">'predited(classic)'</span>)</span>
-<span id="cb5-19"><a href="#cb5-19"></a>    plt.plot(t[start:end],(yUhat<span class="op">*</span>yPhat)[start:end,city],<span class="st">'--'</span>,label<span class="op">=</span><span class="st">'predited(proposed)'</span>)</span>
-<span id="cb5-20"><a href="#cb5-20"></a>    plt.xticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(t[start:end]) <span class="op">+</span> <span class="dv">1</span>, tick_interval),rotation<span class="op">=</span><span class="dv">25</span>,ha<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb5-21"><a href="#cb5-21"></a>    plt.title(<span class="st">"The predicted results in </span><span class="sc">{}</span><span class="st"> from </span><span class="sc">{}</span><span class="st"> to </span><span class="sc">{}</span><span class="st"> "</span>.<span class="bu">format</span>(regions[city],t[start:end].to_list()[<span class="dv">0</span>][:<span class="dv">10</span>],t[start:end].to_list()[<span class="op">-</span><span class="dv">1</span>][:<span class="dv">10</span>]))    </span>
-<span id="cb5-22"><a href="#cb5-22"></a>    plt.legend()</span>
-<span id="cb5-23"><a href="#cb5-23"></a>    mplcyberpunk.add_glow_effects()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> LEN_TR </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> LEN_TR <span class="op">+</span> LEN_TEST </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>city <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>tick_interval <span class="op">=</span> <span class="dv">24</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>classic <span class="op">=</span> (y <span class="op">-</span> yhat)[start:end, :] <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>proposed <span class="op">=</span> (y <span class="op">-</span> yUhat<span class="op">*</span>yPhat)[start:end, :] <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"""</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">total_mse(classic): </span><span class="sc">{:.4f}</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">total_mse(proposed): </span><span class="sc">{:.4f}</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>.<span class="bu">format</span>(classic.mean(), proposed.mean()))</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'cyberpunk'</span>): </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">4</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    plt.plot(t[start:end],y[start:end,city],<span class="st">'-'</span>,label<span class="op">=</span><span class="st">'real'</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    plt.plot(t[start:end],yhat[start:end,city],<span class="st">'--'</span>,label<span class="op">=</span><span class="st">'predited(classic)'</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    plt.plot(t[start:end],(yUhat<span class="op">*</span>yPhat)[start:end,city],<span class="st">'--'</span>,label<span class="op">=</span><span class="st">'predited(proposed)'</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    plt.xticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(t[start:end]) <span class="op">+</span> <span class="dv">1</span>, tick_interval),rotation<span class="op">=</span><span class="dv">25</span>,ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"The predicted results in </span><span class="sc">{}</span><span class="st"> from </span><span class="sc">{}</span><span class="st"> to </span><span class="sc">{}</span><span class="st"> "</span>.<span class="bu">format</span>(regions[city],t[start:end].to_list()[<span class="dv">0</span>][:<span class="dv">10</span>],t[start:end].to_list()[<span class="op">-</span><span class="dv">1</span>][:<span class="dv">10</span>]))    </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    mplcyberpunk.add_glow_effects()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 total_mse(classic): 0.0573
@@ -438,7 +447,7 @@ total_mse(proposed): 0.0476
 </code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-07-17-EPT-RGCN_files/figure-html/cell-5-output-2.png" class="img-fluid"></p>
+<p><img src="2023-07-17-EPT-RGCN_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -446,61 +455,61 @@ total_mse(proposed): 0.0476
 <h1>Analyze</h1>
 <p><code>-</code> y vs yhat</p>
 <div id="66c31f20-3fa1-41ed-9b3b-00c1750c53c6" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'seaborn-bright'</span>): </span>
-<span id="cb7-2"><a href="#cb7-2"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>    plt.plot(y[<span class="dv">50</span>:<span class="dv">150</span>,<span class="dv">0</span>],<span class="st">'o-'</span>,label<span class="op">=</span><span class="st">'real'</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>    plt.plot(yhat[<span class="dv">50</span>:<span class="dv">150</span>,<span class="dv">0</span>],<span class="st">'o--'</span>,label<span class="op">=</span><span class="st">'predited'</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>    plt.legend()</span>
-<span id="cb7-6"><a href="#cb7-6"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="2023-07-17-EPT-RGCN_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<p><code>-</code> yU vs yUhat</p>
-<div id="090be9aa-0775-40b5-9041-377f4b7309ed" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'seaborn-bright'</span>): </span>
-<span id="cb8-2"><a href="#cb8-2"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>    plt.plot(yU[:,<span class="dv">25</span>],label<span class="op">=</span><span class="st">'real'</span>)</span>
-<span id="cb8-4"><a href="#cb8-4"></a>    plt.plot(yUhat[:,<span class="dv">25</span>],label<span class="op">=</span><span class="st">'predited'</span>)</span>
-<span id="cb8-5"><a href="#cb8-5"></a>    plt.legend()</span>
-<span id="cb8-6"><a href="#cb8-6"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'seaborn-bright'</span>): </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    plt.plot(y[<span class="dv">50</span>:<span class="dv">150</span>,<span class="dv">0</span>],<span class="st">'o-'</span>,label<span class="op">=</span><span class="st">'real'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    plt.plot(yhat[<span class="dv">50</span>:<span class="dv">150</span>,<span class="dv">0</span>],<span class="st">'o--'</span>,label<span class="op">=</span><span class="st">'predited'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-07-17-EPT-RGCN_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p><code>-</code> yP vs yPhat</p>
-<div id="7d69e87f-7956-4023-be71-712205895a1c" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'seaborn-bright'</span>): </span>
-<span id="cb9-2"><a href="#cb9-2"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>    plt.plot(yP[<span class="dv">50</span>:<span class="dv">150</span>,city],<span class="st">'o-'</span>,label<span class="op">=</span><span class="st">'real'</span>)</span>
-<span id="cb9-4"><a href="#cb9-4"></a>    plt.plot(yPhat[<span class="dv">50</span>:<span class="dv">150</span>,city],<span class="st">'o--'</span>,label<span class="op">=</span><span class="st">'predited'</span>)</span>
-<span id="cb9-5"><a href="#cb9-5"></a>    plt.legend()</span>
-<span id="cb9-6"><a href="#cb9-6"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-</code> yU vs yUhat</p>
+<div id="090be9aa-0775-40b5-9041-377f4b7309ed" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'seaborn-bright'</span>): </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    plt.plot(yU[:,<span class="dv">25</span>],label<span class="op">=</span><span class="st">'real'</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    plt.plot(yUhat[:,<span class="dv">25</span>],label<span class="op">=</span><span class="st">'predited'</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-07-17-EPT-RGCN_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p><code>-</code> y vs (yUhat*yPhat)</p>
-<div id="a8e0c618-eac7-48bc-a0d6-98beabd0ee9c" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'seaborn-bright'</span>): </span>
-<span id="cb10-2"><a href="#cb10-2"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>    plt.plot(y[<span class="dv">50</span>:<span class="dv">150</span>,<span class="dv">0</span>],<span class="st">'o-'</span>,label<span class="op">=</span><span class="st">'real'</span>)</span>
-<span id="cb10-4"><a href="#cb10-4"></a>    plt.plot((yUhat<span class="op">*</span>yPhat)[<span class="dv">50</span>:<span class="dv">150</span>,<span class="dv">0</span>],<span class="st">'o--'</span>,label<span class="op">=</span><span class="st">'predited'</span>)</span>
-<span id="cb10-5"><a href="#cb10-5"></a>    plt.legend()</span>
-<span id="cb10-6"><a href="#cb10-6"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-</code> yP vs yPhat</p>
+<div id="7d69e87f-7956-4023-be71-712205895a1c" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'seaborn-bright'</span>): </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    plt.plot(yP[<span class="dv">50</span>:<span class="dv">150</span>,city],<span class="st">'o-'</span>,label<span class="op">=</span><span class="st">'real'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    plt.plot(yPhat[<span class="dv">50</span>:<span class="dv">150</span>,city],<span class="st">'o--'</span>,label<span class="op">=</span><span class="st">'predited'</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-07-17-EPT-RGCN_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p><code>-</code> 지역별분석</p>
-<div id="db1f7ca4-c2a4-4c29-81d4-53662d53e911" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'cyberpunk'</span>):</span>
-<span id="cb11-2"><a href="#cb11-2"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>    plt.plot(regions,classic.mean(axis<span class="op">=</span><span class="dv">0</span>)<span class="op">-</span>proposed.mean(axis<span class="op">=</span><span class="dv">0</span>),<span class="st">'--o'</span>)<span class="op">;</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>    plt.xticks(regions, rotation<span class="op">=</span><span class="dv">55</span>, ha<span class="op">=</span><span class="st">'right'</span>)<span class="op">;</span>    </span>
-<span id="cb11-5"><a href="#cb11-5"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-</code> y vs (yUhat*yPhat)</p>
+<div id="a8e0c618-eac7-48bc-a0d6-98beabd0ee9c" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'seaborn-bright'</span>): </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    plt.plot(y[<span class="dv">50</span>:<span class="dv">150</span>,<span class="dv">0</span>],<span class="st">'o-'</span>,label<span class="op">=</span><span class="st">'real'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    plt.plot((yUhat<span class="op">*</span>yPhat)[<span class="dv">50</span>:<span class="dv">150</span>,<span class="dv">0</span>],<span class="st">'o--'</span>,label<span class="op">=</span><span class="st">'predited'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-07-17-EPT-RGCN_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><code>-</code> 지역별분석</p>
+<div id="db1f7ca4-c2a4-4c29-81d4-53662d53e911" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context(<span class="st">'cyberpunk'</span>):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">3</span>]  <span class="co"># [가로 크기, 세로 크기]</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    plt.plot(regions,classic.mean(axis<span class="op">=</span><span class="dv">0</span>)<span class="op">-</span>proposed.mean(axis<span class="op">=</span><span class="dv">0</span>),<span class="st">'--o'</span>)<span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    plt.xticks(regions, rotation<span class="op">=</span><span class="dv">55</span>, ha<span class="op">=</span><span class="st">'right'</span>)<span class="op">;</span>    </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    mplcyberpunk.add_glow_effects()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-07-17-EPT-RGCN_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 
