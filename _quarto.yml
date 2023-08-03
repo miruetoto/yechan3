@@ -52,7 +52,3 @@ format:
   html:
     theme: cosmo
     css: styles.css
-    toc: true
-    code-fold: false
-    code-line-numbers: true
-    code-copy: true
