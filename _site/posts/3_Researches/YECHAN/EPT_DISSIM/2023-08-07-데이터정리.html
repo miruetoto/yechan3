@@ -317,14 +317,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div id="6ca2e10b-c056-40e1-a57e-8e25c9792471" class="cell" data-execution_count="3">
+<div id="6ca2e10b-c056-40e1-a57e-8e25c9792471" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>1</code>. load raw-data</p>
-<div id="0984089c-1452-49da-b679-218bf33dacce" class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://media.githubusercontent.com/media/miruetoto/yechan3/main/posts/3_Researches/YECHAN/EPT_DISSIM/india.csv"</span>)</span>
+<div id="0984089c-1452-49da-b679-218bf33dacce" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"OBS_ASOS_DD_20230807193646.csv"</span>, encoding<span class="op">=</span><span class="st">'EUC-KR'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="76">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -332,332 +332,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">SUBDIVISION</th>
-<th data-quarto-table-cell-role="th">YEAR</th>
-<th data-quarto-table-cell-role="th">JAN</th>
-<th data-quarto-table-cell-role="th">FEB</th>
-<th data-quarto-table-cell-role="th">MAR</th>
-<th data-quarto-table-cell-role="th">APR</th>
-<th data-quarto-table-cell-role="th">MAY</th>
-<th data-quarto-table-cell-role="th">JUN</th>
-<th data-quarto-table-cell-role="th">JUL</th>
-<th data-quarto-table-cell-role="th">AUG</th>
-<th data-quarto-table-cell-role="th">SEP</th>
-<th data-quarto-table-cell-role="th">OCT</th>
-<th data-quarto-table-cell-role="th">NOV</th>
-<th data-quarto-table-cell-role="th">DEC</th>
-<th data-quarto-table-cell-role="th">ANNUAL</th>
-<th data-quarto-table-cell-role="th">Jan-Feb</th>
-<th data-quarto-table-cell-role="th">Mar-May</th>
-<th data-quarto-table-cell-role="th">Jun-Sep</th>
-<th data-quarto-table-cell-role="th">Oct-Dec</th>
+<th data-quarto-table-cell-role="th">지점</th>
+<th data-quarto-table-cell-role="th">지점명</th>
+<th data-quarto-table-cell-role="th">일시</th>
+<th data-quarto-table-cell-role="th">일강수량(mm)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>49.2</td>
-<td>87.1</td>
-<td>29.2</td>
-<td>2.3</td>
-<td>528.8</td>
-<td>517.5</td>
-<td>365.1</td>
-<td>481.1</td>
-<td>332.6</td>
-<td>388.5</td>
-<td>558.2</td>
-<td>33.6</td>
-<td>3373.2</td>
-<td>136.3</td>
-<td>560.3</td>
-<td>1696.3</td>
-<td>980.3</td>
+<td>90</td>
+<td>속초</td>
+<td>2013-08-09</td>
+<td>15.5</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1902</td>
-<td>0.0</td>
-<td>159.8</td>
-<td>12.2</td>
-<td>0.0</td>
-<td>446.1</td>
-<td>537.1</td>
-<td>228.9</td>
-<td>753.7</td>
-<td>666.2</td>
-<td>197.2</td>
-<td>359.0</td>
-<td>160.5</td>
-<td>3520.7</td>
-<td>159.8</td>
-<td>458.3</td>
-<td>2185.9</td>
-<td>716.7</td>
+<td>90</td>
+<td>속초</td>
+<td>2013-08-10</td>
+<td>9.5</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1903</td>
-<td>12.7</td>
-<td>144.0</td>
-<td>0.0</td>
-<td>1.0</td>
-<td>235.1</td>
-<td>479.9</td>
-<td>728.4</td>
-<td>326.7</td>
-<td>339.0</td>
-<td>181.2</td>
-<td>284.4</td>
-<td>225.0</td>
-<td>2957.4</td>
-<td>156.7</td>
-<td>236.1</td>
-<td>1874.0</td>
-<td>690.6</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1904</td>
-<td>9.4</td>
-<td>14.7</td>
-<td>0.0</td>
-<td>202.4</td>
-<td>304.5</td>
-<td>495.1</td>
-<td>502.0</td>
-<td>160.1</td>
-<td>820.4</td>
-<td>222.2</td>
-<td>308.7</td>
-<td>40.1</td>
-<td>3079.6</td>
-<td>24.1</td>
-<td>506.9</td>
-<td>1977.6</td>
-<td>571.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1905</td>
-<td>1.3</td>
-<td>0.0</td>
-<td>3.3</td>
-<td>26.9</td>
-<td>279.5</td>
-<td>628.7</td>
-<td>368.7</td>
-<td>330.5</td>
-<td>297.0</td>
-<td>260.7</td>
-<td>25.4</td>
-<td>344.7</td>
-<td>2566.7</td>
-<td>1.3</td>
-<td>309.7</td>
-<td>1624.9</td>
-<td>630.8</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4111</td>
-<td>LAKSHADWEEP</td>
-<td>2011</td>
-<td>5.1</td>
-<td>2.8</td>
-<td>3.1</td>
-<td>85.9</td>
-<td>107.2</td>
-<td>153.6</td>
-<td>350.2</td>
-<td>254.0</td>
-<td>255.2</td>
-<td>117.4</td>
-<td>184.3</td>
-<td>14.9</td>
-<td>1533.7</td>
-<td>7.9</td>
-<td>196.2</td>
-<td>1013.0</td>
-<td>316.6</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">4112</td>
-<td>LAKSHADWEEP</td>
-<td>2012</td>
-<td>19.2</td>
+<td>90</td>
+<td>속초</td>
+<td>2013-08-16</td>
 <td>0.1</td>
-<td>1.6</td>
-<td>76.8</td>
-<td>21.2</td>
-<td>327.0</td>
-<td>231.5</td>
-<td>381.2</td>
-<td>179.8</td>
-<td>145.9</td>
-<td>12.4</td>
-<td>8.8</td>
-<td>1405.5</td>
-<td>19.3</td>
-<td>99.6</td>
-<td>1119.5</td>
-<td>167.1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4113</td>
-<td>LAKSHADWEEP</td>
-<td>2013</td>
-<td>26.2</td>
-<td>34.4</td>
-<td>37.5</td>
-<td>5.3</td>
-<td>88.3</td>
-<td>426.2</td>
-<td>296.4</td>
-<td>154.4</td>
-<td>180.0</td>
-<td>72.8</td>
-<td>78.1</td>
-<td>26.7</td>
-<td>1426.3</td>
-<td>60.6</td>
-<td>131.1</td>
-<td>1057.0</td>
-<td>177.6</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">4114</td>
-<td>LAKSHADWEEP</td>
-<td>2014</td>
-<td>53.2</td>
-<td>16.1</td>
-<td>4.4</td>
-<td>14.9</td>
-<td>57.4</td>
-<td>244.1</td>
-<td>116.1</td>
-<td>466.1</td>
-<td>132.2</td>
-<td>169.2</td>
-<td>59.0</td>
-<td>62.3</td>
-<td>1395.0</td>
-<td>69.3</td>
-<td>76.7</td>
-<td>958.5</td>
-<td>290.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4115</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>2.2</td>
-<td>0.5</td>
-<td>3.7</td>
-<td>87.1</td>
-<td>133.1</td>
-<td>296.6</td>
-<td>257.5</td>
-<td>146.4</td>
-<td>160.4</td>
-<td>165.4</td>
-<td>231.0</td>
-<td>159.0</td>
-<td>1642.9</td>
-<td>2.7</td>
-<td>223.9</td>
-<td>860.9</td>
-<td>555.4</td>
-</tr>
-</tbody>
-</table>
-
-<p>4116 rows × 19 columns</p>
-</div>
-</div>
-</div>
-<p><code>2</code>. make it as tidydata</p>
-<div id="e8841cde-46c3-4355-904e-6d8ada543543" class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop([<span class="st">'ANNUAL'</span>, <span class="st">'Jan-Feb'</span>, <span class="st">'Mar-May'</span>,<span class="st">'Jun-Sep'</span>, <span class="st">'Oct-Dec'</span>],axis<span class="op">=</span><span class="dv">1</span>)<span class="op">\</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>.set_index([<span class="st">'SUBDIVISION'</span>,<span class="st">'YEAR'</span>])<span class="op">\</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>.stack().reset_index().rename({<span class="st">'level_2'</span>:<span class="st">'MONTH'</span>,<span class="dv">0</span>:<span class="st">'PRECIPITATION'</span>},axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="75">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">SUBDIVISION</th>
-<th data-quarto-table-cell-role="th">YEAR</th>
-<th data-quarto-table-cell-role="th">MONTH</th>
-<th data-quarto-table-cell-role="th">PRECIPITATION</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>JAN</td>
-<td>49.2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>FEB</td>
-<td>87.1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>MAR</td>
-<td>29.2</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>APR</td>
-<td>2.3</td>
+<td>90</td>
+<td>속초</td>
+<td>2013-08-18</td>
+<td>0.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>MAY</td>
-<td>528.8</td>
+<td>90</td>
+<td>속초</td>
+<td>2013-08-19</td>
+<td>9.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -667,286 +382,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">49317</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>AUG</td>
-<td>146.4</td>
+<td data-quarto-table-cell-role="th">127200</td>
+<td>295</td>
+<td>남해</td>
+<td>2023-07-22</td>
+<td>4.3</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">49318</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>SEP</td>
-<td>160.4</td>
+<td data-quarto-table-cell-role="th">127201</td>
+<td>295</td>
+<td>남해</td>
+<td>2023-07-23</td>
+<td>13.4</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">49319</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>OCT</td>
-<td>165.4</td>
+<td data-quarto-table-cell-role="th">127202</td>
+<td>295</td>
+<td>남해</td>
+<td>2023-07-24</td>
+<td>17.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">49320</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>NOV</td>
-<td>231.0</td>
+<td data-quarto-table-cell-role="th">127203</td>
+<td>295</td>
+<td>남해</td>
+<td>2023-07-25</td>
+<td>4.7</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">49321</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>DEC</td>
-<td>159.0</td>
+<td data-quarto-table-cell-role="th">127204</td>
+<td>295</td>
+<td>남해</td>
+<td>2023-07-26</td>
+<td>42.5</td>
 </tr>
 </tbody>
 </table>
 
-<p>49322 rows × 4 columns</p>
+<p>127205 rows × 4 columns</p>
 </div>
 </div>
 </div>
-<p><code>3</code>. mutate <code>MONTH</code> column</p>
-<div id="49dfb79c-cc9f-40e4-891d-4319f2847082" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mapp <span class="op">=</span> {l:i <span class="cf">for</span> i,l <span class="kw">in</span> <span class="bu">enumerate</span>(df.MONTH.unique().tolist(),start<span class="op">=</span><span class="dv">1</span>)}</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mapp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
-<pre><code>{'JAN': 1,
- 'FEB': 2,
- 'MAR': 3,
- 'APR': 4,
- 'MAY': 5,
- 'JUN': 6,
- 'JUL': 7,
- 'AUG': 8,
- 'SEP': 9,
- 'OCT': 10,
- 'NOV': 11,
- 'DEC': 12}</code></pre>
-</div>
-</div>
-<div id="36eb4d63-0124-472c-a876-ecabbcbf7fec" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.assign(MONTH <span class="op">=</span> df.MONTH.<span class="bu">apply</span>(<span class="kw">lambda</span> x: mapp[x]))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">SUBDIVISION</th>
-<th data-quarto-table-cell-role="th">YEAR</th>
-<th data-quarto-table-cell-role="th">MONTH</th>
-<th data-quarto-table-cell-role="th">PRECIPITATION</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>1</td>
-<td>49.2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>2</td>
-<td>87.1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>3</td>
-<td>29.2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>4</td>
-<td>2.3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>5</td>
-<td>528.8</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">49317</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>8</td>
-<td>146.4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">49318</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>9</td>
-<td>160.4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">49319</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>10</td>
-<td>165.4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">49320</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>11</td>
-<td>231.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">49321</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>12</td>
-<td>159.0</td>
-</tr>
-</tbody>
-</table>
-
-<p>49322 rows × 4 columns</p>
-</div>
-</div>
-</div>
-<p><code>4</code>. create a new <code>YM</code> column from <code>YEAR</code> and <code>MONTH</code></p>
-<div id="473b5a9a-0d67-42bc-bd95-c938a0e59994" class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.assign(YM <span class="op">=</span> pd.Series([<span class="bu">str</span>(y)<span class="op">+</span><span class="st">'-'</span><span class="op">+</span><span class="bu">str</span>(m) <span class="cf">for</span> y,m <span class="kw">in</span> <span class="bu">zip</span>(df.YEAR,df.MONTH)]).<span class="bu">apply</span>(pd.to_datetime))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="65">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">SUBDIVISION</th>
-<th data-quarto-table-cell-role="th">YEAR</th>
-<th data-quarto-table-cell-role="th">MONTH</th>
-<th data-quarto-table-cell-role="th">PRECIPITATION</th>
-<th data-quarto-table-cell-role="th">YM</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>1</td>
-<td>49.2</td>
-<td>1901-01-01</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>2</td>
-<td>87.1</td>
-<td>1901-02-01</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>3</td>
-<td>29.2</td>
-<td>1901-03-01</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>4</td>
-<td>2.3</td>
-<td>1901-04-01</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>ANDAMAN &amp; NICOBAR ISLANDS</td>
-<td>1901</td>
-<td>5</td>
-<td>528.8</td>
-<td>1901-05-01</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">49317</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>8</td>
-<td>146.4</td>
-<td>2015-08-01</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">49318</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>9</td>
-<td>160.4</td>
-<td>2015-09-01</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">49319</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>10</td>
-<td>165.4</td>
-<td>2015-10-01</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">49320</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>11</td>
-<td>231.0</td>
-<td>2015-11-01</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">49321</td>
-<td>LAKSHADWEEP</td>
-<td>2015</td>
-<td>12</td>
-<td>159.0</td>
-<td>2015-12-01</td>
-</tr>
-</tbody>
-</table>
-
-<p>49322 rows × 5 columns</p>
-</div>
-</div>
-</div>
-<p><code>5</code>. save dataframe as <code>india_tidy.csv</code></p>
-<div id="2333ce89-2f0a-4882-98c0-6be9ffe9a490" class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'india_tidy.csv'</span>,index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>2</code>. save dataframe as <code>PRCP_KOR.csv</code></p>
+<div id="2333ce89-2f0a-4882-98c0-6be9ffe9a490" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'PRCP_KOR.csv'</span>,index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
