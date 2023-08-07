@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="신록예찬">
-<meta name="dcterms.date" content="2023-07-20">
+<meta name="dcterms.date" content="2023-08-07">
 
 <title>신록예찬’s Blog - [SOLAR] EPT + RGCN (시뮬레이션)</title>
 <style>
@@ -307,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 20, 2023</p>
+      <p class="date">August 7, 2023</p>
     </div>
   </div>
   
@@ -317,82 +317,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div id="1b7ba839-2de0-4ee2-9075-1d4987e53720" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run <span class="fl">0720.</span><span class="er">py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1b7ba839-2de0-4ee2-9075-1d4987e53720" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run <span class="fl">0807.</span><span class="er">py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="3b103378-52a9-4d7b-8cf7-03b5eafeadee" class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="dced1020-205e-41f5-8a9b-34cfad9db5e2" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d23251b9-4abe-40d2-9dae-9b167bb5eeb7" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read dataframe </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data_eng_230710.csv'</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make y, y_upper, y_period, time, regions </span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df.loc[:,<span class="st">'Bukchoncheon'</span>:<span class="st">'Gyeongju-si'</span>].to_numpy()</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>yU <span class="op">=</span> df.loc[:,<span class="st">'Bukchoncheon_Upper'</span>:<span class="st">'Gyeongju-si_Upper'</span>].to_numpy()</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>yP <span class="op">=</span> np.divide(y, yU<span class="op">+</span><span class="fl">1e-10</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> df.loc[:,<span class="st">'date'</span>]</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>regions <span class="op">=</span> <span class="bu">list</span>(df.loc[:,<span class="st">'Bukchoncheon'</span>:<span class="st">'Gyeongju-si'</span>].columns)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>TRAIN_RATIO <span class="op">=</span> <span class="fl">0.8</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>T,N <span class="op">=</span> <span class="bu">len</span>(t),<span class="bu">len</span>(regions) </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>LEN_TEST <span class="op">=</span> <span class="bu">int</span>(np.floor(T<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>TRAIN_RATIO)))</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>LEN_TR <span class="op">=</span> T <span class="op">-</span> LEN_TEST</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8b641306-3482-47f6-ae4e-ea5df34e2540" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>s<span class="op">=</span>Simulator()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0823686c-d362-469c-a69b-937844395802" class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="832e90e6-b51f-4ee4-b174-abdb474f00ed" class="cell" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>method <span class="op">=</span> [<span class="st">'classic'</span>,<span class="st">'proposed'</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lags <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>filters <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>] </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>epoch <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>] </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>model_name <span class="op">=</span> <span class="st">'RecurrentGCN'</span> <span class="co">### 모델변경시 수정필요</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> [<span class="st">'model'</span>, <span class="st">'method'</span>, <span class="st">'lags'</span>, </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>       <span class="st">'nof_filters'</span>, <span class="st">'epoch'</span>, <span class="st">'calculation_time'</span>,</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>       <span class="st">'index_time'</span>,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>       <span class="st">'node'</span>, <span class="st">'mse'</span>]</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>col)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> iteration <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">30</span>):</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> m,l,f,e <span class="kw">in</span> itertools.product(method, lags, filters, epoch):</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> m <span class="op">==</span> <span class="st">'classic'</span>:</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>            t1 <span class="op">=</span> time.time()</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>l, filters<span class="op">=</span>f) <span class="co">### 모델변경시 수정필요</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            yhat <span class="op">=</span> rgcn(y, model <span class="op">=</span> model, train_ratio <span class="op">=</span> TRAIN_RATIO, lags<span class="op">=</span>l, epoch<span class="op">=</span>e)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            yhat[yhat <span class="op">&lt;</span> <span class="dv">0</span>]<span class="op">=</span> <span class="dv">0</span>   </span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>            t2 <span class="op">=</span> time.time()</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>            c <span class="op">=</span> t2<span class="op">-</span>t1</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>            t <span class="op">=</span> <span class="bu">str</span>(datetime.datetime.now())</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>            _df2 <span class="op">=</span> pd.concat([pd.Series(regions),pd.Series(((y <span class="op">-</span> yhat)[LEN_TR:, :] <span class="op">**</span> <span class="dv">2</span>).mean(axis<span class="op">=</span><span class="dv">0</span>))],axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>            _df1 <span class="op">=</span> pd.DataFrame([[model_name,m,l,f,e,c,t]]<span class="op">*</span>N)</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            _df <span class="op">=</span> pd.concat([_df1,_df2],axis<span class="op">=</span><span class="dv">1</span>).set_axis(col,axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>            df <span class="op">=</span> pd.concat([df,_df])</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>: <span class="co"># proposed </span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>            t1 <span class="op">=</span> time.time()</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>l, filters<span class="op">=</span>f) <span class="co">### 모델변경시 수정필요</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>            yUhat <span class="op">=</span> rgcn(yU, model <span class="op">=</span> model, train_ratio <span class="op">=</span> <span class="fl">0.8</span>, lags<span class="op">=</span>l, epoch<span class="op">=</span>e)</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>l, filters<span class="op">=</span>f) <span class="co">### 모델변경시 수정필요</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>            yPhat <span class="op">=</span> rgcn(yP, model <span class="op">=</span> model, train_ratio <span class="op">=</span> <span class="fl">0.8</span>, lags<span class="op">=</span>l, epoch<span class="op">=</span>e)</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>            yPhat[yPhat <span class="op">&lt;</span> <span class="dv">0</span>] <span class="op">=</span><span class="dv">0</span> </span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>            t2 <span class="op">=</span> time.time()</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>            c <span class="op">=</span> t2<span class="op">-</span>t1</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>            t <span class="op">=</span> <span class="bu">str</span>(datetime.datetime.now())</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>            _df2 <span class="op">=</span> pd.concat([pd.Series(regions),pd.Series(((y <span class="op">-</span> yhat)[LEN_TR:, :] <span class="op">**</span> <span class="dv">2</span>).mean(axis<span class="op">=</span><span class="dv">0</span>))],axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>            _df1 <span class="op">=</span> pd.DataFrame([[model_name,m,l,f,e,c,t]]<span class="op">*</span>N)</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>            _df <span class="op">=</span> pd.concat([_df1,_df2],axis<span class="op">=</span><span class="dv">1</span>).set_axis(col,axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>            df <span class="op">=</span> pd.concat([df,_df])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cd94f43b-8b16-4d03-90c7-56104cf5ec7e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GConv_GRU(torch.nn.Module):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, node_features, filters):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(GConv_GRU, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.recurrent <span class="op">=</span> GConvGRU(node_features, filters, <span class="dv">2</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear <span class="op">=</span> torch.nn.Linear(filters, <span class="dv">1</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x, edge_index, edge_weight):</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> <span class="va">self</span>.recurrent(x, edge_index, edge_weight)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> F.relu(h)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> <span class="va">self</span>.linear(h)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> h</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>s.simulate(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    n_iteration <span class="op">=</span> <span class="dv">1</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    lags <span class="op">=</span> [<span class="dv">1</span>],</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    filters <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">6</span>],</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    epoch <span class="op">=</span> [<span class="dv">1</span>],</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    Model <span class="op">=</span> GConv_GRU</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2/2</code></pre>
+<pre><code>method:classic lag:1 filters:4 epoch:1 is done
+method:classic lag:1 filters:6 epoch:1 is done
+method:proposed lag:1 filters:4 epoch:1 is done
+method:proposed lag:1 filters:6 epoch:1 is done
+save results</code></pre>
 </div>
 </div>
-<div id="80a7de53-901f-4678-ab40-6116d44075b2" class="cell" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'index_time'</span>).agg({<span class="st">'mse'</span>:np.mean}).reset_index().rename({<span class="st">'mse'</span>:<span class="st">'mse_mean'</span>},axis<span class="op">=</span><span class="dv">1</span>).merge(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="94">
+<div id="d2e03899-dddc-4929-82cf-e12fe58f01f4" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fnames <span class="op">=</span> [<span class="st">'./results/'</span><span class="op">+</span>l <span class="cf">for</span> l <span class="kw">in</span> os.listdir(<span class="st">'./results/'</span>) <span class="cf">if</span> l[<span class="dv">0</span>] <span class="op">!=</span> <span class="st">'.'</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fnames </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>['./results/SOLAR_2023-08-07 16:12:29.037623.csv',
+ './results/SOLAR_2023-08-07 15:48:50.109743.csv',
+ './results/SOLAR_2023-08-07 16:08:41.687843.csv',
+ './results/SOLAR_2023-08-07 15:48:25.728993.csv',
+ './results/SOLAR_2023-08-07 16:28:55.929269.csv']</code></pre>
+</div>
+</div>
+<div id="d36ba66e-e9e5-432d-9b4e-7fa7d7ea0eaa" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pd.concat([pd.read_csv(fname) <span class="cf">for</span> fname <span class="kw">in</span> fnames]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
@@ -415,68 +390,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>2023-07-20 17:52:17.128344</td>
-<td>0.395941</td>
+<td>2023-08-07 16:11:11.072667</td>
+<td>0.419854</td>
 <td>RecurrentGCN</td>
 <td>classic</td>
 <td>1</td>
+<td>4</td>
 <td>1</td>
-<td>1</td>
-<td>14.640620</td>
+<td>15.519606</td>
 <td>Bukchoncheon</td>
-<td>0.451428</td>
+<td>0.491867</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>2023-07-20 17:52:17.128344</td>
-<td>0.395941</td>
+<td>2023-08-07 16:11:11.072667</td>
+<td>0.419854</td>
 <td>RecurrentGCN</td>
 <td>classic</td>
 <td>1</td>
+<td>4</td>
 <td>1</td>
-<td>1</td>
-<td>14.640620</td>
+<td>15.519606</td>
 <td>Cheorwon</td>
-<td>0.459097</td>
+<td>0.474034</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>2023-07-20 17:52:17.128344</td>
-<td>0.395941</td>
+<td>2023-08-07 16:11:11.072667</td>
+<td>0.419854</td>
 <td>RecurrentGCN</td>
 <td>classic</td>
 <td>1</td>
+<td>4</td>
 <td>1</td>
-<td>1</td>
-<td>14.640620</td>
+<td>15.519606</td>
 <td>Daegwallyeong</td>
-<td>0.431739</td>
+<td>0.468020</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>2023-07-20 17:52:17.128344</td>
-<td>0.395941</td>
+<td>2023-08-07 16:11:11.072667</td>
+<td>0.419854</td>
 <td>RecurrentGCN</td>
 <td>classic</td>
 <td>1</td>
+<td>4</td>
 <td>1</td>
-<td>1</td>
-<td>14.640620</td>
+<td>15.519606</td>
 <td>Chuncheon</td>
-<td>0.392595</td>
+<td>0.433953</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>2023-07-20 17:52:17.128344</td>
-<td>0.395941</td>
+<td>2023-08-07 16:11:11.072667</td>
+<td>0.419854</td>
 <td>RecurrentGCN</td>
 <td>classic</td>
 <td>1</td>
+<td>4</td>
 <td>1</td>
-<td>1</td>
-<td>14.640620</td>
+<td>15.519606</td>
 <td>Baengnyeongdo</td>
-<td>0.734857</td>
+<td>0.620410</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -492,74 +467,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">699</td>
-<td>2023-07-20 17:59:51.353652</td>
-<td>0.121436</td>
-<td>RecurrentGCN</td>
+<td data-quarto-table-cell-role="th">875</td>
+<td>2023-08-07 16:28:55.924567</td>
+<td>0.139105</td>
+<td>GConvGRU</td>
 <td>proposed</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>49.591688</td>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+<td>30.982189</td>
 <td>Uiryeong-gun</td>
-<td>0.125202</td>
+<td>0.140765</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">700</td>
-<td>2023-07-20 17:59:51.353652</td>
-<td>0.121436</td>
-<td>RecurrentGCN</td>
+<td data-quarto-table-cell-role="th">876</td>
+<td>2023-08-07 16:28:55.924567</td>
+<td>0.139105</td>
+<td>GConvGRU</td>
 <td>proposed</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>49.591688</td>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+<td>30.982189</td>
 <td>Hamyang-gun</td>
-<td>0.108885</td>
+<td>0.122213</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">701</td>
-<td>2023-07-20 17:59:51.353652</td>
-<td>0.121436</td>
-<td>RecurrentGCN</td>
+<td data-quarto-table-cell-role="th">877</td>
+<td>2023-08-07 16:28:55.924567</td>
+<td>0.139105</td>
+<td>GConvGRU</td>
 <td>proposed</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>49.591688</td>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+<td>30.982189</td>
 <td>Gwangyang-si</td>
-<td>0.118268</td>
+<td>0.144140</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">702</td>
-<td>2023-07-20 17:59:51.353652</td>
-<td>0.121436</td>
-<td>RecurrentGCN</td>
+<td data-quarto-table-cell-role="th">878</td>
+<td>2023-08-07 16:28:55.924567</td>
+<td>0.139105</td>
+<td>GConvGRU</td>
 <td>proposed</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>49.591688</td>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+<td>30.982189</td>
 <td>Cheongsong-gun</td>
-<td>0.130977</td>
+<td>0.143174</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">703</td>
-<td>2023-07-20 17:59:51.353652</td>
-<td>0.121436</td>
-<td>RecurrentGCN</td>
+<td data-quarto-table-cell-role="th">879</td>
+<td>2023-08-07 16:28:55.924567</td>
+<td>0.139105</td>
+<td>GConvGRU</td>
 <td>proposed</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>49.591688</td>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+<td>30.982189</td>
 <td>Gyeongju-si</td>
-<td>0.093857</td>
+<td>0.109372</td>
 </tr>
 </tbody>
 </table>
 
-<p>704 rows × 10 columns</p>
+<p>880 rows × 10 columns</p>
 </div>
 </div>
 </div>
