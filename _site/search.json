@@ -1082,7 +1082,7 @@
     "href": "posts/3_Researches/YECHAN/EPT_DISSIM/2023-08-07-데이터정리.html",
     "title": "[EPT-DISSIM] 1. 데이터정리",
     "section": "",
-    "text": "import pandas as pd\n\n1. load raw-data\n\ndf = pd.read_csv(\"OBS_ASOS_DD_20230807193646.csv\", encoding='EUC-KR')\ndf\n\n\n\n\n\n\n\n\n지점\n지점명\n일시\n일강수량(mm)\n\n\n\n\n0\n90\n속초\n2013-08-09\n15.5\n\n\n1\n90\n속초\n2013-08-10\n9.5\n\n\n2\n90\n속초\n2013-08-16\n0.1\n\n\n3\n90\n속초\n2013-08-18\n0.0\n\n\n4\n90\n속초\n2013-08-19\n9.0\n\n\n...\n...\n...\n...\n...\n\n\n127200\n295\n남해\n2023-07-22\n4.3\n\n\n127201\n295\n남해\n2023-07-23\n13.4\n\n\n127202\n295\n남해\n2023-07-24\n17.0\n\n\n127203\n295\n남해\n2023-07-25\n4.7\n\n\n127204\n295\n남해\n2023-07-26\n42.5\n\n\n\n\n127205 rows × 4 columns\n\n\n\n2. save dataframe as PRCP_KOR.csv\n\ndf.to_csv('PRCP_KOR.csv',index=False)"
+    "text": "import pandas as pd\n\n1. load raw-data\n\ndf = pd.read_csv(\"OBS_ASOS_DD_20230807193646.csv\", encoding='EUC-KR')\ndf = df.rename({'지점':'Station_ID','지점명':'Station_Name','일시':'Date','일강수량(mm)':'Precipitation'},axis=1)\ndf\n\n\n\n\n\n\n\n\nStation_ID\nStation_Name\nDate\nPrecipitation\n\n\n\n\n0\n90\n속초\n2013-08-09\n15.5\n\n\n1\n90\n속초\n2013-08-10\n9.5\n\n\n2\n90\n속초\n2013-08-16\n0.1\n\n\n3\n90\n속초\n2013-08-18\n0.0\n\n\n4\n90\n속초\n2013-08-19\n9.0\n\n\n...\n...\n...\n...\n...\n\n\n127200\n295\n남해\n2023-07-22\n4.3\n\n\n127201\n295\n남해\n2023-07-23\n13.4\n\n\n127202\n295\n남해\n2023-07-24\n17.0\n\n\n127203\n295\n남해\n2023-07-25\n4.7\n\n\n127204\n295\n남해\n2023-07-26\n42.5\n\n\n\n\n127205 rows × 4 columns\n\n\n\n2. save dataframe as PRCP_KOR.csv\n\ndf.to_csv('PRCP_KOR.csv',index=False)"
   },
   {
     "objectID": "posts/1_Essays/2023-07-07-다중척도방법.html",

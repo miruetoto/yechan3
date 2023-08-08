@@ -321,10 +321,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>1</code>. load raw-data</p>
-<div id="0984089c-1452-49da-b679-218bf33dacce" class="cell" data-execution_count="4">
+<div id="0984089c-1452-49da-b679-218bf33dacce" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"OBS_ASOS_DD_20230807193646.csv"</span>, encoding<span class="op">=</span><span class="st">'EUC-KR'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.rename({<span class="st">'지점'</span>:<span class="st">'Station_ID'</span>,<span class="st">'지점명'</span>:<span class="st">'Station_Name'</span>,<span class="st">'일시'</span>:<span class="st">'Date'</span>,<span class="st">'일강수량(mm)'</span>:<span class="st">'Precipitation'</span>},axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -332,10 +333,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">지점</th>
-<th data-quarto-table-cell-role="th">지점명</th>
-<th data-quarto-table-cell-role="th">일시</th>
-<th data-quarto-table-cell-role="th">일강수량(mm)</th>
+<th data-quarto-table-cell-role="th">Station_ID</th>
+<th data-quarto-table-cell-role="th">Station_Name</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Precipitation</th>
 </tr>
 </thead>
 <tbody>
@@ -424,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>2</code>. save dataframe as <code>PRCP_KOR.csv</code></p>
-<div id="2333ce89-2f0a-4882-98c0-6be9ffe9a490" class="cell" data-execution_count="6">
+<div id="2333ce89-2f0a-4882-98c0-6be9ffe9a490" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'PRCP_KOR.csv'</span>,index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
