@@ -117,5 +117,5 @@ violin <- function(x, y=NULL,label=NULL, ...) {
     x=0
   }
   df = prepare_data(x, y)
-  return(geom_violin(data=df, mapping=aes(x = x, y = y, fill=label),scale='area', ...))
+  return(geom_violin(data=df, mapping=aes(x = x, y = y, fill=label, color=label),alpha=0.5, scale='area', ...))
 }

@@ -39,14 +39,14 @@
     "href": "posts/1_Essays/2099-01-01-ggplot3.html#ggplot-line-point",
     "title": "[Essays] ggplot3",
     "section": "ggplot + line + point",
-    "text": "ggplot + line + point\n\ny = rnorm(100)\n\n- 예시1\n\nggplot() + line(1:100,y,lty=2,col='gray60')\n\n\n\n\n- 예시2\n\nggplot() + point(y,pch=2,col=2,cex=5)\n\n\n\n\n- 예시3\n\nggplot() + point(y,pch=2,col=2,cex=5) + line(25:50, y[25:50], col=2, lwd=2)"
+    "text": "ggplot + line + point\n\ny = rnorm(100)\n\n- 예시1\n\nggplot() + line(1:100, y, lty=2, col='gray60')\n\n\n\n\n- 예시2\n\nggplot() + point(y,pch=2,col=2,cex=5)\n\n\n\n\n- 예시3\n\nggplot() + point(y,pch=2,col=2,cex=5) + line(25:50, y[25:50], col=2, lwd=2)"
   },
   {
     "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#ggplot2와-호환",
     "href": "posts/1_Essays/2099-01-01-ggplot3.html#ggplot2와-호환",
     "title": "[Essays] ggplot3",
     "section": "ggplot2와 호환",
-    "text": "ggplot2와 호환\n\ndf = data.frame(x=1:100,y=rnorm(100))\nhead(df)\n\n\n\n\n\n\nx\ny\n\n\n\n&lt;int&gt;\n&lt;dbl&gt;\n\n\n\n\n1\n1\n0.2308921\n\n\n2\n2\n1.2030468\n\n\n3\n3\n-1.8228822\n\n\n4\n4\n0.3543412\n\n\n5\n5\n1.3426069\n\n\n6\n6\n0.4018405\n\n\n\nA data.frame: 6 × 2\n\n\nggplot(data=df) + \ngeom_point(aes(x=x,y=y)) + \nline(1:50,df$y[1:50],col=2,lty=2)\n\n\n\n\n\n그냥 완벽하게 호환되도록 만듬"
+    "text": "ggplot2와 호환\n\ndf = data.frame(x=1:100,y=rnorm(100))\nhead(df)\n\n\n\n\n\n\nx\ny\n\n\n\n&lt;int&gt;\n&lt;dbl&gt;\n\n\n\n\n1\n1\n-0.4398382\n\n\n2\n2\n-0.3379338\n\n\n3\n3\n2.1098132\n\n\n4\n4\n0.4341259\n\n\n5\n5\n0.2756408\n\n\n6\n6\n1.0686415\n\n\n\nA data.frame: 6 × 2\n\n\nggplot(data=df) + \ngeom_point(aes(x=x,y=y)) + \nline(1:50,df$y[1:50],col=2,lty=2)\n\n\n\n\n\n완벽하게 호환가능"
   },
   {
     "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#subplotting",
@@ -77,25 +77,81 @@
     "text": "legends\n\ny1 = rnorm(10)\ny2 = rnorm(10)\n\n\nggplot()+\nline(y1,label=\"y1\",lty=2)+point(y1,label=\"y1\",cex=3)+\nline(y2,label=\"y2\",lty=2)+point(y2,label=\"y2\",cex=3)"
   },
   {
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#wide_y",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#wide_y",
+    "title": "[Essays] ggplot3",
+    "section": "wide_y",
+    "text": "wide_y\n- 예시1\n\ny1 = rnorm(10)\ny2 = rnorm(10)\n\n\nfigsize(6,4)\nggplot()+line(cbind(y1,y2),lty=2)+point(cbind(y1,y2),cex=3)\nfigsize()\n\n\n\n\n- 예시2\n\nx = 11:15\ny1 = rnorm(5)\ny2 = rnorm(5)\n\n\nfigsize(6,4)\nggplot()+line(x,cbind(y1,y2),lty=2)+point(x,cbind(y1,y2),cex=3)\nfigsize()"
+  },
+  {
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#smooth",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#smooth",
+    "title": "[Essays] ggplot3",
+    "section": "smooth",
+    "text": "smooth\n\nx = 1:100/100\ny1 = 2*x + rnorm(100)*0.3\ny2 = -3*x + rnorm(100)*0.3 +3\n\n- 예시1\n\nggplot()+point(x,y1,alpha=0.5,col=\"gray60\") + smooth(x,y,col=2)\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n- 예시2\n\nggplot()+point(x,y1,alpha=0.5,col=\"gray60\") +\nsmooth(x[1:60],y1[1:60],col=2) + \nsmooth(x[40:100],y1[40:100],col=4) \n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n- 예시3\n\nggplot()+point(x,cbind(y1,y2),alpha=0.5) +\nsmooth(x,cbind(y1,y2))\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'"
+  },
+  {
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#area",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#area",
+    "title": "[Essays] ggplot3",
+    "section": "area",
+    "text": "area\n\ny1 = c(10,20,10,50)\ny2 = c(15,20,5,30)\n\n- 예시1\n\nggplot() + area(y1,fill=2)\n\n\n\n\n- 예시2\n\nggplot() + area(cbind(y1,y2))"
+  },
+  {
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#step",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#step",
+    "title": "[Essays] ggplot3",
+    "section": "step",
+    "text": "step\n\ny1 = cumsum(rnorm(100))\ny2 = cumsum(rnorm(100))\n\n- 예시1\n\nggplot() + step(y1)\n\n\n\n\n- 예시2\n\nggplot() + step(cbind(y1,y2))"
+  },
+  {
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#jitter",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#jitter",
+    "title": "[Essays] ggplot3",
+    "section": "jitter",
+    "text": "jitter\n\nx = sample(c(20,30,40,50),size=100,replace = TRUE)\ny = rnorm(100)\n\n\np1 = ggplot()+point(x,y)+ggtitle(\"geom_point\")\np2 = ggplot()+jitter(x,y,width = 1) + ggtitle(\"geom_jitter\")\nfigsize(10,5)\np1|p2\nfigsize()"
+  },
+  {
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#histogram",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#histogram",
+    "title": "[Essays] ggplot3",
+    "section": "histogram",
+    "text": "histogram\n\ny1 = rnorm(1000)\ny2 = rnorm(1000)*0.5 + 3 \n\n- 예시1\n\nggplot()+histogram(c(y1,y2),fo=2)\n\nWarning message in geom_histogram(data = df, mapping = aes(x = y, y = stat(density), :\n“Ignoring unknown parameters: `fo`”\n\n\n\n\n\n- 예시2\n\nggplot()+histogram(y1,label=\"A\")+histogram(y2,label=\"B\")\n\n\n\n\n- 예시3\n\nggplot()+histogram(cbind(y1,y2))"
+  },
+  {
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#density",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#density",
+    "title": "[Essays] ggplot3",
+    "section": "density",
+    "text": "density\n\ny1 = rnorm(1000)\ny2 = rnorm(1000)*0.5 + 3 \n\n- 예시1\n\nggplot()+density(c(y1,y2))\n\n\n\n\n- 예시2\n\nggplot()+density(y1,label=\"A\")+density(y2,label=\"B\")\n\n\n\n\n- 예시3\n\nggplot()+density(cbind(y1,y2))\n\n\n\n\n- 예시4\n\nggplot()+histogram(cbind(y1,y2))+density(cbind(y1,y2))"
+  },
+  {
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#qq",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#qq",
+    "title": "[Essays] ggplot3",
+    "section": "qq",
+    "text": "qq\n\ny1 = rnorm(100)\ny2 = rchisq(100,df=5)\n\n\nggplot()+\nqq(y1,label='y1')+qq_line(y1,label='y1')+\nqq(y2,label='y2')+qq_line(y2,label='y2')"
+  },
+  {
     "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#col",
     "href": "posts/1_Essays/2099-01-01-ggplot3.html#col",
     "title": "[Essays] ggplot3",
     "section": "col",
-    "text": "col"
+    "text": "col\n\ny1=c(1,2,3,5)\ny2=c(1,4,2,1)\n\n\nggplot()+col(y1,fill=2)\n\n\n\n\n\nggplot()+col(cbind(y1,y2))"
   },
   {
     "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#boxplot",
     "href": "posts/1_Essays/2099-01-01-ggplot3.html#boxplot",
     "title": "[Essays] ggplot3",
     "section": "boxplot",
-    "text": "boxplot"
+    "text": "boxplot\n\ny1=rnorm(100)\ny2=rnorm(100)+3\n\n- 예시1\n\nggplot()+boxplot(y1)\n\n\n\n\n- 예시2\n\nggplot()+boxplot(cbind(y1,y2))\n\n\n\n\n- 예시3\n\nggplot()+boxplot(x='A',y1,label='A')+boxplot(x='B',y2,label='B')"
   },
   {
-    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#hist",
-    "href": "posts/1_Essays/2099-01-01-ggplot3.html#hist",
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#violin",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#violin",
     "title": "[Essays] ggplot3",
-    "section": "hist",
-    "text": "hist"
+    "section": "violin",
+    "text": "violin\n\ny1=rnorm(100)\ny2=rnorm(100)+3\n\n- 예시1\n\nggplot()+violin(y1)\n\n\n\n\n- 예시2\n\nggplot()+violin(cbind(y1,y2), color = \"transparent\", alpha=0.5)\n\n\n\n\n- 예시3\n\nggplot()+violin(x='A',y1,label='A')+violin(x='B',y2,label='B')"
   },
   {
     "objectID": "posts/1_Essays/RL2-Copy2.html",
