@@ -46,7 +46,7 @@
     "href": "posts/1_Essays/2099-01-01-ggplot3.html#ggplot2와-호환",
     "title": "[Essays] ggplot3",
     "section": "ggplot2와 호환",
-    "text": "ggplot2와 호환\n\ndf = data.frame(x=1:100,y=rnorm(100))\nhead(df)\n\n\n\n\n\n\nx\ny\n\n\n\n&lt;int&gt;\n&lt;dbl&gt;\n\n\n\n\n1\n1\n-0.4398382\n\n\n2\n2\n-0.3379338\n\n\n3\n3\n2.1098132\n\n\n4\n4\n0.4341259\n\n\n5\n5\n0.2756408\n\n\n6\n6\n1.0686415\n\n\n\nA data.frame: 6 × 2\n\n\nggplot(data=df) + \ngeom_point(aes(x=x,y=y)) + \nline(1:50,df$y[1:50],col=2,lty=2)\n\n\n\n\n\n완벽하게 호환가능"
+    "text": "ggplot2와 호환\n\ndf = data.frame(x=1:100,y=rnorm(100))\nhead(df)\n\n\n\n\n\n\nx\ny\n\n\n\n&lt;int&gt;\n&lt;dbl&gt;\n\n\n\n\n1\n1\n-0.1900003\n\n\n2\n2\n-1.7470351\n\n\n3\n3\n0.1872226\n\n\n4\n4\n0.5809259\n\n\n5\n5\n1.7009757\n\n\n6\n6\n-1.4170611\n\n\n\nA data.frame: 6 × 2\n\n\nggplot(data=df) + \ngeom_point(aes(x=x,y=y)) + \nline(1:50,df$y[1:50],col=2,lty=2)\n\n\n\n\n\n완벽하게 호환가능"
   },
   {
     "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#subplotting",
@@ -116,7 +116,7 @@
     "href": "posts/1_Essays/2099-01-01-ggplot3.html#histogram",
     "title": "[Essays] ggplot3",
     "section": "histogram",
-    "text": "histogram\n\ny1 = rnorm(1000)\ny2 = rnorm(1000)*0.5 + 3 \n\n- 예시1\n\nggplot()+histogram(c(y1,y2),fo=2)\n\nWarning message in geom_histogram(data = df, mapping = aes(x = y, y = stat(density), :\n“Ignoring unknown parameters: `fo`”\n\n\n\n\n\n- 예시2\n\nggplot()+histogram(y1,label=\"A\")+histogram(y2,label=\"B\")\n\n\n\n\n- 예시3\n\nggplot()+histogram(cbind(y1,y2))"
+    "text": "histogram\n\ny1 = rnorm(1000)\ny2 = rnorm(1000)*0.5 + 3 \n\n- 예시1\n\nggplot()+histogram(c(y1,y2),fo=2)\n\nWarning message in geom_histogram(data = df, mapping = aes(x = y, y = stat(density), :\n“Ignoring unknown parameters: `fo`”\nWarning message:\n“`stat(density)` was deprecated in ggplot2 3.4.0.\nℹ Please use `after_stat(density)` instead.”\n\n\n\n\n\n- 예시2\n\nggplot()+histogram(y1,label=\"A\")+histogram(y2,label=\"B\")\n\n\n\n\n- 예시3\n\nggplot()+histogram(cbind(y1,y2))"
   },
   {
     "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#density",
@@ -151,7 +151,7 @@
     "href": "posts/1_Essays/2099-01-01-ggplot3.html#violin",
     "title": "[Essays] ggplot3",
     "section": "violin",
-    "text": "violin\n\ny1=rnorm(100)\ny2=rnorm(100)+3\n\n- 예시1\n\nggplot()+violin(y1)\n\n\n\n\n- 예시2\n\nggplot()+violin(cbind(y1,y2), color = \"transparent\", alpha=0.5)\n\n\n\n\n- 예시3\n\nggplot()+violin(x='A',y1,label='A')+violin(x='B',y2,label='B')"
+    "text": "violin\n\ny1=rnorm(100)\ny2=rnorm(100)+3\n\n- 예시1\n\nggplot()+violin(y1)\n\n\n\n\n- 예시2\n\nggplot()+violin(cbind(y1,y2), color = \"transparent\")\n\n\n\n\n- 예시3\n\nggplot()+violin(x='A',y1,label='A')+violin(x='B',y2,label='B')"
   },
   {
     "objectID": "posts/1_Essays/RL2-Copy2.html",
