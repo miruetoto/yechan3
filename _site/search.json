@@ -60,7 +60,7 @@
     "href": "posts/1_Essays/2099-01-01-ggplot3.html#ggtitle",
     "title": "[Essays] ggplot3",
     "section": "ggtitle",
-    "text": "ggtitle\n\ny = rnorm(100)\nggplot() + line(y,lty=2,col='gray60') + ggtitle(\"(a) MY TITLE\")"
+    "text": "ggtitle\n\ny = rnorm(100)\nggplot() + line(y,lty=2,col='gray60') + \nggtitle(\"(a) MY TITLE\")"
   },
   {
     "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#xlab-ylab",
@@ -75,6 +75,27 @@
     "title": "[Essays] ggplot3",
     "section": "legends",
     "text": "legends\n\ny1 = rnorm(10)\ny2 = rnorm(10)\n\n\nggplot()+\nline(y1,label=\"y1\",lty=2)+point(y1,label=\"y1\",cex=3)+\nline(y2,label=\"y2\",lty=2)+point(y2,label=\"y2\",cex=3)"
+  },
+  {
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#col",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#col",
+    "title": "[Essays] ggplot3",
+    "section": "col",
+    "text": "col"
+  },
+  {
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#boxplot",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#boxplot",
+    "title": "[Essays] ggplot3",
+    "section": "boxplot",
+    "text": "boxplot"
+  },
+  {
+    "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#hist",
+    "href": "posts/1_Essays/2099-01-01-ggplot3.html#hist",
+    "title": "[Essays] ggplot3",
+    "section": "hist",
+    "text": "hist"
   },
   {
     "objectID": "posts/1_Essays/RL2-Copy2.html",

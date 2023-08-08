@@ -298,7 +298,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#xlab-ylab" id="toc-xlab-ylab" class="nav-link" data-scroll-target="#xlab-ylab"><code>xlab</code>, <code>ylab</code></a></li>
   <li><a href="#legends" id="toc-legends" class="nav-link" data-scroll-target="#legends">legends</a></li>
   </ul></li>
-  <li><a href="#geoms" id="toc-geoms" class="nav-link" data-scroll-target="#geoms">geoms</a></li>
+  <li><a href="#geoms" id="toc-geoms" class="nav-link" data-scroll-target="#geoms">geoms</a>
+  <ul class="collapse">
+  <li><a href="#col" id="toc-col" class="nav-link" data-scroll-target="#col">col</a></li>
+  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot">boxplot</a></li>
+  <li><a href="#hist" id="toc-hist" class="nav-link" data-scroll-target="#hist">hist</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2099-01-01-ggplot3.out.ipynb" download="2099-01-01-ggplot3.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -537,9 +542,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ggtitle" class="level2">
 <h2 class="anchored" data-anchor-id="ggtitle"><code>ggtitle</code></h2>
-<div id="f28381d8-d3ec-4b55-911d-268d6f7917e0" class="cell" data-execution_count="17">
+<div id="f28381d8-d3ec-4b55-911d-268d6f7917e0" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">line</span>(y,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">'gray60'</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"(a) MY TITLE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">line</span>(y,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">'gray60'</span>) <span class="sc">+</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">"(a) MY TITLE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
 </div>
@@ -574,8 +580,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="geoms" class="level1">
 <h1>geoms</h1>
+<section id="col" class="level2">
+<h2 class="anchored" data-anchor-id="col">col</h2>
+</section>
+<section id="boxplot" class="level2">
+<h2 class="anchored" data-anchor-id="boxplot">boxplot</h2>
+</section>
+<section id="hist" class="level2">
+<h2 class="anchored" data-anchor-id="hist">hist</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
