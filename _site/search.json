@@ -46,7 +46,7 @@
     "href": "posts/1_Essays/2099-01-01-ggplot3.html#ggplot2와-호환",
     "title": "[Essays] ggplot3",
     "section": "ggplot2와 호환",
-    "text": "ggplot2와 호환\n\ndf = data.frame(x=1:100,y=rnorm(100))\nhead(df)\n\n\n\n\n\n\nx\ny\n\n\n\n&lt;int&gt;\n&lt;dbl&gt;\n\n\n\n\n1\n1\n-0.1900003\n\n\n2\n2\n-1.7470351\n\n\n3\n3\n0.1872226\n\n\n4\n4\n0.5809259\n\n\n5\n5\n1.7009757\n\n\n6\n6\n-1.4170611\n\n\n\nA data.frame: 6 × 2\n\n\nggplot(data=df) + \ngeom_point(aes(x=x,y=y)) + \nline(1:50,df$y[1:50],col=2,lty=2)\n\n\n\n\n\n완벽하게 호환가능"
+    "text": "ggplot2와 호환\n\ndf = data.frame(x=1:100,y=rnorm(100))\nhead(df)\n\n\n\n\n\n\nx\ny\n\n\n\n&lt;int&gt;\n&lt;dbl&gt;\n\n\n\n\n1\n1\n0.8797639\n\n\n2\n2\n0.1837064\n\n\n3\n3\n0.1520587\n\n\n4\n4\n0.2523408\n\n\n5\n5\n0.5221659\n\n\n6\n6\n-0.3609418\n\n\n\nA data.frame: 6 × 2\n\n\nggplot(data=df) + \ngeom_point(aes(x=x,y=y)) + \nline(1:50,df$y[1:50],col=2,lty=2)\n\n\n\n\n\n완벽하게 호환가능"
   },
   {
     "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#subplotting",
@@ -88,7 +88,7 @@
     "href": "posts/1_Essays/2099-01-01-ggplot3.html#smooth",
     "title": "[Essays] ggplot3",
     "section": "smooth",
-    "text": "smooth\n\nx = 1:100/100\ny1 = 2*x + rnorm(100)*0.3\ny2 = -3*x + rnorm(100)*0.3 +3\n\n- 예시1\n\nggplot()+point(x,y1,alpha=0.5,col=\"gray60\") + smooth(x,y,col=2)\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n- 예시2\n\nggplot()+point(x,y1,alpha=0.5,col=\"gray60\") +\nsmooth(x[1:60],y1[1:60],col=2) + \nsmooth(x[40:100],y1[40:100],col=4) \n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n- 예시3\n\nggplot()+point(x,cbind(y1,y2),alpha=0.5) +\nsmooth(x,cbind(y1,y2))\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'"
+    "text": "smooth\n\nx = 1:100/100\ny1 = 2*x + rnorm(100)*0.3\ny2 = -3*x + rnorm(100)*0.3 +3\n\n- 예시1\n\nggplot()+point(x,y1,alpha=0.5,col=\"gray60\") + smooth(x,y1,col=2)\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n- 예시2\n\nggplot()+point(x,y1,alpha=0.5,col=\"gray60\") +\nsmooth(x[1:60],y1[1:60],col=2) + \nsmooth(x[40:100],y1[40:100],col=4) \n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n- 예시3\n\nggplot()+point(x,cbind(y1,y2),alpha=0.5) +\nsmooth(x,cbind(y1,y2))\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'"
   },
   {
     "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#area",
@@ -116,7 +116,7 @@
     "href": "posts/1_Essays/2099-01-01-ggplot3.html#histogram",
     "title": "[Essays] ggplot3",
     "section": "histogram",
-    "text": "histogram\n\ny1 = rnorm(1000)\ny2 = rnorm(1000)*0.5 + 3 \n\n- 예시1\n\nggplot()+histogram(c(y1,y2),fill=\"gray60\")\n\n\n\n\n- 예시2\n\nggplot()+histogram(y1,label=\"A\")+histogram(y2,label=\"B\")\n\n\n\n\n- 예시3\n\nggplot()+histogram(cbind(y1,y2))"
+    "text": "histogram\n\ny1 = rnorm(1000)\ny2 = rnorm(1000)*0.5 + 3 \n\n- 예시1\n\nggplot()+histogram(c(y1,y2),fill=\"gray60\")\n\nWarning message:\n“`stat(density)` was deprecated in ggplot2 3.4.0.\nℹ Please use `after_stat(density)` instead.”\n\n\n\n\n\n- 예시2\n\nggplot()+histogram(y1,label=\"A\")+histogram(y2,label=\"B\")\n\n\n\n\n- 예시3\n\nggplot()+histogram(cbind(y1,y2))"
   },
   {
     "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#density",
