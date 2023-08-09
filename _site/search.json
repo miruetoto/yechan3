@@ -32,7 +32,7 @@
     "href": "posts/1_Essays/2099-01-01-ggplot3.html",
     "title": "[Essays] ggplot3",
     "section": "",
-    "text": "ggplot2 공부하다가 포기함\n그냥 ggplot2를 랩핑하여 내 스타일에 맞는 코드를 새로 만듬 (가칭 ggplot3)\n\nsource('ggplot3.R')\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+    "text": "ggplot2 공부하다가 포기함\n그냥 ggplot2를 랩핑하여 내 스타일에 맞는 코드를 새로 만듬 (가칭 ggplot3)\n\nsource('ggplot3.R')\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n소스코드 다운로드: https://github.com/miruetoto/yechan3/blob/main/posts/1_Essays/ggplot3.R\n\n계속 업데이트할 예정"
   },
   {
     "objectID": "posts/1_Essays/2099-01-01-ggplot3.html#ggplot-line-point",
