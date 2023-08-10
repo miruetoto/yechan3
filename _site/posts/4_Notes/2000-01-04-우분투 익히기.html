@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed slimcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -285,46 +285,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#기본디렉토리-설명" id="toc-기본디렉토리-설명" class="nav-link active" data-scroll-target="#기본디렉토리-설명">1. 기본디렉토리 설명</a></li>
-  <li><a href="#vi-사용방법" id="toc-vi-사용방법" class="nav-link" data-scroll-target="#vi-사용방법">2. vi 사용방법</a>
-  <ul class="collapse">
-  <li><a href="#예제1-파일만들고-asdf-입력-후-저장-및-종료" id="toc-예제1-파일만들고-asdf-입력-후-저장-및-종료" class="nav-link" data-scroll-target="#예제1-파일만들고-asdf-입력-후-저장-및-종료">예제1: 파일만들고 asdf 입력 후 저장 및 종료</a></li>
-  <li><a href="#예제2-좌우로-커서-이동" id="toc-예제2-좌우로-커서-이동" class="nav-link" data-scroll-target="#예제2-좌우로-커서-이동">예제2: 좌우로 커서 이동</a></li>
-  <li><a href="#예제3-다음라인에-asdf2입력" id="toc-예제3-다음라인에-asdf2입력" class="nav-link" data-scroll-target="#예제3-다음라인에-asdf2입력">예제3: 다음라인에 <code>asdf2</code>입력</a></li>
-  <li><a href="#예제4-위-아래-이동" id="toc-예제4-위-아래-이동" class="nav-link" data-scroll-target="#예제4-위-아래-이동">예제4: 위 아래 이동</a></li>
-  <li><a href="#예제5-homeend와-같은-기능" id="toc-예제5-homeend와-같은-기능" class="nav-link" data-scroll-target="#예제5-homeend와-같은-기능">예제5: home/end와 같은 기능</a></li>
-  <li><a href="#예제7-라인복사-붙여넣기" id="toc-예제7-라인복사-붙여넣기" class="nav-link" data-scroll-target="#예제7-라인복사-붙여넣기">예제7: 라인복사 + 붙여넣기</a></li>
-  <li><a href="#예제8-다음단어-이전단어로-점프" id="toc-예제8-다음단어-이전단어로-점프" class="nav-link" data-scroll-target="#예제8-다음단어-이전단어로-점프">예제8: 다음단어 + 이전단어로 점프</a></li>
-  <li><a href="#예제9-현재단어-선택-복사" id="toc-예제9-현재단어-선택-복사" class="nav-link" data-scroll-target="#예제9-현재단어-선택-복사">예제9: 현재단어 선택 + 복사</a></li>
-  <li><a href="#예제10-asdf2-단어-찾기" id="toc-예제10-asdf2-단어-찾기" class="nav-link" data-scroll-target="#예제10-asdf2-단어-찾기">예제10: <code>asdf2</code> 단어 찾기</a></li>
-  </ul></li>
-  <li><a href="#기본명령어" id="toc-기본명령어" class="nav-link" data-scroll-target="#기본명령어">3. 기본명령어</a>
+  <li><a href="#기본명령어" id="toc-기본명령어" class="nav-link" data-scroll-target="#기본명령어">2. 기본명령어</a>
   <ul class="collapse">
   <li><a href="#pwd-whoami" id="toc-pwd-whoami" class="nav-link" data-scroll-target="#pwd-whoami">pwd, whoami</a></li>
   <li><a href="#cd-ls" id="toc-cd-ls" class="nav-link" data-scroll-target="#cd-ls">cd, ls</a></li>
   <li><a href="#h-man" id="toc-h-man" class="nav-link" data-scroll-target="#h-man">-h, man</a></li>
   <li><a href="#cp-mv-mkdir-rm" id="toc-cp-mv-mkdir-rm" class="nav-link" data-scroll-target="#cp-mv-mkdir-rm">cp, mv, mkdir, rm</a></li>
+  <li><a href="#scp" id="toc-scp" class="nav-link" data-scroll-target="#scp">scp</a></li>
   </ul></li>
-  <li><a href="#덜-중요한-명령어" id="toc-덜-중요한-명령어" class="nav-link" data-scroll-target="#덜-중요한-명령어">4. 덜 중요한 명령어</a>
+  <li><a href="#설치관련" id="toc-설치관련" class="nav-link" data-scroll-target="#설치관련">3. 설치관련</a>
   <ul class="collapse">
-  <li><a href="#file" id="toc-file" class="nav-link" data-scroll-target="#file">file</a></li>
-  <li><a href="#date-cal" id="toc-date-cal" class="nav-link" data-scroll-target="#date-cal">date, cal</a></li>
-  <li><a href="#echo" id="toc-echo" class="nav-link" data-scroll-target="#echo">echo</a></li>
-  </ul></li>
   <li><a href="#wget" id="toc-wget" class="nav-link" data-scroll-target="#wget">wget</a></li>
-  <li><a href="#gdebi" id="toc-gdebi" class="nav-link" data-scroll-target="#gdebi">gdebi</a></li>
+  <li><a href="#gdebi-deb" id="toc-gdebi-deb" class="nav-link" data-scroll-target="#gdebi-deb">gdebi, deb</a></li>
   <li><a href="#apt" id="toc-apt" class="nav-link" data-scroll-target="#apt">apt</a></li>
   <li><a href="#conda" id="toc-conda" class="nav-link" data-scroll-target="#conda">conda</a></li>
   <li><a href="#pip" id="toc-pip" class="nav-link" data-scroll-target="#pip">pip</a></li>
-  <li><a href="#리소스-모니터링" id="toc-리소스-모니터링" class="nav-link" data-scroll-target="#리소스-모니터링">리소스 모니터링</a></li>
-  <li><a href="#ssh" id="toc-ssh" class="nav-link" data-scroll-target="#ssh">ssh</a></li>
-  <li><a href="#sublime" id="toc-sublime" class="nav-link" data-scroll-target="#sublime">sublime</a></li>
-  <li><a href="#파일생성-파일삭제" id="toc-파일생성-파일삭제" class="nav-link" data-scroll-target="#파일생성-파일삭제">파일생성, 파일삭제</a></li>
-  <li><a href="#deb" id="toc-deb" class="nav-link" data-scroll-target="#deb">deb</a></li>
+  </ul></li>
+  <li><a href="#리소스-모니터링" id="toc-리소스-모니터링" class="nav-link" data-scroll-target="#리소스-모니터링">4. 리소스 모니터링</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a>
+  <ul class="collapse">
+  <li><a href="#a1.-덜-중요한-명령어" id="toc-a1.-덜-중요한-명령어" class="nav-link" data-scroll-target="#a1.-덜-중요한-명령어">A1. 덜 중요한 명령어</a>
+  <ul class="collapse">
+  <li><a href="#file" id="toc-file" class="nav-link" data-scroll-target="#file">file</a></li>
+  <li><a href="#date-cal" id="toc-date-cal" class="nav-link" data-scroll-target="#date-cal">date, cal</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2000-01-04-우분투 익히기.out.ipynb" download="2000-01-04-우분투 익히기.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -407,413 +397,294 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>/usr/local/lib/R/site-library</code> R패키지가 설치되어있음, 예를들면 tidyverse</p></li>
 </ul>
 </section>
-<section id="vi-사용방법" class="level1 page-columns page-full">
-<h1>2. vi 사용방법</h1>
-<section id="예제1-파일만들고-asdf-입력-후-저장-및-종료" class="level2">
-<h2 class="anchored" data-anchor-id="예제1-파일만들고-asdf-입력-후-저장-및-종료">예제1: 파일만들고 asdf 입력 후 저장 및 종료</h2>
-<p><code>-</code> step1: 파일생성</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> test230803.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/7ff14be6-5a6a-4503-8290-0393fbff72c5-1-d955e1fe-7d70-40c3-aceb-c303d61cfda8.png" class="img-fluid"></p>
-<p><code>-</code> step2: <code>i</code>를 누른다.</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/9a494f76-af09-4618-a3b7-d929be818018-1-335eebed-a0ae-4943-9c16-24f9049e8e27.png" class="img-fluid"></p>
-<p><code>-</code> step3: <code>asdf</code> 입력</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/11ce992e-c776-401a-8bec-cd5c243a5037-1-6e5c0488-3589-4e59-afd1-ec38b2faceba.png" class="img-fluid"></p>
-<p><code>-</code> step4: <code>esc</code> 입력</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/e96b7c24-d626-4a39-a196-12ca065fc1ae-1-2b5525c1-bc62-4e9d-b0ba-5d664ce90fbf.png" class="img-fluid"></p>
-<p><code>-</code> step5: <code>:wq</code> + <code>Enter</code> 입력</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/558172d9-3ea5-4583-922d-e4a135304e96-1-1c8bbd6d-c6a1-4fe4-aea0-d3ea18f2dc91.png" class="img-fluid"></p>
-</section>
-<section id="예제2-좌우로-커서-이동" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="예제2-좌우로-커서-이동">예제2: 좌우로 커서 이동</h2>
-<p><code>-</code> step1: 생성된 파일로 들어가기</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> test230803.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/4ad4c92a-7c34-4459-ad9f-97dfa9648cf0-1-c912e591-848e-4da8-8dff-f807d0eeceda.png" class="img-fluid"></p>
-<p><code>-</code> step2: <code>l</code>을 세번눌러서 오른쪽으로 3칸 이동<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;한글로 설정되어있으면 이동하지 않음</p></li></div><p><img src="2000-01-04-우분투 익히기_files/figure-html/ef71a9b5-385d-4528-97e0-ad294aa4444e-1-198ccb06-72cc-42c6-bdb7-529af88149dc.png" class="img-fluid"></p>
-<p><code>-</code> step3: <code>h</code>을 세번눌러서 왼쪽으로 3칸 이동<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;한글로 설정되어 있으면 이동하지 않음</p></li></div><p><img src="2000-01-04-우분투 익히기_files/figure-html/b58a518c-d6bb-4680-b71d-5d2114bb28a1-1-9b8ca945-59d2-4b18-a5a6-a8512bac20f7.png" class="img-fluid"></p>
-</section>
-<section id="예제3-다음라인에-asdf2입력" class="level2">
-<h2 class="anchored" data-anchor-id="예제3-다음라인에-asdf2입력">예제3: 다음라인에 <code>asdf2</code>입력</h2>
-<p><code>-</code> step1: <code>o</code>를 누르면? 편집모드로 전환 + 새로운 라인이 추가</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/6eaebdff-c173-42c1-92ee-b568f8cd0620-1-15885447-8e90-4738-9169-4d48caf7eea6.png" class="img-fluid"></p>
-<p><code>-</code> step2: <code>asdf2</code>입력</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/57342f21-8738-4b24-bc3c-77a2a1fb4296-1-9d979c0c-3a90-43fd-bb95-c1b9cdd6f32b.png" class="img-fluid"></p>
-<p><code>-</code> step3: <code>esc</code> 입력하여 편집모드 해제</p>
-</section>
-<section id="예제4-위-아래-이동" class="level2">
-<h2 class="anchored" data-anchor-id="예제4-위-아래-이동">예제4: 위 아래 이동</h2>
-<p><code>-</code> <code>jk</code>를 이용</p>
-</section>
-<section id="예제5-homeend와-같은-기능" class="level2">
-<h2 class="anchored" data-anchor-id="예제5-homeend와-같은-기능">예제5: home/end와 같은 기능</h2>
-<p><code>-</code> 아래의 상황을 고려하자.</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/db92a255-884a-43f1-89df-fff880862802-1-0785a455-6ac0-447b-8f5f-9d96650dc692.png" class="img-fluid"></p>
-<p><code>-</code> 라인의 맨 마지막으로 가고싶다면? <code>$</code>를 입력한다.</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/5b9f348e-d476-44e1-aa9e-d8db9e30c728-1-f9561101-db03-4187-b09e-33db9156f208.png" class="img-fluid"></p>
-<p><code>-</code> 다시 라인의 맨 처음으로 가고싶다면? 숫자 <code>0</code>을 입력한다.</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/8baccece-2ac4-4fe3-83ab-810545fbc546-1-0d0f7f05-e09a-48a6-9276-a6ff128dcf65.png" class="img-fluid"></p>
-</section>
-<section id="예제7-라인복사-붙여넣기" class="level2">
-<h2 class="anchored" data-anchor-id="예제7-라인복사-붙여넣기">예제7: 라인복사 + 붙여넣기</h2>
-<p><code>-</code> step1: 복사하고싶은 라인으로 이동 + <code>yy</code> 입력</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/02cf7b82-6b8c-45e5-8d51-bb5489db7839-1-414760fe-1199-454a-a3ab-5126321a0481.png" class="img-fluid"></p>
-<p><code>-</code> step2: 아래로 붙여넣을 라인으로 이동</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/e84602e6-f3fe-4b57-8967-a4b81b3b8195-1-f0f9a061-41ec-4105-9947-12833011fea8.png" class="img-fluid"></p>
-<p><code>-</code> step3: <code>p</code> 입력</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/63a78d49-2f2a-46ed-a2a6-f9077c0b7036-1-8119baa2-04d8-4865-af9a-4e45bb40cb2d.png" class="img-fluid"></p>
-</section>
-<section id="예제8-다음단어-이전단어로-점프" class="level2">
-<h2 class="anchored" data-anchor-id="예제8-다음단어-이전단어로-점프">예제8: 다음단어 + 이전단어로 점프</h2>
-<p><code>-</code> <code>wb</code>를 이용</p>
-</section>
-<section id="예제9-현재단어-선택-복사" class="level2">
-<h2 class="anchored" data-anchor-id="예제9-현재단어-선택-복사">예제9: 현재단어 선택 + 복사</h2>
-<p><code>-</code> step1: 복사하고 싶은 단어 맨 앞글자에 커서를 위치한다.</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/cd1824b2-d4fb-4a1e-b7e4-590df7094fde-1-186df1e4-cc09-44d7-a0e1-c9b3a583c1cc.png" class="img-fluid"></p>
-<p><code>-</code> step2: <code>yw</code> 입력</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/72015cc7-d1cb-43fd-bf39-fce45ad787d8-1-186df1e4-cc09-44d7-a0e1-c9b3a583c1cc.png" class="img-fluid"></p>
-<ul>
-<li><code>y</code>는 복사를 의미</li>
-<li><code>w</code>는 현재단어를 선택하는 명령</li>
-</ul>
-<p><code>-</code> step3: 붙여넣을 위치로 이동</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/61156883-3e35-4bb5-8cde-bfc5d65d4425-1-c8b0a5b3-65dc-422d-b493-1f76eddbcf45.png" class="img-fluid"></p>
-<p><code>-</code> step4: <code>p</code> 입력</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/116c56b6-617b-445e-9dd4-c8a3d4d6edd8-1-fc46051f-ed76-46bd-b7a2-51faf43db092.png" class="img-fluid"></p>
-</section>
-<section id="예제10-asdf2-단어-찾기" class="level2">
-<h2 class="anchored" data-anchor-id="예제10-asdf2-단어-찾기">예제10: <code>asdf2</code> 단어 찾기</h2>
-<p><code>-</code> step1: <code>/asdf2</code> 입력</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/c80f41b7-0101-4409-be4d-7fb041e4560a-1-03c847f6-74bf-4f3e-bb71-717deb7a8cff.png" class="img-fluid"></p>
-<p><code>-</code> step2: <code>Enter</code> 입력</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/04562f1d-58a5-4d6b-94a4-8d30d0250805-1-1a34bf35-0d73-44b5-8510-05f63630a1f2.png" class="img-fluid"></p>
-<p><code>-</code> step3: <code>n</code> 입력하여 다음단어로 이동</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/a8a8bfe0-8926-4e72-a994-3f505470f51b-1-770f270b-e99e-41cc-ab6b-00d4c33880cf.png" class="img-fluid"></p>
-<p><code>-</code> step4: <code>N</code> 입력하여 이전단어로 이동</p>
-<p><img src="2000-01-04-우분투 익히기_files/figure-html/045779b1-2a32-4d4e-9444-5e24d941860f-1-55532ac9-fb9f-4225-8dec-b91e021e8e07.png" class="img-fluid"></p>
-<blockquote class="blockquote">
-<p><code>?</code>로 검색할 경우 <code>n</code>와 <code>N</code>의 역할이 뒤바뀐다.</p>
-</blockquote>
-</section>
-</section>
 <section id="기본명령어" class="level1">
-<h1>3. 기본명령어</h1>
+<h1>2. 기본명령어</h1>
 <section id="pwd-whoami" class="level2">
 <h2 class="anchored" data-anchor-id="pwd-whoami">pwd, whoami</h2>
 <p><code>-</code> 현재위치확인</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> pwd</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/cgb2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> pwd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/cgb2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 유저확인</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">### 예시1: 유저확인 </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> whoami </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">cgb2</span> </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">### 예시2: 루트권한 획득이후 유저확인 </span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> sudo <span class="at">-i</span> <span class="co"># 루트권한 획득</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">root@cgb2-desktop:~#</span> whoami </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">root</span> </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">### 예시3: 일반유저로 전환후 유저확인</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">root@cgb2-desktop:~#</span> su <span class="at">-</span> cgb2 </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> whoami</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">cgb2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">### 예시1: 유저확인 </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> whoami </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">cgb2</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">### 예시2: 루트권한 획득이후 유저확인 </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> sudo <span class="at">-i</span> <span class="co"># 루트권한 획득</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">root@cgb2-desktop:~#</span> whoami </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">root</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">### 예시3: 일반유저로 전환후 유저확인</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">root@cgb2-desktop:~#</span> su <span class="at">-</span> cgb2 </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> whoami</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">cgb2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="cd-ls" class="level2">
 <h2 class="anchored" data-anchor-id="cd-ls">cd, ls</h2>
 <p><code>-</code> 홈디렉토리로 이동 + 목록</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox$</span> cd ~</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> ls</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span>                 julia-1.8.5</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Documents</span>               julia-1.8.5-linux-x86_64.tar.gz</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Downloads</span>               lm.txt</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Dropbox</span>                 nbdev_tst</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Music</span>                   quarto-1.0.37-linux-amd64.deb</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Pictures</span>                rstudio-server-2021.09.2-382-amd64.deb</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Public</span>                  scikit_learn_data</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span>                       snap</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Templates</span>               test.txt</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Videos</span>                  v3net</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">anaconda3</span>               v3net-linux-3.6.10.11.805.tar.Z</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="ex">blacklist-nouveau.conf</span>  vscode_cli.tar.gz</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox$</span> cd ~</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> ls</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span>                 julia-1.8.5</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Documents</span>               julia-1.8.5-linux-x86_64.tar.gz</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Downloads</span>               lm.txt</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Dropbox</span>                 nbdev_tst</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Music</span>                   quarto-1.0.37-linux-amd64.deb</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Pictures</span>                rstudio-server-2021.09.2-382-amd64.deb</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Public</span>                  scikit_learn_data</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span>                       snap</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Templates</span>               test.txt</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Videos</span>                  v3net</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">anaconda3</span>               v3net-linux-3.6.10.11.805.tar.Z</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ex">blacklist-nouveau.conf</span>  vscode_cli.tar.gz</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 루트로 이동 + 목록</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox$</span> cd /</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:/$</span> ls</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span>    dev   lib    libx32      media  proc  sbin  swapfile  usr</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">boot</span>   etc   lib32  log         mnt    root  snap  sys       var</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">cdrom</span>  home  lib64  lost+found  opt    run   srv   tmp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox$</span> cd /</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:/$</span> ls</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bin</span>    dev   lib    libx32      media  proc  sbin  swapfile  usr</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">boot</span>   etc   lib32  log         mnt    root  snap  sys       var</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">cdrom</span>  home  lib64  lost+found  opt    run   srv   tmp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> ls 자세하게</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:/$</span> ls <span class="at">-l</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 2097256</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root           7  2월 11  2022 bin <span class="at">-</span><span class="op">&gt;</span> usr/bin</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   3 root  root        4096  7월 27 12:19 boot</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxr-x</span>   2 root  root        4096  2월 11  2022 cdrom</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  19 root  root        4480  7월 28 12:19 dev</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 143 root  root       12288  7월 27 21:08 etc</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   6 root  root        4096  7월  7 11:14 home</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root           7  2월 11  2022 lib <span class="at">-</span><span class="op">&gt;</span> usr/lib</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root           9  2월 11  2022 lib32 <span class="at">-</span><span class="op">&gt;</span> usr/lib32</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root           9  2월 11  2022 lib64 <span class="at">-</span><span class="op">&gt;</span> usr/lib64</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root          10  2월 11  2022 libx32 <span class="at">-</span><span class="op">&gt;</span> usr/libx32</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-x---</span>   2 root  root        4096  2월 11  2022 log</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="ex">drwx------</span>   2 root  root       16384  2월 11  2022 lost+found</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   2 root  root        4096  8월 19  2021 media</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   2 root  root        4096  8월 19  2021 mnt</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   4 jaein saned       4096  7월 16 11:21 opt</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="ex">dr-xr-xr-x</span> 418 root  root           0  7월 28 12:16 proc</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="ex">drwx------</span>   6 root  root        4096  7월 27 12:21 root</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  40 root  root        1220  8월  3 13:31 run</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root           8  2월 11  2022 sbin <span class="at">-</span><span class="op">&gt;</span> usr/sbin</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  14 root  root        4096  7월 16 11:10 snap</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   2 root  root        4096  8월 19  2021 srv</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-------</span>   1 root  root  2147483648  2월 11  2022 swapfile</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="ex">dr-xr-xr-x</span>  13 root  root           0  7월 28 12:16 sys</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxrwt</span>  19 root  root       20480  8월  3 13:29 tmp</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  14 root  root        4096  8월 19  2021 usr</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  15 root  root        4096  7월 30  2022 var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:/$</span> ls <span class="at">-l</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 2097256</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root           7  2월 11  2022 bin <span class="at">-</span><span class="op">&gt;</span> usr/bin</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   3 root  root        4096  7월 27 12:19 boot</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxr-x</span>   2 root  root        4096  2월 11  2022 cdrom</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  19 root  root        4480  7월 28 12:19 dev</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 143 root  root       12288  7월 27 21:08 etc</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   6 root  root        4096  7월  7 11:14 home</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root           7  2월 11  2022 lib <span class="at">-</span><span class="op">&gt;</span> usr/lib</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root           9  2월 11  2022 lib32 <span class="at">-</span><span class="op">&gt;</span> usr/lib32</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root           9  2월 11  2022 lib64 <span class="at">-</span><span class="op">&gt;</span> usr/lib64</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root          10  2월 11  2022 libx32 <span class="at">-</span><span class="op">&gt;</span> usr/libx32</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-x---</span>   2 root  root        4096  2월 11  2022 log</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="ex">drwx------</span>   2 root  root       16384  2월 11  2022 lost+found</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   2 root  root        4096  8월 19  2021 media</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   2 root  root        4096  8월 19  2021 mnt</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   4 jaein saned       4096  7월 16 11:21 opt</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="ex">dr-xr-xr-x</span> 418 root  root           0  7월 28 12:16 proc</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="ex">drwx------</span>   6 root  root        4096  7월 27 12:21 root</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  40 root  root        1220  8월  3 13:31 run</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxrwxrwx</span>   1 root  root           8  2월 11  2022 sbin <span class="at">-</span><span class="op">&gt;</span> usr/sbin</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  14 root  root        4096  7월 16 11:10 snap</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   2 root  root        4096  8월 19  2021 srv</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-------</span>   1 root  root  2147483648  2월 11  2022 swapfile</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="ex">dr-xr-xr-x</span>  13 root  root           0  7월 28 12:16 sys</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxrwt</span>  19 root  root       20480  8월  3 13:29 tmp</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  14 root  root        4096  8월 19  2021 usr</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  15 root  root        4096  7월 30  2022 var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="h-man" class="level2">
 <h2 class="anchored" data-anchor-id="h-man">-h, man</h2>
 <p><code>-</code> 도움말확인</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> git <span class="at">--help</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">usage:</span> git <span class="pp">[--</span><span class="ss">version</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">help</span><span class="pp">]</span> [-C <span class="op">&lt;</span>path<span class="op">&gt;</span>] [-c <span class="op">&lt;</span>name<span class="op">&gt;</span>=<span class="op">&lt;</span>value<span class="op">&gt;</span>]</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[--exec-path[=</span><span class="op">&lt;</span>path<span class="op">&gt;</span>]] <span class="pp">[--</span><span class="ss">html</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">man</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">info</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[-p</span> <span class="kw">|</span> <span class="ex">--paginate</span> <span class="kw">|</span> <span class="ex">-P</span> <span class="kw">|</span> <span class="ex">--no-pager]</span> <span class="pp">[--</span><span class="ss">no</span><span class="pp">-</span><span class="ss">replace</span><span class="pp">-</span><span class="ss">objects</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">bare</span><span class="pp">]</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[--git-dir=</span><span class="op">&lt;</span>path<span class="op">&gt;</span>] [--work-tree=<span class="op">&lt;</span>path<span class="op">&gt;</span>] [--namespace=<span class="op">&lt;</span>name<span class="op">&gt;</span>]</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>           <span class="op">&lt;</span>command<span class="op">&gt;</span> <span class="ex">[</span><span class="op">&lt;</span>args<span class="op">&gt;</span>]</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">These</span> are common Git commands used in various situations:</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="ex">start</span> a working area <span class="er">(</span><span class="ex">see</span> also: git help tutorial<span class="kw">)</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>   <span class="ex">clone</span>             Clone a repository into a new directory</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>   <span class="ex">init</span>              Create an empty Git repository or reinitialize an existing one</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="ex">work</span> on the current change <span class="er">(</span><span class="ex">see</span> also: git help everyday<span class="kw">)</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>   <span class="ex">add</span>               Add file contents to the index</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mv</span>                Move or rename a file, a directory, or a symlink</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>   <span class="ex">restore</span>           Restore working tree files</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rm</span>                Remove files from the working tree and from the index</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>   <span class="ex">sparse-checkout</span>   Initialize and modify the sparse-checkout</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="ex">examine</span> the history and state <span class="er">(</span><span class="ex">see</span> also: git help revisions<span class="kw">)</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>   <span class="ex">bisect</span>            Use binary search to find the commit that introduced a bug</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>   <span class="fu">diff</span>              Show changes between commits, commit and working tree, etc</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>   <span class="fu">grep</span>              Print lines matching a pattern</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>   <span class="ex">log</span>               Show commit logs</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>   <span class="ex">show</span>              Show various types of objects</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>   <span class="ex">status</span>            Show the working tree status</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="ex">grow,</span> mark and tweak your common history</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>   <span class="ex">branch</span>            List, create, or delete branches</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>   <span class="ex">commit</span>            Record changes to the repository</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>   <span class="ex">merge</span>             Join two or more development histories together</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>   <span class="ex">rebase</span>            Reapply commits on top of another base tip</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>   <span class="ex">reset</span>             Reset current HEAD to the specified state</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>   <span class="ex">switch</span>            Switch branches</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>   <span class="ex">tag</span>               Create, list, delete or verify a tag object signed with GPG</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="ex">collaborate</span> <span class="er">(</span><span class="ex">see</span> also: git help workflows<span class="kw">)</span></span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>   <span class="ex">fetch</span>             Download objects and refs from another repository</span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>   <span class="ex">pull</span>              Fetch from and integrate with another repository or a local branch</span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>   <span class="ex">push</span>              Update remote refs along with associated objects</span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="st">'git help -a'</span> and <span class="st">'git help -g'</span> list available subcommands and some</span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="ex">concept</span> guides. See <span class="st">'git help &lt;command&gt;'</span> or <span class="st">'git help &lt;concept&gt;'</span></span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="ex">to</span> read about a specific subcommand or concept.</span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="ex">See</span> <span class="st">'git help git'</span> for an overview of the system.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> git <span class="at">--help</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">usage:</span> git <span class="pp">[--</span><span class="ss">version</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">help</span><span class="pp">]</span> [-C <span class="op">&lt;</span>path<span class="op">&gt;</span>] [-c <span class="op">&lt;</span>name<span class="op">&gt;</span>=<span class="op">&lt;</span>value<span class="op">&gt;</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[--exec-path[=</span><span class="op">&lt;</span>path<span class="op">&gt;</span>]] <span class="pp">[--</span><span class="ss">html</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">man</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">info</span><span class="pp">-</span><span class="ss">path</span><span class="pp">]</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[-p</span> <span class="kw">|</span> <span class="ex">--paginate</span> <span class="kw">|</span> <span class="ex">-P</span> <span class="kw">|</span> <span class="ex">--no-pager]</span> <span class="pp">[--</span><span class="ss">no</span><span class="pp">-</span><span class="ss">replace</span><span class="pp">-</span><span class="ss">objects</span><span class="pp">]</span> <span class="pp">[--</span><span class="ss">bare</span><span class="pp">]</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>           <span class="ex">[--git-dir=</span><span class="op">&lt;</span>path<span class="op">&gt;</span>] [--work-tree=<span class="op">&lt;</span>path<span class="op">&gt;</span>] [--namespace=<span class="op">&lt;</span>name<span class="op">&gt;</span>]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>           <span class="op">&lt;</span>command<span class="op">&gt;</span> <span class="ex">[</span><span class="op">&lt;</span>args<span class="op">&gt;</span>]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">These</span> are common Git commands used in various situations:</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ex">start</span> a working area <span class="er">(</span><span class="ex">see</span> also: git help tutorial<span class="kw">)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>   <span class="ex">clone</span>             Clone a repository into a new directory</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>   <span class="ex">init</span>              Create an empty Git repository or reinitialize an existing one</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ex">work</span> on the current change <span class="er">(</span><span class="ex">see</span> also: git help everyday<span class="kw">)</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>   <span class="ex">add</span>               Add file contents to the index</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mv</span>                Move or rename a file, a directory, or a symlink</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>   <span class="ex">restore</span>           Restore working tree files</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rm</span>                Remove files from the working tree and from the index</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>   <span class="ex">sparse-checkout</span>   Initialize and modify the sparse-checkout</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="ex">examine</span> the history and state <span class="er">(</span><span class="ex">see</span> also: git help revisions<span class="kw">)</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>   <span class="ex">bisect</span>            Use binary search to find the commit that introduced a bug</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>   <span class="fu">diff</span>              Show changes between commits, commit and working tree, etc</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>   <span class="fu">grep</span>              Print lines matching a pattern</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>   <span class="ex">log</span>               Show commit logs</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>   <span class="ex">show</span>              Show various types of objects</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>   <span class="ex">status</span>            Show the working tree status</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="ex">grow,</span> mark and tweak your common history</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>   <span class="ex">branch</span>            List, create, or delete branches</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>   <span class="ex">commit</span>            Record changes to the repository</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>   <span class="ex">merge</span>             Join two or more development histories together</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>   <span class="ex">rebase</span>            Reapply commits on top of another base tip</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>   <span class="ex">reset</span>             Reset current HEAD to the specified state</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>   <span class="ex">switch</span>            Switch branches</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>   <span class="ex">tag</span>               Create, list, delete or verify a tag object signed with GPG</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="ex">collaborate</span> <span class="er">(</span><span class="ex">see</span> also: git help workflows<span class="kw">)</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>   <span class="ex">fetch</span>             Download objects and refs from another repository</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>   <span class="ex">pull</span>              Fetch from and integrate with another repository or a local branch</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>   <span class="ex">push</span>              Update remote refs along with associated objects</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="st">'git help -a'</span> and <span class="st">'git help -g'</span> list available subcommands and some</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="ex">concept</span> guides. See <span class="st">'git help &lt;command&gt;'</span> or <span class="st">'git help &lt;concept&gt;'</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="ex">to</span> read about a specific subcommand or concept.</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="ex">See</span> <span class="st">'git help git'</span> for an overview of the system.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 메뉴얼 확인</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> man git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> man git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="cp-mv-mkdir-rm" class="level2">
 <h2 class="anchored" data-anchor-id="cp-mv-mkdir-rm">cp, mv, mkdir, rm</h2>
 <p><code>-</code> 카피</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> file1 file2 <span class="co"># file1을 복사하여 file2를 새로 만듬. file2가 이미 있다면 file1의 내용을 덮어씀 </span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> dir1 dir2 <span class="co"># dir1의 모든파일을 복사하여 dir2로 이동한뒤 붙어넣음. dir2가 없다면 새로 만듬. 기존의 dir2에 있던 파일이 삭제되는건 아님 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> file1 file2 <span class="co"># file1을 복사하여 file2를 새로 만듬. file2가 이미 있다면 file1의 내용을 덮어씀 </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> dir1 dir2 <span class="co"># dir1의 모든파일을 복사하여 dir2로 이동한뒤 붙어넣음. dir2가 없다면 새로 만듬. 기존의 dir2에 있던 파일이 삭제되는건 아님 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 이동</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> file1 file2 <span class="co"># file1을 이동하여 file2로 이름바꿈. file2가 이미 있다면 file1의 내용을 덮어씀 </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="at">-r</span> dir1 dir2 <span class="co"># dir1의 모든파일을 잘라내어 dir2로 이동. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> file1 file2 <span class="co"># file1을 이동하여 file2로 이름바꿈. file2가 이미 있다면 file1의 내용을 덮어씀 </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="at">-r</span> dir1 dir2 <span class="co"># dir1의 모든파일을 잘라내어 dir2로 이동. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 디렉토리 생성</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> temp</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> temp1, temp2, temp3 <span class="co"># 여러개를 만듬</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> temp</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> temp1, temp2, temp3 <span class="co"># 여러개를 만듬</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 삭제</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> file1 <span class="co"># file1삭제 </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> file1 dir1 <span class="co"># file1삭제 dir1폴더삭제 </span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> file1 dir1 <span class="co"># 위와 동일한데 file1이나 dir1이 존재하지 않더라고 rm이 실행</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> file1 <span class="co"># file1삭제 </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> file1 dir1 <span class="co"># file1삭제 dir1폴더삭제 </span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> file1 dir1 <span class="co"># 위와 동일한데 file1이나 dir1이 존재하지 않더라고 rm이 실행</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> -v(verbose)를 쓰면 친절한 느낌이 든다.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox$</span> cp <span class="pp">*</span>.txt temppp <span class="at">-v</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="st">'colab.txt'</span> <span class="at">-</span><span class="op">&gt;</span> <span class="st">'temppp/colab.txt'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox$</span> cp <span class="pp">*</span>.txt temppp <span class="at">-v</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="st">'colab.txt'</span> <span class="at">-</span><span class="op">&gt;</span> <span class="st">'temppp/colab.txt'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="scp" class="level2">
+<h2 class="anchored" data-anchor-id="scp">scp</h2>
+<p><code>-</code> cgb2에 있는 lm.txt를 cgb5로 옮김. 포트는 cgb5에 대응하는 포트</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cgb2@cgb2-desktop:~$</span> scp <span class="at">-P</span> 4653 lm.txt cgb5@210.117.173.185:~</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-</code> cgb2에 있는 lm.txt를 맥으로 가져옴. 포트는 cgb2에 대응하는 포트</p>
+<p><img src="2000-01-04-우분투 익히기_files/figure-html/1e01aca2-bafd-439f-8fe4-e2237d878dd4-1-a8650aea-5cbb-4929-9c6a-5fe64651eb9c.png" class="img-fluid"></p>
 </section>
 </section>
-<section id="덜-중요한-명령어" class="level1">
-<h1>4. 덜 중요한 명령어</h1>
-<section id="file" class="level2">
-<h2 class="anchored" data-anchor-id="file">file</h2>
-<p><code>-</code> 뭐하는 파일인지 알고싶다면?</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox/03_yechan3$</span> file 1_essays.qmd </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">1_essays.qmd:</span> ASCII text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="설치관련" class="level1">
+<h1>3. 설치관련</h1>
+<section id="wget" class="level2">
+<h2 class="anchored" data-anchor-id="wget">wget</h2>
+<p><code>-</code> 인터넷에서 파일 다운로드</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5033-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="date-cal" class="level2">
-<h2 class="anchored" data-anchor-id="date-cal">date, cal</h2>
-<p><code>-</code> 날짜</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> date</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">2023.</span> 08. 03. <span class="er">(</span><span class="ex">목</span><span class="kw">)</span> <span class="ex">16:10:38</span> KST</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> 달력</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> cal</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>      <span class="ex">8월</span> 2023         </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">일</span> 월 화 수 목 금 토  </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>       <span class="ex">1</span>  2  3  4  5  </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a> <span class="ex">6</span>  7  8  9 10 11 12  </span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">13</span> 14 15 16 17 18 19  </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ex">20</span> 21 22 23 24 25 26  </span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="ex">27</span> 28 29 30 31         </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="gdebi-deb" class="level2">
+<h2 class="anchored" data-anchor-id="gdebi-deb">gdebi, deb</h2>
+<p><code>-</code> deb파일을 gdebi로 설치하는 방법</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> gdebi rstudio-server-1.2.5033-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-</code> deb파일을 dpkg를 이용하여 설치하는 방법</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-i</span> quarto-1.2.335-linux-amd64.deb <span class="co"># 설치</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-r</span> quarto <span class="co"># 삭제 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-</code> gdebi, deb의 차이</p>
+<ul>
+<li>gdebi는 관련패키지를 모두 찾아서 설치 dpkg는 하나의 패키지만 설치. 즉 gdebi는 conda 느낌이고 dpkg는 pip 느낌</li>
+<li>gdebi는 별도의 삭제옵션을 지원하지 않음. 따라서 gdebi로 설치한 deb을 삭제하려면 머리아플수도?</li>
+</ul>
+<p><code>-</code> gdebi로 설치한 패키지를 삭제하는 방법</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Chat-GPT 답변
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>gdebi</code>로 패키지를 삭제하는 것은 아쉽게도 직접적으로 지원하지 않습니다. <code>gdebi</code>는 주로 패키지를 설치할 때 사용되는 도구이며, 패키지의 삭제에는 사용되지 않습니다. 패키지를 삭제하려면 다른 도구인 <code>dpkg</code>나 패키지 관리자 명령을 사용해야 합니다.</p>
+<p>패키지를 삭제하는 방법은 아래와 같습니다. 패키지를 삭제하기 전에 해당 패키지가 다른 의존하는 패키지에 영향을 주지 않는지 주의깊게 확인하시기 바랍니다.</p>
+<p><strong>dpkg를 사용하여 패키지 삭제하기:</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-r</span> 패키지이름</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>여기서 <code>패키지이름</code>은 삭제하려는 패키지의 이름입니다. 이 명령을 실행하면 해당 패키지가 삭제됩니다.</p>
+<p><strong>apt를 사용하여 패키지 삭제하기 (의존성 관리 포함):</strong></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt remove 패키지이름</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>위 명령은 <code>apt</code>를 통해 패키지를 삭제하며, 의존성을 포함하여 관련된 패키지들도 자동으로 처리합니다. 이 방법은 일반적으로 패키지 삭제에 더 효과적입니다.</p>
+<p>위의 방법 중 하나를 선택하여 패키지를 삭제할 수 있습니다. 패키지 삭제 시에는 주의하여 의존성 문제가 발생하지 않도록 해야 합니다.</p>
+</div>
+</div>
 </section>
-<section id="echo" class="level2">
-<h2 class="anchored" data-anchor-id="echo">echo</h2>
-<p><code>-</code> echo 기본기능</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cgb2@cgb2-desktop:~/Dropbox/temppp$</span> echo test</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> echo + <code>*</code> : <code>*</code>가 현재 디렉토리에 있는 모든 파일이름으로 확장된이후에 echo가 동작함.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox/temppp$</span> ls</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">colab.txt</span>  sample.txt</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox/temppp$</span> echo <span class="pp">*</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="ex">colab.txt</span> sample.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> 응용</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> echo D<span class="pp">*</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> Documents Downloads Dropbox</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> 응용2</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> echo /usr/<span class="pp">*</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin</span> /usr/games /usr/include /usr/lib /usr/lib32 /usr/lib64 /usr/libexec /usr/libx32 /usr/local /usr/sbin /usr/share /usr/src</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> 응용3</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> echo ~</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/cgb2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> 응용4</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox$</span> echo <span class="va">$((</span><span class="dv">2</span><span class="op">+</span><span class="dv">2</span><span class="va">))</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="wget" class="level1">
-<h1>wget</h1>
-<div class="sourceCode" id="cb24"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5033-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="gdebi" class="level1">
-<h1>gdebi</h1>
-<div class="sourceCode" id="cb25"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sudo gdebi rstudio-server-1.2.5033-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="apt" class="level1">
-<h1>apt</h1>
-<div class="sourceCode" id="cb26"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sudo apt-get remove r-base-core</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sudo apt purge r-base* r-recommended r-cran-*</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>sudo apt autoremove</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>sudo apt list </span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>sudo apt update</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>sudo apt install openssh-server </span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>sudo apt-get install gdebi-core</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> sudo apt-get과 sudo apt 차이? 별 차이 없는듯 - https://askubuntu.com/questions/445384/what-is-the-difference-between-apt-and-apt-get</p>
+<section id="apt" class="level2">
+<h2 class="anchored" data-anchor-id="apt">apt</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get remove r-base-core</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt purge r-base<span class="pp">*</span> r-recommended r-cran-<span class="pp">*</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt autoremove</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt list </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install openssh-server </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install gdebi-core</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-</code> sudo apt-get과 sudo apt 차이? 별 차이 없는듯</p>
+<ul>
+<li><a href="https://askubuntu.com/questions/445384/what-is-the-difference-between-apt-and-apt-get" class="uri">https://askubuntu.com/questions/445384/what-is-the-difference-between-apt-and-apt-get</a></li>
+</ul>
 <blockquote class="blockquote">
 <p>They are very similar command line tools available in Trusty (14.04) and later. apt-get and apt-cache’s most commonly used commands are available in apt. apt-get may be considered as lower-level and “back-end”, and support other APT-based tools. apt is designed for end-users (human) and its output may be changed between versions.</p>
 </blockquote>
 </section>
-<section id="conda" class="level1">
-<h1>conda</h1>
-<div class="sourceCode" id="cb27"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>conda </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>conda env -h </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>conda install -h </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>conda remove -h  </span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>conda update -h </span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>conda env list</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>conda create -n py38r40 python=3.8</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>conda env remove -n py38r40 </span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>conda install -c conda-forge jupyterlab </span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>conda remove jupyterlab </span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>conda remove r-base -y </span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>conda remove -n py38r40 jupyterlab </span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>conda update scipy</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>conda update -n py38r40 scipy</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>conda list </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="conda" class="level2">
+<h2 class="anchored" data-anchor-id="conda">conda</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env <span class="at">-h</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-h</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">-h</span>  </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-h</span> </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> py38r40 python=3.8</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">-n</span> py38r40 </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge jupyterlab </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove jupyterlab </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove r-base <span class="at">-y</span> </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">-n</span> py38r40 jupyterlab </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update scipy</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-n</span> py38r40 scipy</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="pip" class="level1">
-<h1>pip</h1>
-<div class="sourceCode" id="cb28"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>pip</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>pip list</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>pip list &gt; list.txt</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>pip freeze # 좀 더 자세히 나온다 </span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>pip freeze &gt; list.txt </span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>pip show matplotlib # 설치된패키지 정보가 나옴. 좋음.</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>pip install rpy2</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>pip install -r list.txt </span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>pip install dash==1.13.3</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>pip install jupyterlab "ipywidgets&gt;=7.5"</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>pip install -U numpy</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>pip install --upgrade pip</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>pip install --upgrade tensorflow</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>pip uninstall matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="pip" class="level2">
+<h2 class="anchored" data-anchor-id="pip">pip</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> list</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> list <span class="op">&gt;</span> list.txt</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="co"># 좀 더 자세히 나온다 </span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> list.txt </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> show matplotlib <span class="co"># 설치된패키지 정보가 나옴. 좋음.</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rpy2</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> list.txt </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install dash==1.13.3</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyterlab <span class="st">"ipywidgets&gt;=7.5"</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> numpy</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> tensorflow</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> uninstall matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="리소스-모니터링" class="level1">
-<h1>리소스 모니터링</h1>
-<div class="sourceCode" id="cb29"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df # disk </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>free # memory </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>nvidia-smi </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>watch -n 5 nvidia-smi -a --display=utilization</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>top</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>sar -1 r </span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a># 나노에디터</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>`-` 파일열기</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>```default</span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>sudo nano /etc/apt/sources.list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> 읽기전용 파일만들기: 파일을 만드는것도 파일 여는방법과 동일함. 즉 아래와 같이 하면 <code>exam.txt</code>가 현재 폴더에 있다면 <code>열고</code>아니면 <code>(읽기전용으로) 만든다.</code></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sudo nano /home/cgb/Desktop/exam.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> 읽기전용이 아닌 일반파일 만들기</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>nano /home/cgb/Desktop/exam.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> 나노에디터종료: <code>컨트롤+X</code></p>
-<p><code>-</code> 파일저장: <code>컨트롤+O</code></p>
-<p><code>-</code> 찾기: <code>컨트롤+W</code></p>
-<p><code>-</code> 되돌리기: <code>알트+U</code></p>
+<h1>4. 리소스 모니터링</h1>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span> <span class="co"># disk </span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span> <span class="co"># memory </span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nvidia-smi</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">watch</span> <span class="at">-n</span> 5 nvidia-smi <span class="at">-a</span> <span class="at">--display</span><span class="op">=</span>utilization</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="ex">sar</span> <span class="at">-1</span> r </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="ssh" class="level1">
-<h1>ssh</h1>
-<p><code>-</code> 처음에 ssh를 연결하기위해서는 연결<strong>당하는</strong> 컴퓨터에 가서 아래를 실행해야 한다.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sudo apt install openssh-server</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="번포트-우회하기" class="level4">
-<h4 class="anchored" data-anchor-id="번포트-우회하기">22번포트 우회하기</h4>
-<p><code>-</code> step1: <code>/etc/ssh/sshd_config</code> 파일을 연다.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sudo vi /etc/ssh/sshd_config </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> step2: Port 22 라고 된 부분의 주석을 풀고 원하는 포트번호 설정</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>#Port 22</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>#AddressFamily any</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>#ListenAddress 0.0.0.0</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>#ListenAddress ::</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> step3: 수정내용을 적용</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl restart ssh.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> step4: 수정한 포트로 ssh접속</p>
+<section id="appendix" class="level1">
+<h1>Appendix</h1>
+<section id="a1.-덜-중요한-명령어" class="level2">
+<h2 class="anchored" data-anchor-id="a1.-덜-중요한-명령어">A1. 덜 중요한 명령어</h2>
+<section id="file" class="level3">
+<h3 class="anchored" data-anchor-id="file">file</h3>
+<p><code>-</code> 뭐하는 파일인지 알고싶다면?</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox/03_yechan3$</span> file 1_essays.qmd </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">1_essays.qmd:</span> ASCII text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
-<section id="sublime" class="level1">
-<h1>sublime</h1>
-<p><code>-</code> 찾아바꾸기: 컨트롤+h</p>
-<p><code>-</code> 화면분할: 옵션+커맨드+2,3,4 …</p>
-</section>
-<section id="파일생성-파일삭제" class="level1">
-<h1>파일생성, 파일삭제</h1>
-<div class="sourceCode" id="cb36"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>cat &gt; sample.txt </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>rm -r folderName </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>rm -rf .local/share/Trash/files/* # 휴지통삭제 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="deb" class="level1">
-<h1>deb</h1>
-<div class="sourceCode" id="cb37"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dpkg -i quarto-1.2.335-linux-amd64.deb # 설치</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>dpkg -r quarto # 삭제 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="date-cal" class="level3">
+<h3 class="anchored" data-anchor-id="date-cal">date, cal</h3>
+<p><code>-</code> 날짜</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> date</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">2023.</span> 08. 03. <span class="er">(</span><span class="ex">목</span><span class="kw">)</span> <span class="ex">16:10:38</span> KST</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-</code> 달력</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> cal</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>      <span class="ex">8월</span> 2023         </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">일</span> 월 화 수 목 금 토  </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>       <span class="ex">1</span>  2  3  4  5  </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a> <span class="ex">6</span>  7  8  9 10 11 12  </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="ex">13</span> 14 15 16 17 18 19  </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="ex">20</span> 21 22 23 24 25 26  </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="ex">27</span> 28 29 30 31         </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
