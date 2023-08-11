@@ -97,6 +97,23 @@
     ]
   },
   {
+    "listing": "/2_pyg.html",
+    "items": [
+      "/posts/2_Studies/PyG/ls6.html",
+      "/posts/2_Studies/PyG/ls5.html",
+      "/posts/2_Studies/PyG/ls4.html",
+      "/posts/2_Studies/PyG/ls3.html",
+      "/posts/2_Studies/PyG/ls2.html",
+      "/posts/2_Studies/PyG/ls1.html"
+    ]
+  },
+  {
+    "listing": "/2_pl.html",
+    "items": [
+      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
+    ]
+  },
+  {
     "listing": "/3_boram.html",
     "items": [
       "/posts/3_Researches/BORAM/FRAUD/2023-07-03-CTGAN_신용카드.html",
@@ -108,23 +125,6 @@
       "/posts/3_Researches/BORAM/FRAUD/2023-05-12-try1.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-05-24-try1변형.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-05-06-start.html"
-    ]
-  },
-  {
-    "listing": "/2_pl.html",
-    "items": [
-      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
-    ]
-  },
-  {
-    "listing": "/2_pyg.html",
-    "items": [
-      "/posts/2_Studies/PyG/ls6.html",
-      "/posts/2_Studies/PyG/ls5.html",
-      "/posts/2_Studies/PyG/ls4.html",
-      "/posts/2_Studies/PyG/ls3.html",
-      "/posts/2_Studies/PyG/ls2.html",
-      "/posts/2_Studies/PyG/ls1.html"
     ]
   },
   {
