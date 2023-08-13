@@ -286,6 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#기본익히기" id="toc-기본익히기" class="nav-link active" data-scroll-target="#기본익히기">기본익히기</a></li>
   <li><a href="#복붙고급" id="toc-복붙고급" class="nav-link" data-scroll-target="#복붙고급">복붙고급</a></li>
+  <li><a href="#모드" id="toc-모드" class="nav-link" data-scroll-target="#모드">모드</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2000-01-05-vi 익히기.out.ipynb" download="2000-01-05-vi 익히기.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -348,14 +349,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="2000-01-05-vi 익히기_files/figure-html/1ac4f16b-3d2d-4d8d-bc8f-b5f19c901695-4-6e5c0488-3589-4e59-afd1-ec38b2faceba.png" class="img-fluid"></p>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<p><code>-</code> 편집모드 종료, 명령모드 진입:<code>esc</code> 입력</p>
+<p><code>-</code> 편집모드 종료, 노말모드 진입:<code>esc</code> 입력</p>
 <ul>
 <li>아래에 <code>-- INSERT --</code> 라는 표현이 사라져있음. 이 상황에서 명령어 입력가능.</li>
 </ul>
 <p><img src="2000-01-05-vi 익히기_files/figure-html/1ac4f16b-3d2d-4d8d-bc8f-b5f19c901695-2-2b5525c1-bc62-4e9d-b0ba-5d664ce90fbf.png" class="img-fluid"></p>
 </div>
 <div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
-<p><code>-</code> 저장(w)+종료(q): <code>:wq</code> + <code>Enter</code> 입력</p>
+<p><code>-</code> 저장(w)+종료(q): <code>:</code> 입력하여 명령모드로 진입. <code>w</code>+ <code>q</code> + <code>Enter</code> 입력</p>
 <p><img src="2000-01-05-vi 익히기_files/figure-html/1ac4f16b-3d2d-4d8d-bc8f-b5f19c901695-1-1c8bbd6d-c6a1-4fe4-aea0-d3ea18f2dc91.png" class="img-fluid"></p>
 </div>
 </div>
@@ -495,7 +496,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="2000-01-05-vi 익히기_files/figure-html/0e00c56d-03fc-41d7-a3ad-06f1ac776cfd-4-770f270b-e99e-41cc-ab6b-00d4c33880cf.png" class="img-fluid"></p>
 </div>
 <div id="tabset-6-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-4-tab">
-<p><code>-</code> <code>N</code> 입력하여 이전단어로 이동 (<code>?</code>로 검색할 경우 <code>n</code>와 <code>N</code>의 역할이 뒤바뀜)</p>
+<p><code>-</code> <code>shift</code>+<code>n</code> 입력하여 이전단어로 이동 (<code>?</code>로 검색할 경우 <code>n</code>와 <code>shift</code>+<code>n</code>의 역할이 뒤바뀜)</p>
 <p><img src="2000-01-05-vi 익히기_files/figure-html/0e00c56d-03fc-41d7-a3ad-06f1ac776cfd-3-55532ac9-fb9f-4225-8dec-b91e021e8e07.png" class="img-fluid"></p>
 </div>
 </div>
@@ -530,6 +531,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="모드" class="level1">
+<h1>모드</h1>
+<section id="esc-normal-모드" class="level2">
+<h2 class="anchored" data-anchor-id="esc-normal-모드"><code>esc</code>: normal 모드</h2>
+<p><code>-</code> 기능1: 커서이동</p>
+<ul>
+<li><code>k</code>,<code>j</code>,<code>h</code>,<code>l</code>: 상,하,좌,우 – <strong>쓸모없음</strong>, 그냥 화살표로 이동해도 충분</li>
+<li><code>w</code>,<code>b</code>: 다음 단어의 시작으로 이동, 이전 단어의 시작으로 이동 – <strong>쓸모없음</strong>, shift + 화살표로 충분</li>
+<li><code>e</code>: 현재단어의 끝으로 이동 – <strong>유용한듯</strong></li>
+<li><code>0</code> (숫자 0): 줄의 맨 앞으로 이동</li>
+<li><code>$</code>: 줄의 맨 끝으로 이동</li>
+<li><code>gg</code>: 파일의 첫 줄로 이동</li>
+<li><code>G</code>: 파일의 마지막 줄로 이동</li>
+<li><code>%</code>: 현재 괄호의 짝으로 이동</li>
+</ul>
+<p><code>-</code> 기능2: 다른모드로 진입하기 위한 중간허브</p>
+</section>
+<section id="i-편집모드" class="level2">
+<h2 class="anchored" data-anchor-id="i-편집모드"><code>i</code>: 편집모드</h2>
+</section>
+<section id="d-삭제모드" class="level2">
+<h2 class="anchored" data-anchor-id="d-삭제모드"><code>d</code>: 삭제모드</h2>
+</section>
+<section id="명령모드" class="level2">
+<h2 class="anchored" data-anchor-id="명령모드"><code>:</code>: 명령모드</h2>
+</section>
+<section id="검색모드" class="level2">
+<h2 class="anchored" data-anchor-id="검색모드"><code>/</code>: 검색모드</h2>
+</section>
+<section id="v-선택모드" class="level2">
+<h2 class="anchored" data-anchor-id="v-선택모드"><code>v</code>: 선택모드</h2>
+</section>
+<section id="shift-r-대체모드" class="level2">
+<h2 class="anchored" data-anchor-id="shift-r-대체모드"><code>shift</code> + <code>R</code>: 대체모드</h2>
 
 
 </section>

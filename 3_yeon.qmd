@@ -13,5 +13,4 @@ title-block-banner: false
 ---
 
 - <https://github.com/seoyeonc> 
-- <https://seoyeonc.github.io/md/>
-- <https://seoyeonc.github.io/blog/>
+- <https://seoyeonc.github.io/sy_hub/>
