@@ -56,7 +56,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -105,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -283,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         
     <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="notes.out.ipynb" download="notes.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -350,8 +369,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>solar enery에 대한 개론으로 시작 –&gt; 데이터가 자신있을 경우</li>
 <li>담백하게 (1) goal (2) method (3) contribution –&gt; 이론적인 측면에 자신이 있을때 <strong>꼭 들어가야 하는 것</strong></li>
 <li>구성 // Graphical abstract</li>
-<li>기존방법과 차이점 (*) ￼</li>
+<li>기존방법과 차이점 (*)</li>
 </ul>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="notes_files/figure-html/4109bffa-5c6d-4865-9443-ec8936a1d1c9-1-7d893ed7-9b09-4dae-aa4a-0dba22e4a12b.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption margin-caption">Graphical abstract 예시 <span class="citation" data-cites="li2022multi">Li et al. (<a href="#ref-li2022multi" role="doc-biblioref">2022</a>)</span><div id="ref-li2022multi" class="csl-entry" role="listitem">
+Li, Dan, Fuxin Jiang, Min Chen, and Tao Qian. 2022. <span>“Multi-Step-Ahead Wind Speed Forecasting Based on a Hybrid Decomposition Method and Temporal Convolutional Networks.”</span> <em>Energy</em> 238: 121981.
+</div></figcaption>
+</figure>
+</div>
 <p><code>2</code>. review existing methods (원래 지윤학생, 수틀리면 내가)</p>
 <ul>
 <li>RGCN 까지 이어지는 연구흐름을 간략하게 소개</li>
@@ -369,6 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>한계: 어떠한 점에 한계가 있다. -&gt; 향후연구: 향후에는 어떤연구로 발전할 것이다.. (다른변수를 고려해서 할 예정이다)</li>
 <li>활용: 주기성을 가진 어떠한 자료도 우리의 방법을 사용하면 잘 예측할수있어요..</li>
 </ul>
+
 
 
 
