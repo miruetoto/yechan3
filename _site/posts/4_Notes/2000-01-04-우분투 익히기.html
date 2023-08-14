@@ -292,6 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#h-man" id="toc-h-man" class="nav-link" data-scroll-target="#h-man">-h, man</a></li>
   <li><a href="#cp-mv-mkdir-rm" id="toc-cp-mv-mkdir-rm" class="nav-link" data-scroll-target="#cp-mv-mkdir-rm">cp, mv, mkdir, rm</a></li>
   <li><a href="#scp" id="toc-scp" class="nav-link" data-scroll-target="#scp">scp</a></li>
+  <li><a href="#find" id="toc-find" class="nav-link" data-scroll-target="#find">find</a></li>
   </ul></li>
   <li><a href="#설치관련" id="toc-설치관련" class="nav-link" data-scroll-target="#설치관련">3. 설치관련</a>
   <ul class="collapse">
@@ -551,21 +552,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>-</code> cgb2에 있는 lm.txt를 맥으로 가져옴. 포트는 cgb2에 대응하는 포트</p>
 <p><img src="2000-01-04-우분투 익히기_files/figure-html/1e01aca2-bafd-439f-8fe4-e2237d878dd4-1-a8650aea-5cbb-4929-9c6a-5fe64651eb9c.png" class="img-fluid"></p>
 </section>
+<section id="find" class="level2">
+<h2 class="anchored" data-anchor-id="find">find</h2>
+<p><code>-</code> <code>Dropbox</code>라는 이름이 포함된 폴더 찾기</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-type</span> d <span class="at">-name</span> <span class="st">"Dropbox"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>여기에서 <code>~</code>는 검색을 시작할 최상위 디렉토리를 쓴다.</li>
+<li>여기에서 <code>-type d</code>는 디렉토리라는 의미이다.</li>
+</ul>
+<p><code>-</code> <code>sy.tex</code>이라는 파일찾기</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-type</span> f <span class="at">-name</span> <span class="st">"sy.tex"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>여기에서 <code>~</code>는 검색을 시작할 최상위 디렉토리를 쓴다.</li>
+<li>여기에서 <code>-type d</code>는 디렉토리라는 의미이다.</li>
+</ul>
+</section>
 </section>
 <section id="설치관련" class="level1">
 <h1>3. 설치관련</h1>
 <section id="wget" class="level2">
 <h2 class="anchored" data-anchor-id="wget">wget</h2>
 <p><code>-</code> 인터넷에서 파일 다운로드</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5033-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5033-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="gdebi-deb" class="level2">
 <h2 class="anchored" data-anchor-id="gdebi-deb">gdebi, deb</h2>
 <p><code>-</code> deb파일을 gdebi로 설치하는 방법</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> gdebi rstudio-server-1.2.5033-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> gdebi rstudio-server-1.2.5033-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> deb파일을 dpkg를 이용하여 설치하는 방법</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-i</span> quarto-1.2.335-linux-amd64.deb <span class="co"># 설치</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-r</span> quarto <span class="co"># 삭제 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-i</span> quarto-1.2.335-linux-amd64.deb <span class="co"># 설치</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-r</span> quarto <span class="co"># 삭제 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> gdebi, deb의 차이</p>
 <ul>
 <li>gdebi는 관련패키지를 모두 찾아서 설치 dpkg는 하나의 패키지만 설치. 즉 gdebi는 conda 느낌이고 dpkg는 pip 느낌</li>
@@ -585,10 +601,10 @@ Chat-GPT 답변
 <p><code>gdebi</code>로 패키지를 삭제하는 것은 아쉽게도 직접적으로 지원하지 않습니다. <code>gdebi</code>는 주로 패키지를 설치할 때 사용되는 도구이며, 패키지의 삭제에는 사용되지 않습니다. 패키지를 삭제하려면 다른 도구인 <code>dpkg</code>나 패키지 관리자 명령을 사용해야 합니다.</p>
 <p>패키지를 삭제하는 방법은 아래와 같습니다. 패키지를 삭제하기 전에 해당 패키지가 다른 의존하는 패키지에 영향을 주지 않는지 주의깊게 확인하시기 바랍니다.</p>
 <p><strong>dpkg를 사용하여 패키지 삭제하기:</strong></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-r</span> 패키지이름</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-r</span> 패키지이름</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>여기서 <code>패키지이름</code>은 삭제하려는 패키지의 이름입니다. 이 명령을 실행하면 해당 패키지가 삭제됩니다.</p>
 <p><strong>apt를 사용하여 패키지 삭제하기 (의존성 관리 포함):</strong></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt remove 패키지이름</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt remove 패키지이름</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>위 명령은 <code>apt</code>를 통해 패키지를 삭제하며, 의존성을 포함하여 관련된 패키지들도 자동으로 처리합니다. 이 방법은 일반적으로 패키지 삭제에 더 효과적입니다.</p>
 <p>위의 방법 중 하나를 선택하여 패키지를 삭제할 수 있습니다. 패키지 삭제 시에는 주의하여 의존성 문제가 발생하지 않도록 해야 합니다.</p>
 </div>
@@ -596,13 +612,13 @@ Chat-GPT 답변
 </section>
 <section id="apt" class="level2">
 <h2 class="anchored" data-anchor-id="apt">apt</h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get remove r-base-core</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt purge r-base<span class="pp">*</span> r-recommended r-cran-<span class="pp">*</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt autoremove</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt list </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install openssh-server </span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install gdebi-core</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get remove r-base-core</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt purge r-base<span class="pp">*</span> r-recommended r-cran-<span class="pp">*</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt autoremove</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt list </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install openssh-server </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install gdebi-core</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> sudo apt-get과 sudo apt 차이? 별 차이 없는듯</p>
 <ul>
 <li><a href="https://askubuntu.com/questions/445384/what-is-the-difference-between-apt-and-apt-get" class="uri">https://askubuntu.com/questions/445384/what-is-the-difference-between-apt-and-apt-get</a></li>
@@ -613,48 +629,48 @@ Chat-GPT 답변
 </section>
 <section id="conda" class="level2">
 <h2 class="anchored" data-anchor-id="conda">conda</h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env <span class="at">-h</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-h</span> </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">-h</span>  </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-h</span> </span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> py38r40 python=3.8</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">-n</span> py38r40 </span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge jupyterlab </span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove jupyterlab </span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove r-base <span class="at">-y</span> </span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">-n</span> py38r40 jupyterlab </span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update scipy</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-n</span> py38r40 scipy</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env <span class="at">-h</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-h</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">-h</span>  </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-h</span> </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> py38r40 python=3.8</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">-n</span> py38r40 </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge jupyterlab </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove jupyterlab </span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove r-base <span class="at">-y</span> </span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">-n</span> py38r40 jupyterlab </span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update scipy</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-n</span> py38r40 scipy</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pip" class="level2">
 <h2 class="anchored" data-anchor-id="pip">pip</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> list</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> list <span class="op">&gt;</span> list.txt</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="co"># 좀 더 자세히 나온다 </span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> list.txt </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> show matplotlib <span class="co"># 설치된패키지 정보가 나옴. 좋음.</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rpy2</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> list.txt </span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install dash==1.13.3</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyterlab <span class="st">"ipywidgets&gt;=7.5"</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> numpy</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> tensorflow</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> uninstall matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> list</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> list <span class="op">&gt;</span> list.txt</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="co"># 좀 더 자세히 나온다 </span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> list.txt </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> show matplotlib <span class="co"># 설치된패키지 정보가 나옴. 좋음.</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rpy2</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> list.txt </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install dash==1.13.3</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyterlab <span class="st">"ipywidgets&gt;=7.5"</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> numpy</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> tensorflow</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> uninstall matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="리소스-모니터링" class="level1">
 <h1>4. 리소스 모니터링</h1>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span> <span class="co"># disk </span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span> <span class="co"># memory </span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nvidia-smi</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">watch</span> <span class="at">-n</span> 5 nvidia-smi <span class="at">-a</span> <span class="at">--display</span><span class="op">=</span>utilization</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="ex">sar</span> <span class="at">-1</span> r </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span> <span class="co"># disk </span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span> <span class="co"># memory </span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nvidia-smi</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="ex">watch</span> <span class="at">-n</span> 5 nvidia-smi <span class="at">-a</span> <span class="at">--display</span><span class="op">=</span>utilization</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="ex">sar</span> <span class="at">-1</span> r </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="appendix" class="level1">
 <h1>Appendix</h1>
@@ -663,23 +679,23 @@ Chat-GPT 답변
 <section id="file" class="level3">
 <h3 class="anchored" data-anchor-id="file">file</h3>
 <p><code>-</code> 뭐하는 파일인지 알고싶다면?</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox/03_yechan3$</span> file 1_essays.qmd </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">1_essays.qmd:</span> ASCII text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~/Dropbox/03_yechan3$</span> file 1_essays.qmd </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">1_essays.qmd:</span> ASCII text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="date-cal" class="level3">
 <h3 class="anchored" data-anchor-id="date-cal">date, cal</h3>
 <p><code>-</code> 날짜</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> date</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">2023.</span> 08. 03. <span class="er">(</span><span class="ex">목</span><span class="kw">)</span> <span class="ex">16:10:38</span> KST</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> date</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">2023.</span> 08. 03. <span class="er">(</span><span class="ex">목</span><span class="kw">)</span> <span class="ex">16:10:38</span> KST</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 달력</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> cal</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>      <span class="ex">8월</span> 2023         </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">일</span> 월 화 수 목 금 토  </span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>       <span class="ex">1</span>  2  3  4  5  </span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a> <span class="ex">6</span>  7  8  9 10 11 12  </span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="ex">13</span> 14 15 16 17 18 19  </span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="ex">20</span> 21 22 23 24 25 26  </span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="ex">27</span> 28 29 30 31         </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">cgb2@cgb2-desktop:~$</span> cal</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>      <span class="ex">8월</span> 2023         </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">일</span> 월 화 수 목 금 토  </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>       <span class="ex">1</span>  2  3  4  5  </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a> <span class="ex">6</span>  7  8  9 10 11 12  </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="ex">13</span> 14 15 16 17 18 19  </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="ex">20</span> 21 22 23 24 25 26  </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="ex">27</span> 28 29 30 31         </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
