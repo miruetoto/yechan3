@@ -285,7 +285,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#기본익히기" id="toc-기본익히기" class="nav-link active" data-scroll-target="#기본익히기">기본익히기</a></li>
-  <li><a href="#복붙고급" id="toc-복붙고급" class="nav-link" data-scroll-target="#복붙고급">복붙고급</a></li>
   <li><a href="#모드" id="toc-모드" class="nav-link" data-scroll-target="#모드">모드</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2000-01-05-vi 익히기.out.ipynb" download="2000-01-05-vi 익히기.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
@@ -503,55 +502,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="복붙고급" class="level1">
-<h1>복붙고급</h1>
-<section id="단어단위의-복붙" class="level2">
-<h2 class="anchored" data-anchor-id="단어단위의-복붙">단어단위의 복붙</h2>
-<blockquote class="blockquote">
-<p>예제: vi에서 특정단어를 복사하고 붙여넣기 해보자.</p>
-</blockquote>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">step1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">step2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">step3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-4" role="tab" aria-controls="tabset-7-4" aria-selected="false">step4</a></li></ul>
-<div class="tab-content">
-<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
-<p><code>-</code> 복사하고 싶은 단어 맨 앞글자에 커서를 위치한다.</p>
-<p><img src="2000-01-05-vi 익히기_files/figure-html/67b65b04-3f56-40bd-aa62-79f1f3a83c84-1-186df1e4-cc09-44d7-a0e1-c9b3a583c1cc.png" class="img-fluid"></p>
-</div>
-<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
-<p><code>-</code> <code>yw</code> 입력: <code>y</code>는 복사를 의미, <code>w</code>는 현재단어를 선택하는 명령</p>
-<p><img src="2000-01-05-vi 익히기_files/figure-html/67b65b04-3f56-40bd-aa62-79f1f3a83c84-1-186df1e4-cc09-44d7-a0e1-c9b3a583c1cc.png" class="img-fluid"></p>
-</div>
-<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
-<p><code>-</code> 붙여넣을 위치로 이동</p>
-<p><img src="2000-01-05-vi 익히기_files/figure-html/67b65b04-3f56-40bd-aa62-79f1f3a83c84-2-c8b0a5b3-65dc-422d-b493-1f76eddbcf45.png" class="img-fluid"></p>
-</div>
-<div id="tabset-7-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-4-tab">
-<p><code>-</code> <code>p</code> 입력하여 붙여넣기</p>
-<p><img src="2000-01-05-vi 익히기_files/figure-html/67b65b04-3f56-40bd-aa62-79f1f3a83c84-3-fc46051f-ed76-46bd-b7a2-51faf43db092.png" class="img-fluid"></p>
-</div>
-</div>
-</div>
-</section>
-</section>
 <section id="모드" class="level1">
 <h1>모드</h1>
 <section id="esc-normal-모드" class="level2">
 <h2 class="anchored" data-anchor-id="esc-normal-모드"><code>esc</code>: normal 모드</h2>
-<p><code>-</code> 기능1: 커서이동</p>
+<p><code>-</code> 기능1: 되돌리기, 되돌리기를 되돌리기</p>
+<p><code>-</code> 기능2: 커서이동 (기본) – 방향키, 쉬프트+방향키, home/end, pageup/pagedown 으로 대체가능</p>
 <ul>
-<li><code>k</code>,<code>j</code>,<code>h</code>,<code>l</code>: 상,하,좌,우 – <strong>쓸모없음</strong>, 그냥 화살표로 이동해도 충분</li>
-<li><code>w</code>,<code>b</code>: 다음 단어의 시작으로 이동, 이전 단어의 시작으로 이동 – <strong>쓸모없음</strong>, shift + 화살표로 충분</li>
-<li><code>e</code>: 현재단어의 끝으로 이동 – <strong>유용한듯</strong></li>
-<li><code>0</code> (숫자 0): 줄의 맨 앞으로 이동</li>
-<li><code>$</code>: 줄의 맨 끝으로 이동</li>
+<li><code>k</code>,<code>j</code>,<code>h</code>,<code>l</code>: 상,하,좌,우</li>
+<li><code>w</code>,<code>b</code>: 다음 단어의 시작으로 이동, 이전 단어의 시작으로 이동</li>
+<li><code>0</code> (숫자 0), <code>$</code>: 줄의 맨 앞, 맨 끝으로 이동</li>
+<li><code>control + d</code>, <code>control + u</code>: 반페이지씩 page down, page up</li>
+<li><code>{</code>, <code>}</code>: 문단 시작, 끝으로 이동</li>
+</ul>
+<p><code>-</code> 기눙3: 커서이동 (고급)</p>
+<ul>
+<li><code>%</code>: 현재 괄호의 짝으로 이동</li>
+<li><code>e</code>: 현재단어의 끝으로 이동</li>
 <li><code>gg</code>: 파일의 첫 줄로 이동</li>
 <li><code>G</code>: 파일의 마지막 줄로 이동</li>
-<li><code>%</code>: 현재 괄호의 짝으로 이동</li>
 </ul>
-<p><code>-</code> 기능2: 다른모드로 진입하기 위한 중간허브</p>
+<p><code>-</code> 기능4: 다른모드로 진입하기 위한 중간허브</p>
+<ul>
+<li><code>v</code>,<code>V</code>: 선택모드, 줄단위선택모드로 변환</li>
+<li><code>i</code>, <code>I</code>, <code>a</code>, <code>A</code>: 커서앞, 줄맨앞, 커서뒤, 줄맨뒤에서 삽입모드로 전환</li>
+<li><code>r</code>, <code>R</code>: 한글자 수정후 복귀, 수정모드로 진입</li>
+</ul>
+<p><code>-</code> 기능5: 들여쓰기, 내어쓰기</p>
+<ul>
+<li><code>&gt; + Enter</code>, <code>&lt; + Enter</code>: 들여쓰기, 내어쓰기</li>
+</ul>
 </section>
-<section id="i-편집모드" class="level2">
-<h2 class="anchored" data-anchor-id="i-편집모드"><code>i</code>: 편집모드</h2>
+<section id="i-삽입모드" class="level2">
+<h2 class="anchored" data-anchor-id="i-삽입모드"><code>i</code>: 삽입모드</h2>
 </section>
 <section id="d-삭제모드" class="level2">
 <h2 class="anchored" data-anchor-id="d-삭제모드"><code>d</code>: 삭제모드</h2>
@@ -562,11 +545,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="검색모드" class="level2">
 <h2 class="anchored" data-anchor-id="검색모드"><code>/</code>: 검색모드</h2>
 </section>
-<section id="v-선택모드" class="level2">
-<h2 class="anchored" data-anchor-id="v-선택모드"><code>v</code>: 선택모드</h2>
+<section id="v-비주얼모드선택모드" class="level2">
+<h2 class="anchored" data-anchor-id="v-비주얼모드선택모드"><code>v</code>: 비주얼모드(선택모드)</h2>
 </section>
-<section id="shift-r-대체모드" class="level2">
-<h2 class="anchored" data-anchor-id="shift-r-대체모드"><code>shift</code> + <code>R</code>: 대체모드</h2>
+<section id="r-수정모드" class="level2">
+<h2 class="anchored" data-anchor-id="r-수정모드"><code>R</code>: 수정모드</h2>
 
 
 </section>

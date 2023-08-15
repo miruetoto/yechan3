@@ -462,25 +462,18 @@
     "text": "예제: vi에서 원하는 단어는 찾아보자.\n\n\nstep1step2step3step4\n\n\n- /asdf2 입력\n\n\n\n- Enter 입력\n\n\n\n- n 입력하여 다음단어로 이동\n\n\n\n- shift+n 입력하여 이전단어로 이동 (?로 검색할 경우 n와 shift+n의 역할이 뒤바뀜)"
   },
   {
-    "objectID": "posts/4_Notes/2000-01-05-vi 익히기.html#단어단위의-복붙",
-    "href": "posts/4_Notes/2000-01-05-vi 익히기.html#단어단위의-복붙",
-    "title": "[Note] vi 익히기",
-    "section": "단어단위의 복붙",
-    "text": "단어단위의 복붙\n\n예제: vi에서 특정단어를 복사하고 붙여넣기 해보자.\n\n\nstep1step2step3step4\n\n\n- 복사하고 싶은 단어 맨 앞글자에 커서를 위치한다.\n\n\n\n- yw 입력: y는 복사를 의미, w는 현재단어를 선택하는 명령\n\n\n\n- 붙여넣을 위치로 이동\n\n\n\n- p 입력하여 붙여넣기"
-  },
-  {
     "objectID": "posts/4_Notes/2000-01-05-vi 익히기.html#esc-normal-모드",
     "href": "posts/4_Notes/2000-01-05-vi 익히기.html#esc-normal-모드",
     "title": "[Note] vi 익히기",
     "section": "esc: normal 모드",
-    "text": "esc: normal 모드\n- 기능1: 커서이동\n\nk,j,h,l: 상,하,좌,우 – 쓸모없음, 그냥 화살표로 이동해도 충분\nw,b: 다음 단어의 시작으로 이동, 이전 단어의 시작으로 이동 – 쓸모없음, shift + 화살표로 충분\ne: 현재단어의 끝으로 이동 – 유용한듯\n0 (숫자 0): 줄의 맨 앞으로 이동\n$: 줄의 맨 끝으로 이동\ngg: 파일의 첫 줄로 이동\nG: 파일의 마지막 줄로 이동\n%: 현재 괄호의 짝으로 이동\n\n- 기능2: 다른모드로 진입하기 위한 중간허브"
+    "text": "esc: normal 모드\n- 기능1: 되돌리기, 되돌리기를 되돌리기\n- 기능2: 커서이동 (기본) – 방향키, 쉬프트+방향키, home/end, pageup/pagedown 으로 대체가능\n\nk,j,h,l: 상,하,좌,우\nw,b: 다음 단어의 시작으로 이동, 이전 단어의 시작으로 이동\n0 (숫자 0), $: 줄의 맨 앞, 맨 끝으로 이동\ncontrol + d, control + u: 반페이지씩 page down, page up\n{, }: 문단 시작, 끝으로 이동\n\n- 기눙3: 커서이동 (고급)\n\n%: 현재 괄호의 짝으로 이동\ne: 현재단어의 끝으로 이동\ngg: 파일의 첫 줄로 이동\nG: 파일의 마지막 줄로 이동\n\n- 기능4: 다른모드로 진입하기 위한 중간허브\n\nv,V: 선택모드, 줄단위선택모드로 변환\ni, I, a, A: 커서앞, 줄맨앞, 커서뒤, 줄맨뒤에서 삽입모드로 전환\nr, R: 한글자 수정후 복귀, 수정모드로 진입\n\n- 기능5: 들여쓰기, 내어쓰기\n\n&gt; + Enter, &lt; + Enter: 들여쓰기, 내어쓰기"
   },
   {
-    "objectID": "posts/4_Notes/2000-01-05-vi 익히기.html#i-편집모드",
-    "href": "posts/4_Notes/2000-01-05-vi 익히기.html#i-편집모드",
+    "objectID": "posts/4_Notes/2000-01-05-vi 익히기.html#i-삽입모드",
+    "href": "posts/4_Notes/2000-01-05-vi 익히기.html#i-삽입모드",
     "title": "[Note] vi 익히기",
-    "section": "i: 편집모드",
-    "text": "i: 편집모드"
+    "section": "i: 삽입모드",
+    "text": "i: 삽입모드"
   },
   {
     "objectID": "posts/4_Notes/2000-01-05-vi 익히기.html#d-삭제모드",
@@ -504,18 +497,18 @@
     "text": "/: 검색모드"
   },
   {
-    "objectID": "posts/4_Notes/2000-01-05-vi 익히기.html#v-선택모드",
-    "href": "posts/4_Notes/2000-01-05-vi 익히기.html#v-선택모드",
+    "objectID": "posts/4_Notes/2000-01-05-vi 익히기.html#v-비주얼모드선택모드",
+    "href": "posts/4_Notes/2000-01-05-vi 익히기.html#v-비주얼모드선택모드",
     "title": "[Note] vi 익히기",
-    "section": "v: 선택모드",
-    "text": "v: 선택모드"
+    "section": "v: 비주얼모드(선택모드)",
+    "text": "v: 비주얼모드(선택모드)"
   },
   {
-    "objectID": "posts/4_Notes/2000-01-05-vi 익히기.html#shift-r-대체모드",
-    "href": "posts/4_Notes/2000-01-05-vi 익히기.html#shift-r-대체모드",
+    "objectID": "posts/4_Notes/2000-01-05-vi 익히기.html#r-수정모드",
+    "href": "posts/4_Notes/2000-01-05-vi 익히기.html#r-수정모드",
     "title": "[Note] vi 익히기",
-    "section": "shift + R: 대체모드",
-    "text": "shift + R: 대체모드"
+    "section": "R: 수정모드",
+    "text": "R: 수정모드"
   },
   {
     "objectID": "posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html",
