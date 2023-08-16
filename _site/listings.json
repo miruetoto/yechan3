@@ -3,7 +3,10 @@
     "listing": "/index.html",
     "items": [
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-08-14-EPT-GConvLSTM-setting-Copy1.out.html",
+      "/posts/3_Researches/PINKOCTO/SOLAR/Untitled1.html",
+      "/posts/3_Researches/PINKOCTO/SOLAR/Untitled.html",
       "/posts/1_Essays/2099-01-01-ggplot3.html",
+      "/posts/1_Essays/2023-08-16-루나랜더-설명버전.html",
       "/posts/1_Essays/2023-08-16-루나랜더 v2 (간략화).html",
       "/posts/3_Researches/YECHAN/EPT_DISSIM/2023-08-08-진행사항.html",
       "/posts/3_Researches/YECHAN/EPT_DISSIM/2023-08-07-PRCP_KOR 데이터정리.html",
@@ -86,6 +89,8 @@
   {
     "listing": "/3_pinkocto.html",
     "items": [
+      "/posts/3_Researches/PINKOCTO/SOLAR/Untitled1.html",
+      "/posts/3_Researches/PINKOCTO/SOLAR/Untitled.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-08-14-EPT-GConvLSTM-setting-Copy1.out.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-20-시뮬레이션.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-17-EPT-RGCN.html",
@@ -96,23 +101,6 @@
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-04-EPT.html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-03-일사량자료정리.html",
       "/posts/3_Researches/PINKOCTO/notes.html"
-    ]
-  },
-  {
-    "listing": "/2_pyg.html",
-    "items": [
-      "/posts/2_Studies/PyG/ls6.html",
-      "/posts/2_Studies/PyG/ls5.html",
-      "/posts/2_Studies/PyG/ls4.html",
-      "/posts/2_Studies/PyG/ls3.html",
-      "/posts/2_Studies/PyG/ls2.html",
-      "/posts/2_Studies/PyG/ls1.html"
-    ]
-  },
-  {
-    "listing": "/2_pl.html",
-    "items": [
-      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
     ]
   },
   {
@@ -127,6 +115,23 @@
       "/posts/3_Researches/BORAM/FRAUD/2023-05-12-try1.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-05-24-try1변형.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-05-06-start.html"
+    ]
+  },
+  {
+    "listing": "/2_pl.html",
+    "items": [
+      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
+    ]
+  },
+  {
+    "listing": "/2_pyg.html",
+    "items": [
+      "/posts/2_Studies/PyG/ls6.html",
+      "/posts/2_Studies/PyG/ls5.html",
+      "/posts/2_Studies/PyG/ls4.html",
+      "/posts/2_Studies/PyG/ls3.html",
+      "/posts/2_Studies/PyG/ls2.html",
+      "/posts/2_Studies/PyG/ls1.html"
     ]
   },
   {
@@ -154,6 +159,7 @@
     "listing": "/1_essays.html",
     "items": [
       "/posts/1_Essays/2099-01-01-ggplot3.html",
+      "/posts/1_Essays/2023-08-16-루나랜더-설명버전.html",
       "/posts/1_Essays/2023-08-16-루나랜더 v2 (간략화).html",
       "/posts/1_Essays/2023-08-07-루나랜더 v1.html",
       "/posts/1_Essays/2023-08-17-강화학습강의(1).html",
