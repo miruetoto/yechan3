@@ -1,0 +1,6 @@
+        idx = np.random.randint(0,self.n_experiences,size=self.batch_size) 
+        self.current_states_batch = torch.tensor(np.array(self.current_states)[idx],dtype=torch.float32)
+        self.actions_batch = torch.tensor(np.array(self.actions)[idx],dtype=torch.int64)
+        self.rewards_batch = torch.tensor(np.array(self.rewards)[idx],dtype=torch.float32)
+        self.next_states_batch = torch.tensor(np.array(self.next_states)[idx],dtype=torch.float32)
+        self.terminations_batch = torch.tensor(np.array(self.terminations)[idx],dtype=torch.int64)
