@@ -384,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>주피터 환경에서 그림의 크기를 조정하는 함수로 <code>figsize()</code> 구현, Rstudio에서는 그림크기가 유연하게 조정가능하므로 필요없음.</p>
 </blockquote>
 <p><code>-</code> 기본플랏</p>
-<div id="132a5b8b-383e-459c-b833-5c735acee83d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
+<div id="132a5b8b-383e-459c-b833-5c735acee83d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -392,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>-</code> 크기조정 (원래는 ggplot 이미지를 주피터에서 조정하려고 만들었는데, 기본플랏도 조정됨)</p>
-<div id="07904ffe-b2b2-4bea-9b40-311518914f1a" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
+<div id="07904ffe-b2b2-4bea-9b40-311518914f1a" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">figsize</span>(<span class="dv">10</span>,<span class="dv">3</span>) <span class="co"># 디폴트는 6,4</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y)</span>
@@ -406,25 +406,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>기본적인 사용법 소개</h1>
 <section id="ggplot-line-point" class="level2">
 <h2 class="anchored" data-anchor-id="ggplot-line-point"><code>ggplot</code> + <code>line</code> + <code>point</code></h2>
-<div id="145ac81e-253d-4967-b824-f492c1942336" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
+<div id="145ac81e-253d-4967-b824-f492c1942336" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시1</p>
-<div id="3f8335ba-b3bd-446b-9337-be063af7a699" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="14">
+<div id="3f8335ba-b3bd-446b-9337-be063af7a699" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">line</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, y, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">'gray60'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="a5b677da-9aa4-476e-b98a-46f92a757066" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="13">
+<div id="a5b677da-9aa4-476e-b98a-46f92a757066" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">point</span>(y,<span class="at">pch=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>,<span class="at">cex=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 예시3</p>
-<div id="575f8122-08dd-4914-8d07-5d0a18978795" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
+<div id="575f8122-08dd-4914-8d07-5d0a18978795" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">point</span>(y,<span class="at">pch=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>,<span class="at">cex=</span><span class="dv">5</span>) <span class="sc">+</span> <span class="fu">line</span>(<span class="dv">25</span><span class="sc">:</span><span class="dv">50</span>, y[<span class="dv">25</span><span class="sc">:</span><span class="dv">50</span>], <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
@@ -433,7 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ggplot2와-호환" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="ggplot2와-호환"><code>ggplot2</code>와 호환</h2>
-<div id="2f41dab0-231f-434a-ac21-75dc01542628" class="cell page-columns page-full" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
+<div id="2f41dab0-231f-434a-ac21-75dc01542628" class="cell page-columns page-full" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,<span class="at">y=</span><span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display page-columns page-full">
@@ -455,32 +455,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th" scope="row">1</td>
 <td>1</td>
-<td>0.8797639</td>
+<td>-1.0469334</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th" scope="row">2</td>
 <td>2</td>
-<td>0.1837064</td>
+<td>-2.9655046</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" scope="row">3</td>
 <td>3</td>
-<td>0.1520587</td>
+<td>0.8100684</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th" scope="row">4</td>
 <td>4</td>
-<td>0.2523408</td>
+<td>-0.3975010</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" scope="row">5</td>
 <td>5</td>
-<td>0.5221659</td>
+<td>-1.2694793</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th" scope="row">6</td>
 <td>6</td>
-<td>-0.3609418</td>
+<td>0.2693123</td>
 </tr>
 </tbody>
 </table>
