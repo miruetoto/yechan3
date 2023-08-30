@@ -40,7 +40,9 @@
     "listing": "/1_essays.html",
     "items": [
       "/posts/1_Essays/2099-01-01-ggplot3.html",
-      "/posts/1_Essays/2023-08-23-강화학습강의(1).html",
+      "/posts/1_Essays/2023-08-30-강화학습강의(3) -- LunarLander.html",
+      "/posts/1_Essays/2023-08-29-강화학습강의(2) -- 4x4 grid.html",
+      "/posts/1_Essays/2023-08-23-강화학습강의(1) -- bandit.html",
       "/posts/1_Essays/2023-08-16-루나랜더 v2 (간략화).html",
       "/posts/1_Essays/2023-08-07-루나랜더 v1.html",
       "/posts/1_Essays/2023-07-07-다중척도방법.html",
@@ -115,7 +117,9 @@
     "items": [
       "/posts/3_Researches/BORAM/FRAUD/2023-08-22 데이터(8, df02)커널죽음.out.html",
       "/posts/1_Essays/2099-01-01-ggplot3.html",
-      "/posts/1_Essays/2023-08-23-강화학습강의(1).html",
+      "/posts/1_Essays/2023-08-30-강화학습강의(3) -- LunarLander.html",
+      "/posts/1_Essays/2023-08-23-강화학습강의(1) -- bandit.html",
+      "/posts/1_Essays/2023-08-29-강화학습강의(2) -- 4x4 grid.html",
       "/posts/3_Researches/YECHAN/EPT_DISSIM/2023-08-18-데이터전처리.html",
       "/posts/1_Essays/2023-08-16-루나랜더 v2 (간략화).html",
       "/posts/3_Researches/PINKOCTO/SOLAR/2023-08-14-EPT-GConvLSTM-setting-Copy1.out.html",

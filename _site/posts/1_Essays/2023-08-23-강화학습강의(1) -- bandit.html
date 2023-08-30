@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.322">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="신록예찬">
+<meta name="dcterms.date" content="2023-08-23">
+
+<title>신록예찬’s Blog - [Essays] 강화학습강의(1) – bandit</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">신록예찬’s Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/DL2022/"> 
+<span class="menu-text">DL2022</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/DV2022/"> 
+<span class="menu-text">DV2022</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/IP2022/"> 
+<span class="menu-text">IP2022</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/SC2022/"> 
+<span class="menu-text">SC2022</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/DS2022/"> 
+<span class="menu-text">DS2022</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://guebin.github.io/IR2021/"> 
+<span class="menu-text">IR2021</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan/"> 
+<span class="menu-text">yechan</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://miruetoto.github.io/yechan2/"> 
+<span class="menu-text">yechan2</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/miruetoto/yechan3"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>[Essays]</strong> 강화학습강의(1) – bandit</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../1_essays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Essays</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>Studies</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_cgsp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CGSP</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_pl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyTorch Lightning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_pyg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyG</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2_reviews.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reviews</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Researches</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../3_yechan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">YECHAN</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../3_yeon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SEOYEONC</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../3_boram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BORAM-COCO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../3_pinkocto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PINKOCTO</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../4_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong><em>Notes</em></strong></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#imports" id="toc-imports" class="nav-link active" data-scroll-target="#imports">imports</a></li>
+  <li><a href="#intro" id="toc-intro" class="nav-link" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#game1-벤딧문제" id="toc-game1-벤딧문제" class="nav-link" data-scroll-target="#game1-벤딧문제">Game1: 벤딧문제</a></li>
+  <li><a href="#game1-벤딧문제-예쁜코드" id="toc-game1-벤딧문제-예쁜코드" class="nav-link" data-scroll-target="#game1-벤딧문제-예쁜코드">Game1: 벤딧문제 – 예쁜코드</a>
+  <ul class="collapse">
+  <li><a href="#수정1-action_space의-수정" id="toc-수정1-action_space의-수정" class="nav-link" data-scroll-target="#수정1-action_space의-수정">수정1: <code>action_space</code>의 수정</a></li>
+  <li><a href="#수정2-env-클래스" id="toc-수정2-env-클래스" class="nav-link" data-scroll-target="#수정2-env-클래스">수정2: Env 클래스</a></li>
+  <li><a href="#수정3-agent-클래스" id="toc-수정3-agent-클래스" class="nav-link" data-scroll-target="#수정3-agent-클래스">수정3: Agent 클래스</a></li>
+  </ul></li>
+  <li><a href="#game1-벤딧문제-학습과정-포함" id="toc-game1-벤딧문제-학습과정-포함" class="nav-link" data-scroll-target="#game1-벤딧문제-학습과정-포함">Game1: 벤딧문제 – 학습과정 포함</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-08-23-강화학습강의(1) -- bandit.out.ipynb" download="2023-08-23-강화학습강의(1) -- bandit.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>[Essays]</strong> 강화학습강의(1) – bandit</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>신록예찬 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 23, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+<section id="imports" class="level2">
+<h2 class="anchored" data-anchor-id="imports">imports</h2>
+<div id="df6688cb-b243-4e39-80c3-3886d1481186" class="cell" data-execution_count="173">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gymnasium <span class="im">as</span> gym</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.animation <span class="im">import</span> FuncAnimation</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> collections</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="intro" class="level1">
+<h1>Intro</h1>
+<p><code>-</code> 강화학습(대충설명): 어떠한 “(게임)환경”이 있을때 거기서 “뭘 할지”를 학습하는 과업</p>
+</section>
+<section id="game1-벤딧문제" class="level1 page-columns page-full">
+<h1>Game1: 벤딧문제</h1>
+<p><code>-</code> 문제설명: 두개의 버튼이 있다. 버튼0을 누르면 1의 보상을, 버튼1를 누르면 100의 보상을 준다고 가정</p>
+<p><code>-</code> 어떤 행동을 해야할까? –&gt; ?? 아는게없음 –&gt; 일단 “아무거나” 눌러보자</p>
+<div id="d771a51a-0733-42df-bf20-b06444164b35" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>action_space <span class="op">=</span> [<span class="st">'button0'</span>,<span class="st">'button1'</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>action <span class="op">=</span> np.random.choice(action_space)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>action</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'button1'</code></pre>
+</div>
+</div>
+<p><code>-</code> 보상은 아래와 같은 방식으로 받을 것이다.</p>
+<div id="97ab8e9f-5d74-4600-bbc9-64ed47fec6d9" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> action <span class="op">==</span> <span class="st">'button0'</span>: </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    reward <span class="op">=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 아무거나 10번 버튼을 눌러보면 다음과 같은 결과가 나온다.</p>
+<div id="afb693ba-a1f0-4886-88f2-093c8c632cbb" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> np.random.choice(action_space)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="st">'button0'</span>: </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(action,reward)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>button0 1
+button0 1
+button1 100
+button1 100
+button0 1
+button0 1
+button1 100
+button1 100
+button0 1
+button0 1</code></pre>
+</div>
+</div>
+<p><code>-</code> 깨달았음: <code>button0</code>을 누르면 1점을 받고, <code>button1</code>을 누르면 100점을 받는 “환경”이구나? <span class="math inline">\(\to\)</span> <code>button1</code>을 누르는 “동작”을 해야하는 상황이구나?</p>
+<ul>
+<li>여기에서 <span class="math inline">\(\to\)</span> 의 과정을 체계화 시킨 학문이 강화학습이다.</li>
+</ul>
+<div id="0a189b7f-eaaf-4d7e-b2a9-b9742ab245d4" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>action_space <span class="op">=</span> [<span class="st">'button0'</span>,<span class="st">'button1'</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#action = np.random.choice(action_space) # 무지한자의 행동 (찍어)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> action_space[<span class="dv">1</span>] <span class="co"># 깨달은자의 행동 (button1을 눌러)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="st">'button0'</span>: </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(action,reward)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button1 100</code></pre>
+</div>
+</div>
+<p><code>-</code> 강화학습: 환경의 이해 <span class="math inline">\(\to\)</span> 뭘 해야 하는지 깨달음</p>
+<p><strong>위의 과정이 잘 되었다는 의미로 사용하는 문장들</strong></p>
+<ul>
+<li>강화학습이 성공적으로 잘 되었다.</li>
+<li>환경이 해결되었다.</li>
+<li>에이전트가 환경의 과제를 완료했다.</li>
+<li>에이전트가 환경에서 성공적으로 학습했다.</li>
+<li>에이전트가 올바른 행동을 학습했다.</li>
+<li>게임 클리어 (비공식)</li>
+</ul>
+<p><code>-</code> 환경이 해결되었는지 나타내는 지표를 정해야겠다 <span class="math inline">\(\to\)</span> 주어진 상황을 게임처럼 이해하고, 게임의 클리어조건을 설정</p>
+<ul>
+<li>첫 생각: <code>button1</code>을 누르면 클리어 아니야?</li>
+<li>두번째 생각: 아니지? 우연히 누를수도 있잖아.</li>
+<li>게임클리어조건: 최근 20번의 보상이 1900 이상이면 게임이 클리어 되었다고 보자!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<code>button1</code>을 눌러야하는건 맞지만 20번에 실수한번정도는 눈감아 주자</p></li></div><p><code>-</code> 무지한자 – 게임을 클리어 할 수 없다.</p>
+<div id="cd7ee8d2-4bef-4901-98a3-766efc21c600" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>action_space <span class="op">=</span> [<span class="st">'button0'</span>,<span class="st">'button1'</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>rewards <span class="op">=</span> []</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): <span class="co"># 1000번해도 못깸</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> np.random.choice(action_space) <span class="co"># 무지한자의 행동 (찍어)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#action = action_space[1] # 깨달은자의 행동 (button1을 눌러)</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="st">'button0'</span>: </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        rewards.append(reward)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        rewards.append(reward)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action = </span><span class="sc">{</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"reward = </span><span class="sc">{</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"rwd20 = </span><span class="sc">{</span><span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;</span><span class="dv">1900</span>:</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action = button1    reward = 100    rwd20 = 100
+n_try = 2   action = button1    reward = 100    rwd20 = 200
+n_try = 3   action = button0    reward = 1  rwd20 = 201
+n_try = 4   action = button0    reward = 1  rwd20 = 202
+n_try = 5   action = button0    reward = 1  rwd20 = 203
+n_try = 6   action = button0    reward = 1  rwd20 = 204
+n_try = 7   action = button0    reward = 1  rwd20 = 205
+n_try = 8   action = button0    reward = 1  rwd20 = 206
+n_try = 9   action = button0    reward = 1  rwd20 = 207
+n_try = 10  action = button0    reward = 1  rwd20 = 208
+n_try = 11  action = button1    reward = 100    rwd20 = 308
+n_try = 12  action = button0    reward = 1  rwd20 = 309
+n_try = 13  action = button1    reward = 100    rwd20 = 409
+n_try = 14  action = button0    reward = 1  rwd20 = 410
+n_try = 15  action = button1    reward = 100    rwd20 = 510
+n_try = 16  action = button1    reward = 100    rwd20 = 610
+n_try = 17  action = button1    reward = 100    rwd20 = 710
+n_try = 18  action = button0    reward = 1  rwd20 = 711
+n_try = 19  action = button0    reward = 1  rwd20 = 712
+n_try = 20  action = button0    reward = 1  rwd20 = 713
+n_try = 21  action = button0    reward = 1  rwd20 = 614
+n_try = 22  action = button1    reward = 100    rwd20 = 614
+n_try = 23  action = button0    reward = 1  rwd20 = 614
+n_try = 24  action = button1    reward = 100    rwd20 = 713
+n_try = 25  action = button1    reward = 100    rwd20 = 812
+n_try = 26  action = button0    reward = 1  rwd20 = 812
+n_try = 27  action = button0    reward = 1  rwd20 = 812
+n_try = 28  action = button0    reward = 1  rwd20 = 812
+n_try = 29  action = button0    reward = 1  rwd20 = 812
+n_try = 30  action = button1    reward = 100    rwd20 = 911
+n_try = 31  action = button0    reward = 1  rwd20 = 812
+n_try = 32  action = button1    reward = 100    rwd20 = 911
+n_try = 33  action = button0    reward = 1  rwd20 = 812
+n_try = 34  action = button0    reward = 1  rwd20 = 812
+n_try = 35  action = button1    reward = 100    rwd20 = 812
+n_try = 36  action = button1    reward = 100    rwd20 = 812
+n_try = 37  action = button1    reward = 100    rwd20 = 812
+n_try = 38  action = button1    reward = 100    rwd20 = 911
+n_try = 39  action = button1    reward = 100    rwd20 = 1010
+n_try = 40  action = button0    reward = 1  rwd20 = 1010
+n_try = 41  action = button0    reward = 1  rwd20 = 1010
+n_try = 42  action = button1    reward = 100    rwd20 = 1010
+n_try = 43  action = button1    reward = 100    rwd20 = 1109
+n_try = 44  action = button1    reward = 100    rwd20 = 1109
+n_try = 45  action = button1    reward = 100    rwd20 = 1109
+n_try = 46  action = button1    reward = 100    rwd20 = 1208
+n_try = 47  action = button0    reward = 1  rwd20 = 1208
+n_try = 48  action = button1    reward = 100    rwd20 = 1307
+n_try = 49  action = button1    reward = 100    rwd20 = 1406
+n_try = 50  action = button0    reward = 1  rwd20 = 1307</code></pre>
+</div>
+</div>
+<p><code>-</code> 깨달은자 – 게임 클리어</p>
+<div id="a47f0eea-5688-454a-8c9d-9e4c6d5552fe" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>action_space <span class="op">=</span> [<span class="st">'button0'</span>,<span class="st">'button1'</span>]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>rewards <span class="op">=</span> []</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): <span class="co"># 1000번해도 못깸</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#action = np.random.choice(action_space) # 무지한자의 행동 (찍어)</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> action_space[<span class="dv">1</span>] <span class="co"># 깨달은자의 행동 (button1을 눌러)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="st">'button0'</span>: </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        rewards.append(reward)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        rewards.append(reward)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action = </span><span class="sc">{</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"reward = </span><span class="sc">{</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"rwd20 = </span><span class="sc">{</span><span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;</span><span class="dv">1900</span>:</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action = button1    reward = 100    rwd20 = 100
+n_try = 2   action = button1    reward = 100    rwd20 = 200
+n_try = 3   action = button1    reward = 100    rwd20 = 300
+n_try = 4   action = button1    reward = 100    rwd20 = 400
+n_try = 5   action = button1    reward = 100    rwd20 = 500
+n_try = 6   action = button1    reward = 100    rwd20 = 600
+n_try = 7   action = button1    reward = 100    rwd20 = 700
+n_try = 8   action = button1    reward = 100    rwd20 = 800
+n_try = 9   action = button1    reward = 100    rwd20 = 900
+n_try = 10  action = button1    reward = 100    rwd20 = 1000
+n_try = 11  action = button1    reward = 100    rwd20 = 1100
+n_try = 12  action = button1    reward = 100    rwd20 = 1200
+n_try = 13  action = button1    reward = 100    rwd20 = 1300
+n_try = 14  action = button1    reward = 100    rwd20 = 1400
+n_try = 15  action = button1    reward = 100    rwd20 = 1500
+n_try = 16  action = button1    reward = 100    rwd20 = 1600
+n_try = 17  action = button1    reward = 100    rwd20 = 1700
+n_try = 18  action = button1    reward = 100    rwd20 = 1800
+n_try = 19  action = button1    reward = 100    rwd20 = 1900
+n_try = 20  action = button1    reward = 100    rwd20 = 2000</code></pre>
+</div>
+</div>
+</section>
+<section id="game1-벤딧문제-예쁜코드" class="level1">
+<h1>Game1: 벤딧문제 – 예쁜코드</h1>
+<section id="수정1-action_space의-수정" class="level2">
+<h2 class="anchored" data-anchor-id="수정1-action_space의-수정">수정1: <code>action_space</code>의 수정</h2>
+<div id="4b1d0578-eb81-4dc3-a1ba-1653e7e73aa3" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>action_space <span class="op">=</span>  gym.spaces.Discrete(<span class="dv">2</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>action_space</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>Discrete(2)</code></pre>
+</div>
+</div>
+<div id="1c796bc8-d37c-4b05-8ee1-14c5bb6f177d" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(action_space.sample())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+0
+1
+0
+0
+1
+0
+0
+1
+1</code></pre>
+</div>
+</div>
+<div id="4d4e9079-5aff-468a-8037-b1a19e8e1bfa" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>action_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">2</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>rewards <span class="op">=</span> []</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): <span class="co"># 1000번해도 못깸</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> action_space.sample() <span class="co"># 무지한자의 행동 (찍어)</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#action = 1 # 깨달은자의 행동 (button1을 눌러)</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="dv">0</span>: </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        rewards.append(reward)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        rewards.append(reward)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action = </span><span class="sc">{</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"reward = </span><span class="sc">{</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"rwd20 = </span><span class="sc">{</span><span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;</span><span class="dv">1900</span>:</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action = 1  reward = 100    rwd20 = 100
+n_try = 2   action = 1  reward = 100    rwd20 = 200
+n_try = 3   action = 0  reward = 1  rwd20 = 201
+n_try = 4   action = 0  reward = 1  rwd20 = 202
+n_try = 5   action = 0  reward = 1  rwd20 = 203
+n_try = 6   action = 1  reward = 100    rwd20 = 303
+n_try = 7   action = 1  reward = 100    rwd20 = 403
+n_try = 8   action = 1  reward = 100    rwd20 = 503
+n_try = 9   action = 1  reward = 100    rwd20 = 603
+n_try = 10  action = 0  reward = 1  rwd20 = 604
+n_try = 11  action = 1  reward = 100    rwd20 = 704
+n_try = 12  action = 1  reward = 100    rwd20 = 804
+n_try = 13  action = 0  reward = 1  rwd20 = 805
+n_try = 14  action = 0  reward = 1  rwd20 = 806
+n_try = 15  action = 0  reward = 1  rwd20 = 807
+n_try = 16  action = 1  reward = 100    rwd20 = 907
+n_try = 17  action = 0  reward = 1  rwd20 = 908
+n_try = 18  action = 1  reward = 100    rwd20 = 1008
+n_try = 19  action = 0  reward = 1  rwd20 = 1009
+n_try = 20  action = 0  reward = 1  rwd20 = 1010
+n_try = 21  action = 0  reward = 1  rwd20 = 911
+n_try = 22  action = 1  reward = 100    rwd20 = 911
+n_try = 23  action = 1  reward = 100    rwd20 = 1010
+n_try = 24  action = 0  reward = 1  rwd20 = 1010
+n_try = 25  action = 1  reward = 100    rwd20 = 1109
+n_try = 26  action = 0  reward = 1  rwd20 = 1010
+n_try = 27  action = 1  reward = 100    rwd20 = 1010
+n_try = 28  action = 1  reward = 100    rwd20 = 1010
+n_try = 29  action = 0  reward = 1  rwd20 = 911
+n_try = 30  action = 0  reward = 1  rwd20 = 911
+n_try = 31  action = 0  reward = 1  rwd20 = 812
+n_try = 32  action = 0  reward = 1  rwd20 = 713
+n_try = 33  action = 0  reward = 1  rwd20 = 713
+n_try = 34  action = 0  reward = 1  rwd20 = 713
+n_try = 35  action = 1  reward = 100    rwd20 = 812
+n_try = 36  action = 0  reward = 1  rwd20 = 713
+n_try = 37  action = 0  reward = 1  rwd20 = 713
+n_try = 38  action = 0  reward = 1  rwd20 = 614
+n_try = 39  action = 1  reward = 100    rwd20 = 713
+n_try = 40  action = 1  reward = 100    rwd20 = 812
+n_try = 41  action = 0  reward = 1  rwd20 = 812
+n_try = 42  action = 0  reward = 1  rwd20 = 713
+n_try = 43  action = 0  reward = 1  rwd20 = 614
+n_try = 44  action = 1  reward = 100    rwd20 = 713
+n_try = 45  action = 0  reward = 1  rwd20 = 614
+n_try = 46  action = 0  reward = 1  rwd20 = 614
+n_try = 47  action = 1  reward = 100    rwd20 = 614
+n_try = 48  action = 1  reward = 100    rwd20 = 614
+n_try = 49  action = 0  reward = 1  rwd20 = 614
+n_try = 50  action = 0  reward = 1  rwd20 = 614</code></pre>
+</div>
+</div>
+</section>
+<section id="수정2-env-클래스" class="level2">
+<h2 class="anchored" data-anchor-id="수정2-env-클래스">수정2: Env 클래스</h2>
+<div id="0f8150e2-9959-4020-9414-e82e6b3795c3" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Bandit:</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> step(<span class="va">self</span>,action):</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> action <span class="op">==</span> <span class="dv">0</span>: </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="2af252df-c080-412f-b549-084f8721d507" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> Bandit()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>rewards <span class="op">=</span> []</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): <span class="co"># 1000번해도 못깸</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#action = action_space.sample() # 무지한자의 행동 (찍어)</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> <span class="dv">1</span> <span class="co"># 깨달은자의 행동 (button1을 눌러)</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    reward <span class="op">=</span> env.step(action)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    rewards.append(reward)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action = </span><span class="sc">{</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"reward = </span><span class="sc">{</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"rwd20 = </span><span class="sc">{</span><span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;</span><span class="dv">1900</span>:</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action = 1  reward = 100    rwd20 = 100
+n_try = 2   action = 1  reward = 100    rwd20 = 200
+n_try = 3   action = 1  reward = 100    rwd20 = 300
+n_try = 4   action = 1  reward = 100    rwd20 = 400
+n_try = 5   action = 1  reward = 100    rwd20 = 500
+n_try = 6   action = 1  reward = 100    rwd20 = 600
+n_try = 7   action = 1  reward = 100    rwd20 = 700
+n_try = 8   action = 1  reward = 100    rwd20 = 800
+n_try = 9   action = 1  reward = 100    rwd20 = 900
+n_try = 10  action = 1  reward = 100    rwd20 = 1000
+n_try = 11  action = 1  reward = 100    rwd20 = 1100
+n_try = 12  action = 1  reward = 100    rwd20 = 1200
+n_try = 13  action = 1  reward = 100    rwd20 = 1300
+n_try = 14  action = 1  reward = 100    rwd20 = 1400
+n_try = 15  action = 1  reward = 100    rwd20 = 1500
+n_try = 16  action = 1  reward = 100    rwd20 = 1600
+n_try = 17  action = 1  reward = 100    rwd20 = 1700
+n_try = 18  action = 1  reward = 100    rwd20 = 1800
+n_try = 19  action = 1  reward = 100    rwd20 = 1900
+n_try = 20  action = 1  reward = 100    rwd20 = 2000</code></pre>
+</div>
+</div>
+</section>
+<section id="수정3-agent-클래스" class="level2">
+<h2 class="anchored" data-anchor-id="수정3-agent-클래스">수정3: Agent 클래스</h2>
+<p><code>-</code> Agent 클래스를 만들자 (액션을 하고, 환경에서 받은 reward를 간직하도록)</p>
+<div id="3a8a43e7-3975-487b-a643-8c7266112c9b" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Agent1:</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">2</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.reward <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.actions <span class="op">=</span> []</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rewards <span class="op">=</span> []</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> act(<span class="va">self</span>):</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># self.action = self.action_space.sample() # 무지한 자</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action <span class="op">=</span> <span class="dv">1</span> <span class="co"># 깨달은 자 </span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> save_experience(<span class="va">self</span>): </span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.actions.append(<span class="va">self</span>.action)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rewards.append(<span class="va">self</span>.reward)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>— 대충 아래와 같은 느낌으로 돌아가요 —</p>
+<p><strong>시점0</strong>: init</p>
+<div id="8e3fa8f0-b41f-4d92-9477-1f6725c4e831" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> Bandit()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> Agent1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="7b528099-158b-4e65-8181-92d1a6372d40" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>agent.action, agent.reward</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>(None, None)</code></pre>
+</div>
+</div>
+<p><strong>시점1</strong>: agent &gt;&gt; env</p>
+<div id="545483f3-e2e3-4fd5-9009-f22df31761aa" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>agent.act()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="a7b88291-b73b-4deb-9469-0b50e06a0d7f" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>agent.action, agent.reward</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>(1, None)</code></pre>
+</div>
+</div>
+<div id="c1cc49b4-180f-4ac6-8322-82bc0d36dc04" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>env.agent_action <span class="op">=</span> agent.action </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>시점2</strong>: agent &lt;&lt; env</p>
+<div id="dd742d0b-e19c-4194-b581-5aa0cac4a12a" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>agent.reward <span class="op">=</span> env.step(env.agent_action) </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># agent.reward = env.step(agent.action) 도 같은 결과를 주는 코드임!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d3b53960-00d4-4652-9500-dc3860688ea5" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>agent.action, agent.reward, env.agent_action</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>(1, 100, 1)</code></pre>
+</div>
+</div>
+<div id="55df6ce8-fc00-42be-a880-ab486a16c469" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>agent.actions, agent.rewards</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>([], [])</code></pre>
+</div>
+</div>
+<p><strong>시점3</strong>: agent: <code>save_experience</code></p>
+<div id="10070384-7964-4cae-bffb-516ab570b98d" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>agent.save_experience()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="9f1024c0-f468-41cc-8f62-52811b1fc8fe" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>agent.actions, agent.rewards</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>([1], [100])</code></pre>
+</div>
+</div>
+<p>— 전체코드 —</p>
+<div id="bd8ebd38-0b87-47f5-bf32-141a42388734" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> Bandit()</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> Agent1()</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>):</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 본질적인 코드</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># step1: agent &gt;&gt; env </span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    agent.act()</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    env.agent_action <span class="op">=</span> agent.action </span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># step2: agnet &lt;&lt; env </span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    agent.reward <span class="op">=</span> env.step(env.agent_action) </span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># step3: save </span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    agent.save_experience()</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 비본질적 코드 </span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action = </span><span class="sc">{</span>agent<span class="sc">.</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"reward = </span><span class="sc">{</span>agent<span class="sc">.</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"rwd20 = </span><span class="sc">{</span><span class="bu">sum</span>(agent.rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(agent.rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;</span><span class="dv">1900</span>:</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action = 1  reward = 100    rwd20 = 100
+n_try = 2   action = 1  reward = 100    rwd20 = 200
+n_try = 3   action = 1  reward = 100    rwd20 = 300
+n_try = 4   action = 1  reward = 100    rwd20 = 400
+n_try = 5   action = 1  reward = 100    rwd20 = 500
+n_try = 6   action = 1  reward = 100    rwd20 = 600
+n_try = 7   action = 1  reward = 100    rwd20 = 700
+n_try = 8   action = 1  reward = 100    rwd20 = 800
+n_try = 9   action = 1  reward = 100    rwd20 = 900
+n_try = 10  action = 1  reward = 100    rwd20 = 1000
+n_try = 11  action = 1  reward = 100    rwd20 = 1100
+n_try = 12  action = 1  reward = 100    rwd20 = 1200
+n_try = 13  action = 1  reward = 100    rwd20 = 1300
+n_try = 14  action = 1  reward = 100    rwd20 = 1400
+n_try = 15  action = 1  reward = 100    rwd20 = 1500
+n_try = 16  action = 1  reward = 100    rwd20 = 1600
+n_try = 17  action = 1  reward = 100    rwd20 = 1700
+n_try = 18  action = 1  reward = 100    rwd20 = 1800
+n_try = 19  action = 1  reward = 100    rwd20 = 1900
+n_try = 20  action = 1  reward = 100    rwd20 = 2000</code></pre>
+</div>
+</div>
+<ul>
+<li>위의 코드를 거의 뼈대로 사용합니당!</li>
+</ul>
+</section>
+</section>
+<section id="game1-벤딧문제-학습과정-포함" class="level1 page-columns page-full">
+<h1>Game1: 벤딧문제 – 학습과정 포함</h1>
+<p><code>-</code> Game1에 대한 생각:</p>
+<ul>
+<li>사실 강화학습은 “환경을 이해 <span class="math inline">\(\to\)</span> 뭘 해야 하는지 깨달음” 의 과정에서 화살표를 수식화 하는 과정이다.</li>
+<li>지금까지 살펴보면 Game1은 환경(env)을 이해하는 순간 에이전트가 최적의 행동(action)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>을 직관적으로 결정하였으므로 학습의 과정이 포함되었다고 볼 수 없다.</li>
+</ul>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<code>button1</code>을 누른다</p></li></div><p><code>-</code> 지금까지의 코드 복습</p>
+<ol type="1">
+<li>클래스를 선언하는 부분
+<ul>
+<li><code>Env</code>클래스의 선언</li>
+<li><code>Agent</code>클래스의 선언</li>
+</ul></li>
+<li>환경과 에이전트를 인스턴스화 (초기화)</li>
+<li>for loop를 반복하며 게임을 진행
+<ul>
+<li>메인코드: (1) agent &gt;&gt; env (2) agent &lt;&lt; env (3) 데이터저장</li>
+<li>비본질적코드: 학습과정 display, 학습종료조건</li>
+</ul></li>
+</ol>
+<p><code>-</code> 앞으로 구성할 코드의 형태: 에이전트가 데이터를 보고 스스로 <code>button1</code>을 눌러야 한다는 것을 추론하면 좋겠음</p>
+<ol type="1">
+<li>클래스를 선언하는 부분
+<ul>
+<li><code>Env</code>클래스의 선언</li>
+<li><strong><code>Agent</code>클래스의 선언</strong>: <strong>학습의 과정 포함 <span class="math inline">\(\to\)</span> act함수 수정</strong></li>
+</ul></li>
+<li>환경과 에이전트를 인스턴스화 (초기화)</li>
+<li>for loop를 반복하며 게임을 진행
+<ul>
+<li>메인코드: (1) agent &gt;&gt; env (2) agent &lt;&lt; env (3) 데이터저장 <strong>(4) 학습</strong></li>
+<li>비본질적코드: 학습과정 display, 학습종료조건</li>
+</ul></li>
+</ol>
+<p><code>-</code> 에이전트가 학습을 어떻게 하는가?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;행동을 이런식으로 하도록 “전략(=정책)”을 설정하는 것은 상식적이다. 그렇지만 유일한 해결책은 아님!!</p></li></div><ul>
+<li><span class="math inline">\(\pi(0) = \frac{Q_t(1)}{Q_t(1)+Q_t(0)}\)</span></li>
+<li><span class="math inline">\(\pi(1) = \frac{Q_t(0)}{Q_t(1)+Q_t(0)}\)</span></li>
+</ul>
+<p>여기에서 각각의 기호는 아래를 의미한다.</p>
+<ul>
+<li><span class="math inline">\(\pi(0)\)</span>: 에이전트가 action = 0 을 할 확률, 즉 에이전트가 <code>button0</code>을 누를 확률</li>
+<li><span class="math inline">\(\pi(1)\)</span>: 에이전트가 action = 1 을 할 확률, 즉 에이전트가 <code>button1</code>을 누를 확률</li>
+<li><span class="math inline">\(Q_t(0)\)</span>: (<span class="math inline">\(t\)</span>시점까지 파악한) action = 0 을 하였을 경우 에이전트가 환경으로 받은 보상의 평균값</li>
+<li><span class="math inline">\(Q_t(1)\)</span>: (<span class="math inline">\(t\)</span>시점까지 파악한) action = 1 을 하였을 경우 에이전트가 환경으로 받은 보상의 평균값</li>
+</ul>
+<p><code>-</code> 걱정: <span class="math inline">\(t=0\)</span>이면 어쩌지? <span class="math inline">\(t=1\)</span>이면 어쩌지?.. <span class="math inline">\(\to\)</span> 잡기술1: 일정 시간동안은 랜덤액션을 하면서 데이터를 쌓자.</p>
+<p><code>-</code> 쌓은 데이터를 바탕으로 환경을 이해하고 action을 뽑는 코드</p>
+<div id="ad0bddcd-a6a6-4ff9-bf74-6e65210cba68" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>actions <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>])</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>actions </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>array([0, 0, 1, 0, 0, 1, 1, 1, 1, 0])</code></pre>
+</div>
+</div>
+<div id="5ad6ae8e-9ff1-4bc9-bcb8-230177d572bf" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>rewards <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="fl">0.9</span>,<span class="dv">105</span>,<span class="fl">1.2</span>,<span class="dv">1</span>,<span class="dv">95</span>,<span class="dv">100</span>,<span class="dv">101</span>,<span class="dv">90</span>,<span class="dv">1</span>])</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>rewards</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>array([  1. ,   0.9, 105. ,   1.2,   1. ,  95. , 100. , 101. ,  90. ,
+         1. ])</code></pre>
+</div>
+</div>
+<div id="02f5a801-b7f0-4647-999d-eab0f35cfe91" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> np.array([rewards[actions<span class="op">==</span><span class="dv">0</span>].mean(),rewards[actions<span class="op">==</span><span class="dv">1</span>].mean()])</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>array([ 1.02, 98.2 ])</code></pre>
+</div>
+</div>
+<div id="988ff6d7-8370-4d44-9afa-3bfe2a25693f" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>action <span class="op">=</span> np.random.choice([<span class="dv">0</span>,<span class="dv">1</span>],p<span class="op">=</span>q<span class="op">/</span>q.<span class="bu">sum</span>())</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>action</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>1</code></pre>
+</div>
+</div>
+<p><code>-</code> 코드를 구현해보자.</p>
+<div id="67665c93-1cd4-4dc5-b577-2de0ebc5cfb3" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 게임을 푸는 전략을 바꾸는 것이지 게임자체를 바꿀게 아니니까 수정할게 없죠?</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Bandit():</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> step(<span class="va">self</span>,action):</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> action <span class="op">==</span> <span class="dv">0</span>: </span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b87cd3f2-fc9a-4b0a-a0b3-cf350c19de61" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># learn 추가</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Agent1:</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">2</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.reward <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.actions <span class="op">=</span> []</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rewards <span class="op">=</span> []</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_experiences <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.q <span class="op">=</span> np.array([<span class="fl">0.001</span>,<span class="fl">0.001</span>]) <span class="co"># 사실 [0,0] 을 넣고싶음</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> act(<span class="va">self</span>):</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action <span class="op">=</span> np.random.choice([<span class="dv">0</span>, <span class="dv">1</span>], p<span class="op">=</span><span class="va">self</span>.q<span class="op">/</span><span class="va">self</span>.q.<span class="bu">sum</span>())</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> save_experience(<span class="va">self</span>): </span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.actions.append(<span class="va">self</span>.action)</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rewards.append(<span class="va">self</span>.reward)</span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_experiences <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>.actions)</span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> learn(<span class="va">self</span>):</span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.n_experiences <span class="op">&lt;</span> <span class="dv">30</span>:</span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">pass</span> </span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a>            actions <span class="op">=</span> np.array(<span class="va">self</span>.actions)</span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>            rewards <span class="op">=</span> np.array(<span class="va">self</span>.rewards)</span>
+<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.q[<span class="dv">0</span>] <span class="op">=</span> rewards[actions<span class="op">==</span><span class="dv">0</span>].mean()</span>
+<span id="cb49-24"><a href="#cb49-24" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.q[<span class="dv">1</span>] <span class="op">=</span> rewards[actions<span class="op">==</span><span class="dv">1</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="63a98fa1-f6b1-43e1-a037-c5662d904bb1" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> Bandit()</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> Agent1()</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">60</span>):</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 본질적인 코드b</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># step1: agent &gt;&gt; env </span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    agent.act()</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    env.agent_action <span class="op">=</span> agent.action </span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># step2: agnet &lt;&lt; env </span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    agent.reward <span class="op">=</span> env.step(env.agent_action) </span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># step3: save </span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    agent.save_experience()</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>    agent.learn()</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">## 비본질적 코드 </span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>agent<span class="sc">.</span>n_experiences<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"action = </span><span class="sc">{</span>agent<span class="sc">.</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"reward = </span><span class="sc">{</span>agent<span class="sc">.</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"rwd20 = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">sum</span>(agent.rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"q = </span><span class="sc">{</span>agent<span class="sc">.</span>q<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(agent.rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;</span><span class="dv">1900</span>:</span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action = 1  reward = 100    rwd20 = 100 q = [0.001 0.001]
+n_try = 2   action = 0  reward = 1  rwd20 = 101 q = [0.001 0.001]
+n_try = 3   action = 0  reward = 1  rwd20 = 102 q = [0.001 0.001]
+n_try = 4   action = 0  reward = 1  rwd20 = 103 q = [0.001 0.001]
+n_try = 5   action = 0  reward = 1  rwd20 = 104 q = [0.001 0.001]
+n_try = 6   action = 1  reward = 100    rwd20 = 204 q = [0.001 0.001]
+n_try = 7   action = 1  reward = 100    rwd20 = 304 q = [0.001 0.001]
+n_try = 8   action = 1  reward = 100    rwd20 = 404 q = [0.001 0.001]
+n_try = 9   action = 0  reward = 1  rwd20 = 405 q = [0.001 0.001]
+n_try = 10  action = 0  reward = 1  rwd20 = 406 q = [0.001 0.001]
+n_try = 11  action = 1  reward = 100    rwd20 = 506 q = [0.001 0.001]
+n_try = 12  action = 0  reward = 1  rwd20 = 507 q = [0.001 0.001]
+n_try = 13  action = 0  reward = 1  rwd20 = 508 q = [0.001 0.001]
+n_try = 14  action = 0  reward = 1  rwd20 = 509 q = [0.001 0.001]
+n_try = 15  action = 1  reward = 100    rwd20 = 609 q = [0.001 0.001]
+n_try = 16  action = 0  reward = 1  rwd20 = 610 q = [0.001 0.001]
+n_try = 17  action = 0  reward = 1  rwd20 = 611 q = [0.001 0.001]
+n_try = 18  action = 0  reward = 1  rwd20 = 612 q = [0.001 0.001]
+n_try = 19  action = 0  reward = 1  rwd20 = 613 q = [0.001 0.001]
+n_try = 20  action = 0  reward = 1  rwd20 = 614 q = [0.001 0.001]
+n_try = 21  action = 0  reward = 1  rwd20 = 515 q = [0.001 0.001]
+n_try = 22  action = 1  reward = 100    rwd20 = 614 q = [0.001 0.001]
+n_try = 23  action = 1  reward = 100    rwd20 = 713 q = [0.001 0.001]
+n_try = 24  action = 1  reward = 100    rwd20 = 812 q = [0.001 0.001]
+n_try = 25  action = 1  reward = 100    rwd20 = 911 q = [0.001 0.001]
+n_try = 26  action = 1  reward = 100    rwd20 = 911 q = [0.001 0.001]
+n_try = 27  action = 0  reward = 1  rwd20 = 812 q = [0.001 0.001]
+n_try = 28  action = 1  reward = 100    rwd20 = 812 q = [0.001 0.001]
+n_try = 29  action = 1  reward = 100    rwd20 = 911 q = [0.001 0.001]
+n_try = 30  action = 1  reward = 100    rwd20 = 1010    q = [  1. 100.]
+n_try = 31  action = 1  reward = 100    rwd20 = 1010    q = [  1. 100.]
+n_try = 32  action = 1  reward = 100    rwd20 = 1109    q = [  1. 100.]
+n_try = 33  action = 1  reward = 100    rwd20 = 1208    q = [  1. 100.]
+n_try = 34  action = 1  reward = 100    rwd20 = 1307    q = [  1. 100.]
+n_try = 35  action = 1  reward = 100    rwd20 = 1307    q = [  1. 100.]
+n_try = 36  action = 1  reward = 100    rwd20 = 1406    q = [  1. 100.]
+n_try = 37  action = 1  reward = 100    rwd20 = 1505    q = [  1. 100.]
+n_try = 38  action = 1  reward = 100    rwd20 = 1604    q = [  1. 100.]
+n_try = 39  action = 1  reward = 100    rwd20 = 1703    q = [  1. 100.]
+n_try = 40  action = 1  reward = 100    rwd20 = 1802    q = [  1. 100.]
+n_try = 41  action = 1  reward = 100    rwd20 = 1901    q = [  1. 100.]</code></pre>
+</div>
+</div>
+
+
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        console.log("RESIZE");
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="miruetoto/yechan3" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
