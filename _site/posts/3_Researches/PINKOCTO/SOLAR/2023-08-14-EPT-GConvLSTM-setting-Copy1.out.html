@@ -338,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <section id="import" class="level2">
 <h2 class="anchored" data-anchor-id="import">Import</h2>
-<div id="23f75774-1d81-4482-a15b-844618f81caf" class="cell" data-execution_count="49">
+<div id="23f75774-1d81-4482-a15b-844618f81caf" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modules </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -514,7 +514,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="load-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-data">Load data</h2>
-<div id="8d3d82a1-26a4-4606-91bb-39c0ca4bda34" class="cell" data-execution_count="46">
+<div id="8d3d82a1-26a4-4606-91bb-39c0ca4bda34" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read dataframe </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data_eng_230710.csv'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># make y, y_upper, y_period, time, regions </span></span>
@@ -527,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="sample_codes">sample_codes</h2>
 <p><code>-</code> 예시1: y를 학습</p>
 <p><strong>학습~</strong></p>
-<div id="315bf81c-3a75-4f0a-948f-e1cc32cb006f" class="cell" data-execution_count="50">
+<div id="315bf81c-3a75-4f0a-948f-e1cc32cb006f" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step1: create lrnr object</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> RGCN_Learner()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># step2: load data </span></span>
@@ -543,51 +543,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):    </span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    lrnr.learn()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>epoch=1  loss=0.623498441781415453993988            
-epoch=2  loss=0.097667323512046848847961        
-epoch=3  loss=0.083123757352316121851349            
-epoch=4  loss=0.081149838734851325569305            
-epoch=5  loss=0.080320493751313838172531            </code></pre>
+<pre><code>epoch=1  loss=0.348616252371738191366577        
+epoch=2  loss=0.096857151493083602352905            
+epoch=3  loss=0.085899897092996645071335            
+epoch=4  loss=0.082436966038374011698761            
+epoch=5  loss=0.080951251696015514699783            </code></pre>
+</div>
+</div>
+<div id="5457cfce-9892-46fb-b8ab-6a2b06465ea3" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lrnr.y.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>torch.Size([2564, 44])</code></pre>
+</div>
+</div>
+<div id="cb00ec01-3fca-4134-a717-05d19e766054" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lrnr.get_batches(batch_size<span class="op">=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="0a996357-172e-4d5b-a752-ca81ac98900f" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lrnr.batches[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>&lt;torch_geometric_temporal.signal.static_graph_temporal_signal.StaticGraphTemporalSignal at 0x7fa2cfbc7cd0&gt;</code></pre>
 </div>
 </div>
 <div id="5d8a46ed-7197-4fef-a152-5e4296011a6d" class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">100</span>,<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y[:<span class="dv">100</span>,<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>에폭별 적합결과(<span class="math inline">\(\hat{y}\)</span>) 시각화</strong></p>
 <div id="0c3357b9-21f7-489b-912a-7d23bb414cff" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
-<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div id="db095fbe-c85e-4f4c-8d6a-4f3498ed60f2" class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
-<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div id="2f8dd53c-4de9-41ea-af31-962621400b37" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
-<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 예시2: yU 학습</p>
 <div id="00aaffd7-7962-405c-994a-36a25aba678b" class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step1: create lrnr object</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> RGCN_Learner()</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># step2: load data </span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>lrnr.lags <span class="op">=</span> <span class="dv">4</span> </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>lrnr.train_ratio <span class="op">=</span> <span class="fl">0.8</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>lrnr.load(yU) </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># step3: construct networks </span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>lrnr.nof_filters <span class="op">=</span> <span class="dv">16</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>lrnr.model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>lrnr.lags, filters<span class="op">=</span>lrnr.nof_filters).to(device)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>lrnr.optimizer <span class="op">=</span> torch.optim.Adam(lrnr.model.parameters(),lr<span class="op">=</span><span class="dv">10</span><span class="op">/</span><span class="dv">1000</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># step4: learn </span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>lrnr.get_batches(batch_size<span class="op">=</span><span class="dv">24</span>)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):    </span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    lrnr.learn()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step1: create lrnr object</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> RGCN_Learner()</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># step2: load data </span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>lrnr.lags <span class="op">=</span> <span class="dv">4</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>lrnr.train_ratio <span class="op">=</span> <span class="fl">0.8</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>lrnr.load(yU) </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># step3: construct networks </span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>lrnr.nof_filters <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>lrnr.model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>lrnr.lags, filters<span class="op">=</span>lrnr.nof_filters).to(device)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>lrnr.optimizer <span class="op">=</span> torch.optim.Adam(lrnr.model.parameters(),lr<span class="op">=</span><span class="dv">10</span><span class="op">/</span><span class="dv">1000</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># step4: learn </span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>lrnr.get_batches(batch_size<span class="op">=</span><span class="dv">24</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):    </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    lrnr.learn()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>epoch=1  loss=1.98579962707536175294647     
 epoch=2  loss=0.202098417204133351100159        
@@ -597,15 +612,15 @@ epoch=5  loss=0.0191931016526596582006645   </code></pre>
 </div>
 </div>
 <div id="a3ab58b1-a18c-4e29-9fc0-cc49eec8b7c0" class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
-<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>5번정도 더 돌려보자</p>
 <div id="17b8c6d6-a597-42bf-8b2a-2a14851bcf19" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):    </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    lrnr.learn()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):    </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    lrnr.learn()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>epoch=6  loss=0.0169690931215882312923717       
 epoch=7  loss=0.0141667058247379891905975       
@@ -615,27 +630,27 @@ epoch=10     loss=0.009508996026937005688799        </code></pre>
 </div>
 </div>
 <div id="0d315e96-fd62-42e5-8232-ce21cc31d000" class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
-<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 예시3: yP 학습</p>
 <div id="b882470b-deda-4d31-a619-c472bbc296a6" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step1: create lrnr object</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> RGCN_Learner()</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># step2: load data </span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>lrnr.lags <span class="op">=</span> <span class="dv">4</span> </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>lrnr.train_ratio <span class="op">=</span> <span class="fl">0.8</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>lrnr.load(yP) </span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># step3: construct networks </span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>lrnr.nof_filters <span class="op">=</span> <span class="dv">16</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>lrnr.model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>lrnr.lags, filters<span class="op">=</span>lrnr.nof_filters).to(device)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>lrnr.optimizer <span class="op">=</span> torch.optim.Adam(lrnr.model.parameters(),lr<span class="op">=</span><span class="dv">10</span><span class="op">/</span><span class="dv">1000</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># step4: learn </span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>lrnr.get_batches(batch_size<span class="op">=</span><span class="dv">24</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):    </span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    lrnr.learn()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step1: create lrnr object</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> RGCN_Learner()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># step2: load data </span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>lrnr.lags <span class="op">=</span> <span class="dv">4</span> </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>lrnr.train_ratio <span class="op">=</span> <span class="fl">0.8</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>lrnr.load(yP) </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># step3: construct networks </span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>lrnr.nof_filters <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>lrnr.model <span class="op">=</span> RecurrentGCN(node_features<span class="op">=</span>lrnr.lags, filters<span class="op">=</span>lrnr.nof_filters).to(device)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>lrnr.optimizer <span class="op">=</span> torch.optim.Adam(lrnr.model.parameters(),lr<span class="op">=</span><span class="dv">10</span><span class="op">/</span><span class="dv">1000</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># step4: learn </span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>lrnr.get_batches(batch_size<span class="op">=</span><span class="dv">24</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> e <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):    </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    lrnr.learn()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>epoch=1  loss=0.030719049366970748393135            
 epoch=2  loss=0.0119630681123411254793358       
@@ -645,9 +660,9 @@ epoch=5  loss=0.0105961727974719788335514       </code></pre>
 </div>
 </div>
 <div id="8e21d2d4-d50a-416e-8c6a-b0290e83396c" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lrnr.figs[<span class="op">-</span><span class="dv">1</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
-<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+<p><img src="2023-08-14-EPT-GConvLSTM-setting-Copy1.out_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 
