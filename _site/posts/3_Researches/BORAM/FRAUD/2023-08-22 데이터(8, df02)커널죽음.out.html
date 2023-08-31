@@ -820,13 +820,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>고객1,2</strong></p>
-<div id="5081b897-f57f-42f3-97d2-4a48183b8e4a" class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> df_toy.groupby(<span class="st">'cc_num'</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus <span class="op">=</span> [compute_time_difference(group) <span class="cf">for</span> _, group <span class="kw">in</span> groups]</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus_flat <span class="op">=</span> [item <span class="cf">for</span> sublist <span class="kw">in</span> edge_index_list_plus <span class="cf">for</span> item <span class="kw">in</span> sublist]</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus_nparr <span class="op">=</span> np.array(edge_index_list_plus_flat)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus_nparr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
+<div id="479dd0e2-6b35-4ac8-904e-ac79ab868c40" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_time_difference(group):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(group)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> []</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            time_difference <span class="op">=</span> <span class="bu">abs</span>(group.iloc[i].trans_date_trans_time.value <span class="op">-</span> group.iloc[j].trans_date_trans_time.value)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>            result.append([group.iloc[i].name, group.iloc[j].name, time_difference])</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5081b897-f57f-42f3-97d2-4a48183b8e4a" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> df_toy.groupby(<span class="st">'cc_num'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus <span class="op">=</span> [compute_time_difference(group) <span class="cf">for</span> _, group <span class="kw">in</span> groups]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus_flat <span class="op">=</span> [item <span class="cf">for</span> sublist <span class="kw">in</span> edge_index_list_plus <span class="cf">for</span> item <span class="kw">in</span> sublist]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus_nparr <span class="op">=</span> np.array(edge_index_list_plus_flat)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus_nparr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>array([[                0,                 0,                 0],
        [                0,                 1, 22914900000000000],
        [                0,                 2, 17453520000000000],
@@ -844,20 +854,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> df02에서 time_difference 구함</p>
 <div id="4f311ec7-ff33-4d53-a0d2-2085caff2b23" class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time.time()</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> df02.groupby(<span class="st">'cc_num'</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus <span class="op">=</span> [compute_time_difference(group) <span class="cf">for</span> _, group <span class="kw">in</span> groups]</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus_flat <span class="op">=</span> [item <span class="cf">for</span> sublist <span class="kw">in</span> edge_index_list_plus <span class="cf">for</span> item <span class="kw">in</span> sublist]</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus_nparr <span class="op">=</span> np.array(edge_index_list_plus_flat)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>np.save(<span class="st">'edge_index_list_plus02.npy'</span>, edge_index_list_plus_nparr)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> time.time()</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>t2<span class="op">-</span>t1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time.time()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> df02.groupby(<span class="st">'cc_num'</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus <span class="op">=</span> [compute_time_difference(group) <span class="cf">for</span> _, group <span class="kw">in</span> groups]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus_flat <span class="op">=</span> [item <span class="cf">for</span> sublist <span class="kw">in</span> edge_index_list_plus <span class="cf">for</span> item <span class="kw">in</span> sublist]</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>edge_index_list_plus_nparr <span class="op">=</span> np.array(edge_index_list_plus_flat)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>np.save(<span class="st">'edge_index_list_plus02.npy'</span>, edge_index_list_plus_nparr)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> time.time()</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>t2<span class="op">-</span>t1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>15537.573440551758</code></pre>
 </div>
 </div>
 <div id="120467bc-4a8d-4421-88ce-d4ef96e4717b" class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(t2<span class="op">-</span>t1)<span class="op">/</span><span class="dv">3600</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(t2<span class="op">-</span>t1)<span class="op">/</span><span class="dv">3600</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>4.3159926223754885</code></pre>
 </div>
