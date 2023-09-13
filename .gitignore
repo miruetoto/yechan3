@@ -1,5 +1,5 @@
 /.quarto/
-/test/
+/_
 *.csv
 *.pickle
 *.pth
