@@ -11,14 +11,18 @@ website:
     left:
       - text: DL2022
         href: https://guebin.github.io/DL2022/
+      - text: AP2022
+        href: https://guebin.github.io/AP2022/
+      - text: PP2023
+        href: https://guebin.github.io/PP2023/    
       - text: DV2022
         href: https://guebin.github.io/DV2022/
-      - text: IP2022
-        href: https://guebin.github.io/IP2022/
       - text: SC2022
         href: https://guebin.github.io/SC2022/
       - text: DS2022
         href: https://guebin.github.io/DS2022/
+      - text: SP2022
+        href: https://guebin.github.io/SP2022/
       - text: IR2021
         href: https://guebin.github.io/IR2021/
       - text: yechan
@@ -28,7 +32,6 @@ website:
     right: 
       - icon: github
         href: https://github.com/miruetoto/yechan3
-
   sidebar:
     style: "docked"
     search: true
@@ -40,6 +43,7 @@ website:
           - 2_pl.qmd          
           - 2_pyg.qmd
           - 2_reviews.qmd    
+          - 2_mp.qmd
       - section: "**Researches**"
         contents:
           - 3_yechan.qmd

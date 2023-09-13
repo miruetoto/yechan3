@@ -43,7 +43,11 @@ prepare_data <- function(x, y = NULL) {
 
 line <- function(x, y=NULL,label=NULL, ...) {
   df = prepare_data(x, y)
-  return(geom_line(data=df, mapping=aes(x = x, y = y, col=label), ...))
+  if ("col" %in% names(list(...))) {
+    return(geom_line(data = df, mapping = aes(x = x, y = y), ...))
+  } else {
+    return(geom_line(data = df, mapping = aes(x = x, y = y, col = label), ...))
+  }    
 }
 
 point <- function(x, y=NULL,label=NULL, ...) {
