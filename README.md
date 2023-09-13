@@ -1,2 +1,2 @@
 
-go here: <https://miruetoto.github.io/yechan3/>
+<https://miruetoto.github.io/yechan3/>
