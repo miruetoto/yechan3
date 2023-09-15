@@ -19,9 +19,13 @@ This blog was created for my personal research, study and lecture preparation. T
 - <https://pinkocto.github.io/noteda/>
 - <https://pinkocto.github.io/Quarto-Blog/>
 
-*first url bunch*
+*first batch*
 
 - **chatGPT**: <https://openai.com/blog/chatgpt/> 
+- **paperswithcode**: <https://paperswithcode.com/>
+
+*second batch*
+
 - **matplotlib**: <https://matplotlib.org/stable/gallery/index.html> 
 - **jupyterlab**: <https://jupyterlab.readthedocs.io/en/stable/index.html> 
 - **pandas**: <https://pandas.pydata.org/docs/user_guide/index.html#user-guide>
@@ -31,8 +35,9 @@ This blog was created for my personal research, study and lecture preparation. T
 - **pytorch lightning**: <https://www.pytorchlightning.ai/> 
 - **plotly**: <https://plotly.com/graphing-libraries/>
 - **quarto**: <https://quarto.org/> 
+- **AutoGluon**: <https://auto.gluon.ai/stable/index.html>
 
-*second url bunch*
+*third batch*
 
 - **latex**: <https://editor.codecogs.com/> 
 - **table**: <https://www.tablesgenerator.com/> 
