@@ -19,7 +19,11 @@ This blog was created for my personal research, study and lecture preparation. T
 
 **Some links that help me**
 
-*first url bunch*
+*first batch* 
+
+- **paperswithcode**: <https://paperswithcode.com/>
+
+*second batch*
 
 - **matplotlib**: <https://matplotlib.org/stable/gallery/index.html> 
 - **jupyterlab**: <https://jupyterlab.readthedocs.io/en/stable/index.html> 
@@ -30,8 +34,9 @@ This blog was created for my personal research, study and lecture preparation. T
 - **pytorch lightning**: <https://www.pytorchlightning.ai/> 
 - **plotly**: <https://plotly.com/graphing-libraries/>
 - **quarto**: <https://quarto.org/> 
+- **AutoGluon**: <https://auto.gluon.ai/stable/index.html>
 
-*second url bunch*
+*third batch*
 
 - **latex**: <https://editor.codecogs.com/> 
 - **table**: <https://www.tablesgenerator.com/> 
