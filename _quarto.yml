@@ -36,6 +36,7 @@ website:
     style: "docked"
     search: true
     contents:
+      - temp.qmd
       - 1_essays.qmd
       - section: "**Studies**"
         contents:
