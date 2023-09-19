@@ -25,16 +25,64 @@
     ]
   },
   {
-    "listing": "/2_pl.html",
+    "listing": "/3_pinkocto.html",
     "items": [
-      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
+      "/posts/3_Researches/PINKOCTO/SOLAR/2023-08-14-EPT-GConvLSTM-setting-Copy1.out.html",
+      "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-20-시뮬레이션.html",
+      "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-17-EPT-RGCN.html",
+      "/posts/3_Researches/PINKOCTO/2023-06-28-커널리그레션.html",
+      "/posts/3_Researches/PINKOCTO/2023-06-28-퓨리에변환(detailed).html",
+      "/posts/3_Researches/PINKOCTO/2023-06-23-퓨리에변환4jy.html",
+      "/posts/3_Researches/PINKOCTO/2023-05-13-추정 for JY.html",
+      "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-04-EPT.html",
+      "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-03-일사량자료정리.html",
+      "/posts/3_Researches/PINKOCTO/notes.html"
     ]
   },
   {
-    "listing": "/2_reviews.html",
+    "listing": "/2_pyg.html",
     "items": [
-      "/posts/2_Studies/Reviews/2023-07-19-사기탐지 + 그래프 관련연구.html",
-      "/posts/2_Studies/Reviews/2022-12-23-Ebayesthresh.html"
+      "/posts/2_Studies/PyG/ls6.html",
+      "/posts/2_Studies/PyG/ls5.html",
+      "/posts/2_Studies/PyG/ls4.html",
+      "/posts/2_Studies/PyG/ls3.html",
+      "/posts/2_Studies/PyG/ls2.html",
+      "/posts/2_Studies/PyG/ls1.html"
+    ]
+  },
+  {
+    "listing": "/3_yechan.html",
+    "items": [
+      "/posts/3_Researches/YECHAN/EPT_DISSIM/2023-08-18-데이터전처리.html",
+      "/posts/3_Researches/YECHAN/EPT_DISSIM/2023-08-08-진행사항.html",
+      "/posts/3_Researches/YECHAN/EPT_DISSIM/2023-08-07-PRCP_KOR 데이터정리.html"
+    ]
+  },
+  {
+    "listing": "/3_yeon.html",
+    "items": [
+      "/posts/3_Researches/YEON/ITSTGCN/2023-09-14-논문리비전.html",
+      "/posts/3_Researches/YEON/ITSTGCN/2023-04-27-toy_example_figure2.html",
+      "/posts/3_Researches/YEON/ITSTGCN/2023-03-18-SimulationPlanner-Tutorial.html",
+      "/posts/3_Researches/YEON/ITSTGCN/2023-03-17-ITSTGCN-Tutorial.html",
+      "/posts/3_Researches/YEON/2023-03-01-수통문제-Type1 Err, Type2 Err.html",
+      "/posts/3_Researches/YEON/2023-02-14-수통문제-지수분포평균검정.html",
+      "/posts/3_Researches/YEON/ITSTGCN/2022-12-30-STGCN-Toy Example.html",
+      "/posts/3_Researches/YEON/ITSTGCN/2023-02-14-Tables.html",
+      "/posts/3_Researches/YEON/ITSTGCN/2022-12-29-STGCN-tutorial.html"
+    ]
+  },
+  {
+    "listing": "/4_notes.html",
+    "items": [
+      "/posts/4_Notes/2000-01-09-docker.html",
+      "/posts/4_Notes/2000-01-08-주피터랩- 설정 및 몇가지 팁.html",
+      "/posts/4_Notes/2000-01-07-줄리아 설치 및 실행.html",
+      "/posts/4_Notes/2000-01-06-깃 익히기.html",
+      "/posts/4_Notes/2000-01-05-vi 익히기.html",
+      "/posts/4_Notes/2000-01-04-우분투 익히기.html",
+      "/posts/4_Notes/2000-01-02-우분투 포맷 및 개발용 서버 셋팅2.html",
+      "/posts/4_Notes/2000-01-01-우분투 포맷 및 개발용 서버 셋팅.html"
     ]
   },
   {
@@ -54,69 +102,22 @@
     ]
   },
   {
-    "listing": "/4_notes.html",
+    "listing": "/2_reviews.html",
     "items": [
-      "/posts/4_Notes/2000-01-09-docker.html",
-      "/posts/4_Notes/2000-01-08-주피터랩- 설정 및 몇가지 팁.html",
-      "/posts/4_Notes/2000-01-07-줄리아 설치 및 실행.html",
-      "/posts/4_Notes/2000-01-06-깃 익히기.html",
-      "/posts/4_Notes/2000-01-05-vi 익히기.html",
-      "/posts/4_Notes/2000-01-04-우분투 익히기.html",
-      "/posts/4_Notes/2000-01-02-우분투 포맷 및 개발용 서버 셋팅2.html",
-      "/posts/4_Notes/2000-01-01-우분투 포맷 및 개발용 서버 셋팅.html"
+      "/posts/2_Studies/Reviews/2023-07-19-사기탐지 + 그래프 관련연구.html",
+      "/posts/2_Studies/Reviews/2022-12-23-Ebayesthresh.html"
     ]
   },
   {
-    "listing": "/3_yeon.html",
+    "listing": "/2_pl.html",
     "items": [
-      "/posts/3_Researches/YEON/ITSTGCN/2023-09-14-논문리비전.html",
-      "/posts/3_Researches/YEON/ITSTGCN/2023-04-27-toy_example_figure2.html",
-      "/posts/3_Researches/YEON/ITSTGCN/2023-03-18-SimulationPlanner-Tutorial.html",
-      "/posts/3_Researches/YEON/ITSTGCN/2023-03-17-ITSTGCN-Tutorial.html",
-      "/posts/3_Researches/YEON/2023-03-01-수통문제-Type1 Err, Type2 Err.html",
-      "/posts/3_Researches/YEON/2023-02-14-수통문제-지수분포평균검정.html",
-      "/posts/3_Researches/YEON/ITSTGCN/2022-12-30-STGCN-Toy Example.html",
-      "/posts/3_Researches/YEON/ITSTGCN/2023-02-14-Tables.html",
-      "/posts/3_Researches/YEON/ITSTGCN/2022-12-29-STGCN-tutorial.html"
-    ]
-  },
-  {
-    "listing": "/3_yechan.html",
-    "items": [
-      "/posts/3_Researches/YECHAN/EPT_DISSIM/2023-08-18-데이터전처리.html",
-      "/posts/3_Researches/YECHAN/EPT_DISSIM/2023-08-08-진행사항.html",
-      "/posts/3_Researches/YECHAN/EPT_DISSIM/2023-08-07-PRCP_KOR 데이터정리.html"
-    ]
-  },
-  {
-    "listing": "/2_pyg.html",
-    "items": [
-      "/posts/2_Studies/PyG/ls6.html",
-      "/posts/2_Studies/PyG/ls5.html",
-      "/posts/2_Studies/PyG/ls4.html",
-      "/posts/2_Studies/PyG/ls3.html",
-      "/posts/2_Studies/PyG/ls2.html",
-      "/posts/2_Studies/PyG/ls1.html"
-    ]
-  },
-  {
-    "listing": "/3_pinkocto.html",
-    "items": [
-      "/posts/3_Researches/PINKOCTO/SOLAR/2023-08-14-EPT-GConvLSTM-setting-Copy1.out.html",
-      "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-20-시뮬레이션.html",
-      "/posts/3_Researches/PINKOCTO/SOLAR/2023-07-17-EPT-RGCN.html",
-      "/posts/3_Researches/PINKOCTO/2023-06-28-커널리그레션.html",
-      "/posts/3_Researches/PINKOCTO/2023-06-28-퓨리에변환(detailed).html",
-      "/posts/3_Researches/PINKOCTO/2023-06-23-퓨리에변환4jy.html",
-      "/posts/3_Researches/PINKOCTO/2023-05-13-추정 for JY.html",
-      "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-04-EPT.html",
-      "/posts/3_Researches/PINKOCTO/SOLAR/2023-04-03-일사량자료정리.html",
-      "/posts/3_Researches/PINKOCTO/notes.html"
+      "/posts/2_Studies/PyTorchLightning/2022-11-29-Lesson1.html"
     ]
   },
   {
     "listing": "/temp.html",
     "items": [
+      "/a/tomato.html",
       "/a/000_old_hst.html",
       "/a/001_링형태의자료만들기.html",
       "/a/examples/2_regular_ECG/Analysing_a_regular_ECG_signal.html",
