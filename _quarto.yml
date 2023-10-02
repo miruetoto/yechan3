@@ -40,8 +40,7 @@ website:
       - 1_essays.qmd
       - section: "**Studies**"
         contents:
-          - 2_cgsp.qmd
-          - 2_pl.qmd          
+          - 2_cgsp.qmd    
           - 2_pyg.qmd
           - 2_reviews.qmd    
       - section: "**Researches**"
