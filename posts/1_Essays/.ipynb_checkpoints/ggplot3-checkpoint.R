@@ -39,15 +39,28 @@ prepare_data <- function(x, y = NULL) {
   return(df)
 }
 
+seperate_args <- function(...){
+  args <- list(...)
+  if ("col" %in% names(list(...))) {
+    col <- args$col
+    args$col <- NULL
+  } else if ("color" %in% names(list(...))) {
+    col <- args$color
+    args$color <- NULL
+  } else if ("colour" %in% names(list(...))) {
+    col <- args$colour
+    args$colour <- NULL
+  } else {
+    col <- NULL
+  }
+  return(list(args=args, col=col))
+}
+
 ## main geoms
 
 line <- function(x, y=NULL,label=NULL, ...) {
   df = prepare_data(x, y)
-  if ("col" %in% names(list(...))) {
-    return(geom_line(data = df, mapping = aes(x = x, y = y), ...))
-  } else {
-    return(geom_line(data = df, mapping = aes(x = x, y = y, col = label), ...))
-  }    
+  return(geom_line(data=df, mapping=aes(x = x, y = y, col=label), ...))
 }
 
 point <- function(x, y=NULL,label=NULL, ...) {
