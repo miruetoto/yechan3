@@ -130,8 +130,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">DL2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/AP2022/"> 
-<span class="menu-text">AP2022</span></a>
+    <a class="nav-link" href="https://guebin.github.io/AP2023/"> 
+<span class="menu-text">AP2023</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://guebin.github.io/PP2023/"> 
@@ -150,8 +150,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">DS2022</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/SP2022/"> 
-<span class="menu-text">SP2022</span></a>
+    <a class="nav-link" href="https://guebin.github.io/SP2023/"> 
+<span class="menu-text">SP2023</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://guebin.github.io/IR2021/"> 
@@ -232,12 +232,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2_pl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">PyTorch Lightning</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../2_pyg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PyG</span></a>
   </div>
@@ -248,9 +242,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Reviews</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
- <span class="menu-text">2_mp.qmd</span>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -376,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>intro</h1>
 <p><code>ggplot2</code> 공부하다가 포기함</p>
 <p>그냥 ggplot2를 랩핑하여 내 스타일에 맞는 코드를 새로 만듬 (가칭 <code>ggplot3</code>)</p>
-<div id="94938a73-8617-406b-a113-2cab837416e1" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
+<div id="94938a73-8617-406b-a113-2cab837416e1" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="122">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">'ggplot3.R'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>소스코드 다운로드: <a href="https://github.com/miruetoto/yechan3/blob/main/posts/1_Essays/ggplot3.R" class="uri">https://github.com/miruetoto/yechan3/blob/main/posts/1_Essays/ggplot3.R</a></p>
@@ -830,11 +821,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>geoms for comparison</h1>
 <section id="col" class="level2">
 <h2 class="anchored" data-anchor-id="col">col</h2>
-<div id="c3f954dc-b82c-4c3a-bf2e-e58f8ef656d4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="52">
+<div id="c3f954dc-b82c-4c3a-bf2e-e58f8ef656d4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="179">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="dfae3345-614d-4585-a9ae-04452d7f84cf" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="53">
+<div id="dfae3345-614d-4585-a9ae-04452d7f84cf" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="183">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">col</span>(y1,<span class="at">fill=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-50-output-1.png" class="img-fluid"></p>
@@ -849,26 +840,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="boxplot" class="level2">
 <h2 class="anchored" data-anchor-id="boxplot">boxplot</h2>
-<div id="29a9c5dd-5dad-4c48-ac75-6948e57011f2" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="55">
+<div id="29a9c5dd-5dad-4c48-ac75-6948e57011f2" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)<span class="sc">+</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시1</p>
-<div id="41ebf077-cec8-4fd7-bd67-a10225bbf888" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="56">
+<div id="41ebf077-cec8-4fd7-bd67-a10225bbf888" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">boxplot</span>(y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="42122c60-a3dc-4524-aebf-6a6d445ac870" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="57">
+<div id="42122c60-a3dc-4524-aebf-6a6d445ac870" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">boxplot</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-54-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 예시3</p>
-<div id="67cf07ff-6bfa-4dc7-98bd-69cff082b243" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="58">
+<div id="67cf07ff-6bfa-4dc7-98bd-69cff082b243" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">boxplot</span>(<span class="at">x=</span><span class="st">'A'</span>,y1,<span class="at">label=</span><span class="st">'A'</span>)<span class="sc">+</span><span class="fu">boxplot</span>(<span class="at">x=</span><span class="st">'B'</span>,y2,<span class="at">label=</span><span class="st">'B'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-55-output-1.png" class="img-fluid"></p>
@@ -877,26 +868,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="violin" class="level2">
 <h2 class="anchored" data-anchor-id="violin">violin</h2>
-<div id="c177d53f-64c0-443b-8831-63285107779c" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="59">
+<div id="c177d53f-64c0-443b-8831-63285107779c" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)<span class="sc">+</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시1</p>
-<div id="3aa222a6-6ffb-4670-92ce-f1212c532412" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="60">
+<div id="3aa222a6-6ffb-4670-92ce-f1212c532412" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">violin</span>(y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-57-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="4c0f459a-064e-48fb-bf23-bbadb154ab71" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="61">
+<div id="4c0f459a-064e-48fb-bf23-bbadb154ab71" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">violin</span>(<span class="fu">cbind</span>(y1,y2), <span class="at">color =</span> <span class="st">"transparent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-58-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><code>-</code> 예시3</p>
-<div id="13bab637-0d91-4365-a807-48f35381109e" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="62">
+<div id="13bab637-0d91-4365-a807-48f35381109e" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="178">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">violin</span>(<span class="at">x=</span><span class="st">'A'</span>,y1,<span class="at">label=</span><span class="st">'A'</span>)<span class="sc">+</span><span class="fu">violin</span>(<span class="at">x=</span><span class="st">'B'</span>,y2,<span class="at">label=</span><span class="st">'B'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-59-output-1.png" class="img-fluid"></p>
@@ -906,39 +897,490 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="버그" class="level1">
 <h1>버그</h1>
-<div id="8a6e58bc-6d50-447c-b162-650f9db8bb3a" class="cell" data-execution_count="98">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">line</span>(y1,<span class="at">label=</span><span class="st">'A'</span>,<span class="at">col=</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">line</span>(y2,<span class="at">label=</span><span class="st">'B'</span>,<span class="at">col=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8a6e58bc-6d50-447c-b162-650f9db8bb3a" class="cell" data-execution_count="208">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"ggplot3.R"</span>)</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">line</span>(y1,<span class="at">label=</span><span class="st">'A'</span>,<span class="at">col=</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">line</span>(y2,<span class="at">label=</span><span class="st">'B'</span>,<span class="at">col=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-60-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div id="b1954ebe-8756-43c8-bd15-e1822961c5ed" class="cell" data-execution_count="95">
+<div id="b1954ebe-8756-43c8-bd15-e1822961c5ed" class="cell" data-execution_count="209">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">line</span>(y1,<span class="at">label=</span><span class="st">'A'</span>)<span class="sc">+</span><span class="fu">line</span>(y2,<span class="at">label=</span><span class="st">'B'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2099-01-01-ggplot3_files/figure-html/cell-61-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div id="66e004e1-f6ee-4995-9619-756b64c1f882" class="cell" data-execution_count="90">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>line <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">label =</span> <span class="cn">NULL</span>, ...) {</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">prepare_data</span>(x, y)</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if `col` and `label` are present in `...`</span></span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>  col_exists <span class="ot">&lt;-</span> <span class="st">"col"</span> <span class="sc">%in%</span> <span class="fu">names</span>(<span class="fu">list</span>(...))</span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>  label_exists <span class="ot">&lt;-</span> <span class="st">"label"</span> <span class="sc">%in%</span> <span class="fu">names</span>(<span class="fu">list</span>(...))</span>
-<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (col_exists <span class="sc">&amp;&amp;</span> label_exists) {</span>
-<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">geom_line</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">col =</span> label), ...))</span>
-<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If neither `col` nor `label` are present in the input</span></span>
-<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">geom_line</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">col =</span> label), ...))</span>
-<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb65-14"><a href="#cb65-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b812e217-7437-4167-ae8a-2cd7a7516206" class="cell" data-execution_count="223">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>?layer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<tbody>
+<tr class="odd">
+<td>layer {ggplot2}</td>
+<td style="text-align: right;">R Documentation</td>
+</tr>
+</tbody>
+</table>
+<section id="layer" class="level2">
+<h2 class="anchored" data-anchor-id="layer">Create a new layer</h2>
+<section id="description" class="level3">
+<h3 class="anchored" data-anchor-id="description">Description</h3>
+<p>A layer is a combination of data, stat and geom with a potential position adjustment. Usually layers are created using <code style="white-space: pre;">⁠geom_*⁠</code> or <code style="white-space: pre;">⁠stat_*⁠</code> calls but it can also be created directly using this function.</p>
+</section>
+<section id="usage" class="level3">
+<h3 class="anchored" data-anchor-id="usage">Usage</h3>
+<div class="sourceCode" id="cb66"><pre class="sourceCode R code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layer</span>(</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geom =</span> <span class="cn">NULL</span>,</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">stat =</span> <span class="cn">NULL</span>,</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="cn">NULL</span>,</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="cn">NULL</span>,</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">position =</span> <span class="cn">NULL</span>,</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="fu">list</span>(),</span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">inherit.aes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">check.aes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">check.param =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">show.legend =</span> <span class="cn">NA</span>,</span>
+<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">key_glyph =</span> <span class="cn">NULL</span>,</span>
+<span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">layer_class =</span> Layer</span>
+<span id="cb66-14"><a href="#cb66-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="arguments" class="level3">
+<h3 class="anchored" data-anchor-id="arguments">Arguments</h3>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code id="layer_:_geom">geom</code></td>
+<td><p>The geometric object to use to display the data, either as a <code>ggproto</code> <code>Geom</code> subclass or as a string naming the geom stripped of the <code>geom_</code> prefix (e.g. <code>"point"</code> rather than <code>"geom_point"</code>)</p></td>
+</tr>
+<tr class="even">
+<td><code id="layer_:_stat">stat</code></td>
+<td><p>The statistical transformation to use on the data for this layer, either as a <code>ggproto</code> <code>Geom</code> subclass or as a string naming the stat stripped of the <code>stat_</code> prefix (e.g. <code>"count"</code> rather than <code>"stat_count"</code>)</p></td>
+</tr>
+<tr class="odd">
+<td><code id="layer_:_data">data</code></td>
+<td><p>The data to be displayed in this layer. There are three options:</p>
+<p>If <code>NULL</code>, the default, the data is inherited from the plot data as specified in the call to <code>ggplot()</code>.</p>
+<p>A <code>data.frame</code>, or other object, will override the plot data. All objects will be fortified to produce a data frame. See <code>fortify()</code> for which variables will be created.</p>
+<p>A <code>function</code> will be called with a single argument, the plot data. The return value must be a <code>data.frame</code>, and will be used as the layer data. A <code>function</code> can be created from a <code>formula</code> (e.g. <code>~ head(.x, 10)</code>).</p></td>
+</tr>
+<tr class="even">
+<td><code id="layer_:_mapping">mapping</code></td>
+<td><p>Set of aesthetic mappings created by <code>aes()</code>. If specified and <code>inherit.aes = TRUE</code> (the default), it is combined with the default mapping at the top level of the plot. You must supply <code>mapping</code> if there is no plot mapping.</p></td>
+</tr>
+<tr class="odd">
+<td><code id="layer_:_position">position</code></td>
+<td><p>Position adjustment, either as a string naming the adjustment (e.g. <code>"jitter"</code> to use <code>position_jitter</code>), or the result of a call to a position adjustment function. Use the latter if you need to change the settings of the adjustment.</p></td>
+</tr>
+<tr class="even">
+<td><code id="layer_:_params">params</code></td>
+<td><p>Additional parameters to the <code>geom</code> and <code>stat</code>.</p></td>
+</tr>
+<tr class="odd">
+<td><code id="layer_:_inherit.aes">inherit.aes</code></td>
+<td><p>If <code>FALSE</code>, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. <code>borders()</code>.</p></td>
+</tr>
+<tr class="even">
+<td><code id="layer_:_check.aes">check.aes</code>, <code id="layer_:_check.param">check.param</code></td>
+<td><p>If <code>TRUE</code>, the default, will check that supplied parameters and aesthetics are understood by the <code>geom</code> or <code>stat</code>. Use <code>FALSE</code> to suppress the checks.</p></td>
+</tr>
+<tr class="odd">
+<td><code id="layer_:_show.legend">show.legend</code></td>
+<td><p>logical. Should this layer be included in the legends? <code>NA</code>, the default, includes if any aesthetics are mapped. <code>FALSE</code> never includes, and <code>TRUE</code> always includes. It can also be a named logical vector to finely select the aesthetics to display.</p></td>
+</tr>
+<tr class="even">
+<td><code id="layer_:_key_glyph">key_glyph</code></td>
+<td><p>A legend key drawing function or a string providing the function name minus the <code>draw_key_</code> prefix. See draw_key for details.</p></td>
+</tr>
+<tr class="odd">
+<td><code id="layer_:_layer_class">layer_class</code></td>
+<td><p>The type of layer object to be constructued. This is intended for ggplot2 internal use only.</p></td>
+</tr>
+</tbody>
+</table>
+
+
+
+<h3 class="anchored">Examples</h3>
+
+<pre><code class="language-R"># geom calls are just a short cut for layer
+ggplot(mpg, aes(displ, hwy)) + geom_point()
+# shortcut for
+ggplot(mpg, aes(displ, hwy)) +
+  layer(
+    geom = "point", stat = "identity", position = "identity",
+    params = list(na.rm = FALSE)
+  )
+
+# use a function as data to plot a subset of global data
+ggplot(mpg, aes(displ, hwy)) +
+  layer(
+    geom = "point", stat = "identity", position = "identity",
+    data = head, params = list(na.rm = FALSE)
+  )
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>ggplot2</em> version 3.4.3 ]</div>
+</section></section></div>
+</div></section>
+
+</main></div>
+
+<div id="7e4c1967-4359-4547-aabd-ec47915f50ff" class="cell" data-execution_count="217">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df)<span class="sc">+</span><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y, <span class="at">color=</span><span class="st">'A'</span>),)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ERROR while rich displaying an object: Error in `geom_point()`:
+! Problem while setting up geom.
+ℹ Error occurred in the 2nd layer.
+Caused by error in `compute_geom_1()`:
+! `geom_point()` requires the following missing aesthetics: x and y
+
+Traceback:
+1. tryCatch(withCallingHandlers({
+ .     if (!mime %in% names(repr::mime2repr)) 
+ .         stop("No repr_* for mimetype ", mime, " in repr::mime2repr")
+ .     rpr &lt;- repr::mime2repr[[mime]](obj)
+ .     if (is.null(rpr)) 
+ .         return(NULL)
+ .     prepare_content(is.raw(rpr), rpr)
+ . }, error = error_handler), error = outer_handler)
+2. tryCatchList(expr, classes, parentenv, handlers)
+3. tryCatchOne(expr, names, parentenv, handlers[[1L]])
+4. doTryCatch(return(expr), name, parentenv, handler)
+5. withCallingHandlers({
+ .     if (!mime %in% names(repr::mime2repr)) 
+ .         stop("No repr_* for mimetype ", mime, " in repr::mime2repr")
+ .     rpr &lt;- repr::mime2repr[[mime]](obj)
+ .     if (is.null(rpr)) 
+ .         return(NULL)
+ .     prepare_content(is.raw(rpr), rpr)
+ . }, error = error_handler)
+6. repr::mime2repr[[mime]](obj)
+7. repr_text.default(obj)
+8. paste(capture.output(print(obj)), collapse = "\n")
+9. capture.output(print(obj))
+10. withVisible(...elt(i))
+11. print(obj)
+12. print.ggplot(obj)
+13. ggplot_build(x)
+14. ggplot_build.ggplot(x)
+15. by_layer(function(l, d) l$compute_geom_1(d), layers, data, "setting up geom")
+16. try_fetch(for (i in seq_along(data)) {
+  .     out[[i]] &lt;- f(l = layers[[i]], d = data[[i]])
+  . }, error = function(cnd) {
+  .     cli::cli_abort(c("Problem while {step}.", i = "Error occurred in the {ordinal(i)} layer."), 
+  .         call = layers[[i]]$constructor, parent = cnd)
+  . })
+17. tryCatch(withCallingHandlers(expr, condition = function(cnd) {
+  .     {
+  .         .__handler_frame__. &lt;- TRUE
+  .         .__setup_frame__. &lt;- frame
+  .         if (inherits(cnd, "message")) {
+  .             except &lt;- c("warning", "error")
+  .         }
+  .         else if (inherits(cnd, "warning")) {
+  .             except &lt;- "error"
+  .         }
+  .         else {
+  .             except &lt;- ""
+  .         }
+  .     }
+  .     while (!is_null(cnd)) {
+  .         if (inherits(cnd, "error")) {
+  .             out &lt;- handlers[[1L]](cnd)
+  .             if (!inherits(out, "rlang_zap")) 
+  .                 throw(out)
+  .         }
+  .         inherit &lt;- .subset2(.subset2(cnd, "rlang"), "inherit")
+  .         if (is_false(inherit)) {
+  .             return()
+  .         }
+  .         cnd &lt;- .subset2(cnd, "parent")
+  .     }
+  . }), stackOverflowError = handlers[[1L]])
+18. tryCatchList(expr, classes, parentenv, handlers)
+19. tryCatchOne(expr, names, parentenv, handlers[[1L]])
+20. doTryCatch(return(expr), name, parentenv, handler)
+21. withCallingHandlers(expr, condition = function(cnd) {
+  .     {
+  .         .__handler_frame__. &lt;- TRUE
+  .         .__setup_frame__. &lt;- frame
+  .         if (inherits(cnd, "message")) {
+  .             except &lt;- c("warning", "error")
+  .         }
+  .         else if (inherits(cnd, "warning")) {
+  .             except &lt;- "error"
+  .         }
+  .         else {
+  .             except &lt;- ""
+  .         }
+  .     }
+  .     while (!is_null(cnd)) {
+  .         if (inherits(cnd, "error")) {
+  .             out &lt;- handlers[[1L]](cnd)
+  .             if (!inherits(out, "rlang_zap")) 
+  .                 throw(out)
+  .         }
+  .         inherit &lt;- .subset2(.subset2(cnd, "rlang"), "inherit")
+  .         if (is_false(inherit)) {
+  .             return()
+  .         }
+  .         cnd &lt;- .subset2(cnd, "parent")
+  .     }
+  . })
+22. f(l = layers[[i]], d = data[[i]])
+23. l$compute_geom_1(d)
+24. compute_geom_1(..., self = self)
+25. check_required_aesthetics(self$geom$required_aes, c(names(data), 
+  .     names(self$aes_params)), snake_class(self$geom))
+26. cli::cli_abort(message, call = call)
+27. rlang::abort(message, ..., call = call, use_cli_format = TRUE, 
+  .     .frame = .frame)
+28. signal_abort(cnd, .file)
+29. signalCondition(cnd)
+30. (function (cnd) 
+  . {
+  .     {
+  .         .__handler_frame__. &lt;- TRUE
+  .         .__setup_frame__. &lt;- frame
+  .         if (inherits(cnd, "message")) {
+  .             except &lt;- c("warning", "error")
+  .         }
+  .         else if (inherits(cnd, "warning")) {
+  .             except &lt;- "error"
+  .         }
+  .         else {
+  .             except &lt;- ""
+  .         }
+  .     }
+  .     while (!is_null(cnd)) {
+  .         if (inherits(cnd, "error")) {
+  .             out &lt;- handlers[[1L]](cnd)
+  .             if (!inherits(out, "rlang_zap")) 
+  .                 throw(out)
+  .         }
+  .         inherit &lt;- .subset2(.subset2(cnd, "rlang"), "inherit")
+  .         if (is_false(inherit)) {
+  .             return()
+  .         }
+  .         cnd &lt;- .subset2(cnd, "parent")
+  .     }
+  . })(structure(list(message = "`geom_point()` requires the following missing aesthetics: \033[32mx\033[39m and \033[32my\033[39m", 
+  .     trace = structure(list(call = list(IRkernel::main(), kernel$run(), 
+  .         handle_shell(), executor$execute(msg), tryCatch(evaluate(request$content$code, 
+  .             envir = .GlobalEnv, output_handler = oh, stop_on_error = 1L), 
+  .             interrupt = function(cond) {
+  .                 log_debug("Interrupt during execution")
+  .                 interrupted &lt;&lt;- TRUE
+  .             }, error = .self$handle_error), tryCatchList(expr, 
+  .             classes, parentenv, handlers), tryCatchOne(tryCatchList(expr, 
+  .             names[-nh], parentenv, handlers[-nh]), names[nh], 
+  .             parentenv, handlers[[nh]]), doTryCatch(return(expr), 
+  .             name, parentenv, handler), tryCatchList(expr, names[-nh], 
+  .             parentenv, handlers[-nh]), tryCatchOne(expr, names, 
+  .             parentenv, handlers[[1L]]), doTryCatch(return(expr), 
+  .             name, parentenv, handler), evaluate(request$content$code, 
+  .             envir = .GlobalEnv, output_handler = oh, stop_on_error = 1L), 
+  .         evaluate_call(expr, parsed$src[[i]], envir = envir, enclos = enclos, 
+  .             debug = debug, last = i == length(out), use_try = stop_on_error != 
+  .                 2L, keep_warning = keep_warning, keep_message = keep_message, 
+  .             log_echo = log_echo, log_warning = log_warning, output_handler = output_handler, 
+  .             include_timing = include_timing), handle(pv &lt;- withCallingHandlers(withVisible(value_fun(ev$value, 
+  .             ev$visible)), warning = wHandler, error = eHandler, 
+  .             message = mHandler)), try(f, silent = TRUE), tryCatch(expr, 
+  .             error = function(e) {
+  .                 call &lt;- conditionCall(e)
+  .                 if (!is.null(call)) {
+  .                   if (identical(call[[1L]], quote(doTryCatch))) 
+  .                     call &lt;- sys.call(-4L)
+  .                   dcall &lt;- deparse(call, nlines = 1L)
+  .                   prefix &lt;- paste("Error in", dcall, ": ")
+  .                   LONG &lt;- 75L
+  .                   sm &lt;- strsplit(conditionMessage(e), "\n")[[1L]]
+  .                   w &lt;- 14L + nchar(dcall, type = "w") + nchar(sm[1L], 
+  .                     type = "w")
+  .                   if (is.na(w)) 
+  .                     w &lt;- 14L + nchar(dcall, type = "b") + nchar(sm[1L], 
+  .                       type = "b")
+  .                   if (w &gt; LONG) 
+  .                     prefix &lt;- paste0(prefix, "\n  ")
+  .                 }
+  .                 else prefix &lt;- "Error : "
+  .                 msg &lt;- paste0(prefix, conditionMessage(e), "\n")
+  .                 .Internal(seterrmessage(msg[1L]))
+  .                 if (!silent &amp;&amp; isTRUE(getOption("show.error.messages"))) {
+  .                   cat(msg, file = outFile)
+  .                   .Internal(printDeferredWarnings())
+  .                 }
+  .                 invisible(structure(msg, class = "try-error", 
+  .                   condition = e))
+  .             }), tryCatchList(expr, classes, parentenv, handlers), 
+  .         tryCatchOne(expr, names, parentenv, handlers[[1L]]), 
+  .         doTryCatch(return(expr), name, parentenv, handler), withCallingHandlers(withVisible(value_fun(ev$value, 
+  .             ev$visible)), warning = wHandler, error = eHandler, 
+  .             message = mHandler), withVisible(value_fun(ev$value, 
+  .             ev$visible)), value_fun(ev$value, ev$visible), prepare_mimebundle_kernel(obj, 
+  .             .self$handle_display_error), prepare_mimebundle(obj, 
+  .             "text/plain", error_handler = handle_display_error), 
+  .         filter_map(mimetypes, function(mime) {
+  .             tryCatch(withCallingHandlers({
+  .                 if (!mime %in% names(repr::mime2repr)) 
+  .                   stop("No repr_* for mimetype ", mime, " in repr::mime2repr")
+  .                 rpr &lt;- repr::mime2repr[[mime]](obj)
+  .                 if (is.null(rpr)) 
+  .                   return(NULL)
+  .                 prepare_content(is.raw(rpr), rpr)
+  .             }, error = error_handler), error = outer_handler)
+  .         }), Filter(Negate(is.null), sapply(x, f, simplify = simplify)), 
+  .         unlist(lapply(x, f)), lapply(x, f), sapply(x, f, simplify = simplify), 
+  .         lapply(X = X, FUN = FUN, ...), FUN(X[[i]], ...), tryCatch(withCallingHandlers({
+  .             if (!mime %in% names(repr::mime2repr)) 
+  .                 stop("No repr_* for mimetype ", mime, " in repr::mime2repr")
+  .             rpr &lt;- repr::mime2repr[[mime]](obj)
+  .             if (is.null(rpr)) 
+  .                 return(NULL)
+  .             prepare_content(is.raw(rpr), rpr)
+  .         }, error = error_handler), error = outer_handler), tryCatchList(expr, 
+  .             classes, parentenv, handlers), tryCatchOne(expr, 
+  .             names, parentenv, handlers[[1L]]), doTryCatch(return(expr), 
+  .             name, parentenv, handler), withCallingHandlers({
+  .             if (!mime %in% names(repr::mime2repr)) 
+  .                 stop("No repr_* for mimetype ", mime, " in repr::mime2repr")
+  .             rpr &lt;- repr::mime2repr[[mime]](obj)
+  .             if (is.null(rpr)) 
+  .                 return(NULL)
+  .             prepare_content(is.raw(rpr), rpr)
+  .         }, error = error_handler), repr::mime2repr[[mime]](obj), 
+  .         repr_text.default(obj), paste(capture.output(print(obj)), 
+  .             collapse = "\n"), capture.output(print(obj)), withVisible(...elt(i)), 
+  .         print(obj), print.ggplot(obj), ggplot_build(x), ggplot_build.ggplot(x), 
+  .         by_layer(function(l, d) l$compute_geom_1(d), layers, 
+  .             data, "setting up geom"), try_fetch(for (i in seq_along(data)) {
+  .             out[[i]] &lt;- f(l = layers[[i]], d = data[[i]])
+  .         }, error = function(cnd) {
+  .             cli::cli_abort(c("Problem while {step}.", i = "Error occurred in the {ordinal(i)} layer."), 
+  .                 call = layers[[i]]$constructor, parent = cnd)
+  .         }), tryCatch(withCallingHandlers(expr, condition = function(cnd) {
+  .             {
+  .                 .__handler_frame__. &lt;- TRUE
+  .                 .__setup_frame__. &lt;- frame
+  .                 if (inherits(cnd, "message")) {
+  .                   except &lt;- c("warning", "error")
+  .                 }
+  .                 else if (inherits(cnd, "warning")) {
+  .                   except &lt;- "error"
+  .                 }
+  .                 else {
+  .                   except &lt;- ""
+  .                 }
+  .             }
+  .             while (!is_null(cnd)) {
+  .                 if (inherits(cnd, "error")) {
+  .                   out &lt;- handlers[[1L]](cnd)
+  .                   if (!inherits(out, "rlang_zap")) 
+  .                     throw(out)
+  .                 }
+  .                 inherit &lt;- .subset2(.subset2(cnd, "rlang"), "inherit")
+  .                 if (is_false(inherit)) {
+  .                   return()
+  .                 }
+  .                 cnd &lt;- .subset2(cnd, "parent")
+  .             }
+  .         }), stackOverflowError = handlers[[1L]]), tryCatchList(expr, 
+  .             classes, parentenv, handlers), tryCatchOne(expr, 
+  .             names, parentenv, handlers[[1L]]), doTryCatch(return(expr), 
+  .             name, parentenv, handler), withCallingHandlers(expr, 
+  .             condition = function(cnd) {
+  .                 {
+  .                   .__handler_frame__. &lt;- TRUE
+  .                   .__setup_frame__. &lt;- frame
+  .                   if (inherits(cnd, "message")) {
+  .                     except &lt;- c("warning", "error")
+  .                   }
+  .                   else if (inherits(cnd, "warning")) {
+  .                     except &lt;- "error"
+  .                   }
+  .                   else {
+  .                     except &lt;- ""
+  .                   }
+  .                 }
+  .                 while (!is_null(cnd)) {
+  .                   if (inherits(cnd, "error")) {
+  .                     out &lt;- handlers[[1L]](cnd)
+  .                     if (!inherits(out, "rlang_zap")) 
+  .                       throw(out)
+  .                   }
+  .                   inherit &lt;- .subset2(.subset2(cnd, "rlang"), 
+  .                     "inherit")
+  .                   if (is_false(inherit)) {
+  .                     return()
+  .                   }
+  .                   cnd &lt;- .subset2(cnd, "parent")
+  .                 }
+  .             }), f(l = layers[[i]], d = data[[i]]), l$compute_geom_1(d), 
+  .         compute_geom_1(..., self = self), check_required_aesthetics(self$geom$required_aes, 
+  .             c(names(data), names(self$aes_params)), snake_class(self$geom)), 
+  .         cli::cli_abort(message, call = call), rlang::abort(message, 
+  .             ..., call = call, use_cli_format = TRUE, .frame = .frame)), 
+  .         parent = c(0L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 6L, 9L, 10L, 
+  .         4L, 12L, 13L, 14L, 15L, 16L, 17L, 18L, 13L, 13L, 13L, 
+  .         22L, 23L, 24L, 25L, 26L, 26L, 25L, 29L, 30L, 31L, 32L, 
+  .         33L, 34L, 31L, 31L, 31L, 38L, 38L, 40L, 38L, 38L, 43L, 
+  .         43L, 45L, 46L, 47L, 48L, 49L, 50L, 47L, 46L, 53L, 54L, 
+  .         55L, 56L, 57L), visible = c(TRUE, TRUE, TRUE, TRUE, TRUE, 
+  .         TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 
+  .         TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 
+  .         TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 
+  .         TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 
+  .         TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 
+  .         TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE), namespace = c("IRkernel", 
+  .         NA, "IRkernel", NA, "base", "base", "base", "base", "base", 
+  .         "base", "base", "evaluate", "evaluate", "evaluate", "base", 
+  .         "base", "base", "base", "base", "base", "base", "IRkernel", 
+  .         "IRkernel", "IRdisplay", "IRdisplay", "base", "base", 
+  .         "base", "base", "base", "IRdisplay", "base", "base", 
+  .         "base", "base", "base", NA, "repr", "base", "utils", 
+  .         "base", "base", "ggplot2", "ggplot2", "ggplot2", "ggplot2", 
+  .         "rlang", "base", "base", "base", "base", "base", "ggplot2", 
+  .         NA, "ggplot2", "ggplot2", "cli", "rlang"), scope = c("::", 
+  .         NA, "local", NA, "::", "local", "local", "local", "local", 
+  .         "local", "local", "::", ":::", "local", "::", "::", "local", 
+  .         "local", "local", "::", "::", "local", ":::", "::", ":::", 
+  .         "::", "::", "::", "::", "::", "local", "::", "local", 
+  .         "local", "local", "::", NA, ":::", "::", "::", "::", 
+  .         "::", ":::", "::", ":::", ":::", "::", "::", "local", 
+  .         "local", "local", "::", "local", NA, "local", ":::", 
+  .         "::", "::"), error_frame = c(FALSE, FALSE, FALSE, FALSE, 
+  .         FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
+  .         FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
+  .         FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
+  .         FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
+  .         FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
+  .         FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 
+  .         FALSE, FALSE, TRUE, FALSE, FALSE, FALSE)), row.names = c(NA, 
+  .     -58L), version = 2L, class = c("rlang_trace", "rlib_trace", 
+  .     "tbl", "data.frame")), parent = NULL, rlang = list(inherit = TRUE), 
+  .     call = compute_geom_1(..., self = self), use_cli_format = TRUE), class = c("rlang_error", 
+  . "error", "condition")))
+31. handlers[[1L]](cnd)
+32. cli::cli_abort(c("Problem while {step}.", i = "Error occurred in the {ordinal(i)} layer."), 
+  .     call = layers[[i]]$constructor, parent = cnd)
+33. rlang::abort(message, ..., call = call, use_cli_format = TRUE, 
+  .     .frame = .frame)
+34. signal_abort(cnd, .file)</code></pre>
+</div>
 </div>
 
 
-</section>
 
-</main> <!-- /main -->
+
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1285,7 +1727,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://utteranc.es/client.js" repo="miruetoto/yechan3" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
-</div> <!-- /content -->
+ <!-- /content -->
 
 
 
