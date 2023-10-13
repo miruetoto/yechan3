@@ -303,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#콘다-개발환경" id="toc-콘다-개발환경" class="nav-link" data-scroll-target="#콘다-개발환경">6. 콘다 개발환경</a>
   <ul class="collapse">
   <li><a href="#rpython-사용가능한-개발환경" id="toc-rpython-사용가능한-개발환경" class="nav-link" data-scroll-target="#rpython-사용가능한-개발환경"><code>6-1</code>. R+Python 사용가능한 개발환경</a></li>
-  <li><a href="#pytorch-사용이-가능한-개발환경" id="toc-pytorch-사용이-가능한-개발환경" class="nav-link" data-scroll-target="#pytorch-사용이-가능한-개발환경"><code>6-2</code>. PyTorch 사용이 가능한 개발환경</a></li>
+  <li><a href="#torch" id="toc-torch" class="nav-link" data-scroll-target="#torch"><code>6-2</code>. torch</a></li>
   </ul></li>
   <li><a href="#원격제어" id="toc-원격제어" class="nav-link" data-scroll-target="#원격제어">7. 원격제어</a>
   <ul class="collapse">
@@ -442,7 +442,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">conda</span> activate rpy</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">rpy</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge r-essentials</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">rpy</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge plotly</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">rpy</span><span class="kw">)</span> <span class="ex">pip</span> install ryp2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">rpy</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge rpy2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 여기에서 <code>conda install -c conda-forge r-essentials</code>로 인하여 R, Python, Jupyter 가 모두 최신버전으로 설치된다.</p>
 <p><code>-</code> 또한 R에는 이미 <code>tidyverse</code>, <code>IRkernel</code> 등의 패키지가 기본으로 깔려있다.</p>
 <p><code>-</code> R은 아래의 경로에 설치되어있다.</p>
@@ -454,20 +454,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>-</code> 설치한 패키지는 library 폴더에 있다. /// <code>EPT</code>도 보인다..</p>
 <p><img src="2000-01-02-우분투 포맷 및 개발용 서버 셋팅2_files/figure-html/187df636-e204-4a09-8505-d57b4b887e39-1-bf7d429d-97be-4102-b097-720d205ac9ac.png" class="img-fluid"></p>
 </section>
-<section id="pytorch-사용이-가능한-개발환경" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="pytorch-사용이-가능한-개발환경"><code>6-2</code>. PyTorch 사용이 가능한 개발환경</h2>
+<section id="torch" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="torch"><code>6-2</code>. torch</h2>
 <p><code>-</code> 아래를 실행</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">conda</span> create <span class="at">-n</span> torch</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">conda</span> activate torch</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install pytorch torchvision torchaudio pytorch-cuda=11.8 <span class="at">-c</span> pytorch <span class="at">-c</span> nvidia</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#---#</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge notebook </span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge plotly </span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install pyg <span class="at">-c</span> pyg </span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install torch-geometric-temporal</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> pytorch <span class="at">-c</span> conda-forge ctgan  </span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install gymnasium </span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="fu">sudo</span> apt-get install swig</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install gymnasium<span class="pp">[</span><span class="ss">box2d</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#---#</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install pytorch torchvision torchaudio pytorch-cuda=12.1 <span class="at">-c</span> pytorch <span class="at">-c</span> nvidia</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#---#</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install pyg <span class="at">-c</span> pyg </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#---#</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="fu">sudo</span> apt install gcc</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="fu">sudo</span> apt install build-essential</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install torch-geometric-temporal</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#---#</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> pytorch <span class="at">-c</span> conda-forge ctgan  </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#---#</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install gymnasium </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="fu">sudo</span> apt-get install swig</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install gymnasium<span class="pp">[</span><span class="ss">box2d</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>refs</strong></p>
 <ul>
 <li>PyTorch: <a href="https://pytorch.org/get-started/locally/" class="uri">https://pytorch.org/get-started/locally/</a></li>
