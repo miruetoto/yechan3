@@ -66,7 +66,9 @@
   {
     "listing": "/4_notes.html",
     "items": [
+      "/posts/4_Notes/Untitled.html",
       "/posts/4_Notes/2000-01-09-docker.html",
+      "/posts/4_Notes/2000-01-10-DGX staion.html",
       "/posts/4_Notes/2000-01-08-주피터랩- 설정 및 몇가지 팁.html",
       "/posts/4_Notes/2000-01-07-줄리아 설치 및 실행.html",
       "/posts/4_Notes/2000-01-06-깃 익히기.html",
@@ -121,6 +123,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/4_Notes/Untitled.html",
       "/posts/3_Researches/BORAM/FRAUD/2023-09-14-df50.html",
       "/posts/1_Essays/2099-01-01-ggplot3.html",
       "/posts/3_Researches/JAEIN/2023-10-12-MBTI.html",
@@ -181,6 +184,7 @@
       "/posts/1_Essays/2022-11-29-파이토치 라이트닝.html",
       "/posts/1_Essays/2019-04-26-퓨리에변환.html",
       "/posts/4_Notes/2000-01-09-docker.html",
+      "/posts/4_Notes/2000-01-10-DGX staion.html",
       "/posts/4_Notes/2000-01-08-주피터랩- 설정 및 몇가지 팁.html",
       "/posts/4_Notes/2000-01-07-줄리아 설치 및 실행.html",
       "/posts/4_Notes/2000-01-06-깃 익히기.html",
