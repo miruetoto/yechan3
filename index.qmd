@@ -1,6 +1,6 @@
 ---
 listing:
-  contents: posts/0_Notes
+  contents: [메모,공부,연구,자료]
   sort: [date desc,title]
   type: table
   categories: false
