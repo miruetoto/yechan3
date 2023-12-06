@@ -9,6 +9,10 @@ listing:
   page-size: 9999
 page-layout: full
 title-block-banner: true
+execute: 
+  enabled: true
+  cache: false
+  freeze: false
 ---
 
 **About this blog**
