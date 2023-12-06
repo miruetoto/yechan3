@@ -267,8 +267,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2000-01-09-(메모) -- docker.out.ipynb" download="2000-01-09-(메모) -- docker.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#기본명령어" id="toc-기본명령어" class="nav-link active" data-scroll-target="#기본명령어">1. 기본명령어</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2000-01-09-(메모) -- docker.out.ipynb" download="2000-01-09-(메모) -- docker.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -305,72 +312,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><code>-</code> 우분투에서 설치</p>
 <p>ref: <a href="https://docs.docker.com/engine/install/ubuntu/" class="uri">https://docs.docker.com/engine/install/ubuntu/</a></p>
+<section id="기본명령어" class="level1">
+<h1>1. 기본명령어</h1>
 <p><code>-</code> 기본명령들</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run penguin</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> stop penguin</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## 이미지 </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image pull penguin </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container start penguin</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container run penguin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>-</code> Docker에서 다운로드한 이미지와 실행 중인 컨테이너를 확인하기 위한 명령어를 소개하겠습니다:</p>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run {이미지이름}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image ls {이미지이름} <span class="co"># 특정 이미지의 버전을 명시하여 해당 이미지의 정보를 확인.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image history {이미지이름} <span class="co"># 특정 이미지의 레이어별 변경 내역을 확인.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 컨테이너</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-a</span> </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> start {컨테이너이름or컨테이너ID}</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> stop {컨테이너이름or컨테이너ID}</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm {컨테이너이름or컨테이너ID} <span class="co"># 컨테이너가 중단된 상태에서 실행해야함</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container inspect {컨테이너이름or컨테이너ID} <span class="co"># 특정 컨테이너의 자세한 정보를 확인.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> logs {컨테이너이름or컨테이너ID} <span class="co"># 컨테이너의 로그를 확인.</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container stats <span class="co"># 실행 중인 컨테이너의 실시간 리소스 사용량을 모니터링.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="appendix" class="level1">
+<h1>Appendix</h1>
+<p><code>-</code> 기본적으로는 <code>docker run {옵션들} {이미지이름} {내부명령}</code>와 같은 포맷임</p>
+<p><code>-</code> <code>docker run -ti --rm r-base</code></p>
 <ol type="1">
-<li><p><strong>이미지 관련 명령어</strong>:</p>
+<li><strong>-ti</strong>: 이 옵션은 두 개의 플래그인 <code>-t</code>와 <code>-i</code>를 결합. –&gt; 터미널 쓸려면 필수임.
 <ul>
-<li><p><strong>docker images</strong>: 현재 시스템에 다운로드된 모든 도커 이미지를 확인할 수 있습니다.</p></li>
-<li><p><strong>docker image ls</strong>: “docker images”와 동일한 결과를 출력합니다.</p></li>
-<li><p><strong>docker image ls &lt;이미지_이름&gt;</strong>: 특정 이미지의 버전을 명시하여 해당 이미지의 정보를 확인할 수 있습니다.</p></li>
-<li><p><strong>docker image history &lt;이미지_이름&gt;</strong>: 특정 이미지의 레이어별 변경 내역을 확인할 수 있습니다.</p></li>
+<li><code>-t</code> (또는 <code>--tty</code>): 이 플래그는 유사 터미널을 할당하고 터미널 상호작용을 가능하게 함. 컨테이너 내부에서 터미널 환경을 사용할 수 있게 해줌.</li>
+<li><code>-i</code> (또는 <code>--interactive</code>): 이 플래그는 컨테이너와 상호작용할 수 있도록 표준 입력(STDIN)을 열어줌. 컨테이너 내부에서 입력을 주고 받을 수 있게 해줌.</li>
 </ul></li>
-<li><p><strong>컨테이너 관련 명령어</strong>:</p>
-<ul>
-<li><p><strong>docker ps</strong>: 현재 실행 중인 컨테이너의 목록을 확인합니다.</p></li>
-<li><p><strong>docker ps -a</strong>: 모든 컨테이너의 목록을 확인합니다 (실행 중인 것과 중지된 것 모두 포함).</p></li>
-<li><p><strong>docker container ls</strong>: “docker ps”와 동일한 결과를 출력합니다.</p></li>
-<li><p><strong>docker container ls -a</strong>: “docker ps -a”와 동일한 결과를 출력합니다.</p></li>
-<li><p><strong>docker container inspect &lt;컨테이너_ID 또는 이름&gt;</strong>: 특정 컨테이너의 자세한 정보를 확인할 수 있습니다.</p></li>
-<li><p><strong>docker logs &lt;컨테이너_ID 또는 이름&gt;</strong>: 컨테이너의 로그를 확인할 수 있습니다.</p></li>
-<li><p><strong>docker container stats</strong>: 실행 중인 컨테이너의 실시간 리소스 사용량을 모니터링할 수 있습니다.</p></li>
-</ul></li>
+<li><strong>–rm</strong>: 이 옵션은 컨테이너가 실행을 마칠 때 자동으로 컨테이너를 삭제.</li>
 </ol>
-<p>이 명령어들을 사용하여 이미지와 컨테이너에 대한 정보를 확인하고 관리할 수 있습니다.</p>
-<p><code>-</code> <code>docker run -ti --rm r-base</code> 명령어에서 사용된 옵션들은 다음과 같은 의미를 갖습니다:</p>
+<p><code>-</code> <code>docker run -ti --rm -v "$PWD":/home/docker -w /home/docker -u docker r-base R CMD check</code></p>
 <ol type="1">
-<li><strong>-ti</strong>: 이 옵션은 두 개의 플래그인 <code>-t</code>와 <code>-i</code>를 결합한 것입니다.
-<ul>
-<li><code>-t</code> (또는 <code>--tty</code>): 이 플래그는 유사 터미널을 할당하고 터미널 상호작용을 가능하게 합니다. 컨테이너 내부에서 터미널 환경을 사용할 수 있게 해줍니다.</li>
-<li><code>-i</code> (또는 <code>--interactive</code>): 이 플래그는 컨테이너와 상호작용할 수 있도록 표준 입력(STDIN)을 열어줍니다. 컨테이너 내부에서 입력을 주고 받을 수 있게 해줍니다.</li>
-</ul></li>
-<li><strong>–rm</strong>: 이 옵션은 컨테이너가 실행을 마칠 때 자동으로 컨테이너를 삭제합니다. 컨테이너가 종료되면 그 내용과 상태는 모두 삭제됩니다. 주로 임시 작업을 수행하는데 사용됩니다.</li>
+<li><p><strong>-ti</strong>: 이 옵션은 터미널 상호작용을 위한 옵션</p></li>
+<li><p><strong>–rm</strong>: 컨테이너가 실행을 마칠 때 자동으로 컨테이너를 삭제.</p></li>
+<li><p><strong>-v “$PWD”:/home/docker</strong>: 이 옵션은 호스트 시스템의 현재 작업 디렉토리를 컨테이너 내의 <code>/home/docker</code> 디렉토리와 공유 마운트. 이렇게 함으로써 호스트 시스템의 파일을 컨테이너 내부에서 사용할 수 있게 됨.</p></li>
+<li><p><strong>-w /home/docker</strong>: 컨테이너가 실행될 작업 디렉토리를 <code>/home/docker</code>로 설정. 즉, 컨테이너가 실행될 때 기본 디렉토리가 <code>/home/docker</code>가 된다.</p></li>
+<li><p><strong>-u docker</strong>: 이 옵션은 컨테이너 안에서 사용자를 변경하여 실행하는 것을 의미. <code>docker</code>라는 사용자로 컨테이너를 실행.</p></li>
+<li><p><strong>r-base</strong>: Docker 이미지 이름.</p></li>
+<li><p><strong>R CMD check</strong>: 실제로 실행되는 컨테이너 내부의 명령어. 이 경우 R 패키지를 체크하는 R 명령어 <code>R CMD check</code>가 실행.</p></li>
 </ol>
-<p>따라서 <code>docker run -ti --rm r-base</code> 명령어는 R 언어 기반의 컨테이너를 실행하는 명령어로, 터미널 환경을 제공하며 컨테이너가 종료될 때 컨테이너를 자동으로 삭제합니다. 이를 통해 R 언어를 실행하고 테스트하거나 실험할 수 있는 환경을 구성할 수 있습니다.</p>
-<p><code>-</code> <code>docker run -ti --rm -v "$PWD":/home/docker -w /home/docker -u docker r-base R CMD check</code> 명령어에서 사용된 각 옵션에 대한 설명은 다음과 같습니다:</p>
-<ol type="1">
-<li><p><strong>-ti</strong>: 이 옵션은 터미널 상호작용을 위한 옵션입니다. <code>-t</code>는 유사 터미널 할당을 의미하고, <code>-i</code>는 터미널 입력 상호작용을 허용하는 것을 의미합니다.</p></li>
-<li><p><strong>–rm</strong>: 컨테이너가 실행을 마칠 때 자동으로 컨테이너를 삭제합니다.</p></li>
-<li><p><strong>-v “$PWD”:/home/docker</strong>: 이 옵션은 호스트 시스템의 현재 작업 디렉토리를 컨테이너 내의 <code>/home/docker</code> 디렉토리와 공유 마운트합니다. 이렇게 함으로써 호스트 시스템의 파일을 컨테이너 내부에서 사용할 수 있게 됩니다.</p></li>
-<li><p><strong>-w /home/docker</strong>: 컨테이너가 실행될 작업 디렉토리를 <code>/home/docker</code>로 설정합니다. 즉, 컨테이너가 실행될 때 기본 디렉토리가 <code>/home/docker</code>가 됩니다.</p></li>
-<li><p><strong>-u docker</strong>: 이 옵션은 컨테이너 안에서 사용자를 변경하여 실행하는 것을 의미합니다. <code>docker</code>라는 사용자로 컨테이너를 실행하게 됩니다.</p></li>
-<li><p><strong>r-base</strong>: Docker 이미지 이름입니다. 여기서는 R 언어를 기반으로한 이미지를 사용합니다.</p></li>
-<li><p><strong>R CMD check</strong>: 실제로 실행되는 컨테이너 내부의 명령어입니다. 이 경우 R 패키지를 체크하는 R 명령어 <code>R CMD check</code>가 실행됩니다.</p></li>
-</ol>
-<p>이 명령어는 호스트 시스템의 현재 작업 디렉토리에 있는 R 패키지를 컨테이너 내부에서 <code>R CMD check</code> 명령으로 체크하고자 할 때 사용될 수 있습니다.</p>
-<p><code>-</code> “docker container start penguin”과 “docker container run penguin” 두 명령어의 차이점은 다음과 같습니다:</p>
-<ol type="1">
-<li><strong>docker container start penguin</strong>:
+<p><code>-</code> <code>run</code> vs <code>start</code></p>
 <ul>
-<li>이 명령은 이미 생성된 (stopped 또는 exited 상태의) 컨테이너를 시작시킬 때 사용됩니다.</li>
-<li>컨테이너의 상태를 변경하지 않고, 중단된 상태에서 다시 실행합니다.</li>
-<li>이미지에서 컨테이너를 생성한 후, 실행 중인 컨테이너를 중단하고 다시 시작할 때 유용합니다.</li>
-</ul></li>
-<li><strong>docker container run penguin</strong>:
-<ul>
-<li>이 명령은 도커 이미지를 기반으로 새로운 컨테이너를 생성하고 실행시킬 때 사용됩니다.</li>
-<li>이미지에서 새로운 컨테이너를 생성하고, 컨테이너를 시작합니다.</li>
-<li>이미 실행 중인 컨테이너가 아닌, 새로운 컨테이너를 생성하고 실행할 때 사용됩니다.</li>
-</ul></li>
-</ol>
-<p>요약하면, “docker container start penguin”은 이미 생성된 컨테이너를 다시 시작하고, “docker container run penguin”은 새로운 컨테이너를 생성하고 시작하는 데 사용됩니다.</p>
+<li>run: 이미지 -&gt; 컨테이너</li>
+<li>start: 중단된 컨테이너 재시작</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
