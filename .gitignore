@@ -1,5 +1,5 @@
 /.quarto/
-/_
+/.ipynb_checkpoints 
 *.csv
 *.pickle
 *.pth
