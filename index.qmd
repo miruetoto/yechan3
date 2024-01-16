@@ -28,6 +28,8 @@ This blog was created for my personal research, study and lecture preparation. T
 ## first batch
 
 - **paperswithcode**: <https://paperswithcode.com/>
+- **플루토**: <https://cotangent.dev/how-to-publish-pluto-jl-notebooks-online-interactively/>
+- **연구비**: <http://scieng.net/now/1047>
 
 ## second batch
 
