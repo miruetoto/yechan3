@@ -2,12 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
-      "/연구/규빈/2024-01-17-(연구) ggplot python.html",
-      "/연구/규빈/2024-01-17-(연구) plotly subplot.html",
-      "/연구/규빈/EBT/2024-01-16-(연구) EBT -- Elastic-band transform for visualization and detection.html",
       "/연구/보람/2024-01-18-신용카드거래 사기탐지 -- pygod 셋팅.html",
       "/자료/신용카드사기거래.html",
       "/연구/규빈/gglitely/2024-01-17-(연구) gglitely.html",
+      "/연구/규빈/EBT/2024-01-16-(연구) EBT -- Elastic-band transform for visualization and detection.html",
       "/메모/2024-01-16-(메모) 패키지개발devtools설치.html",
       "/연구/규빈/gglite/2024-01-15-gglite.html",
       "/연구/규빈/gglite/2024-01-15-(연구) gglite.html",
@@ -191,10 +189,8 @@
   {
     "listing": "/규빈.html",
     "items": [
-      "/연구/규빈/2024-01-17-(연구) plotly subplot.html",
-      "/연구/규빈/2024-01-17-(연구) ggplot python.html",
-      "/연구/규빈/EBT/2024-01-16-(연구) EBT -- Elastic-band transform for visualization and detection.html",
       "/연구/규빈/gglitely/2024-01-17-(연구) gglitely.html",
+      "/연구/규빈/EBT/2024-01-16-(연구) EBT -- Elastic-band transform for visualization and detection.html",
       "/연구/규빈/gglite/2024-01-15-gglite.html",
       "/연구/규빈/gglite/2024-01-15-(연구) gglite.html",
       "/연구/규빈/EPT_DISSIM/2023-08-18-(연구) EPT-DISSIM -- 데이터전처리.html",
