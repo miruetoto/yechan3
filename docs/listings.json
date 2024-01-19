@@ -2,13 +2,13 @@
   {
     "listing": "/index.html",
     "items": [
+      "/연구/규빈/gglitely/2024-01-19-연계.html",
+      "/연구/규빈/gglitely/2024-01-17-튜토리얼.html",
       "/연구/보람/2024-01-18-신용카드거래 사기탐지 -- pygod 셋팅.html",
       "/자료/신용카드사기거래.html",
-      "/연구/규빈/gglitely/2024-01-17-(연구) gglitely.html",
       "/연구/규빈/EBT/2024-01-16-(연구) EBT -- Elastic-band transform for visualization and detection.html",
       "/메모/2024-01-16-(메모) 패키지개발devtools설치.html",
-      "/연구/규빈/gglite/2024-01-15-gglite.html",
-      "/연구/규빈/gglite/2024-01-15-(연구) gglite.html",
+      "/연구/규빈/gglite/2024-01-15-튜토리얼.html",
       "/연구/재인/2023-12-27-(연구&재인) MBTI(정리) -- 그림정리.html",
       "/연구/재인/2023-12-23-(연구&재인) MBTI(정리) -- 실험결과 시각화.html",
       "/연구/재인/2023-12-21-(연구&재인) MBTI(정리) -- TabularPredictor 실험.html",
@@ -189,10 +189,10 @@
   {
     "listing": "/규빈.html",
     "items": [
-      "/연구/규빈/gglitely/2024-01-17-(연구) gglitely.html",
+      "/연구/규빈/gglitely/2024-01-17-튜토리얼.html",
+      "/연구/규빈/gglitely/2024-01-19-연계.html",
       "/연구/규빈/EBT/2024-01-16-(연구) EBT -- Elastic-band transform for visualization and detection.html",
-      "/연구/규빈/gglite/2024-01-15-gglite.html",
-      "/연구/규빈/gglite/2024-01-15-(연구) gglite.html",
+      "/연구/규빈/gglite/2024-01-15-튜토리얼.html",
       "/연구/규빈/EPT_DISSIM/2023-08-18-(연구) EPT-DISSIM -- 데이터전처리.html",
       "/연구/규빈/EPT_DISSIM/2023-08-08-(연구) EPT-DISSIM -- 진행사항.html",
       "/연구/규빈/EPT_DISSIM/2023-08-07-(연구) EPT-DISSIM -- PRCP_KOR 데이터정리.html"
