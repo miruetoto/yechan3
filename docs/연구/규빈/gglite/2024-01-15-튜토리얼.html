@@ -359,7 +359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Imports</h1>
 <div id="94938a73-8617-406b-a113-2cab837416e1" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">"miruetoto/gglite"</span>,<span class="at">force=</span><span class="cn">TRUE</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">"seoyeonc/gglite"</span>,<span class="at">force=</span><span class="cn">TRUE</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gglite)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -754,35 +754,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="area" class="level2">
 <h2 class="anchored" data-anchor-id="area">area</h2>
-<div id="7fb410d6-32e8-4783-81e3-bac212e83f34" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">50</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">5</span>,<span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7fb410d6-32e8-4783-81e3-bac212e83f34" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># y1 = c(10,20,10,50)</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y2 = c(15,20,5,30)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시1</p>
-<div id="35724548-5209-4175-b660-1245f290baea" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">area</span>(y1,<span class="at">fill=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>ERROR: Error in area(y1, fill = 2): unused argument (fill = 2)</code></pre>
-</div>
+<div id="35724548-5209-4175-b660-1245f290baea" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gglite() + area(y1,fill=2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="764a0de6-6596-4556-b6f4-e281331b17e2" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">area</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>ERROR: [1m[33mError[39m in `ggplot_add()`:[22m
-[1m[22m[33m![39m Can't add `area(cbind(y1, y2))` to a [34m&lt;ggplot&gt;[39m object.</code></pre>
-</div>
+<div id="764a0de6-6596-4556-b6f4-e281331b17e2" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gglite() + area(cbind(y1,y2))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step" class="level2">
 <h2 class="anchored" data-anchor-id="step">step</h2>
 <div id="c77e84be-478a-4af8-9235-20f1c9fb14f7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">=</span> <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">=</span> <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시1</p>
 <div id="8f2ff3a6-729b-48e2-a0d2-61858dbd3484" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">step</span>(y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">step</span>(y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -793,7 +786,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시2</p>
 <div id="77f2de78-f5ef-4b28-ac01-97684695a927" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">step</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">step</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -806,15 +799,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="jitter" class="level2">
 <h2 class="anchored" data-anchor-id="jitter">jitter</h2>
 <div id="2e594aad-8e46-4e4c-becd-a91fc60ded2d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>),<span class="at">size=</span><span class="dv">100</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>),<span class="at">size=</span><span class="dv">100</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="9e7f17f6-dd6a-44c8-97b6-68bb59939d63" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">point</span>(x,y)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"geom_point"</span>)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">=</span> <span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">jitter</span>(x,y,<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"geom_jitter"</span>)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">figsize</span>(<span class="dv">10</span>,<span class="dv">5</span>)</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">|</span>p2</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">point</span>(x,y)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"geom_point"</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">=</span> <span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">jitter</span>(x,y,<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"geom_jitter"</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">figsize</span>(<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">|</span>p2</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -830,12 +823,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="histogram" class="level2">
 <h2 class="anchored" data-anchor-id="histogram">histogram</h2>
 <div id="760140eb-3f37-42d5-be3d-bbdff9a74c09" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fl">0.5</span> <span class="sc">+</span> <span class="dv">3</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fl">0.5</span> <span class="sc">+</span> <span class="dv">3</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시1</p>
 <div id="682e4806-2b74-4d99-ada8-abcf4dd734c2" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">histogram</span>(<span class="fu">c</span>(y1,y2),<span class="at">fill=</span><span class="st">"gray60"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">histogram</span>(<span class="fu">c</span>(y1,y2),<span class="at">fill=</span><span class="st">"gray60"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
 “`stat(density)` was deprecated in ggplot2 3.4.0.
@@ -853,7 +846,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시2</p>
 <div id="9f4a650d-205a-4c48-9ba7-88adf972f40b" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">histogram</span>(y1,<span class="at">label=</span><span class="st">"A"</span>)<span class="sc">+</span><span class="fu">histogram</span>(y2,<span class="at">label=</span><span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">histogram</span>(y1,<span class="at">label=</span><span class="st">"A"</span>)<span class="sc">+</span><span class="fu">histogram</span>(y2,<span class="at">label=</span><span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -864,7 +857,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시3</p>
 <div id="ba306259-78a0-4c68-b542-69e4efccb1bb" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">histogram</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">histogram</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -877,12 +870,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="density" class="level2">
 <h2 class="anchored" data-anchor-id="density">density</h2>
 <div id="44886a60-b2d8-4ce7-9101-d5d41ab16694" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fl">0.5</span> <span class="sc">+</span> <span class="dv">3</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fl">0.5</span> <span class="sc">+</span> <span class="dv">3</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시1</p>
 <div id="79dadd2b-cc16-4333-98a1-fc6f04da62a5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">density</span>(<span class="fu">c</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">density</span>(<span class="fu">c</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -893,7 +886,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시2</p>
 <div id="0ead44e6-85fc-42f2-9e04-437efae63e7a" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">density</span>(y1,<span class="at">label=</span><span class="st">"A"</span>)<span class="sc">+</span><span class="fu">density</span>(y2,<span class="at">label=</span><span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">density</span>(y1,<span class="at">label=</span><span class="st">"A"</span>)<span class="sc">+</span><span class="fu">density</span>(y2,<span class="at">label=</span><span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -904,7 +897,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시3</p>
 <div id="28c700eb-e475-4c59-8707-df32ace08570" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">density</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">density</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -915,7 +908,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시4</p>
 <div id="09da88cf-4e6b-47b6-b4c2-3f35e7e98972" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">histogram</span>(<span class="fu">cbind</span>(y1,y2))<span class="sc">+</span><span class="fu">density</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">histogram</span>(<span class="fu">cbind</span>(y1,y2))<span class="sc">+</span><span class="fu">density</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -928,13 +921,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="qq" class="level2">
 <h2 class="anchored" data-anchor-id="qq">qq</h2>
 <div id="54842a73-a9d2-40ee-85fb-08ed0e6760f7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">=</span> <span class="fu">rchisq</span>(<span class="dv">100</span>,<span class="at">df=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">=</span> <span class="fu">rchisq</span>(<span class="dv">100</span>,<span class="at">df=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="997dc52f-2e37-4b8a-85f9-46f477771086" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qq</span>(y1,<span class="at">label=</span><span class="st">'y1'</span>)<span class="sc">+</span><span class="fu">qq_line</span>(y1,<span class="at">label=</span><span class="st">'y1'</span>)<span class="sc">+</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qq</span>(y2,<span class="at">label=</span><span class="st">'y2'</span>)<span class="sc">+</span><span class="fu">qq_line</span>(y2,<span class="at">label=</span><span class="st">'y2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qq</span>(y1,<span class="at">label=</span><span class="st">'y1'</span>)<span class="sc">+</span><span class="fu">qq_line</span>(y1,<span class="at">label=</span><span class="st">'y1'</span>)<span class="sc">+</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qq</span>(y2,<span class="at">label=</span><span class="st">'y2'</span>)<span class="sc">+</span><span class="fu">qq_line</span>(y2,<span class="at">label=</span><span class="st">'y2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -950,11 +943,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="col" class="level2">
 <h2 class="anchored" data-anchor-id="col">col</h2>
 <div id="c3f954dc-b82c-4c3a-bf2e-e58f8ef656d4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="dfae3345-614d-4585-a9ae-04452d7f84cf" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">col</span>(y1,<span class="at">fill=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">col</span>(y1,<span class="at">fill=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -964,7 +957,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="fb863462-6c08-4a6b-866c-a8b43df06633" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">col</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">col</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -977,12 +970,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="boxplot" class="level2">
 <h2 class="anchored" data-anchor-id="boxplot">boxplot</h2>
 <div id="29a9c5dd-5dad-4c48-ac75-6948e57011f2" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)<span class="sc">+</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)<span class="sc">+</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시1</p>
 <div id="41ebf077-cec8-4fd7-bd67-a10225bbf888" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">boxplot</span>(y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">boxplot</span>(y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -993,7 +986,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시2</p>
 <div id="42122c60-a3dc-4524-aebf-6a6d445ac870" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">boxplot</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">boxplot</span>(<span class="fu">cbind</span>(y1,y2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1004,7 +997,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시3</p>
 <div id="67cf07ff-6bfa-4dc7-98bd-69cff082b243" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">boxplot</span>(<span class="at">x=</span><span class="st">'A'</span>,y1,<span class="at">label=</span><span class="st">'A'</span>)<span class="sc">+</span><span class="fu">boxplot</span>(<span class="at">x=</span><span class="st">'B'</span>,y2,<span class="at">label=</span><span class="st">'B'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">boxplot</span>(<span class="at">x=</span><span class="st">'A'</span>,y1,<span class="at">label=</span><span class="st">'A'</span>)<span class="sc">+</span><span class="fu">boxplot</span>(<span class="at">x=</span><span class="st">'B'</span>,y2,<span class="at">label=</span><span class="st">'B'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1017,12 +1010,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="violin" class="level2">
 <h2 class="anchored" data-anchor-id="violin">violin</h2>
 <div id="c177d53f-64c0-443b-8831-63285107779c" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)<span class="sc">+</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)<span class="sc">+</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시1</p>
 <div id="3aa222a6-6ffb-4670-92ce-f1212c532412" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">violin</span>(y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">violin</span>(y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1033,7 +1026,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시2</p>
 <div id="4c0f459a-064e-48fb-bf23-bbadb154ab71" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">violin</span>(<span class="fu">cbind</span>(y1,y2), <span class="at">color =</span> <span class="st">"transparent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">violin</span>(<span class="fu">cbind</span>(y1,y2), <span class="at">color =</span> <span class="st">"transparent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1044,7 +1037,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시3</p>
 <div id="13bab637-0d91-4365-a807-48f35381109e" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">violin</span>(<span class="at">x=</span><span class="st">'A'</span>,y1,<span class="at">label=</span><span class="st">'A'</span>)<span class="sc">+</span><span class="fu">violin</span>(<span class="at">x=</span><span class="st">'B'</span>,y2,<span class="at">label=</span><span class="st">'B'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">violin</span>(<span class="at">x=</span><span class="st">'A'</span>,y1,<span class="at">label=</span><span class="st">'A'</span>)<span class="sc">+</span><span class="fu">violin</span>(<span class="at">x=</span><span class="st">'B'</span>,y2,<span class="at">label=</span><span class="st">'B'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1058,11 +1051,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="버그수정" class="level1">
 <h1>버그수정</h1>
 <div id="fdea6639-69e8-40c6-bd69-b67871cd679d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)<span class="sc">+</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>)<span class="sc">+</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="8a6e58bc-6d50-447c-b162-650f9db8bb3a" class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">line</span>(y1,<span class="at">label=</span><span class="st">'A'</span>,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">line</span>(y2,<span class="at">label=</span><span class="st">'B'</span>,<span class="at">col=</span><span class="dv">3</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">line</span>(y1,<span class="at">label=</span><span class="st">'A'</span>,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">line</span>(y2,<span class="at">label=</span><span class="st">'B'</span>,<span class="at">col=</span><span class="dv">3</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message in line(y1, label = "A", col = 2, lty = 2):
 “When the label option is used, the 'color' (or 'colour' or 'col') option will be ignored.”
@@ -1078,7 +1071,7 @@ Warning message in line(y2, label = "B", col = 3, lty = 2):
 </div>
 </div>
 <div id="b1954ebe-8756-43c8-bd15-e1822961c5ed" class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">line</span>(y1,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">1</span>)<span class="sc">+</span><span class="fu">line</span>(y2,<span class="at">col=</span><span class="dv">3</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">line</span>(y1,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">1</span>)<span class="sc">+</span><span class="fu">line</span>(y2,<span class="at">col=</span><span class="dv">3</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
