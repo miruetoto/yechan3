@@ -6,7 +6,7 @@ listing:
   type: table
   categories: false
   sort-ui: false
-  filter-ui: false
+  filter-ui: true
   page-size: 9999
 page-layout: full
 title-block-banner: false
