@@ -41,7 +41,7 @@ website:
     contents:
       - 메모.qmd
       - 공부.qmd
-      - 연구.qmd            
+      - 연구.qmd
       - 자료.qmd
 format:
   html:

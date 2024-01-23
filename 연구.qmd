@@ -2,7 +2,7 @@
 title: "연구"
 listing:
   contents: 연구
-  sort: "date desc"
+  sort: [date desc,title]
   type: table
   categories: false
   sort-ui: false
@@ -11,3 +11,5 @@ listing:
 page-layout: full
 title-block-banner: false
 ---
+
+`-` 학생들이랑: [심재인](재인.qmd), [최서연](서연.qmd), [김보람](보람.qmd)
