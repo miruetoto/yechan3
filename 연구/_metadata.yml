@@ -17,10 +17,3 @@ reference-location: margin
 citation-location: margin
 bibliography: ref.bib
 
-format:
-  html:
-    toc: true
-    code-fold: false
-    code-line-numbers: false
-    code-copy: true
-  ipynb: default

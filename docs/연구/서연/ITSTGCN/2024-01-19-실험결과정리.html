@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -238,22 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">Import</a></li>
-  <li><a href="#conditions" id="toc-conditions" class="nav-link" data-scroll-target="#conditions">Conditions</a></li>
-  <li><a href="#data-사용자정의함수" id="toc-data-사용자정의함수" class="nav-link" data-scroll-target="#data-사용자정의함수">Data &amp; 사용자정의함수</a></li>
-  <li><a href="#시각화1-missingrate-본문" id="toc-시각화1-missingrate-본문" class="nav-link" data-scroll-target="#시각화1-missingrate-본문">시각화1: MissingRate (본문)</a></li>
-  <li><a href="#시각화2-missingrate-부록" id="toc-시각화2-missingrate-부록" class="nav-link" data-scroll-target="#시각화2-missingrate-부록">시각화2: MissingRate (부록)</a></li>
-  <li><a href="#시각화3" id="toc-시각화3" class="nav-link" data-scroll-target="#시각화3">시각화3</a></li>
-  <li><a href="#시각화4" id="toc-시각화4" class="nav-link" data-scroll-target="#시각화4">시각화4</a></li>
-  <li><a href="#시각화5" id="toc-시각화5" class="nav-link" data-scroll-target="#시각화5">시각화5</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2024-01-19-실험결과정리.out.ipynb" download="2024-01-19-실험결과정리.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -1045,7 +1030,7 @@ model: ['GConvGRU', 'GConvLSTM', 'GCLSTM', 'DCRNN', 'LRGCN', 'TGCN', 'EvolveGCNO
 <span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>fig.layout[<span class="st">'title'</span>][<span class="st">'text'</span>]<span class="op">=</span><span class="st">'Chickenpox/GConvLSTM'</span></span>
 <span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_79978/3661235296.py:4: FutureWarning: The provided callable &lt;function median at 0x7f81880f2170&gt; is currently using SeriesGroupBy.median. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "median" instead.
+<pre><code>/tmp/ipykernel_81238/3661235296.py:4: FutureWarning: The provided callable &lt;function median at 0x7f67800e2170&gt; is currently using SeriesGroupBy.median. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "median" instead.
   small = big.groupby(["dataset","mrate","method"]).agg({'mse':np.median}).reset_index().rename({'mse':'mse_median'},axis=1)</code></pre>
 </div>
 <div class="cell-output cell-output-error">

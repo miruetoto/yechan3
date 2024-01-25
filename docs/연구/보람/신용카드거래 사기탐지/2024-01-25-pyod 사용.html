@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -235,19 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#imports" id="toc-imports" class="nav-link active" data-scroll-target="#imports">1. Imports</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">2. Data</a></li>
-  <li><a href="#predict-만들기" id="toc-predict-만들기" class="nav-link" data-scroll-target="#predict-만들기">3. Predict 만들기</a></li>
-  <li><a href="#학습-결과저장" id="toc-학습-결과저장" class="nav-link" data-scroll-target="#학습-결과저장">4. 학습 &amp; 결과저장</a></li>
-  <li><a href="#appendix-환경설정" id="toc-appendix-환경설정" class="nav-link" data-scroll-target="#appendix-환경설정">Appendix: 환경설정</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2024-01-25-pyod 사용.out.ipynb" download="2024-01-25-pyod 사용.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -345,8 +333,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>XX <span class="op">=</span> pd.DataFrame({<span class="st">'amt'</span>:[<span class="fl">3500.0</span>,<span class="fl">1.5</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="predict-만들기" class="level1">
-<h1>3. Predict 만들기</h1>
+<section id="predictor-만들기" class="level1">
+<h1>3. Predictor 만들기</h1>
 <p><code>-</code> 1인것의 비율을 계산해서 fraud_ratio를 설정해야함. (즉 사기거래 비율)</p>
 <div id="3b0311e3-f6b6-4c3b-b077-762cc3870f05" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fraud_ratio <span class="op">=</span> <span class="fl">0.33</span></span>
