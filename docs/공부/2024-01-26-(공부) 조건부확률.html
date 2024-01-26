@@ -223,8 +223,15 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2024-01-26-(공부) 조건부확률.out.ipynb" download="2024-01-26-(공부) 조건부확률.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#학부수준의-정리" id="toc-학부수준의-정리" class="nav-link active" data-scroll-target="#학부수준의-정리">1. 학부수준의 정리</a></li>
+  <li><a href="#대학원수준의-정리" id="toc-대학원수준의-정리" class="nav-link" data-scroll-target="#대학원수준의-정리">2. 대학원수준의 정리</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2024-01-26-(공부) 조건부확률.out.ipynb" download="2024-01-26-(공부) 조건부확률.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
@@ -259,6 +266,66 @@ div.csl-indent {
 </header>
 
 
+<section id="학부수준의-정리" class="level1 page-columns page-full">
+<h1>1. 학부수준의 정리</h1>
+<p><code># 정의</code> – 조건부확률(이산형)</p>
+<p><span class="math display">\[P(Y=y|X=x):=\frac{P(X=x,Y=y)}{P(X=x)}\]</span></p>
+<p><code>#</code></p>
+<p><code># 정의</code> – 조건부pdf(이산형,연속형)</p>
+<p><span class="math display">\[f_{2|1}(y|x):=\frac{f_{1,2}(x,y)}{f_1(x)}\]</span></p>
+<p><code>#</code></p>
+<p><code>-</code> 함수 <span class="math inline">\(f_{2|1}(y|x)\)</span> 와 <span class="math inline">\(f_{2}(y)\)</span>는 모두 확률변수 <span class="math inline">\(Y\)</span>의 pdf 조건을 만족한다는 것을 주의하자. 즉 아래가 성립한다.</p>
+<ul>
+<li><span class="math inline">\(\int_{-\infty}^{\infty} f_{2}(y)dy=1\)</span></li>
+<li><span class="math inline">\(\int_{-\infty}^{\infty} f_{2|1}(y|x)dy=1\)</span></li>
+</ul>
+<p><code># 정의</code> – 조건부평균(연속형)</p>
+<p><span class="math display">\[E(Y|X=x):=\int y f_{2|1}(y|x)dy \]</span></p>
+<p><code>#</code></p>
+<p><code># 정의할 수 없음</code> – <span class="math inline">\(E(Y|X)\)</span></p>
+<p>학부수준에서는 엄밀하게 정의할수는 없으며, 개념적으로 접근한다.</p>
+<ol type="1">
+<li><span class="math inline">\(E(Y|X=x)\)</span>는 <span class="math inline">\(x\)</span>의 값에 따라서 그 값이 바뀌는 함수로 해석할 수 있다.</li>
+<li>1을 다시 표현하면 <span class="math inline">\(h(x):=E(Y|X=x)\)</span>를 만족하는 적당한 <span class="math inline">\(h\)</span>가 있다는 의미.</li>
+<li>2번에서 정의된 <span class="math inline">\(h\)</span>에 입력을 <span class="math inline">\(x\)</span>가 아니라 <span class="math inline">\(X\)</span>로 준다면 <span class="math inline">\(h(X)\)</span>와 같은 확률 변수를 생각할 수 있음. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>3번과 같은 확률변수를 <span class="math inline">\(E(Y|X)\)</span>로 정의하자는 의미</li>
+</ol>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<span class="math inline">\(X\)</span>가 확률변수이면 <span class="math inline">\(f(X)\)</span>역시 확률변수라고 배웠으니까</p></li></div><p>학부수준에서는 이정도가 설명의 끝이며 <span class="math inline">\(E(Y|X)\)</span>를 수식으로 명확하게 정의하진 않는다.</p>
+<p><code>#</code></p>
+<p><code># 정의할 수 없음</code> – <span class="math inline">\(V(Y|X)\)</span></p>
+<p><span class="math inline">\(E(Y|X)\)</span>와 비슷한 방식으로 피해서 정의한다.</p>
+<p><code>#</code></p>
+<p><code># 예제</code> – <span class="math inline">\(E[E[Y|X]]=E(Y)\)</span> 의 증명 (<span class="math inline">\(\star\)</span>)</p>
+<p>(풀이)</p>
+<p>헷갈리니까 아래와 같이 치환한다.</p>
+<ul>
+<li><span class="math inline">\(E[Y|X]=h(X)\)</span></li>
+<li><span class="math inline">\(E[Y|X=x]=h(x)\)</span></li>
+</ul>
+<p>그러면 좌변은 아래와 같이 된다.</p>
+<ul>
+<li><span class="math inline">\(E[h(X)]=\int h(x) f_1(x)dx = \int E(Y|X=x) f_1(x)dx\)</span></li>
+</ul>
+<p>그런데 <span class="math inline">\(E(Y|X=x)\)</span>는 조건부확률의 정의에 의하여 <span class="math inline">\(E(Y|X=x)=\int y f_{2|1}(y|x)dy\)</span> 이다. 이걸 그대로 넣으면</p>
+<ul>
+<li><span class="math inline">\(\int E(Y|X=x) f_1(x)dx=\int \int y f_{2|1}(y|x)dy f_1(x)dx=\int \int y f_{2|1}(y|x)f_1(x)dydx\)</span></li>
+</ul>
+<p>이제 조건부 pdf의 정의를 쓰면 <span class="math inline">\(f_{2|1}(y|x)f_1(x)=f_{1,2}(x,y)\)</span>가 된다. 따라서</p>
+<ul>
+<li><span class="math inline">\(\int \int y f_{2|1}(y|x)f_1(x)dydx=\int\int y f_{1,2}(x,y)dydx\)</span></li>
+</ul>
+<p>푸비니의 정리를 쓰면</p>
+<ul>
+<li><span class="math inline">\(\int\int y f_{1,2}(x,y)dydx=\int\int y f_{1,2}(x,y)dxdy\)</span></li>
+</ul>
+<p><span class="math inline">\(y\)</span>를 밖으로 빼고 marginal pdf의 정의<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>를 이용하면</p>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<span class="math inline">\(\int f_{1,2}(x,y)dx = f_2(y)\)</span></p></li></div><ul>
+<li><span class="math inline">\(\int\int y f_{1,2}(x,y)dxdy=\int y\int f_{1,2}(x,y)dxdy=\int y f_2(y)dy = E(y)\)</span></li>
+</ul>
+<p>그래서 증명이 되었음.</p>
+</section>
+<section id="대학원수준의-정리" class="level1 page-columns page-full">
+<h1>2. 대학원수준의 정리</h1>
 <p><code># 예제</code> - 주사위던지기</p>
 <p><code>-</code> 아래와 같은 상황을 가정하자.</p>
 <ul>
@@ -288,9 +355,9 @@ div.csl-indent {
 </ul>
 <p>그리고 <span class="math inline">\(B_1\)</span>, <span class="math inline">\(B_2\)</span>를 measurable하게 만드는 새로운 시그마필드 <span class="math inline">\({\cal F}^*=\sigma(B_1,B_2)\)</span>를 아래와 같이 정의하자.</p>
 <ul>
-<li><span class="math inline">\({\cal F}^* = \{\emptyset, B_1, B_2, \Omega\}\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li><span class="math inline">\({\cal F}^* = \{\emptyset, B_1, B_2, \Omega\}\)</span><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
 </ul>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;당연히 <span class="math inline">\({\cal F}^* \subset {\cal F}\)</span></p></li></div><p>이제 아래와 같은 <span class="math inline">\(Y: \Omega\to\mathbb{R}\)</span>를 고려하자.</p>
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;당연히 <span class="math inline">\({\cal F}^* \subset {\cal F}\)</span></p></li></div><p>이제 아래와 같은 <span class="math inline">\(Y: \Omega\to\mathbb{R}\)</span>를 고려하자.</p>
 <ul>
 <li><span class="math inline">\(Y(\{1\}) = 1.5\)</span></li>
 <li><span class="math inline">\(Y(\{2\}) = 1.5\)</span></li>
@@ -306,19 +373,71 @@ div.csl-indent {
 <li><span class="math inline">\(Y\)</span> is r.v. on <span class="math inline">\((\Omega, {\cal F}^*)\)</span></li>
 <li><span class="math inline">\(Y \in {\cal F}^*\)</span></li>
 </ul>
-<p>이다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;이렇게 보니까 <span class="math inline">\({\cal F}^* \subset {\cal F}\)</span> 임을 감안하면 <span class="math inline">\(Y \in {\cal F}^* \Rightarrow Y \in {\cal F}\)</span> 임이 당연하게 느껴진다. <span class="math inline">\(Y \in {\cal F}\)</span>와 같은 기호표현이 너무 이상하게 느껴졌는데, 여기에서 의문이 조금 풀리는 것 같음.</p></li></div><p>또 <span class="math inline">\(Y\)</span>는 아래와 같은 특징이 있다.</p>
+<p>이다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;이렇게 보니까 <span class="math inline">\({\cal F}^* \subset {\cal F}\)</span> 임을 감안하면 <span class="math inline">\(Y \in {\cal F}^* \Rightarrow Y \in {\cal F}\)</span> 임이 당연하게 느껴진다. <span class="math inline">\(Y \in {\cal F}\)</span>와 같은 기호표현이 너무 이상하게 느껴졌는데, 여기에서 의문이 조금 풀리는 것 같음.</p></li></div><p>또 <span class="math inline">\(Y\)</span>는 아래와 같은 특징이 있다.</p>
 <ul>
-<li><span class="math inline">\(\forall A \in {\cal F}:~\int_A X dP = \int_A Y dP.\)</span><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li><span class="math inline">\(\forall A \in {\cal F}^*:~\int_A X dP = \int_A Y dP.\)</span></li>
 </ul>
-<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;좌변은 <span class="math inline">\(\frac{1+2+3+4+5+6}{6}\)</span> 이고 우변은 <span class="math inline">\(\frac{1.5+1.5+4.5+4.5+4.5+4.5}{6}\)</span></p></li><li id="fn4"><p><sup>4</sup>&nbsp;조건부기대값이라고 번역하기는 조금 어색해서 원문그대로 외우는게 나은듯</p></li></div><p>이러한 조건을 만족하는 확률변수 <span class="math inline">\(Y\)</span>를 conditional expectation of <span class="math inline">\(X\)</span> given <span class="math inline">\({\cal F}^*\)</span>이라고 한다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>이것을 조금만 따져보자. <span class="math inline">\(\int_A X dP = \int_\Omega X \mathbb{1}_A dP\)</span> 임을 이용하면,</p>
+<ul>
+<li>case1: <span class="math inline">\(A = \emptyset \Rightarrow 0=0\)</span>:</li>
+<li>case2: <span class="math inline">\(A = B_1 \Rightarrow \frac{1+2+0+0+0+0}{6}=\frac{1.5+1.5+0+0+0+0}{6}\)</span></li>
+<li>case3: <span class="math inline">\(A = B_2 \Rightarrow \frac{0+0+3+4+5+6}{6}=\frac{0+0+4.5+4.5+4.5+4.5}{6}\)</span></li>
+<li>case4: <span class="math inline">\(A = B_1 \Rightarrow \frac{1+2+3+4+5+6}{6}=\frac{1.5+1.5+4.5+4.5+4.5+4.5}{6}\)</span></li>
+</ul>
+<p>이다.</p>
+<p><code>-</code> 이러한 조건을 만족하는 확률변수 <span class="math inline">\(Y\)</span>를 conditional expectation of <span class="math inline">\(X\)</span> given <span class="math inline">\({\cal F}^*\)</span>이라고 한다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;조건부기대값이라고 번역하기는 조금 어색해서 원문그대로 외우는게 나은듯</p></li></div><p><code>#</code></p>
+<p><code># 정의</code> – <span class="citation" data-cites="klenke2013probability">(<a href="#ref-klenke2013probability" role="doc-biblioref">Klenke 2013</a>, Def 8.11)</span> <span class="math inline">\(X \in {\cal L}^1(\Omega, {\cal F}, P)\)</span> 이라고 하자. <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> 그리고 <span class="math inline">\({\cal F}^*\)</span>는</p>
+<div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;<span class="math inline">\(X\)</span>가 <span class="math inline">\((\Omega, {\cal F})\)</span>에서의 rv이고 <span class="math inline">\(\int_P XdP &lt;\infty\)</span> 라는 의미</p></li></div><ul>
+<li><span class="math inline">\({\cal F}^* \subset {\cal F}\)</span></li>
+</ul>
+<p>을 만족하는 <span class="math inline">\(\Omega\)</span>에서의 시그마필드라고 하자. 확률변수 <span class="math inline">\(Y\)</span> 가 아래를 만족한다고 하자.</p>
+<ol type="1">
+<li><span class="math inline">\(Y \in {\cal F}^*\)</span></li>
+<li><span class="math inline">\(\forall A \in {\cal F}^*:~ \int_A X dP = \int_A Y dP\)</span></li>
+</ol>
+<p>그러면 <span class="math inline">\(Y\)</span>는 conditional expectation of <span class="math inline">\(X\)</span> given <span class="math inline">\({\cal F}^*\)</span>라고 하고 기호로는</p>
+<p><span class="math display">\[Y:=\mathbb{E}[X|{\cal F}^*]\]</span></p>
+<p>로 표현한다.</p>
 <p><code>#</code></p>
-<p><code># 정의</code> – <span class="citation" data-cites="klenke2013probability">(<a href="#ref-klenke2013probability" role="doc-biblioref">Klenke 2013</a>, Def 8.11)</span></p>
-
-
+<p><code>-</code> <span class="math inline">\(Y\)</span>는 <span class="math inline">\((\Omega,{\cal F}^*)\)</span>에서의 확률변수이기도 하지만 일단 <span class="math inline">\(Y \in (\Omega, {\cal F})\)</span> 이기도 하다. 가측공간 <span class="math inline">\((\Omega,{\cal F}^*)\)</span> 에서는 적절한 확률측도를 정의한적이 없지만 <span class="math inline">\((\Omega,{\cal F})\)</span> 에서는 확률측도 <span class="math inline">\(P\)</span>가 이미 정의되어 있다. 이를 이용하여 아래를 계산해보자.</p>
+<ul>
+<li><span class="math inline">\(\mathbb{E}[Y]=\int Y dP\)</span></li>
+</ul>
+<p>이것을 정리하면</p>
+<ul>
+<li><span class="math inline">\(\frac{1.5+1.5+4.5+4.5+4.5+4.5}{6}\)</span></li>
+</ul>
+<p>가 되어서 <span class="math inline">\(\mathbb{E}[X]\)</span>와 같다. 따라서</p>
+<ul>
+<li><span class="math inline">\(\mathbb{E}[X] = \mathbb{E}[\mathbb{E}[X|{\cal F}^*]]\)</span></li>
+</ul>
+<p>이다. 여기에서 <span class="math inline">\(\mathbb{E}[X|{\cal F}^*]\)</span>은 일단 그 자체로 하나의 기호라 생각하자.</p>
+<p><code># Thm</code> – <span class="citation" data-cites="klenke2013probability">(<a href="#ref-klenke2013probability" role="doc-biblioref">Klenke 2013</a>, Thm 8.12)</span> <span class="math inline">\(X \in {\cal L}^1(\Omega, {\cal F}, P)\)</span> 이라고 하자. <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> 그리고 <span class="math inline">\({\cal F}^*\)</span>는</p>
+<div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;<span class="math inline">\(X\)</span>가 <span class="math inline">\((\Omega, {\cal F})\)</span>에서의 rv이고 <span class="math inline">\(\int_P XdP &lt;\infty\)</span> 라는 의미</p></li></div><ul>
+<li><span class="math inline">\({\cal F}^* \subset {\cal F}\)</span></li>
+</ul>
+<p>을 만족하는 <span class="math inline">\(\Omega\)</span>에서의 시그마필드라고 하자. 아래를 만족하는 확률변수 <span class="math inline">\(Y\)</span>는 (<span class="math inline">\(P\)</span>에 대하여) 거의 유일하게 존재한다.</p>
+<ol type="1">
+<li><span class="math inline">\(Y \in {\cal F}^*\)</span></li>
+<li><span class="math inline">\(\forall A \in {\cal F}^*:~ \int_A X dP = \int_A Y dP\)</span></li>
+</ol>
+<p><code>#</code></p>
+<p><code># 정의</code> – <span class="citation" data-cites="klenke2013probability">(<a href="#ref-klenke2013probability" role="doc-biblioref">Klenke 2013</a>, Def 8.13)</span> 아래와 같은 두 확률변수를 정의하자.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-klenke2013probability" class="csl-entry" role="listitem">
 Klenke, Achim. 2013. <em>Probability Theory: A Comprehensive Course</em>. Springer Science &amp; Business Media.
-</div></div>
+</div></div><ul>
+<li><span class="math inline">\(X\)</span> is rv on <span class="math inline">\((\Omega, {\cal F})\)</span> with <span class="math inline">\(\int X dP &lt;\infty\)</span>.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
+<li><span class="math inline">\(Y\)</span> is rv on <span class="math inline">\((\Omega, {\cal F})\)</span>.</li>
+</ul>
+<div class="no-row-height column-margin column-container"><li id="fn8"><p><sup>8</sup>&nbsp;<span class="math inline">\(X \in {\cal L}^1(\Omega, {\cal F}, P)\)</span> 이라는 의미</p></li></div><p>아래를 정의하자.</p>
+<p><span class="math display">\[\mathbb{E}[X|Y]:=\mathbb{E}[X|\sigma(Y)].\]</span></p>
+<p><code>#</code></p>
+
+
+
+</section>
 
 
 </main> <!-- /main -->
