@@ -14,14 +14,4 @@ comments:
 
 bibliography: ref.bib
 format:
-  html:
-    theme: cosmo
-    toc: true
-    code-fold: false
-    code-line-numbers: true
-    code-copy: true
-  ipynb: default    
-notebook-links: true
-cap-location: bottom
-reference-location: margin
-citation-location: margin
+  ipynb: default

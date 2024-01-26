@@ -3,7 +3,7 @@
 # freeze computational output
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
 execute:
-  freeze: true  # re-render only when source changes
+  freeze: auto  # re-render only when source changes
 
 # Enable banner style title blocks
 title-block-banner: false
@@ -14,14 +14,4 @@ comments:
 
 bibliography: ref.bib
 format:
-  html:
-    theme: cosmo
-    toc: true
-    code-fold: false
-    code-line-numbers: true
-    code-copy: true
-  ipynb: default    
-notebook-links: true
-cap-location: bottom
-reference-location: margin
-citation-location: margin
+  ipynb: default
