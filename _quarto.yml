@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: docs
+  execute-dir: project
 
 website:
   title: "신록예찬's Blog"
@@ -46,14 +47,3 @@ website:
 format:
   html:
     theme: cosmo
-    css: styles.css
-    toc: true
-    code-fold: false
-    code-line-numbers: true
-    code-copy: true
-  #ipynb: default    
-
-#notebook-links: true
-cap-location: bottom
-reference-location: margin
-citation-location: margin
