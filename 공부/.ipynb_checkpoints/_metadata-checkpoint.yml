@@ -12,7 +12,6 @@ comments:
   utterances: 
     repo: miruetoto/yechan3
 
-notebook-links: true
-reference-location: margin
-citation-location: margin
 bibliography: ref.bib
+format:
+  ipynb: default    
