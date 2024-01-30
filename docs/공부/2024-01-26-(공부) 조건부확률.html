@@ -283,35 +283,35 @@ div.csl-indent {
 <li><span class="math inline">\(\int_{-\infty}^{\infty} f_{2|1}(y|x)dy=1\)</span></li>
 </ul>
 <p><code># 정의</code> – 조건부평균(연속형)</p>
-<p><span class="math display">\[E(Y|X=x):=\int y f_{2|1}(y|x)dy \]</span></p>
+<p><span class="math display">\[\mathbb{E}[Y|X=x]:=\int y f_{2|1}(y|x)dy \]</span></p>
 <p><code>#</code></p>
-<p><code># 정의할 수 없음</code> – <span class="math inline">\(E(Y|X)\)</span></p>
+<p><code># 정의할 수 없음</code> – <span class="math inline">\(\mathbb{E}(Y|X)\)</span></p>
 <p>학부수준에서는 엄밀하게 정의할수는 없으며, 개념적으로 접근한다.</p>
 <ol type="1">
-<li><span class="math inline">\(E(Y|X=x)\)</span>는 <span class="math inline">\(x\)</span>의 값에 따라서 그 값이 바뀌는 함수로 해석할 수 있다.</li>
-<li>1을 다시 표현하면 <span class="math inline">\(h(x):=E(Y|X=x)\)</span>를 만족하는 적당한 <span class="math inline">\(h\)</span>가 있다는 의미.</li>
+<li><span class="math inline">\(\mathbb{E}(Y|X=x)\)</span>는 <span class="math inline">\(x\)</span>의 값에 따라서 그 값이 바뀌는 함수로 해석할 수 있다.</li>
+<li>1을 다시 표현하면 <span class="math inline">\(h(x):=\mathbb{E}(Y|X=x)\)</span>를 만족하는 적당한 <span class="math inline">\(h\)</span>가 있다는 의미.</li>
 <li>2번에서 정의된 <span class="math inline">\(h\)</span>에 입력을 <span class="math inline">\(x\)</span>가 아니라 <span class="math inline">\(X\)</span>로 준다면 <span class="math inline">\(h(X)\)</span>와 같은 확률 변수를 생각할 수 있음. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-<li>3번과 같은 확률변수를 <span class="math inline">\(E(Y|X)\)</span>로 정의하자는 의미</li>
+<li>3번과 같은 확률변수를 <span class="math inline">\(\mathbb{E}(Y|X)\)</span>로 정의하자는 의미</li>
 </ol>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<span class="math inline">\(X\)</span>가 확률변수이면 <span class="math inline">\(f(X)\)</span>역시 확률변수라고 배웠으니까</p></li></div><p>학부수준에서는 이정도가 설명의 끝이며 <span class="math inline">\(E(Y|X)\)</span>를 수식으로 명확하게 정의하진 않는다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<span class="math inline">\(X\)</span>가 확률변수이면 <span class="math inline">\(f(X)\)</span>역시 확률변수라고 배웠으니까</p></li></div><p>학부수준에서는 이정도가 설명의 끝이며 <span class="math inline">\(\mathbb{E}(Y|X)\)</span>를 수식으로 명확하게 정의하진 않는다.</p>
 <p><code>#</code></p>
-<p><code># 정의할 수 없음</code> – <span class="math inline">\(V(Y|X)\)</span></p>
-<p><span class="math inline">\(E(Y|X)\)</span>와 비슷한 방식으로 피해서 정의한다.</p>
+<p><code># 정의할 수 없음</code> – <span class="math inline">\(\mathbb{V}(Y|X)\)</span></p>
+<p><span class="math inline">\(\mathbb{E}(Y|X)\)</span>와 비슷한 방식으로 피해서 정의한다.</p>
 <p><code>#</code></p>
-<p><code># 예제</code> – <span class="math inline">\(E[E[Y|X]]=E(Y)\)</span> 의 증명 (<span class="math inline">\(\star\)</span>)</p>
+<p><code># 예제</code> – <span class="math inline">\(\mathbb{E}[\mathbb{E}[Y|X]]=\mathbb{E}[Y]\)</span> 의 증명 (<span class="math inline">\(\star\)</span>)</p>
 <p>(풀이)</p>
 <p>헷갈리니까 아래와 같이 치환한다.</p>
 <ul>
-<li><span class="math inline">\(E[Y|X]=h(X)\)</span></li>
-<li><span class="math inline">\(E[Y|X=x]=h(x)\)</span></li>
+<li><span class="math inline">\(\mathbb{E}[Y|X]=h(X)\)</span></li>
+<li><span class="math inline">\(\mathbb{E}[Y|X=x]=h(x)\)</span></li>
 </ul>
 <p>그러면 좌변은 아래와 같이 된다.</p>
 <ul>
-<li><span class="math inline">\(E[h(X)]=\int h(x) f_1(x)dx = \int E(Y|X=x) f_1(x)dx\)</span></li>
+<li><span class="math inline">\(\mathbb{E}[h(X)]=\int h(x) f_1(x)dx = \int \mathbb{E}[Y|X=x] f_1(x)dx\)</span></li>
 </ul>
-<p>그런데 <span class="math inline">\(E(Y|X=x)\)</span>는 조건부확률의 정의에 의하여 <span class="math inline">\(E(Y|X=x)=\int y f_{2|1}(y|x)dy\)</span> 이다. 이걸 그대로 넣으면</p>
+<p>그런데 <span class="math inline">\(\mathbb{E}[Y|X=x]\)</span>는 조건부확률의 정의에 의하여 <span class="math inline">\(\mathbb{E}[Y|X=x]=\int y f_{2|1}(y|x)dy\)</span> 이다. 이걸 그대로 넣으면</p>
 <ul>
-<li><span class="math inline">\(\int E(Y|X=x) f_1(x)dx=\int \int y f_{2|1}(y|x)dy f_1(x)dx=\int \int y f_{2|1}(y|x)f_1(x)dydx\)</span></li>
+<li><span class="math inline">\(\int \mathbb{E}[Y|X=x] f_1(x)dx=\int \int y f_{2|1}(y|x)dy f_1(x)dx=\int \int y f_{2|1}(y|x)f_1(x)dydx\)</span></li>
 </ul>
 <p>이제 조건부 pdf의 정의를 쓰면 <span class="math inline">\(f_{2|1}(y|x)f_1(x)=f_{1,2}(x,y)\)</span>가 된다. 따라서</p>
 <ul>
@@ -323,7 +323,7 @@ div.csl-indent {
 </ul>
 <p><span class="math inline">\(y\)</span>를 밖으로 빼고 marginal pdf의 정의<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>를 이용하면</p>
 <div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<span class="math inline">\(\int f_{1,2}(x,y)dx = f_2(y)\)</span></p></li></div><ul>
-<li><span class="math inline">\(\int\int y f_{1,2}(x,y)dxdy=\int y\int f_{1,2}(x,y)dxdy=\int y f_2(y)dy = E(y)\)</span></li>
+<li><span class="math inline">\(\int\int y f_{1,2}(x,y)dxdy=\int y\int f_{1,2}(x,y)dxdy=\int y f_2(y)dy = \mathbb{E}[y]\)</span></li>
 </ul>
 <p>그래서 증명이 되었음.</p>
 </section>
@@ -386,7 +386,7 @@ div.csl-indent {
 <li>case1: <span class="math inline">\(A = \emptyset \Rightarrow 0=0\)</span>:</li>
 <li>case2: <span class="math inline">\(A = B_1 \Rightarrow \frac{1+2+0+0+0+0}{6}=\frac{1.5+1.5+0+0+0+0}{6}\)</span></li>
 <li>case3: <span class="math inline">\(A = B_2 \Rightarrow \frac{0+0+3+4+5+6}{6}=\frac{0+0+4.5+4.5+4.5+4.5}{6}\)</span></li>
-<li>case4: <span class="math inline">\(A = B_1 \Rightarrow \frac{1+2+3+4+5+6}{6}=\frac{1.5+1.5+4.5+4.5+4.5+4.5}{6}\)</span></li>
+<li>case4: <span class="math inline">\(A = \Omega \Rightarrow \frac{1+2+3+4+5+6}{6}=\frac{1.5+1.5+4.5+4.5+4.5+4.5}{6}\)</span></li>
 </ul>
 <p>이다.</p>
 <p><code>-</code> 이러한 조건을 만족하는 확률변수 <span class="math inline">\(Y\)</span>를 conditional expectation of <span class="math inline">\(X\)</span> given <span class="math inline">\({\cal F}^*\)</span>이라고 한다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
