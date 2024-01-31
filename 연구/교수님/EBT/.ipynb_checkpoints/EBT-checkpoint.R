@@ -1,5 +1,5 @@
 source("utils.R")
-ebt<-function(f,t=0,noise=0,tau,M="mean",V="var",interpolation="linear",bound="fix",sampling="equalspace")
+ebt<-function(f,t=0,noise=0,tau,M="mean",V="var",interpolation="linear",bound="fix",sampling="equally_spaced")
 {
   fsave<-f
   tsave<-t+(length(t)==1)*1:length(f)
@@ -21,8 +21,8 @@ ebt<-function(f,t=0,noise=0,tau,M="mean",V="var",interpolation="linear",bound="f
   if (interpolation=="cubic")
   {
     for (eta in 1:tau){
-      if (sampling=="random") sampled_index[[eta]]<-sort(sample(1:len,1/tau*1000,replace=F))
-      else if(sampling=="equalspace") sampled_index[[eta]]<-seq(from=eta,to=len,by=tau)
+      if (sampling=="randomly") sampled_index[[eta]]<-sort(sample(1:len,1/tau*1000,replace=F))
+      else if(sampling=="equally_spaced") sampled_index[[eta]]<-seq(from=eta,to=len,by=tau)
       if (sampled_index[[eta]][1]!=1) sampled_index[[eta]]=c(1,sampled_index[[eta]])
       if (sampled_index[[eta]][length(sampled_index[[eta]])]!=len) sampled_index[[eta]]=c(sampled_index[[eta]],len)
       missing_index[[eta]]<-(1:len)[-sampled_index[[eta]]]
@@ -32,8 +32,8 @@ ebt<-function(f,t=0,noise=0,tau,M="mean",V="var",interpolation="linear",bound="f
     }
   }else if (interpolation=="linear"){
     for (eta in 1:tau){
-      if (sampling=="random") sampled_index[[eta]]<-sort(sample(1:len,1/tau*1000,replace=F))
-      else if(sampling=="equalspace") sampled_index[[eta]]<-seq(from=eta,to=len,by=tau)
+      if (sampling=="randomly") sampled_index[[eta]]<-sort(sample(1:len,1/tau*1000,replace=F))
+      else if(sampling=="equally_spaced") sampled_index[[eta]]<-seq(from=eta,to=len,by=tau)
       if (sampled_index[[eta]][1]!=1) sampled_index[[eta]]<-c(1,sampled_index[[eta]])
       if (sampled_index[[eta]][length(sampled_index[[eta]])]!=len) sampled_index[[eta]]<-c(sampled_index[[eta]],len)
       missing_index[[eta]]<-(1:len)[-sampled_index[[eta]]]
@@ -41,13 +41,13 @@ ebt<-function(f,t=0,noise=0,tau,M="mean",V="var",interpolation="linear",bound="f
     }
   }else if (interpolation=="const"){
     for (eta in 1:tau){
-      if (sampling=="random") sampled_index[[eta]]<-sort(sample(1:len,1/tau*1000,replace=F))
-      else if(sampling=="equalspace") sampled_index[[eta]]<-seq(from=eta,to=len,by=tau)
+      if (sampling=="randomly") sampled_index[[eta]]<-sort(sample(1:len,1/tau*1000,replace=F))
+      else if(sampling=="equally_spaced") sampled_index[[eta]]<-seq(from=eta,to=len,by=tau)
       if (sampled_index[[eta]][1]!=1) sampled_index[[eta]]=c(1,sampled_index[[eta]])
       if (sampled_index[[eta]][length(sampled_index[[eta]])]!=len) sampled_index[[eta]]=c(sampled_index[[eta]],len)
       missing_index[[eta]]<-(1:len)[-sampled_index[[eta]]]
-      lband[,eta]<-left_const(f+noise,missing_index[[eta]])
-      rband[,eta]<-right_const(f+noise,missing_index[[eta]])
+      lband[,eta]<- .left_const(f+noise,missing_index[[eta]])
+      rband[,eta]<- .right_const(f+noise,missing_index[[eta]])
     }
     band<-cbind(lband,rband)
   }
