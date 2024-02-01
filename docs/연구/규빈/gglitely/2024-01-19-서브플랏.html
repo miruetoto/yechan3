@@ -289,8 +289,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Uninstalling gglitely-0.0.1:
   Successfully uninstalled gglitely-0.0.1
 Collecting git+https://github.com/seoyeonc/gglitely.git
-  Cloning https://github.com/seoyeonc/gglitely.git to /tmp/pip-req-build-hgc3dwg7
-  Running command git clone --filter=blob:none --quiet https://github.com/seoyeonc/gglitely.git /tmp/pip-req-build-hgc3dwg7
+  Cloning https://github.com/seoyeonc/gglitely.git to /tmp/pip-req-build-n691tk15
+  Running command git clone --filter=blob:none --quiet https://github.com/seoyeonc/gglitely.git /tmp/pip-req-build-n691tk15
   Resolved https://github.com/seoyeonc/gglitely.git to commit 86f5c00a4a8e40a05e5fdaa927296f50ff290b24
   Preparing metadata (setup.py) ... - done
 Requirement already satisfied: pandas in /home/cgb2/anaconda3/envs/r/lib/python3.10/site-packages (from gglitely==0.0.1) (2.2.0)
@@ -301,8 +301,8 @@ Requirement already satisfied: tzdata&gt;=2022.7 in /home/cgb2/anaconda3/envs/r/
 Requirement already satisfied: six&gt;=1.5 in /home/cgb2/anaconda3/envs/r/lib/python3.10/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas-&gt;gglitely==0.0.1) (1.16.0)
 Building wheels for collected packages: gglitely
   Building wheel for gglitely (setup.py) ... - done
-  Created wheel for gglitely: filename=gglitely-0.0.1-py3-none-any.whl size=2472 sha256=5cd6cd10cec3c19403fefb1799a3f7d08bcc7778575731486fe1d4d379853c49
-  Stored in directory: /tmp/pip-ephem-wheel-cache-f39mdpqo/wheels/f0/e1/5a/6fda263e62a9f55a7a6c1fde013cff6808c5bd090fa3ec9d7f
+  Created wheel for gglitely: filename=gglitely-0.0.1-py3-none-any.whl size=2472 sha256=b60cfc8831c807801b29add05285ca47f27a7866f7847c8011ca969c373c7ce6
+  Stored in directory: /tmp/pip-ephem-wheel-cache-x40n6gfv/wheels/f0/e1/5a/6fda263e62a9f55a7a6c1fde013cff6808c5bd090fa3ec9d7f
 Successfully built gglitely
 Installing collected packages: gglitely
 Successfully installed gglitely-0.0.1</code></pre>
@@ -313,104 +313,98 @@ Successfully installed gglitely-0.0.1</code></pre>
 <h1>Imports</h1>
 <div id="cdf71d15-d794-47e5-8d40-24abe2bf5ad9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> gglitely <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>ModuleNotFoundError: No module named 'matplotlib'</code></pre>
-</div>
 </div>
 <div id="b1c02072-957a-4426-90fe-87a44295cb69" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>subplot_count <span class="op">=</span> <span class="kw">lambda</span> fig: <span class="bu">len</span>({geom[key] <span class="cf">for</span> geom <span class="kw">in</span> fig.data <span class="cf">for</span> key <span class="kw">in</span> geom <span class="cf">if</span> <span class="st">'xaxis'</span> <span class="kw">in</span> key})</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">def</span> trace_axes_adjustment(fig1, fig2):</span>
-<span id="cb5-3"><a href="#cb5-3"></a>    x_axes_fig1 <span class="op">=</span> <span class="bu">sorted</span>([key <span class="cf">for</span> key <span class="kw">in</span> fig1.layout <span class="cf">if</span> <span class="st">'xaxis'</span> <span class="kw">in</span> key])</span>
-<span id="cb5-4"><a href="#cb5-4"></a>    y_axes_fig1 <span class="op">=</span> <span class="bu">sorted</span>([key <span class="cf">for</span> key <span class="kw">in</span> fig1.layout <span class="cf">if</span> <span class="st">'yaxis'</span> <span class="kw">in</span> key])</span>
-<span id="cb5-5"><a href="#cb5-5"></a>    x_axes_fig2 <span class="op">=</span> <span class="bu">sorted</span>([key <span class="cf">for</span> key <span class="kw">in</span> fig2.layout <span class="cf">if</span> <span class="st">'xaxis'</span> <span class="kw">in</span> key])</span>
-<span id="cb5-6"><a href="#cb5-6"></a>    y_axes_fig2 <span class="op">=</span> <span class="bu">sorted</span>([key <span class="cf">for</span> key <span class="kw">in</span> fig2.layout <span class="cf">if</span> <span class="st">'yaxis'</span> <span class="kw">in</span> key])    </span>
-<span id="cb5-7"><a href="#cb5-7"></a>    <span class="cf">for</span> trace <span class="kw">in</span> fig1.data:</span>
-<span id="cb5-8"><a href="#cb5-8"></a>        <span class="cf">if</span> trace[<span class="st">'xaxis'</span>] <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb5-9"><a href="#cb5-9"></a>            <span class="cf">for</span> i, (x, y) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(x_axes_fig1, y_axes_fig1), start<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb5-10"><a href="#cb5-10"></a>                trace[<span class="st">'xaxis'</span>] <span class="op">=</span> <span class="ss">f'x</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">'</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>                trace[<span class="st">'yaxis'</span>] <span class="op">=</span> <span class="ss">f'y</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">'</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a>    <span class="cf">for</span> trace <span class="kw">in</span> fig2.data:</span>
-<span id="cb5-13"><a href="#cb5-13"></a>        <span class="cf">if</span> trace[<span class="st">'xaxis'</span>] <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb5-14"><a href="#cb5-14"></a>            <span class="cf">for</span> i, (x, y) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(x_axes_fig2, y_axes_fig2), start<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb5-15"><a href="#cb5-15"></a>                trace[<span class="st">'xaxis'</span>] <span class="op">=</span> <span class="ss">f'x</span><span class="sc">{</span>i <span class="op">+</span> subplot_count(fig1)<span class="sc">}</span><span class="ss">'</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a>                trace[<span class="st">'yaxis'</span>] <span class="op">=</span> <span class="ss">f'y</span><span class="sc">{</span>i <span class="op">+</span> subplot_count(fig1)<span class="sc">}</span><span class="ss">'</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a>        <span class="cf">else</span>:</span>
-<span id="cb5-18"><a href="#cb5-18"></a>            <span class="cf">if</span> trace[<span class="st">'xaxis'</span>] <span class="op">==</span> <span class="st">'x'</span>:</span>
-<span id="cb5-19"><a href="#cb5-19"></a>                trace[<span class="st">'xaxis'</span>] <span class="op">=</span> <span class="ss">f'x</span><span class="sc">{</span><span class="dv">1</span> <span class="op">+</span> subplot_count(fig1)<span class="sc">}</span><span class="ss">'</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a>            <span class="cf">else</span>:</span>
-<span id="cb5-21"><a href="#cb5-21"></a>                axis_num <span class="op">=</span> <span class="bu">int</span>(trace[<span class="st">'xaxis'</span>][<span class="op">-</span><span class="dv">1</span>]) <span class="op">+</span> subplot_count(fig1)</span>
-<span id="cb5-22"><a href="#cb5-22"></a>                trace[<span class="st">'xaxis'</span>] <span class="op">=</span> <span class="ss">f'x</span><span class="sc">{</span>axis_num<span class="sc">}</span><span class="ss">'</span></span>
-<span id="cb5-23"><a href="#cb5-23"></a></span>
-<span id="cb5-24"><a href="#cb5-24"></a>            <span class="cf">if</span> trace[<span class="st">'yaxis'</span>] <span class="op">==</span> <span class="st">'y'</span>:</span>
-<span id="cb5-25"><a href="#cb5-25"></a>                trace[<span class="st">'yaxis'</span>] <span class="op">=</span> <span class="ss">f'y</span><span class="sc">{</span><span class="dv">1</span> <span class="op">+</span> subplot_count(fig1)<span class="sc">}</span><span class="ss">'</span></span>
-<span id="cb5-26"><a href="#cb5-26"></a>            <span class="cf">else</span>:</span>
-<span id="cb5-27"><a href="#cb5-27"></a>                axis_num <span class="op">=</span> <span class="bu">int</span>(trace[<span class="st">'yaxis'</span>][<span class="op">-</span><span class="dv">1</span>]) <span class="op">+</span> subplot_count(fig1)</span>
-<span id="cb5-28"><a href="#cb5-28"></a>                trace[<span class="st">'yaxis'</span>] <span class="op">=</span> <span class="ss">f'y</span><span class="sc">{</span>axis_num<span class="sc">}</span><span class="ss">'</span></span>
-<span id="cb5-29"><a href="#cb5-29"></a>    <span class="cf">return</span> fig1, fig2</span>
-<span id="cb5-30"><a href="#cb5-30"></a></span>
-<span id="cb5-31"><a href="#cb5-31"></a><span class="kw">def</span> clayout_adjustment(fig1, fig2):</span>
-<span id="cb5-32"><a href="#cb5-32"></a>    <span class="co"># Loop through fig1 and fig2</span></span>
-<span id="cb5-33"><a href="#cb5-33"></a>    <span class="cf">for</span> f <span class="kw">in</span> [fig1, fig2]:</span>
-<span id="cb5-34"><a href="#cb5-34"></a>        <span class="co"># Extract all xaxes and yaxes</span></span>
-<span id="cb5-35"><a href="#cb5-35"></a>        xaxes <span class="op">=</span> [geom[key] <span class="cf">for</span> geom <span class="kw">in</span> f.data <span class="cf">for</span> key <span class="kw">in</span> geom <span class="cf">if</span> <span class="st">'xaxis'</span> <span class="kw">in</span> key]</span>
-<span id="cb5-36"><a href="#cb5-36"></a>        yaxes <span class="op">=</span> [geom[key] <span class="cf">for</span> geom <span class="kw">in</span> f.data <span class="cf">for</span> key <span class="kw">in</span> geom <span class="cf">if</span> <span class="st">'yaxis'</span> <span class="kw">in</span> key]</span>
-<span id="cb5-37"><a href="#cb5-37"></a>        <span class="co"># Check if all traces in the figure share the same xaxis (i.e., there is only one subplot)</span></span>
-<span id="cb5-38"><a href="#cb5-38"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="bu">set</span>(xaxes)) <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb5-39"><a href="#cb5-39"></a>            <span class="cf">for</span> i, (x, y) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(xaxes, yaxes), start<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb5-40"><a href="#cb5-40"></a>                <span class="co"># Update xaxis layout</span></span>
-<span id="cb5-41"><a href="#cb5-41"></a>                f.layout[x.replace(<span class="st">'x'</span>, <span class="st">'xaxis'</span>)] <span class="op">=</span> {<span class="st">'anchor'</span>: x.replace(<span class="st">'axis'</span>, <span class="st">''</span>), <span class="st">'domain'</span>: [<span class="fl">0.0</span>, <span class="fl">1.0</span>]}</span>
-<span id="cb5-42"><a href="#cb5-42"></a>                <span class="co"># Update yaxis layout</span></span>
-<span id="cb5-43"><a href="#cb5-43"></a>                f.layout[y.replace(<span class="st">'y'</span>, <span class="st">'yaxis'</span>)] <span class="op">=</span> {<span class="st">'anchor'</span>: y.replace(<span class="st">'axis'</span>, <span class="st">''</span>), <span class="st">'domain'</span>: [<span class="fl">0.0</span>, <span class="fl">1.0</span>]}</span>
-<span id="cb5-44"><a href="#cb5-44"></a>        <span class="cf">else</span>:</span>
-<span id="cb5-45"><a href="#cb5-45"></a>            <span class="cf">pass</span>  <span class="co"># Do nothing if xaxes are not the same</span></span>
-<span id="cb5-46"><a href="#cb5-46"></a>    <span class="cf">return</span> fig1, fig2</span>
-<span id="cb5-47"><a href="#cb5-47"></a></span>
-<span id="cb5-48"><a href="#cb5-48"></a>    </span>
-<span id="cb5-49"><a href="#cb5-49"></a><span class="kw">def</span> cbind(fig1,fig2,column_widths<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb5-50"><a href="#cb5-50"></a>    <span class="co"># Update data and layout for fig1 and fig2</span></span>
-<span id="cb5-51"><a href="#cb5-51"></a>    fig1 <span class="op">=</span> gglitely(data<span class="op">=</span>fig1.data, layout<span class="op">=</span>fig1.layout)</span>
-<span id="cb5-52"><a href="#cb5-52"></a>    fig2 <span class="op">=</span> gglitely(data<span class="op">=</span>fig2.data, layout<span class="op">=</span>fig2.layout)</span>
-<span id="cb5-53"><a href="#cb5-53"></a>    </span>
-<span id="cb5-54"><a href="#cb5-54"></a>    <span class="co"># Calculate the number of subplots</span></span>
-<span id="cb5-55"><a href="#cb5-55"></a>    n1 <span class="op">=</span> subplot_count(fig1)</span>
-<span id="cb5-56"><a href="#cb5-56"></a>    n2 <span class="op">=</span> subplot_count(fig2)</span>
-<span id="cb5-57"><a href="#cb5-57"></a>    </span>
-<span id="cb5-58"><a href="#cb5-58"></a>    <span class="co"># Adjust trace axes</span></span>
-<span id="cb5-59"><a href="#cb5-59"></a>    fig1, fig2 <span class="op">=</span> trace_axes_adjustment(fig1, fig2)</span>
-<span id="cb5-60"><a href="#cb5-60"></a>    </span>
-<span id="cb5-61"><a href="#cb5-61"></a>    <span class="co"># Adjust layout</span></span>
-<span id="cb5-62"><a href="#cb5-62"></a>    fig1, fig2 <span class="op">=</span> clayout_adjustment(fig1, fig2)</span>
-<span id="cb5-63"><a href="#cb5-63"></a>    </span>
-<span id="cb5-64"><a href="#cb5-64"></a>    <span class="co"># Set column widths if not provided</span></span>
-<span id="cb5-65"><a href="#cb5-65"></a>    <span class="cf">if</span> column_widths <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb5-66"><a href="#cb5-66"></a>        column_widths <span class="op">=</span> [<span class="dv">1</span>] <span class="op">*</span> n1 <span class="op">+</span> [<span class="dv">1</span>] <span class="op">*</span> n2</span>
-<span id="cb5-67"><a href="#cb5-67"></a>    </span>
-<span id="cb5-68"><a href="#cb5-68"></a>    <span class="co"># Create subplots</span></span>
-<span id="cb5-69"><a href="#cb5-69"></a>    fig <span class="op">=</span> make_subplots(rows<span class="op">=</span><span class="dv">1</span>, cols<span class="op">=</span>n1 <span class="op">+</span> n2, column_widths<span class="op">=</span>column_widths)</span>
-<span id="cb5-70"><a href="#cb5-70"></a>    fig <span class="op">=</span> gglitely(layout<span class="op">=</span>fig.layout)</span>
-<span id="cb5-71"><a href="#cb5-71"></a>    </span>
-<span id="cb5-72"><a href="#cb5-72"></a>    <span class="co"># Add traces from fig1 and fig2</span></span>
-<span id="cb5-73"><a href="#cb5-73"></a>    fig.add_traces(fig1.data)</span>
-<span id="cb5-74"><a href="#cb5-74"></a>    fig.add_traces(fig2.data)</span>
-<span id="cb5-75"><a href="#cb5-75"></a>    </span>
-<span id="cb5-76"><a href="#cb5-76"></a>    <span class="co"># Increment ncols</span></span>
-<span id="cb5-77"><a href="#cb5-77"></a>    fig._ncols <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb5-78"><a href="#cb5-78"></a>    <span class="cf">return</span> fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>subplot_count <span class="op">=</span> <span class="kw">lambda</span> fig: <span class="bu">len</span>({geom[key] <span class="cf">for</span> geom <span class="kw">in</span> fig.data <span class="cf">for</span> key <span class="kw">in</span> geom <span class="cf">if</span> <span class="st">'xaxis'</span> <span class="kw">in</span> key})</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">def</span> trace_axes_adjustment(fig1, fig2):</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    x_axes_fig1 <span class="op">=</span> <span class="bu">sorted</span>([key <span class="cf">for</span> key <span class="kw">in</span> fig1.layout <span class="cf">if</span> <span class="st">'xaxis'</span> <span class="kw">in</span> key])</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    y_axes_fig1 <span class="op">=</span> <span class="bu">sorted</span>([key <span class="cf">for</span> key <span class="kw">in</span> fig1.layout <span class="cf">if</span> <span class="st">'yaxis'</span> <span class="kw">in</span> key])</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    x_axes_fig2 <span class="op">=</span> <span class="bu">sorted</span>([key <span class="cf">for</span> key <span class="kw">in</span> fig2.layout <span class="cf">if</span> <span class="st">'xaxis'</span> <span class="kw">in</span> key])</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    y_axes_fig2 <span class="op">=</span> <span class="bu">sorted</span>([key <span class="cf">for</span> key <span class="kw">in</span> fig2.layout <span class="cf">if</span> <span class="st">'yaxis'</span> <span class="kw">in</span> key])    </span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="cf">for</span> trace <span class="kw">in</span> fig1.data:</span>
+<span id="cb4-8"><a href="#cb4-8"></a>        <span class="cf">if</span> trace[<span class="st">'xaxis'</span>] <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb4-9"><a href="#cb4-9"></a>            <span class="cf">for</span> i, (x, y) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(x_axes_fig1, y_axes_fig1), start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb4-10"><a href="#cb4-10"></a>                trace[<span class="st">'xaxis'</span>] <span class="op">=</span> <span class="ss">f'x</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>                trace[<span class="st">'yaxis'</span>] <span class="op">=</span> <span class="ss">f'y</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="cf">for</span> trace <span class="kw">in</span> fig2.data:</span>
+<span id="cb4-13"><a href="#cb4-13"></a>        <span class="cf">if</span> trace[<span class="st">'xaxis'</span>] <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb4-14"><a href="#cb4-14"></a>            <span class="cf">for</span> i, (x, y) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(x_axes_fig2, y_axes_fig2), start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb4-15"><a href="#cb4-15"></a>                trace[<span class="st">'xaxis'</span>] <span class="op">=</span> <span class="ss">f'x</span><span class="sc">{</span>i <span class="op">+</span> subplot_count(fig1)<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>                trace[<span class="st">'yaxis'</span>] <span class="op">=</span> <span class="ss">f'y</span><span class="sc">{</span>i <span class="op">+</span> subplot_count(fig1)<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-18"><a href="#cb4-18"></a>            <span class="cf">if</span> trace[<span class="st">'xaxis'</span>] <span class="op">==</span> <span class="st">'x'</span>:</span>
+<span id="cb4-19"><a href="#cb4-19"></a>                trace[<span class="st">'xaxis'</span>] <span class="op">=</span> <span class="ss">f'x</span><span class="sc">{</span><span class="dv">1</span> <span class="op">+</span> subplot_count(fig1)<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>            <span class="cf">else</span>:</span>
+<span id="cb4-21"><a href="#cb4-21"></a>                axis_num <span class="op">=</span> <span class="bu">int</span>(trace[<span class="st">'xaxis'</span>][<span class="op">-</span><span class="dv">1</span>]) <span class="op">+</span> subplot_count(fig1)</span>
+<span id="cb4-22"><a href="#cb4-22"></a>                trace[<span class="st">'xaxis'</span>] <span class="op">=</span> <span class="ss">f'x</span><span class="sc">{</span>axis_num<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a></span>
+<span id="cb4-24"><a href="#cb4-24"></a>            <span class="cf">if</span> trace[<span class="st">'yaxis'</span>] <span class="op">==</span> <span class="st">'y'</span>:</span>
+<span id="cb4-25"><a href="#cb4-25"></a>                trace[<span class="st">'yaxis'</span>] <span class="op">=</span> <span class="ss">f'y</span><span class="sc">{</span><span class="dv">1</span> <span class="op">+</span> subplot_count(fig1)<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>            <span class="cf">else</span>:</span>
+<span id="cb4-27"><a href="#cb4-27"></a>                axis_num <span class="op">=</span> <span class="bu">int</span>(trace[<span class="st">'yaxis'</span>][<span class="op">-</span><span class="dv">1</span>]) <span class="op">+</span> subplot_count(fig1)</span>
+<span id="cb4-28"><a href="#cb4-28"></a>                trace[<span class="st">'yaxis'</span>] <span class="op">=</span> <span class="ss">f'y</span><span class="sc">{</span>axis_num<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a>    <span class="cf">return</span> fig1, fig2</span>
+<span id="cb4-30"><a href="#cb4-30"></a></span>
+<span id="cb4-31"><a href="#cb4-31"></a><span class="kw">def</span> clayout_adjustment(fig1, fig2):</span>
+<span id="cb4-32"><a href="#cb4-32"></a>    <span class="co"># Loop through fig1 and fig2</span></span>
+<span id="cb4-33"><a href="#cb4-33"></a>    <span class="cf">for</span> f <span class="kw">in</span> [fig1, fig2]:</span>
+<span id="cb4-34"><a href="#cb4-34"></a>        <span class="co"># Extract all xaxes and yaxes</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a>        xaxes <span class="op">=</span> [geom[key] <span class="cf">for</span> geom <span class="kw">in</span> f.data <span class="cf">for</span> key <span class="kw">in</span> geom <span class="cf">if</span> <span class="st">'xaxis'</span> <span class="kw">in</span> key]</span>
+<span id="cb4-36"><a href="#cb4-36"></a>        yaxes <span class="op">=</span> [geom[key] <span class="cf">for</span> geom <span class="kw">in</span> f.data <span class="cf">for</span> key <span class="kw">in</span> geom <span class="cf">if</span> <span class="st">'yaxis'</span> <span class="kw">in</span> key]</span>
+<span id="cb4-37"><a href="#cb4-37"></a>        <span class="co"># Check if all traces in the figure share the same xaxis (i.e., there is only one subplot)</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="bu">set</span>(xaxes)) <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb4-39"><a href="#cb4-39"></a>            <span class="cf">for</span> i, (x, y) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(xaxes, yaxes), start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb4-40"><a href="#cb4-40"></a>                <span class="co"># Update xaxis layout</span></span>
+<span id="cb4-41"><a href="#cb4-41"></a>                f.layout[x.replace(<span class="st">'x'</span>, <span class="st">'xaxis'</span>)] <span class="op">=</span> {<span class="st">'anchor'</span>: x.replace(<span class="st">'axis'</span>, <span class="st">''</span>), <span class="st">'domain'</span>: [<span class="fl">0.0</span>, <span class="fl">1.0</span>]}</span>
+<span id="cb4-42"><a href="#cb4-42"></a>                <span class="co"># Update yaxis layout</span></span>
+<span id="cb4-43"><a href="#cb4-43"></a>                f.layout[y.replace(<span class="st">'y'</span>, <span class="st">'yaxis'</span>)] <span class="op">=</span> {<span class="st">'anchor'</span>: y.replace(<span class="st">'axis'</span>, <span class="st">''</span>), <span class="st">'domain'</span>: [<span class="fl">0.0</span>, <span class="fl">1.0</span>]}</span>
+<span id="cb4-44"><a href="#cb4-44"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-45"><a href="#cb4-45"></a>            <span class="cf">pass</span>  <span class="co"># Do nothing if xaxes are not the same</span></span>
+<span id="cb4-46"><a href="#cb4-46"></a>    <span class="cf">return</span> fig1, fig2</span>
+<span id="cb4-47"><a href="#cb4-47"></a></span>
+<span id="cb4-48"><a href="#cb4-48"></a>    </span>
+<span id="cb4-49"><a href="#cb4-49"></a><span class="kw">def</span> cbind(fig1,fig2,column_widths<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb4-50"><a href="#cb4-50"></a>    <span class="co"># Update data and layout for fig1 and fig2</span></span>
+<span id="cb4-51"><a href="#cb4-51"></a>    fig1 <span class="op">=</span> gglitely(data<span class="op">=</span>fig1.data, layout<span class="op">=</span>fig1.layout)</span>
+<span id="cb4-52"><a href="#cb4-52"></a>    fig2 <span class="op">=</span> gglitely(data<span class="op">=</span>fig2.data, layout<span class="op">=</span>fig2.layout)</span>
+<span id="cb4-53"><a href="#cb4-53"></a>    </span>
+<span id="cb4-54"><a href="#cb4-54"></a>    <span class="co"># Calculate the number of subplots</span></span>
+<span id="cb4-55"><a href="#cb4-55"></a>    n1 <span class="op">=</span> subplot_count(fig1)</span>
+<span id="cb4-56"><a href="#cb4-56"></a>    n2 <span class="op">=</span> subplot_count(fig2)</span>
+<span id="cb4-57"><a href="#cb4-57"></a>    </span>
+<span id="cb4-58"><a href="#cb4-58"></a>    <span class="co"># Adjust trace axes</span></span>
+<span id="cb4-59"><a href="#cb4-59"></a>    fig1, fig2 <span class="op">=</span> trace_axes_adjustment(fig1, fig2)</span>
+<span id="cb4-60"><a href="#cb4-60"></a>    </span>
+<span id="cb4-61"><a href="#cb4-61"></a>    <span class="co"># Adjust layout</span></span>
+<span id="cb4-62"><a href="#cb4-62"></a>    fig1, fig2 <span class="op">=</span> clayout_adjustment(fig1, fig2)</span>
+<span id="cb4-63"><a href="#cb4-63"></a>    </span>
+<span id="cb4-64"><a href="#cb4-64"></a>    <span class="co"># Set column widths if not provided</span></span>
+<span id="cb4-65"><a href="#cb4-65"></a>    <span class="cf">if</span> column_widths <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb4-66"><a href="#cb4-66"></a>        column_widths <span class="op">=</span> [<span class="dv">1</span>] <span class="op">*</span> n1 <span class="op">+</span> [<span class="dv">1</span>] <span class="op">*</span> n2</span>
+<span id="cb4-67"><a href="#cb4-67"></a>    </span>
+<span id="cb4-68"><a href="#cb4-68"></a>    <span class="co"># Create subplots</span></span>
+<span id="cb4-69"><a href="#cb4-69"></a>    fig <span class="op">=</span> make_subplots(rows<span class="op">=</span><span class="dv">1</span>, cols<span class="op">=</span>n1 <span class="op">+</span> n2, column_widths<span class="op">=</span>column_widths)</span>
+<span id="cb4-70"><a href="#cb4-70"></a>    fig <span class="op">=</span> gglitely(layout<span class="op">=</span>fig.layout)</span>
+<span id="cb4-71"><a href="#cb4-71"></a>    </span>
+<span id="cb4-72"><a href="#cb4-72"></a>    <span class="co"># Add traces from fig1 and fig2</span></span>
+<span id="cb4-73"><a href="#cb4-73"></a>    fig.add_traces(fig1.data)</span>
+<span id="cb4-74"><a href="#cb4-74"></a>    fig.add_traces(fig2.data)</span>
+<span id="cb4-75"><a href="#cb4-75"></a>    </span>
+<span id="cb4-76"><a href="#cb4-76"></a>    <span class="co"># Increment ncols</span></span>
+<span id="cb4-77"><a href="#cb4-77"></a>    fig._ncols <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-78"><a href="#cb4-78"></a>    <span class="cf">return</span> fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="서브플랏" class="level1">
 <h1>서브플랏</h1>
 <div id="d6777a09-3e0e-47dd-80f2-156f7ab06fce" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>fig1 <span class="op">=</span> gglitely() <span class="op">+</span> bar(y<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],col<span class="op">=</span><span class="st">'red'</span>) <span class="op">+</span> bar(y<span class="op">=</span>[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>],col<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>fig2 <span class="op">=</span> gglitely() <span class="op">+</span> bar(y<span class="op">=</span>[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>],alpha<span class="op">=</span><span class="fl">0.7</span>,col<span class="op">=</span><span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>NameError: name 'gglitely' is not defined</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig1 <span class="op">=</span> gglitely() <span class="op">+</span> bar(y<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],col<span class="op">=</span><span class="st">'red'</span>) <span class="op">+</span> bar(y<span class="op">=</span>[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>],col<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>fig2 <span class="op">=</span> gglitely() <span class="op">+</span> bar(y<span class="op">=</span>[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>],alpha<span class="op">=</span><span class="fl">0.7</span>,col<span class="op">=</span><span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="d463d336-684a-43f7-b875-c5d27dbbe3d6" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>cbind(cbind(cbind(fig1,fig2),fig1),fig2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>cbind(cbind(cbind(fig1,fig2),fig1),fig2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>NameError: name 'fig1' is not defined</code></pre>
+<pre><code>AttributeError: 'gglitely' object has no attribute '_ncols'</code></pre>
 </div>
 </div>
 
