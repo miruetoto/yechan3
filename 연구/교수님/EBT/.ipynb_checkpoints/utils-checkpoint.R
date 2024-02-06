@@ -13,7 +13,7 @@ lin_impute<-function(t,y,mindex)
     len2<-length(index.imputed)
     for (j in 1:len2)
     {
-      yin[index.imputed[j]]<-.lextra(p1=c(t[oindex[1]],y[oindex[1]]),p2=c(t[oindex[2]],y[oindex[2]]),x=t[index.imputed[j]])
+      yin[index.imputed[j]]<-lextra(p1=c(t[oindex[1]],y[oindex[1]]),p2=c(t[oindex[2]],y[oindex[2]]),x=t[index.imputed[j]])
     }
   }
   
@@ -26,7 +26,7 @@ lin_impute<-function(t,y,mindex)
       len2<-length(index.imputed2)
       for (j in 1:len2)
       {
-        yin[index.imputed2[j]]<-.linter(p1=c(t[index.imputed1[1]],y[index.imputed1[1]]),p2=c(t[index.imputed1[length(index.imputed1)]],y[index.imputed1[length(index.imputed1)]]),x=t[index.imputed2[j]])
+        yin[index.imputed2[j]]<-linter(p1=c(t[index.imputed1[1]],y[index.imputed1[1]]),p2=c(t[index.imputed1[length(index.imputed1)]],y[index.imputed1[length(index.imputed1)]]),x=t[index.imputed2[j]])
       }
     }
   } 
@@ -36,13 +36,13 @@ lin_impute<-function(t,y,mindex)
     len2<-length(index.imputed)
     for (j in 1:len2)
     {
-      yin[index.imputed[j]]<-.lextra(p1=c(t[oindex[length(oindex)-1]],y[oindex[length(oindex)]-1]),p2=c(t[oindex[length(oindex)]],y[oindex[length(oindex)]]),x=t[index.imputed[j]])
+      yin[index.imputed[j]]<-lextra(p1=c(t[oindex[length(oindex)-1]],y[oindex[length(oindex)]-1]),p2=c(t[oindex[length(oindex)]],y[oindex[length(oindex)]]),x=t[index.imputed[j]])
     }
   }
   yin
 }
 
-.linter<-function(p1,p2,x)
+linter<-function(p1,p2,x)
 {
   x1<-p1[1]; y1<-p1[2]
   x2<-p2[1]; y2<-p2[2]
@@ -52,7 +52,7 @@ lin_impute<-function(t,y,mindex)
   y
 }
 
-.lextra<-function(p1,p2,x)
+lextra<-function(p1,p2,x)
 {
   x1<-p1[1]; y1<-p1[2]
   x2<-p2[1]; y2<-p2[2]
@@ -63,7 +63,7 @@ lin_impute<-function(t,y,mindex)
 }
 
 
-.left_const<-function(y,mindex)
+left_const<-function(y,mindex)
 {
   len<- length(y)
   index<-1:len 
@@ -109,7 +109,7 @@ lin_impute<-function(t,y,mindex)
 }
 
 
-.right_const<-function(y,mindex)
+right_const<-function(y,mindex)
 {
   len<- length(y)
   index<-1:len 

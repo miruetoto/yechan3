@@ -46,8 +46,8 @@ ebt<-function(f,t=0,noise=0,tau,M="mean",V="var",interpolation="linear",bound="f
       if (sampled_index[[eta]][1]!=1) sampled_index[[eta]]=c(1,sampled_index[[eta]])
       if (sampled_index[[eta]][length(sampled_index[[eta]])]!=len) sampled_index[[eta]]=c(sampled_index[[eta]],len)
       missing_index[[eta]]<-(1:len)[-sampled_index[[eta]]]
-      lband[,eta]<- .left_const(f+noise,missing_index[[eta]])
-      rband[,eta]<- .right_const(f+noise,missing_index[[eta]])
+      lband[,eta]<- left_const(f+noise,missing_index[[eta]])
+      rband[,eta]<- right_const(f+noise,missing_index[[eta]])
     }
     band<-cbind(lband,rband)
   }
