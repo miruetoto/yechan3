@@ -313,14 +313,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="options" class="level1">
 <h1>Options</h1>
-<div id="4bc26994-114c-4543-ac47-e5795c1b6bb1" class="cell" data-execution_count="1">
+<div id="4bc26994-114c-4543-ac47-e5795c1b6bb1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">options</span>(<span class="at">jupyter.plot_scale=</span><span class="dv">4</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">6</span>,<span class="at">repr.plot.height=</span><span class="dv">4</span>,<span class="at">repr.plot.res=</span><span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="imports" class="level1">
 <h1>Imports</h1>
-<div id="94938a73-8617-406b-a113-2cab837416e1" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
+<div id="94938a73-8617-406b-a113-2cab837416e1" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(devtools)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">install_github</span>(<span class="st">"seoyeonc/gglite"</span>,<span class="at">force=</span><span class="cn">TRUE</span>)</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="fu">library</span>(gglite)</span>
@@ -365,7 +365,7 @@ Warning message:
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>── R CMD build ─────────────────────────────────────────────────────────────────
-* checking for file ‘/tmp/RtmpICIUVg/remotes487ad5904982d/seoyeonc-gglite-cffd10a/DESCRIPTION’ ... OK
+* checking for file ‘/tmp/RtmpE3d98o/remotes46057deb4a53/seoyeonc-gglite-1b35a36/DESCRIPTION’ ... OK
 * preparing ‘gglite’:
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
@@ -382,7 +382,7 @@ Omitted ‘LazyData’ from DESCRIPTION
 <p>주피터 환경에서 그림의 크기를 조정하는 함수로 <code>figsize()</code> 구현, Rstudio에서는 그림크기가 유연하게 조정가능하므로 필요없음.</p>
 </blockquote>
 <p><code>-</code> 기본플랏</p>
-<div id="132a5b8b-383e-459c-b833-5c735acee83d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div id="132a5b8b-383e-459c-b833-5c735acee83d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="fu">plot</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -394,7 +394,7 @@ Omitted ‘LazyData’ from DESCRIPTION
 </div>
 </div>
 <p><code>-</code> 크기조정 (원래는 ggplot 이미지를 주피터에서 조정하려고 만들었는데, 기본플랏도 조정됨)</p>
-<div id="07904ffe-b2b2-4bea-9b40-311518914f1a" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
+<div id="07904ffe-b2b2-4bea-9b40-311518914f1a" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="fu">figsize</span>(<span class="dv">10</span>,<span class="dv">3</span>)</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="fu">plot</span>(y)</span>
@@ -412,11 +412,11 @@ Omitted ‘LazyData’ from DESCRIPTION
 <h1>기본적인 사용법 소개</h1>
 <section id="gglite-line-point" class="level2">
 <h2 class="anchored" data-anchor-id="gglite-line-point"><code>gglite</code> + <code>line</code> + <code>point</code></h2>
-<div id="476bb7a3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
+<div id="476bb7a3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시1</p>
-<div id="3f8335ba-b3bd-446b-9337-be063af7a699" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
+<div id="3f8335ba-b3bd-446b-9337-be063af7a699" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">line</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, y, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">'gray60'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -427,7 +427,7 @@ Omitted ‘LazyData’ from DESCRIPTION
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="a5b677da-9aa4-476e-b98a-46f92a757066" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
+<div id="a5b677da-9aa4-476e-b98a-46f92a757066" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(y,<span class="at">pch=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>,<span class="at">cex=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -438,7 +438,7 @@ Omitted ‘LazyData’ from DESCRIPTION
 </div>
 </div>
 <p><code>-</code> 예시3</p>
-<div id="575f8122-08dd-4914-8d07-5d0a18978795" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
+<div id="575f8122-08dd-4914-8d07-5d0a18978795" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(y,<span class="at">pch=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>,<span class="at">cex=</span><span class="dv">5</span>) <span class="sc">+</span> <span class="fu">line</span>(<span class="dv">25</span><span class="sc">:</span><span class="dv">50</span>, y[<span class="dv">25</span><span class="sc">:</span><span class="dv">50</span>], <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -451,7 +451,7 @@ Omitted ‘LazyData’ from DESCRIPTION
 </section>
 <section id="ggplot2와-호환" class="level2">
 <h2 class="anchored" data-anchor-id="ggplot2와-호환"><code>ggplot2</code>와 호환</h2>
-<div id="2f41dab0-231f-434a-ac21-75dc01542628" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
+<div id="2f41dab0-231f-434a-ac21-75dc01542628" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,<span class="at">y=</span><span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -473,38 +473,38 @@ Omitted ‘LazyData’ from DESCRIPTION
 <tr class="odd">
 <td data-quarto-table-cell-role="th" scope="row">1</td>
 <td>1</td>
-<td>-1.18736508</td>
+<td>1.7392935</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th" scope="row">2</td>
 <td>2</td>
-<td>0.05975185</td>
+<td>0.1477171</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" scope="row">3</td>
 <td>3</td>
-<td>0.21819247</td>
+<td>-1.8875132</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th" scope="row">4</td>
 <td>4</td>
-<td>-0.51924069</td>
+<td>3.7753190</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" scope="row">5</td>
 <td>5</td>
-<td>1.57610119</td>
+<td>0.9633885</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th" scope="row">6</td>
 <td>6</td>
-<td>0.46309678</td>
+<td>-0.3003269</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div id="ab5e3631-f05b-4fb3-8bde-975a9afd4c06" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
+<div id="ab5e3631-f05b-4fb3-8bde-975a9afd4c06" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">gglite</span>(<span class="at">data=</span>df) <span class="sc">+</span> </span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)) <span class="sc">+</span> </span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="fu">line</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>,df<span class="sc">$</span>y[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -522,7 +522,7 @@ Omitted ‘LazyData’ from DESCRIPTION
 </section>
 <section id="subplotting" class="level2">
 <h2 class="anchored" data-anchor-id="subplotting">subplotting</h2>
-<div id="b86d3045-8228-441b-80a8-2df9f935e017" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
+<div id="b86d3045-8228-441b-80a8-2df9f935e017" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb13-2"><a href="#cb13-2"></a>p1 <span class="ot">=</span> <span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">line</span>(y,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">'gray60'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3"></a>p2 <span class="ot">=</span> <span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(y,<span class="at">pch=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>,<span class="at">cex=</span><span class="dv">5</span>)</span>
@@ -530,7 +530,7 @@ Omitted ‘LazyData’ from DESCRIPTION
 <span id="cb13-5"><a href="#cb13-5"></a>p4 <span class="ot">=</span> <span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(y) <span class="sc">+</span> <span class="fu">line</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>,y[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>],<span class="at">col=</span><span class="st">'orange'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 예시1: 좌우로 나란히</p>
-<div id="84c84e1b-2821-42c4-b1f4-b7da87415741" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="12">
+<div id="84c84e1b-2821-42c4-b1f4-b7da87415741" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">figsize</span>(<span class="dv">10</span>,<span class="dv">3</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a>p1<span class="sc">|</span>p2<span class="sc">|</span>p3<span class="sc">|</span>p4</span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -543,7 +543,7 @@ Omitted ‘LazyData’ from DESCRIPTION
 </div>
 </div>
 <p><code>-</code> 예시2: 위아래로</p>
-<div id="43f99240-f244-426a-aab1-6ecb6a2e287b" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="13">
+<div id="43f99240-f244-426a-aab1-6ecb6a2e287b" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">figsize</span>(<span class="dv">10</span>,<span class="dv">5</span>)</span>
 <span id="cb15-2"><a href="#cb15-2"></a>p1<span class="sc">/</span>p2<span class="sc">/</span>p3<span class="sc">/</span>p4</span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -556,7 +556,7 @@ Omitted ‘LazyData’ from DESCRIPTION
 </div>
 </div>
 <p><code>-</code> 예시3: 그리드로!</p>
-<div id="c7290717-3138-4dd8-ab32-4302bbae749f" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="14">
+<div id="c7290717-3138-4dd8-ab32-4302bbae749f" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">figsize</span>(<span class="dv">10</span>,<span class="dv">5</span>)</span>
 <span id="cb16-2"><a href="#cb16-2"></a>(p1<span class="sc">|</span>p2)<span class="sc">/</span>(p3<span class="sc">|</span>p4)</span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
