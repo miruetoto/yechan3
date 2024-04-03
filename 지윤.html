@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="최규빈">
-<meta name="dcterms.date" content="2024-03-21">
 
-<title>신록예찬’s Blog - (연구&amp;교수님) 다중척도논문 – 그림들</title>
+<title>신록예찬’s Blog - 지윤</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,59 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,6 +68,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -115,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">신록예찬’s Blog</span>
     </a>
   </div>
@@ -187,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">(연구&amp;교수님) 다중척도논문 – 그림들</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">지윤</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -197,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -209,25 +204,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../메모.html" class="sidebar-item-text sidebar-link">
+  <a href="./메모.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">메모</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../공부.html" class="sidebar-item-text sidebar-link">
+  <a href="./공부.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">공부</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../연구.html" class="sidebar-item-text sidebar-link">
+  <a href="./연구.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">연구</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../자료.html" class="sidebar-item-text sidebar-link">
+  <a href="./자료.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">자료</span></a>
   </div>
 </li>
@@ -236,40 +231,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#비트시그널" id="toc-비트시그널" class="nav-link active" data-scroll-target="#비트시그널">1. 비트시그널</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="figs.out.ipynb" download="figs.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">(연구&amp;교수님) 다중척도논문 – 그림들</h1>
+<h1 class="title">지윤</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-right">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>최규빈 </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 21, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -279,96 +254,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="443feb3f" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">install_github</span>(<span class="st">"seoyeonc/gglite"</span>,<span class="at">force=</span><span class="cn">TRUE</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(gglite)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: usethis
-
-Downloading GitHub repo seoyeonc/gglite@HEAD
 
 
-Attaching package: ‘gglite’
 
 
-The following objects are masked from ‘package:stats’:
-
-    density, line, smooth, step
-
-
-The following object is masked from ‘package:graphics’:
-
-    boxplot
-
-
-The following objects are masked from ‘package:base’:
-
-    col, jitter
-
-
-Warning message:
-“package ‘stringr’ was built under R version 4.3.2”
-── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Date
+</th>
+<th>
+Title
+</th>
+<th>
+Author
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1691938800000" data-listing-file-modified-sort="1708317723782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- GConvLSTM +++++++ 이거!!! ++++++++++++" data-listing-filename-sort="2023-08-14-(연구&amp;지윤) 태양광자료분석 -- GConvLSTM +++++++ 이거!!! ++++++++++++.ipynb">
+<td>
+<span class="listing-date">Aug 14, 2023</span>
+</td>
+<td>
+<a href="./연구/지윤이랑/SOLAR/2023-08-14-(연구&amp;지윤) 태양광자료분석 -- GConvLSTM +++++++ 이거!!! ++++++++++++.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – GConvLSTM +++++++ 이거!!! ++++++++++++</a>
+</td>
+<td>
+<span class="listing-author">JiyunLim </span>
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1689778800000" data-listing-file-modified-sort="1708317723782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN (시뮬레이션)" data-listing-filename-sort="2023-07-20-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN (시뮬레이션).ipynb">
+<td>
+<span class="listing-date">Jul 20, 2023</span>
+</td>
+<td>
+<a href="./연구/지윤이랑/SOLAR/2023-07-20-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN (시뮬레이션).html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – EPT + RGCN (시뮬레이션)</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="2" data-listing-date-sort="1689519600000" data-listing-file-modified-sort="1708317723782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="30" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN" data-listing-filename-sort="2023-07-17-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN.ipynb">
+<td>
+<span class="listing-date">Jul 17, 2023</span>
+</td>
+<td>
+<a href="./연구/지윤이랑/SOLAR/2023-07-17-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – EPT + RGCN</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1680534000000" data-listing-file-modified-sort="1708317723782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="18" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석" data-listing-filename-sort="2023-04-04-(연구&amp;지윤) 태양광자료분석 -- EPT.ipynb">
+<td>
+<span class="listing-date">Apr 4, 2023</span>
+</td>
+<td>
+<a href="./연구/지윤이랑/SOLAR/2023-04-04-(연구&amp;지윤) 태양광자료분석 -- EPT.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="4" data-listing-date-sort="1680447600000" data-listing-file-modified-sort="1708317723782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- 일사량자료정리" data-listing-filename-sort="2023-04-03-(연구&amp;지윤) 태양광자료분석 -- 일사량자료정리.ipynb">
+<td>
+<span class="listing-date">Apr 3, 2023</span>
+</td>
+<td>
+<a href="./연구/지윤이랑/SOLAR/2023-04-03-(연구&amp;지윤) 태양광자료분석 -- 일사량자료정리.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – 일사량자료정리</a>
+</td>
+<td>
+<span class="listing-author">임지윤, 신록예찬</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>── R CMD build ─────────────────────────────────────────────────────────────────
-* checking for file ‘/tmp/RtmpJAkI6p/remotes519922b81634d/seoyeonc-gglite-1b35a36/DESCRIPTION’ ... OK
-* preparing ‘gglite’:
-* checking DESCRIPTION meta-information ... OK
-* checking for LF line-endings in source and make files and shell scripts
-* checking for empty or unneeded directories
-Omitted ‘LazyData’ from DESCRIPTION
-* building ‘gglite_0.1.0.tar.gz’
-</code></pre>
-</div>
-</div>
-<section id="비트시그널" class="level1">
-<h1>1. 비트시그널</h1>
-<p><span class="math display">\[y_t = \cos(62\pi t) + \cos(58\pi t)\]</span></p>
-<div id="949b107e-b497-4147-b24d-910efdfd22e5" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>t <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span><span class="sc">/</span><span class="dv">2000</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>y1 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">62</span><span class="sc">*</span>pi<span class="sc">*</span>t) </span>
-<span id="cb4-3"><a href="#cb4-3"></a>y2 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">58</span><span class="sc">*</span>pi<span class="sc">*</span>t)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>am <span class="ot">=</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>t)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>y <span class="ot">=</span> y1 <span class="sc">+</span> y2 </span>
-<span id="cb4-6"><a href="#cb4-6"></a>fig1 <span class="ot">=</span> <span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">line</span>(t,y1,<span class="at">col=</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">line</span>(t,y,<span class="at">alpha=</span><span class="dv">0</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>fig2 <span class="ot">=</span> <span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">line</span>(t,y2,<span class="at">col=</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">line</span>(t,y,<span class="at">alpha=</span><span class="dv">0</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>fig3 <span class="ot">=</span> <span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">line</span>(t,y1<span class="sc">+</span>y2) <span class="sc">+</span> <span class="fu">line</span>(t,y1,<span class="at">col=</span><span class="dv">2</span>,<span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">lwd=</span><span class="fl">0.2</span>) <span class="sc">+</span> <span class="fu">line</span>(t,y2,<span class="at">col=</span><span class="dv">4</span>,<span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">lwd=</span><span class="fl">0.2</span>) <span class="sc">+</span> <span class="fu">line</span>(t,am,<span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="a610fec0-eff6-4c75-8156-a0aea31db3e9" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>fig <span class="ot">=</span> fig1<span class="sc">/</span>fig2<span class="sc">/</span>fig3</span>
-<span id="cb5-2"><a href="#cb5-2"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="figs_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="4ccbf9b3-84aa-4b7a-817f-0e5b37cd2e86" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggsave</span>(<span class="st">"beat.pdf"</span>,fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Saving 6.67 x 6.67 in image</code></pre>
-</div>
-</div>
-
-
-</section>
-
-</main> <!-- /main -->
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -765,8 +731,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://utteranc.es/client.js" repo="miruetoto/yechan3" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 
