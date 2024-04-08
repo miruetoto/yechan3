@@ -1,7 +1,7 @@
 ---
 title: "서연"
 listing:
-  contents: 연구/서연
+  contents: 연구/서연이랑
   sort: "date desc"
   type: table
   categories: false

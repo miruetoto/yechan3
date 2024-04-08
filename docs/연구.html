@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.520">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -100,6 +100,33 @@ ul.task-list li input[type="checkbox"] {
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -255,9 +282,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 <ul>
-<li>나혼자: <a href="./규빈.html">규빈</a></li>
-<li>교수님이랑: <a href="./교수님.html">교수님</a></li>
-<li>학생들이랑: <a href="./재인.html">재인</a>, <a href="./서연.html">서연</a>, <a href="./보람.html">보람</a>, <a href="지윤.qmd">지윤</a></li>
+<li>나혼자: <a href="./규빈.html">나혼자</a></li>
+<li>교수님이랑: <a href="./교수님.html">교수님이랑</a></li>
+<li>학생들이랑: <a href="./재인.html">재인이랑</a>, <a href="./서연.html">서연이랑</a>, <a href="./보람.html">보람이랑</a>, <a href="./지윤.html">지윤이랑</a></li>
 </ul>
 
 
@@ -279,496 +306,507 @@ Author
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1708397781532" data-listing-reading-time-sort="1" data-listing-word-count-sort="25" data-listing-title-sort="Intro" data-listing-filename-sort="Untitled.ipynb">
+<tr data-index="0" data-listing-date-sort="1710946800000" data-listing-file-modified-sort="1711694730000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="(연구&amp;교수님) 다중척도논문 -- 그림들" data-listing-filename-sort="figs.ipynb">
 <td>
-<span class="listing-date">&nbsp;</span>
+<span class="listing-date">Mar 21, 2024</span>
 </td>
 <td>
-<a href="./연구/교수님/MultiscaleReview/Untitled.html" class="title listing-title">Intro</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1706108400000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="59" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- pyod 사용" data-listing-filename-sort="2024-01-25-pyod 사용.ipynb">
-<td>
-<span class="listing-date">Jan 25, 2024</span>
-</td>
-<td>
-<a href="./연구/보람/신용카드거래 사기탐지/2024-01-25-pyod 사용.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – pyod 사용</a>
-</td>
-<td>
-<span class="listing-author">신록예찬,김보람 </span>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1706022000000" data-listing-file-modified-sort="1708318620691" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- ToyExam" data-listing-filename-sort="2024-01-24-ToyExam.ipynb">
-<td>
-<span class="listing-date">Jan 24, 2024</span>
-</td>
-<td>
-<a href="./연구/서연/ITSTGCN/2024-01-24-ToyExam.html" class="title listing-title">(연구&amp;서연) IT-STGCN – ToyExam</a>
-</td>
-<td>
-<span class="listing-author">SEOYEON CHOI</span>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1705590000000" data-listing-file-modified-sort="1708318580699" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="5" data-listing-title-sort="(연구) gglitely -- 서브플랏" data-listing-filename-sort="2024-01-19-서브플랏.ipynb">
-<td>
-<span class="listing-date">Jan 19, 2024</span>
-</td>
-<td>
-<a href="./연구/규빈/gglitely/2024-01-19-서브플랏.html" class="title listing-title">(연구) gglitely – 서브플랏</a>
-</td>
-<td>
-<span class="listing-author">신록예찬 </span>
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1705590000000" data-listing-file-modified-sort="1708318591487" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="(연구) gglitely -- 연계" data-listing-filename-sort="2024-01-19-연계.ipynb">
-<td>
-<span class="listing-date">Jan 19, 2024</span>
-</td>
-<td>
-<a href="./연구/규빈/gglitely/2024-01-19-연계.html" class="title listing-title">(연구) gglitely – 연계</a>
-</td>
-<td>
-<span class="listing-author">신록예찬 </span>
-</td>
-</tr>
-<tr data-index="5" data-listing-date-sort="1705590000000" data-listing-file-modified-sort="1708318602411" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="(연구) gglitely -- 튜토리얼" data-listing-filename-sort="2024-01-19-튜토리얼.ipynb">
-<td>
-<span class="listing-date">Jan 19, 2024</span>
-</td>
-<td>
-<a href="./연구/규빈/gglitely/2024-01-19-튜토리얼.html" class="title listing-title">(연구) gglitely – 튜토리얼</a>
-</td>
-<td>
-<span class="listing-author">신록예찬 </span>
-</td>
-</tr>
-<tr data-index="6" data-listing-date-sort="1705503600000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="27" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- pygod 셋팅" data-listing-filename-sort="2024-01-18-pygod 셋팅.ipynb">
-<td>
-<span class="listing-date">Jan 18, 2024</span>
-</td>
-<td>
-<a href="./연구/보람/신용카드거래 사기탐지/2024-01-18-pygod 셋팅.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – pygod 셋팅</a>
-</td>
-<td>
-<span class="listing-author">신록예찬,김보람 </span>
-</td>
-</tr>
-<tr data-index="7" data-listing-date-sort="1705330800000" data-listing-file-modified-sort="1708317722918" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="58" data-listing-title-sort="(연구&amp;교수님) EBT -- 첫 논문 재현" data-listing-filename-sort="2024-01-16-첫 논문 재현.ipynb">
-<td>
-<span class="listing-date">Jan 16, 2024</span>
-</td>
-<td>
-<a href="./연구/교수님/EBT/2024-01-16-첫 논문 재현.html" class="title listing-title">(연구&amp;교수님) EBT – 첫 논문 재현</a>
+<a href="./연구/교수님이랑/MS_Review/figs.html" class="title listing-title">(연구&amp;교수님) 다중척도논문 – 그림들</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="8" data-listing-date-sort="1705244400000" data-listing-file-modified-sort="1708394776775" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="116" data-listing-title-sort="(연구) gglite -- 튜토리얼" data-listing-filename-sort="2024-01-15-튜토리얼.ipynb">
+<tr data-index="1" data-listing-date-sort="1706108400000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="59" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- pyod 사용" data-listing-filename-sort="2024-01-25-pyod 사용.ipynb">
 <td>
-<span class="listing-date">Jan 15, 2024</span>
+<span class="listing-date">Jan 25, 2024</span>
 </td>
 <td>
-<a href="./연구/규빈/gglite/2024-01-15-튜토리얼.html" class="title listing-title">(연구) gglite – 튜토리얼</a>
+<a href="./연구/보람이랑/신용카드거래 사기탐지/2024-01-25-pyod 사용.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – pyod 사용</a>
 </td>
 <td>
-<span class="listing-author">신록예찬 </span>
+<span class="listing-author">신록예찬,김보람 </span>
 </td>
 </tr>
-<tr data-index="9" data-listing-date-sort="1704639600000" data-listing-file-modified-sort="1708318628635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1003" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- 실험결과시각화" data-listing-filename-sort="2024-01-19-실험결과정리.ipynb">
+<tr data-index="2" data-listing-date-sort="1706022000000" data-listing-file-modified-sort="1712536352894" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- ToyExam" data-listing-filename-sort="2024-01-24-ToyExam.ipynb">
 <td>
-<span class="listing-date">Jan 8, 2024</span>
+<span class="listing-date">Jan 24, 2024</span>
 </td>
 <td>
-<a href="./연구/서연/ITSTGCN/2024-01-19-실험결과정리.html" class="title listing-title">(연구&amp;서연) IT-STGCN – 실험결과시각화</a>
+<a href="./연구/서연이랑/ITSTGCN/2024-01-24-ToyExam.html" class="title listing-title">(연구&amp;서연) IT-STGCN – ToyExam</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="10" data-listing-date-sort="1703602800000" data-listing-file-modified-sort="1708317723118" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="(연구&amp;재인) MBTI(정리) -- 논문그림정리" data-listing-filename-sort="2023-12-27-(연구&amp;재인) MBTI(정리) -- 그림정리.ipynb">
+<tr data-index="3" data-listing-date-sort="1705590000000" data-listing-file-modified-sort="1712536402382" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="5" data-listing-title-sort="(연구) gglitely -- 서브플랏" data-listing-filename-sort="2024-01-19-서브플랏.ipynb">
+<td>
+<span class="listing-date">Jan 19, 2024</span>
+</td>
+<td>
+<a href="./연구/나혼자/gglitely/2024-01-19-서브플랏.html" class="title listing-title">(연구) gglitely – 서브플랏</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="4" data-listing-date-sort="1705590000000" data-listing-file-modified-sort="1712536415710" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="(연구) gglitely -- 연계" data-listing-filename-sort="2024-01-19-연계.ipynb">
+<td>
+<span class="listing-date">Jan 19, 2024</span>
+</td>
+<td>
+<a href="./연구/나혼자/gglitely/2024-01-19-연계.html" class="title listing-title">(연구) gglitely – 연계</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="5" data-listing-date-sort="1705590000000" data-listing-file-modified-sort="1712536388322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="(연구) gglitely -- 튜토리얼" data-listing-filename-sort="2024-01-19-튜토리얼.ipynb">
+<td>
+<span class="listing-date">Jan 19, 2024</span>
+</td>
+<td>
+<a href="./연구/나혼자/gglitely/2024-01-19-튜토리얼.html" class="title listing-title">(연구) gglitely – 튜토리얼</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="6" data-listing-date-sort="1705503600000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="27" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- pygod 셋팅" data-listing-filename-sort="2024-01-18-pygod 셋팅.ipynb">
+<td>
+<span class="listing-date">Jan 18, 2024</span>
+</td>
+<td>
+<a href="./연구/보람이랑/신용카드거래 사기탐지/2024-01-18-pygod 셋팅.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – pygod 셋팅</a>
+</td>
+<td>
+<span class="listing-author">신록예찬,김보람 </span>
+</td>
+</tr>
+<tr data-index="7" data-listing-date-sort="1705330800000" data-listing-file-modified-sort="1711451494000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="60" data-listing-title-sort="(연구&amp;교수님) EBT -- 첫 논문 재현" data-listing-filename-sort="2024-01-16-첫 논문 재현.ipynb">
+<td>
+<span class="listing-date">Jan 16, 2024</span>
+</td>
+<td>
+<a href="./연구/교수님이랑/EBT/2024-01-16-첫 논문 재현.html" class="title listing-title">(연구&amp;교수님) EBT – 첫 논문 재현</a>
+</td>
+<td>
+<span class="listing-author">최규빈 </span>
+</td>
+</tr>
+<tr data-index="8" data-listing-date-sort="1705244400000" data-listing-file-modified-sort="1708394776000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="116" data-listing-title-sort="(연구) gglite -- 튜토리얼" data-listing-filename-sort="2024-01-15-튜토리얼.ipynb">
+<td>
+<span class="listing-date">Jan 15, 2024</span>
+</td>
+<td>
+<a href="./연구/나혼자/gglite/2024-01-15-튜토리얼.html" class="title listing-title">(연구) gglite – 튜토리얼</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="9" data-listing-date-sort="1704639600000" data-listing-file-modified-sort="1712536344618" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1003" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- 실험결과시각화" data-listing-filename-sort="2024-01-19-실험결과정리.ipynb">
+<td>
+<span class="listing-date">Jan 8, 2024</span>
+</td>
+<td>
+<a href="./연구/서연이랑/ITSTGCN/2024-01-19-실험결과정리.html" class="title listing-title">(연구&amp;서연) IT-STGCN – 실험결과시각화</a>
+</td>
+<td>
+<span class="listing-author">SEOYEON CHOI</span>
+</td>
+</tr>
+<tr data-index="10" data-listing-date-sort="1703602800000" data-listing-file-modified-sort="1706254873000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="(연구&amp;재인) MBTI(정리) -- 논문그림정리" data-listing-filename-sort="2023-12-27-(연구&amp;재인) MBTI(정리) -- 그림정리.ipynb">
 <td>
 <span class="listing-date">Dec 27, 2023</span>
 </td>
 <td>
-<a href="./연구/재인/2023-12-27-(연구&amp;재인) MBTI(정리) -- 그림정리.html" class="title listing-title">(연구&amp;재인) MBTI(정리) – 논문그림정리</a>
+<a href="./연구/재인이랑/2023-12-27-(연구&amp;재인) MBTI(정리) -- 그림정리.html" class="title listing-title">(연구&amp;재인) MBTI(정리) – 논문그림정리</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="11" data-listing-date-sort="1703170800000" data-listing-file-modified-sort="1708317723118" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="(연구&amp;재인) MBTI(정리) -- 실험결과 시각화" data-listing-filename-sort="2023-12-23-(연구&amp;재인) MBTI(정리) -- 실험결과 시각화.ipynb">
+<tr data-index="11" data-listing-date-sort="1703170800000" data-listing-file-modified-sort="1706254873000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="(연구&amp;재인) MBTI(정리) -- 실험결과 시각화" data-listing-filename-sort="2023-12-23-(연구&amp;재인) MBTI(정리) -- 실험결과 시각화.ipynb">
 <td>
 <span class="listing-date">Dec 22, 2023</span>
 </td>
 <td>
-<a href="./연구/재인/2023-12-23-(연구&amp;재인) MBTI(정리) -- 실험결과 시각화.html" class="title listing-title">(연구&amp;재인) MBTI(정리) – 실험결과 시각화</a>
+<a href="./연구/재인이랑/2023-12-23-(연구&amp;재인) MBTI(정리) -- 실험결과 시각화.html" class="title listing-title">(연구&amp;재인) MBTI(정리) – 실험결과 시각화</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="12" data-listing-date-sort="1703084400000" data-listing-file-modified-sort="1708317723106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="(연구&amp;재인) MBTI(정리) -- TabularPredictor 실험" data-listing-filename-sort="2023-12-21-(연구&amp;재인) MBTI(정리) -- TabularPredictor 실험.ipynb">
+<tr data-index="12" data-listing-date-sort="1703084400000" data-listing-file-modified-sort="1706254873000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="(연구&amp;재인) MBTI(정리) -- TabularPredictor 실험" data-listing-filename-sort="2023-12-21-(연구&amp;재인) MBTI(정리) -- TabularPredictor 실험.ipynb">
 <td>
 <span class="listing-date">Dec 21, 2023</span>
 </td>
 <td>
-<a href="./연구/재인/2023-12-21-(연구&amp;재인) MBTI(정리) -- TabularPredictor 실험.html" class="title listing-title">(연구&amp;재인) MBTI(정리) – TabularPredictor 실험</a>
+<a href="./연구/재인이랑/2023-12-21-(연구&amp;재인) MBTI(정리) -- TabularPredictor 실험.html" class="title listing-title">(연구&amp;재인) MBTI(정리) – TabularPredictor 실험</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="13" data-listing-date-sort="1702998000000" data-listing-file-modified-sort="1708317723106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="33" data-listing-title-sort="(연구&amp;재인) MBTI(정리) -- 실험셋업 시각화" data-listing-filename-sort="2023-12-20-(연구&amp;재인) MBTI(정리) -- 실험셋업 시각화.ipynb">
+<tr data-index="13" data-listing-date-sort="1702998000000" data-listing-file-modified-sort="1706254873000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="33" data-listing-title-sort="(연구&amp;재인) MBTI(정리) -- 실험셋업 시각화" data-listing-filename-sort="2023-12-20-(연구&amp;재인) MBTI(정리) -- 실험셋업 시각화.ipynb">
 <td>
 <span class="listing-date">Dec 20, 2023</span>
 </td>
 <td>
-<a href="./연구/재인/2023-12-20-(연구&amp;재인) MBTI(정리) -- 실험셋업 시각화.html" class="title listing-title">(연구&amp;재인) MBTI(정리) – 실험셋업 시각화</a>
+<a href="./연구/재인이랑/2023-12-20-(연구&amp;재인) MBTI(정리) -- 실험셋업 시각화.html" class="title listing-title">(연구&amp;재인) MBTI(정리) – 실험셋업 시각화</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="14" data-listing-date-sort="1702911600000" data-listing-file-modified-sort="1708317723106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="63" data-listing-title-sort="(연구&amp;재인) MBTI(정리) -- 실험셋업" data-listing-filename-sort="2023-12-19-(연구&amp;재인) MBTI(정리) -- 실험셋업.ipynb">
+<tr data-index="14" data-listing-date-sort="1702911600000" data-listing-file-modified-sort="1706254873000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="63" data-listing-title-sort="(연구&amp;재인) MBTI(정리) -- 실험셋업" data-listing-filename-sort="2023-12-19-(연구&amp;재인) MBTI(정리) -- 실험셋업.ipynb">
 <td>
 <span class="listing-date">Dec 19, 2023</span>
 </td>
 <td>
-<a href="./연구/재인/2023-12-19-(연구&amp;재인) MBTI(정리) -- 실험셋업.html" class="title listing-title">(연구&amp;재인) MBTI(정리) – 실험셋업</a>
+<a href="./연구/재인이랑/2023-12-19-(연구&amp;재인) MBTI(정리) -- 실험셋업.html" class="title listing-title">(연구&amp;재인) MBTI(정리) – 실험셋업</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="15" data-listing-date-sort="1702393200000" data-listing-file-modified-sort="1708317723106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="(연구&amp;재인) MBTI -- 추가자료분석 (429)" data-listing-filename-sort="2023-12-13-(연구&amp;재인) MBTI -- 추가자료분석(429).ipynb">
+<tr data-index="15" data-listing-date-sort="1702393200000" data-listing-file-modified-sort="1706254873000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="(연구&amp;재인) MBTI -- 추가자료분석 (429)" data-listing-filename-sort="2023-12-13-(연구&amp;재인) MBTI -- 추가자료분석(429).ipynb">
 <td>
 <span class="listing-date">Dec 13, 2023</span>
 </td>
 <td>
-<a href="./연구/재인/2023-12-13-(연구&amp;재인) MBTI -- 추가자료분석(429).html" class="title listing-title">(연구&amp;재인) MBTI – 추가자료분석 (429)</a>
+<a href="./연구/재인이랑/2023-12-13-(연구&amp;재인) MBTI -- 추가자료분석(429).html" class="title listing-title">(연구&amp;재인) MBTI – 추가자료분석 (429)</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="16" data-listing-date-sort="1702393200000" data-listing-file-modified-sort="1708317723106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="(연구&amp;재인) MBTI -- 추가자료분석 (all)" data-listing-filename-sort="2023-12-13-(연구&amp;재인) MBTI -- 추가자료분석(all).ipynb">
+<tr data-index="16" data-listing-date-sort="1702393200000" data-listing-file-modified-sort="1706254873000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="(연구&amp;재인) MBTI -- 추가자료분석 (all)" data-listing-filename-sort="2023-12-13-(연구&amp;재인) MBTI -- 추가자료분석(all).ipynb">
 <td>
 <span class="listing-date">Dec 13, 2023</span>
 </td>
 <td>
-<a href="./연구/재인/2023-12-13-(연구&amp;재인) MBTI -- 추가자료분석(all).html" class="title listing-title">(연구&amp;재인) MBTI – 추가자료분석 (all)</a>
+<a href="./연구/재인이랑/2023-12-13-(연구&amp;재인) MBTI -- 추가자료분석(all).html" class="title listing-title">(연구&amp;재인) MBTI – 추가자료분석 (all)</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="17" data-listing-date-sort="1697036400000" data-listing-file-modified-sort="1708317723106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(연구&amp;재인) MBTI -- MBTI" data-listing-filename-sort="2023-10-12-(연구&amp;재인) MBTI -- MBTI.ipynb">
+<tr data-index="17" data-listing-date-sort="1699455600000" data-listing-file-modified-sort="1711159745224" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="81" data-listing-title-sort="(연구) graft -- tutorial" data-listing-filename-sort="2023-11-09-graft.ipynb">
+<td>
+<span class="listing-date">Nov 9, 2023</span>
+</td>
+<td>
+<a href="./연구/나혼자/graft/2023-11-09-graft.html" class="title listing-title">(연구) graft – tutorial</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="18" data-listing-date-sort="1697036400000" data-listing-file-modified-sort="1706254873000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(연구&amp;재인) MBTI -- MBTI" data-listing-filename-sort="2023-10-12-(연구&amp;재인) MBTI -- MBTI.ipynb">
 <td>
 <span class="listing-date">Oct 12, 2023</span>
 </td>
 <td>
-<a href="./연구/재인/2023-10-12-(연구&amp;재인) MBTI -- MBTI.html" class="title listing-title">(연구&amp;재인) MBTI – MBTI</a>
+<a href="./연구/재인이랑/2023-10-12-(연구&amp;재인) MBTI -- MBTI.html" class="title listing-title">(연구&amp;재인) MBTI – MBTI</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="18" data-listing-date-sort="1696950000000" data-listing-file-modified-sort="1708317723106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(연구&amp;재인) MBTI -- 감성분석" data-listing-filename-sort="2023-10-11-(연구&amp;재인) MBTI -- 감성분석.ipynb">
+<tr data-index="19" data-listing-date-sort="1696950000000" data-listing-file-modified-sort="1706254873000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(연구&amp;재인) MBTI -- 감성분석" data-listing-filename-sort="2023-10-11-(연구&amp;재인) MBTI -- 감성분석.ipynb">
 <td>
 <span class="listing-date">Oct 11, 2023</span>
 </td>
 <td>
-<a href="./연구/재인/2023-10-11-(연구&amp;재인) MBTI -- 감성분석.html" class="title listing-title">(연구&amp;재인) MBTI – 감성분석</a>
+<a href="./연구/재인이랑/2023-10-11-(연구&amp;재인) MBTI -- 감성분석.html" class="title listing-title">(연구&amp;재인) MBTI – 감성분석</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="19" data-listing-date-sort="1694617200000" data-listing-file-modified-sort="1708317723078" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="345" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- 논문리비전" data-listing-filename-sort="2023-09-14-논문리비전.ipynb">
+<tr data-index="20" data-listing-date-sort="1694617200000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="345" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- 논문리비전" data-listing-filename-sort="2023-09-14-논문리비전.ipynb">
 <td>
 <span class="listing-date">Sep 14, 2023</span>
 </td>
 <td>
-<a href="./연구/서연/ITSTGCN/2023-09-14-논문리비전.html" class="title listing-title">(연구&amp;서연) IT-STGCN – 논문리비전</a>
+<a href="./연구/서연이랑/ITSTGCN/2023-09-14-논문리비전.html" class="title listing-title">(연구&amp;서연) IT-STGCN – 논문리비전</a>
 </td>
 <td>
 <span class="listing-author">최서연 </span>
 </td>
 </tr>
-<tr data-index="20" data-listing-date-sort="1692889200000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- 데이터(8, df02)커널죽음" data-listing-filename-sort="2023-08-22-데이터(8, df02)커널죽음.ipynb">
+<tr data-index="21" data-listing-date-sort="1692889200000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- 데이터(8, df02)커널죽음" data-listing-filename-sort="2023-08-22-데이터(8, df02)커널죽음.ipynb">
 <td>
 <span class="listing-date">Aug 25, 2023</span>
 </td>
 <td>
-<a href="./연구/보람/신용카드거래 사기탐지/2023-08-22-데이터(8, df02)커널죽음.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – 데이터(8, df02)커널죽음</a>
+<a href="./연구/보람이랑/신용카드거래 사기탐지/2023-08-22-데이터(8, df02)커널죽음.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – 데이터(8, df02)커널죽음</a>
 </td>
 <td>
 <span class="listing-author">김보람 </span>
 </td>
 </tr>
-<tr data-index="21" data-listing-date-sort="1692284400000" data-listing-file-modified-sort="1708317722918" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(연구&amp;교수님) EPT-DISSIM -- PRCP_KOR2 데이터정리" data-listing-filename-sort="2023-08-18-(연구) EPT-DISSIM -- 데이터전처리.ipynb">
+<tr data-index="22" data-listing-date-sort="1692284400000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(연구&amp;교수님) EPT-DISSIM -- PRCP_KOR2 데이터정리" data-listing-filename-sort="2023-08-18-(연구) EPT-DISSIM -- 데이터전처리.ipynb">
 <td>
 <span class="listing-date">Aug 18, 2023</span>
 </td>
 <td>
-<a href="./연구/교수님/EPT_DISSIM/2023-08-18-(연구) EPT-DISSIM -- 데이터전처리.html" class="title listing-title">(연구&amp;교수님) EPT-DISSIM – PRCP_KOR2 데이터정리</a>
+<a href="./연구/교수님이랑/EPT_DISSIM/2023-08-18-(연구) EPT-DISSIM -- 데이터전처리.html" class="title listing-title">(연구&amp;교수님) EPT-DISSIM – PRCP_KOR2 데이터정리</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="22" data-listing-date-sort="1691938800000" data-listing-file-modified-sort="1708317723782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- GConvLSTM +++++++ 이거!!! ++++++++++++" data-listing-filename-sort="2023-08-14-(연구&amp;지윤) 태양광자료분석 -- GConvLSTM +++++++ 이거!!! ++++++++++++.ipynb">
+<tr data-index="23" data-listing-date-sort="1691938800000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- GConvLSTM +++++++ 이거!!! ++++++++++++" data-listing-filename-sort="2023-08-14-(연구&amp;지윤) 태양광자료분석 -- GConvLSTM +++++++ 이거!!! ++++++++++++.ipynb">
 <td>
 <span class="listing-date">Aug 14, 2023</span>
 </td>
 <td>
-<a href="./연구/지윤/SOLAR/2023-08-14-(연구&amp;지윤) 태양광자료분석 -- GConvLSTM +++++++ 이거!!! ++++++++++++.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – GConvLSTM +++++++ 이거!!! ++++++++++++</a>
+<a href="./연구/지윤이랑/SOLAR/2023-08-14-(연구&amp;지윤) 태양광자료분석 -- GConvLSTM +++++++ 이거!!! ++++++++++++.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – GConvLSTM +++++++ 이거!!! ++++++++++++</a>
 </td>
 <td>
 <span class="listing-author">JiyunLim </span>
 </td>
 </tr>
-<tr data-index="23" data-listing-date-sort="1691420400000" data-listing-file-modified-sort="1708317722918" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="17" data-listing-title-sort="(연구&amp;교수님) EPT-DISSIM -- 진행사항" data-listing-filename-sort="2023-08-08-(연구) EPT-DISSIM -- 진행사항.ipynb">
+<tr data-index="24" data-listing-date-sort="1691420400000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="17" data-listing-title-sort="(연구&amp;교수님) EPT-DISSIM -- 진행사항" data-listing-filename-sort="2023-08-08-(연구) EPT-DISSIM -- 진행사항.ipynb">
 <td>
 <span class="listing-date">Aug 8, 2023</span>
 </td>
 <td>
-<a href="./연구/교수님/EPT_DISSIM/2023-08-08-(연구) EPT-DISSIM -- 진행사항.html" class="title listing-title">(연구&amp;교수님) EPT-DISSIM – 진행사항</a>
+<a href="./연구/교수님이랑/EPT_DISSIM/2023-08-08-(연구) EPT-DISSIM -- 진행사항.html" class="title listing-title">(연구&amp;교수님) EPT-DISSIM – 진행사항</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="24" data-listing-date-sort="1691334000000" data-listing-file-modified-sort="1708317722918" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="(연구&amp;교수님) EPT-DISSIM -- PRCP_KOR 데이터정리" data-listing-filename-sort="2023-08-07-(연구) EPT-DISSIM -- PRCP_KOR 데이터정리.ipynb">
+<tr data-index="25" data-listing-date-sort="1691334000000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="(연구&amp;교수님) EPT-DISSIM -- PRCP_KOR 데이터정리" data-listing-filename-sort="2023-08-07-(연구) EPT-DISSIM -- PRCP_KOR 데이터정리.ipynb">
 <td>
 <span class="listing-date">Aug 7, 2023</span>
 </td>
 <td>
-<a href="./연구/교수님/EPT_DISSIM/2023-08-07-(연구) EPT-DISSIM -- PRCP_KOR 데이터정리.html" class="title listing-title">(연구&amp;교수님) EPT-DISSIM – PRCP_KOR 데이터정리</a>
+<a href="./연구/교수님이랑/EPT_DISSIM/2023-08-07-(연구) EPT-DISSIM -- PRCP_KOR 데이터정리.html" class="title listing-title">(연구&amp;교수님) EPT-DISSIM – PRCP_KOR 데이터정리</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="25" data-listing-date-sort="1690642800000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="124" data-listing-title-sort="(연구&amp;보람) CTGAN -- 신용카드" data-listing-filename-sort="2023-07-03-신용카드.ipynb">
+<tr data-index="26" data-listing-date-sort="1690642800000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="124" data-listing-title-sort="(연구&amp;보람) CTGAN -- 신용카드" data-listing-filename-sort="2023-07-03-신용카드.ipynb">
 <td>
 <span class="listing-date">Jul 30, 2023</span>
 </td>
 <td>
-<a href="./연구/보람/CTGAN/2023-07-03-신용카드.html" class="title listing-title">(연구&amp;보람) CTGAN – 신용카드</a>
+<a href="./연구/보람이랑/CTGAN/2023-07-03-신용카드.html" class="title listing-title">(연구&amp;보람) CTGAN – 신용카드</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="26" data-listing-date-sort="1689778800000" data-listing-file-modified-sort="1708317723782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN (시뮬레이션)" data-listing-filename-sort="2023-07-20-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN (시뮬레이션).ipynb">
+<tr data-index="27" data-listing-date-sort="1689778800000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN (시뮬레이션)" data-listing-filename-sort="2023-07-20-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN (시뮬레이션).ipynb">
 <td>
 <span class="listing-date">Jul 20, 2023</span>
 </td>
 <td>
-<a href="./연구/지윤/SOLAR/2023-07-20-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN (시뮬레이션).html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – EPT + RGCN (시뮬레이션)</a>
+<a href="./연구/지윤이랑/SOLAR/2023-07-20-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN (시뮬레이션).html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – EPT + RGCN (시뮬레이션)</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="27" data-listing-date-sort="1689692400000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="625" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- 관련연구 리뷰" data-listing-filename-sort="2023-07-19-관련연구 리뷰.ipynb">
+<tr data-index="28" data-listing-date-sort="1689692400000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="625" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- 관련연구 리뷰" data-listing-filename-sort="2023-07-19-관련연구 리뷰.ipynb">
 <td>
 <span class="listing-date">Jul 19, 2023</span>
 </td>
 <td>
-<a href="./연구/보람/신용카드거래 사기탐지/2023-07-19-관련연구 리뷰.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – 관련연구 리뷰</a>
+<a href="./연구/보람이랑/신용카드거래 사기탐지/2023-07-19-관련연구 리뷰.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – 관련연구 리뷰</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="28" data-listing-date-sort="1689692400000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- 그래프자료로 데이터정리" data-listing-filename-sort="2023-07-19-그래프자료로 데이터정리.ipynb">
+<tr data-index="29" data-listing-date-sort="1689692400000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- 그래프자료로 데이터정리" data-listing-filename-sort="2023-07-19-그래프자료로 데이터정리.ipynb">
 <td>
 <span class="listing-date">Jul 19, 2023</span>
 </td>
 <td>
-<a href="./연구/보람/신용카드거래 사기탐지/2023-07-19-그래프자료로 데이터정리.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – 그래프자료로 데이터정리</a>
+<a href="./연구/보람이랑/신용카드거래 사기탐지/2023-07-19-그래프자료로 데이터정리.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – 그래프자료로 데이터정리</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="29" data-listing-date-sort="1689519600000" data-listing-file-modified-sort="1708317723782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="30" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN" data-listing-filename-sort="2023-07-17-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN.ipynb">
+<tr data-index="30" data-listing-date-sort="1689519600000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="30" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN" data-listing-filename-sort="2023-07-17-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN.ipynb">
 <td>
 <span class="listing-date">Jul 17, 2023</span>
 </td>
 <td>
-<a href="./연구/지윤/SOLAR/2023-07-17-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – EPT + RGCN</a>
+<a href="./연구/지윤이랑/SOLAR/2023-07-17-(연구&amp;지윤) 태양광자료분석 -- EPT + RGCN.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – EPT + RGCN</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="30" data-listing-date-sort="1688137200000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="5" data-listing-title-sort="(연구&amp;보람) CTGAN -- Start" data-listing-filename-sort="2023-07-01-Start.ipynb">
+<tr data-index="31" data-listing-date-sort="1688137200000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="5" data-listing-title-sort="(연구&amp;보람) CTGAN -- Start" data-listing-filename-sort="2023-07-01-Start.ipynb">
 <td>
 <span class="listing-date">Jul 1, 2023</span>
 </td>
 <td>
-<a href="./연구/보람/CTGAN/2023-07-01-Start.html" class="title listing-title">(연구&amp;보람) CTGAN – Start</a>
+<a href="./연구/보람이랑/CTGAN/2023-07-01-Start.html" class="title listing-title">(연구&amp;보람) CTGAN – Start</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="31" data-listing-date-sort="1688137200000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="(연구&amp;보람) CTGAN -- TOY" data-listing-filename-sort="2023-07-02-TOY.ipynb">
+<tr data-index="32" data-listing-date-sort="1688137200000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="(연구&amp;보람) CTGAN -- TOY" data-listing-filename-sort="2023-07-02-TOY.ipynb">
 <td>
 <span class="listing-date">Jul 1, 2023</span>
 </td>
 <td>
-<a href="./연구/보람/CTGAN/2023-07-02-TOY.html" class="title listing-title">(연구&amp;보람) CTGAN – TOY</a>
+<a href="./연구/보람이랑/CTGAN/2023-07-02-TOY.html" class="title listing-title">(연구&amp;보람) CTGAN – TOY</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="32" data-listing-date-sort="1684422000000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="165" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- Try2" data-listing-filename-sort="2023-05-19-Try2.ipynb">
+<tr data-index="33" data-listing-date-sort="1684422000000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="165" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- Try2" data-listing-filename-sort="2023-05-19-Try2.ipynb">
 <td>
 <span class="listing-date">May 19, 2023</span>
 </td>
 <td>
-<a href="./연구/보람/신용카드거래 사기탐지/2023-05-19-Try2.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – Try2</a>
+<a href="./연구/보람이랑/신용카드거래 사기탐지/2023-05-19-Try2.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – Try2</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="33" data-listing-date-sort="1684422000000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="125" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- Try2변형" data-listing-filename-sort="2023-05-24-Try2변형.ipynb">
+<tr data-index="34" data-listing-date-sort="1684422000000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="125" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- Try2변형" data-listing-filename-sort="2023-05-24-Try2변형.ipynb">
 <td>
 <span class="listing-date">May 19, 2023</span>
 </td>
 <td>
-<a href="./연구/보람/신용카드거래 사기탐지/2023-05-24-Try2변형.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – Try2변형</a>
+<a href="./연구/보람이랑/신용카드거래 사기탐지/2023-05-24-Try2변형.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – Try2변형</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="34" data-listing-date-sort="1683817200000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="169" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- Try1" data-listing-filename-sort="2023-05-12-Try1.ipynb">
+<tr data-index="35" data-listing-date-sort="1683817200000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="169" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- Try1" data-listing-filename-sort="2023-05-12-Try1.ipynb">
 <td>
 <span class="listing-date">May 12, 2023</span>
 </td>
 <td>
-<a href="./연구/보람/신용카드거래 사기탐지/2023-05-12-Try1.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – Try1</a>
+<a href="./연구/보람이랑/신용카드거래 사기탐지/2023-05-12-Try1.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – Try1</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="35" data-listing-date-sort="1683817200000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="169" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- Try1변형" data-listing-filename-sort="2023-05-24-Try1변형.ipynb">
+<tr data-index="36" data-listing-date-sort="1683817200000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="169" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- Try1변형" data-listing-filename-sort="2023-05-24-Try1변형.ipynb">
 <td>
 <span class="listing-date">May 12, 2023</span>
 </td>
 <td>
-<a href="./연구/보람/신용카드거래 사기탐지/2023-05-24-Try1변형.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – Try1변형</a>
+<a href="./연구/보람이랑/신용카드거래 사기탐지/2023-05-24-Try1변형.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – Try1변형</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="36" data-listing-date-sort="1683298800000" data-listing-file-modified-sort="1708317723006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="604" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- Start" data-listing-filename-sort="2023-05-06-Start.ipynb">
+<tr data-index="37" data-listing-date-sort="1683298800000" data-listing-file-modified-sort="1708317723000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="604" data-listing-title-sort="(연구&amp;보람) 신용카드거래 사기탐지 -- Start" data-listing-filename-sort="2023-05-06-Start.ipynb">
 <td>
 <span class="listing-date">May 6, 2023</span>
 </td>
 <td>
-<a href="./연구/보람/신용카드거래 사기탐지/2023-05-06-Start.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – Start</a>
+<a href="./연구/보람이랑/신용카드거래 사기탐지/2023-05-06-Start.html" class="title listing-title">(연구&amp;보람) 신용카드거래 사기탐지 – Start</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="37" data-listing-date-sort="1682521200000" data-listing-file-modified-sort="1708317723078" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- Toy Example Figure(Intro)" data-listing-filename-sort="2023-04-27-Toy Example Figure(Intro).ipynb">
+<tr data-index="38" data-listing-date-sort="1682521200000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- Toy Example Figure(Intro)" data-listing-filename-sort="2023-04-27-Toy Example Figure(Intro).ipynb">
 <td>
 <span class="listing-date">Apr 27, 2023</span>
 </td>
 <td>
-<a href="./연구/서연/ITSTGCN/2023-04-27-Toy Example Figure(Intro).html" class="title listing-title">(연구&amp;서연) IT-STGCN – Toy Example Figure(Intro)</a>
+<a href="./연구/서연이랑/ITSTGCN/2023-04-27-Toy Example Figure(Intro).html" class="title listing-title">(연구&amp;서연) IT-STGCN – Toy Example Figure(Intro)</a>
 </td>
 <td>
 <span class="listing-author">최서연 </span>
 </td>
 </tr>
-<tr data-index="38" data-listing-date-sort="1680534000000" data-listing-file-modified-sort="1708317723782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="18" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석" data-listing-filename-sort="2023-04-04-(연구&amp;지윤) 태양광자료분석 -- EPT.ipynb">
+<tr data-index="39" data-listing-date-sort="1680534000000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="18" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석" data-listing-filename-sort="2023-04-04-(연구&amp;지윤) 태양광자료분석 -- EPT.ipynb">
 <td>
 <span class="listing-date">Apr 4, 2023</span>
 </td>
 <td>
-<a href="./연구/지윤/SOLAR/2023-04-04-(연구&amp;지윤) 태양광자료분석 -- EPT.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석</a>
+<a href="./연구/지윤이랑/SOLAR/2023-04-04-(연구&amp;지윤) 태양광자료분석 -- EPT.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="39" data-listing-date-sort="1680447600000" data-listing-file-modified-sort="1708317723782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- 일사량자료정리" data-listing-filename-sort="2023-04-03-(연구&amp;지윤) 태양광자료분석 -- 일사량자료정리.ipynb">
+<tr data-index="40" data-listing-date-sort="1680447600000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="(연구&amp;지윤) 태양광자료분석 -- 일사량자료정리" data-listing-filename-sort="2023-04-03-(연구&amp;지윤) 태양광자료분석 -- 일사량자료정리.ipynb">
 <td>
 <span class="listing-date">Apr 3, 2023</span>
 </td>
 <td>
-<a href="./연구/지윤/SOLAR/2023-04-03-(연구&amp;지윤) 태양광자료분석 -- 일사량자료정리.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – 일사량자료정리</a>
+<a href="./연구/지윤이랑/SOLAR/2023-04-03-(연구&amp;지윤) 태양광자료분석 -- 일사량자료정리.html" class="title listing-title">(연구&amp;지윤) 태양광자료분석 – 일사량자료정리</a>
 </td>
 <td>
 <span class="listing-author">임지윤, 신록예찬</span>
 </td>
 </tr>
-<tr data-index="40" data-listing-date-sort="1679065200000" data-listing-file-modified-sort="1708317723078" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- SimualtionPlanner-Tutorial" data-listing-filename-sort="2023-03-18-SimualtionPlanner-Tutorial.ipynb">
+<tr data-index="41" data-listing-date-sort="1679065200000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- SimualtionPlanner-Tutorial" data-listing-filename-sort="2023-03-18-SimualtionPlanner-Tutorial.ipynb">
 <td>
 <span class="listing-date">Mar 18, 2023</span>
 </td>
 <td>
-<a href="./연구/서연/ITSTGCN/2023-03-18-SimualtionPlanner-Tutorial.html" class="title listing-title">(연구&amp;서연) IT-STGCN – SimualtionPlanner-Tutorial</a>
+<a href="./연구/서연이랑/ITSTGCN/2023-03-18-SimualtionPlanner-Tutorial.html" class="title listing-title">(연구&amp;서연) IT-STGCN – SimualtionPlanner-Tutorial</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="41" data-listing-date-sort="1678978800000" data-listing-file-modified-sort="1708317723078" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="185" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- ITSTGCN-Tutorial" data-listing-filename-sort="2023-03-17-ITSTGCN-Tutorial.ipynb">
+<tr data-index="42" data-listing-date-sort="1678978800000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="185" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- ITSTGCN-Tutorial" data-listing-filename-sort="2023-03-17-ITSTGCN-Tutorial.ipynb">
 <td>
 <span class="listing-date">Mar 17, 2023</span>
 </td>
 <td>
-<a href="./연구/서연/ITSTGCN/2023-03-17-ITSTGCN-Tutorial.html" class="title listing-title">(연구&amp;서연) IT-STGCN – ITSTGCN-Tutorial</a>
+<a href="./연구/서연이랑/ITSTGCN/2023-03-17-ITSTGCN-Tutorial.html" class="title listing-title">(연구&amp;서연) IT-STGCN – ITSTGCN-Tutorial</a>
 </td>
 <td>
 <span class="listing-author">SEOYEON CHOI</span>
 </td>
 </tr>
-<tr data-index="42" data-listing-date-sort="1672326000000" data-listing-file-modified-sort="1708317723074" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="35" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- Toy Example" data-listing-filename-sort="2022-12-30-Toy Example.ipynb">
+<tr data-index="43" data-listing-date-sort="1672326000000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="35" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- Toy Example" data-listing-filename-sort="2022-12-30-Toy Example.ipynb">
 <td>
 <span class="listing-date">Dec 30, 2022</span>
 </td>
 <td>
-<a href="./연구/서연/ITSTGCN/2022-12-30-Toy Example.html" class="title listing-title">(연구&amp;서연) IT-STGCN – Toy Example</a>
+<a href="./연구/서연이랑/ITSTGCN/2022-12-30-Toy Example.html" class="title listing-title">(연구&amp;서연) IT-STGCN – Toy Example</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="43" data-listing-date-sort="1672239600000" data-listing-file-modified-sort="1708317723074" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- Tables" data-listing-filename-sort="2023-02-14-Tables.ipynb">
+<tr data-index="44" data-listing-date-sort="1672239600000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- Tables" data-listing-filename-sort="2023-02-14-Tables.ipynb">
 <td>
 <span class="listing-date">Dec 29, 2022</span>
 </td>
 <td>
-<a href="./연구/서연/ITSTGCN/2023-02-14-Tables.html" class="title listing-title">(연구&amp;서연) IT-STGCN – Tables</a>
+<a href="./연구/서연이랑/ITSTGCN/2023-02-14-Tables.html" class="title listing-title">(연구&amp;서연) IT-STGCN – Tables</a>
 </td>
 <td>
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="44" data-listing-date-sort="1672239600000" data-listing-file-modified-sort="1708317723074" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="696" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- Tutorial" data-listing-filename-sort="2022-12-29-Tutorial.ipynb">
+<tr data-index="45" data-listing-date-sort="1672239600000" data-listing-file-modified-sort="1706254891000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="696" data-listing-title-sort="(연구&amp;서연) IT-STGCN -- Tutorial" data-listing-filename-sort="2022-12-29-Tutorial.ipynb">
 <td>
 <span class="listing-date">Dec 29, 2022</span>
 </td>
 <td>
-<a href="./연구/서연/ITSTGCN/2022-12-29-Tutorial.html" class="title listing-title">(연구&amp;서연) IT-STGCN – Tutorial</a>
+<a href="./연구/서연이랑/ITSTGCN/2022-12-29-Tutorial.html" class="title listing-title">(연구&amp;서연) IT-STGCN – Tutorial</a>
 </td>
 <td>
 <span class="listing-author">신록예찬, 최서연</span>
@@ -908,27 +946,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -943,10 +960,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -955,7 +976,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
       return note.innerHTML;
     }
   }

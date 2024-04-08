@@ -1,7 +1,7 @@
 ---
 title: "규빈"
 listing:
-  contents: 연구/규빈
+  contents: 연구/나혼자
   sort: "date desc"
   type: table
   categories: false

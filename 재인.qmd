@@ -1,7 +1,7 @@
 ---
 title: "재인"
 listing:
-  contents: 연구/재인
+  contents: 연구/재인이랑
   sort: "date desc"
   type: table
   categories: false
