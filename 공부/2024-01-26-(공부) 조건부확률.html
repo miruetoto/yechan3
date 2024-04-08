@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.520">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,6 +91,33 @@ div.csl-indent {
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -377,7 +404,7 @@ div.csl-indent {
 <li><span class="math inline">\(Y \in {\cal F}^*\)</span></li>
 </ul>
 <p>이다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-<div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;이렇게 보니까 <span class="math inline">\({\cal F}^* \subset {\cal F}\)</span> 임을 감안하면 <span class="math inline">\(Y \in {\cal F}^* \Rightarrow Y \in {\cal F}\)</span> 임이 당연하게 느껴진다. <span class="math inline">\(Y \in {\cal F}\)</span>와 같은 기호표현이 너무 이상하게 느껴졌는데, 여기에서 의문이 조금 풀리는 것 같음.</p></li></div><p>또 <span class="math inline">\(Y\)</span>는 아래와 같은 특징이 있다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;이렇게 보니까 <span class="math inline">\({\cal F}^* \subset {\cal F}\)</span> 임을 감안하면 <span class="math inline">\(Y \in {\cal F}^* \Rightarrow  Y \in {\cal F}\)</span> 임이 당연하게 느껴진다. <span class="math inline">\(Y \in {\cal F}\)</span>와 같은 기호표현이 너무 이상하게 느껴졌는데, 여기에서 의문이 조금 풀리는 것 같음.</p></li></div><p>또 <span class="math inline">\(Y\)</span>는 아래와 같은 특징이 있다.</p>
 <ul>
 <li><span class="math inline">\(\forall A \in {\cal F}^*:~\int_A X dP = \int_A Y dP.\)</span></li>
 </ul>
@@ -572,27 +599,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -607,10 +613,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -619,7 +629,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
       return note.innerHTML;
     }
   }
