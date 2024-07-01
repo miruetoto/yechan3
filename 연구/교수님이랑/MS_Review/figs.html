@@ -242,6 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#비트시그널" id="toc-비트시그널" class="nav-link active" data-scroll-target="#비트시그널">1. 비트시그널</a></li>
+  <li><a href="#퓨리에변환" id="toc-퓨리에변환" class="nav-link" data-scroll-target="#퓨리에변환">2. 퓨리에변환</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="figs.out.ipynb" download="figs.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -279,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="443feb3f" class="cell" data-execution_count="2">
+<div id="443feb3f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(devtools)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">install_github</span>(<span class="st">"seoyeonc/gglite"</span>,<span class="at">force=</span><span class="cn">TRUE</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(gglite)</span>
@@ -324,7 +325,7 @@ Warning message:
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>── R CMD build ─────────────────────────────────────────────────────────────────
-* checking for file ‘/tmp/RtmpJAkI6p/remotes519922b81634d/seoyeonc-gglite-1b35a36/DESCRIPTION’ ... OK
+* checking for file ‘/tmp/RtmpvkWVif/remotes7275e3fffe814/seoyeonc-gglite-1b35a36/DESCRIPTION’ ... OK
 * preparing ‘gglite’:
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
@@ -337,7 +338,7 @@ Omitted ‘LazyData’ from DESCRIPTION
 <section id="비트시그널" class="level1">
 <h1>1. 비트시그널</h1>
 <p><span class="math display">\[y_t = \cos(62\pi t) + \cos(58\pi t)\]</span></p>
-<div id="949b107e-b497-4147-b24d-910efdfd22e5" class="cell" data-execution_count="11">
+<div id="949b107e-b497-4147-b24d-910efdfd22e5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>t <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span><span class="sc">/</span><span class="dv">2000</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>y1 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">62</span><span class="sc">*</span>pi<span class="sc">*</span>t) </span>
 <span id="cb4-3"><a href="#cb4-3"></a>y2 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">58</span><span class="sc">*</span>pi<span class="sc">*</span>t)</span>
@@ -347,9 +348,11 @@ Omitted ‘LazyData’ from DESCRIPTION
 <span id="cb4-7"><a href="#cb4-7"></a>fig2 <span class="ot">=</span> <span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">line</span>(t,y2,<span class="at">col=</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">line</span>(t,y,<span class="at">alpha=</span><span class="dv">0</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>)</span>
 <span id="cb4-8"><a href="#cb4-8"></a>fig3 <span class="ot">=</span> <span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">line</span>(t,y1<span class="sc">+</span>y2) <span class="sc">+</span> <span class="fu">line</span>(t,y1,<span class="at">col=</span><span class="dv">2</span>,<span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">lwd=</span><span class="fl">0.2</span>) <span class="sc">+</span> <span class="fu">line</span>(t,y2,<span class="at">col=</span><span class="dv">4</span>,<span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">lwd=</span><span class="fl">0.2</span>) <span class="sc">+</span> <span class="fu">line</span>(t,am,<span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a610fec0-eff6-4c75-8156-a0aea31db3e9" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>fig <span class="ot">=</span> fig1<span class="sc">/</span>fig2<span class="sc">/</span>fig3</span>
-<span id="cb5-2"><a href="#cb5-2"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a610fec0-eff6-4c75-8156-a0aea31db3e9" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">figsize</span>(<span class="dv">5</span>,<span class="dv">4</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>fig <span class="ot">=</span> fig1<span class="sc">/</span>fig2<span class="sc">/</span>fig3</span>
+<span id="cb5-3"><a href="#cb5-3"></a>fig</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -358,10 +361,110 @@ Omitted ‘LazyData’ from DESCRIPTION
 </div>
 </div>
 </div>
-<div id="4ccbf9b3-84aa-4b7a-817f-0e5b37cd2e86" class="cell" data-execution_count="13">
+<div id="4ccbf9b3-84aa-4b7a-817f-0e5b37cd2e86" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggsave</span>(<span class="st">"beat.pdf"</span>,fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Saving 6.67 x 6.67 in image</code></pre>
+</div>
+</div>
+</section>
+<section id="퓨리에변환" class="level1">
+<h1>2. 퓨리에변환</h1>
+<div id="2f765f65-dd9f-4adb-b4aa-1694722da435" class="cell" data-tags="[]" data-execution_count="278">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>spec <span class="ot">&lt;-</span> <span class="cf">function</span>(y){</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    n <span class="ot">=</span> <span class="fu">length</span>(y)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    spec <span class="ot">=</span> (<span class="fu">abs</span>(<span class="fu">fft</span>(y)))<span class="sc">/</span>n</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    omega <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span>n </span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="cf">if</span>(n<span class="sc">%%</span><span class="dv">2</span> <span class="sc">==</span><span class="dv">0</span>){</span>
+<span id="cb8-6"><a href="#cb8-6"></a>        m <span class="ot">=</span> (n<span class="sc">/</span><span class="dv">2</span>)<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>    } <span class="cf">else</span> {</span>
+<span id="cb8-8"><a href="#cb8-8"></a>        m <span class="ot">=</span> (n<span class="dv">-1</span>)<span class="sc">/</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a>    }</span>
+<span id="cb8-10"><a href="#cb8-10"></a>    spec <span class="ot">=</span> <span class="fu">c</span>(spec[(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>n],spec[<span class="dv">1</span><span class="sc">:</span>m])</span>
+<span id="cb8-11"><a href="#cb8-11"></a>    omega <span class="ot">=</span> <span class="fu">c</span>(omega[(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>n]<span class="sc">-</span><span class="dv">1</span>,omega[<span class="dv">1</span><span class="sc">:</span>m]) <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>n</span>
+<span id="cb8-12"><a href="#cb8-12"></a>    <span class="fu">list</span>(<span class="at">freq=</span>omega<span class="sc">*</span><span class="dv">2</span><span class="sc">*</span>pi,<span class="at">spec=</span>spec)</span>
+<span id="cb8-13"><a href="#cb8-13"></a>}       </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d1c60731-c115-418c-afe1-8e65836d3cf3" class="cell" data-tags="[]" data-execution_count="288">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>t <span class="ot">=</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)<span class="sc">/</span><span class="dv">100</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>eps <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>const <span class="ot">=</span> <span class="dv">10</span><span class="sc">+</span>t<span class="sc">*</span><span class="dv">0</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>low <span class="ot">=</span> <span class="dv">9</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>t)</span>
+<span id="cb9-5"><a href="#cb9-5"></a>high <span class="ot">=</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">8</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>t)</span>
+<span id="cb9-6"><a href="#cb9-6"></a>y <span class="ot">=</span> const <span class="sc">+</span> low_freq <span class="sc">+</span> high_freq <span class="sc">+</span> eps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="a020b4bb-3a82-4120-8e2a-2067879542be" class="cell" data-tags="[]" data-execution_count="289">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>freq <span class="ot">=</span> <span class="fu">spec</span>(y)<span class="sc">$</span>freq </span>
+<span id="cb10-2"><a href="#cb10-2"></a>y_spec <span class="ot">=</span> <span class="fu">spec</span>(y)<span class="sc">$</span>spec </span>
+<span id="cb10-3"><a href="#cb10-3"></a>const_spec <span class="ot">=</span> <span class="fu">spec</span>(const)<span class="sc">$</span>spec</span>
+<span id="cb10-4"><a href="#cb10-4"></a>low_spec <span class="ot">=</span> <span class="fu">spec</span>(low)<span class="sc">$</span>spec</span>
+<span id="cb10-5"><a href="#cb10-5"></a>high_spec <span class="ot">=</span> <span class="fu">spec</span>(high)<span class="sc">$</span>spec</span>
+<span id="cb10-6"><a href="#cb10-6"></a>eps_spec <span class="ot">=</span> <span class="fu">spec</span>(eps)<span class="sc">$</span>spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d72353d1-673f-4599-a072-c670d08ad070" class="cell" data-tags="[]" data-execution_count="290">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">figsize</span>()</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(t,y,<span class="at">col=</span><span class="st">"gray60"</span>,<span class="at">cex=</span><span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">line</span>(t,ytrue,<span class="at">col=</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"t"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"y"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="figs_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="9c59c665-b0ef-41a0-8c94-b115783d498b" class="cell" data-tags="[]" data-execution_count="291">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">figsize</span>()</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(freq,y_spec) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="fl">10.5</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="figs_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="35eb8b04-2d78-4127-ae19-1d1c036777da" class="cell" data-tags="[]" data-execution_count="292">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">figsize</span>()</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(freq,const_spec) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="fl">10.5</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="figs_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="e2cc335c-0ea4-47d0-a162-d99f85d7d369" class="cell" data-tags="[]" data-execution_count="293">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(freq,low_spec) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="fl">10.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="figs_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="daf486af-a173-40b4-822a-b48c23a8cc02" class="cell" data-tags="[]" data-execution_count="294">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(freq,high_spec) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="fl">10.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="figs_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="4a9c1fd2-2246-444b-80f1-791e0b98cbe5" class="cell" data-tags="[]" data-execution_count="295">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(freq,eps_spec) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="fl">10.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="figs_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
