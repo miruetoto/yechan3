@@ -355,6 +355,9 @@ Warning message:
 </code></pre>
 </div>
 </div>
+<div id="93102641-ee7b-4288-8081-8809fc65151d" class="cell" data-tags="[]" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="sizer-기본개념" class="level1">
 <h1>1. Sizer 기본개념</h1>
 <p>SiZer 분석은 다양한 밴드위스에서 데이터 스무딩을 통해 시간 시계열 데이터의 트렌드를 분석하는 방법이다. 여기서 밴드위스는 데이터를 스무딩할 때 사용하는 창의 너비를 의미한다. SiZer 분석은 각 밴드위스에서 스무딩된 데이터의 1차 도함수를 계산하여, 그 도함수의 값이 양수인지(증가 추세), 음수인지(감소 추세), 아니면 0에 가까운지를 확인한다.</p>
@@ -369,39 +372,41 @@ Warning message:
 </section>
 <section id="기본-sizer-분석" class="level1">
 <h1>2. 기본 SiZer 분석</h1>
-<div id="aa72d72b-2ea1-4122-b5bf-c579f9c562a8" class="cell" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># 필요한 패키지 로드</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#install.packages("SiZer")</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(SiZer)</span>
-<span id="cb5-4"><a href="#cb5-4"></a></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># 시계열 데이터 생성</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
-<span id="cb5-7"><a href="#cb5-7"></a>t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">200</span>)</span>
-<span id="cb5-8"><a href="#cb5-8"></a>trend <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> t</span>
-<span id="cb5-9"><a href="#cb5-9"></a>noise <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(t), <span class="dv">0</span>, <span class="fl">0.3</span>)</span>
-<span id="cb5-10"><a href="#cb5-10"></a>time_series <span class="ot">&lt;-</span> trend <span class="sc">+</span> noise</span>
-<span id="cb5-11"><a href="#cb5-11"></a></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co"># 시계열 데이터 시각화</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#  plot(t, time_series, type = 'l', main = 'Time Series with Trend and Noise', xlab = 'Time', ylab = 'Value')</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(t,time_series)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="SiZer_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="dd84e6d0-0d1c-4324-a71a-19fecb9e3aff" class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># 다양한 밴드위스 사용</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>sizer_result <span class="ot">&lt;-</span> <span class="fu">SiZer</span>(<span class="at">x =</span> t, <span class="at">y =</span> time_series, <span class="at">h =</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="at">by =</span> <span class="fl">0.01</span>))</span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># SiZer 결과 시각화</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">plot</span>(sizer_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="aa72d72b-2ea1-4122-b5bf-c579f9c562a8" class="cell" data-tags="[]" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># 필요한 패키지 로드</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#install.packages("SiZer")</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">library</span>(SiZer)</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co"># 시계열 데이터 생성</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb6-7"><a href="#cb6-7"></a>t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">200</span>)</span>
+<span id="cb6-8"><a href="#cb6-8"></a>trend <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> t</span>
+<span id="cb6-9"><a href="#cb6-9"></a>noise <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(t), <span class="dv">0</span>, <span class="fl">0.3</span>)</span>
+<span id="cb6-10"><a href="#cb6-10"></a>time_series <span class="ot">&lt;-</span> trend <span class="sc">+</span> noise</span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co"># 시계열 데이터 시각화</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#  plot(t, time_series, type = 'l', main = 'Time Series with Trend and Noise', xlab = 'Time', ylab = 'Value')</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="fu">gglite</span>() <span class="sc">+</span> <span class="fu">point</span>(t,time_series) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="SiZer_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="dd84e6d0-0d1c-4324-a71a-19fecb9e3aff" class="cell" data-tags="[]" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># 다양한 밴드위스 사용</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>sizer_result <span class="ot">&lt;-</span> <span class="fu">SiZer</span>(<span class="at">x =</span> t, <span class="at">y =</span> time_series, <span class="at">h =</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="at">by =</span> <span class="fl">0.01</span>))</span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># SiZer 결과 시각화</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">figsize</span>(<span class="dv">7</span>,<span class="dv">7</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="fu">plot</span>(sizer_result,<span class="at">xlab=</span><span class="st">""</span>)</span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="SiZer_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -428,30 +433,16 @@ Warning message:
 </section>
 <section id="복잡한-시계열" class="level1">
 <h1>3. 복잡한 시계열</h1>
-<div id="b942fda6-31ac-4219-b6af-52681744c634" class="cell" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># 복잡한 시계열 데이터 생성</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">200</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>trend <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> t <span class="sc">+</span> <span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> t <span class="sc">*</span> <span class="dv">10</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>noise <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(t), <span class="dv">0</span>, <span class="fl">0.3</span>)</span>
-<span id="cb7-6"><a href="#cb7-6"></a>complex_series <span class="ot">&lt;-</span> trend <span class="sc">+</span> noise</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b942fda6-31ac-4219-b6af-52681744c634" class="cell" data-tags="[]" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># 복잡한 시계열 데이터 생성</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">200</span>)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>trend <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> t <span class="sc">+</span> <span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> t <span class="sc">*</span> <span class="dv">10</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a>noise <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(t), <span class="dv">0</span>, <span class="fl">0.3</span>)</span>
+<span id="cb8-6"><a href="#cb8-6"></a>complex_series <span class="ot">&lt;-</span> trend <span class="sc">+</span> noise</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="442d9f12-f23a-4df3-ba49-68c85b1e1294" class="cell" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">point</span>(complex_series)<span class="sc">+</span><span class="fu">line</span>(complex_series)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="SiZer_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="6b34f5c7-0a78-4c96-aa74-aff4fc4e4271" class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># SiZer 분석</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>sizer_result <span class="ot">&lt;-</span> <span class="fu">SiZer</span>(<span class="at">x =</span> t, <span class="at">y =</span> complex_series, <span class="at">h =</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="at">by =</span> <span class="fl">0.01</span>))</span>
-<span id="cb9-3"><a href="#cb9-3"></a></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># 결과 시각화</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="fu">plot</span>(sizer_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="442d9f12-f23a-4df3-ba49-68c85b1e1294" class="cell" data-tags="[]" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">gglite</span>()<span class="sc">+</span><span class="fu">point</span>(complex_series)<span class="sc">+</span><span class="fu">line</span>(complex_series)<span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -460,31 +451,47 @@ Warning message:
 </div>
 </div>
 </div>
+<div id="6b34f5c7-0a78-4c96-aa74-aff4fc4e4271" class="cell" data-tags="[]" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># SiZer 분석</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>sizer_result <span class="ot">&lt;-</span> <span class="fu">SiZer</span>(<span class="at">x =</span> t, <span class="at">y =</span> complex_series, <span class="at">h =</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="at">by =</span> <span class="fl">0.01</span>))</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># 결과 시각화</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">figsize</span>(<span class="dv">7</span>,<span class="dv">7</span>)</span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="fu">plot</span>(sizer_result, <span class="at">xlab =</span> <span class="st">""</span>)</span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="SiZer_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="nile" class="level1">
 <h1>4. Nile</h1>
-<div id="378ced35-6edc-47ce-b0a9-fa81276518fd" class="cell" data-tags="[]" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Nile 데이터셋 사용</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">data</span>(<span class="st">"Nile"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3"></a>nile_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb10-4"><a href="#cb10-4"></a>  <span class="at">Year =</span> <span class="fu">time</span>(Nile),</span>
-<span id="cb10-5"><a href="#cb10-5"></a>  <span class="at">Flow =</span> <span class="fu">as.numeric</span>(Nile)</span>
-<span id="cb10-6"><a href="#cb10-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="378ced35-6edc-47ce-b0a9-fa81276518fd" class="cell" data-tags="[]" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Nile 데이터셋 사용</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">data</span>(<span class="st">"Nile"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a>nile_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="at">Year =</span> <span class="fu">time</span>(Nile),</span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="at">Flow =</span> <span class="fu">as.numeric</span>(Nile)</span>
+<span id="cb11-6"><a href="#cb11-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9624cf32-ea01-41fc-8b75-c02406d7702b" class="cell" data-tags="[]" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># ggplot으로 시각화</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">gglite</span>(nile_data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Flow)) <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Flow of the River Nile"</span>,</span>
-<span id="cb11-5"><a href="#cb11-5"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6"></a>       <span class="at">y =</span> <span class="st">"Flow"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9624cf32-ea01-41fc-8b75-c02406d7702b" class="cell" data-tags="[]" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># ggplot으로 시각화</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">gglite</span>(nile_data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Flow)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Flow of the River Nile"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6"></a>       <span class="at">y =</span> <span class="st">"Flow"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;ts&gt;. Defaulting to continuous.</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="SiZer_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="SiZer_files/figure-html/cell-11-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -505,16 +512,18 @@ Warning message:
 <li><strong>주요 트렌드</strong>: 플롯을 통해 특정 기간 동안 흐름량이 증가하거나 감소하는 경향을 쉽게 파악할 수 있다.</li>
 </ul>
 <p>이 플롯을 통해 나일 강의 흐름량 변화와 주요 트렌드를 시각적으로 이해할 수 있다.</p>
-<div id="b2da92bd-2154-400a-b711-b39a820bdc52" class="cell" data-tags="[]" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># SiZer 분석</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>sizer_result <span class="ot">&lt;-</span> <span class="fu">SiZer</span>(<span class="at">x =</span> <span class="fu">time</span>(Nile), <span class="at">y =</span> <span class="fu">as.numeric</span>(Nile), <span class="at">h =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>))</span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="co"># 결과 시각화</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="fu">plot</span>(sizer_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b2da92bd-2154-400a-b711-b39a820bdc52" class="cell" data-tags="[]" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># SiZer 분석</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>sizer_result <span class="ot">&lt;-</span> <span class="fu">SiZer</span>(<span class="at">x =</span> <span class="fu">time</span>(Nile), <span class="at">y =</span> <span class="fu">as.numeric</span>(Nile), <span class="at">h =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>))</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># 결과 시각화</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">figsize</span>(<span class="dv">7</span>,<span class="dv">7</span>)</span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="fu">plot</span>(sizer_result, <span class="at">xlab =</span> <span class="st">"Year"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="fu">figsize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="SiZer_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="SiZer_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
