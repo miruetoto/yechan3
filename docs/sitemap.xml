@@ -1,483 +1,487 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://miruetoto.github.io/yechan3/연구.html</loc>
-    <lastmod>2024-04-03T06:46:52.621Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/서연.html</loc>
-    <lastmod>2024-04-03T06:44:55.656Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/자료/데이터생성 -- 성별,몸무게 --> 키.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/나혼자/gglite/2024-01-15-튜토리얼.html</loc>
-    <lastmod>2024-07-09T02:05:52.822Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/나혼자/gglitely/2024-01-19-서브플랏.html</loc>
-    <lastmod>2024-07-09T01:53:32.827Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/나혼자/graft/2023-11-09-graft.html</loc>
-    <lastmod>2024-03-23T02:09:05.224Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/지윤이랑/SOLAR/2023-04-04-(연구&지윤) 태양광자료분석 -- EPT.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/지윤이랑/SOLAR/2023-04-03-(연구&지윤) 태양광자료분석 -- 일사량자료정리.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-27-(연구&재인) MBTI(정리) -- 그림정리.html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-19-(연구&재인) MBTI(정리) -- 실험셋업.html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-10-11-(연구&재인) MBTI -- 감성분석.html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-20-(연구&재인) MBTI(정리) -- 실험셋업 시각화.html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-23-(연구&재인) MBTI(정리) -- 실험결과 시각화.html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/EPT_DISSIM/2023-08-07-(연구) EPT-DISSIM -- PRCP_KOR 데이터정리.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/EBT/2024-01-16-첫 논문 재현.html</loc>
-    <lastmod>2024-03-26T11:11:34.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/MS_Review/STFT.html</loc>
-    <lastmod>2024-07-09T02:28:26.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/MS_Review/figs.html</loc>
-    <lastmod>2024-07-09T02:28:34.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/CTGAN/2023-07-03-신용카드.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/CTGAN/2023-07-01-Start.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-05-23-AutoGluon.html</loc>
-    <lastmod>2024-07-01T04:33:35.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-05-24-Try1변형.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-05-12-Try1.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-07-19-관련연구 리뷰.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-04-30-데이터정리.html</loc>
-    <lastmod>2024-07-01T03:55:51.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-04-11-결과시각화.html</loc>
-    <lastmod>2024-04-24T04:17:21.337Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-07-19-그래프자료로 데이터정리.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2024-01-24-ToyExam.html</loc>
-    <lastmod>2024-07-09T01:56:30.800Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2024-01-19-실험결과정리.html</loc>
-    <lastmod>2024-07-09T01:55:41.687Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2023-04-27-Toy Example Figure(Intro).html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2023-02-14-Tables.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2023-03-18-SimualtionPlanner-Tutorial.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/자료.html</loc>
-    <lastmod>2024-01-26T07:41:35.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모.html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/규빈.html</loc>
-    <lastmod>2024-04-03T06:44:30.624Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-06-(메모) 깃 익히기.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-10-(메모) DGX staion.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2024-06-07-(메모) 학과서버 공지.html</loc>
-    <lastmod>2024-07-05T04:26:53.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2024-01-16-(메모) R package 만들기.html</loc>
-    <lastmod>2024-04-08T00:36:24.914Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-01-(메모) 우분투 포맷 및 개발용 서버 셋팅(old).html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-09-(메모) docker.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2023-07-04-(공부) 토폴로지.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2023-06-23-(공부&지윤) 퓨리에변환4jy.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2023-10-26-(공부) Julia -- Vector.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2019-04-26-(공부) 퓨리에변환.html</loc>
-    <lastmod>2024-07-09T01:11:51.657Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2023-03-01-(공부&서연) 지수분포 가설검정.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2024-01-30-(공부) 리뷰 -- Self Consistent.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2022-12-23-(공부) 리뷰 -- Ebayesthresh.html</loc>
-    <lastmod>2024-07-09T01:11:37.433Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/CGSP/2023-01-15-Chap-12.4.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/CGSP/2022-12-27-Chap-12.2.1~12.3.1.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2023-09-24-(공부) ggraph.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 73-81.html</loc>
-    <lastmod>2024-04-16T06:03:46.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 82-90.html</loc>
-    <lastmod>2024-04-16T06:03:46.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/lecture3.html</loc>
-    <lastmod>2024-07-09T01:52:37.995Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 56-65.html</loc>
-    <lastmod>2024-04-16T06:03:46.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 66-72.html</loc>
-    <lastmod>2024-04-16T06:03:46.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/lecture2.html</loc>
-    <lastmod>2024-07-09T01:12:56.137Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2023-01-20-(공부) 추정.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/PyG/ls2.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/index.html</loc>
+    <lastmod>2024-02-19T04:42:02.614Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/공부/PyG/ls5.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/PyG/ls3.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
+    <lastmod>2024-02-19T04:42:02.674Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/공부/PyG/ls1.html</loc>
-    <lastmod>2024-07-09T01:10:11.685Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/PyG/ls6.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
+    <lastmod>2024-07-09T01:10:11.000Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/공부/PyG/ls4.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2022-11-29-(공부) pl -- 선형회귀.html</loc>
-    <lastmod>2024-07-09T01:11:32.593Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2023-05-13-(공부&지윤) 추정.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 43-49.html</loc>
-    <lastmod>2024-04-16T06:03:46.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 37-42.html</loc>
-    <lastmod>2024-04-16T06:03:46.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 27-36.html</loc>
-    <lastmod>2024-04-16T06:03:46.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/lecture1.html</loc>
-    <lastmod>2024-07-09T01:20:55.255Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 91-101.html</loc>
-    <lastmod>2024-04-16T06:03:46.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 50-55.html</loc>
-    <lastmod>2024-04-16T06:03:46.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/CGSP/2022-12-24-Chap-8.3.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/CGSP/2022-12-26-Chap-12.2.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2023-06-28-(공부&지윤) 커널리그레션.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2024-01-26-(공부) 조건부확률.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
+    <lastmod>2024-02-19T04:42:02.674Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/공부/2023-02-14-(공부&서연) 지수분포 평균검정.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2024-01-30-(공부) AUC.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/공부/2023-10-26-(공부) Julia -- Vector.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2023-10-21-(공부&지윤) Imputer와 Scaler의 적용.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/공부/2023-05-13-(공부&지윤) 추정.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2023-07-04-(공부) 토폴로지.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2023-06-23-(공부&지윤) 퓨리에변환4jy.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2022-12-23-(공부) 리뷰 -- Ebayesthresh.html</loc>
+    <lastmod>2024-07-09T01:11:37.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2023-06-28-(공부&지윤) 커널리그레션.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/lecture1.html</loc>
+    <lastmod>2024-07-09T01:20:55.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 50-55.html</loc>
+    <lastmod>2024-07-10T04:11:51.684Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 43-49.html</loc>
+    <lastmod>2024-07-10T04:11:44.328Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/lecture2.html</loc>
+    <lastmod>2024-07-09T01:12:54.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/lecture3.html</loc>
+    <lastmod>2024-07-10T04:12:30.268Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 66-72.html</loc>
+    <lastmod>2024-07-10T04:12:08.324Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2024-01-26-(공부) 조건부확률.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/공부/2023-06-28-(공부&지윤) 퓨리에변환(detailed).html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/공부/2023-10-25-(공부) Julia -- 문자와 문자열.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/공부/CGSP/2022-12-27-Chap-12.2.1~12.3.1.html</loc>
+    <lastmod>2024-02-19T04:42:02.670Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-08-(메모) 주피터랩, 설정 및 몇가지 팁.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-04-(메모) 우분투 익히기.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-02-(메모) 우분투 포맷 및 개발용 서버 셋팅2.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2024-04-08-(메모) graphviz.html</loc>
-    <lastmod>2024-07-05T01:47:01.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-05-(메모) vi 익히기.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-07-(메모) 줄리아 설치 및 실행.html</loc>
-    <lastmod>2024-02-19T04:42:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/지윤.html</loc>
-    <lastmod>2024-04-08T00:28:00.254Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/재인.html</loc>
-    <lastmod>2024-04-03T06:45:06.153Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/공부/CGSP/2022-12-24-Chap-8.3.html</loc>
+    <lastmod>2024-02-19T04:42:02.666Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/교수님.html</loc>
-    <lastmod>2024-04-08T00:27:47.955Z</lastmod>
+    <lastmod>2024-04-08T00:27:47.000Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/공부.html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/자료.html</loc>
+    <lastmod>2024-02-19T04:42:03.786Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2022-12-29-Tutorial.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2023-09-14-논문리비전.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2023-03-17-ITSTGCN-Tutorial.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2022-12-30-Toy Example.html</loc>
-    <lastmod>2024-07-09T01:56:50.168Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-01-18-pygod 셋팅.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-08-22-데이터(8, df02)커널죽음.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-05-24-Try2변형.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-04-11-결과시각화-- 실험1.html</loc>
-    <lastmod>2024-04-14T02:18:46.236Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-05-06-Start.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-05-02-GCN.html</loc>
-    <lastmod>2024-07-01T04:33:19.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-05-19-Try2.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-01-25-pyod 사용.html</loc>
-    <lastmod>2024-04-14T02:18:48.856Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/CTGAN/2023-07-02-TOY.html</loc>
-    <lastmod>2024-02-19T04:42:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/MS_Review/SiZer.html</loc>
-    <lastmod>2024-07-09T02:57:06.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/MS_Review/DWT.html</loc>
-    <lastmod>2024-07-09T02:28:17.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/MS_Review/EMD.html</loc>
-    <lastmod>2024-07-09T02:56:58.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/EPT_DISSIM/2023-08-08-(연구) EPT-DISSIM -- 진행사항.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/EPT_DISSIM/2023-08-07-(연구) EPT-DISSIM -- PRCP_KOR 데이터정리.html</loc>
+    <lastmod>2024-02-19T04:42:02.918Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/EPT_DISSIM/2023-08-18-(연구) EPT-DISSIM -- 데이터전처리.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
+    <lastmod>2024-02-19T04:42:02.918Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-21-(연구&재인) MBTI(정리) -- TabularPredictor 실험.html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/MS_Review/SiZer.html</loc>
+    <lastmod>2024-07-10T04:28:59.242Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-10-12-(연구&재인) MBTI -- MBTI.html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/MS_Review/EMD.html</loc>
+    <lastmod>2024-07-10T04:28:41.274Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-13-(연구&재인) MBTI -- 추가자료분석(all).html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-13-(연구&재인) MBTI -- 추가자료분석(429).html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/지윤이랑/SOLAR/2023-07-17-(연구&지윤) 태양광자료분석 -- EPT + RGCN.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/지윤이랑/SOLAR/2023-07-20-(연구&지윤) 태양광자료분석 -- EPT + RGCN (시뮬레이션).html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/EBT/2024-01-16-첫 논문 재현.html</loc>
+    <lastmod>2024-03-26T11:11:34.422Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/연구/지윤이랑/SOLAR/2023-08-14-(연구&지윤) 태양광자료분석 -- GConvLSTM +++++++ 이거!!! ++++++++++++.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
+    <lastmod>2024-02-19T04:42:03.782Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/지윤이랑/SOLAR/2023-07-17-(연구&지윤) 태양광자료분석 -- EPT + RGCN.html</loc>
+    <lastmod>2024-02-19T04:42:03.782Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2023-09-14-논문리비전.html</loc>
+    <lastmod>2024-02-19T04:42:03.078Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2023-03-18-SimualtionPlanner-Tutorial.html</loc>
+    <lastmod>2024-02-19T04:42:03.078Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2024-01-24-ToyExam.html</loc>
+    <lastmod>2024-07-09T01:56:30.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2022-12-30-Toy Example.html</loc>
+    <lastmod>2024-07-09T01:56:50.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2023-02-14-Tables.html</loc>
+    <lastmod>2024-02-19T04:42:03.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-13-(연구&재인) MBTI -- 추가자료분석(all).html</loc>
+    <lastmod>2024-02-19T04:42:03.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-21-(연구&재인) MBTI(정리) -- TabularPredictor 실험.html</loc>
+    <lastmod>2024-02-19T04:42:03.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-23-(연구&재인) MBTI(정리) -- 실험결과 시각화.html</loc>
+    <lastmod>2024-02-19T04:42:03.118Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-10-11-(연구&재인) MBTI -- 감성분석.html</loc>
+    <lastmod>2024-02-19T04:42:03.106Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/연구/나혼자/gglitely/2024-01-19-튜토리얼.html</loc>
-    <lastmod>2024-07-09T01:53:44.515Z</lastmod>
+    <lastmod>2024-07-09T01:53:43.000Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/연구/나혼자/gglitely/2024-01-19-연계.html</loc>
-    <lastmod>2024-07-09T01:53:38.695Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/연구/나혼자/gglitely/2024-01-19-서브플랏.html</loc>
+    <lastmod>2024-07-09T01:53:32.000Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/보람.html</loc>
-    <lastmod>2024-04-03T06:45:55.961Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/연구/나혼자/gglite/2024-01-15-튜토리얼.html</loc>
+    <lastmod>2024-07-09T03:48:46.018Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-04-11-결과시각화-- 실험1.html</loc>
+    <lastmod>2024-04-14T02:18:46.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-05-12-Try1.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-07-19-그래프자료로 데이터정리.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-01-25-pyod 사용.html</loc>
+    <lastmod>2024-04-14T02:18:48.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-05-19-Try2.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-04-11-결과시각화.html</loc>
+    <lastmod>2024-04-24T04:17:21.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-07-19-관련연구 리뷰.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-01-18-pygod 셋팅.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/CTGAN/2023-07-03-신용카드.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/지윤.html</loc>
+    <lastmod>2024-04-03T06:46:48.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구.html</loc>
+    <lastmod>2024-04-03T06:46:52.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-09-(메모) docker.html</loc>
+    <lastmod>2024-02-19T04:42:02.842Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-07-(메모) 줄리아 설치 및 실행.html</loc>
+    <lastmod>2024-02-19T04:42:02.842Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-02-(메모) 우분투 포맷 및 개발용 서버 셋팅2.html</loc>
+    <lastmod>2024-02-19T04:42:02.838Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-06-(메모) 깃 익히기.html</loc>
+    <lastmod>2024-02-19T04:42:02.842Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-10-(메모) DGX staion.html</loc>
+    <lastmod>2024-02-19T04:42:02.858Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2024-04-08-(메모) graphviz.html</loc>
+    <lastmod>2024-07-05T01:47:01.166Z</lastmod>
   </url>
   <url>
     <loc>https://miruetoto.github.io/yechan3/자료/신용카드사기거래.html</loc>
-    <lastmod>2024-01-26T07:41:31.000Z</lastmod>
+    <lastmod>2024-02-19T04:42:03.786Z</lastmod>
   </url>
   <url>
-    <loc>https://miruetoto.github.io/yechan3/index.html</loc>
-    <lastmod>2024-01-26T07:41:13.000Z</lastmod>
+    <loc>https://miruetoto.github.io/yechan3/보람.html</loc>
+    <lastmod>2024-04-03T06:44:45.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/자료/데이터생성 -- 성별,몸무게 --> 키.html</loc>
+    <lastmod>2024-02-19T04:42:03.786Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2024-06-07-(메모) 학과서버 공지.html</loc>
+    <lastmod>2024-07-05T04:26:53.567Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-05-(메모) vi 익히기.html</loc>
+    <lastmod>2024-02-19T04:42:02.842Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-04-(메모) 우분투 익히기.html</loc>
+    <lastmod>2024-02-19T04:42:02.838Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-08-(메모) 주피터랩, 설정 및 몇가지 팁.html</loc>
+    <lastmod>2024-02-19T04:42:02.842Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2000-01-01-(메모) 우분투 포맷 및 개발용 서버 셋팅(old).html</loc>
+    <lastmod>2024-02-19T04:42:02.798Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모/2024-01-16-(메모) R package 만들기.html</loc>
+    <lastmod>2024-04-08T00:36:24.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/메모.html</loc>
+    <lastmod>2024-02-19T04:42:02.674Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부.html</loc>
+    <lastmod>2024-02-19T04:42:02.614Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/CTGAN/2023-07-01-Start.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/CTGAN/2023-07-02-TOY.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-05-24-Try1변형.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-05-02-GCN.html</loc>
+    <lastmod>2024-07-01T04:33:19.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-08-22-데이터(8, df02)커널죽음.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-05-23-AutoGluon.html</loc>
+    <lastmod>2024-07-01T04:33:35.149Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-05-06-Start.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2024-04-30-데이터정리.html</loc>
+    <lastmod>2024-07-01T04:33:17.141Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/보람이랑/신용카드거래 사기탐지/2023-05-24-Try2변형.html</loc>
+    <lastmod>2024-02-19T04:42:03.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/나혼자/gglite/2024-07-09-내부기능.html</loc>
+    <lastmod>2024-07-10T01:32:46.757Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/나혼자/graft/2023-11-09-graft.html</loc>
+    <lastmod>2024-03-23T02:09:05.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/나혼자/gglitely/2024-01-19-연계.html</loc>
+    <lastmod>2024-07-09T01:53:38.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-19-(연구&재인) MBTI(정리) -- 실험셋업.html</loc>
+    <lastmod>2024-02-19T04:42:03.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-10-12-(연구&재인) MBTI -- MBTI.html</loc>
+    <lastmod>2024-02-19T04:42:03.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-27-(연구&재인) MBTI(정리) -- 그림정리.html</loc>
+    <lastmod>2024-02-19T04:42:03.118Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-20-(연구&재인) MBTI(정리) -- 실험셋업 시각화.html</loc>
+    <lastmod>2024-02-19T04:42:03.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/재인이랑/2023-12-13-(연구&재인) MBTI -- 추가자료분석(429).html</loc>
+    <lastmod>2024-02-19T04:42:03.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2023-03-17-ITSTGCN-Tutorial.html</loc>
+    <lastmod>2024-02-19T04:42:03.078Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2023-04-27-Toy Example Figure(Intro).html</loc>
+    <lastmod>2024-02-19T04:42:03.078Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2024-01-19-실험결과정리.html</loc>
+    <lastmod>2024-07-09T01:55:41.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/서연이랑/ITSTGCN/2022-12-29-Tutorial.html</loc>
+    <lastmod>2024-02-19T04:42:03.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/지윤이랑/SOLAR/2023-04-04-(연구&지윤) 태양광자료분석 -- EPT.html</loc>
+    <lastmod>2024-02-19T04:42:03.782Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/지윤이랑/SOLAR/2023-07-20-(연구&지윤) 태양광자료분석 -- EPT + RGCN (시뮬레이션).html</loc>
+    <lastmod>2024-02-19T04:42:03.782Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/지윤이랑/SOLAR/2023-04-03-(연구&지윤) 태양광자료분석 -- 일사량자료정리.html</loc>
+    <lastmod>2024-02-19T04:42:03.782Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/MS_Review/STFT.html</loc>
+    <lastmod>2024-07-10T04:29:05.326Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/MS_Review/DWT.html</loc>
+    <lastmod>2024-07-10T04:29:26.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/MS_Review/figs.html</loc>
+    <lastmod>2024-07-10T04:29:46.855Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/연구/교수님이랑/EPT_DISSIM/2023-08-08-(연구) EPT-DISSIM -- 진행사항.html</loc>
+    <lastmod>2024-02-19T04:42:02.918Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/서연.html</loc>
+    <lastmod>2024-04-03T06:44:55.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/재인.html</loc>
+    <lastmod>2024-04-03T06:45:06.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/규빈.html</loc>
+    <lastmod>2024-04-03T06:44:30.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/CGSP/2022-12-26-Chap-12.2.html</loc>
+    <lastmod>2024-02-19T04:42:02.666Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/CGSP/2023-01-15-Chap-12.4.html</loc>
+    <lastmod>2024-02-19T04:42:02.670Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2019-04-26-(공부) 퓨리에변환.html</loc>
+    <lastmod>2024-07-09T01:11:51.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 91-101.html</loc>
+    <lastmod>2024-07-10T04:12:28.028Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 56-65.html</loc>
+    <lastmod>2024-07-10T04:11:58.728Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 73-81.html</loc>
+    <lastmod>2024-07-10T04:12:15.528Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 82-90.html</loc>
+    <lastmod>2024-07-10T04:12:21.952Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 27-36.html</loc>
+    <lastmod>2024-07-10T04:11:29.976Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/HF/Transformers 37-42.html</loc>
+    <lastmod>2024-07-10T04:11:38.208Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2023-10-21-(공부&지윤) Imputer와 Scaler의 적용.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2022-11-29-(공부) pl -- 선형회귀.html</loc>
+    <lastmod>2024-07-09T01:11:32.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2023-10-25-(공부) Julia -- 문자와 문자열.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2023-03-01-(공부&서연) 지수분포 가설검정.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2023-01-20-(공부) 추정.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2024-01-30-(공부) AUC.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2023-09-24-(공부) ggraph.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/2024-01-30-(공부) 리뷰 -- Self Consistent.html</loc>
+    <lastmod>2024-02-19T04:42:02.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/PyG/ls2.html</loc>
+    <lastmod>2024-02-19T04:42:02.674Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/PyG/ls6.html</loc>
+    <lastmod>2024-02-19T04:42:02.674Z</lastmod>
+  </url>
+  <url>
+    <loc>https://miruetoto.github.io/yechan3/공부/PyG/ls3.html</loc>
+    <lastmod>2024-02-19T04:42:02.674Z</lastmod>
   </url>
 </urlset>

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.533">
+<meta name="generator" content="quarto-1.4.520">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="최규빈">
-<meta name="dcterms.date" content="2024-03-21">
+<meta name="dcterms.date" content="2024-07-10">
 
 <title>신록예찬’s Blog - (연구&amp;교수님) 다중척도논문 – DWT</title>
 <style>
@@ -259,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 21, 2024</p>
+      <p class="date">July 10, 2024</p>
     </div>
   </div>
   
@@ -272,44 +272,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>예제 설명</p>
-<pre><code>•   신호 생성: 주파수가 시간에 따라 변하는 신호를 생성합니다. 예를 들어, 주파수가 선형적으로 증가하는 신호와 주기적인 진동을 포함하는 신호를 생성합니다.
-•   STFT 수행: STFT를 사용하여 신호를 분석하고 시간-주파수 스펙트로그램을 생성합니다.
-•   웨이블릿 변환 수행: 웨이블릿 변환을 사용하여 신호를 분석하고 시간-주파수 스펙트로그램을 생성합니다.
-•   결과 비교: 두 방법의 결과를 시각적으로 비교합니다.</code></pre>
-<div id="fb104e54-9833-4bf8-81d0-f400a536d031" class="cell" data-tags="[]" data-execution_count="4">
+<ul>
+<li>신호 생성: 주파수가 시간에 따라 변하는 신호를 생성합니다. 예를 들어, 주파수가 선형적으로 증가하는 신호와 주기적인 진동을 포함하는 신호를 생성합니다.</li>
+<li>STFT 수행: STFT를 사용하여 신호를 분석하고 시간-주파수 스펙트로그램을 생성합니다.</li>
+<li>웨이블릿 변환 수행: 웨이블릿 변환을 사용하여 신호를 분석하고 시간-주파수 스펙트로그램을 생성합니다.</li>
+<li>결과 비교: 두 방법의 결과를 시각적으로 비교합니다.</li>
+</ul>
+<div id="abe672aa-91cd-4a21-a9db-d790c8ea78c8" class="cell" data-tags="[]" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-2"><a href="#cb1-2"></a>sns.<span class="bu">set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="fb104e54-9833-4bf8-81d0-f400a536d031" class="cell" data-tags="[]" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># 샘플링 주파수 및 시간 축 설정</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>fs <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span> <span class="op">*</span> fs, endpoint<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb2-7"><a href="#cb2-7"></a></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co"># 주파수가 선형적으로 증가하는 신호 생성</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>f0 <span class="op">=</span> <span class="dv">50</span>  <span class="co"># 시작 주파수</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>f1 <span class="op">=</span> <span class="dv">300</span>  <span class="co"># 종료 주파수</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>linear_chirp <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> (f0 <span class="op">+</span> (f1 <span class="op">-</span> f0) <span class="op">*</span> t <span class="op">/</span> <span class="dv">2</span>) <span class="op">*</span> t)</span>
-<span id="cb2-12"><a href="#cb2-12"></a></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co"># 주기적인 진동 신호 생성</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a>periodic_signal <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">100</span> <span class="op">*</span> t) <span class="op">*</span> (t <span class="op">&gt;</span> <span class="dv">1</span>)</span>
-<span id="cb2-15"><a href="#cb2-15"></a></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co"># 신호 합성</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a>signal <span class="op">=</span> linear_chirp <span class="op">+</span> periodic_signal</span>
-<span id="cb2-18"><a href="#cb2-18"></a></span>
-<span id="cb2-19"><a href="#cb2-19"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
-<span id="cb2-20"><a href="#cb2-20"></a>plt.plot(t, signal)</span>
-<span id="cb2-21"><a href="#cb2-21"></a>plt.title(<span class="st">"Time-varying Frequency Signal with Periodic Component"</span>)</span>
-<span id="cb2-22"><a href="#cb2-22"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
-<span id="cb2-23"><a href="#cb2-23"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
-<span id="cb2-24"><a href="#cb2-24"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># 샘플링 주파수 및 시간 축 설정</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>fs <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span> <span class="op">*</span> fs, endpoint<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># 주파수가 선형적으로 증가하는 신호 생성</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>f0 <span class="op">=</span> <span class="dv">50</span>  <span class="co"># 시작 주파수</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>f1 <span class="op">=</span> <span class="dv">300</span>  <span class="co"># 종료 주파수</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>linear_chirp <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> (f0 <span class="op">+</span> (f1 <span class="op">-</span> f0) <span class="op">*</span> t <span class="op">/</span> <span class="dv">2</span>) <span class="op">*</span> t)</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co"># 주기적인 진동 신호 생성</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>periodic_signal <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">100</span> <span class="op">*</span> t) <span class="op">*</span> (t <span class="op">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># 신호 합성</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>signal <span class="op">=</span> linear_chirp <span class="op">+</span> periodic_signal</span>
+<span id="cb2-17"><a href="#cb2-17"></a></span>
+<span id="cb2-18"><a href="#cb2-18"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb2-19"><a href="#cb2-19"></a>plt.plot(t, signal)</span>
+<span id="cb2-20"><a href="#cb2-20"></a>plt.title(<span class="st">"Time-varying Frequency Signal with Periodic Component"</span>)</span>
+<span id="cb2-21"><a href="#cb2-21"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
+<span id="cb2-23"><a href="#cb2-23"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DWT_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="DWT_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="883ba613-c8bd-4f5c-bbf9-adc868065fdd" class="cell" data-tags="[]" data-execution_count="5">
+<div id="883ba613-c8bd-4f5c-bbf9-adc868065fdd" class="cell" data-tags="[]" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> scipy.signal <span class="im">import</span> stft</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co"># STFT 수행</span></span>
@@ -326,12 +331,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DWT_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="DWT_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="4603a759-f492-4a1f-9dd9-167acd31292b" class="cell" data-tags="[]" data-execution_count="6">
+<div id="4603a759-f492-4a1f-9dd9-167acd31292b" class="cell" data-tags="[]" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> pywt</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> scipy.signal</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
@@ -353,15 +358,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DWT_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="DWT_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>결과 비교</p>
 <p>위의 플롯을 비교하면 다음과 같은 차이를 볼 수 있습니다:</p>
-<pre><code>•   STFT: 주파수 해상도가 일정하지만, 시간 해상도는 고정된 창 길이에 의존합니다. 시간-주파수 스펙트로그램에서 선형적인 변화와 주기적인 신호를 모두 잘 보여줍니다.
-•   웨이블릿 변환: 주파수 해상도와 시간 해상도가 스케일에 따라 달라집니다. 낮은 주파수에서는 더 높은 주파수 해상도, 높은 주파수에서는 더 높은 시간 해상도를 제공합니다. 웨이블릿 변환은 신호의 국소적인 특성을 더 잘 포착할 수 있습니다.</code></pre>
+<ul>
+<li>STFT: 주파수 해상도가 일정하지만, 시간 해상도는 고정된 창 길이에 의존합니다. 시간-주파수 스펙트로그램에서 선형적인 변화와 주기적인 신호를 모두 잘 보여줍니다.</li>
+<li>웨이블릿 변환: 주파수 해상도와 시간 해상도가 스케일에 따라 달라집니다. 낮은 주파수에서는 더 높은 주파수 해상도, 높은 주파수에서는 더 높은 시간 해상도를 제공합니다. 웨이블릿 변환은 신호의 국소적인 특성을 더 잘 포착할 수 있습니다.</li>
+</ul>
 <p>위 예시는 일반적인 신호 처리 방법을 설명하기 위해 작성된 것이며, 특정 출처가 있는 것이 아니라 신호 처리 이론에 기반한 예제입니다. STFT와 웨이블릿 변환은 신호 처리 분야에서 널리 사용되는 기법으로, 이러한 예제는 많은 신호 처리 교재나 튜토리얼에서 다루고 있습니다. 특히, 다음과 같은 교재나 자료에서 유사한 내용을 찾을 수 있습니다:</p>
 <ol type="1">
 <li><strong>교재</strong>
@@ -511,6 +518,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -525,14 +553,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
+        typesetMath(container);
         return container.innerHTML
       } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -541,9 +565,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
+      typesetMath(note);
       return note.innerHTML;
     }
   }
