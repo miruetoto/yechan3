@@ -241,6 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#install" id="toc-install" class="nav-link active" data-scroll-target="#install">1. Install</a></li>
   <li><a href="#기본사용" id="toc-기본사용" class="nav-link" data-scroll-target="#기본사용">3. 기본사용</a></li>
+  <li><a href="#옵션" id="toc-옵션" class="nav-link" data-scroll-target="#옵션">4. 옵션</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2024-07-17-tutorial 2.out.ipynb" download="2024-07-17-tutorial 2.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -295,9 +296,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Uninstalling graft-0.0.1:
   Successfully uninstalled graft-0.0.1
 Collecting git+https://github.com/guebin/graft.git
-  Cloning https://github.com/guebin/graft.git to /tmp/pip-req-build-nsugdrub
-  Running command git clone --filter=blob:none --quiet https://github.com/guebin/graft.git /tmp/pip-req-build-nsugdrub
-  Resolved https://github.com/guebin/graft.git to commit e79f41337293dfcd2f8b62e0da75a3417ce728d5
+  Cloning https://github.com/guebin/graft.git to /tmp/pip-req-build-h737ugcz
+  Running command git clone --filter=blob:none --quiet https://github.com/guebin/graft.git /tmp/pip-req-build-h737ugcz
+  Resolved https://github.com/guebin/graft.git to commit 04bd6f129e9758a96b4697fcf8620a5b43625a5c
   Preparing metadata (setup.py) ... done
 Requirement already satisfied: pandas in ./anaconda3/envs/graft/lib/python3.12/site-packages (from graft==0.0.1) (2.2.2)
 Requirement already satisfied: numpy&gt;=1.26.0 in ./anaconda3/envs/graft/lib/python3.12/site-packages (from pandas-&gt;graft==0.0.1) (1.26.4)
@@ -307,8 +308,8 @@ Requirement already satisfied: tzdata&gt;=2022.7 in ./anaconda3/envs/graft/lib/p
 Requirement already satisfied: six&gt;=1.5 in ./anaconda3/envs/graft/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas-&gt;graft==0.0.1) (1.16.0)
 Building wheels for collected packages: graft
   Building wheel for graft (setup.py) ... done
-  Created wheel for graft: filename=graft-0.0.1-py3-none-any.whl size=7955 sha256=189ff159d2682727ed9323ba7a1fe1844beaf643417838045c3089b59b597318
-  Stored in directory: /tmp/pip-ephem-wheel-cache-mr60k0zv/wheels/5a/da/81/7f1de9f08d7753f35b8a3ca78aaacecedc86bc4077124d73fe
+  Created wheel for graft: filename=graft-0.0.1-py3-none-any.whl size=4816 sha256=713c4874915e24e661cee812761a46c6f19ebdf4f88858a86518e75dfed4b7a9
+  Stored in directory: /tmp/pip-ephem-wheel-cache-qu7yugck/wheels/5a/da/81/7f1de9f08d7753f35b8a3ca78aaacecedc86bc4077124d73fe
 Successfully built graft
 Installing collected packages: graft
 Successfully installed graft-0.0.1</code></pre>
@@ -358,11 +359,10 @@ Successfully installed graft-0.0.1</code></pre>
 </div>
 </div>
 </div>
-<p>이름을 쓰기 싫다면 공백을 넣을수도있음.</p>
-<div id="cell-13" class="cell" data-execution_count="6">
+<div id="cell-12" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>graft.plot(</span>
 <span id="cb8-2"><a href="#cb8-2"></a>    g,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>    node_names<span class="op">=</span>[<span class="st">""</span>,<span class="st">""</span>,<span class="st">""</span>,<span class="st">"A"</span>,<span class="st">""</span>]</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    node_names<span class="op">=</span>[<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>],</span>
 <span id="cb8-4"><a href="#cb8-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -372,10 +372,11 @@ Successfully installed graft-0.0.1</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="9">
+<p>이름을 쓰기 싫다면 공백을 넣을수도있음.</p>
+<div id="cell-14" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>graft.plot(</span>
 <span id="cb9-2"><a href="#cb9-2"></a>    g,</span>
-<span id="cb9-3"><a href="#cb9-3"></a>    node_names<span class="op">=</span>[<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>],</span>
+<span id="cb9-3"><a href="#cb9-3"></a>    node_names<span class="op">=</span>[<span class="st">""</span>,<span class="st">""</span>,<span class="st">""</span>,<span class="st">"A"</span>,<span class="st">""</span>]</span>
 <span id="cb9-4"><a href="#cb9-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -385,17 +386,203 @@ Successfully installed graft-0.0.1</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="12">
+<div id="cell-15" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>graft.plot(</span>
 <span id="cb10-2"><a href="#cb10-2"></a>    g,</span>
 <span id="cb10-3"><a href="#cb10-3"></a>    node_names<span class="op">=</span>[<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>],</span>
-<span id="cb10-4"><a href="#cb10-4"></a>    node_sizes<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],</span>
-<span id="cb10-5"><a href="#cb10-5"></a>    node_colors<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>]</span>
-<span id="cb10-6"><a href="#cb10-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4"></a>    node_sizes<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>],</span>
+<span id="cb10-5"><a href="#cb10-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="2024-07-17-tutorial 2_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-16" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>graft.plot(</span>
+<span id="cb11-2"><a href="#cb11-2"></a>    g,</span>
+<span id="cb11-3"><a href="#cb11-3"></a>    node_names<span class="op">=</span>[<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>],</span>
+<span id="cb11-4"><a href="#cb11-4"></a>    node_colors<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>],</span>
+<span id="cb11-5"><a href="#cb11-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-07-17-tutorial 2_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-17" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># graft.plot(</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co">#     g,</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="co">#     node_names=["A","B","C","D","E"],</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co">#     node_colors=[1,1,1,2,2], # 버그.. 카테고리일 경우 node_colors는 0부터 시작해야함</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co"># )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-18" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>graft.plot(</span>
+<span id="cb13-2"><a href="#cb13-2"></a>    g,</span>
+<span id="cb13-3"><a href="#cb13-3"></a>    node_names<span class="op">=</span>[<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>],</span>
+<span id="cb13-4"><a href="#cb13-4"></a>    node_colors<span class="op">=</span>np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>])<span class="op">/</span><span class="dv">2</span>,</span>
+<span id="cb13-5"><a href="#cb13-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-07-17-tutorial 2_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>graft.plot(</span>
+<span id="cb14-2"><a href="#cb14-2"></a>    g,</span>
+<span id="cb14-3"><a href="#cb14-3"></a>    node_names<span class="op">=</span>[<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>],</span>
+<span id="cb14-4"><a href="#cb14-4"></a>    node_colors<span class="op">=</span>np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>])<span class="op">/</span><span class="dv">2</span>,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>    node_sizes<span class="op">=</span>np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>])<span class="op">/</span><span class="dv">2</span>,</span>
+<span id="cb14-6"><a href="#cb14-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-07-17-tutorial 2_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="옵션" class="level1">
+<h1>4. 옵션</h1>
+<div id="cell-21" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#graft.plot(g)</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>gt_graph, draw_options <span class="op">=</span> graft.setup_graph_draw(g)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>gt.graph_draw(gt_graph, <span class="op">**</span>draw_options)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-07-17-tutorial 2_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-22" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># graft.plot(</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="co">#     g,</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="co">#     node_names=[0,1,2,3,4]</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co"># )</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>gt_graph, draw_options <span class="op">=</span> graft.setup_graph_draw(g)</span>
+<span id="cb16-6"><a href="#cb16-6"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_names(gt_graph,draw_options,node_names<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>])</span>
+<span id="cb16-7"><a href="#cb16-7"></a>gt.graph_draw(gt_graph, <span class="op">**</span>draw_options)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-07-17-tutorial 2_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-23" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># graft.plot(</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co">#     g,</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co">#     node_names=["A","B","C","D","E"],</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># )</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>gt_graph, draw_options <span class="op">=</span> graft.setup_graph_draw(g)</span>
+<span id="cb17-6"><a href="#cb17-6"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_names(gt_graph,draw_options,node_names<span class="op">=</span>[<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>])</span>
+<span id="cb17-7"><a href="#cb17-7"></a>gt.graph_draw(gt_graph, <span class="op">**</span>draw_options)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-07-17-tutorial 2_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-24" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># graft.plot(</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co">#     g,</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co">#     node_names=["","","","A",""]</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co"># )</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>gt_graph, draw_options <span class="op">=</span> graft.setup_graph_draw(g)</span>
+<span id="cb18-6"><a href="#cb18-6"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_names(gt_graph,draw_options,node_names<span class="op">=</span>[<span class="st">""</span>,<span class="st">""</span>,<span class="st">""</span>,<span class="st">"A"</span>,<span class="st">""</span>])</span>
+<span id="cb18-7"><a href="#cb18-7"></a>gt.graph_draw(gt_graph, <span class="op">**</span>draw_options)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-07-17-tutorial 2_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-25" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># graft.plot(</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="co">#     g,</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="co">#     node_names=["A","B","C","D","E"],</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="co">#     node_sizes=[1,1,2,2,3],</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="co"># )</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>gt_graph, draw_options <span class="op">=</span> graft.setup_graph_draw(g)</span>
+<span id="cb19-7"><a href="#cb19-7"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_names(gt_graph,draw_options,node_names<span class="op">=</span>[<span class="st">""</span>,<span class="st">""</span>,<span class="st">""</span>,<span class="st">"A"</span>,<span class="st">""</span>])</span>
+<span id="cb19-8"><a href="#cb19-8"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_sizes(gt_graph,draw_options,node_sizes<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb19-9"><a href="#cb19-9"></a>gt.graph_draw(gt_graph, <span class="op">**</span>draw_options)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-07-17-tutorial 2_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-26" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># graft.plot(</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="co">#     g,</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="co">#     node_names=["A","B","C","D","E"],</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="co">#     node_colors=[0,0,1,2,2],</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="co"># )</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>gt_graph, draw_options <span class="op">=</span> graft.setup_graph_draw(g)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_names(gt_graph,draw_options,node_names<span class="op">=</span>[<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>])</span>
+<span id="cb20-8"><a href="#cb20-8"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_colors(gt_graph,draw_options,node_colors<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>])</span>
+<span id="cb20-9"><a href="#cb20-9"></a>gt.graph_draw(gt_graph, <span class="op">**</span>draw_options)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-07-17-tutorial 2_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-27" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># graft.plot(</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co">#     g,</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co">#     node_names=["A","B","C","D","E"],</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="co">#     node_colors=np.array([0,0,1,2,2])/2,</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="co"># )</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>gt_graph, draw_options <span class="op">=</span> graft.setup_graph_draw(g)</span>
+<span id="cb21-7"><a href="#cb21-7"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_names(gt_graph,draw_options,node_names<span class="op">=</span>[<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>])</span>
+<span id="cb21-8"><a href="#cb21-8"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_colors(gt_graph,draw_options,node_colors<span class="op">=</span>np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>])<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb21-9"><a href="#cb21-9"></a>gt.graph_draw(gt_graph, <span class="op">**</span>draw_options)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-07-17-tutorial 2_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-28" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># graft.plot(</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="co">#     g,</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="co">#     node_names=["A","B","C","D","E"],</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="co">#     node_colors=np.array([0,0,1,2,2])/2,</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="co">#     node_sizes=np.array([0,0,1,2,2])/2,</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="co"># )</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a>gt_graph, draw_options <span class="op">=</span> graft.setup_graph_draw(g)</span>
+<span id="cb22-8"><a href="#cb22-8"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_names(gt_graph,draw_options,node_names<span class="op">=</span>[<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>])</span>
+<span id="cb22-9"><a href="#cb22-9"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_colors(gt_graph,draw_options,node_colors<span class="op">=</span>np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>])<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb22-10"><a href="#cb22-10"></a>gt_graph, draw_options <span class="op">=</span> graft.map_node_sizes(gt_graph,draw_options,node_sizes<span class="op">=</span>np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>])<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb22-11"><a href="#cb22-11"></a>gt.graph_draw(gt_graph, <span class="op">**</span>draw_options)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-07-17-tutorial 2_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

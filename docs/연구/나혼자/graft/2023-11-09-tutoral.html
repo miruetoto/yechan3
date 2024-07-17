@@ -299,9 +299,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Uninstalling graft-0.0.1:
   Successfully uninstalled graft-0.0.1
 Collecting git+https://github.com/guebin/graft.git
-  Cloning https://github.com/guebin/graft.git to /tmp/pip-req-build-rphw4hda
-  Running command git clone --filter=blob:none --quiet https://github.com/guebin/graft.git /tmp/pip-req-build-rphw4hda
-  Resolved https://github.com/guebin/graft.git to commit e79f41337293dfcd2f8b62e0da75a3417ce728d5
+  Cloning https://github.com/guebin/graft.git to /tmp/pip-req-build-ylrdrcb1
+  Running command git clone --filter=blob:none --quiet https://github.com/guebin/graft.git /tmp/pip-req-build-ylrdrcb1
+  Resolved https://github.com/guebin/graft.git to commit c09d8388736145c89e49e43f679e98f7e370277a
   Preparing metadata (setup.py) ... done
 Requirement already satisfied: pandas in ./anaconda3/envs/graft/lib/python3.12/site-packages (from graft==0.0.1) (2.2.2)
 Requirement already satisfied: numpy&gt;=1.26.0 in ./anaconda3/envs/graft/lib/python3.12/site-packages (from pandas-&gt;graft==0.0.1) (1.26.4)
@@ -311,8 +311,8 @@ Requirement already satisfied: tzdata&gt;=2022.7 in ./anaconda3/envs/graft/lib/p
 Requirement already satisfied: six&gt;=1.5 in ./anaconda3/envs/graft/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas-&gt;graft==0.0.1) (1.16.0)
 Building wheels for collected packages: graft
   Building wheel for graft (setup.py) ... done
-  Created wheel for graft: filename=graft-0.0.1-py3-none-any.whl size=7955 sha256=11388eab72229385aaec9a7cf1a808353ac103536042955ed7536600978ff3b1
-  Stored in directory: /tmp/pip-ephem-wheel-cache-21sgbveg/wheels/5a/da/81/7f1de9f08d7753f35b8a3ca78aaacecedc86bc4077124d73fe
+  Created wheel for graft: filename=graft-0.0.1-py3-none-any.whl size=8164 sha256=48e4e3a1d6b38fffada59c690b2481001ed3e94baa2e58ab0b0e47b618b500fa
+  Stored in directory: /tmp/pip-ephem-wheel-cache-83ebwark/wheels/5a/da/81/7f1de9f08d7753f35b8a3ca78aaacecedc86bc4077124d73fe
 Successfully built graft
 Installing collected packages: graft
 Successfully installed graft-0.0.1</code></pre>
@@ -474,7 +474,7 @@ Successfully installed graft-0.0.1</code></pre>
 </div>
 <div id="f0ad4c71-6d1c-43a0-8e48-419f728cef2a" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>dr_opts <span class="op">=</span> {</span>
-<span id="cb17-2"><a href="#cb17-2"></a>    <span class="st">'output_size'</span>: (<span class="dv">500</span>,<span class="dv">500</span>)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>    <span class="st">'output_size'</span>: (<span class="dv">100</span>,<span class="dv">100</span>)</span>
 <span id="cb17-3"><a href="#cb17-3"></a>}</span>
 <span id="cb17-4"><a href="#cb17-4"></a>graft.plot(</span>
 <span id="cb17-5"><a href="#cb17-5"></a>    g,</span>
@@ -525,21 +525,22 @@ Successfully installed graft-0.0.1</code></pre>
 <span id="cb20-7"><a href="#cb20-7"></a>    edge_attr<span class="op">=</span>weights,</span>
 <span id="cb20-8"><a href="#cb20-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="167ce295-050f-4731-9fc8-0e436898f321" class="cell" data-tags="[]" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>graft.plot(</span>
-<span id="cb21-2"><a href="#cb21-2"></a>    g,</span>
-<span id="cb21-3"><a href="#cb21-3"></a>    edge_weight_text<span class="op">=</span><span class="va">False</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>TypeError: plot() got an unexpected keyword argument 'edge_weight_text'</code></pre>
+<p><code># Ex</code></p>
+<div id="1c788e0b-f7d8-4b49-a179-1c16c81dc97d" class="cell" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>links <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>],</span>
+<span id="cb21-2"><a href="#cb21-2"></a>                      [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb21-3"><a href="#cb21-3"></a>weights <span class="op">=</span> torch.tensor([<span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="fl">0.19</span>, <span class="fl">0.19</span>], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb21-4"><a href="#cb21-4"></a>g <span class="op">=</span> torch_geometric.data.Data(</span>
+<span id="cb21-5"><a href="#cb21-5"></a>    edge_index<span class="op">=</span>links,</span>
+<span id="cb21-6"><a href="#cb21-6"></a>    edge_attr<span class="op">=</span>weights,</span>
+<span id="cb21-7"><a href="#cb21-7"></a>    y <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>])</span>
+<span id="cb21-8"><a href="#cb21-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div id="b900f18a-d023-41b2-9fb3-d1d4781830c2" class="cell" data-tags="[]">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>graft.plot(</span>
-<span id="cb23-2"><a href="#cb23-2"></a>    g,</span>
-<span id="cb23-3"><a href="#cb23-3"></a>    edge_weight_text<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb23-4"><a href="#cb23-4"></a>    edge_weight_width<span class="op">=</span><span class="va">False</span></span>
-<span id="cb23-5"><a href="#cb23-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4635c64d" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>graft.plot(</span>
+<span id="cb22-2"><a href="#cb22-2"></a>    g,</span>
+<span id="cb22-3"><a href="#cb22-3"></a>    node_colors<span class="op">=</span>g.y</span>
+<span id="cb22-4"><a href="#cb22-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -549,21 +550,23 @@ Successfully installed graft-0.0.1</code></pre>
 </div>
 </div>
 <p><code># Ex</code></p>
-<div id="1c788e0b-f7d8-4b49-a179-1c16c81dc97d" class="cell" data-tags="[]" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>links <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>],</span>
-<span id="cb24-2"><a href="#cb24-2"></a>                      [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
-<span id="cb24-3"><a href="#cb24-3"></a>weights <span class="op">=</span> torch.tensor([<span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="fl">0.19</span>, <span class="fl">0.19</span>], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
-<span id="cb24-4"><a href="#cb24-4"></a>g <span class="op">=</span> torch_geometric.data.Data(</span>
-<span id="cb24-5"><a href="#cb24-5"></a>    edge_index<span class="op">=</span>links,</span>
-<span id="cb24-6"><a href="#cb24-6"></a>    edge_attr<span class="op">=</span>weights,</span>
-<span id="cb24-7"><a href="#cb24-7"></a>    y <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>])</span>
-<span id="cb24-8"><a href="#cb24-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="14aa2586-bb0a-4a63-b0c7-06303d4c0ab3" class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>links <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>],</span>
+<span id="cb23-2"><a href="#cb23-2"></a>                      [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb23-3"><a href="#cb23-3"></a>weights <span class="op">=</span> torch.tensor([<span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="fl">0.19</span>, <span class="fl">0.19</span>], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb23-4"><a href="#cb23-4"></a>g <span class="op">=</span> torch_geometric.data.Data(</span>
+<span id="cb23-5"><a href="#cb23-5"></a>    edge_index <span class="op">=</span> links, </span>
+<span id="cb23-6"><a href="#cb23-6"></a>    edge_attr <span class="op">=</span> weights,</span>
+<span id="cb23-7"><a href="#cb23-7"></a>    y <span class="op">=</span> torch.tensor([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>]),</span>
+<span id="cb23-8"><a href="#cb23-8"></a>    x <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>])</span>
+<span id="cb23-9"><a href="#cb23-9"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="4635c64d" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>graft.plot(</span>
-<span id="cb25-2"><a href="#cb25-2"></a>    g,</span>
-<span id="cb25-3"><a href="#cb25-3"></a>    node_colors<span class="op">=</span>g.y</span>
-<span id="cb25-4"><a href="#cb25-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="19d93bd4" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>graft.plot(</span>
+<span id="cb24-2"><a href="#cb24-2"></a>    g,</span>
+<span id="cb24-3"><a href="#cb24-3"></a>    node_colors<span class="op">=</span>g.y,</span>
+<span id="cb24-4"><a href="#cb24-4"></a>    node_sizes<span class="op">=</span>g.x,</span>
+<span id="cb24-5"><a href="#cb24-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -572,53 +575,60 @@ Successfully installed graft-0.0.1</code></pre>
 </div>
 </div>
 </div>
-<p><code># Ex</code></p>
-<div id="14aa2586-bb0a-4a63-b0c7-06303d4c0ab3" class="cell" data-tags="[]" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>links <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>],</span>
-<span id="cb26-2"><a href="#cb26-2"></a>                      [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
-<span id="cb26-3"><a href="#cb26-3"></a>weights <span class="op">=</span> torch.tensor([<span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="fl">0.19</span>, <span class="fl">0.19</span>], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
-<span id="cb26-4"><a href="#cb26-4"></a>g <span class="op">=</span> torch_geometric.data.Data(</span>
-<span id="cb26-5"><a href="#cb26-5"></a>    edge_index <span class="op">=</span> links, </span>
-<span id="cb26-6"><a href="#cb26-6"></a>    edge_attr <span class="op">=</span> weights,</span>
-<span id="cb26-7"><a href="#cb26-7"></a>    y <span class="op">=</span> torch.tensor([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>]),</span>
-<span id="cb26-8"><a href="#cb26-8"></a>    x <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>])</span>
-<span id="cb26-9"><a href="#cb26-9"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="19d93bd4" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>graft.plot(</span>
-<span id="cb27-2"><a href="#cb27-2"></a>    g,</span>
-<span id="cb27-3"><a href="#cb27-3"></a>    node_colors<span class="op">=</span>g.y,</span>
-<span id="cb27-4"><a href="#cb27-4"></a>    node_sizes<span class="op">=</span>g.x,</span>
-<span id="cb27-5"><a href="#cb27-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="directed-unweighted" class="level1">
+<h1>5. Directed / Unweighted</h1>
+<div id="790d993c" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Define the graph components</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>links <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>],</span>
+<span id="cb25-3"><a href="#cb25-3"></a>                      [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb25-4"><a href="#cb25-4"></a></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="co"># Create a PyTorch Geometric Data object</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a>g <span class="op">=</span> torch_geometric.data.Data(</span>
+<span id="cb25-7"><a href="#cb25-7"></a>    edge_index<span class="op">=</span>links,</span>
+<span id="cb25-8"><a href="#cb25-8"></a>    y<span class="op">=</span>torch.tensor([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]),</span>
+<span id="cb25-9"><a href="#cb25-9"></a>    x<span class="op">=</span>torch.tensor([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>])</span>
+<span id="cb25-10"><a href="#cb25-10"></a>)</span>
+<span id="cb25-11"><a href="#cb25-11"></a></span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="co"># Example usage of the plot_directed_unweighted function</span></span>
+<span id="cb25-13"><a href="#cb25-13"></a>graft.plot(</span>
+<span id="cb25-14"><a href="#cb25-14"></a>    g,</span>
+<span id="cb25-15"><a href="#cb25-15"></a>    node_colors<span class="op">=</span>g.y,</span>
+<span id="cb25-16"><a href="#cb25-16"></a>    node_sizes<span class="op">=</span>g.x</span>
+<span id="cb25-17"><a href="#cb25-17"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2023-11-09-tutoral_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="2023-11-09-tutoral_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="directed-unweighted" class="level1">
-<h1>5. Directed / Unweighted</h1>
-<div id="790d993c" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Define the graph components</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a>links <span class="op">=</span> torch.tensor([[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>],</span>
-<span id="cb28-3"><a href="#cb28-3"></a>                      [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
-<span id="cb28-4"><a href="#cb28-4"></a></span>
-<span id="cb28-5"><a href="#cb28-5"></a><span class="co"># Create a PyTorch Geometric Data object</span></span>
-<span id="cb28-6"><a href="#cb28-6"></a>g <span class="op">=</span> torch_geometric.data.Data(</span>
-<span id="cb28-7"><a href="#cb28-7"></a>    edge_index<span class="op">=</span>links,</span>
-<span id="cb28-8"><a href="#cb28-8"></a>    y<span class="op">=</span>torch.tensor([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]),</span>
-<span id="cb28-9"><a href="#cb28-9"></a>    x<span class="op">=</span>torch.tensor([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>])</span>
-<span id="cb28-10"><a href="#cb28-10"></a>)</span>
-<span id="cb28-11"><a href="#cb28-11"></a></span>
-<span id="cb28-12"><a href="#cb28-12"></a><span class="co"># Example usage of the plot_directed_unweighted function</span></span>
-<span id="cb28-13"><a href="#cb28-13"></a>graft.plot(</span>
-<span id="cb28-14"><a href="#cb28-14"></a>    g,</span>
-<span id="cb28-15"><a href="#cb28-15"></a>    node_colors<span class="op">=</span>g.y,</span>
-<span id="cb28-16"><a href="#cb28-16"></a>    node_sizes<span class="op">=</span>g.x</span>
-<span id="cb28-17"><a href="#cb28-17"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="directed-weighted" class="level1">
+<h1>6. Directed / Weighted</h1>
+<div id="d5be2f59" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Define the graph components</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>links <span class="op">=</span> torch.tensor([[<span class="dv">0</span>,  <span class="dv">2</span>, <span class="dv">3</span>,  <span class="dv">3</span>],</span>
+<span id="cb26-3"><a href="#cb26-3"></a>                      [<span class="dv">1</span>,  <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
+<span id="cb26-4"><a href="#cb26-4"></a>weights <span class="op">=</span> torch.tensor([<span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="fl">0.19</span>, <span class="fl">0.19</span>], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb26-5"><a href="#cb26-5"></a></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="co"># Create a PyTorch Geometric Data object</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>g <span class="op">=</span> torch_geometric.data.Data(</span>
+<span id="cb26-8"><a href="#cb26-8"></a>    edge_index<span class="op">=</span>links,</span>
+<span id="cb26-9"><a href="#cb26-9"></a>    edge_attr<span class="op">=</span>weights,</span>
+<span id="cb26-10"><a href="#cb26-10"></a>    y<span class="op">=</span>torch.tensor([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]),</span>
+<span id="cb26-11"><a href="#cb26-11"></a>    x<span class="op">=</span>torch.tensor([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>])</span>
+<span id="cb26-12"><a href="#cb26-12"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="7c47062c" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Assuming the graph module with the new functions is imported as graft</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="co"># Example usage of the plot_directed_weighted function</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>graft.plot(</span>
+<span id="cb27-4"><a href="#cb27-4"></a>    g,</span>
+<span id="cb27-5"><a href="#cb27-5"></a>    node_colors<span class="op">=</span>g.y,</span>
+<span id="cb27-6"><a href="#cb27-6"></a>    node_sizes<span class="op">=</span>g.x,</span>
+<span id="cb27-7"><a href="#cb27-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -627,53 +637,19 @@ Successfully installed graft-0.0.1</code></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="directed-weighted" class="level1">
-<h1>6. Directed / Weighted</h1>
-<div id="d5be2f59" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Define the graph components</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>links <span class="op">=</span> torch.tensor([[<span class="dv">0</span>,  <span class="dv">2</span>, <span class="dv">3</span>,  <span class="dv">3</span>],</span>
-<span id="cb29-3"><a href="#cb29-3"></a>                      [<span class="dv">1</span>,  <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span>
-<span id="cb29-4"><a href="#cb29-4"></a>weights <span class="op">=</span> torch.tensor([<span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="fl">0.19</span>, <span class="fl">0.19</span>], dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
-<span id="cb29-5"><a href="#cb29-5"></a></span>
-<span id="cb29-6"><a href="#cb29-6"></a><span class="co"># Create a PyTorch Geometric Data object</span></span>
-<span id="cb29-7"><a href="#cb29-7"></a>g <span class="op">=</span> torch_geometric.data.Data(</span>
-<span id="cb29-8"><a href="#cb29-8"></a>    edge_index<span class="op">=</span>links,</span>
-<span id="cb29-9"><a href="#cb29-9"></a>    edge_attr<span class="op">=</span>weights,</span>
-<span id="cb29-10"><a href="#cb29-10"></a>    y<span class="op">=</span>torch.tensor([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]),</span>
-<span id="cb29-11"><a href="#cb29-11"></a>    x<span class="op">=</span>torch.tensor([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>])</span>
-<span id="cb29-12"><a href="#cb29-12"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="7c47062c" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Assuming the graph module with the new functions is imported as graft</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="co"># Example usage of the plot_directed_weighted function</span></span>
-<span id="cb30-3"><a href="#cb30-3"></a>graft.plot(</span>
-<span id="cb30-4"><a href="#cb30-4"></a>    g,</span>
-<span id="cb30-5"><a href="#cb30-5"></a>    node_colors<span class="op">=</span>g.y,</span>
-<span id="cb30-6"><a href="#cb30-6"></a>    node_sizes<span class="op">=</span>g.x,</span>
-<span id="cb30-7"><a href="#cb30-7"></a>    draw_options <span class="op">=</span> {<span class="st">'edge_marker_size'</span>:<span class="dv">8</span>}</span>
-<span id="cb30-8"><a href="#cb30-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="31843176" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Assuming the graph module with the new functions is imported as graft</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co"># Example usage of the plot_directed_weighted function</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>graft.plot(</span>
+<span id="cb28-4"><a href="#cb28-4"></a>    g,</span>
+<span id="cb28-5"><a href="#cb28-5"></a>    node_colors<span class="op">=</span>g.y,</span>
+<span id="cb28-6"><a href="#cb28-6"></a>    node_sizes<span class="op">=</span>g.x,</span>
+<span id="cb28-7"><a href="#cb28-7"></a>    draw_options <span class="op">=</span> {<span class="st">'edge_marker_size'</span>:<span class="dv">20</span>}</span>
+<span id="cb28-8"><a href="#cb28-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2023-11-09-tutoral_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="31843176" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Assuming the graph module with the new functions is imported as graft</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="co"># Example usage of the plot_directed_weighted function</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a>graft.plot(</span>
-<span id="cb31-4"><a href="#cb31-4"></a>    g,</span>
-<span id="cb31-5"><a href="#cb31-5"></a>    node_colors<span class="op">=</span>g.y,</span>
-<span id="cb31-6"><a href="#cb31-6"></a>    node_sizes<span class="op">=</span>g.x,</span>
-<span id="cb31-7"><a href="#cb31-7"></a>    draw_options <span class="op">=</span> {<span class="st">'edge_marker_size'</span>:<span class="dv">15</span>}</span>
-<span id="cb31-8"><a href="#cb31-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2023-11-09-tutoral_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="2023-11-09-tutoral_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
