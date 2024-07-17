@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.533">
+<meta name="generator" content="quarto-1.4.520">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -305,29 +305,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="선언과-자료형" class="level1">
 <h1>2. 선언과 자료형</h1>
 <p><code>-</code> 예시1</p>
-<div id="c3af1fcc-920b-45e2-b781-8fb444ae8786" class="cell" data-tags="[]" data-execution_count="3">
+<div id="c3af1fcc-920b-45e2-b781-8fb444ae8786" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
 <span id="cb1-2"><a href="#cb1-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>3-element Vector{Int64}:
  1
  2
  3</code></pre>
 </div>
 </div>
-<div id="adb223bb-bae1-40b9-b6c6-4d41393bcffa" class="cell" data-tags="[]" data-execution_count="4">
+<div id="adb223bb-bae1-40b9-b6c6-4d41393bcffa" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">typeof</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div class="ansi-escaped-output">
 <pre>Vector{Int64}<span class="ansi-bright-black-fg"> (alias for </span><span class="ansi-bright-black-fg">Array{Int64, 1}</span><span class="ansi-bright-black-fg">)</span></pre>
 </div>
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="9c5b3c6d-c79b-4617-8a38-75da19c0cfd2" class="cell" data-tags="[]" data-execution_count="5">
+<div id="9c5b3c6d-c79b-4617-8a38-75da19c0cfd2" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="ch">'a'</span>,<span class="st">"abc"</span>] </span>
 <span id="cb4-2"><a href="#cb4-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>4-element Vector{Any}:
  1
  2
@@ -335,20 +335,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "abc"</code></pre>
 </div>
 </div>
-<div id="a2cf157f-74c4-43ba-8bd9-2734713e26db" class="cell" data-tags="[]" data-execution_count="6">
+<div id="a2cf157f-74c4-43ba-8bd9-2734713e26db" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">typeof</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div class="ansi-escaped-output">
 <pre>Vector{Any}<span class="ansi-bright-black-fg"> (alias for </span><span class="ansi-bright-black-fg">Array{Any, 1}</span><span class="ansi-bright-black-fg">)</span></pre>
 </div>
 </div>
 </div>
 <p><code>-</code> 예시3 – col-vector처럼 선언가능</p>
-<div id="0da53ba9-40df-4bba-bc60-65f8019889a4" class="cell" data-tags="[]" data-execution_count="7">
+<div id="0da53ba9-40df-4bba-bc60-65f8019889a4" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1"></a>a<span class="op">=</span> [ <span class="fl">1</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>     <span class="fl">2</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>     <span class="fl">3</span> ] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>3-element Vector{Int64}:
  1
  2
@@ -356,9 +356,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>-</code> 예시4 – 비어있는 벡터 선언</p>
-<div id="5440b443-ef7b-4eb3-ab36-be9ed10f01c2" class="cell" data-tags="[]" data-execution_count="8">
+<div id="5440b443-ef7b-4eb3-ab36-be9ed10f01c2" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1"></a>a <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>Any[]</code></pre>
 </div>
 </div>
@@ -366,18 +366,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="특수한-벡터-선언" class="level1">
 <h1>3. 특수한 벡터 선언</h1>
 <p><code>-</code> 예시1: ones, zeros</p>
-<div id="b7885881-621c-41c3-a57a-91ed4fe2ddd5" class="cell" data-tags="[]" data-execution_count="14">
+<div id="b7885881-621c-41c3-a57a-91ed4fe2ddd5" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">ones</span>(<span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>3-element Vector{Float64}:
  1.0
  1.0
  1.0</code></pre>
 </div>
 </div>
-<div id="335c4d9e-f3d7-4a94-b131-72b2dbe10f8d" class="cell" data-tags="[]" data-execution_count="16">
+<div id="335c4d9e-f3d7-4a94-b131-72b2dbe10f8d" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">zeros</span>(<span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>3-element Vector{Float64}:
  0.0
  0.0
@@ -385,9 +385,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>-</code> 예시2: fill</p>
-<div id="2000f868-1590-4ac0-9e43-76bf56c3c855" class="cell" data-tags="[]" data-execution_count="18">
+<div id="2000f868-1590-4ac0-9e43-76bf56c3c855" class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">fill</span>(<span class="fl">1.0</span>,<span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>3-element Vector{Float64}:
  1.0
  1.0
@@ -395,20 +395,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>-</code> 예시3</p>
-<div id="bd7fac55-aa4e-4d4f-aa56-89ad08634245" class="cell" data-tags="[]" data-execution_count="35">
+<div id="bd7fac55-aa4e-4d4f-aa56-89ad08634245" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">Array</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>)</span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="co">#Array(range(1,3))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>3-element Vector{Int64}:
  1
  2
  3</code></pre>
 </div>
 </div>
-<div id="d91a2304-c735-4f52-a744-f8e2c1373a4f" class="cell" data-tags="[]" data-execution_count="37">
+<div id="d91a2304-c735-4f52-a744-f8e2c1373a4f" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">collect</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>)</span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="co">#collect(range(1,3))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>3-element Vector{Int64}:
  1
  2
@@ -416,18 +416,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>-</code> 예시4</p>
-<div id="4e7717cf-e5ec-4dc1-8b4b-c21e176aab45" class="cell" data-tags="[]" data-execution_count="28">
+<div id="4e7717cf-e5ec-4dc1-8b4b-c21e176aab45" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">Array</span>(<span class="fu">range</span>(<span class="fl">1</span>,<span class="fl">10</span>,length<span class="op">=</span><span class="fl">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>3-element Vector{Float64}:
   1.0
   5.5
  10.0</code></pre>
 </div>
 </div>
-<div id="02fae532-34b0-49de-a235-88a57671034f" class="cell" data-tags="[]" data-execution_count="29">
+<div id="02fae532-34b0-49de-a235-88a57671034f" class="cell" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">collect</span>(<span class="fu">range</span>(<span class="fl">1</span>,<span class="fl">10</span>,length<span class="op">=</span><span class="fl">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>3-element Vector{Float64}:
   1.0
   5.5
@@ -440,51 +440,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a.-더하기" class="level2">
 <h2 class="anchored" data-anchor-id="a.-더하기">A. 더하기</h2>
 <p><code>-</code> 예시1 – 길이가 같은 벡터의 합</p>
-<div id="f5c3314b-5a32-4839-8aae-3ddc0d4226c7" class="cell" data-tags="[]" data-execution_count="104">
+<div id="f5c3314b-5a32-4839-8aae-3ddc0d4226c7" class="cell" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>] </span>
 <span id="cb25-2"><a href="#cb25-2"></a>b <span class="op">=</span> [<span class="op">-</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">2</span>]</span>
 <span id="cb25-3"><a href="#cb25-3"></a>a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="104">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>2-element Vector{Int64}:
  0
  0</code></pre>
 </div>
 </div>
-<div id="b7990ba0-aa1b-478e-bb78-11d0cd949151" class="cell" data-tags="[]" data-execution_count="105">
+<div id="b7990ba0-aa1b-478e-bb78-11d0cd949151" class="cell" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># 사실아래도 가능</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>a <span class="op">.+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="105">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>2-element Vector{Int64}:
  0
  0</code></pre>
 </div>
 </div>
 <p><code>-</code> 예시2 – 벡터+스칼라 (실패)</p>
-<div id="f00583df-8aaa-46cc-bf40-9d6dde5a9af7" class="cell" data-tags="[]" data-execution_count="65">
+<div id="f00583df-8aaa-46cc-bf40-9d6dde5a9af7" class="cell" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>]</span>
 <span id="cb29-2"><a href="#cb29-2"></a>a <span class="op">+</span> <span class="fl">1</span> <span class="co"># 브로드캐스팅 실패</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre>MethodError: no method matching +(::Vector{Int64}, ::Int64)
+<pre><code>LoadError: MethodError: no method matching +(::Vector{Int64}, ::Int64)
 For element-wise addition, use broadcasting with dot syntax: array .+ scalar
 
-Closest candidates are:
-  +(::Any, ::Any, <span class="ansi-bright-red-fg">::Any</span>, <span class="ansi-bright-red-fg">::Any...</span>)
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">operators.jl:578</span>
-  +(<span class="ansi-bright-red-fg">::T</span>, ::T) where T&lt;:Union{Int128, Int16, Int32, Int64, Int8, UInt128, UInt16, UInt32, UInt64, UInt8}
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">int.jl:87</span>
-  +(<span class="ansi-bright-red-fg">::Base.TwicePrecision</span>, ::Number)
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">twiceprecision.jl:290</span>
-  ...
-</pre>
-</div>
+[0mClosest candidates are:
+[0m  +(::Any, ::Any, [91m::Any[39m, [91m::Any...[39m)
+[0m[90m   @[39m [90mBase[39m [90m[4moperators.jl:578[24m[39m
+[0m  +([91m::T[39m, ::T) where T&lt;:Union{Int128, Int16, Int32, Int64, Int8, UInt128, UInt16, UInt32, UInt64, UInt8}
+[0m[90m   @[39m [90mBase[39m [90m[4mint.jl:87[24m[39m
+[0m  +([91m::Base.TwicePrecision[39m, ::Number)
+[0m[90m   @[39m [90mBase[39m [90m[4mtwiceprecision.jl:290[24m[39m
+[0m  ...</code></pre>
 </div>
 </div>
 <p><code>-</code> 예시3 – 벡터+스칼라 (성공)</p>
-<div id="1d0dfe2a-db53-4d31-aeb2-cdb8daf1f2ff" class="cell" data-tags="[]" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>]</span>
-<span id="cb30-2"><a href="#cb30-2"></a>a <span class="op">.+</span> <span class="fl">1</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="66">
+<div id="1d0dfe2a-db53-4d31-aeb2-cdb8daf1f2ff" class="cell" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>]</span>
+<span id="cb31-2"><a href="#cb31-2"></a>a <span class="op">.+</span> <span class="fl">1</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>2-element Vector{Int64}:
  2
  3</code></pre>
@@ -494,50 +491,50 @@ Closest candidates are:
 <section id="b.-곱셉" class="level2">
 <h2 class="anchored" data-anchor-id="b.-곱셉">B. 곱셉</h2>
 <p><code>-</code> 예시1 – 벡터*스칼라 (성공)</p>
-<div id="c59ff24e-a0dc-4525-898d-798825ee2de6" class="cell" data-tags="[]" data-execution_count="147">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>]</span>
-<span id="cb32-2"><a href="#cb32-2"></a>a<span class="op">*</span><span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="147">
+<div id="c59ff24e-a0dc-4525-898d-798825ee2de6" class="cell" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>]</span>
+<span id="cb33-2"><a href="#cb33-2"></a>a<span class="op">*</span><span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>2-element Vector{Int64}:
  2
  4</code></pre>
 </div>
 </div>
-<div id="19143341-e970-4677-9f8e-f649a0472d0c" class="cell" data-tags="[]" data-execution_count="148">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># 사실 아래도 가능</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a>a <span class="op">.*</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="148">
+<div id="19143341-e970-4677-9f8e-f649a0472d0c" class="cell" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># 사실 아래도 가능</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>a <span class="op">.*</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>2-element Vector{Int64}:
  2
  4</code></pre>
 </div>
 </div>
-<div id="06bf6c4a-662a-458a-84cf-dc8d91aa9bb9" class="cell" data-tags="[]" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># 사실 아래도 가능</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="fl">2</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="68">
+<div id="06bf6c4a-662a-458a-84cf-dc8d91aa9bb9" class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># 사실 아래도 가능</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fl">2</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>2-element Vector{Int64}:
  2
  4</code></pre>
 </div>
 </div>
 <p><code>-</code> 예시2 – 하다마르곱</p>
-<div id="0116fd0a-db06-4c80-9e1c-11fb3688205a" class="cell" data-tags="[]" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>]</span>
-<span id="cb38-2"><a href="#cb38-2"></a>b <span class="op">=</span> [<span class="fl">2</span>,<span class="fl">3</span>] </span>
-<span id="cb38-3"><a href="#cb38-3"></a>a <span class="op">.*</span> b </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="53">
+<div id="0116fd0a-db06-4c80-9e1c-11fb3688205a" class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>]</span>
+<span id="cb39-2"><a href="#cb39-2"></a>b <span class="op">=</span> [<span class="fl">2</span>,<span class="fl">3</span>] </span>
+<span id="cb39-3"><a href="#cb39-3"></a>a <span class="op">.*</span> b </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>2-element Vector{Int64}:
  2
  6</code></pre>
 </div>
 </div>
 <p><code>-</code> 예시3 – 예시2를 응용</p>
-<div id="98ce0dd4-f95f-49fe-8f8f-8c5002674777" class="cell" data-tags="[]" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="ch">'a'</span>]</span>
-<span id="cb40-2"><a href="#cb40-2"></a>b <span class="op">=</span> [<span class="fl">3</span>,<span class="ch">'b'</span>]</span>
-<span id="cb40-3"><a href="#cb40-3"></a>a <span class="op">.*</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="69">
+<div id="98ce0dd4-f95f-49fe-8f8f-8c5002674777" class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="ch">'a'</span>]</span>
+<span id="cb41-2"><a href="#cb41-2"></a>b <span class="op">=</span> [<span class="fl">3</span>,<span class="ch">'b'</span>]</span>
+<span id="cb41-3"><a href="#cb41-3"></a>a <span class="op">.*</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>2-element Vector{Any}:
  3
   "ab"</code></pre>
@@ -547,20 +544,20 @@ Closest candidates are:
 <section id="c.-제곱연산" class="level2">
 <h2 class="anchored" data-anchor-id="c.-제곱연산">C. 제곱연산</h2>
 <p><code>-</code> 예시1</p>
-<div id="92cb182a-4bc5-4b0f-aacf-68c3b75b7c68" class="cell" data-tags="[]" data-execution_count="149">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>]</span>
-<span id="cb42-2"><a href="#cb42-2"></a>a <span class="op">.^</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="149">
+<div id="92cb182a-4bc5-4b0f-aacf-68c3b75b7c68" class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>]</span>
+<span id="cb43-2"><a href="#cb43-2"></a>a <span class="op">.^</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>2-element Vector{Int64}:
  1
  4</code></pre>
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="95718a50-b4c9-421c-a49f-76b2eb92520c" class="cell" data-tags="[]" data-execution_count="150">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1"></a>a <span class="op">=</span> [<span class="st">"a"</span>, <span class="st">"bb"</span>] </span>
-<span id="cb44-2"><a href="#cb44-2"></a>a <span class="op">.^</span> <span class="fl">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="150">
+<div id="95718a50-b4c9-421c-a49f-76b2eb92520c" class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1"></a>a <span class="op">=</span> [<span class="st">"a"</span>, <span class="st">"bb"</span>] </span>
+<span id="cb45-2"><a href="#cb45-2"></a>a <span class="op">.^</span> <span class="fl">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>2-element Vector{String}:
  "aa"
  "bbbb"</code></pre>
@@ -570,24 +567,24 @@ Closest candidates are:
 <section id="d.-내적" class="level2">
 <h2 class="anchored" data-anchor-id="d.-내적">D. 내적</h2>
 <p><code>-</code> 예시</p>
-<div id="fa98bbbc-e89c-4b23-b374-6faff67eda5b" class="cell" data-tags="[]" data-execution_count="161">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fa98bbbc-e89c-4b23-b374-6faff67eda5b" class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1c2f2d09-b95c-4240-ac94-93ca119a37cb" class="cell" data-tags="[]" data-execution_count="164">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1"></a>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>] <span class="op">⋅</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="164">
+<div id="1c2f2d09-b95c-4240-ac94-93ca119a37cb" class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1"></a>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>] <span class="op">⋅</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>14</code></pre>
 </div>
 </div>
-<div id="2fa934bb-e6aa-4496-bd2d-d6bb89c3595e" class="cell" data-tags="[]" data-execution_count="165">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">dot</span>([<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>],[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="165">
+<div id="2fa934bb-e6aa-4496-bd2d-d6bb89c3595e" class="cell" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">dot</span>([<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>],[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>14</code></pre>
 </div>
 </div>
-<div id="2c7b0746-7f22-4004-b2f9-f3838c9da13e" class="cell" data-tags="[]" data-execution_count="166">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb51-1"><a href="#cb51-1"></a>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]<span class="ch">' * [1,2,3]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="166">
+<div id="2c7b0746-7f22-4004-b2f9-f3838c9da13e" class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1"></a>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]<span class="ch">' * [1,2,3]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>14</code></pre>
 </div>
 </div>
@@ -596,50 +593,50 @@ Closest candidates are:
 <section id="차원-길이-차원변경" class="level1">
 <h1>5. 차원, 길이, 차원변경</h1>
 <p><code>-</code> 예시1</p>
-<div id="b794d602-6a37-4b28-aa27-2c20347acff3" class="cell" data-tags="[]" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb53-1"><a href="#cb53-1"></a>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span></span>
-<span id="cb53-2"><a href="#cb53-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="108">
+<div id="b794d602-6a37-4b28-aa27-2c20347acff3" class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1"></a>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>1:4</code></pre>
 </div>
 </div>
-<div id="ee9d5270-6d1e-49ce-b782-214c4a7a0fa9" class="cell" data-tags="[]" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">ndims</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="109">
+<div id="ee9d5270-6d1e-49ce-b782-214c4a7a0fa9" class="cell" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">ndims</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>1</code></pre>
 </div>
 </div>
-<div id="8bcd622c-b8eb-4b53-8b29-0f7943f736c3" class="cell" data-tags="[]" data-execution_count="110">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">length</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="110">
+<div id="8bcd622c-b8eb-4b53-8b29-0f7943f736c3" class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">length</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>4</code></pre>
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="4b13388e-a7d8-45ca-ba52-7e0a90d43a84" class="cell" data-tags="[]" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb59-1"><a href="#cb59-1"></a>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="111">
+<div id="4b13388e-a7d8-45ca-ba52-7e0a90d43a84" class="cell" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb60-1"><a href="#cb60-1"></a>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>1:4</code></pre>
 </div>
 </div>
-<div id="015495ff-d54f-4fb6-ae3a-79ae29b58e4b" class="cell" data-tags="[]" data-execution_count="113">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb61-1"><a href="#cb61-1"></a>a <span class="op">=</span> <span class="fu">reshape</span>(a,(<span class="fl">2</span>,<span class="fl">2</span>))</span>
-<span id="cb61-2"><a href="#cb61-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="113">
+<div id="015495ff-d54f-4fb6-ae3a-79ae29b58e4b" class="cell" data-tags="[]" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb62-1"><a href="#cb62-1"></a>a <span class="op">=</span> <span class="fu">reshape</span>(a,(<span class="fl">2</span>,<span class="fl">2</span>))</span>
+<span id="cb62-2"><a href="#cb62-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>2×2 reshape(::UnitRange{Int64}, 2, 2) with eltype Int64:
  1  3
  2  4</code></pre>
 </div>
 </div>
-<div id="7b6a5f53-42e7-4e8a-9047-0ff7b57fd7de" class="cell" data-tags="[]" data-execution_count="114">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb63-1"><a href="#cb63-1"></a><span class="fu">ndims</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="114">
+<div id="7b6a5f53-42e7-4e8a-9047-0ff7b57fd7de" class="cell" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb64-1"><a href="#cb64-1"></a><span class="fu">ndims</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="504c6057-af02-4cb7-a664-112050cc7505" class="cell" data-tags="[]" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb65-1"><a href="#cb65-1"></a><span class="fu">length</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="116">
+<div id="504c6057-af02-4cb7-a664-112050cc7505" class="cell" data-tags="[]" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb66-1"><a href="#cb66-1"></a><span class="fu">length</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>4</code></pre>
 </div>
 </div>
@@ -647,10 +644,10 @@ Closest candidates are:
 <section id="조건에-맞는-원소-출력" class="level1">
 <h1>6. 조건에 맞는 원소 출력</h1>
 <p><code>-</code> 예시1</p>
-<div id="02dbcdcf-ccf5-4796-99ec-de64a02b2cfa" class="cell" data-tags="[]" data-execution_count="152">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb67-1"><a href="#cb67-1"></a>a <span class="op">=</span> <span class="fu">collect</span>(<span class="fl">10</span><span class="op">:</span><span class="fl">5</span><span class="op">:</span><span class="fl">30</span>)</span>
-<span id="cb67-2"><a href="#cb67-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="152">
+<div id="02dbcdcf-ccf5-4796-99ec-de64a02b2cfa" class="cell" data-tags="[]" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb68-1"><a href="#cb68-1"></a>a <span class="op">=</span> <span class="fu">collect</span>(<span class="fl">10</span><span class="op">:</span><span class="fl">5</span><span class="op">:</span><span class="fl">30</span>)</span>
+<span id="cb68-2"><a href="#cb68-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>5-element Vector{Int64}:
  10
  15
@@ -659,28 +656,28 @@ Closest candidates are:
  30</code></pre>
 </div>
 </div>
-<div id="2d20993d-d764-4bd6-815c-93420ff238b9" class="cell" data-tags="[]" data-execution_count="153">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb69-1"><a href="#cb69-1"></a>a[a <span class="op">.&lt;</span> <span class="fl">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="153">
+<div id="2d20993d-d764-4bd6-815c-93420ff238b9" class="cell" data-tags="[]" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb70-1"><a href="#cb70-1"></a>a[a <span class="op">.&lt;</span> <span class="fl">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>2-element Vector{Int64}:
  10
  15</code></pre>
 </div>
 </div>
-<div id="0fa704df-d2e5-40e4-a68c-cbc2fa80f4d1" class="cell" data-tags="[]" data-execution_count="155">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb71-1"><a href="#cb71-1"></a>@. a[a <span class="op">&lt;</span> <span class="fl">20</span>] <span class="co"># 이게 편할지도</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="155">
+<div id="0fa704df-d2e5-40e4-a68c-cbc2fa80f4d1" class="cell" data-tags="[]" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb72-1"><a href="#cb72-1"></a>@. a[a <span class="op">&lt;</span> <span class="fl">20</span>] <span class="co"># 이게 편할지도</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>2-element Vector{Int64}:
  10
  15</code></pre>
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="4a25f217-395c-4b1d-bfae-ddded6862e84" class="cell" data-tags="[]" data-execution_count="159">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb73-1"><a href="#cb73-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>]</span>
-<span id="cb73-2"><a href="#cb73-2"></a>b <span class="op">=</span> [<span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span>] </span>
-<span id="cb73-3"><a href="#cb73-3"></a>@. a[a <span class="op">&lt;</span> b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="159">
+<div id="4a25f217-395c-4b1d-bfae-ddded6862e84" class="cell" data-tags="[]" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb74-1"><a href="#cb74-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>]</span>
+<span id="cb74-2"><a href="#cb74-2"></a>b <span class="op">=</span> [<span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span>] </span>
+<span id="cb74-3"><a href="#cb74-3"></a>@. a[a <span class="op">&lt;</span> b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>2-element Vector{Int64}:
  1
  2</code></pre>
@@ -692,11 +689,11 @@ Closest candidates are:
 <section id="a.-append" class="level2">
 <h2 class="anchored" data-anchor-id="a.-append">A. <code>append!</code></h2>
 <p><code>-</code> 예시</p>
-<div id="0c46ad3b-2a05-4d44-9762-56d47a1aacbf" class="cell" data-tags="[]" data-execution_count="167">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb75-1"><a href="#cb75-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
-<span id="cb75-2"><a href="#cb75-2"></a>b <span class="op">=</span> [<span class="fl">4</span>] </span>
-<span id="cb75-3"><a href="#cb75-3"></a><span class="fu">append!</span>(a,b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="167">
+<div id="0c46ad3b-2a05-4d44-9762-56d47a1aacbf" class="cell" data-tags="[]" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb76-1"><a href="#cb76-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
+<span id="cb76-2"><a href="#cb76-2"></a>b <span class="op">=</span> [<span class="fl">4</span>] </span>
+<span id="cb76-3"><a href="#cb76-3"></a><span class="fu">append!</span>(a,b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>4-element Vector{Int64}:
  1
  2
@@ -704,9 +701,9 @@ Closest candidates are:
  4</code></pre>
 </div>
 </div>
-<div id="34b54c6e-f7fd-461f-87dd-b107e328d3ba" class="cell" data-tags="[]" data-execution_count="171">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb77-1"><a href="#cb77-1"></a>a,b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="171">
+<div id="34b54c6e-f7fd-461f-87dd-b107e328d3ba" class="cell" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb78-1"><a href="#cb78-1"></a>a,b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>([1, 2, 3, 4], [4])</code></pre>
 </div>
 </div>
@@ -717,10 +714,10 @@ Closest candidates are:
 <section id="b.-push" class="level2">
 <h2 class="anchored" data-anchor-id="b.-push">B. <code>push!</code></h2>
 <p><code>-</code> 예시</p>
-<div id="3d819933-f469-4c0c-a496-73a0e0061811" class="cell" data-tags="[]" data-execution_count="174">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb79-1"><a href="#cb79-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
-<span id="cb79-2"><a href="#cb79-2"></a><span class="fu">push!</span>(a,<span class="fl">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="174">
+<div id="3d819933-f469-4c0c-a496-73a0e0061811" class="cell" data-tags="[]" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb80-1"><a href="#cb80-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
+<span id="cb80-2"><a href="#cb80-2"></a><span class="fu">push!</span>(a,<span class="fl">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>4-element Vector{Int64}:
  1
  2
@@ -741,17 +738,17 @@ Closest candidates are:
 <p>np.concat, np.stack 등이 합쳐진 형태</p>
 </blockquote>
 <p><code>-</code> 예시1</p>
-<div id="efb4c482-360f-4b57-bf10-0d7a2db74264" class="cell" data-tags="[]" data-execution_count="193">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb81-1"><a href="#cb81-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
-<span id="cb81-2"><a href="#cb81-2"></a>b <span class="op">=</span> [<span class="fl">4</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="193">
+<div id="efb4c482-360f-4b57-bf10-0d7a2db74264" class="cell" data-tags="[]" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb82-1"><a href="#cb82-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
+<span id="cb82-2"><a href="#cb82-2"></a>b <span class="op">=</span> [<span class="fl">4</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>1-element Vector{Int64}:
  4</code></pre>
 </div>
 </div>
-<div id="e730170c-cd3c-451e-a4c5-1bd909449587" class="cell" data-tags="[]" data-execution_count="194">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb83-1"><a href="#cb83-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">1</span>) <span class="co"># np.concat 과 비슷</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="194">
+<div id="e730170c-cd3c-451e-a4c5-1bd909449587" class="cell" data-tags="[]" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb84-1"><a href="#cb84-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">1</span>) <span class="co"># np.concat 과 비슷</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>4-element Vector{Int64}:
  1
  2
@@ -760,28 +757,28 @@ Closest candidates are:
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="9da82cb3-3db8-48e2-a2a1-e9333f55164e" class="cell" data-tags="[]" data-execution_count="179">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb85-1"><a href="#cb85-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
-<span id="cb85-2"><a href="#cb85-2"></a>b <span class="op">=</span> <span class="op">-</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="179">
+<div id="9da82cb3-3db8-48e2-a2a1-e9333f55164e" class="cell" data-tags="[]" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb86-1"><a href="#cb86-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
+<span id="cb86-2"><a href="#cb86-2"></a>b <span class="op">=</span> <span class="op">-</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>3-element Vector{Int64}:
  -1
  -2
  -3</code></pre>
 </div>
 </div>
-<div id="b1eef012-4cd7-42c1-8de0-000d25b0bc1d" class="cell" data-tags="[]" data-execution_count="181">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="181">
+<div id="b1eef012-4cd7-42c1-8de0-000d25b0bc1d" class="cell" data-tags="[]" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb88-1"><a href="#cb88-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>3×2 Matrix{Int64}:
  1  -1
  2  -2
  3  -3</code></pre>
 </div>
 </div>
-<div id="d9508efb-355d-4ce9-b832-d46ccd817cd6" class="cell" data-tags="[]" data-execution_count="182">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="182">
+<div id="d9508efb-355d-4ce9-b832-d46ccd817cd6" class="cell" data-tags="[]" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb90-1"><a href="#cb90-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>6-element Vector{Int64}:
   1
   2
@@ -792,19 +789,19 @@ Closest candidates are:
 </div>
 </div>
 <p><code>-</code> 예시3</p>
-<div id="5744451d-4fde-41f0-b9a8-68aa01785a7f" class="cell" data-tags="[]" data-execution_count="189">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb91-1"><a href="#cb91-1"></a>a <span class="op">=</span> [<span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span></span>
-<span id="cb91-2"><a href="#cb91-2"></a>     <span class="fl">3</span> <span class="fl">4</span> <span class="fl">5</span>]</span>
-<span id="cb91-3"><a href="#cb91-3"></a>b <span class="op">=</span> <span class="op">-</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="189">
+<div id="5744451d-4fde-41f0-b9a8-68aa01785a7f" class="cell" data-tags="[]" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb92-1"><a href="#cb92-1"></a>a <span class="op">=</span> [<span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span></span>
+<span id="cb92-2"><a href="#cb92-2"></a>     <span class="fl">3</span> <span class="fl">4</span> <span class="fl">5</span>]</span>
+<span id="cb92-3"><a href="#cb92-3"></a>b <span class="op">=</span> <span class="op">-</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>2×3 Matrix{Int64}:
  -1  -2  -3
  -3  -4  -5</code></pre>
 </div>
 </div>
-<div id="3d58e80f-5a62-49bc-b020-d282998978d3" class="cell" data-tags="[]" data-execution_count="190">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb93-1"><a href="#cb93-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="190">
+<div id="3d58e80f-5a62-49bc-b020-d282998978d3" class="cell" data-tags="[]" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb94-1"><a href="#cb94-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>4×3 Matrix{Int64}:
   1   2   3
   3   4   5
@@ -812,17 +809,17 @@ Closest candidates are:
  -3  -4  -5</code></pre>
 </div>
 </div>
-<div id="06a1b669-d894-4019-ba8c-9644470f9fb1" class="cell" data-tags="[]" data-execution_count="191">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb95-1"><a href="#cb95-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="191">
+<div id="06a1b669-d894-4019-ba8c-9644470f9fb1" class="cell" data-tags="[]" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb96-1"><a href="#cb96-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>2×6 Matrix{Int64}:
  1  2  3  -1  -2  -3
  3  4  5  -3  -4  -5</code></pre>
 </div>
 </div>
-<div id="9f38b410-b70a-4d39-a2c7-9f11a985ce34" class="cell" data-tags="[]" data-execution_count="192">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb97-1"><a href="#cb97-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="192">
+<div id="9f38b410-b70a-4d39-a2c7-9f11a985ce34" class="cell" data-tags="[]" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb98-1"><a href="#cb98-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>2×3×2 Array{Int64, 3}:
 [:, :, 1] =
  1  2  3
@@ -834,11 +831,11 @@ Closest candidates are:
 </div>
 </div>
 <p><code>-</code> 예시4 – 아래도 가능</p>
-<div id="44a5475f-d678-42d3-b3e3-300558a302e8" class="cell" data-tags="[]" data-execution_count="200">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb99-1"><a href="#cb99-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
-<span id="cb99-2"><a href="#cb99-2"></a>b <span class="op">=</span> <span class="fl">2</span> </span>
-<span id="cb99-3"><a href="#cb99-3"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="200">
+<div id="44a5475f-d678-42d3-b3e3-300558a302e8" class="cell" data-tags="[]" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb100-1"><a href="#cb100-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
+<span id="cb100-2"><a href="#cb100-2"></a>b <span class="op">=</span> <span class="fl">2</span> </span>
+<span id="cb100-3"><a href="#cb100-3"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>4-element Vector{Int64}:
  1
  2
@@ -847,17 +844,17 @@ Closest candidates are:
 </div>
 </div>
 <p><code>-</code> 예시5 – 아래도 가능</p>
-<div id="7f959c6d-4092-41eb-9ddd-ec82be3fe4cc" class="cell" data-tags="[]" data-execution_count="201">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb101-1"><a href="#cb101-1"></a>a <span class="op">=</span> <span class="fu">reshape</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, (<span class="fl">2</span>,<span class="fl">2</span>))</span>
-<span id="cb101-2"><a href="#cb101-2"></a>b <span class="op">=</span> [<span class="fl">3</span>,<span class="fl">4</span>]</span>
-<span id="cb101-3"><a href="#cb101-3"></a>a,b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="201">
+<div id="7f959c6d-4092-41eb-9ddd-ec82be3fe4cc" class="cell" data-tags="[]" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb102-1"><a href="#cb102-1"></a>a <span class="op">=</span> <span class="fu">reshape</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, (<span class="fl">2</span>,<span class="fl">2</span>))</span>
+<span id="cb102-2"><a href="#cb102-2"></a>b <span class="op">=</span> [<span class="fl">3</span>,<span class="fl">4</span>]</span>
+<span id="cb102-3"><a href="#cb102-3"></a>a,b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>([1 3; 2 4], [3, 4])</code></pre>
 </div>
 </div>
-<div id="5b9fc29d-028c-4f5c-b1c0-c34e24596331" class="cell" data-tags="[]" data-execution_count="204">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb103-1"><a href="#cb103-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="204">
+<div id="5b9fc29d-028c-4f5c-b1c0-c34e24596331" class="cell" data-tags="[]" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb104-1"><a href="#cb104-1"></a><span class="fu">cat</span>(a,b,dims<span class="op">=</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>2×3 Matrix{Int64}:
  1  3  3
  2  4  4</code></pre>
@@ -867,27 +864,27 @@ Closest candidates are:
 <section id="b.-를-이용한-결합" class="level2">
 <h2 class="anchored" data-anchor-id="b.-를-이용한-결합">B. <code>[]</code>를 이용한 결합</h2>
 <p><code>-</code> 예시1</p>
-<div id="a40e983f-b960-486d-a1b0-6911908ac558" class="cell" data-tags="[]" data-execution_count="206">
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb105-1"><a href="#cb105-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
-<span id="cb105-2"><a href="#cb105-2"></a>b <span class="op">=</span> <span class="op">-</span>a</span>
-<span id="cb105-3"><a href="#cb105-3"></a>a,b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="206">
+<div id="a40e983f-b960-486d-a1b0-6911908ac558" class="cell" data-tags="[]" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb106-1"><a href="#cb106-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]</span>
+<span id="cb106-2"><a href="#cb106-2"></a>b <span class="op">=</span> <span class="op">-</span>a</span>
+<span id="cb106-3"><a href="#cb106-3"></a>a,b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>([1, 2, 3], [-1, -2, -3])</code></pre>
 </div>
 </div>
-<div id="f0b96f7a-93eb-4f36-8712-f238aebf557e" class="cell" data-tags="[]" data-execution_count="207">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb107-1"><a href="#cb107-1"></a>[a b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="207">
+<div id="f0b96f7a-93eb-4f36-8712-f238aebf557e" class="cell" data-tags="[]" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb108-1"><a href="#cb108-1"></a>[a b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>3×2 Matrix{Int64}:
  1  -1
  2  -2
  3  -3</code></pre>
 </div>
 </div>
-<div id="ea265071-8170-4769-a1fe-1e6f3d420aa4" class="cell" data-tags="[]" data-execution_count="208">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb109-1"><a href="#cb109-1"></a>[a</span>
-<span id="cb109-2"><a href="#cb109-2"></a> b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="208">
+<div id="ea265071-8170-4769-a1fe-1e6f3d420aa4" class="cell" data-tags="[]" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb110-1"><a href="#cb110-1"></a>[a</span>
+<span id="cb110-2"><a href="#cb110-2"></a> b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>6-element Vector{Int64}:
   1
   2
@@ -898,17 +895,17 @@ Closest candidates are:
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="dc385911-ca5f-445d-9ef0-35ea5d370f2b" class="cell" data-tags="[]" data-execution_count="218">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb111-1"><a href="#cb111-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>] </span>
-<span id="cb111-2"><a href="#cb111-2"></a>b <span class="op">=</span> <span class="fl">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="218">
+<div id="dc385911-ca5f-445d-9ef0-35ea5d370f2b" class="cell" data-tags="[]" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb112-1"><a href="#cb112-1"></a>a <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>] </span>
+<span id="cb112-2"><a href="#cb112-2"></a>b <span class="op">=</span> <span class="fl">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>4</code></pre>
 </div>
 </div>
-<div id="9d8ac161-bed0-4086-976a-9a16cd3e3884" class="cell" data-tags="[]" data-execution_count="220">
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb113-1"><a href="#cb113-1"></a>[a </span>
-<span id="cb113-2"><a href="#cb113-2"></a> b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="220">
+<div id="9d8ac161-bed0-4086-976a-9a16cd3e3884" class="cell" data-tags="[]" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb114-1"><a href="#cb114-1"></a>[a </span>
+<span id="cb114-2"><a href="#cb114-2"></a> b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>4-element Vector{Int64}:
  1
  2
@@ -917,18 +914,18 @@ Closest candidates are:
 </div>
 </div>
 <p><code>-</code> 예시3</p>
-<div id="e67b7607-20d8-45ba-b43f-1bff3bed0d6f" class="cell" data-tags="[]" data-execution_count="229">
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb115-1"><a href="#cb115-1"></a>a <span class="op">=</span> [<span class="fl">1</span> <span class="fl">2</span>; <span class="fl">3</span> <span class="fl">4</span>]</span>
-<span id="cb115-2"><a href="#cb115-2"></a>b <span class="op">=</span> [<span class="fl">0</span>,<span class="fl">0</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="229">
+<div id="e67b7607-20d8-45ba-b43f-1bff3bed0d6f" class="cell" data-tags="[]" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb116-1"><a href="#cb116-1"></a>a <span class="op">=</span> [<span class="fl">1</span> <span class="fl">2</span>; <span class="fl">3</span> <span class="fl">4</span>]</span>
+<span id="cb116-2"><a href="#cb116-2"></a>b <span class="op">=</span> [<span class="fl">0</span>,<span class="fl">0</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>2-element Vector{Int64}:
  0
  0</code></pre>
 </div>
 </div>
-<div id="23631b25-8a31-43ec-8e93-89e9d9d0badf" class="cell" data-tags="[]" data-execution_count="230">
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb117-1"><a href="#cb117-1"></a>[a b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="230">
+<div id="23631b25-8a31-43ec-8e93-89e9d9d0badf" class="cell" data-tags="[]" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb118-1"><a href="#cb118-1"></a>[a b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="62">
 <pre><code>2×3 Matrix{Int64}:
  1  2  0
  3  4  0</code></pre>
@@ -1068,6 +1065,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -1082,14 +1100,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
+        typesetMath(container);
         return container.innerHTML
       } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -1098,9 +1112,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
+      typesetMath(note);
       return note.innerHTML;
     }
   }

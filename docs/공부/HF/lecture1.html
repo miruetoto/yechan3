@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.533">
+<meta name="generator" content="quarto-1.4.520">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -283,29 +283,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="환경설정" class="level1">
 <h1>1. 환경설정</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">conda</span> install pytorch torchvision torchaudio pytorch-cuda=12.1 <span class="at">-c</span> pytorch <span class="at">-c</span> nvidia</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">conda</span> install <span class="at">-c</span> huggingface transformers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">conda</span> create <span class="at">-n</span> hf</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">conda</span> activate hf</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="ex">conda</span> install pytorch torchvision torchaudio pytorch-cuda=12.1 <span class="at">-c</span> pytorch <span class="at">-c</span> nvidia</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="ex">conda</span> install <span class="at">-c</span> huggingface transformers <span class="co"># 채널을 conda-forge로 하면 설치못함..</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge notebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="imports" class="level1">
 <h1>2. Imports</h1>
-<div id="cell-4" class="cell" data-executioninfo="{&quot;elapsed&quot;:2654,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688388607294,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="a586b009-e319-45b0-9074-d2ee3b013c17" data-execution_count="37">
+<div id="cell-4" class="cell" data-executioninfo="{&quot;elapsed&quot;:2654,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688388607294,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="a586b009-e319-45b0-9074-d2ee3b013c17" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> transformers</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> torch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/root/anaconda3/envs/hf/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm</code></pre>
+</div>
 </div>
 </section>
 <section id="sentiment-analysis" class="level1">
 <h1>3. sentiment-analysis</h1>
-<div id="cell-6" class="cell" data-executioninfo="{&quot;elapsed&quot;:20565,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688388631445,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="cc1d0b47-535f-4c06-cbaf-d9c1baad7bc4" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>sentiment <span class="op">=</span> transformers.pipeline(<span class="st">'sentiment-analysis'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-6" class="cell" data-executioninfo="{&quot;elapsed&quot;:20565,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688388631445,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="cc1d0b47-535f-4c06-cbaf-d9c1baad7bc4" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>sentiment <span class="op">=</span> transformers.pipeline(<span class="st">'sentiment-analysis'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>No model was supplied, defaulted to distilbert-base-uncased-finetuned-sst-2-english and revision af0f99b (https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english).
 Using a pipeline without specifying a model name and revision in production is not recommended.
-/home/cgb3/anaconda3/envs/hf/lib/python3.12/site-packages/huggingface_hub-0.23.4-py3.8.egg/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.</code></pre>
+/root/anaconda3/envs/hf/lib/python3.12/site-packages/huggingface_hub-0.23.4-py3.8.egg/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.</code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-executioninfo="{&quot;elapsed&quot;:513,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688388639883,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="89c3d22d-38de-4f17-adad-32ab1a1bdace" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>sentiment.model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="cell-7" class="cell" data-executioninfo="{&quot;elapsed&quot;:513,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688388639883,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="89c3d22d-38de-4f17-adad-32ab1a1bdace" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>sentiment.model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>DistilBertForSequenceClassification(
   (distilbert): DistilBertModel(
     (embeddings): Embeddings(
@@ -342,14 +349,14 @@ Using a pipeline without specifying a model name and revision in production is n
 )</code></pre>
 </div>
 </div>
-<div id="cell-8" class="cell" data-executioninfo="{&quot;elapsed&quot;:475,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688388645118,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="c2f03b62-78a6-4c66-c60e-a58eccd7aa4a" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">print</span>(sentiment([<span class="st">"I like Olympic games as it's very exciting."</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-8" class="cell" data-executioninfo="{&quot;elapsed&quot;:475,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688388645118,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="c2f03b62-78a6-4c66-c60e-a58eccd7aa4a" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">print</span>(sentiment([<span class="st">"I like Olympic games as it's very exciting."</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[{'label': 'POSITIVE', 'score': 0.9998026490211487}]</code></pre>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="bu">print</span>(sentiment([<span class="st">"I'm against to hold Olympic games in Tokyo in terms of preventing the covid19 to be spread."</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-9" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="bu">print</span>(sentiment([<span class="st">"I'm against to hold Olympic games in Tokyo in terms of preventing the covid19 to be spread."</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[{'label': 'NEGATIVE', 'score': 0.9791859984397888}]</code></pre>
 </div>
@@ -357,27 +364,27 @@ Using a pipeline without specifying a model name and revision in production is n
 </section>
 <section id="question-answering" class="level1">
 <h1>4. question-answering</h1>
-<div id="cell-11" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>qa <span class="op">=</span> transformers.pipeline(<span class="st">"question-answering"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-11" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>qa <span class="op">=</span> transformers.pipeline(<span class="st">"question-answering"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>No model was supplied, defaulted to distilbert-base-cased-distilled-squad and revision 626af31 (https://huggingface.co/distilbert-base-cased-distilled-squad).
 Using a pipeline without specifying a model name and revision in production is not recommended.</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-executioninfo="{&quot;elapsed&quot;:7105,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688388660557,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="62c572ef-19bb-4b77-e022-6646f375b006" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>olympic_wiki_text <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="st">The 2020 Summer Olympics (Japanese: 2020年夏季オリンピック, Hepburn: Nisen Nijū-nen Kaki Orinpikku), officially the Games of the XXXII Olympiad (第三十二回オリンピック競技大会, Dai Sanjūni-kai Orinpikku Kyōgi Taikai) and branded as Tokyo 2020 (東京2020), is an ongoing international multi-sport event being held from 23 July to 8 August 2021 in Tokyo, Japan, with some preliminary events that began on 21 July.</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="st">Tokyo was selected as the host city during the 125th IOC Session in Buenos Aires, Argentina, on 7 September 2013.[3] Originally scheduled to take place from 24 July to 9 August 2020, the event was postponed to 2021 in March 2020 as a result of the COVID-19 pandemic, the first such instance in the history of the Olympic Games (previous games had been cancelled but not rescheduled).[4] However, the event retains the Tokyo 2020 name for marketing and branding purposes.[5] It is being held largely behind closed doors with no public spectators permitted due to the declaration of a state of emergency.[b] The Summer Paralympics will be held between 24 August and 5 September 2021, 16 days after the completion of the Olympics.[6]</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="st">The 2020 Games are the fourth Olympic Games to be held in Japan, following the Tokyo 1964 (Summer), Sapporo 1972 (Winter), and Nagano 1998 (Winter) games.[c] Tokyo is the first city in Asia to hold the Summer Games twice. The 2020 Games are the second of three consecutive Olympics to be held in East Asia, following the 2018 Winter Olympics in Pyeongchang, South Korea, and preceding the 2022 Winter Olympics in Beijing, China.</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a></span>
-<span id="cb13-8"><a href="#cb13-8"></a><span class="st">The 2020 Games introduced new competitions and re-introduced competitions that once were held but were subsequently removed. New ones include 3x3 basketball, freestyle BMX and mixed gender team events in a number of existing sports, as well as the return of madison cycling for men and an introduction of the same event for women. New IOC policies also allow the host organizing committee to add new sports to the Olympic program for just one Games. The disciplines added by the Japanese Olympic Committee are baseball and softball, karate, sport climbing, surfing, and skateboarding, the last four of which make their Olympic debuts.[7]</span></span>
-<span id="cb13-9"><a href="#cb13-9"></a></span>
-<span id="cb13-10"><a href="#cb13-10"></a><span class="st">Bermuda, the Philippines, and Qatar won their first-ever Olympic gold medals.[8][9][10] San Marino, Turkmenistan, and Burkina Faso won their first-ever Olympic medals.[11][12][13]</span></span>
-<span id="cb13-11"><a href="#cb13-11"></a></span>
-<span id="cb13-12"><a href="#cb13-12"></a><span class="st">"""</span></span>
-<span id="cb13-13"><a href="#cb13-13"></a><span class="bu">print</span>(qa(question<span class="op">=</span><span class="st">"What caused Tokyo Olympic postponed?"</span>, context<span class="op">=</span>olympic_wiki_text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-12" class="cell" data-executioninfo="{&quot;elapsed&quot;:7105,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688388660557,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="62c572ef-19bb-4b77-e022-6646f375b006" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>olympic_wiki_text <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="st">The 2020 Summer Olympics (Japanese: 2020年夏季オリンピック, Hepburn: Nisen Nijū-nen Kaki Orinpikku), officially the Games of the XXXII Olympiad (第三十二回オリンピック競技大会, Dai Sanjūni-kai Orinpikku Kyōgi Taikai) and branded as Tokyo 2020 (東京2020), is an ongoing international multi-sport event being held from 23 July to 8 August 2021 in Tokyo, Japan, with some preliminary events that began on 21 July.</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="st">Tokyo was selected as the host city during the 125th IOC Session in Buenos Aires, Argentina, on 7 September 2013.[3] Originally scheduled to take place from 24 July to 9 August 2020, the event was postponed to 2021 in March 2020 as a result of the COVID-19 pandemic, the first such instance in the history of the Olympic Games (previous games had been cancelled but not rescheduled).[4] However, the event retains the Tokyo 2020 name for marketing and branding purposes.[5] It is being held largely behind closed doors with no public spectators permitted due to the declaration of a state of emergency.[b] The Summer Paralympics will be held between 24 August and 5 September 2021, 16 days after the completion of the Olympics.[6]</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="st">The 2020 Games are the fourth Olympic Games to be held in Japan, following the Tokyo 1964 (Summer), Sapporo 1972 (Winter), and Nagano 1998 (Winter) games.[c] Tokyo is the first city in Asia to hold the Summer Games twice. The 2020 Games are the second of three consecutive Olympics to be held in East Asia, following the 2018 Winter Olympics in Pyeongchang, South Korea, and preceding the 2022 Winter Olympics in Beijing, China.</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="st">The 2020 Games introduced new competitions and re-introduced competitions that once were held but were subsequently removed. New ones include 3x3 basketball, freestyle BMX and mixed gender team events in a number of existing sports, as well as the return of madison cycling for men and an introduction of the same event for women. New IOC policies also allow the host organizing committee to add new sports to the Olympic program for just one Games. The disciplines added by the Japanese Olympic Committee are baseball and softball, karate, sport climbing, surfing, and skateboarding, the last four of which make their Olympic debuts.[7]</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a></span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="st">Bermuda, the Philippines, and Qatar won their first-ever Olympic gold medals.[8][9][10] San Marino, Turkmenistan, and Burkina Faso won their first-ever Olympic medals.[11][12][13]</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a></span>
+<span id="cb14-12"><a href="#cb14-12"></a><span class="st">"""</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a><span class="bu">print</span>(qa(question<span class="op">=</span><span class="st">"What caused Tokyo Olympic postponed?"</span>, context<span class="op">=</span>olympic_wiki_text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'score': 0.6619062423706055, 'start': 635, 'end': 652, 'answer': 'COVID-19 pandemic'}</code></pre>
 </div>
@@ -385,95 +392,94 @@ Using a pipeline without specifying a model name and revision in production is n
 </section>
 <section id="fill-mask" class="level1">
 <h1>5. fill-mask</h1>
-<div id="cell-14" class="cell" data-executioninfo="{&quot;elapsed&quot;:9842,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688438433912,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="4b299f75-6dab-47aa-d75e-8271c50c7700" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># pipeline에 과업(fill-mask) 및 모델 지정</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>unmasker <span class="op">=</span> transformers.pipeline(<span class="st">'fill-mask'</span>, model<span class="op">=</span><span class="st">'bert-base-uncased'</span>)</span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># pipeline을 인스턴스화한 변수 unmasker에 [MASK] 토큰을 지닌 입력문장 투입</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>unmasker(<span class="st">"MLM and NSP is the [MASK] task of BERT."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-14" class="cell" data-executioninfo="{&quot;elapsed&quot;:9842,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688438433912,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="4b299f75-6dab-47aa-d75e-8271c50c7700" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># pipeline에 과업(fill-mask) 및 모델 지정</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>unmasker <span class="op">=</span> transformers.pipeline(<span class="st">'fill-mask'</span>, model<span class="op">=</span><span class="st">'bert-base-uncased'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co"># pipeline을 인스턴스화한 변수 unmasker에 [MASK] 토큰을 지닌 입력문장 투입</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>unmasker(<span class="st">"MLM and NSP is the [MASK] task of BERT."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/home/cgb3/anaconda3/envs/hf/lib/python3.12/site-packages/huggingface_hub-0.23.4-py3.8.egg/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
-Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForMaskedLM: ['bert.pooler.dense.bias', 'bert.pooler.dense.weight', 'cls.seq_relationship.bias', 'cls.seq_relationship.weight']
+<pre><code>Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForMaskedLM: ['bert.pooler.dense.bias', 'bert.pooler.dense.weight', 'cls.seq_relationship.bias', 'cls.seq_relationship.weight']
 - This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="77">
-<pre><code>[{'score': 0.2572782337665558,
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[{'score': 0.25727856159210205,
   'token': 2364,
   'token_str': 'main',
   'sequence': 'mlm and nsp is the main task of bert.'},
- {'score': 0.2074074000120163,
+ {'score': 0.20740707218647003,
   'token': 3078,
   'token_str': 'primary',
   'sequence': 'mlm and nsp is the primary task of bert.'},
- {'score': 0.06773321330547333,
+ {'score': 0.06773324310779572,
   'token': 2034,
   'token_str': 'first',
   'sequence': 'mlm and nsp is the first task of bert.'},
- {'score': 0.06548508256673813,
+ {'score': 0.06548504531383514,
   'token': 2430,
   'token_str': 'central',
   'sequence': 'mlm and nsp is the central task of bert.'},
- {'score': 0.061673976480960846,
+ {'score': 0.061674054712057114,
   'token': 3937,
   'token_str': 'basic',
   'sequence': 'mlm and nsp is the basic task of bert.'}]</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-executioninfo="{&quot;elapsed&quot;:6433,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688438455429,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="ea86e581-ddba-4a74-d179-4bd8e6cfaa94" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># 모델명이 바뀌었음에 유의</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>unmasker <span class="op">=</span> transformers.pipeline(<span class="st">'fill-mask'</span>, model<span class="op">=</span><span class="st">'distilbert-base-uncased'</span>)</span>
-<span id="cb18-3"><a href="#cb18-3"></a>unmasker(<span class="st">"MLM and NSP is the [MASK] task of BERT."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="78">
-<pre><code>[{'score': 0.25902432203292847,
+<div id="cell-15" class="cell" data-executioninfo="{&quot;elapsed&quot;:6433,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688438455429,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="ea86e581-ddba-4a74-d179-4bd8e6cfaa94" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># 모델명이 바뀌었음에 유의</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>unmasker <span class="op">=</span> transformers.pipeline(<span class="st">'fill-mask'</span>, model<span class="op">=</span><span class="st">'distilbert-base-uncased'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>unmasker(<span class="st">"MLM and NSP is the [MASK] task of BERT."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>[{'score': 0.25902441143989563,
   'token': 3078,
   'token_str': 'primary',
   'sequence': 'mlm and nsp is the primary task of bert.'},
- {'score': 0.16309870779514313,
+ {'score': 0.1630987673997879,
   'token': 2364,
   'token_str': 'main',
   'sequence': 'mlm and nsp is the main task of bert.'},
- {'score': 0.08182774484157562,
+ {'score': 0.0818275436758995,
   'token': 4563,
   'token_str': 'core',
   'sequence': 'mlm and nsp is the core task of bert.'},
- {'score': 0.040237728506326675,
+ {'score': 0.040237899869680405,
   'token': 7037,
   'token_str': 'dual',
   'sequence': 'mlm and nsp is the dual task of bert.'},
- {'score': 0.02484491653740406,
+ {'score': 0.024844948202371597,
   'token': 4054,
   'token_str': 'principal',
   'sequence': 'mlm and nsp is the principal task of bert.'}]</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-executioninfo="{&quot;elapsed&quot;:4902,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688438467208,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="02f062d6-dd5b-4e4c-cfb6-8aea4a430a6c" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># 모델명이 바뀌었음에 유의</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>unmasker <span class="op">=</span> transformers.pipeline(<span class="st">'fill-mask'</span>, model<span class="op">=</span><span class="st">'albert-base-v2'</span>)</span>
-<span id="cb20-3"><a href="#cb20-3"></a>unmasker(<span class="st">"mlm and nsp is the [MASK] task of bert."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-16" class="cell" data-executioninfo="{&quot;elapsed&quot;:4902,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1688438467208,&quot;user&quot;:{&quot;displayName&quot;:&quot;Jason Book Yim&quot;,&quot;userId&quot;:&quot;02824935638305274154&quot;},&quot;user_tz&quot;:-540}" data-outputid="02f062d6-dd5b-4e4c-cfb6-8aea4a430a6c" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># 모델명이 바뀌었음에 유의</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>unmasker <span class="op">=</span> transformers.pipeline(<span class="st">'fill-mask'</span>, model<span class="op">=</span><span class="st">'albert-base-v2'</span>)</span>
+<span id="cb21-3"><a href="#cb21-3"></a>unmasker(<span class="st">"mlm and nsp is the [MASK] task of bert."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Some weights of the model checkpoint at albert-base-v2 were not used when initializing AlbertForMaskedLM: ['albert.pooler.bias', 'albert.pooler.weight']
 - This IS expected if you are initializing AlbertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing AlbertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="79">
-<pre><code>[{'score': 0.04760162904858589,
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>[{'score': 0.047601234167814255,
   'token': 6612,
   'token_str': 'ultimate',
   'sequence': 'mlm and nsp is the ultimate task of bert.'},
- {'score': 0.024472415447235107,
+ {'score': 0.024472445249557495,
   'token': 20766,
   'token_str': 'hardest',
   'sequence': 'mlm and nsp is the hardest task of bert.'},
- {'score': 0.023495109751820564,
+ {'score': 0.02349507063627243,
   'token': 1256,
   'token_str': 'primary',
   'sequence': 'mlm and nsp is the primary task of bert.'},
- {'score': 0.02157513238489628,
+ {'score': 0.0215750765055418,
   'token': 407,
   'token_str': 'main',
   'sequence': 'mlm and nsp is the main task of bert.'},
- {'score': 0.018087901175022125,
+ {'score': 0.018088044598698616,
   'token': 18369,
   'token_str': 'foremost',
   'sequence': 'mlm and nsp is the foremost task of bert.'}]</code></pre>
@@ -612,6 +618,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -626,14 +653,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
+        typesetMath(container);
         return container.innerHTML
       } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -642,9 +665,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
+      typesetMath(note);
       return note.innerHTML;
     }
   }

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.533">
+<meta name="generator" content="quarto-1.4.520">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -105,33 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -482,16 +455,19 @@ window.Quarto = {
 <section id="a.-rpython-사용가능한-개발환경" class="level2">
 <h2 class="anchored" data-anchor-id="a.-rpython-사용가능한-개발환경">A. R+Python 사용가능한 개발환경</h2>
 <p><code>-</code> 아래를 실행</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">conda</span> create <span class="at">-n</span> rpy </span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">conda</span> activate rpy</span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="kw">(</span><span class="ex">rpy</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge r-essentials</span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="kw">(</span><span class="ex">rpy</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge plotly</span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="kw">(</span><span class="ex">rpy</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge rpy2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">conda</span> create <span class="at">-n</span> r </span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">conda</span> activate r</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="kw">(</span><span class="ex">r</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge r-essentials</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="kw">(</span><span class="ex">r</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge plotly</span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="kw">(</span><span class="ex">r</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge rpy2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="910f8b8e" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> rpy2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><code>-</code> 여기에서 <code>conda install -c conda-forge r-essentials</code>로 인하여 R, Python, Jupyter 가 모두 최신버전으로 설치된다.</p>
 <p><code>-</code> 또한 R에는 이미 <code>tidyverse</code>, <code>IRkernel</code> 등의 패키지가 기본으로 깔려있다.</p>
 <p><code>-</code> 커널연결</p>
 <p>콘다환경에서 R을 실행한다. Rstudio가 아니라 커맨드에서 R을 실행해야한다. 그리고 아래를 실행하면 주피터랩과 R환경이 연결된다.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>IRkernel<span class="sc">::</span><span class="fu">installspec</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>IRkernel<span class="sc">::</span><span class="fu">installspec</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>이제 주피터랩에서 R kernel을 사용할 수 있다.</p>
 <p><code>-</code> R은 아래의 경로에 설치되어있다.</p>
 <p><img src="2000-01-02-(메모) 우분투 포맷 및 개발용 서버 셋팅2_files/figure-html/64023f8d-b89d-45d8-b0e8-4bbf8f982d83-1-e908cc01-9118-42c5-a015-7b55368189bb.png" class="img-fluid"></p>
@@ -505,32 +481,32 @@ window.Quarto = {
 <section id="b.-torch" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="b.-torch">B. torch</h2>
 <p><code>-</code> 아래를 실행</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">conda</span> create <span class="at">-n</span> torch</span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">conda</span> activate torch</span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="co">#---#</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge notebook </span>
-<span id="cb25-5"><a href="#cb25-5"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge plotly </span>
-<span id="cb25-6"><a href="#cb25-6"></a><span class="co">#---torch--#</span></span>
-<span id="cb25-7"><a href="#cb25-7"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install pytorch torchvision torchaudio pytorch-cuda=12.1 <span class="at">-c</span> pytorch <span class="at">-c</span> nvidia</span>
-<span id="cb25-8"><a href="#cb25-8"></a><span class="co">#---pyg---#</span></span>
-<span id="cb25-9"><a href="#cb25-9"></a><span class="co">#(torch) conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span></span>
-<span id="cb25-10"><a href="#cb25-10"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install pyg <span class="at">-c</span> pyg </span>
-<span id="cb25-11"><a href="#cb25-11"></a><span class="co">#---stgcn---#</span></span>
-<span id="cb25-12"><a href="#cb25-12"></a><span class="co">#(torch) conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span></span>
-<span id="cb25-13"><a href="#cb25-13"></a><span class="co">#(torch) conda install pyg -c pyg </span></span>
-<span id="cb25-14"><a href="#cb25-14"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="fu">sudo</span> apt install gcc</span>
-<span id="cb25-15"><a href="#cb25-15"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="fu">sudo</span> apt install build-essential</span>
-<span id="cb25-16"><a href="#cb25-16"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install torch-geometric-temporal</span>
-<span id="cb25-17"><a href="#cb25-17"></a><span class="co">#---ctgan---#</span></span>
-<span id="cb25-18"><a href="#cb25-18"></a><span class="co">#(torch) conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span></span>
-<span id="cb25-19"><a href="#cb25-19"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> pytorch <span class="at">-c</span> conda-forge ctgan  </span>
-<span id="cb25-20"><a href="#cb25-20"></a><span class="co">#---gym---#</span></span>
-<span id="cb25-21"><a href="#cb25-21"></a><span class="co">#(torch) conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span></span>
-<span id="cb25-22"><a href="#cb25-22"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install gymnasium </span>
-<span id="cb25-23"><a href="#cb25-23"></a><span class="co">#(torch) sudo apt install gcc</span></span>
-<span id="cb25-24"><a href="#cb25-24"></a><span class="co">#(torch) sudo apt install build-essential</span></span>
-<span id="cb25-25"><a href="#cb25-25"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="fu">sudo</span> apt-get install swig</span>
-<span id="cb25-26"><a href="#cb25-26"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install gymnasium<span class="pp">[</span><span class="ss">box2d</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">conda</span> create <span class="at">-n</span> torch</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">conda</span> activate torch</span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="co">#---#</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge notebook </span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge plotly </span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="co">#---torch--#</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install pytorch torchvision torchaudio pytorch-cuda=12.1 <span class="at">-c</span> pytorch <span class="at">-c</span> nvidia</span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="co">#---pyg---#</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a><span class="co">#(torch) conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span></span>
+<span id="cb26-10"><a href="#cb26-10"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install pyg <span class="at">-c</span> pyg </span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="co">#---stgcn---#</span></span>
+<span id="cb26-12"><a href="#cb26-12"></a><span class="co">#(torch) conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span></span>
+<span id="cb26-13"><a href="#cb26-13"></a><span class="co">#(torch) conda install pyg -c pyg </span></span>
+<span id="cb26-14"><a href="#cb26-14"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="fu">sudo</span> apt install gcc</span>
+<span id="cb26-15"><a href="#cb26-15"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="fu">sudo</span> apt install build-essential</span>
+<span id="cb26-16"><a href="#cb26-16"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install torch-geometric-temporal</span>
+<span id="cb26-17"><a href="#cb26-17"></a><span class="co">#---ctgan---#</span></span>
+<span id="cb26-18"><a href="#cb26-18"></a><span class="co">#(torch) conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span></span>
+<span id="cb26-19"><a href="#cb26-19"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">conda</span> install <span class="at">-c</span> pytorch <span class="at">-c</span> conda-forge ctgan  </span>
+<span id="cb26-20"><a href="#cb26-20"></a><span class="co">#---gym---#</span></span>
+<span id="cb26-21"><a href="#cb26-21"></a><span class="co">#(torch) conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span></span>
+<span id="cb26-22"><a href="#cb26-22"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install gymnasium </span>
+<span id="cb26-23"><a href="#cb26-23"></a><span class="co">#(torch) sudo apt install gcc</span></span>
+<span id="cb26-24"><a href="#cb26-24"></a><span class="co">#(torch) sudo apt install build-essential</span></span>
+<span id="cb26-25"><a href="#cb26-25"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="fu">sudo</span> apt-get install swig</span>
+<span id="cb26-26"><a href="#cb26-26"></a><span class="kw">(</span><span class="ex">torch</span><span class="kw">)</span> <span class="ex">pip</span> install gymnasium<span class="pp">[</span><span class="ss">box2d</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>refs</strong></p>
 <ul>
 <li>PyTorch: <a href="https://pytorch.org/get-started/locally/" class="uri">https://pytorch.org/get-started/locally/</a></li>
@@ -544,29 +520,29 @@ window.Quarto = {
 <section id="설치하면-좋은것들" class="level1">
 <h1>9. 설치하면 좋은것들</h1>
 <p><code>-</code> 데이터과학을 위한 패키지들</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="ex">pip</span> install plotnine</span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="ex">pip</span> install seaborn</span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="ex">pip</span> install opencv-python</span>
-<span id="cb26-4"><a href="#cb26-4"></a><span class="ex">pip</span> install folium</span>
-<span id="cb26-5"><a href="#cb26-5"></a><span class="ex">pip</span> install pandas_datareader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="ex">pip</span> install plotnine</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="ex">pip</span> install seaborn</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="ex">pip</span> install opencv-python</span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="ex">pip</span> install folium</span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="ex">pip</span> install pandas_datareader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 아래를 설치하면 좋음</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">sudo</span> apt install mc </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">sudo</span> apt install mc </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="appendix" class="level1">
 <h1>Appendix</h1>
 <section id="a1.-r-삭제하는-방법" class="level2">
 <h2 class="anchored" data-anchor-id="a1.-r-삭제하는-방법"><code>A1</code>. R 삭제하는 방법</h2>
 <p><code>-</code> R 삭제</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">conda</span> remove r-base <span class="at">-y</span> </span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="fu">sudo</span> apt-get remove r-base-core </span>
-<span id="cb28-3"><a href="#cb28-3"></a><span class="fu">sudo</span> apt purge r-base<span class="pp">*</span> r-recommended r-cran-<span class="pp">*</span></span>
-<span id="cb28-4"><a href="#cb28-4"></a><span class="fu">sudo</span> apt autoremove</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="ex">conda</span> remove r-base <span class="at">-y</span> </span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="fu">sudo</span> apt-get remove r-base-core </span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="fu">sudo</span> apt purge r-base<span class="pp">*</span> r-recommended r-cran-<span class="pp">*</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="fu">sudo</span> apt autoremove</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="a2.-r-패키지-설치" class="level2">
 <h2 class="anchored" data-anchor-id="a2.-r-패키지-설치"><code>A2</code>. R 패키지 설치</h2>
 <p><code>-</code> 주피터등에서 직접설치</p>
 <p><code>-</code> conda를 이용한 설치</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="ex">conda</span> install <span class="at">-c</span> r package-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="ex">conda</span> install <span class="at">-c</span> r package-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><a href="https://docs.anaconda.com/free/anaconda/reference/packages/r-language-pkg-docs/" class="uri">https://docs.anaconda.com/free/anaconda/reference/packages/r-language-pkg-docs/</a></li>
 </ul>
@@ -574,7 +550,7 @@ window.Quarto = {
 <section id="a3.-우분투를-주컴퓨터로-사용할-경우-한글설정" class="level2">
 <h2 class="anchored" data-anchor-id="a3.-우분투를-주컴퓨터로-사용할-경우-한글설정"><code>A3</code>. 우분투를 주컴퓨터로 사용할 경우 한글설정</h2>
 <p><code>-</code> 아래와 같이 커맨드에 친다.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="ex">ibus-setup</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1"></a><span class="ex">ibus-setup</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>이걸 치면 <code>IBus Preferences</code> 라는 창이 나오는데 여기에서 (1) <code>Input Method</code> 탭 클릭 (2) <code>Add</code> 버튼 클릭 (3) <code>Korean</code> 선택 (4) <code>Hangul</code> 선택을 한다.</p>
 <p><code>-</code> 위의 단계에서 <code>Korean</code>이 안보이면 <code>Language Support</code>로 가서 한국어팩을 설치하고 리부팅 하면 된다. (보통 실행하자마자 알아서 설치되더라.. 설치가 안되면 <code>Install / Remove Languages...</code> 이라는 탭을 클릭해서 설치하자) 리부팅을 꼭 해야한다는 것에 주의하자.</p>
 <p><code>-</code> 이제 <code>Region &amp; Language</code>로 가서 설정하면 된다.</p>
@@ -583,7 +559,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="a4.-sublime-text-and-tex"><code>A4</code>. sublime text and TeX</h2>
 <p><code>-</code> ‘Ubuntu Software’에 가서 ’sublime Text’를 치면 다운받을 수 있다. 다운받은뒤에 ’file’ -&gt; ’open folder’를 활용하여 깃허브의 로칼저장소를 열어두면 편리하다.</p>
 <p><code>-</code> 아래를 실행하여 TeX을 깐다.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">sudo</span> apt install texlive-full</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">sudo</span> apt install texlive-full</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 이제 sublime과 latex을 연결하여보자. <a href="https://latextools.readthedocs.io/en/latest/install/#requirements-and-setup">여기</a>를 참고하자. (1) sublime을 키고 ‘컨트롤+쉬프트+p’를 눌러 ’Install Package Control’ 선택 (2) 다시 ‘컨트롤+쉬프트+p’ 를 눌러 ‘Package Control: Install Package’를 실행 (3) 그러면 바로 검색창이 나오는데 거기서 ’LaTeXTools’를 입력해서 실행 (4) 다시 ’컨트롤+쉬프트+p’를 누르고 ’LaTeXTools: Check system’ 선택. 모두 ’available’이 나오면 잘 설치된 것이다.</p>
 <p><code>-</code> <code>*.tex</code>파일을 열고 ’컨트롤+b’를 누르자. 처음이면 어떤 메뉴들이 보일텐데 그냥 ’Latex’을 선택하자. 그러면 코딩결과가 pdf로 나온다.</p>
 <p><code>-</code> (수식미리보기) ‘Perferences’ &gt; ‘Packages Setting’ &gt; ‘LaTeXTools’ &gt; ‘Settings-User’를 선택한다. ’93번째라인’에 ’preview_math_mode’를 “all”로 바꾼다. 그러면 수식들이 미리 출력된다. 그외에도 자유롭게 셋팅을 조정할 수 있다. 원래셋팅은 ’Perferences’ &gt; ‘Packages Setting’ &gt; ‘LaTeXTools’ &gt; ‘Settings-Defaults’ 에 있다.</p>
@@ -591,33 +567,33 @@ window.Quarto = {
 <section id="a5.-터미널-예쁘게-만들기" class="level2">
 <h2 class="anchored" data-anchor-id="a5.-터미널-예쁘게-만들기"><code>A5</code>. 터미널 예쁘게 만들기</h2>
 <p><code>-</code> zsh 설치 + oh my zsh 설치</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">sudo</span> install zsh </span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">sh</span> <span class="at">-c</span> <span class="st">"</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">sudo</span> install zsh </span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">sh</span> <span class="at">-c</span> <span class="st">"</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 테마변경</p>
 <ol type="1">
 <li>.zshrc 파일 열기</li>
 </ol>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">nano</span> ~/.zshrc </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">nano</span> ~/.zshrc </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>아래의 내용 수정</li>
 </ol>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1"></a><span class="ex">...</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="va">ZSH_THEME</span><span class="op">=</span><span class="st">"agnoster"</span></span>
-<span id="cb34-3"><a href="#cb34-3"></a><span class="ex">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1"></a><span class="ex">...</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="va">ZSH_THEME</span><span class="op">=</span><span class="st">"agnoster"</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="ex">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 색상변경</p>
 <ol type="1">
 <li>아래의 파일 열기</li>
 </ol>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1"></a><span class="bu">cd</span> ~/.oh-my-zsh/themes/</span>
-<span id="cb35-2"><a href="#cb35-2"></a><span class="fu">nano</span> agnoster.zsh-theme  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1"></a><span class="bu">cd</span> ~/.oh-my-zsh/themes/</span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">nano</span> agnoster.zsh-theme  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>내용수정</li>
 </ol>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1"></a><span class="ex">...</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">prompt_dir()</span> <span class="kw">{</span></span>
-<span id="cb36-3"><a href="#cb36-3"></a>  <span class="ex">prompt_segment</span> 39d <span class="va">$CURRENT_FG</span> <span class="st">'%~'</span></span>
-<span id="cb36-4"><a href="#cb36-4"></a><span class="kw">}</span></span>
-<span id="cb36-5"><a href="#cb36-5"></a><span class="ex">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1"></a><span class="ex">...</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">prompt_dir()</span> <span class="kw">{</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>  <span class="ex">prompt_segment</span> 39d <span class="va">$CURRENT_FG</span> <span class="st">'%~'</span></span>
+<span id="cb37-4"><a href="#cb37-4"></a><span class="kw">}</span></span>
+<span id="cb37-5"><a href="#cb37-5"></a><span class="ex">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -753,6 +729,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -767,14 +764,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
+        typesetMath(container);
         return container.innerHTML
       } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -783,9 +776,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
+      typesetMath(note);
       return note.innerHTML;
     }
   }
