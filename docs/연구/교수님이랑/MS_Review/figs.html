@@ -280,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="443feb3f" class="cell" data-execution_count="1">
+<div id="443feb3f" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>library(devtools)</span>
 <span id="cb1-2"><a href="#cb1-2"></a>install_github(<span class="st">"seoyeonc/gglite"</span>,force<span class="op">=</span>TRUE)</span>
 <span id="cb1-3"><a href="#cb1-3"></a>library(gglite)</span>
@@ -339,7 +339,7 @@ Warning message:
 <section id="비트시그널" class="level1">
 <h1>1. 비트시그널</h1>
 <p><span class="math display">\[y_t = \cos(62\pi t) + \cos(58\pi t)\]</span></p>
-<div id="949b107e-b497-4147-b24d-910efdfd22e5" class="cell" data-execution_count="2">
+<div id="949b107e-b497-4147-b24d-910efdfd22e5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>t <span class="op">=</span> <span class="dv">1</span>:<span class="dv">1000</span><span class="op">/</span><span class="dv">2000</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>y1 <span class="op">=</span> cos(<span class="dv">62</span><span class="op">*</span>pi<span class="op">*</span>t) </span>
 <span id="cb4-3"><a href="#cb4-3"></a>y2 <span class="op">=</span> cos(<span class="dv">58</span><span class="op">*</span>pi<span class="op">*</span>t)</span>
@@ -347,9 +347,10 @@ Warning message:
 <span id="cb4-5"><a href="#cb4-5"></a>y <span class="op">=</span> y1 <span class="op">+</span> y2 </span>
 <span id="cb4-6"><a href="#cb4-6"></a>fig1 <span class="op">=</span> gglite() <span class="op">+</span> line(t,y1,col<span class="op">=</span><span class="dv">2</span>) <span class="op">+</span> line(t,y,alpha<span class="op">=</span><span class="dv">0</span>) <span class="op">+</span> ylab(<span class="st">""</span>) <span class="op">+</span> xlab(<span class="st">""</span>)</span>
 <span id="cb4-7"><a href="#cb4-7"></a>fig2 <span class="op">=</span> gglite() <span class="op">+</span> line(t,y2,col<span class="op">=</span><span class="dv">4</span>) <span class="op">+</span> line(t,y,alpha<span class="op">=</span><span class="dv">0</span>) <span class="op">+</span> ylab(<span class="st">""</span>) <span class="op">+</span> xlab(<span class="st">""</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>fig3 <span class="op">=</span> gglite() <span class="op">+</span> line(t,y1<span class="op">+</span>y2) <span class="op">+</span> line(t,y1,col<span class="op">=</span><span class="dv">2</span>,alpha<span class="op">=</span><span class="fl">0.5</span>,lwd<span class="op">=</span><span class="fl">0.2</span>) <span class="op">+</span> line(t,y2,col<span class="op">=</span><span class="dv">4</span>,alpha<span class="op">=</span><span class="fl">0.5</span>,lwd<span class="op">=</span><span class="fl">0.2</span>) <span class="op">+</span> line(t,am,lty<span class="op">=</span><span class="dv">2</span>) <span class="op">+</span> ylab(<span class="st">""</span>) <span class="op">+</span> xlab(<span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-8"><a href="#cb4-8"></a>fig3 <span class="op">=</span> gglite() <span class="op">+</span> line(t,y1<span class="op">+</span>y2) <span class="op">+</span> line(t,y1,col<span class="op">=</span><span class="dv">2</span>,alpha<span class="op">=</span><span class="fl">0.5</span>,lwd<span class="op">=</span><span class="fl">0.2</span>) <span class="op">+</span> line(t,y2,col<span class="op">=</span><span class="dv">4</span>,alpha<span class="op">=</span><span class="fl">0.5</span>,lwd<span class="op">=</span><span class="fl">0.2</span>) <span class="op">+</span> line(t,am,lty<span class="op">=</span><span class="dv">2</span>) <span class="op">+</span> ylab(<span class="st">""</span>) <span class="op">+</span> xlab(<span class="st">""</span>)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>fig <span class="op">=</span> fig1<span class="op">/</span>fig2<span class="op">/</span>fig3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a610fec0-eff6-4c75-8156-a0aea31db3e9" class="cell" data-execution_count="3">
+<div id="a610fec0-eff6-4c75-8156-a0aea31db3e9" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>figsize(<span class="dv">5</span>,<span class="dv">4</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>fig <span class="op">=</span> fig1<span class="op">/</span>fig2<span class="op">/</span>fig3</span>
 <span id="cb5-3"><a href="#cb5-3"></a>fig</span>
@@ -362,7 +363,7 @@ Warning message:
 </div>
 </div>
 </div>
-<div id="4ccbf9b3-84aa-4b7a-817f-0e5b37cd2e86" class="cell" data-execution_count="5">
+<div id="4ccbf9b3-84aa-4b7a-817f-0e5b37cd2e86" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>ggsave(<span class="st">"beat.pdf"</span>,fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Saving 6.67 x 6.67 in image</code></pre>
@@ -371,7 +372,7 @@ Warning message:
 </section>
 <section id="퓨리에변환" class="level1">
 <h1>2. 퓨리에변환</h1>
-<div id="2f765f65-dd9f-4adb-b4aa-1694722da435" class="cell" data-tags="[]" data-execution_count="86">
+<div id="2f765f65-dd9f-4adb-b4aa-1694722da435" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="86">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>spec <span class="op">&lt;-</span> function(y){</span>
 <span id="cb8-2"><a href="#cb8-2"></a>    n <span class="op">=</span> length(y)</span>
 <span id="cb8-3"><a href="#cb8-3"></a>    spec <span class="op">=</span> (<span class="bu">abs</span>(fft(y)))<span class="op">/</span>n</span>
@@ -386,7 +387,7 @@ Warning message:
 <span id="cb8-12"><a href="#cb8-12"></a>    <span class="bu">list</span>(freq<span class="op">=</span>omega<span class="op">*</span><span class="dv">2</span><span class="op">*</span>pi,spec<span class="op">=</span>spec)</span>
 <span id="cb8-13"><a href="#cb8-13"></a>}       </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d1c60731-c115-418c-afe1-8e65836d3cf3" class="cell" data-tags="[]" data-execution_count="100">
+<div id="d1c60731-c115-418c-afe1-8e65836d3cf3" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>t <span class="op">=</span> (<span class="dv">1</span>:<span class="dv">40</span>)<span class="op">/</span><span class="dv">40</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>eps <span class="op">=</span> rnorm(<span class="dv">40</span>)</span>
 <span id="cb9-3"><a href="#cb9-3"></a>const <span class="op">=</span> <span class="op">-</span><span class="dv">2</span><span class="op">+</span>t<span class="op">*</span><span class="dv">0</span></span>
@@ -395,7 +396,7 @@ Warning message:
 <span id="cb9-6"><a href="#cb9-6"></a>ytrue <span class="op">=</span> const <span class="op">+</span> low <span class="op">+</span> high</span>
 <span id="cb9-7"><a href="#cb9-7"></a>y <span class="op">=</span> ytrue <span class="op">+</span> eps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a020b4bb-3a82-4120-8e2a-2067879542be" class="cell" data-tags="[]" data-execution_count="101">
+<div id="a020b4bb-3a82-4120-8e2a-2067879542be" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="101">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>freq <span class="op">=</span> spec(y)$freq </span>
 <span id="cb10-2"><a href="#cb10-2"></a>y_spec <span class="op">=</span> spec(y)$spec </span>
 <span id="cb10-3"><a href="#cb10-3"></a>const_spec <span class="op">=</span> spec(const)$spec</span>
@@ -403,7 +404,7 @@ Warning message:
 <span id="cb10-5"><a href="#cb10-5"></a>high_spec <span class="op">=</span> spec(high)$spec</span>
 <span id="cb10-6"><a href="#cb10-6"></a>eps_spec <span class="op">=</span> spec(eps)$spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d72353d1-673f-4599-a072-c670d08ad070" class="cell" data-tags="[]" data-execution_count="102">
+<div id="d72353d1-673f-4599-a072-c670d08ad070" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>figsize(<span class="dv">8</span>,<span class="dv">6</span>)</span>
 <span id="cb11-2"><a href="#cb11-2"></a>a <span class="op">=</span> gglite() <span class="op">+</span> line(t,y,col<span class="op">=</span><span class="st">"gray60"</span>,cex<span class="op">=</span><span class="fl">0.5</span>) <span class="op">+</span> point(t,y,col<span class="op">=</span><span class="st">"gray60"</span>,cex<span class="op">=</span><span class="fl">0.5</span>)<span class="op">+</span>line(t,ytrue,col<span class="op">=</span><span class="st">"gray60"</span>,alpha<span class="op">=</span><span class="fl">0.5</span>) <span class="op">+</span> xlab(<span class="st">""</span>) <span class="op">+</span> ylab(<span class="st">""</span>)</span>
 <span id="cb11-3"><a href="#cb11-3"></a>b <span class="op">=</span> gglite() <span class="op">+</span> point(freq,y_spec,cex<span class="op">=</span><span class="fl">0.25</span>) <span class="op">+</span> ylim(<span class="dv">0</span>,<span class="fl">5.5</span>)<span class="op">+</span> xlab(<span class="st">""</span>) <span class="op">+</span> ylab(<span class="st">""</span>) <span class="op">+</span> geom_segment(aes(x<span class="op">=</span>freq, xend <span class="op">=</span> freq, y<span class="op">=</span> y_spec, yend <span class="op">=</span> <span class="dv">0</span>))</span>
