@@ -271,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> librosa</span>
@@ -280,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> soundfile <span class="im">as</span> sf</span>
 <span id="cb1-7"><a href="#cb1-7"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="2">
+<div id="cell-2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co"># 바이올린과 피아노 샘플 로드</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>violin_audio, sr <span class="op">=</span> librosa.load(librosa.example(<span class="st">'trumpet'</span>), sr<span class="op">=</span><span class="va">None</span>, duration<span class="op">=</span><span class="fl">5.0</span>)</span>
@@ -289,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6"></a>sf.write(<span class="st">'./violin_sample.wav'</span>, violin_audio, sr)</span>
 <span id="cb2-7"><a href="#cb2-7"></a>sf.write(<span class="st">'./piano_sample.wav'</span>, piano_audio, sr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="5">
+<div id="cell-3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 샘플레이트 설정</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>sr <span class="op">=</span> <span class="dv">22050</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>duration <span class="op">=</span> <span class="dv">5</span> </span>
@@ -313,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-21"><a href="#cb3-21"></a>}</span>
 <span id="cb3-22"><a href="#cb3-22"></a></span>
 <span id="cb3-23"><a href="#cb3-23"></a><span class="co"># STFT와 CWT 수행 및 시각화</span></span>
-<span id="cb3-24"><a href="#cb3-24"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">30</span>))</span>
+<span id="cb3-24"><a href="#cb3-24"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">15</span>))</span>
 <span id="cb3-25"><a href="#cb3-25"></a></span>
 <span id="cb3-26"><a href="#cb3-26"></a><span class="cf">for</span> i, (title, audio) <span class="kw">in</span> <span class="bu">enumerate</span>(signals.items()):</span>
 <span id="cb3-27"><a href="#cb3-27"></a>    <span class="co"># STFT 수행</span></span>
@@ -340,10 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-48"><a href="#cb3-48"></a></span>
 <span id="cb3-49"><a href="#cb3-49"></a>plt.tight_layout()</span>
 <span id="cb3-50"><a href="#cb3-50"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/cgb2/anaconda3/envs/multiscale/lib/python3.12/site-packages/pywt/_cwt.py:121: FutureWarning: Wavelets from the family cmor, without parameters specified in the name are deprecated. The name should takethe form cmorB-C where B and C are floats representing the bandwidth frequency and center frequency, respectively (example: cmor1.5-1.0).
+  wavelet = DiscreteContinuousWavelet(wavelet)</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="librosa_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="librosa_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

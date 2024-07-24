@@ -278,14 +278,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="2">
+<div id="cell-1" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="co">#plt.rcParams['text.usetex'] = True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="3">
+<div id="cell-2" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 두꺼운펜변환 함수 (사각펜)</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> thick_pen_transform(X, taus, gamma<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    n <span class="op">=</span> <span class="bu">len</span>(X)</span>
@@ -335,7 +335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="그냥-두꺼운펜" class="level1">
 <h1>그냥 두꺼운펜</h1>
-<div id="cell-4" class="cell" data-execution_count="4">
+<div id="cell-4" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 지수 데이터 수집</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>indices <span class="op">=</span> {</span>
 <span id="cb3-3"><a href="#cb3-3"></a>    <span class="st">'KOSDAQ'</span>: <span class="st">'^KQ11'</span>,</span>
@@ -423,7 +423,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="히트맵" class="level1">
 <h1>히트맵</h1>
-<div id="cell-6" class="cell" data-execution_count="67">
+<div id="cell-6" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># 지수 데이터 수집</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>indices <span class="op">=</span> {</span>
 <span id="cb5-3"><a href="#cb5-3"></a>    <span class="st">'KOSPI'</span>: <span class="st">'^KS11'</span>,</span>
@@ -431,14 +431,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-5"><a href="#cb5-5"></a>    <span class="st">'NASDAQ'</span>: <span class="st">'^IXIC'</span>,</span>
 <span id="cb5-6"><a href="#cb5-6"></a>    <span class="st">'S&amp;P 500'</span>: <span class="st">'^GSPC'</span>,</span>
 <span id="cb5-7"><a href="#cb5-7"></a>    <span class="st">'FTSE 100'</span>: <span class="st">'^FTSE'</span>,</span>
-<span id="cb5-8"><a href="#cb5-8"></a>    <span class="co">#'DAX': '^GDAXI',</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>    <span class="st">'DAX'</span>: <span class="st">'^GDAXI'</span>,</span>
 <span id="cb5-9"><a href="#cb5-9"></a>    <span class="st">'Nikkei 225'</span>: <span class="st">'^N225'</span>,</span>
 <span id="cb5-10"><a href="#cb5-10"></a>   <span class="st">'Hang Seng'</span>: <span class="st">'^HSI'</span></span>
 <span id="cb5-11"><a href="#cb5-11"></a>}</span>
 <span id="cb5-12"><a href="#cb5-12"></a></span>
 <span id="cb5-13"><a href="#cb5-13"></a>start_date <span class="op">=</span> <span class="st">'2007-01-01'</span>  <span class="co"># 리만 브라더스 사태를 포함한 시작 날짜</span></span>
 <span id="cb5-14"><a href="#cb5-14"></a>end_date <span class="op">=</span> <span class="st">'2023-01-01'</span>  <span class="co"># 종료 날짜</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a>taus <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">20</span>, <span class="dv">80</span>, <span class="dv">20</span>))  <span class="co"># 두께 매개변수</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>taus <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">20</span>, <span class="dv">300</span>, <span class="dv">20</span>))  <span class="co"># 두께 매개변수</span></span>
 <span id="cb5-16"><a href="#cb5-16"></a></span>
 <span id="cb5-17"><a href="#cb5-17"></a><span class="co"># 데이터 다운로드 및 전처리</span></span>
 <span id="cb5-18"><a href="#cb5-18"></a>data_dict <span class="op">=</span> {}</span>
@@ -486,7 +486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-60"><a href="#cb5-60"></a>            all_rho_values.append(rho_matrix)</span>
 <span id="cb5-61"><a href="#cb5-61"></a><span class="co"># 전체 데이터의 상위 x% 임계값 계산</span></span>
 <span id="cb5-62"><a href="#cb5-62"></a>all_rho_values <span class="op">=</span> np.concatenate(all_rho_values)</span>
-<span id="cb5-63"><a href="#cb5-63"></a>global_threshold <span class="op">=</span> np.percentile(all_rho_values, <span class="dv">50</span>)</span>
+<span id="cb5-63"><a href="#cb5-63"></a>global_threshold <span class="op">=</span> np.percentile(all_rho_values, <span class="dv">95</span>)</span>
 <span id="cb5-64"><a href="#cb5-64"></a></span>
 <span id="cb5-65"><a href="#cb5-65"></a><span class="co"># 리먼 브라더스 사태와 코로나19 팬데믹 기간 정의</span></span>
 <span id="cb5-66"><a href="#cb5-66"></a>lehman_start <span class="op">=</span> pd.Timestamp(<span class="st">'2008-09-15'</span>)</span>
@@ -531,8 +531,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-105"><a href="#cb5-105"></a>            colors[<span class="dv">0</span>] <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]  <span class="co"># 첫 번째 색상을 하얀색으로 설정</span></span>
 <span id="cb5-106"><a href="#cb5-106"></a>            custom_cmap <span class="op">=</span> plt.cm.colors.LinearSegmentedColormap.from_list(<span class="st">"custom_gray"</span>, colors)</span>
 <span id="cb5-107"><a href="#cb5-107"></a></span>
-<span id="cb5-108"><a href="#cb5-108"></a>            <span class="co">#im = ax.imshow(masked_data, aspect='auto', cmap=custom_cmap, extent=[0, min_length, min(taus), max(taus)], vmin=global_threshold, vmax=np.max(all_rho_values))</span></span>
-<span id="cb5-109"><a href="#cb5-109"></a>            im <span class="op">=</span> ax.imshow(masked_data, aspect<span class="op">=</span><span class="st">'auto'</span>, cmap<span class="op">=</span>custom_cmap, extent<span class="op">=</span>[<span class="dv">0</span>, min_length, <span class="bu">min</span>(taus), <span class="bu">max</span>(taus)], vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-108"><a href="#cb5-108"></a>            im <span class="op">=</span> ax.imshow(masked_data, aspect<span class="op">=</span><span class="st">'auto'</span>, cmap<span class="op">=</span>custom_cmap, extent<span class="op">=</span>[<span class="dv">0</span>, min_length, <span class="bu">min</span>(taus), <span class="bu">max</span>(taus)], vmin<span class="op">=</span>global_threshold, vmax<span class="op">=</span>np.<span class="bu">max</span>(all_rho_values))</span>
+<span id="cb5-109"><a href="#cb5-109"></a>            <span class="co">#im = ax.imshow(masked_data, aspect='auto', cmap=custom_cmap, extent=[0, min_length, min(taus), max(taus)], vmin=0, vmax=1)</span></span>
 <span id="cb5-110"><a href="#cb5-110"></a>            </span>
 <span id="cb5-111"><a href="#cb5-111"></a>            <span class="co"># 리먼 브라더스 사태 기간 표시</span></span>
 <span id="cb5-112"><a href="#cb5-112"></a>            ax.axvline(x<span class="op">=</span>lehman_start_idx, color<span class="op">=</span><span class="st">'b'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
