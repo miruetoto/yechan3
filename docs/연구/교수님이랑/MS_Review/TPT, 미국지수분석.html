@@ -241,6 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#ms-vs-appl" id="toc-ms-vs-appl" class="nav-link active" data-scroll-target="#ms-vs-appl">MS vs APPL</a></li>
   <li><a href="#ms-vs-meta" id="toc-ms-vs-meta" class="nav-link" data-scroll-target="#ms-vs-meta">MS vs Meta</a></li>
+  <li><a href="#테슬라와-nvidia" id="toc-테슬라와-nvidia" class="nav-link" data-scroll-target="#테슬라와-nvidia">테슬라와 NVIDIA</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="TPT, 미국지수분석.out.ipynb" download="TPT, 미국지수분석.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -481,170 +482,128 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ms-vs-meta" class="level1">
 <h1>MS vs Meta</h1>
-<div id="cell-4" class="cell" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># 데이터 크롤링 (최근 8년)</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>start_date <span class="op">=</span> <span class="st">'2016-01-01'</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>end_date <span class="op">=</span> <span class="st">'2024-01-01'</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>google <span class="op">=</span> yf.download(<span class="st">'GOOGL'</span>, start<span class="op">=</span>start_date, end<span class="op">=</span>end_date)</span>
-<span id="cb3-9"><a href="#cb3-9"></a>meta <span class="op">=</span> yf.download(<span class="st">'META'</span>, start<span class="op">=</span>start_date, end<span class="op">=</span>end_date)</span>
-<span id="cb3-10"><a href="#cb3-10"></a></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co"># 로그 변환 및 차분</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a>log_google <span class="op">=</span> np.log(google[<span class="st">'Close'</span>])</span>
-<span id="cb3-13"><a href="#cb3-13"></a>log_meta <span class="op">=</span> np.log(meta[<span class="st">'Close'</span>])</span>
-<span id="cb3-14"><a href="#cb3-14"></a>diff_log_google <span class="op">=</span> log_google.diff().dropna()</span>
-<span id="cb3-15"><a href="#cb3-15"></a>diff_log_meta <span class="op">=</span> log_meta.diff().dropna()</span>
+<div id="cell-4" class="cell" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 데이터 크롤링 (최근 8년)</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>start_date <span class="op">=</span> <span class="st">'2016-01-01'</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>end_date <span class="op">=</span> <span class="st">'2024-01-01'</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>google <span class="op">=</span> yf.download(<span class="st">'GOOGL'</span>, start<span class="op">=</span>start_date, end<span class="op">=</span>end_date)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>meta <span class="op">=</span> yf.download(<span class="st">'META'</span>, start<span class="op">=</span>start_date, end<span class="op">=</span>end_date)</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># 로그 변환 및 차분</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>log_google <span class="op">=</span> np.log(google[<span class="st">'Close'</span>])</span>
+<span id="cb3-9"><a href="#cb3-9"></a>log_meta <span class="op">=</span> np.log(meta[<span class="st">'Close'</span>])</span>
+<span id="cb3-10"><a href="#cb3-10"></a>diff_log_google <span class="op">=</span> log_google.diff().dropna()</span>
+<span id="cb3-11"><a href="#cb3-11"></a>diff_log_meta <span class="op">=</span> log_meta.diff().dropna()</span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co"># 표준화</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>std_diff_log_google <span class="op">=</span> standardize(diff_log_google)</span>
+<span id="cb3-15"><a href="#cb3-15"></a>std_diff_log_meta <span class="op">=</span> standardize(diff_log_meta)</span>
 <span id="cb3-16"><a href="#cb3-16"></a></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="co"># 표준화 함수</span></span>
-<span id="cb3-18"><a href="#cb3-18"></a><span class="kw">def</span> standardize(series):</span>
-<span id="cb3-19"><a href="#cb3-19"></a>    <span class="cf">return</span> (series <span class="op">-</span> series.mean()) <span class="op">/</span> series.std()</span>
-<span id="cb3-20"><a href="#cb3-20"></a></span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="co"># 차분 데이터 표준화</span></span>
-<span id="cb3-22"><a href="#cb3-22"></a>std_diff_log_google <span class="op">=</span> standardize(diff_log_google)</span>
-<span id="cb3-23"><a href="#cb3-23"></a>std_diff_log_meta <span class="op">=</span> standardize(diff_log_meta)</span>
+<span id="cb3-17"><a href="#cb3-17"></a>tau <span class="op">=</span> <span class="dv">5</span>  <span class="co"># 두께 파라미터 설정</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>X <span class="op">=</span> std_diff_log_google.values</span>
+<span id="cb3-19"><a href="#cb3-19"></a>Y <span class="op">=</span> std_diff_log_meta.values</span>
+<span id="cb3-20"><a href="#cb3-20"></a>dates <span class="op">=</span> diff_log_google.index</span>
+<span id="cb3-21"><a href="#cb3-21"></a></span>
+<span id="cb3-22"><a href="#cb3-22"></a>X_L_tau, X_U_tau <span class="op">=</span> thick_pen_transform(X, tau)</span>
+<span id="cb3-23"><a href="#cb3-23"></a>Y_L_tau, Y_U_tau <span class="op">=</span> thick_pen_transform(Y, tau)</span>
 <span id="cb3-24"><a href="#cb3-24"></a></span>
-<span id="cb3-25"><a href="#cb3-25"></a><span class="co"># 두꺼운펜변환 함수 (사각펜)</span></span>
-<span id="cb3-26"><a href="#cb3-26"></a><span class="kw">def</span> thick_pen_transform(X, tau, gamma<span class="op">=</span><span class="fl">0.001</span>):</span>
-<span id="cb3-27"><a href="#cb3-27"></a>    n <span class="op">=</span> <span class="bu">len</span>(X)</span>
-<span id="cb3-28"><a href="#cb3-28"></a>    U_tau <span class="op">=</span> np.zeros(n)</span>
-<span id="cb3-29"><a href="#cb3-29"></a>    L_tau <span class="op">=</span> np.zeros(n)</span>
-<span id="cb3-30"><a href="#cb3-30"></a>    </span>
-<span id="cb3-31"><a href="#cb3-31"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> tau):</span>
-<span id="cb3-32"><a href="#cb3-32"></a>        U_tau[t] <span class="op">=</span> np.<span class="bu">max</span>(X[t:t<span class="op">+</span>tau<span class="op">+</span><span class="dv">1</span>]) <span class="op">+</span> gamma <span class="op">*</span> (tau <span class="op">/</span> <span class="dv">2</span>)</span>
-<span id="cb3-33"><a href="#cb3-33"></a>        L_tau[t] <span class="op">=</span> np.<span class="bu">min</span>(X[t:t<span class="op">+</span>tau<span class="op">+</span><span class="dv">1</span>]) <span class="op">-</span> gamma <span class="op">*</span> (tau <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="co"># 코로나 시작 지점 설정</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a>covid_start <span class="op">=</span> <span class="st">'2020-03-01'</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a>covid_start_idx <span class="op">=</span> np.where(dates <span class="op">&gt;=</span> covid_start)[<span class="dv">0</span>][<span class="dv">0</span>]</span>
+<span id="cb3-28"><a href="#cb3-28"></a></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="co"># Upper와 Lower 각각 시각화 함수</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="kw">def</span> plot_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau):</span>
+<span id="cb3-31"><a href="#cb3-31"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb3-32"><a href="#cb3-32"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], X[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Google'</span>, color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-33"><a href="#cb3-33"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], Y[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Meta'</span>, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb3-34"><a href="#cb3-34"></a>    </span>
-<span id="cb3-35"><a href="#cb3-35"></a>    <span class="co"># 경계 케이스 처리</span></span>
-<span id="cb3-36"><a href="#cb3-36"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> tau, n):</span>
-<span id="cb3-37"><a href="#cb3-37"></a>        U_tau[t] <span class="op">=</span> np.<span class="bu">max</span>(X[t:n]) <span class="op">+</span> gamma <span class="op">*</span> (tau <span class="op">/</span> <span class="dv">2</span>)</span>
-<span id="cb3-38"><a href="#cb3-38"></a>        L_tau[t] <span class="op">=</span> np.<span class="bu">min</span>(X[t:n]) <span class="op">-</span> gamma <span class="op">*</span> (tau <span class="op">/</span> <span class="dv">2</span>)</span>
-<span id="cb3-39"><a href="#cb3-39"></a>    </span>
-<span id="cb3-40"><a href="#cb3-40"></a>    <span class="cf">return</span> L_tau, U_tau</span>
-<span id="cb3-41"><a href="#cb3-41"></a></span>
-<span id="cb3-42"><a href="#cb3-42"></a>tau <span class="op">=</span> <span class="dv">5</span>  <span class="co"># 두께 파라미터 설정</span></span>
-<span id="cb3-43"><a href="#cb3-43"></a>X <span class="op">=</span> std_diff_log_google.values</span>
-<span id="cb3-44"><a href="#cb3-44"></a>Y <span class="op">=</span> std_diff_log_meta.values</span>
-<span id="cb3-45"><a href="#cb3-45"></a>dates <span class="op">=</span> diff_log_google.index</span>
+<span id="cb3-35"><a href="#cb3-35"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
+<span id="cb3-37"><a href="#cb3-37"></a></span>
+<span id="cb3-38"><a href="#cb3-38"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb3-39"><a href="#cb3-39"></a>    plt.title(<span class="st">'Google and Meta Time Series'</span>)</span>
+<span id="cb3-40"><a href="#cb3-40"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb3-41"><a href="#cb3-41"></a>    plt.ylabel(<span class="st">'Standardized Log Difference'</span>)</span>
+<span id="cb3-42"><a href="#cb3-42"></a>    plt.show()</span>
+<span id="cb3-43"><a href="#cb3-43"></a></span>
+<span id="cb3-44"><a href="#cb3-44"></a><span class="co"># 시각화</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a>plot_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau)</span>
 <span id="cb3-46"><a href="#cb3-46"></a></span>
-<span id="cb3-47"><a href="#cb3-47"></a>X_L_tau, X_U_tau <span class="op">=</span> thick_pen_transform(X, tau)</span>
-<span id="cb3-48"><a href="#cb3-48"></a>Y_L_tau, Y_U_tau <span class="op">=</span> thick_pen_transform(Y, tau)</span>
-<span id="cb3-49"><a href="#cb3-49"></a></span>
-<span id="cb3-50"><a href="#cb3-50"></a><span class="co"># 코로나 시작 지점 설정</span></span>
-<span id="cb3-51"><a href="#cb3-51"></a>covid_start <span class="op">=</span> <span class="st">'2020-03-01'</span></span>
-<span id="cb3-52"><a href="#cb3-52"></a>covid_start_idx <span class="op">=</span> np.where(dates <span class="op">&gt;=</span> covid_start)[<span class="dv">0</span>][<span class="dv">0</span>]</span>
-<span id="cb3-53"><a href="#cb3-53"></a></span>
-<span id="cb3-54"><a href="#cb3-54"></a><span class="co"># Upper와 Lower 각각 시각화 함수</span></span>
-<span id="cb3-55"><a href="#cb3-55"></a><span class="kw">def</span> plot_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau):</span>
-<span id="cb3-56"><a href="#cb3-56"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
-<span id="cb3-57"><a href="#cb3-57"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], X[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Google'</span>, color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-58"><a href="#cb3-58"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], Y[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Meta'</span>, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-59"><a href="#cb3-59"></a>    </span>
-<span id="cb3-60"><a href="#cb3-60"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
-<span id="cb3-61"><a href="#cb3-61"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
-<span id="cb3-62"><a href="#cb3-62"></a></span>
-<span id="cb3-63"><a href="#cb3-63"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb3-64"><a href="#cb3-64"></a>    plt.title(<span class="st">'Google and Meta Time Series'</span>)</span>
-<span id="cb3-65"><a href="#cb3-65"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb3-66"><a href="#cb3-66"></a>    plt.ylabel(<span class="st">'Standardized Log Difference'</span>)</span>
-<span id="cb3-67"><a href="#cb3-67"></a>    plt.show()</span>
-<span id="cb3-68"><a href="#cb3-68"></a></span>
-<span id="cb3-69"><a href="#cb3-69"></a><span class="co"># 시각화</span></span>
-<span id="cb3-70"><a href="#cb3-70"></a>plot_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau)</span>
-<span id="cb3-71"><a href="#cb3-71"></a></span>
-<span id="cb3-72"><a href="#cb3-72"></a><span class="co"># Upper와 Lower 각각 시각화 함수</span></span>
-<span id="cb3-73"><a href="#cb3-73"></a><span class="kw">def</span> plot_upper_lower_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau):</span>
-<span id="cb3-74"><a href="#cb3-74"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
-<span id="cb3-75"><a href="#cb3-75"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], X[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Google'</span>, color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-76"><a href="#cb3-76"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], Y[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Meta'</span>, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-47"><a href="#cb3-47"></a><span class="co"># Upper와 Lower 각각 시각화 함수</span></span>
+<span id="cb3-48"><a href="#cb3-48"></a><span class="kw">def</span> plot_upper_lower_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau):</span>
+<span id="cb3-49"><a href="#cb3-49"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb3-50"><a href="#cb3-50"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], X[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Google'</span>, color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-51"><a href="#cb3-51"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], Y[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Meta'</span>, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-52"><a href="#cb3-52"></a>    </span>
+<span id="cb3-53"><a href="#cb3-53"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], X_L_tau[tau:<span class="op">-</span>tau], X_U_tau[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'blue'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'Google Bound'</span>)</span>
+<span id="cb3-54"><a href="#cb3-54"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], Y_L_tau[tau:<span class="op">-</span>tau], Y_U_tau[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'Meta Bound'</span>)</span>
+<span id="cb3-55"><a href="#cb3-55"></a>    </span>
+<span id="cb3-56"><a href="#cb3-56"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
+<span id="cb3-57"><a href="#cb3-57"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
+<span id="cb3-58"><a href="#cb3-58"></a>    </span>
+<span id="cb3-59"><a href="#cb3-59"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb3-60"><a href="#cb3-60"></a>    plt.title(<span class="st">'Original Time Series with Upper and Lower Bounds (Thick-Pen Transform)'</span>)</span>
+<span id="cb3-61"><a href="#cb3-61"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb3-62"><a href="#cb3-62"></a>    plt.ylabel(<span class="st">'Standardized Log Difference'</span>)</span>
+<span id="cb3-63"><a href="#cb3-63"></a>    plt.show()</span>
+<span id="cb3-64"><a href="#cb3-64"></a></span>
+<span id="cb3-65"><a href="#cb3-65"></a><span class="co"># 시각화</span></span>
+<span id="cb3-66"><a href="#cb3-66"></a>plot_upper_lower_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau)</span>
+<span id="cb3-67"><a href="#cb3-67"></a></span>
+<span id="cb3-68"><a href="#cb3-68"></a><span class="co"># TPMA의 분자와 분모 각각 시각화 함수</span></span>
+<span id="cb3-69"><a href="#cb3-69"></a><span class="kw">def</span> plot_tpma_numerator_denominator_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau):</span>
+<span id="cb3-70"><a href="#cb3-70"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb3-71"><a href="#cb3-71"></a>    </span>
+<span id="cb3-72"><a href="#cb3-72"></a>    overlap_range <span class="op">=</span> [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="op">-</span> <span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))]</span>
+<span id="cb3-73"><a href="#cb3-73"></a>    spread_range <span class="op">=</span> [<span class="bu">max</span>(X_U_tau[t], Y_U_tau[t]) <span class="op">-</span> <span class="bu">min</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))]</span>
+<span id="cb3-74"><a href="#cb3-74"></a>    </span>
+<span id="cb3-75"><a href="#cb3-75"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], X[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb3-76"><a href="#cb3-76"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], Y[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb3-77"><a href="#cb3-77"></a>    </span>
-<span id="cb3-78"><a href="#cb3-78"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], X_L_tau[tau:<span class="op">-</span>tau], X_U_tau[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'blue'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'Google Bound'</span>)</span>
-<span id="cb3-79"><a href="#cb3-79"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], Y_L_tau[tau:<span class="op">-</span>tau], Y_U_tau[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'Meta Bound'</span>)</span>
-<span id="cb3-80"><a href="#cb3-80"></a>    </span>
-<span id="cb3-81"><a href="#cb3-81"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
-<span id="cb3-82"><a href="#cb3-82"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
+<span id="cb3-78"><a href="#cb3-78"></a>    <span class="co"># 분자와 분모에 해당하는 음영 추가</span></span>
+<span id="cb3-79"><a href="#cb3-79"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], [<span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], </span>
+<span id="cb3-80"><a href="#cb3-80"></a>                     [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], color<span class="op">=</span><span class="st">'green'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Overlap Range'</span>)</span>
+<span id="cb3-81"><a href="#cb3-81"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], [<span class="bu">min</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], </span>
+<span id="cb3-82"><a href="#cb3-82"></a>                     [<span class="bu">max</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], color<span class="op">=</span><span class="st">'orange'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Spread Range'</span>)</span>
 <span id="cb3-83"><a href="#cb3-83"></a>    </span>
-<span id="cb3-84"><a href="#cb3-84"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb3-85"><a href="#cb3-85"></a>    plt.title(<span class="st">'Original Time Series with Upper and Lower Bounds (Thick-Pen Transform)'</span>)</span>
-<span id="cb3-86"><a href="#cb3-86"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb3-87"><a href="#cb3-87"></a>    plt.ylabel(<span class="st">'Standardized Log Difference'</span>)</span>
-<span id="cb3-88"><a href="#cb3-88"></a>    plt.show()</span>
+<span id="cb3-84"><a href="#cb3-84"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], overlap_range[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'green'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">'Overlap'</span>)</span>
+<span id="cb3-85"><a href="#cb3-85"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], spread_range[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'orange'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">'Spread'</span>)</span>
+<span id="cb3-86"><a href="#cb3-86"></a>    </span>
+<span id="cb3-87"><a href="#cb3-87"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
+<span id="cb3-88"><a href="#cb3-88"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
 <span id="cb3-89"><a href="#cb3-89"></a></span>
-<span id="cb3-90"><a href="#cb3-90"></a><span class="co"># 시각화</span></span>
-<span id="cb3-91"><a href="#cb3-91"></a>plot_upper_lower_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau)</span>
-<span id="cb3-92"><a href="#cb3-92"></a></span>
-<span id="cb3-93"><a href="#cb3-93"></a><span class="co"># TPMA의 분자와 분모 각각 시각화 함수</span></span>
-<span id="cb3-94"><a href="#cb3-94"></a><span class="kw">def</span> plot_tpma_numerator_denominator_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau):</span>
-<span id="cb3-95"><a href="#cb3-95"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
-<span id="cb3-96"><a href="#cb3-96"></a>    </span>
-<span id="cb3-97"><a href="#cb3-97"></a>    overlap_range <span class="op">=</span> [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="op">-</span> <span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))]</span>
-<span id="cb3-98"><a href="#cb3-98"></a>    spread_range <span class="op">=</span> [<span class="bu">max</span>(X_U_tau[t], Y_U_tau[t]) <span class="op">-</span> <span class="bu">min</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))]</span>
-<span id="cb3-99"><a href="#cb3-99"></a>    </span>
-<span id="cb3-100"><a href="#cb3-100"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], X[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb3-101"><a href="#cb3-101"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], Y[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb3-90"><a href="#cb3-90"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb3-91"><a href="#cb3-91"></a>    plt.title(<span class="st">'TPMA Overlap and Spread Ranges with Original Time Series'</span>)</span>
+<span id="cb3-92"><a href="#cb3-92"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb3-93"><a href="#cb3-93"></a>    plt.ylabel(<span class="st">'Range'</span>)</span>
+<span id="cb3-94"><a href="#cb3-94"></a>    plt.show()</span>
+<span id="cb3-95"><a href="#cb3-95"></a></span>
+<span id="cb3-96"><a href="#cb3-96"></a><span class="co"># 시각화</span></span>
+<span id="cb3-97"><a href="#cb3-97"></a>plot_tpma_numerator_denominator_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau)</span>
+<span id="cb3-98"><a href="#cb3-98"></a></span>
+<span id="cb3-99"><a href="#cb3-99"></a><span class="co"># TPMA 값 시각화 함수</span></span>
+<span id="cb3-100"><a href="#cb3-100"></a><span class="kw">def</span> plot_tpma_values_with_series(rho_values, dates, tau):</span>
+<span id="cb3-101"><a href="#cb3-101"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
 <span id="cb3-102"><a href="#cb3-102"></a>    </span>
-<span id="cb3-103"><a href="#cb3-103"></a>    <span class="co"># 분자와 분모에 해당하는 음영 추가</span></span>
-<span id="cb3-104"><a href="#cb3-104"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], [<span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], </span>
-<span id="cb3-105"><a href="#cb3-105"></a>                     [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], color<span class="op">=</span><span class="st">'green'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Overlap Range'</span>)</span>
-<span id="cb3-106"><a href="#cb3-106"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], [<span class="bu">min</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], </span>
-<span id="cb3-107"><a href="#cb3-107"></a>                     [<span class="bu">max</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], color<span class="op">=</span><span class="st">'orange'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Spread Range'</span>)</span>
-<span id="cb3-108"><a href="#cb3-108"></a>    </span>
-<span id="cb3-109"><a href="#cb3-109"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], overlap_range[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'green'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">'Overlap'</span>)</span>
-<span id="cb3-110"><a href="#cb3-110"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], spread_range[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'orange'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">'Spread'</span>)</span>
-<span id="cb3-111"><a href="#cb3-111"></a>    </span>
-<span id="cb3-112"><a href="#cb3-112"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
-<span id="cb3-113"><a href="#cb3-113"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
-<span id="cb3-114"><a href="#cb3-114"></a></span>
-<span id="cb3-115"><a href="#cb3-115"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb3-116"><a href="#cb3-116"></a>    plt.title(<span class="st">'TPMA Overlap and Spread Ranges with Original Time Series'</span>)</span>
-<span id="cb3-117"><a href="#cb3-117"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb3-118"><a href="#cb3-118"></a>    plt.ylabel(<span class="st">'Range'</span>)</span>
-<span id="cb3-119"><a href="#cb3-119"></a>    plt.show()</span>
-<span id="cb3-120"><a href="#cb3-120"></a></span>
-<span id="cb3-121"><a href="#cb3-121"></a><span class="co"># 시각화</span></span>
-<span id="cb3-122"><a href="#cb3-122"></a>plot_tpma_numerator_denominator_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau)</span>
-<span id="cb3-123"><a href="#cb3-123"></a></span>
-<span id="cb3-124"><a href="#cb3-124"></a><span class="co"># 두꺼운펜 변환 상관계수 계산 함수</span></span>
-<span id="cb3-125"><a href="#cb3-125"></a><span class="kw">def</span> rho_tau(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau):</span>
-<span id="cb3-126"><a href="#cb3-126"></a>    rho_tau_t <span class="op">=</span> np.zeros(<span class="bu">len</span>(X))</span>
-<span id="cb3-127"><a href="#cb3-127"></a>    </span>
-<span id="cb3-128"><a href="#cb3-128"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
-<span id="cb3-129"><a href="#cb3-129"></a>        min_U <span class="op">=</span> <span class="bu">min</span>(X_U_tau[t], Y_U_tau[t])</span>
-<span id="cb3-130"><a href="#cb3-130"></a>        max_L <span class="op">=</span> <span class="bu">max</span>(X_L_tau[t], Y_L_tau[t])</span>
-<span id="cb3-131"><a href="#cb3-131"></a>        max_U <span class="op">=</span> <span class="bu">max</span>(X_U_tau[t], Y_U_tau[t])</span>
-<span id="cb3-132"><a href="#cb3-132"></a>        min_L <span class="op">=</span> <span class="bu">min</span>(X_L_tau[t], Y_L_tau[t])</span>
-<span id="cb3-133"><a href="#cb3-133"></a>        </span>
-<span id="cb3-134"><a href="#cb3-134"></a>        rho_tau_t[t] <span class="op">=</span> (min_U <span class="op">-</span> max_L) <span class="op">/</span> (max_U <span class="op">-</span> min_L)</span>
-<span id="cb3-135"><a href="#cb3-135"></a>    </span>
-<span id="cb3-136"><a href="#cb3-136"></a>    <span class="cf">return</span> rho_tau_t</span>
-<span id="cb3-137"><a href="#cb3-137"></a></span>
-<span id="cb3-138"><a href="#cb3-138"></a><span class="co"># TPMA 계산</span></span>
-<span id="cb3-139"><a href="#cb3-139"></a>rho_values <span class="op">=</span> rho_tau(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau)</span>
-<span id="cb3-140"><a href="#cb3-140"></a></span>
-<span id="cb3-141"><a href="#cb3-141"></a><span class="co"># TPMA 값 시각화 함수</span></span>
-<span id="cb3-142"><a href="#cb3-142"></a><span class="kw">def</span> plot_tpma_values_with_series(rho_values, dates, tau):</span>
-<span id="cb3-143"><a href="#cb3-143"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
-<span id="cb3-144"><a href="#cb3-144"></a>    </span>
-<span id="cb3-145"><a href="#cb3-145"></a>    <span class="co"># 원본 TPMA 값 플로팅</span></span>
-<span id="cb3-146"><a href="#cb3-146"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], rho_values[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'TPMA = Overlap/Spread'</span>, color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb3-147"><a href="#cb3-147"></a>    </span>
-<span id="cb3-148"><a href="#cb3-148"></a>    <span class="co"># Smoothed line 추가 (이동 평균)</span></span>
-<span id="cb3-149"><a href="#cb3-149"></a>    window_size <span class="op">=</span> <span class="dv">120</span></span>
-<span id="cb3-150"><a href="#cb3-150"></a>    smoothed_rho <span class="op">=</span> np.convolve(rho_values[tau:<span class="op">-</span>tau], np.ones(window_size)<span class="op">/</span>window_size, mode<span class="op">=</span><span class="st">'valid'</span>)</span>
-<span id="cb3-151"><a href="#cb3-151"></a>    plt.plot(dates[tau <span class="op">+</span> window_size<span class="op">//</span><span class="dv">2</span>: <span class="op">-</span>tau <span class="op">-</span> window_size<span class="op">//</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span>], smoothed_rho, label<span class="op">=</span><span class="st">'Smoothed TPMA'</span>, color<span class="op">=</span><span class="st">'orange'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb3-152"><a href="#cb3-152"></a>    </span>
-<span id="cb3-153"><a href="#cb3-153"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
-<span id="cb3-154"><a href="#cb3-154"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
-<span id="cb3-155"><a href="#cb3-155"></a>    </span>
-<span id="cb3-156"><a href="#cb3-156"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb3-157"><a href="#cb3-157"></a>    plt.title(<span class="st">'TPMA Values with Original Time Series'</span>)</span>
-<span id="cb3-158"><a href="#cb3-158"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb3-159"><a href="#cb3-159"></a>    plt.ylabel(<span class="st">'TPMA Value'</span>)</span>
-<span id="cb3-160"><a href="#cb3-160"></a>    plt.show()</span>
-<span id="cb3-161"><a href="#cb3-161"></a></span>
-<span id="cb3-162"><a href="#cb3-162"></a><span class="co"># 시각화</span></span>
-<span id="cb3-163"><a href="#cb3-163"></a>plot_tpma_values_with_series(rho_values, dates, tau)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-103"><a href="#cb3-103"></a>    <span class="co"># 원본 TPMA 값 플로팅</span></span>
+<span id="cb3-104"><a href="#cb3-104"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], rho_values[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'TPMA = Overlap/Spread'</span>, color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb3-105"><a href="#cb3-105"></a>    </span>
+<span id="cb3-106"><a href="#cb3-106"></a>    <span class="co"># Smoothed line 추가 (이동 평균)</span></span>
+<span id="cb3-107"><a href="#cb3-107"></a>    window_size <span class="op">=</span> <span class="dv">120</span></span>
+<span id="cb3-108"><a href="#cb3-108"></a>    smoothed_rho <span class="op">=</span> np.convolve(rho_values[tau:<span class="op">-</span>tau], np.ones(window_size)<span class="op">/</span>window_size, mode<span class="op">=</span><span class="st">'valid'</span>)</span>
+<span id="cb3-109"><a href="#cb3-109"></a>    plt.plot(dates[tau <span class="op">+</span> window_size<span class="op">//</span><span class="dv">2</span>: <span class="op">-</span>tau <span class="op">-</span> window_size<span class="op">//</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span>], smoothed_rho, label<span class="op">=</span><span class="st">'Smoothed TPMA'</span>, color<span class="op">=</span><span class="st">'orange'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-110"><a href="#cb3-110"></a>    </span>
+<span id="cb3-111"><a href="#cb3-111"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
+<span id="cb3-112"><a href="#cb3-112"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
+<span id="cb3-113"><a href="#cb3-113"></a>    </span>
+<span id="cb3-114"><a href="#cb3-114"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb3-115"><a href="#cb3-115"></a>    plt.title(<span class="st">'TPMA Values with Original Time Series'</span>)</span>
+<span id="cb3-116"><a href="#cb3-116"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb3-117"><a href="#cb3-117"></a>    plt.ylabel(<span class="st">'TPMA Value'</span>)</span>
+<span id="cb3-118"><a href="#cb3-118"></a>    plt.show()</span>
+<span id="cb3-119"><a href="#cb3-119"></a></span>
+<span id="cb3-120"><a href="#cb3-120"></a><span class="co"># 시각화</span></span>
+<span id="cb3-121"><a href="#cb3-121"></a>plot_tpma_values_with_series(rho_values, dates, tau)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[*********************100%%**********************]  1 of 1 completed
 [*********************100%%**********************]  1 of 1 completed</code></pre>
@@ -674,6 +633,168 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <figure class="figure">
 <p><img src="TPT, 미국지수분석_files/figure-html/cell-3-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="테슬라와-nvidia" class="level1">
+<h1>테슬라와 NVIDIA</h1>
+<div id="cell-6" class="cell" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># 데이터 크롤링 (최근 8년)</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>start_date <span class="op">=</span> <span class="st">'2016-01-01'</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>end_date <span class="op">=</span> <span class="st">'2024-01-01'</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>tesla <span class="op">=</span> yf.download(<span class="st">'TSLA'</span>, start<span class="op">=</span>start_date, end<span class="op">=</span>end_date)</span>
+<span id="cb5-9"><a href="#cb5-9"></a>nvidia <span class="op">=</span> yf.download(<span class="st">'NVDA'</span>, start<span class="op">=</span>start_date, end<span class="op">=</span>end_date)</span>
+<span id="cb5-10"><a href="#cb5-10"></a></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co"># 로그 변환 및 차분</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>log_tesla <span class="op">=</span> np.log(tesla[<span class="st">'Close'</span>])</span>
+<span id="cb5-13"><a href="#cb5-13"></a>log_nvidia <span class="op">=</span> np.log(nvidia[<span class="st">'Close'</span>])</span>
+<span id="cb5-14"><a href="#cb5-14"></a>diff_log_tesla <span class="op">=</span> log_tesla.diff().dropna()</span>
+<span id="cb5-15"><a href="#cb5-15"></a>diff_log_nvidia <span class="op">=</span> log_nvidia.diff().dropna()</span>
+<span id="cb5-16"><a href="#cb5-16"></a></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co"># 표준화</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>std_diff_log_tesla <span class="op">=</span> standardize(diff_log_tesla)</span>
+<span id="cb5-19"><a href="#cb5-19"></a>std_diff_log_nvidia <span class="op">=</span> standardize(diff_log_nvidia)</span>
+<span id="cb5-20"><a href="#cb5-20"></a></span>
+<span id="cb5-21"><a href="#cb5-21"></a>tau <span class="op">=</span> <span class="dv">30</span>  <span class="co"># 두께 파라미터 설정</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a>X <span class="op">=</span> std_diff_log_tesla.values</span>
+<span id="cb5-23"><a href="#cb5-23"></a>Y <span class="op">=</span> std_diff_log_nvidia.values</span>
+<span id="cb5-24"><a href="#cb5-24"></a>dates <span class="op">=</span> diff_log_tesla.index</span>
+<span id="cb5-25"><a href="#cb5-25"></a></span>
+<span id="cb5-26"><a href="#cb5-26"></a>X_L_tau, X_U_tau <span class="op">=</span> thick_pen_transform(X, tau)</span>
+<span id="cb5-27"><a href="#cb5-27"></a>Y_L_tau, Y_U_tau <span class="op">=</span> thick_pen_transform(Y, tau)</span>
+<span id="cb5-28"><a href="#cb5-28"></a></span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="co"># 코로나 시작 지점 설정</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a>covid_start <span class="op">=</span> <span class="st">'2020-03-01'</span></span>
+<span id="cb5-31"><a href="#cb5-31"></a>covid_start_idx <span class="op">=</span> np.where(dates <span class="op">&gt;=</span> covid_start)[<span class="dv">0</span>][<span class="dv">0</span>]</span>
+<span id="cb5-32"><a href="#cb5-32"></a></span>
+<span id="cb5-33"><a href="#cb5-33"></a><span class="co"># Upper와 Lower 각각 시각화 함수</span></span>
+<span id="cb5-34"><a href="#cb5-34"></a><span class="kw">def</span> plot_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau):</span>
+<span id="cb5-35"><a href="#cb5-35"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb5-36"><a href="#cb5-36"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], X[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Tesla'</span>, color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-37"><a href="#cb5-37"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], Y[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Nvidia'</span>, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-38"><a href="#cb5-38"></a>    </span>
+<span id="cb5-39"><a href="#cb5-39"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
+<span id="cb5-41"><a href="#cb5-41"></a></span>
+<span id="cb5-42"><a href="#cb5-42"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb5-43"><a href="#cb5-43"></a>    plt.title(<span class="st">'Tesla and Nvidia Time Series'</span>)</span>
+<span id="cb5-44"><a href="#cb5-44"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb5-45"><a href="#cb5-45"></a>    plt.ylabel(<span class="st">'Standardized Log Difference'</span>)</span>
+<span id="cb5-46"><a href="#cb5-46"></a>    plt.show()</span>
+<span id="cb5-47"><a href="#cb5-47"></a></span>
+<span id="cb5-48"><a href="#cb5-48"></a><span class="co"># 시각화</span></span>
+<span id="cb5-49"><a href="#cb5-49"></a>plot_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau)</span>
+<span id="cb5-50"><a href="#cb5-50"></a></span>
+<span id="cb5-51"><a href="#cb5-51"></a><span class="co"># Upper와 Lower 각각 시각화 함수</span></span>
+<span id="cb5-52"><a href="#cb5-52"></a><span class="kw">def</span> plot_upper_lower_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau):</span>
+<span id="cb5-53"><a href="#cb5-53"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb5-54"><a href="#cb5-54"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], X[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Tesla'</span>, color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-55"><a href="#cb5-55"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], Y[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'Nvidia'</span>, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-56"><a href="#cb5-56"></a>    </span>
+<span id="cb5-57"><a href="#cb5-57"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], X_L_tau[tau:<span class="op">-</span>tau], X_U_tau[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'blue'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'Tesla Bound'</span>)</span>
+<span id="cb5-58"><a href="#cb5-58"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], Y_L_tau[tau:<span class="op">-</span>tau], Y_U_tau[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'Nvidia Bound'</span>)</span>
+<span id="cb5-59"><a href="#cb5-59"></a>    </span>
+<span id="cb5-60"><a href="#cb5-60"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
+<span id="cb5-61"><a href="#cb5-61"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
+<span id="cb5-62"><a href="#cb5-62"></a>    </span>
+<span id="cb5-63"><a href="#cb5-63"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb5-64"><a href="#cb5-64"></a>    plt.title(<span class="st">'Original Time Series with Upper and Lower Bounds (Thick-Pen Transform)'</span>)</span>
+<span id="cb5-65"><a href="#cb5-65"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb5-66"><a href="#cb5-66"></a>    plt.ylabel(<span class="st">'Standardized Log Difference'</span>)</span>
+<span id="cb5-67"><a href="#cb5-67"></a>    plt.show()</span>
+<span id="cb5-68"><a href="#cb5-68"></a></span>
+<span id="cb5-69"><a href="#cb5-69"></a><span class="co"># 시각화</span></span>
+<span id="cb5-70"><a href="#cb5-70"></a>plot_upper_lower_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau)</span>
+<span id="cb5-71"><a href="#cb5-71"></a></span>
+<span id="cb5-72"><a href="#cb5-72"></a><span class="co"># TPMA의 분자와 분모 각각 시각화 함수</span></span>
+<span id="cb5-73"><a href="#cb5-73"></a><span class="kw">def</span> plot_tpma_numerator_denominator_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau):</span>
+<span id="cb5-74"><a href="#cb5-74"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb5-75"><a href="#cb5-75"></a>    </span>
+<span id="cb5-76"><a href="#cb5-76"></a>    overlap_range <span class="op">=</span> [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="op">-</span> <span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))]</span>
+<span id="cb5-77"><a href="#cb5-77"></a>    spread_range <span class="op">=</span> [<span class="bu">max</span>(X_U_tau[t], Y_U_tau[t]) <span class="op">-</span> <span class="bu">min</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))]</span>
+<span id="cb5-78"><a href="#cb5-78"></a>    </span>
+<span id="cb5-79"><a href="#cb5-79"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], X[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb5-80"><a href="#cb5-80"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], Y[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb5-81"><a href="#cb5-81"></a>    </span>
+<span id="cb5-82"><a href="#cb5-82"></a>    <span class="co"># 분자와 분모에 해당하는 음영 추가</span></span>
+<span id="cb5-83"><a href="#cb5-83"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], [<span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], </span>
+<span id="cb5-84"><a href="#cb5-84"></a>                     [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], color<span class="op">=</span><span class="st">'green'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Overlap Range'</span>)</span>
+<span id="cb5-85"><a href="#cb5-85"></a>    plt.fill_between(dates[tau:<span class="op">-</span>tau], [<span class="bu">min</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], </span>
+<span id="cb5-86"><a href="#cb5-86"></a>                     [<span class="bu">max</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(tau, <span class="bu">len</span>(X)<span class="op">-</span>tau)], color<span class="op">=</span><span class="st">'orange'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Spread Range'</span>)</span>
+<span id="cb5-87"><a href="#cb5-87"></a>    </span>
+<span id="cb5-88"><a href="#cb5-88"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], overlap_range[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'green'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">'Overlap'</span>)</span>
+<span id="cb5-89"><a href="#cb5-89"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], spread_range[tau:<span class="op">-</span>tau], color<span class="op">=</span><span class="st">'orange'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">'Spread'</span>)</span>
+<span id="cb5-90"><a href="#cb5-90"></a>    </span>
+<span id="cb5-91"><a href="#cb5-91"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
+<span id="cb5-92"><a href="#cb5-92"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
+<span id="cb5-93"><a href="#cb5-93"></a></span>
+<span id="cb5-94"><a href="#cb5-94"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb5-95"><a href="#cb5-95"></a>    plt.title(<span class="st">'TPMA Overlap and Spread Ranges with Original Time Series'</span>)</span>
+<span id="cb5-96"><a href="#cb5-96"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb5-97"><a href="#cb5-97"></a>    plt.ylabel(<span class="st">'Range'</span>)</span>
+<span id="cb5-98"><a href="#cb5-98"></a>    plt.show()</span>
+<span id="cb5-99"><a href="#cb5-99"></a></span>
+<span id="cb5-100"><a href="#cb5-100"></a><span class="co"># 시각화</span></span>
+<span id="cb5-101"><a href="#cb5-101"></a>plot_tpma_numerator_denominator_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau)</span>
+<span id="cb5-102"><a href="#cb5-102"></a></span>
+<span id="cb5-103"><a href="#cb5-103"></a><span class="co"># TPMA 값 시각화 함수</span></span>
+<span id="cb5-104"><a href="#cb5-104"></a><span class="kw">def</span> plot_tpma_values_with_series(rho_values, dates, tau):</span>
+<span id="cb5-105"><a href="#cb5-105"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb5-106"><a href="#cb5-106"></a>    </span>
+<span id="cb5-107"><a href="#cb5-107"></a>    <span class="co"># 원본 TPMA 값 플로팅</span></span>
+<span id="cb5-108"><a href="#cb5-108"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], rho_values[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'TPMA = Overlap/Spread'</span>, color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb5-109"><a href="#cb5-109"></a>    </span>
+<span id="cb5-110"><a href="#cb5-110"></a>    <span class="co"># Smoothed line 추가 (이동 평균)</span></span>
+<span id="cb5-111"><a href="#cb5-111"></a>    window_size <span class="op">=</span> <span class="dv">120</span></span>
+<span id="cb5-112"><a href="#cb5-112"></a>    smoothed_rho <span class="op">=</span> np.convolve(rho_values[tau:<span class="op">-</span>tau], np.ones(window_size)<span class="op">/</span>window_size, mode<span class="op">=</span><span class="st">'valid'</span>)</span>
+<span id="cb5-113"><a href="#cb5-113"></a>    plt.plot(dates[tau <span class="op">+</span> window_size<span class="op">//</span><span class="dv">2</span>: <span class="op">-</span>tau <span class="op">-</span> window_size<span class="op">//</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span>], smoothed_rho, label<span class="op">=</span><span class="st">'Smoothed TPMA'</span>, color<span class="op">=</span><span class="st">'orange'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-114"><a href="#cb5-114"></a>    </span>
+<span id="cb5-115"><a href="#cb5-115"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
+<span id="cb5-116"><a href="#cb5-116"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
+<span id="cb5-117"><a href="#cb5-117"></a>    </span>
+<span id="cb5-118"><a href="#cb5-118"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb5-119"><a href="#cb5-119"></a>    plt.title(<span class="st">'TPMA Values with Original Time Series'</span>)</span>
+<span id="cb5-120"><a href="#cb5-120"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb5-121"><a href="#cb5-121"></a>    plt.ylabel(<span class="st">'TPMA Value'</span>)</span>
+<span id="cb5-122"><a href="#cb5-122"></a>    plt.show()</span>
+<span id="cb5-123"><a href="#cb5-123"></a></span>
+<span id="cb5-124"><a href="#cb5-124"></a><span class="co"># 시각화</span></span>
+<span id="cb5-125"><a href="#cb5-125"></a>plot_tpma_values_with_series(rho_values, dates, tau)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[*********************100%%**********************]  1 of 1 completed
+[*********************100%%**********************]  1 of 1 completed</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="TPT, 미국지수분석_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="TPT, 미국지수분석_files/figure-html/cell-4-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="TPT, 미국지수분석_files/figure-html/cell-4-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="TPT, 미국지수분석_files/figure-html/cell-4-output-5.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
