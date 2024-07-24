@@ -278,14 +278,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="8">
+<div id="cell-1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-5"><a href="#cb1-5"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#plt.rcParams['text.usetex'] = True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="27">
+<div id="cell-2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 두꺼운펜변환 함수 (사각펜)</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> thick_pen_transform(X, taus, gamma<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    n <span class="op">=</span> <span class="bu">len</span>(X)</span>
@@ -335,7 +335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="그냥-두꺼운펜" class="level1">
 <h1>그냥 두꺼운펜</h1>
-<div id="cell-4" class="cell" data-execution_count="26">
+<div id="cell-4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 지수 데이터 수집</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>indices <span class="op">=</span> {</span>
 <span id="cb3-3"><a href="#cb3-3"></a>    <span class="st">'KOSDAQ'</span>: <span class="st">'^KQ11'</span>,</span>
@@ -423,22 +423,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="히트맵" class="level1">
 <h1>히트맵</h1>
-<div id="cell-6" class="cell" data-execution_count="29">
+<div id="cell-6" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># 지수 데이터 수집</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>indices <span class="op">=</span> {</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#    'KOSPI': '^KS11',</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="st">'KOSPI'</span>: <span class="st">'^KS11'</span>,</span>
 <span id="cb5-4"><a href="#cb5-4"></a>    <span class="st">'KOSDAQ'</span>: <span class="st">'^KQ11'</span>,</span>
 <span id="cb5-5"><a href="#cb5-5"></a>    <span class="st">'NASDAQ'</span>: <span class="st">'^IXIC'</span>,</span>
 <span id="cb5-6"><a href="#cb5-6"></a>    <span class="st">'S&amp;P 500'</span>: <span class="st">'^GSPC'</span>,</span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#    'FTSE 100': '^FTSE',</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#    'DAX': '^GDAXI',</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>    <span class="st">'FTSE 100'</span>: <span class="st">'^FTSE'</span>,</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    <span class="co">#'DAX': '^GDAXI',</span></span>
 <span id="cb5-9"><a href="#cb5-9"></a>    <span class="st">'Nikkei 225'</span>: <span class="st">'^N225'</span>,</span>
-<span id="cb5-10"><a href="#cb5-10"></a> <span class="co">#   'Hang Seng': '^HSI'</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>   <span class="st">'Hang Seng'</span>: <span class="st">'^HSI'</span></span>
 <span id="cb5-11"><a href="#cb5-11"></a>}</span>
 <span id="cb5-12"><a href="#cb5-12"></a></span>
 <span id="cb5-13"><a href="#cb5-13"></a>start_date <span class="op">=</span> <span class="st">'2007-01-01'</span>  <span class="co"># 리만 브라더스 사태를 포함한 시작 날짜</span></span>
 <span id="cb5-14"><a href="#cb5-14"></a>end_date <span class="op">=</span> <span class="st">'2023-01-01'</span>  <span class="co"># 종료 날짜</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a>taus <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">300</span>, <span class="dv">5</span>))  <span class="co"># 두께 매개변수</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>taus <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">20</span>, <span class="dv">80</span>, <span class="dv">20</span>))  <span class="co"># 두께 매개변수</span></span>
 <span id="cb5-16"><a href="#cb5-16"></a></span>
 <span id="cb5-17"><a href="#cb5-17"></a><span class="co"># 데이터 다운로드 및 전처리</span></span>
 <span id="cb5-18"><a href="#cb5-18"></a>data_dict <span class="op">=</span> {}</span>
@@ -470,8 +470,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-44"><a href="#cb5-44"></a></span>
 <span id="cb5-45"><a href="#cb5-45"></a>all_rho_values <span class="op">=</span> []</span>
 <span id="cb5-46"><a href="#cb5-46"></a></span>
-<span id="cb5-47"><a href="#cb5-47"></a><span class="co"># 데이터 딕셔너리에서 처음 7개의 항목만 선택</span></span>
-<span id="cb5-48"><a href="#cb5-48"></a>selected_indices <span class="op">=</span> <span class="bu">list</span>(data_dict.keys())[:<span class="dv">7</span>]</span>
+<span id="cb5-47"><a href="#cb5-47"></a><span class="co"># 데이터 딕셔너리 -&gt; 선택된 리스트 </span></span>
+<span id="cb5-48"><a href="#cb5-48"></a>selected_indices <span class="op">=</span> <span class="bu">list</span>(data_dict.keys())</span>
 <span id="cb5-49"><a href="#cb5-49"></a></span>
 <span id="cb5-50"><a href="#cb5-50"></a><span class="cf">for</span> i, name1 <span class="kw">in</span> <span class="bu">enumerate</span>(selected_indices):</span>
 <span id="cb5-51"><a href="#cb5-51"></a>    <span class="cf">for</span> j, name2 <span class="kw">in</span> <span class="bu">enumerate</span>(selected_indices):</span>
@@ -486,181 +486,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-60"><a href="#cb5-60"></a>            all_rho_values.append(rho_matrix)</span>
 <span id="cb5-61"><a href="#cb5-61"></a><span class="co"># 전체 데이터의 상위 x% 임계값 계산</span></span>
 <span id="cb5-62"><a href="#cb5-62"></a>all_rho_values <span class="op">=</span> np.concatenate(all_rho_values)</span>
-<span id="cb5-63"><a href="#cb5-63"></a>global_threshold <span class="op">=</span> np.percentile(all_rho_values, <span class="dv">90</span>)</span>
+<span id="cb5-63"><a href="#cb5-63"></a>global_threshold <span class="op">=</span> np.percentile(all_rho_values, <span class="dv">50</span>)</span>
 <span id="cb5-64"><a href="#cb5-64"></a></span>
-<span id="cb5-65"><a href="#cb5-65"></a><span class="co"># Min-Max 스케일링</span></span>
-<span id="cb5-66"><a href="#cb5-66"></a>min_val <span class="op">=</span> np.<span class="bu">min</span>(all_rho_values)</span>
-<span id="cb5-67"><a href="#cb5-67"></a>max_val <span class="op">=</span> np.<span class="bu">max</span>(all_rho_values)</span>
-<span id="cb5-68"><a href="#cb5-68"></a></span>
-<span id="cb5-69"><a href="#cb5-69"></a><span class="co"># 리먼 브라더스 사태와 코로나19 팬데믹 기간 정의</span></span>
-<span id="cb5-70"><a href="#cb5-70"></a>lehman_start <span class="op">=</span> pd.Timestamp(<span class="st">'2008-09-15'</span>)</span>
-<span id="cb5-71"><a href="#cb5-71"></a>lehman_end <span class="op">=</span> pd.Timestamp(<span class="st">'2009-03-31'</span>)</span>
-<span id="cb5-72"><a href="#cb5-72"></a>covid_start <span class="op">=</span> pd.Timestamp(<span class="st">'2020-03-11'</span>)</span>
-<span id="cb5-73"><a href="#cb5-73"></a>covid_end <span class="op">=</span> pd.Timestamp(<span class="st">'2021-12-31'</span>)</span>
-<span id="cb5-74"><a href="#cb5-74"></a></span>
-<span id="cb5-75"><a href="#cb5-75"></a><span class="co"># 날짜 데이터 추출 (첫 번째 지수의 날짜를 사용)</span></span>
-<span id="cb5-76"><a href="#cb5-76"></a>dates <span class="op">=</span> yf.download(indices[selected_indices[<span class="dv">0</span>]], start<span class="op">=</span>start_date, end<span class="op">=</span>end_date).index</span>
-<span id="cb5-77"><a href="#cb5-77"></a></span>
-<span id="cb5-78"><a href="#cb5-78"></a><span class="co"># 이벤트 기간을 인덱스로 변환</span></span>
-<span id="cb5-79"><a href="#cb5-79"></a>lehman_start_idx <span class="op">=</span> np.where(dates <span class="op">&gt;=</span> lehman_start)[<span class="dv">0</span>][<span class="dv">0</span>]</span>
-<span id="cb5-80"><a href="#cb5-80"></a>lehman_end_idx <span class="op">=</span> np.where(dates <span class="op">&lt;=</span> lehman_end)[<span class="dv">0</span>][<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb5-81"><a href="#cb5-81"></a>covid_start_idx <span class="op">=</span> np.where(dates <span class="op">&gt;=</span> covid_start)[<span class="dv">0</span>][<span class="dv">0</span>]</span>
-<span id="cb5-82"><a href="#cb5-82"></a>covid_end_idx <span class="op">=</span> np.where(dates <span class="op">&lt;=</span> covid_end)[<span class="dv">0</span>][<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb5-83"><a href="#cb5-83"></a></span>
-<span id="cb5-84"><a href="#cb5-84"></a>fig, axes <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">4</span>, ncols<span class="op">=</span><span class="dv">4</span>, figsize<span class="op">=</span>(<span class="dv">25</span>, <span class="dv">25</span>))</span>
-<span id="cb5-85"><a href="#cb5-85"></a><span class="cf">for</span> i, name1 <span class="kw">in</span> <span class="bu">enumerate</span>(selected_indices):</span>
-<span id="cb5-86"><a href="#cb5-86"></a>    <span class="cf">for</span> j, name2 <span class="kw">in</span> <span class="bu">enumerate</span>(selected_indices):</span>
-<span id="cb5-87"><a href="#cb5-87"></a>        ax <span class="op">=</span> axes[i, j]</span>
-<span id="cb5-88"><a href="#cb5-88"></a>        </span>
-<span id="cb5-89"><a href="#cb5-89"></a>        <span class="cf">if</span> name1 <span class="op">==</span> name2:  <span class="co"># 자기 자신과의 상관계수 위치에 'X' 표시</span></span>
-<span id="cb5-90"><a href="#cb5-90"></a>            ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">'X'</span>, fontsize<span class="op">=</span><span class="dv">40</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>)</span>
-<span id="cb5-91"><a href="#cb5-91"></a>            ax.axis(<span class="st">'off'</span>)</span>
-<span id="cb5-92"><a href="#cb5-92"></a>        <span class="cf">else</span>:</span>
-<span id="cb5-93"><a href="#cb5-93"></a>            rho_values <span class="op">=</span> rho_tau(data_dict[name1], data_dict[name2], taus)</span>
-<span id="cb5-94"><a href="#cb5-94"></a>            rho_matrix <span class="op">=</span> np.zeros((<span class="bu">len</span>(taus), min_length))</span>
-<span id="cb5-95"><a href="#cb5-95"></a></span>
-<span id="cb5-96"><a href="#cb5-96"></a>            <span class="cf">for</span> k, tau <span class="kw">in</span> <span class="bu">enumerate</span>(taus):</span>
-<span id="cb5-97"><a href="#cb5-97"></a>                rho_matrix[k, :] <span class="op">=</span> rho_values[tau]</span>
-<span id="cb5-98"><a href="#cb5-98"></a></span>
-<span id="cb5-99"><a href="#cb5-99"></a>            <span class="co"># 전역 임계값을 사용하여 마스크 생성</span></span>
-<span id="cb5-100"><a href="#cb5-100"></a>            mask <span class="op">=</span> rho_matrix <span class="op">&lt;</span> global_threshold</span>
-<span id="cb5-101"><a href="#cb5-101"></a></span>
-<span id="cb5-102"><a href="#cb5-102"></a>            <span class="co"># 마스크를 적용한 데이터 생성</span></span>
-<span id="cb5-103"><a href="#cb5-103"></a>            masked_data <span class="op">=</span> np.ma.array(rho_matrix, mask<span class="op">=</span>mask)</span>
-<span id="cb5-104"><a href="#cb5-104"></a></span>
-<span id="cb5-105"><a href="#cb5-105"></a>            <span class="co"># 커스텀 그레이스케일 컬러맵 생성 (하얀색 배경에 회색)</span></span>
-<span id="cb5-106"><a href="#cb5-106"></a>            colors <span class="op">=</span> plt.cm.gray_r(np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">256</span>))</span>
-<span id="cb5-107"><a href="#cb5-107"></a>            colors[<span class="dv">0</span>] <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]  <span class="co"># 첫 번째 색상을 하얀색으로 설정</span></span>
-<span id="cb5-108"><a href="#cb5-108"></a>            custom_cmap <span class="op">=</span> plt.cm.colors.LinearSegmentedColormap.from_list(<span class="st">"custom_gray"</span>, colors)</span>
-<span id="cb5-109"><a href="#cb5-109"></a></span>
-<span id="cb5-110"><a href="#cb5-110"></a>            <span class="co">#im = ax.imshow(masked_data, aspect='auto', cmap=custom_cmap, extent=[0, min_length, min(taus), max(taus)], vmin=global_threshold, vmax=np.max(all_rho_values))</span></span>
-<span id="cb5-111"><a href="#cb5-111"></a>            im <span class="op">=</span> ax.imshow(masked_data, aspect<span class="op">=</span><span class="st">'auto'</span>, cmap<span class="op">=</span>custom_cmap, extent<span class="op">=</span>[<span class="dv">0</span>, min_length, <span class="bu">min</span>(taus), <span class="bu">max</span>(taus)], vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb5-112"><a href="#cb5-112"></a>            </span>
-<span id="cb5-113"><a href="#cb5-113"></a>            <span class="co"># 리먼 브라더스 사태 기간 표시</span></span>
-<span id="cb5-114"><a href="#cb5-114"></a>            ax.axvline(x<span class="op">=</span>lehman_start_idx, color<span class="op">=</span><span class="st">'b'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb5-115"><a href="#cb5-115"></a>            ax.axvline(x<span class="op">=</span>lehman_end_idx, color<span class="op">=</span><span class="st">'b'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb5-116"><a href="#cb5-116"></a>            </span>
-<span id="cb5-117"><a href="#cb5-117"></a>            <span class="co"># 코로나19 팬데믹 기간 표시</span></span>
-<span id="cb5-118"><a href="#cb5-118"></a>            ax.axvline(x<span class="op">=</span>covid_start_idx, color<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb5-119"><a href="#cb5-119"></a>            ax.axvline(x<span class="op">=</span>covid_end_idx, color<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb5-120"><a href="#cb5-120"></a>            </span>
-<span id="cb5-121"><a href="#cb5-121"></a>            ax.set_title(<span class="ss">f'</span><span class="sc">{</span>name1<span class="sc">}</span><span class="ss"> vs </span><span class="sc">{</span>name2<span class="sc">}</span><span class="ss">'</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb5-122"><a href="#cb5-122"></a>            ax.set_xlabel(<span class="st">'Time'</span>, fontsize<span class="op">=</span><span class="dv">6</span>)</span>
-<span id="cb5-123"><a href="#cb5-123"></a>            ax.set_ylabel(<span class="st">'Tau'</span>, fontsize<span class="op">=</span><span class="dv">6</span>)</span>
-<span id="cb5-124"><a href="#cb5-124"></a>            ax.tick_params(axis<span class="op">=</span><span class="st">'both'</span>, which<span class="op">=</span><span class="st">'major'</span>, labelsize<span class="op">=</span><span class="dv">6</span>)</span>
-<span id="cb5-125"><a href="#cb5-125"></a></span>
-<span id="cb5-126"><a href="#cb5-126"></a>        <span class="cf">if</span> i <span class="op">==</span> <span class="dv">6</span> <span class="kw">and</span> j <span class="op">==</span> <span class="dv">6</span>:  <span class="co"># 마지막 셀에만 컬러바 추가</span></span>
-<span id="cb5-127"><a href="#cb5-127"></a>            plt.colorbar(im, ax<span class="op">=</span>ax, orientation<span class="op">=</span><span class="st">'horizontal'</span>, pad<span class="op">=</span><span class="fl">0.2</span>, aspect<span class="op">=</span><span class="dv">30</span>, shrink<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb5-128"><a href="#cb5-128"></a><span class="co">#plt.tight_layout()</span></span>
-<span id="cb5-129"><a href="#cb5-129"></a><span class="co">#plt.show()</span></span>
-<span id="cb5-130"><a href="#cb5-130"></a></span>
-<span id="cb5-131"><a href="#cb5-131"></a><span class="co"># 범례 추가</span></span>
-<span id="cb5-132"><a href="#cb5-132"></a>fig.legend([<span class="st">'Lehman Brothers'</span>, <span class="st">'COVID-19'</span>], loc<span class="op">=</span><span class="st">'upper right'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.99</span>, <span class="fl">0.99</span>), fontsize<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb5-133"><a href="#cb5-133"></a></span>
-<span id="cb5-134"><a href="#cb5-134"></a><span class="co">#plt.tight_layout()</span></span>
-<span id="cb5-135"><a href="#cb5-135"></a><span class="co">#plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-65"><a href="#cb5-65"></a><span class="co"># 리먼 브라더스 사태와 코로나19 팬데믹 기간 정의</span></span>
+<span id="cb5-66"><a href="#cb5-66"></a>lehman_start <span class="op">=</span> pd.Timestamp(<span class="st">'2008-09-15'</span>)</span>
+<span id="cb5-67"><a href="#cb5-67"></a>lehman_end <span class="op">=</span> pd.Timestamp(<span class="st">'2009-03-31'</span>)</span>
+<span id="cb5-68"><a href="#cb5-68"></a>covid_start <span class="op">=</span> pd.Timestamp(<span class="st">'2020-03-11'</span>)</span>
+<span id="cb5-69"><a href="#cb5-69"></a>covid_end <span class="op">=</span> pd.Timestamp(<span class="st">'2021-12-31'</span>)</span>
+<span id="cb5-70"><a href="#cb5-70"></a></span>
+<span id="cb5-71"><a href="#cb5-71"></a><span class="co"># 날짜 데이터 추출 (첫 번째 지수의 날짜를 사용)</span></span>
+<span id="cb5-72"><a href="#cb5-72"></a>dates <span class="op">=</span> yf.download(indices[selected_indices[<span class="dv">0</span>]], start<span class="op">=</span>start_date, end<span class="op">=</span>end_date).index</span>
+<span id="cb5-73"><a href="#cb5-73"></a></span>
+<span id="cb5-74"><a href="#cb5-74"></a><span class="co"># 이벤트 기간을 인덱스로 변환</span></span>
+<span id="cb5-75"><a href="#cb5-75"></a>lehman_start_idx <span class="op">=</span> np.where(dates <span class="op">&gt;=</span> lehman_start)[<span class="dv">0</span>][<span class="dv">0</span>]</span>
+<span id="cb5-76"><a href="#cb5-76"></a>lehman_end_idx <span class="op">=</span> np.where(dates <span class="op">&lt;=</span> lehman_end)[<span class="dv">0</span>][<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb5-77"><a href="#cb5-77"></a>covid_start_idx <span class="op">=</span> np.where(dates <span class="op">&gt;=</span> covid_start)[<span class="dv">0</span>][<span class="dv">0</span>]</span>
+<span id="cb5-78"><a href="#cb5-78"></a>covid_end_idx <span class="op">=</span> np.where(dates <span class="op">&lt;=</span> covid_end)[<span class="dv">0</span>][<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb5-79"><a href="#cb5-79"></a></span>
+<span id="cb5-80"><a href="#cb5-80"></a></span>
+<span id="cb5-81"><a href="#cb5-81"></a>n <span class="op">=</span> <span class="bu">len</span>(selected_indices)</span>
+<span id="cb5-82"><a href="#cb5-82"></a>fig, axes <span class="op">=</span> plt.subplots(nrows<span class="op">=</span>n, ncols<span class="op">=</span>n, figsize<span class="op">=</span>(<span class="dv">25</span>, <span class="dv">25</span>))</span>
+<span id="cb5-83"><a href="#cb5-83"></a><span class="cf">for</span> i, name1 <span class="kw">in</span> <span class="bu">enumerate</span>(selected_indices):</span>
+<span id="cb5-84"><a href="#cb5-84"></a>    <span class="cf">for</span> j, name2 <span class="kw">in</span> <span class="bu">enumerate</span>(selected_indices):</span>
+<span id="cb5-85"><a href="#cb5-85"></a>        ax <span class="op">=</span> axes[i, j]</span>
+<span id="cb5-86"><a href="#cb5-86"></a>        </span>
+<span id="cb5-87"><a href="#cb5-87"></a>        <span class="cf">if</span> name1 <span class="op">==</span> name2:  <span class="co"># 자기 자신과의 상관계수 위치에 'X' 표시</span></span>
+<span id="cb5-88"><a href="#cb5-88"></a>            ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">'X'</span>, fontsize<span class="op">=</span><span class="dv">40</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb5-89"><a href="#cb5-89"></a>            ax.axis(<span class="st">'off'</span>)</span>
+<span id="cb5-90"><a href="#cb5-90"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-91"><a href="#cb5-91"></a>            rho_values <span class="op">=</span> rho_tau(data_dict[name1], data_dict[name2], taus)</span>
+<span id="cb5-92"><a href="#cb5-92"></a>            rho_matrix <span class="op">=</span> np.zeros((<span class="bu">len</span>(taus), min_length))</span>
+<span id="cb5-93"><a href="#cb5-93"></a></span>
+<span id="cb5-94"><a href="#cb5-94"></a>            <span class="cf">for</span> k, tau <span class="kw">in</span> <span class="bu">enumerate</span>(taus):</span>
+<span id="cb5-95"><a href="#cb5-95"></a>                rho_matrix[k, :] <span class="op">=</span> rho_values[tau]</span>
+<span id="cb5-96"><a href="#cb5-96"></a></span>
+<span id="cb5-97"><a href="#cb5-97"></a>            <span class="co"># 전역 임계값을 사용하여 마스크 생성</span></span>
+<span id="cb5-98"><a href="#cb5-98"></a>            mask <span class="op">=</span> rho_matrix <span class="op">&lt;</span> global_threshold</span>
+<span id="cb5-99"><a href="#cb5-99"></a></span>
+<span id="cb5-100"><a href="#cb5-100"></a>            <span class="co"># 마스크를 적용한 데이터 생성</span></span>
+<span id="cb5-101"><a href="#cb5-101"></a>            masked_data <span class="op">=</span> np.ma.array(rho_matrix, mask<span class="op">=</span>mask)</span>
+<span id="cb5-102"><a href="#cb5-102"></a></span>
+<span id="cb5-103"><a href="#cb5-103"></a>            <span class="co"># 커스텀 그레이스케일 컬러맵 생성 (하얀색 배경에 회색)</span></span>
+<span id="cb5-104"><a href="#cb5-104"></a>            colors <span class="op">=</span> plt.cm.gray_r(np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">256</span>))</span>
+<span id="cb5-105"><a href="#cb5-105"></a>            colors[<span class="dv">0</span>] <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]  <span class="co"># 첫 번째 색상을 하얀색으로 설정</span></span>
+<span id="cb5-106"><a href="#cb5-106"></a>            custom_cmap <span class="op">=</span> plt.cm.colors.LinearSegmentedColormap.from_list(<span class="st">"custom_gray"</span>, colors)</span>
+<span id="cb5-107"><a href="#cb5-107"></a></span>
+<span id="cb5-108"><a href="#cb5-108"></a>            <span class="co">#im = ax.imshow(masked_data, aspect='auto', cmap=custom_cmap, extent=[0, min_length, min(taus), max(taus)], vmin=global_threshold, vmax=np.max(all_rho_values))</span></span>
+<span id="cb5-109"><a href="#cb5-109"></a>            im <span class="op">=</span> ax.imshow(masked_data, aspect<span class="op">=</span><span class="st">'auto'</span>, cmap<span class="op">=</span>custom_cmap, extent<span class="op">=</span>[<span class="dv">0</span>, min_length, <span class="bu">min</span>(taus), <span class="bu">max</span>(taus)], vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-110"><a href="#cb5-110"></a>            </span>
+<span id="cb5-111"><a href="#cb5-111"></a>            <span class="co"># 리먼 브라더스 사태 기간 표시</span></span>
+<span id="cb5-112"><a href="#cb5-112"></a>            ax.axvline(x<span class="op">=</span>lehman_start_idx, color<span class="op">=</span><span class="st">'b'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-113"><a href="#cb5-113"></a>            <span class="co">#ax.axvline(x=lehman_end_idx, color='b', linestyle='--', linewidth=0.5)</span></span>
+<span id="cb5-114"><a href="#cb5-114"></a>            </span>
+<span id="cb5-115"><a href="#cb5-115"></a>            <span class="co"># 코로나19 팬데믹 기간 표시</span></span>
+<span id="cb5-116"><a href="#cb5-116"></a>            ax.axvline(x<span class="op">=</span>covid_start_idx, color<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-117"><a href="#cb5-117"></a>            <span class="co">#ax.axvline(x=covid_end_idx, color='r', linestyle='--', linewidth=0.5)</span></span>
+<span id="cb5-118"><a href="#cb5-118"></a>            </span>
+<span id="cb5-119"><a href="#cb5-119"></a>            <span class="co">#ax.set_title(f'{name1} vs {name2}', fontsize=8)</span></span>
+<span id="cb5-120"><a href="#cb5-120"></a>            ax.set_xlabel(<span class="st">'Time'</span>, fontsize<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb5-121"><a href="#cb5-121"></a>            ax.set_ylabel(<span class="st">'Tau'</span>, fontsize<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb5-122"><a href="#cb5-122"></a>            ax.tick_params(axis<span class="op">=</span><span class="st">'both'</span>, which<span class="op">=</span><span class="st">'major'</span>, labelsize<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb5-123"><a href="#cb5-123"></a></span>
+<span id="cb5-124"><a href="#cb5-124"></a>        <span class="cf">if</span> i <span class="op">==</span> <span class="dv">6</span> <span class="kw">and</span> j <span class="op">==</span> <span class="dv">6</span>:  <span class="co"># 마지막 셀에만 컬러바 추가</span></span>
+<span id="cb5-125"><a href="#cb5-125"></a>            plt.colorbar(im, ax<span class="op">=</span>ax, orientation<span class="op">=</span><span class="st">'horizontal'</span>, pad<span class="op">=</span><span class="fl">0.2</span>, aspect<span class="op">=</span><span class="dv">30</span>, shrink<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb5-126"><a href="#cb5-126"></a><span class="co">#plt.tight_layout()</span></span>
+<span id="cb5-127"><a href="#cb5-127"></a><span class="co">#plt.show()</span></span>
+<span id="cb5-128"><a href="#cb5-128"></a></span>
+<span id="cb5-129"><a href="#cb5-129"></a><span class="co"># 범례 추가</span></span>
+<span id="cb5-130"><a href="#cb5-130"></a>fig.legend([<span class="st">'Lehman Brothers'</span>, <span class="st">'COVID-19'</span>], loc<span class="op">=</span><span class="st">'upper right'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.99</span>, <span class="fl">0.99</span>), fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb5-131"><a href="#cb5-131"></a></span>
+<span id="cb5-132"><a href="#cb5-132"></a><span class="co">#plt.tight_layout()</span></span>
+<span id="cb5-133"><a href="#cb5-133"></a><span class="co">#plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[*********************100%%**********************]  1 of 1 completed
 [*********************100%%**********************]  1 of 1 completed
 [*********************100%%**********************]  1 of 1 completed
 [*********************100%%**********************]  1 of 1 completed
+[*********************100%%**********************]  1 of 1 completed
+[*********************100%%**********************]  1 of 1 completed
+[*********************100%%**********************]  1 of 1 completed
 [*********************100%%**********************]  1 of 1 completed</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Error in callback &lt;function _draw_all_if_interactive at 0x7b715e6937e0&gt; (for post_execute), with arguments args (),kwargs {}:</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>RuntimeError: latex was not able to process the following string:
-b'KOSDAQ vs S&amp;P 500'
-
-Here is the full command invocation and its output:
-
-latex -interaction=nonstopmode --halt-on-error --output-directory=tmpbxx_fhl_ 21578815a65761c19e54d863b146321b.tex
-
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./21578815a65761c19e54d863b146321b.tex
-LaTeX2e &lt;2021-11-15&gt; patch level 1
-L3 programming layer &lt;2022-01-21&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/type1cm/type1cm.sty)
-(/usr/share/texmf/tex/latex/cm-super/type1ec.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmr.fd))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/underscore/underscore.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def)
-No file 21578815a65761c19e54d863b146321b.aux.
-*geometry* driver: auto-detecting
-*geometry* detected driver: dvips
-! Misplaced alignment tab character &amp;.
-l.29 {\sffamily KOSDAQ vs S&amp;
-                            P 500}%
-No pages of output.
-Transcript written on tmpbxx_fhl_/21578815a65761c19e54d863b146321b.log.
-
-</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>RuntimeError: latex was not able to process the following string:
-b'KOSDAQ vs S&amp;P 500'
-
-Here is the full command invocation and its output:
-
-latex -interaction=nonstopmode --halt-on-error --output-directory=tmpexzh_h99 21578815a65761c19e54d863b146321b.tex
-
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./21578815a65761c19e54d863b146321b.tex
-LaTeX2e &lt;2021-11-15&gt; patch level 1
-L3 programming layer &lt;2022-01-21&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/type1cm/type1cm.sty)
-(/usr/share/texmf/tex/latex/cm-super/type1ec.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmr.fd))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/underscore/underscore.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def)
-No file 21578815a65761c19e54d863b146321b.aux.
-*geometry* driver: auto-detecting
-*geometry* detected driver: dvips
-! Misplaced alignment tab character &amp;.
-l.29 {\sffamily KOSDAQ vs S&amp;
-                            P 500}%
-No pages of output.
-Transcript written on tmpexzh_h99/21578815a65761c19e54d863b146321b.log.
-
-</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 2500x2500 with 16 Axes&gt;</code></pre>
+<div>
+<figure class="figure">
+<p><img src="TPT_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
