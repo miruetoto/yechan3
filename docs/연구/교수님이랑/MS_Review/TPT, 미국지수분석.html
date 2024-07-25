@@ -124,16 +124,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/DL2022/"> 
-<span class="menu-text">DL2022</span></a>
+    <a class="nav-link" href="https://guebin.github.io/DL2024/"> 
+<span class="menu-text">DL2024</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://guebin.github.io/AP2023/"> 
 <span class="menu-text">AP2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/PP2023/"> 
-<span class="menu-text">PP2023</span></a>
+    <a class="nav-link" href="https://guebin.github.io/PP2024/"> 
+<span class="menu-text">PP2024</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://guebin.github.io/DV2023/"> 
@@ -144,8 +144,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">MP2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://guebin.github.io/SC2022/"> 
-<span class="menu-text">SC2022</span></a>
+    <a class="nav-link" href="https://guebin.github.io/SC2024/"> 
+<span class="menu-text">SC2024</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://guebin.github.io/DS2022/"> 
@@ -281,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="ms-vs-appl" class="level1">
 <h1>MS vs APPL</h1>
-<div id="cell-2" class="cell" data-execution_count="81">
+<div id="cell-2" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="81">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -482,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ms-vs-meta" class="level1">
 <h1>MS vs Meta</h1>
-<div id="cell-4" class="cell" data-execution_count="83">
+<div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="86">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 데이터 크롤링 (최근 8년)</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>start_date <span class="op">=</span> <span class="st">'2016-01-01'</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>end_date <span class="op">=</span> <span class="st">'2024-01-01'</span></span>
@@ -581,29 +581,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-96"><a href="#cb3-96"></a><span class="co"># 시각화</span></span>
 <span id="cb3-97"><a href="#cb3-97"></a>plot_tpma_numerator_denominator_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau)</span>
 <span id="cb3-98"><a href="#cb3-98"></a></span>
-<span id="cb3-99"><a href="#cb3-99"></a><span class="co"># TPMA 값 시각화 함수</span></span>
-<span id="cb3-100"><a href="#cb3-100"></a><span class="kw">def</span> plot_tpma_values_with_series(rho_values, dates, tau):</span>
-<span id="cb3-101"><a href="#cb3-101"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
-<span id="cb3-102"><a href="#cb3-102"></a>    </span>
-<span id="cb3-103"><a href="#cb3-103"></a>    <span class="co"># 원본 TPMA 값 플로팅</span></span>
-<span id="cb3-104"><a href="#cb3-104"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], rho_values[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'TPMA = Overlap/Spread'</span>, color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb3-105"><a href="#cb3-105"></a>    </span>
-<span id="cb3-106"><a href="#cb3-106"></a>    <span class="co"># Smoothed line 추가 (이동 평균)</span></span>
-<span id="cb3-107"><a href="#cb3-107"></a>    window_size <span class="op">=</span> <span class="dv">120</span></span>
-<span id="cb3-108"><a href="#cb3-108"></a>    smoothed_rho <span class="op">=</span> np.convolve(rho_values[tau:<span class="op">-</span>tau], np.ones(window_size)<span class="op">/</span>window_size, mode<span class="op">=</span><span class="st">'valid'</span>)</span>
-<span id="cb3-109"><a href="#cb3-109"></a>    plt.plot(dates[tau <span class="op">+</span> window_size<span class="op">//</span><span class="dv">2</span>: <span class="op">-</span>tau <span class="op">-</span> window_size<span class="op">//</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span>], smoothed_rho, label<span class="op">=</span><span class="st">'Smoothed TPMA'</span>, color<span class="op">=</span><span class="st">'orange'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb3-110"><a href="#cb3-110"></a>    </span>
-<span id="cb3-111"><a href="#cb3-111"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
-<span id="cb3-112"><a href="#cb3-112"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
-<span id="cb3-113"><a href="#cb3-113"></a>    </span>
-<span id="cb3-114"><a href="#cb3-114"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb3-115"><a href="#cb3-115"></a>    plt.title(<span class="st">'TPMA Values with Original Time Series'</span>)</span>
-<span id="cb3-116"><a href="#cb3-116"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb3-117"><a href="#cb3-117"></a>    plt.ylabel(<span class="st">'TPMA Value'</span>)</span>
-<span id="cb3-118"><a href="#cb3-118"></a>    plt.show()</span>
-<span id="cb3-119"><a href="#cb3-119"></a></span>
-<span id="cb3-120"><a href="#cb3-120"></a><span class="co"># 시각화</span></span>
-<span id="cb3-121"><a href="#cb3-121"></a>plot_tpma_values_with_series(rho_values, dates, tau)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-99"><a href="#cb3-99"></a>rho_values <span class="op">=</span> rho_tau(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau)</span>
+<span id="cb3-100"><a href="#cb3-100"></a><span class="co"># TPMA 값 시각화 함수</span></span>
+<span id="cb3-101"><a href="#cb3-101"></a><span class="kw">def</span> plot_tpma_values_with_series(rho_values, dates, tau):</span>
+<span id="cb3-102"><a href="#cb3-102"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb3-103"><a href="#cb3-103"></a>    </span>
+<span id="cb3-104"><a href="#cb3-104"></a>    <span class="co"># 원본 TPMA 값 플로팅</span></span>
+<span id="cb3-105"><a href="#cb3-105"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], rho_values[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'TPMA = Overlap/Spread'</span>, color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb3-106"><a href="#cb3-106"></a>    </span>
+<span id="cb3-107"><a href="#cb3-107"></a>    <span class="co"># Smoothed line 추가 (이동 평균)</span></span>
+<span id="cb3-108"><a href="#cb3-108"></a>    window_size <span class="op">=</span> <span class="dv">120</span></span>
+<span id="cb3-109"><a href="#cb3-109"></a>    smoothed_rho <span class="op">=</span> np.convolve(rho_values[tau:<span class="op">-</span>tau], np.ones(window_size)<span class="op">/</span>window_size, mode<span class="op">=</span><span class="st">'valid'</span>)</span>
+<span id="cb3-110"><a href="#cb3-110"></a>    plt.plot(dates[tau <span class="op">+</span> window_size<span class="op">//</span><span class="dv">2</span>: <span class="op">-</span>tau <span class="op">-</span> window_size<span class="op">//</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span>], smoothed_rho, label<span class="op">=</span><span class="st">'Smoothed TPMA'</span>, color<span class="op">=</span><span class="st">'orange'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-111"><a href="#cb3-111"></a>    </span>
+<span id="cb3-112"><a href="#cb3-112"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
+<span id="cb3-113"><a href="#cb3-113"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
+<span id="cb3-114"><a href="#cb3-114"></a>    </span>
+<span id="cb3-115"><a href="#cb3-115"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb3-116"><a href="#cb3-116"></a>    plt.title(<span class="st">'TPMA Values with Original Time Series'</span>)</span>
+<span id="cb3-117"><a href="#cb3-117"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb3-118"><a href="#cb3-118"></a>    plt.ylabel(<span class="st">'TPMA Value'</span>)</span>
+<span id="cb3-119"><a href="#cb3-119"></a>    plt.show()</span>
+<span id="cb3-120"><a href="#cb3-120"></a></span>
+<span id="cb3-121"><a href="#cb3-121"></a><span class="co"># 시각화</span></span>
+<span id="cb3-122"><a href="#cb3-122"></a>plot_tpma_values_with_series(rho_values, dates, tau)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[*********************100%%**********************]  1 of 1 completed
 [*********************100%%**********************]  1 of 1 completed</code></pre>
@@ -640,7 +641,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="테슬라와-nvidia" class="level1">
 <h1>테슬라와 NVIDIA</h1>
-<div id="cell-6" class="cell" data-execution_count="85">
+<div id="cell-6" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -743,29 +744,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-100"><a href="#cb5-100"></a><span class="co"># 시각화</span></span>
 <span id="cb5-101"><a href="#cb5-101"></a>plot_tpma_numerator_denominator_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, dates, tau)</span>
 <span id="cb5-102"><a href="#cb5-102"></a></span>
-<span id="cb5-103"><a href="#cb5-103"></a><span class="co"># TPMA 값 시각화 함수</span></span>
-<span id="cb5-104"><a href="#cb5-104"></a><span class="kw">def</span> plot_tpma_values_with_series(rho_values, dates, tau):</span>
-<span id="cb5-105"><a href="#cb5-105"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
-<span id="cb5-106"><a href="#cb5-106"></a>    </span>
-<span id="cb5-107"><a href="#cb5-107"></a>    <span class="co"># 원본 TPMA 값 플로팅</span></span>
-<span id="cb5-108"><a href="#cb5-108"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], rho_values[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'TPMA = Overlap/Spread'</span>, color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb5-109"><a href="#cb5-109"></a>    </span>
-<span id="cb5-110"><a href="#cb5-110"></a>    <span class="co"># Smoothed line 추가 (이동 평균)</span></span>
-<span id="cb5-111"><a href="#cb5-111"></a>    window_size <span class="op">=</span> <span class="dv">120</span></span>
-<span id="cb5-112"><a href="#cb5-112"></a>    smoothed_rho <span class="op">=</span> np.convolve(rho_values[tau:<span class="op">-</span>tau], np.ones(window_size)<span class="op">/</span>window_size, mode<span class="op">=</span><span class="st">'valid'</span>)</span>
-<span id="cb5-113"><a href="#cb5-113"></a>    plt.plot(dates[tau <span class="op">+</span> window_size<span class="op">//</span><span class="dv">2</span>: <span class="op">-</span>tau <span class="op">-</span> window_size<span class="op">//</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span>], smoothed_rho, label<span class="op">=</span><span class="st">'Smoothed TPMA'</span>, color<span class="op">=</span><span class="st">'orange'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb5-114"><a href="#cb5-114"></a>    </span>
-<span id="cb5-115"><a href="#cb5-115"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
-<span id="cb5-116"><a href="#cb5-116"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
-<span id="cb5-117"><a href="#cb5-117"></a>    </span>
-<span id="cb5-118"><a href="#cb5-118"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb5-119"><a href="#cb5-119"></a>    plt.title(<span class="st">'TPMA Values with Original Time Series'</span>)</span>
-<span id="cb5-120"><a href="#cb5-120"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb5-121"><a href="#cb5-121"></a>    plt.ylabel(<span class="st">'TPMA Value'</span>)</span>
-<span id="cb5-122"><a href="#cb5-122"></a>    plt.show()</span>
-<span id="cb5-123"><a href="#cb5-123"></a></span>
-<span id="cb5-124"><a href="#cb5-124"></a><span class="co"># 시각화</span></span>
-<span id="cb5-125"><a href="#cb5-125"></a>plot_tpma_values_with_series(rho_values, dates, tau)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-103"><a href="#cb5-103"></a>rho_values <span class="op">=</span> rho_tau(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau)</span>
+<span id="cb5-104"><a href="#cb5-104"></a><span class="co"># TPMA 값 시각화 함수</span></span>
+<span id="cb5-105"><a href="#cb5-105"></a><span class="kw">def</span> plot_tpma_values_with_series(rho_values, dates, tau):</span>
+<span id="cb5-106"><a href="#cb5-106"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb5-107"><a href="#cb5-107"></a>    </span>
+<span id="cb5-108"><a href="#cb5-108"></a>    <span class="co"># 원본 TPMA 값 플로팅</span></span>
+<span id="cb5-109"><a href="#cb5-109"></a>    plt.plot(dates[tau:<span class="op">-</span>tau], rho_values[tau:<span class="op">-</span>tau], label<span class="op">=</span><span class="st">'TPMA = Overlap/Spread'</span>, color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb5-110"><a href="#cb5-110"></a>    </span>
+<span id="cb5-111"><a href="#cb5-111"></a>    <span class="co"># Smoothed line 추가 (이동 평균)</span></span>
+<span id="cb5-112"><a href="#cb5-112"></a>    window_size <span class="op">=</span> <span class="dv">120</span></span>
+<span id="cb5-113"><a href="#cb5-113"></a>    smoothed_rho <span class="op">=</span> np.convolve(rho_values[tau:<span class="op">-</span>tau], np.ones(window_size)<span class="op">/</span>window_size, mode<span class="op">=</span><span class="st">'valid'</span>)</span>
+<span id="cb5-114"><a href="#cb5-114"></a>    plt.plot(dates[tau <span class="op">+</span> window_size<span class="op">//</span><span class="dv">2</span>: <span class="op">-</span>tau <span class="op">-</span> window_size<span class="op">//</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span>], smoothed_rho, label<span class="op">=</span><span class="st">'Smoothed TPMA'</span>, color<span class="op">=</span><span class="st">'orange'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-115"><a href="#cb5-115"></a>    </span>
+<span id="cb5-116"><a href="#cb5-116"></a>    <span class="co"># 코로나 시작 지점 하이라이트</span></span>
+<span id="cb5-117"><a href="#cb5-117"></a>    plt.axvline(dates[covid_start_idx], color<span class="op">=</span><span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'COVID-19'</span>)</span>
+<span id="cb5-118"><a href="#cb5-118"></a>    </span>
+<span id="cb5-119"><a href="#cb5-119"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb5-120"><a href="#cb5-120"></a>    plt.title(<span class="st">'TPMA Values with Original Time Series'</span>)</span>
+<span id="cb5-121"><a href="#cb5-121"></a>    plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb5-122"><a href="#cb5-122"></a>    plt.ylabel(<span class="st">'TPMA Value'</span>)</span>
+<span id="cb5-123"><a href="#cb5-123"></a>    plt.show()</span>
+<span id="cb5-124"><a href="#cb5-124"></a></span>
+<span id="cb5-125"><a href="#cb5-125"></a><span class="co"># 시각화</span></span>
+<span id="cb5-126"><a href="#cb5-126"></a>plot_tpma_values_with_series(rho_values, dates, tau)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[*********************100%%**********************]  1 of 1 completed
 [*********************100%%**********************]  1 of 1 completed</code></pre>
