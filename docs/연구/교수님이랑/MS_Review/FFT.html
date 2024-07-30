@@ -273,13 +273,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="7">
+<div id="cell-1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> scipy.fft <span class="im">import</span> fft</span>
 <span id="cb1-4"><a href="#cb1-4"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="12">
+<div id="cell-2" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Define the function to compute the Fourier Transform and spectra</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> spec(y):</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    n <span class="op">=</span> <span class="bu">len</span>(y)</span>
@@ -325,27 +325,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-43"><a href="#cb2-43"></a>    ax.set_title(title)</span>
 <span id="cb2-44"><a href="#cb2-44"></a></span>
 <span id="cb2-45"><a href="#cb2-45"></a>plot_series(axs[<span class="dv">0</span>, <span class="dv">0</span>], t, y, <span class="st">"Time Series (y)"</span>)</span>
-<span id="cb2-46"><a href="#cb2-46"></a>plot_spectrum(axs[<span class="dv">0</span>, <span class="dv">1</span>], freq, y_spec, <span class="st">"Spectrum (y)"</span>)</span>
+<span id="cb2-46"><a href="#cb2-46"></a>plot_spectrum(axs[<span class="dv">0</span>, <span class="dv">1</span>], freq, y_spec, <span class="st">"Frequency Spectrum (y)"</span>)</span>
 <span id="cb2-47"><a href="#cb2-47"></a></span>
 <span id="cb2-48"><a href="#cb2-48"></a>plot_series(axs[<span class="dv">1</span>, <span class="dv">0</span>], t, const, <span class="st">"Time Series (const)"</span>)</span>
-<span id="cb2-49"><a href="#cb2-49"></a>plot_spectrum(axs[<span class="dv">1</span>, <span class="dv">1</span>], freq, const_spec, <span class="st">"Spectrum (const)"</span>)</span>
+<span id="cb2-49"><a href="#cb2-49"></a>plot_spectrum(axs[<span class="dv">1</span>, <span class="dv">1</span>], freq, const_spec, <span class="st">"Frequency Spectrum (const)"</span>)</span>
 <span id="cb2-50"><a href="#cb2-50"></a></span>
 <span id="cb2-51"><a href="#cb2-51"></a>plot_series(axs[<span class="dv">2</span>, <span class="dv">0</span>], t, low, <span class="st">"Time Series (low)"</span>)</span>
-<span id="cb2-52"><a href="#cb2-52"></a>plot_spectrum(axs[<span class="dv">2</span>, <span class="dv">1</span>], freq, low_spec, <span class="st">"Spectrum (low)"</span>)</span>
+<span id="cb2-52"><a href="#cb2-52"></a>plot_spectrum(axs[<span class="dv">2</span>, <span class="dv">1</span>], freq, low_spec, <span class="st">"Frequency Spectrum (low)"</span>)</span>
 <span id="cb2-53"><a href="#cb2-53"></a></span>
 <span id="cb2-54"><a href="#cb2-54"></a>plot_series(axs[<span class="dv">3</span>, <span class="dv">0</span>], t, high, <span class="st">"Time Series (high)"</span>)</span>
-<span id="cb2-55"><a href="#cb2-55"></a>plot_spectrum(axs[<span class="dv">3</span>, <span class="dv">1</span>], freq, high_spec, <span class="st">"Spectrum (high)"</span>)</span>
+<span id="cb2-55"><a href="#cb2-55"></a>plot_spectrum(axs[<span class="dv">3</span>, <span class="dv">1</span>], freq, high_spec, <span class="st">"Frequency Spectrum (high)"</span>)</span>
 <span id="cb2-56"><a href="#cb2-56"></a></span>
 <span id="cb2-57"><a href="#cb2-57"></a>plot_series(axs[<span class="dv">4</span>, <span class="dv">0</span>], t, eps, <span class="vs">r"Time Series ($\epsilon_i$)"</span>)</span>
-<span id="cb2-58"><a href="#cb2-58"></a>plot_spectrum(axs[<span class="dv">4</span>, <span class="dv">1</span>], freq, eps_spec, <span class="st">"Spectrum ($\epsilon_i$)"</span>)</span>
+<span id="cb2-58"><a href="#cb2-58"></a>plot_spectrum(axs[<span class="dv">4</span>, <span class="dv">1</span>], freq, eps_spec, <span class="st">"Frequency Spectrum ($\epsilon$)"</span>)</span>
 <span id="cb2-59"><a href="#cb2-59"></a></span>
 <span id="cb2-60"><a href="#cb2-60"></a>plt.tight_layout()</span>
-<span id="cb2-61"><a href="#cb2-61"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-61"><a href="#cb2-61"></a>plt.savefig(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/MS_Review/time_series_spectrum_analysis.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>&lt;&gt;:58: SyntaxWarning: invalid escape sequence '\e'
 &lt;&gt;:58: SyntaxWarning: invalid escape sequence '\e'
-/tmp/ipykernel_29222/2517832077.py:58: SyntaxWarning: invalid escape sequence '\e'
-  plot_spectrum(axs[4, 1], freq, eps_spec, "Spectrum ($\epsilon_i$)")</code></pre>
+/tmp/ipykernel_55774/1498874188.py:58: SyntaxWarning: invalid escape sequence '\e'
+  plot_spectrum(axs[4, 1], freq, eps_spec, "Frequency Spectrum ($\epsilon$)")</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>

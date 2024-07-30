@@ -281,48 +281,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cb44e21b-9b06-4100-9064-2bfefe5bf866" class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># pip install publib</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9fbd3821-6bd3-4fad-8edc-0c2498ef3da6" class="cell" data-tags="[]">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> scipy.interpolate <span class="im">import</span> CubicSpline</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">def</span> sift_once(signal, t):</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="co"># 최대값과 최소값을 찾기</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    max_peaks <span class="op">=</span> [j <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(signal)<span class="op">-</span><span class="dv">1</span>) <span class="cf">if</span> signal[j<span class="op">-</span><span class="dv">1</span>] <span class="op">&lt;</span> signal[j] <span class="op">&gt;</span> signal[j<span class="op">+</span><span class="dv">1</span>]]</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    min_peaks <span class="op">=</span> [j <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(signal)<span class="op">-</span><span class="dv">1</span>) <span class="cf">if</span> signal[j<span class="op">-</span><span class="dv">1</span>] <span class="op">&gt;</span> signal[j] <span class="op">&lt;</span> signal[j<span class="op">+</span><span class="dv">1</span>]]</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="co"># 최대값과 최소값의 위치에 대해 cubic spline 보간</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="cf">if</span> <span class="bu">len</span>(max_peaks) <span class="op">&gt;</span> <span class="dv">1</span> <span class="kw">and</span> <span class="bu">len</span>(min_peaks) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb1-11"><a href="#cb1-11"></a>        upper_env <span class="op">=</span> CubicSpline(t[max_peaks], signal[max_peaks])(t)</span>
+<span id="cb1-12"><a href="#cb1-12"></a>        lower_env <span class="op">=</span> CubicSpline(t[min_peaks], signal[min_peaks])(t)</span>
+<span id="cb1-13"><a href="#cb1-13"></a>        </span>
+<span id="cb1-14"><a href="#cb1-14"></a>        <span class="co"># 평균 곡선 계산</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>        mean_env <span class="op">=</span> (upper_env <span class="op">+</span> lower_env) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>        </span>
+<span id="cb1-17"><a href="#cb1-17"></a>        <span class="co"># IMF 갱신</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>        imf <span class="op">=</span> signal <span class="op">-</span> mean_env</span>
+<span id="cb1-19"><a href="#cb1-19"></a>        </span>
+<span id="cb1-20"><a href="#cb1-20"></a>        <span class="cf">return</span> imf, upper_env, lower_env, mean_env</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-22"><a href="#cb1-22"></a>        <span class="cf">return</span> signal, np.zeros_like(signal), np.zeros_like(signal), np.zeros_like(signal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9fbd3821-6bd3-4fad-8edc-0c2498ef3da6" class="cell" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="im">from</span> scipy.interpolate <span class="im">import</span> CubicSpline</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">def</span> sift_once(signal, t):</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    <span class="co"># 최대값과 최소값을 찾기</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>    max_peaks <span class="op">=</span> [j <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(signal)<span class="op">-</span><span class="dv">1</span>) <span class="cf">if</span> signal[j<span class="op">-</span><span class="dv">1</span>] <span class="op">&lt;</span> signal[j] <span class="op">&gt;</span> signal[j<span class="op">+</span><span class="dv">1</span>]]</span>
-<span id="cb2-7"><a href="#cb2-7"></a>    min_peaks <span class="op">=</span> [j <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(signal)<span class="op">-</span><span class="dv">1</span>) <span class="cf">if</span> signal[j<span class="op">-</span><span class="dv">1</span>] <span class="op">&gt;</span> signal[j] <span class="op">&lt;</span> signal[j<span class="op">+</span><span class="dv">1</span>]]</span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a>    <span class="co"># 최대값과 최소값의 위치에 대해 cubic spline 보간</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>    <span class="cf">if</span> <span class="bu">len</span>(max_peaks) <span class="op">&gt;</span> <span class="dv">1</span> <span class="kw">and</span> <span class="bu">len</span>(min_peaks) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
-<span id="cb2-11"><a href="#cb2-11"></a>        upper_env <span class="op">=</span> CubicSpline(t[max_peaks], signal[max_peaks])(t)</span>
-<span id="cb2-12"><a href="#cb2-12"></a>        lower_env <span class="op">=</span> CubicSpline(t[min_peaks], signal[min_peaks])(t)</span>
-<span id="cb2-13"><a href="#cb2-13"></a>        </span>
-<span id="cb2-14"><a href="#cb2-14"></a>        <span class="co"># 평균 곡선 계산</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a>        mean_env <span class="op">=</span> (upper_env <span class="op">+</span> lower_env) <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a>        </span>
-<span id="cb2-17"><a href="#cb2-17"></a>        <span class="co"># IMF 갱신</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a>        imf <span class="op">=</span> signal <span class="op">-</span> mean_env</span>
-<span id="cb2-19"><a href="#cb2-19"></a>        </span>
-<span id="cb2-20"><a href="#cb2-20"></a>        <span class="cf">return</span> imf, upper_env, lower_env, mean_env</span>
-<span id="cb2-21"><a href="#cb2-21"></a>    <span class="cf">else</span>:</span>
-<span id="cb2-22"><a href="#cb2-22"></a>        <span class="cf">return</span> signal, np.zeros_like(signal), np.zeros_like(signal), np.zeros_like(signal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9192034a-4a53-4d23-8d9b-ed49910bef77" class="cell" data-tags="[]" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> matplotlib.backends.backend_pdf <span class="im">import</span> PdfPages</span>
+<span id="cb2-2"><a href="#cb2-2"></a>plt.rcParams.update({</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="st">"text.usetex"</span>: <span class="va">True</span>,</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#    "font.family": "Helvetica"</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9192034a-4a53-4d23-8d9b-ed49910bef77" class="cell" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> matplotlib.backends.backend_pdf <span class="im">import</span> PdfPages</span>
-<span id="cb3-2"><a href="#cb3-2"></a>plt.rcParams.update({</span>
-<span id="cb3-3"><a href="#cb3-3"></a>    <span class="st">"text.usetex"</span>: <span class="va">True</span>,</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#    "font.family": "Helvetica"</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="8899e9c5-f54e-461a-b80f-d914ddd0206b" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># 초기 신호 설정</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="co"># 샘플링 주파수 및 시간 축 설정</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>fs <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span> <span class="op">*</span> fs, endpoint<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># 두 개의 주파수를 가진 신호 생성</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>signal <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">5</span> <span class="op">*</span> t) <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">25</span> <span class="op">*</span> t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f85097bc" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 초기 신호 설정</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># 샘플링 주파수 및 시간 축 설정</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>fs <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span> <span class="op">*</span> fs, endpoint<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># 두 개의 주파수를 가진 신호 생성</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>signal <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">5</span> <span class="op">*</span> t) <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">25</span> <span class="op">*</span> t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="이산형-신호" class="level3">
 <h3 class="anchored" data-anchor-id="이산형-신호">이산형 신호</h3>
@@ -339,160 +336,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="체거름과정-시각화" class="level1">
 <h1>체거름과정 시각화</h1>
-<div id="150c2afd-612b-4253-b7e3-7b5ce2ab72de" class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># # 두 개의 주파수를 가진 신호 생성</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># signal = np.sin(2 * np.pi * 5 * t) + 0.5 * np.sin(2 * np.pi * 25 * t)</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># residual = signal</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># imfs = []</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># imf, upper_env, lower_env, mean_env = sift_once(residual, t)</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># imfs.append(imf)</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co"># with PdfPages('sifting_process.pdf') as pdf:</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#     plt.figure(figsize=(15, 10))</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#     plt.subplot(3, 2, 1)</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#     plt.plot(t, residual, 'b', label='Original Signal')</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#     plt.plot(t, upper_env, 'orange', label='Upper Envelope',linestyle='dotted')</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#     plt.plot(t, lower_env, 'orange', label='Lower Envelope',linestyle='dotted')</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#     plt.plot(t, mean_env, 'r', label='Mean Envelope',linestyle='dashed')</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#     plt.title(f"Sifting Process Iteration 1")</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#     plt.xlabel("Time [s]")</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#     plt.ylabel("Amplitude")</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="co">#     plt.legend()</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="co">#     plt.subplot(3, 2, 2)</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="co">#     plt.plot(t, imf, 'b', label='IMF')</span></span>
-<span id="cb5-23"><a href="#cb5-23"></a><span class="co">#     plt.title(f"Intrinsic Mode Function 1")</span></span>
-<span id="cb5-24"><a href="#cb5-24"></a><span class="co">#     plt.xlabel("Time [s]")</span></span>
-<span id="cb5-25"><a href="#cb5-25"></a><span class="co">#     plt.ylabel("Amplitude")</span></span>
-<span id="cb5-26"><a href="#cb5-26"></a><span class="co">#     plt.legend()</span></span>
-<span id="cb5-27"><a href="#cb5-27"></a></span>
-<span id="cb5-28"><a href="#cb5-28"></a><span class="co">#     # 남은 신호 업데이트</span></span>
-<span id="cb5-29"><a href="#cb5-29"></a><span class="co">#     residual -= imf</span></span>
-<span id="cb5-30"><a href="#cb5-30"></a><span class="co">#     imf, upper_env, lower_env, mean_env = sift_once(residual, t)</span></span>
-<span id="cb5-31"><a href="#cb5-31"></a><span class="co">#     imfs.append(imf)</span></span>
-<span id="cb5-32"><a href="#cb5-32"></a></span>
-<span id="cb5-33"><a href="#cb5-33"></a><span class="co">#     plt.subplot(3, 2, 3)</span></span>
-<span id="cb5-34"><a href="#cb5-34"></a><span class="co">#     plt.plot(t, residual, 'b', label='Residual')</span></span>
-<span id="cb5-35"><a href="#cb5-35"></a><span class="co">#     plt.plot(t, upper_env, 'orange', label='Upper Envelope',linestyle='dotted')</span></span>
-<span id="cb5-36"><a href="#cb5-36"></a><span class="co">#     plt.plot(t, lower_env, 'orange', label='Lower Envelope',linestyle='dotted')</span></span>
-<span id="cb5-37"><a href="#cb5-37"></a><span class="co">#     plt.plot(t, mean_env, 'r', label='Mean Envelope',linestyle='dashed')</span></span>
-<span id="cb5-38"><a href="#cb5-38"></a><span class="co">#     plt.title(r"Sifting Process Iteration 2")</span></span>
-<span id="cb5-39"><a href="#cb5-39"></a><span class="co">#     plt.xlabel("Time [s]")</span></span>
-<span id="cb5-40"><a href="#cb5-40"></a><span class="co">#     plt.ylabel("Amplitude")</span></span>
-<span id="cb5-41"><a href="#cb5-41"></a><span class="co">#     plt.legend()</span></span>
-<span id="cb5-42"><a href="#cb5-42"></a></span>
-<span id="cb5-43"><a href="#cb5-43"></a><span class="co">#     plt.subplot(3, 2, 4)</span></span>
-<span id="cb5-44"><a href="#cb5-44"></a><span class="co">#     plt.plot(t, imf, 'b', label='IMF')</span></span>
-<span id="cb5-45"><a href="#cb5-45"></a><span class="co">#     plt.title(f"Intrinsic Mode Function 2")</span></span>
-<span id="cb5-46"><a href="#cb5-46"></a><span class="co">#     plt.xlabel("Time [s]")</span></span>
-<span id="cb5-47"><a href="#cb5-47"></a><span class="co">#     plt.ylabel("Amplitude")</span></span>
-<span id="cb5-48"><a href="#cb5-48"></a><span class="co">#     plt.legend()</span></span>
-<span id="cb5-49"><a href="#cb5-49"></a></span>
-<span id="cb5-50"><a href="#cb5-50"></a><span class="co">#     # 남은 신호 업데이트</span></span>
-<span id="cb5-51"><a href="#cb5-51"></a><span class="co">#     residual -= imf</span></span>
-<span id="cb5-52"><a href="#cb5-52"></a><span class="co">#     imf, upper_env, lower_env, mean_env = sift_once(residual, t)</span></span>
-<span id="cb5-53"><a href="#cb5-53"></a><span class="co">#     imfs.append(imf)</span></span>
-<span id="cb5-54"><a href="#cb5-54"></a></span>
-<span id="cb5-55"><a href="#cb5-55"></a></span>
-<span id="cb5-56"><a href="#cb5-56"></a><span class="co">#     plt.subplot(3, 2, 5)</span></span>
-<span id="cb5-57"><a href="#cb5-57"></a><span class="co">#     plt.plot(t, residual, 'b', label='Residual')</span></span>
-<span id="cb5-58"><a href="#cb5-58"></a><span class="co">#     # plt.plot(t, upper_env, 'r', label='Upper Envelope',alpha=0.5,linestyle='dotted')</span></span>
-<span id="cb5-59"><a href="#cb5-59"></a><span class="co">#     # plt.plot(t, lower_env, 'g', label='Lower Envelope',alpha=0.5,linestyle='dotted')</span></span>
-<span id="cb5-60"><a href="#cb5-60"></a><span class="co">#     # plt.plot(t, mean_env, 'orange', label='Mean Envelope',linestyle='dashed')</span></span>
-<span id="cb5-61"><a href="#cb5-61"></a><span class="co">#     plt.title(f"Sifting Process Iteration 3")</span></span>
-<span id="cb5-62"><a href="#cb5-62"></a><span class="co">#     plt.xlabel("Time [s]")</span></span>
-<span id="cb5-63"><a href="#cb5-63"></a><span class="co">#     plt.ylabel("Amplitude")</span></span>
-<span id="cb5-64"><a href="#cb5-64"></a><span class="co">#     plt.legend()</span></span>
-<span id="cb5-65"><a href="#cb5-65"></a></span>
-<span id="cb5-66"><a href="#cb5-66"></a><span class="co">#     # plt.subplot(3, 2, 6)</span></span>
-<span id="cb5-67"><a href="#cb5-67"></a><span class="co">#     # plt.plot(t, imf, 'b', label='IMF')</span></span>
-<span id="cb5-68"><a href="#cb5-68"></a><span class="co">#     # plt.title(f"Intrinsic Mode Function 3")</span></span>
-<span id="cb5-69"><a href="#cb5-69"></a><span class="co">#     # plt.xlabel("Time [s]")</span></span>
-<span id="cb5-70"><a href="#cb5-70"></a><span class="co">#     # plt.ylabel("Amplitude")</span></span>
-<span id="cb5-71"><a href="#cb5-71"></a><span class="co">#     # plt.legend()</span></span>
-<span id="cb5-72"><a href="#cb5-72"></a></span>
-<span id="cb5-73"><a href="#cb5-73"></a><span class="co">#     plt.tight_layout()</span></span>
-<span id="cb5-74"><a href="#cb5-74"></a><span class="co">#     pdf.savefig(dpi=300)</span></span>
-<span id="cb5-75"><a href="#cb5-75"></a><span class="co">#     plt.close()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="27855dea-f1ef-4a20-9800-bd8c78c110ff" class="cell" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># 두 개의 주파수를 가진 신호 생성</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>signal <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">5</span> <span class="op">*</span> t) <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">25</span> <span class="op">*</span> t)</span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a>residual <span class="op">=</span> signal</span>
-<span id="cb6-5"><a href="#cb6-5"></a>imfs <span class="op">=</span> []</span>
-<span id="cb6-6"><a href="#cb6-6"></a>imf, upper_env, lower_env, mean_env <span class="op">=</span> sift_once(residual, t)</span>
-<span id="cb6-7"><a href="#cb6-7"></a>imfs.append(imf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="f71ddae1-f75b-42ee-a475-98ad3d0e849f" class="cell" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">10</span>))</span>
-<span id="cb7-2"><a href="#cb7-2"></a>plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>plt.plot(t, residual, <span class="st">'b'</span>, label<span class="op">=</span><span class="st">'Original Signal'</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>plt.plot(t, upper_env, <span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Upper Envelope'</span>,linestyle<span class="op">=</span><span class="st">'dotted'</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>plt.plot(t, lower_env, <span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Lower Envelope'</span>,linestyle<span class="op">=</span><span class="st">'dotted'</span>)</span>
-<span id="cb7-6"><a href="#cb7-6"></a>plt.plot(t, mean_env, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Mean Envelope'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
-<span id="cb7-7"><a href="#cb7-7"></a>plt.title(<span class="ss">f"Sifting Process Iteration 1"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
-<span id="cb7-9"><a href="#cb7-9"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
-<span id="cb7-10"><a href="#cb7-10"></a>plt.legend()</span>
-<span id="cb7-11"><a href="#cb7-11"></a></span>
-<span id="cb7-12"><a href="#cb7-12"></a>plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb7-13"><a href="#cb7-13"></a>plt.plot(t, imf, <span class="st">'b'</span>, label<span class="op">=</span><span class="st">'IMF'</span>)</span>
-<span id="cb7-14"><a href="#cb7-14"></a>plt.title(<span class="ss">f"Intrinsic Mode Function 1"</span>)</span>
-<span id="cb7-15"><a href="#cb7-15"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
-<span id="cb7-16"><a href="#cb7-16"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
-<span id="cb7-17"><a href="#cb7-17"></a>plt.legend()</span>
-<span id="cb7-18"><a href="#cb7-18"></a></span>
-<span id="cb7-19"><a href="#cb7-19"></a><span class="co"># 남은 신호 업데이트</span></span>
-<span id="cb7-20"><a href="#cb7-20"></a>residual <span class="op">-=</span> imf</span>
-<span id="cb7-21"><a href="#cb7-21"></a>imf, upper_env, lower_env, mean_env <span class="op">=</span> sift_once(residual, t)</span>
-<span id="cb7-22"><a href="#cb7-22"></a>imfs.append(imf)</span>
-<span id="cb7-23"><a href="#cb7-23"></a></span>
-<span id="cb7-24"><a href="#cb7-24"></a>plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb7-25"><a href="#cb7-25"></a>plt.plot(t, residual, <span class="st">'b'</span>, label<span class="op">=</span><span class="st">'Residual'</span>)</span>
-<span id="cb7-26"><a href="#cb7-26"></a>plt.plot(t, upper_env, <span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Upper Envelope'</span>,linestyle<span class="op">=</span><span class="st">'dotted'</span>)</span>
-<span id="cb7-27"><a href="#cb7-27"></a>plt.plot(t, lower_env, <span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Lower Envelope'</span>,linestyle<span class="op">=</span><span class="st">'dotted'</span>)</span>
-<span id="cb7-28"><a href="#cb7-28"></a>plt.plot(t, mean_env, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Mean Envelope'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
-<span id="cb7-29"><a href="#cb7-29"></a>plt.title(<span class="vs">r"Sifting Process Iteration 2"</span>)</span>
-<span id="cb7-30"><a href="#cb7-30"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
-<span id="cb7-31"><a href="#cb7-31"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
-<span id="cb7-32"><a href="#cb7-32"></a>plt.legend()</span>
-<span id="cb7-33"><a href="#cb7-33"></a></span>
-<span id="cb7-34"><a href="#cb7-34"></a>plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb7-35"><a href="#cb7-35"></a>plt.plot(t, imf, <span class="st">'b'</span>, label<span class="op">=</span><span class="st">'IMF'</span>)</span>
-<span id="cb7-36"><a href="#cb7-36"></a>plt.title(<span class="ss">f"Intrinsic Mode Function 2"</span>)</span>
-<span id="cb7-37"><a href="#cb7-37"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
-<span id="cb7-38"><a href="#cb7-38"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
-<span id="cb7-39"><a href="#cb7-39"></a>plt.legend()</span>
-<span id="cb7-40"><a href="#cb7-40"></a></span>
-<span id="cb7-41"><a href="#cb7-41"></a><span class="co"># 남은 신호 업데이트</span></span>
-<span id="cb7-42"><a href="#cb7-42"></a>residual <span class="op">-=</span> imf</span>
-<span id="cb7-43"><a href="#cb7-43"></a>imf, upper_env, lower_env, mean_env <span class="op">=</span> sift_once(residual, t)</span>
-<span id="cb7-44"><a href="#cb7-44"></a>imfs.append(imf)</span>
-<span id="cb7-45"><a href="#cb7-45"></a></span>
-<span id="cb7-46"><a href="#cb7-46"></a></span>
-<span id="cb7-47"><a href="#cb7-47"></a>plt.subplot(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>)</span>
-<span id="cb7-48"><a href="#cb7-48"></a>plt.plot(t, residual, <span class="st">'b'</span>, label<span class="op">=</span><span class="st">'Residual'</span>)</span>
-<span id="cb7-49"><a href="#cb7-49"></a>plt.title(<span class="ss">f"Sifting Process Iteration 3"</span>)</span>
-<span id="cb7-50"><a href="#cb7-50"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
-<span id="cb7-51"><a href="#cb7-51"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
-<span id="cb7-52"><a href="#cb7-52"></a>plt.legend()</span>
-<span id="cb7-53"><a href="#cb7-53"></a></span>
-<span id="cb7-54"><a href="#cb7-54"></a>plt.tight_layout()</span>
-<span id="cb7-55"><a href="#cb7-55"></a>fig <span class="op">=</span> plt.gcf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div id="f71ddae1-f75b-42ee-a475-98ad3d0e849f" class="cell" data-tags="[]" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># 두 개의 주파수를 가진 신호 생성</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>signal <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">5</span> <span class="op">*</span> t) <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">25</span> <span class="op">*</span> t)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>residual <span class="op">=</span> signal</span>
+<span id="cb4-4"><a href="#cb4-4"></a>imfs <span class="op">=</span> []</span>
+<span id="cb4-5"><a href="#cb4-5"></a>imf, upper_env, lower_env, mean_env <span class="op">=</span> sift_once(residual, t)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>imfs.append(imf)</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a>plt.subplot(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a>plt.plot(t, residual, <span class="st">'k'</span>, label<span class="op">=</span><span class="vs">r'Original Signal $s^{(1)}_n$'</span>)</span>
+<span id="cb4-12"><a href="#cb4-12"></a>plt.plot(t, upper_env, <span class="st">'orange'</span>, label<span class="op">=</span><span class="vs">r'Upper Envelope $u^{(1)}_n$'</span>, linestyle<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb4-13"><a href="#cb4-13"></a>plt.plot(t, lower_env, <span class="st">'orange'</span>, label<span class="op">=</span><span class="vs">r'Lower Envelope $l^{(1)}_n$'</span>, linestyle<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb4-14"><a href="#cb4-14"></a>plt.plot(t, mean_env, <span class="st">'r'</span>, label<span class="op">=</span><span class="vs">r'Mean $m^{(1)}_n$'</span>, linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb4-15"><a href="#cb4-15"></a>plt.title(<span class="ss">f"Sifting Process Iteration 1"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
+<span id="cb4-18"><a href="#cb4-18"></a>plt.legend()</span>
+<span id="cb4-19"><a href="#cb4-19"></a></span>
+<span id="cb4-20"><a href="#cb4-20"></a>plt.subplot(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb4-21"><a href="#cb4-21"></a>plt.plot(t, imf, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'IMF1 $h^{(1)}_n=s^{(1)}_n-m^{(1)}_n$'</span>)</span>
+<span id="cb4-22"><a href="#cb4-22"></a>plt.title(<span class="ss">f"Intrinsic Mode Function 1"</span>)</span>
+<span id="cb4-23"><a href="#cb4-23"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
+<span id="cb4-24"><a href="#cb4-24"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
+<span id="cb4-25"><a href="#cb4-25"></a>plt.legend()</span>
+<span id="cb4-26"><a href="#cb4-26"></a></span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="co"># 남은 신호 업데이트</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a>residual <span class="op">-=</span> imf</span>
+<span id="cb4-29"><a href="#cb4-29"></a>imf, upper_env, lower_env, mean_env <span class="op">=</span> sift_once(residual, t)</span>
+<span id="cb4-30"><a href="#cb4-30"></a>imfs.append(imf)</span>
+<span id="cb4-31"><a href="#cb4-31"></a></span>
+<span id="cb4-32"><a href="#cb4-32"></a>plt.subplot(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb4-33"><a href="#cb4-33"></a>plt.plot(t, residual, <span class="st">'k'</span>, label<span class="op">=</span><span class="vs">r'$s^{(2)}_n=s^{(1)}_n-h^{(1)}_n$'</span>)</span>
+<span id="cb4-34"><a href="#cb4-34"></a>plt.plot(t, upper_env, <span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Upper Envelope $u^{(2)}_n$'</span>, linestyle<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb4-35"><a href="#cb4-35"></a>plt.plot(t, lower_env, <span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Lower Envelope $l^{(2)}_n$'</span>, linestyle<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb4-36"><a href="#cb4-36"></a>plt.plot(t, mean_env, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Mean $m^{(2)}_n$'</span>, linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb4-37"><a href="#cb4-37"></a>plt.title(<span class="vs">r"Sifting Process Iteration 2"</span>)</span>
+<span id="cb4-38"><a href="#cb4-38"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
+<span id="cb4-39"><a href="#cb4-39"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
+<span id="cb4-40"><a href="#cb4-40"></a>plt.legend()</span>
+<span id="cb4-41"><a href="#cb4-41"></a></span>
+<span id="cb4-42"><a href="#cb4-42"></a>plt.subplot(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb4-43"><a href="#cb4-43"></a>plt.plot(t, imf, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'IMF2 $h^{(2)}_n=s^{(2)}_n-m^{(2)}_n$'</span>)</span>
+<span id="cb4-44"><a href="#cb4-44"></a>plt.title(<span class="ss">f"Intrinsic Mode Function 2"</span>)</span>
+<span id="cb4-45"><a href="#cb4-45"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
+<span id="cb4-46"><a href="#cb4-46"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
+<span id="cb4-47"><a href="#cb4-47"></a>plt.legend()</span>
+<span id="cb4-48"><a href="#cb4-48"></a></span>
+<span id="cb4-49"><a href="#cb4-49"></a><span class="co"># 남은 신호 업데이트</span></span>
+<span id="cb4-50"><a href="#cb4-50"></a>residual <span class="op">-=</span> imf</span>
+<span id="cb4-51"><a href="#cb4-51"></a>imf, upper_env, lower_env, mean_env <span class="op">=</span> sift_once(residual, t)</span>
+<span id="cb4-52"><a href="#cb4-52"></a>imfs.append(imf)</span>
+<span id="cb4-53"><a href="#cb4-53"></a></span>
+<span id="cb4-54"><a href="#cb4-54"></a>plt.subplot(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb4-55"><a href="#cb4-55"></a>plt.plot(t, residual, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Residual $s^{(3)}_n=s^{(2)}_n-h^{(2)}_n$'</span>)</span>
+<span id="cb4-56"><a href="#cb4-56"></a>plt.title(<span class="ss">f"Sifting Process Iteration 3"</span>)</span>
+<span id="cb4-57"><a href="#cb4-57"></a>plt.xlabel(<span class="st">"Time [s]"</span>)</span>
+<span id="cb4-58"><a href="#cb4-58"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
+<span id="cb4-59"><a href="#cb4-59"></a>plt.legend()</span>
+<span id="cb4-60"><a href="#cb4-60"></a></span>
+<span id="cb4-61"><a href="#cb4-61"></a>plt.tight_layout()</span>
+<span id="cb4-62"><a href="#cb4-62"></a>fig <span class="op">=</span> plt.gcf()</span>
+<span id="cb4-63"><a href="#cb4-63"></a></span>
+<span id="cb4-64"><a href="#cb4-64"></a><span class="cf">with</span> PdfPages(<span class="st">'./Dropbox/03_Yechan3/연구/교수님이랑/MS_Review/sifting_process.pdf'</span>) <span class="im">as</span> pdf:</span>
+<span id="cb4-65"><a href="#cb4-65"></a>    pdf.savefig(fig, dpi<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb4-66"><a href="#cb4-66"></a>    plt.close(fig)</span>
+<span id="cb4-67"><a href="#cb4-67"></a></span>
+<span id="cb4-68"><a href="#cb4-68"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
 <div>
 <figure class="figure">
-<p><img src="EMD_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="EMD_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-</div>
-<div id="374a1809-4c3b-4113-811d-ffc41ab457d7" class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">with</span> PdfPages(<span class="st">'sifting_process.pdf'</span>) <span class="im">as</span> pdf:</span>
-<span id="cb8-2"><a href="#cb8-2"></a>    pdf.savefig(fig, dpi<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>    plt.close(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
