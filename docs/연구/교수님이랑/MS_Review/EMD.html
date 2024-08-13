@@ -281,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="9fbd3821-6bd3-4fad-8edc-0c2498ef3da6" class="cell" data-tags="[]">
+<div id="9fbd3821-6bd3-4fad-8edc-0c2498ef3da6" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> scipy.interpolate <span class="im">import</span> CubicSpline</span>
@@ -305,14 +305,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-21"><a href="#cb1-21"></a>    <span class="cf">else</span>:</span>
 <span id="cb1-22"><a href="#cb1-22"></a>        <span class="cf">return</span> signal, np.zeros_like(signal), np.zeros_like(signal), np.zeros_like(signal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9192034a-4a53-4d23-8d9b-ed49910bef77" class="cell" data-tags="[]" data-execution_count="34">
+<div id="9192034a-4a53-4d23-8d9b-ed49910bef77" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> matplotlib.backends.backend_pdf <span class="im">import</span> PdfPages</span>
 <span id="cb2-2"><a href="#cb2-2"></a>plt.rcParams.update({</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    <span class="st">"text.usetex"</span>: <span class="va">True</span>,</span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="co">#    "font.family": "Helvetica"</span></span>
 <span id="cb2-5"><a href="#cb2-5"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f85097bc" class="cell" data-execution_count="35">
+<div id="f85097bc" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 초기 신호 설정</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co"># 샘플링 주파수 및 시간 축 설정</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>fs <span class="op">=</span> <span class="dv">1000</span></span>
@@ -336,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="체거름과정-시각화" class="level1">
 <h1>체거름과정 시각화</h1>
-<div id="f71ddae1-f75b-42ee-a475-98ad3d0e849f" class="cell" data-tags="[]" data-execution_count="53">
+<div id="f71ddae1-f75b-42ee-a475-98ad3d0e849f" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># 두 개의 주파수를 가진 신호 생성</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>signal <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">5</span> <span class="op">*</span> t) <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">25</span> <span class="op">*</span> t)</span>
 <span id="cb4-3"><a href="#cb4-3"></a>residual <span class="op">=</span> signal</span>

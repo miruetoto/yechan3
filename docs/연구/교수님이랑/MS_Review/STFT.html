@@ -301,7 +301,7 @@ x(t) = \sin \left( 2 \pi \left( 50t + \frac{300 - 50}{2} \frac{t^2}{2} \right) \
 x(t) = \sin \left( 2 \pi \left( 50t + 125t^2 \right) \right)
 \]</span></p>
 <p>이 수식은 시간 <span class="math inline">\(t\)</span> 에 따라 주파수가 선형적으로 증가하는 신호를 정확하게 나타냅니다.</p>
-<div id="94976c6f" class="cell" data-execution_count="20">
+<div id="94976c6f" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> scipy.fft <span class="im">import</span> fft, fftfreq</span>
@@ -326,7 +326,7 @@ x(t) = \sin \left( 2 \pi \left( 50t + 125t^2 \right) \right)
 <span id="cb1-22"><a href="#cb1-22"></a><span class="co"># 주파수가 선형적으로 증가하는 신호 생성</span></span>
 <span id="cb1-23"><a href="#cb1-23"></a>f0 <span class="op">=</span> <span class="dv">50</span>  <span class="co"># 시작 주파수</span></span>
 <span id="cb1-24"><a href="#cb1-24"></a>f1 <span class="op">=</span> <span class="dv">300</span>  <span class="co"># 종료 주파수</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a>signal <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> (f0 <span class="op">+</span> (f1 <span class="op">-</span> f0) <span class="op">*</span> t <span class="op">/</span> <span class="dv">2</span>) <span class="op">*</span> t)</span>
+<span id="cb1-25"><a href="#cb1-25"></a>signal <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> (f0 <span class="op">+</span> (f1 <span class="op">-</span> f0)<span class="op">/</span><span class="dv">2</span> <span class="op">*</span> t<span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> t)</span>
 <span id="cb1-26"><a href="#cb1-26"></a></span>
 <span id="cb1-27"><a href="#cb1-27"></a><span class="co"># 푸리에 변환 수행</span></span>
 <span id="cb1-28"><a href="#cb1-28"></a>yf <span class="op">=</span> fft(signal)</span>
@@ -349,14 +349,14 @@ x(t) = \sin \left( 2 \pi \left( 50t + 125t^2 \right) \right)
 <span id="cb1-45"><a href="#cb1-45"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Frequency Spectrum: DFT of the Signal"</span>)</span>
 <span id="cb1-46"><a href="#cb1-46"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">"Frequency [Hz]"</span>)</span>
 <span id="cb1-47"><a href="#cb1-47"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">"Amplitude"</span>)</span>
-<span id="cb1-48"><a href="#cb1-48"></a>axes[<span class="dv">1</span>].set_xlim(<span class="dv">0</span>, <span class="dv">500</span>)</span>
+<span id="cb1-48"><a href="#cb1-48"></a>axes[<span class="dv">1</span>].set_xlim(<span class="dv">0</span>, <span class="dv">400</span>)</span>
 <span id="cb1-49"><a href="#cb1-49"></a></span>
 <span id="cb1-50"><a href="#cb1-50"></a><span class="co"># STFT 결과</span></span>
 <span id="cb1-51"><a href="#cb1-51"></a>im <span class="op">=</span> axes[<span class="dv">2</span>].pcolormesh(t_stft, f, np.<span class="bu">abs</span>(Zxx), shading<span class="op">=</span><span class="st">'gouraud'</span>, cmap<span class="op">=</span>cmap)</span>
 <span id="cb1-52"><a href="#cb1-52"></a>axes[<span class="dv">2</span>].set_title(<span class="st">"Spectrogram: DSTFT of the Signal"</span>)</span>
 <span id="cb1-53"><a href="#cb1-53"></a>axes[<span class="dv">2</span>].set_xlabel(<span class="st">"Time [s]"</span>)</span>
 <span id="cb1-54"><a href="#cb1-54"></a>axes[<span class="dv">2</span>].set_ylabel(<span class="st">"Frequency [Hz]"</span>)</span>
-<span id="cb1-55"><a href="#cb1-55"></a>axes[<span class="dv">2</span>].set_ylim(<span class="dv">0</span>, <span class="dv">500</span>)</span>
+<span id="cb1-55"><a href="#cb1-55"></a>axes[<span class="dv">2</span>].set_ylim(<span class="dv">0</span>, <span class="dv">400</span>)</span>
 <span id="cb1-56"><a href="#cb1-56"></a></span>
 <span id="cb1-57"><a href="#cb1-57"></a><span class="co"># Color bar below the STFT plot</span></span>
 <span id="cb1-58"><a href="#cb1-58"></a>cbar <span class="op">=</span> fig.colorbar(im, ax<span class="op">=</span>axes[<span class="dv">2</span>], orientation<span class="op">=</span><span class="st">'horizontal'</span>, pad<span class="op">=</span><span class="fl">0.2</span>)</span>

@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -240,7 +243,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#a.-signal" id="toc-a.-signal" class="nav-link active" data-scroll-target="#a.-signal">A. signal</a></li>
-  <li><a href="#b." id="toc-b." class="nav-link" data-scroll-target="#b.">B.</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2024-07-30-ECGVIS.out.ipynb" download="2024-07-30-ECGVIS.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -278,30 +280,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="ec71dc63-8036-4318-b4d9-51a639fdc118" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
+<div id="ec71dc63-8036-4318-b4d9-51a639fdc118" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="112">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(devtools)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">install_github</span>(<span class="st">"guebin/EBT"</span>,<span class="at">force=</span><span class="cn">TRUE</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(ebt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(ebt)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(wavelets)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(phonTools)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(fields)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">library</span>(wavScalogram)</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu">library</span>(magick)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: usethis
-
-Downloading GitHub repo guebin/EBT@HEAD
-
-── Attaching core tidyverse packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre><code>Downloading GitHub repo guebin/EBT@HEAD
+</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>── R CMD build ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-✔  checking for file ‘/tmp/RtmpuHgN5w/remotes90472302a4357/guebin-EBT-5d28259/DESCRIPTION’
+✔  checking for file ‘/tmp/RtmpnL4DDZ/remotes920376f46111/guebin-EBT-f065664/DESCRIPTION’
 ─  preparing ‘ebt’:
 ✔  checking DESCRIPTION meta-information
 ─  checking for LF line-endings in source and make files and shell scripts
@@ -314,158 +310,158 @@ Downloading GitHub repo guebin/EBT@HEAD
 </div>
 <section id="a.-signal" class="level2">
 <h2 class="anchored" data-anchor-id="a.-signal">A. signal</h2>
-<div id="865144a2-2197-4a54-88ff-148b01d21ec8" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(wavelets)</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">data</span>(ecg)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>f<span class="ot">&lt;-</span><span class="fu">as.vector</span>(ecg)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>t<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">11.37</span>,<span class="at">length=</span><span class="dv">2048</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>fs<span class="ot">&lt;-</span><span class="dv">180</span> </span>
-<span id="cb4-6"><a href="#cb4-6"></a>maxtau<span class="ot">=</span><span class="dv">180</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>len<span class="ot">&lt;-</span><span class="fu">length</span>(f)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>ecg_mvmap <span class="ot">&lt;-</span> <span class="fu">mvmap</span>(f,<span class="at">maxtau =</span> maxtau)</span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="fu">save</span>(ecg_mvmap, <span class="at">file =</span> <span class="st">"ecg_mvmap_0730.RData"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="fu">load</span>(<span class="st">"ecg_mvmap_0730.RData"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11"></a>v_map<span class="ot">&lt;-</span>ecg_mvmap<span class="sc">$</span>vmap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="865144a2-2197-4a54-88ff-148b01d21ec8" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="113">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">data</span>(ecg)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>f<span class="ot">&lt;-</span><span class="fu">as.vector</span>(ecg)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>t<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">11.37</span>,<span class="at">length=</span><span class="dv">2048</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>fs<span class="ot">&lt;-</span><span class="dv">180</span> </span>
+<span id="cb4-5"><a href="#cb4-5"></a>maxtau<span class="ot">=</span><span class="dv">225</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>len<span class="ot">&lt;-</span><span class="fu">length</span>(f)</span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#ecg_mvmap &lt;- mvmap(f,maxtau = maxtau)</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#save(ecg_mvmap, file = "./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_mvmap_0730.RData")</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="fu">load</span>(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_mvmap_0730.RData"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10"></a>v_map<span class="ot">&lt;-</span>ecg_mvmap<span class="sc">$</span>vmap</span>
+<span id="cb4-11"><a href="#cb4-11"></a>temp<span class="ot">&lt;-</span><span class="fu">spectrogram</span>(f,<span class="at">fs=</span><span class="dv">180</span>,<span class="at">windowlength =</span> <span class="fl">612.5</span>,<span class="at">show=</span>F)<span class="sc">$</span>spectrogram</span>
+<span id="cb4-12"><a href="#cb4-12"></a>spec_rslt <span class="ot">&lt;-</span><span class="fu">spectrogram</span>(f,<span class="at">fs=</span><span class="dv">180</span>,<span class="at">windowlength =</span> <span class="fl">612.5</span>,<span class="at">show=</span>F)<span class="sc">$</span>spectrogram</span>
+<span id="cb4-13"><a href="#cb4-13"></a>scalo_rslt <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">cwt_wst</span>(f,<span class="at">makefigure=</span><span class="cn">FALSE</span>)<span class="sc">$</span>coef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1189bf1b-ffcb-4c2f-bd52-d6ad6159df92" class="cell" data-execution_count="194">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># 필요 패키지 로드</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(phonTools)</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(fields)</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># 데이터 준비</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="fu">data</span>(ecg)</span>
-<span id="cb5-8"><a href="#cb5-8"></a>f <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(ecg)</span>
-<span id="cb5-9"><a href="#cb5-9"></a>fs <span class="ot">&lt;-</span> <span class="dv">180</span>  <span class="co"># 샘플링 주파수 180 Hz</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a>n_samples <span class="ot">&lt;-</span> <span class="fu">length</span>(f)</span>
-<span id="cb5-11"><a href="#cb5-11"></a>t_total <span class="ot">&lt;-</span> n_samples <span class="sc">/</span> fs  <span class="co"># 전체 시간 길이 계산</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a>t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, t_total, <span class="at">length =</span> n_samples)</span>
-<span id="cb5-13"><a href="#cb5-13"></a></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co"># 스펙트로그램 계산</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a>window_length <span class="ot">&lt;-</span> <span class="dv">256</span>  <span class="co"># 윈도우 길이를 256 샘플로 설정</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a>spec_result <span class="ot">&lt;-</span> <span class="fu">spectrogram</span>(f, <span class="at">fs =</span> fs, <span class="at">windowlength =</span> window_length, <span class="at">show =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-17"><a href="#cb5-17"></a>spectrogram_data <span class="ot">&lt;-</span> spec_result<span class="sc">$</span>spectrogram</span>
-<span id="cb5-18"><a href="#cb5-18"></a>time_spec <span class="ot">&lt;-</span> spec_result<span class="sc">$</span>time</span>
-<span id="cb5-19"><a href="#cb5-19"></a>freq_spec <span class="ot">&lt;-</span> spec_result<span class="sc">$</span>frequency</span>
-<span id="cb5-20"><a href="#cb5-20"></a></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="co"># 그래프 영역을 2x1 배열로 설정</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb5-23"><a href="#cb5-23"></a></span>
-<span id="cb5-24"><a href="#cb5-24"></a><span class="co"># 첫 번째 그래프: ECG 신호의 선형 플롯</span></span>
-<span id="cb5-25"><a href="#cb5-25"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># 아래, 왼쪽, 위, 오른쪽 마진 설정</span></span>
-<span id="cb5-26"><a href="#cb5-26"></a><span class="fu">plot</span>(t, f, <span class="at">type =</span> <span class="st">'l'</span>, <span class="at">main =</span> <span class="st">"ECG signal"</span>, <span class="at">xlab =</span> <span class="st">"Time [s]"</span>, <span class="at">ylab =</span> <span class="st">"Amplitude"</span>)</span>
-<span id="cb5-27"><a href="#cb5-27"></a></span>
-<span id="cb5-28"><a href="#cb5-28"></a><span class="co"># 두 번째 그래프: 스펙트로그램 플롯</span></span>
-<span id="cb5-29"><a href="#cb5-29"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb5-30"><a href="#cb5-30"></a><span class="fu">image.plot</span>(time_spec, freq_spec, <span class="fu">t</span>(spectrogram_data), </span>
-<span id="cb5-31"><a href="#cb5-31"></a>           <span class="at">xlab =</span> <span class="st">"Time (s)"</span>, <span class="at">ylab =</span> <span class="st">"Frequency (Hz)"</span>, <span class="at">main =</span> <span class="st">"Spectrogram"</span>,</span>
-<span id="cb5-32"><a href="#cb5-32"></a>           <span class="at">col =</span> <span class="fu">viridis</span>(<span class="dv">256</span>, <span class="at">option =</span> <span class="st">"magma"</span>))</span>
-<span id="cb5-33"><a href="#cb5-33"></a></span>
-<span id="cb5-34"><a href="#cb5-34"></a><span class="co"># 그래프 배열을 원래 상태로 되돌리기</span></span>
-<span id="cb5-35"><a href="#cb5-35"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="ccd15182-5f26-4eb4-888a-94368690e5a8" class="cell" data-execution_count="195">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">image.plot</span>(time_spec, freq_spec, <span class="fu">t</span>(spectrogram_data), </span>
-<span id="cb6-2"><a href="#cb6-2"></a>           <span class="at">xlab =</span> <span class="st">"Time (s)"</span>, <span class="at">ylab =</span> <span class="st">"Frequency (Hz)"</span>, <span class="at">main =</span> <span class="st">"Spectrogram"</span>,</span>
-<span id="cb6-3"><a href="#cb6-3"></a>           <span class="at">col =</span> <span class="fu">viridis</span>(<span class="dv">256</span>, <span class="at">option =</span> <span class="st">"magma"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning message in min(x, na.rm = na.rm):
-“no non-missing arguments to min; returning Inf”
-Warning message in max(x, na.rm = na.rm):
-“no non-missing arguments to max; returning -Inf”
-Warning message in min(x, na.rm = na.rm):
-“no non-missing arguments to min; returning Inf”
-Warning message in max(x, na.rm = na.rm):
-“no non-missing arguments to max; returning -Inf”</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>ERROR: Error in plot.window(...): need finite 'ylim' values</code></pre>
-</div>
+<div id="c1030314" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="116">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#pdf("./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_comparevis.pdf",width=14,height=18)</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>))</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>,<span class="fl">8.5</span>))</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">plot</span>(t,f, <span class="at">main =</span> <span class="st">"ECG signal"</span>, <span class="at">xlab =</span> <span class="st">"Time [s]"</span>, <span class="at">ylab =</span> <span class="st">"Amplitude"</span>,<span class="at">type=</span><span class="st">'l'</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">3.5</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>))</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="fu">image.plot</span>(</span>
+<span id="cb5-7"><a href="#cb5-7"></a>    <span class="at">x=</span>t,<span class="at">y=</span><span class="dv">50</span><span class="sc">:</span><span class="dv">215</span>,<span class="at">z=</span>v_map[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f),<span class="dv">50</span><span class="sc">:</span><span class="dv">215</span>],</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    <span class="at">xlab =</span> <span class="st">"Time [s]"</span>, <span class="at">ylab =</span> <span class="st">"Scale"</span>, <span class="at">main =</span> <span class="st">"Vmap"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    <span class="at">legend.mar=</span><span class="dv">5</span>, </span>
+<span id="cb5-10"><a href="#cb5-10"></a>    <span class="at">col=</span><span class="fu">viridis</span>(<span class="dv">256</span>, <span class="at">option =</span> <span class="st">"magma"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11"></a>)</span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">3.5</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>))</span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="fu">image.plot</span>(</span>
+<span id="cb5-14"><a href="#cb5-14"></a>    <span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">11.37</span>,<span class="at">length=</span><span class="dv">941</span>),<span class="at">y=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">90</span>,<span class="at">length=</span><span class="dv">617</span>),<span class="at">z=</span>spec_rslt[<span class="dv">1</span><span class="sc">:</span><span class="dv">941</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">617</span>],</span>
+<span id="cb5-15"><a href="#cb5-15"></a>    <span class="at">xlab =</span> <span class="st">"Time [s]"</span>, <span class="at">ylab =</span> <span class="st">"Frequency (Hz)"</span>, <span class="at">main =</span> <span class="st">"Spectrogram"</span>,</span>
+<span id="cb5-16"><a href="#cb5-16"></a>    <span class="at">col=</span><span class="fu">viridis</span>(<span class="dv">256</span>, <span class="at">option =</span> <span class="st">"magma"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17"></a>)</span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">3.5</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>))</span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="fu">image.plot</span>(</span>
+<span id="cb5-20"><a href="#cb5-20"></a>    <span class="at">x=</span>t,<span class="at">z=</span>scalo_rslt,</span>
+<span id="cb5-21"><a href="#cb5-21"></a>    <span class="at">xlab =</span> <span class="st">"Time [s]"</span>, <span class="at">ylab =</span> <span class="st">"Scale"</span>, <span class="at">main =</span> <span class="st">"Scalogram"</span>,</span>
+<span id="cb5-22"><a href="#cb5-22"></a>    <span class="at">col =</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">"purple"</span>, <span class="st">"green"</span>))(<span class="dv">256</span>)</span>
+<span id="cb5-23"><a href="#cb5-23"></a>)</span>
+<span id="cb5-24"><a href="#cb5-24"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="co">#dev.off()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2024-07-30-ECGVIS_files/figure-html/cell-5-output-3.png" class="img-fluid figure-img"></p>
+<p><img src="2024-07-30-ECGVIS_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="25efb06f-336a-471f-991d-62d99a22b5e9" class="cell" data-execution_count="150">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># 첫 번째 그래프: ECG 신호의 선형 플롯</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">plot</span>(t, f, <span class="at">type =</span> <span class="st">'l'</span>, <span class="at">main =</span> <span class="st">"ECG signal"</span>, <span class="at">xlab =</span> <span class="st">"Time [s]"</span>, <span class="at">ylab =</span> <span class="st">"Amplitude"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e58646cf" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">png</span>(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_comparevis.png"</span>,<span class="at">width=</span><span class="dv">2100</span>,<span class="at">height=</span><span class="dv">1800</span>,<span class="at">res=</span><span class="dv">300</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>))</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">4.5</span>,<span class="fl">2.5</span>,<span class="fl">8.5</span>))</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">plot</span>(t,f, <span class="at">main =</span> <span class="st">"ECG signal"</span>, <span class="at">xlab =</span> <span class="st">"Time [s]"</span>, <span class="at">ylab =</span> <span class="st">"Amplitude"</span>,<span class="at">type=</span><span class="st">'l'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">5.5</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>))</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="fu">image.plot</span>(</span>
+<span id="cb6-7"><a href="#cb6-7"></a>    <span class="at">x=</span>t,<span class="at">y=</span><span class="dv">50</span><span class="sc">:</span><span class="dv">215</span>,<span class="at">z=</span>v_map[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f),<span class="dv">50</span><span class="sc">:</span><span class="dv">215</span>],</span>
+<span id="cb6-8"><a href="#cb6-8"></a>    <span class="at">xlab =</span> <span class="st">"Time [s]"</span>, <span class="at">ylab =</span> <span class="st">"Scale"</span>, <span class="at">main =</span> <span class="st">"Vmap"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="at">legend.mar=</span><span class="dv">5</span>, </span>
+<span id="cb6-10"><a href="#cb6-10"></a>    <span class="at">col=</span><span class="fu">viridis</span>(<span class="dv">256</span>, <span class="at">option =</span> <span class="st">"magma"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11"></a>)</span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">5.5</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>))</span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="fu">image.plot</span>(</span>
+<span id="cb6-14"><a href="#cb6-14"></a>    <span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">11.37</span>,<span class="at">length=</span><span class="dv">941</span>),<span class="at">y=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">90</span>,<span class="at">length=</span><span class="dv">617</span>),<span class="at">z=</span>spec_rslt[<span class="dv">1</span><span class="sc">:</span><span class="dv">941</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">617</span>],</span>
+<span id="cb6-15"><a href="#cb6-15"></a>    <span class="at">xlab =</span> <span class="st">"Time [s]"</span>, <span class="at">ylab =</span> <span class="st">"Frequency (Hz)"</span>, <span class="at">main =</span> <span class="st">"Spectrogram"</span>,</span>
+<span id="cb6-16"><a href="#cb6-16"></a>    <span class="at">col=</span><span class="fu">viridis</span>(<span class="dv">256</span>, <span class="at">option =</span> <span class="st">"magma"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17"></a>)</span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">5.5</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>))</span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="fu">image.plot</span>(</span>
+<span id="cb6-20"><a href="#cb6-20"></a>    <span class="at">x=</span>t,<span class="at">z=</span>scalo_rslt,</span>
+<span id="cb6-21"><a href="#cb6-21"></a>    <span class="at">xlab =</span> <span class="st">"Time [s]"</span>, <span class="at">ylab =</span> <span class="st">"Scale"</span>, <span class="at">main =</span> <span class="st">"Scalogram"</span>,</span>
+<span id="cb6-22"><a href="#cb6-22"></a>    <span class="at">col =</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">"purple"</span>, <span class="st">"green"</span>))(<span class="dv">256</span>)</span>
+<span id="cb6-23"><a href="#cb6-23"></a>)</span>
+<span id="cb6-24"><a href="#cb6-24"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb6-25"><a href="#cb6-25"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2024-07-30-ECGVIS_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<strong>png:</strong> 2
 </div>
 </div>
-</div>
-<div id="08fe2202-755b-4ca2-924c-7a15b3bf3511" class="cell" data-execution_count="165">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 두 번째 그래프: 히트맵 플롯</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">image.plot</span>(<span class="at">x =</span> t, <span class="at">y =</span> mintau<span class="sc">:</span>maxtau, <span class="at">z =</span> v_map[<span class="dv">1</span><span class="sc">:</span>len, <span class="dv">50</span><span class="sc">:</span><span class="dv">175</span>],</span>
-<span id="cb10-3"><a href="#cb10-3"></a>           <span class="at">xlab =</span> <span class="st">"Time (s)"</span>, <span class="at">ylab =</span> <span class="st">"Scale"</span>, <span class="at">main =</span> <span class="st">"Heatmap with Magma Colors"</span>,</span>
-<span id="cb10-4"><a href="#cb10-4"></a>           <span class="at">col =</span> <span class="fu">viridis</span>(<span class="dv">256</span>, <span class="at">option =</span> <span class="st">"magma"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d760036c" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(phonTools)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(fields)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">library</span>(wavScalogram)</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># Function to save plots as PNGs</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>save_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(filename, plot_func) {</span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="fu">png</span>(filename, <span class="at">width=</span><span class="dv">1400</span>, <span class="at">height=</span><span class="dv">350</span>, <span class="at">res=</span><span class="dv">150</span>)</span>
+<span id="cb7-9"><a href="#cb7-9"></a>  <span class="fu">plot_func</span>()</span>
+<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">dev.off</span>()</span>
+<span id="cb7-11"><a href="#cb7-11"></a>}</span>
+<span id="cb7-12"><a href="#cb7-12"></a></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co"># Define the plot functions</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>plot1 <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb7-15"><a href="#cb7-15"></a>  <span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">4.5</span>,<span class="fl">2.5</span>,<span class="fl">8.5</span>))</span>
+<span id="cb7-16"><a href="#cb7-16"></a>  <span class="fu">plot</span>(t, f, <span class="at">main=</span><span class="st">"ECG signal"</span>, <span class="at">xlab=</span><span class="st">"Time [s]"</span>, <span class="at">ylab=</span><span class="st">"Amplitude"</span>, <span class="at">type=</span><span class="st">'l'</span>, <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>, <span class="at">cex.main=</span><span class="fl">1.5</span>)</span>
+<span id="cb7-17"><a href="#cb7-17"></a>}</span>
+<span id="cb7-18"><a href="#cb7-18"></a></span>
+<span id="cb7-19"><a href="#cb7-19"></a>plot2 <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb7-20"><a href="#cb7-20"></a>  <span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">5.5</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>))</span>
+<span id="cb7-21"><a href="#cb7-21"></a>  <span class="fu">image.plot</span>(</span>
+<span id="cb7-22"><a href="#cb7-22"></a>    <span class="at">x=</span>t, <span class="at">y=</span><span class="dv">50</span><span class="sc">:</span><span class="dv">215</span>, <span class="at">z=</span>v_map[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(f), <span class="dv">50</span><span class="sc">:</span><span class="dv">215</span>],</span>
+<span id="cb7-23"><a href="#cb7-23"></a>    <span class="at">xlab=</span><span class="st">"Time [s]"</span>, <span class="at">ylab=</span><span class="st">"Scale"</span>, <span class="at">main=</span><span class="st">"Vmap"</span>,</span>
+<span id="cb7-24"><a href="#cb7-24"></a>    <span class="at">col=</span><span class="fu">viridis</span>(<span class="dv">256</span>, <span class="at">option=</span><span class="st">"magma"</span>), <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>, <span class="at">cex.main=</span><span class="fl">1.5</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a>  )</span>
+<span id="cb7-26"><a href="#cb7-26"></a>}</span>
+<span id="cb7-27"><a href="#cb7-27"></a></span>
+<span id="cb7-28"><a href="#cb7-28"></a>plot3 <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb7-29"><a href="#cb7-29"></a>  <span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">5.5</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>))</span>
+<span id="cb7-30"><a href="#cb7-30"></a>  <span class="fu">image.plot</span>(</span>
+<span id="cb7-31"><a href="#cb7-31"></a>    <span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">11.37</span>, <span class="at">length=</span><span class="dv">941</span>), <span class="at">y=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">90</span>, <span class="at">length=</span><span class="dv">617</span>), <span class="at">z=</span>spec_rslt[<span class="dv">1</span><span class="sc">:</span><span class="dv">941</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">617</span>],</span>
+<span id="cb7-32"><a href="#cb7-32"></a>    <span class="at">xlab=</span><span class="st">"Time [s]"</span>, <span class="at">ylab=</span><span class="st">"Frequency (Hz)"</span>, <span class="at">main=</span><span class="st">"Spectrogram"</span>,</span>
+<span id="cb7-33"><a href="#cb7-33"></a>    <span class="at">col=</span><span class="fu">viridis</span>(<span class="dv">256</span>, <span class="at">option=</span><span class="st">"magma"</span>), <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>, <span class="at">cex.main=</span><span class="fl">1.5</span></span>
+<span id="cb7-34"><a href="#cb7-34"></a>  )</span>
+<span id="cb7-35"><a href="#cb7-35"></a>}</span>
+<span id="cb7-36"><a href="#cb7-36"></a></span>
+<span id="cb7-37"><a href="#cb7-37"></a>plot4 <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb7-38"><a href="#cb7-38"></a>  <span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">5.5</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>))</span>
+<span id="cb7-39"><a href="#cb7-39"></a>  <span class="fu">image.plot</span>(</span>
+<span id="cb7-40"><a href="#cb7-40"></a>    <span class="at">x=</span>t, <span class="at">z=</span>scalo_rslt,</span>
+<span id="cb7-41"><a href="#cb7-41"></a>    <span class="at">xlab=</span><span class="st">"Time [s]"</span>, <span class="at">ylab=</span><span class="st">"Scale"</span>, <span class="at">main=</span><span class="st">"Scalogram"</span>,</span>
+<span id="cb7-42"><a href="#cb7-42"></a>    <span class="at">col=</span><span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">"purple"</span>, <span class="st">"green"</span>))(<span class="dv">256</span>), <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>, <span class="at">cex.main=</span><span class="fl">1.5</span></span>
+<span id="cb7-43"><a href="#cb7-43"></a>  )</span>
+<span id="cb7-44"><a href="#cb7-44"></a>}</span>
+<span id="cb7-45"><a href="#cb7-45"></a></span>
+<span id="cb7-46"><a href="#cb7-46"></a><span class="co"># Save each plot as a high-resolution PNG</span></span>
+<span id="cb7-47"><a href="#cb7-47"></a><span class="fu">save_plot</span>(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_comparevis_plot1.png"</span>, plot1)</span>
+<span id="cb7-48"><a href="#cb7-48"></a><span class="fu">save_plot</span>(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_comparevis_plot2.png"</span>, plot2)</span>
+<span id="cb7-49"><a href="#cb7-49"></a><span class="fu">save_plot</span>(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_comparevis_plot3.png"</span>, plot3)</span>
+<span id="cb7-50"><a href="#cb7-50"></a><span class="fu">save_plot</span>(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_comparevis_plot4.png"</span>, plot4)</span>
+<span id="cb7-51"><a href="#cb7-51"></a><span class="fu">library</span>(magick)</span>
+<span id="cb7-52"><a href="#cb7-52"></a></span>
+<span id="cb7-53"><a href="#cb7-53"></a><span class="co"># Read the images</span></span>
+<span id="cb7-54"><a href="#cb7-54"></a>img1 <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_comparevis_plot1.png"</span>)</span>
+<span id="cb7-55"><a href="#cb7-55"></a>img2 <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_comparevis_plot2.png"</span>)</span>
+<span id="cb7-56"><a href="#cb7-56"></a>img3 <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_comparevis_plot3.png"</span>)</span>
+<span id="cb7-57"><a href="#cb7-57"></a>img4 <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_comparevis_plot4.png"</span>)</span>
+<span id="cb7-58"><a href="#cb7-58"></a></span>
+<span id="cb7-59"><a href="#cb7-59"></a><span class="co"># Combine images into a single PDF</span></span>
+<span id="cb7-60"><a href="#cb7-60"></a>combined <span class="ot">&lt;-</span> <span class="fu">image_append</span>(<span class="fu">c</span>(img1, img2, img3, img4), <span class="at">stack =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-61"><a href="#cb7-61"></a><span class="fu">image_write</span>(combined, <span class="at">path =</span> <span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/EBT/ecg_comparevis.pdf"</span>, <span class="at">format =</span> <span class="st">"pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2024-07-30-ECGVIS_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<strong>png:</strong> 2
 </div>
-</div>
-</div>
-<div id="b18f1ded-5c23-4323-ad00-555032f0e36a" class="cell" data-execution_count="192">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>spec <span class="ot">&lt;-</span> <span class="fu">specgram</span>(f, <span class="at">n =</span> <span class="dv">256</span>, <span class="at">Fs =</span> fs, <span class="at">overlap =</span> <span class="dv">128</span>)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>spectrogram <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="fu">abs</span>(spec<span class="sc">$</span>S) <span class="sc">+</span> <span class="fl">1e-6</span>)  </span>
-<span id="cb11-3"><a href="#cb11-3"></a>time_spec <span class="ot">&lt;-</span> spec<span class="sc">$</span>t</span>
-<span id="cb11-4"><a href="#cb11-4"></a>freq_spec <span class="ot">&lt;-</span> spec<span class="sc">$</span>f</span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="co"># 세 번째 그래프: 스펙트로그램 플롯</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="fu">image.plot</span>(time_spec, freq_spec, <span class="fu">t</span>(spectrogram), </span>
-<span id="cb11-7"><a href="#cb11-7"></a>           <span class="at">xlab =</span> <span class="st">"Time (s)"</span>, <span class="at">ylab =</span> <span class="st">"Frequency (Hz)"</span>, <span class="at">main =</span> <span class="st">"Spectrogram"</span>,</span>
-<span id="cb11-8"><a href="#cb11-8"></a>           <span class="at">col =</span> <span class="fu">viridis</span>(<span class="dv">256</span>, <span class="at">option =</span> <span class="st">"magma"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2024-07-30-ECGVIS_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<strong>png:</strong> 2
 </div>
-</div>
-</div>
-<div id="623d41e5-381f-4e87-a0a6-05644b963237" class="cell" data-execution_count="169">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># 스칼로그램 계산 및 플롯</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>wt <span class="ot">&lt;-</span> <span class="fu">dwt</span>(f, <span class="at">filter =</span> <span class="st">"haar"</span>, <span class="at">n.levels =</span> <span class="dv">10</span>)</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="co"># 각 레벨의 웨이브릿 계수들을 동일한 길이로 맞추기</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>scalogram <span class="ot">&lt;-</span> <span class="fu">do.call</span>(cbind, <span class="fu">lapply</span>(wt<span class="sc">@</span>W, <span class="cf">function</span>(w) <span class="fu">approx</span>(w, <span class="at">n =</span> <span class="fu">length</span>(t))<span class="sc">$</span>y))</span>
-<span id="cb12-5"><a href="#cb12-5"></a>scales <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">ncol</span>(scalogram))</span>
-<span id="cb12-6"><a href="#cb12-6"></a></span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="co"># 네 번째 그래프: 스칼로그램 플롯</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb12-9"><a href="#cb12-9"></a><span class="fu">image.plot</span>(t, scales, scalogram, </span>
-<span id="cb12-10"><a href="#cb12-10"></a>           <span class="at">xlab =</span> <span class="st">"Time (s)"</span>, <span class="at">ylab =</span> <span class="st">"Scale"</span>, <span class="at">main =</span> <span class="st">"Scalogram"</span>,</span>
-<span id="cb12-11"><a href="#cb12-11"></a>           <span class="at">col =</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">"purple"</span>, <span class="st">"green"</span>))(<span class="dv">256</span>))</span>
-<span id="cb12-12"><a href="#cb12-12"></a></span>
-<span id="cb12-13"><a href="#cb12-13"></a><span class="co"># 그래프 배열을 원래 상태로 되돌리기</span></span>
-<span id="cb12-14"><a href="#cb12-14"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2024-07-30-ECGVIS_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<strong>png:</strong> 2
 </div>
-</div>
-</div>
-</section>
-<section id="b." class="level2">
-<h2 class="anchored" data-anchor-id="b.">B.</h2>
-<div id="f9884f16-7b0f-424e-ac19-27a3507b0076" class="cell" data-execution_count="202">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>temp<span class="ot">&lt;-</span><span class="fu">spectrogram</span>(f,<span class="at">fs=</span><span class="dv">180</span>,<span class="at">windowlength =</span> <span class="fl">612.5</span>,<span class="at">show=</span>F)<span class="sc">$</span>spectrogram</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">2.5</span>,<span class="fl">2.5</span>,<span class="fl">2.5</span>,<span class="dv">1</span>))</span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">image.plot</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">11.37</span>,<span class="at">length=</span><span class="dv">941</span>),<span class="at">y=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">90</span>,<span class="at">length=</span><span class="dv">617</span>),<span class="at">z=</span>temp[<span class="dv">1</span><span class="sc">:</span><span class="dv">941</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">617</span>],<span class="at">xlab=</span><span class="st">""</span>,<span class="at">ylab=</span><span class="st">""</span>,<span class="at">main=</span><span class="st">"(f)"</span>,<span class="at">legend.mar=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2024-07-30-ECGVIS_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<strong>png:</strong> 2
 </div>
 </div>
 

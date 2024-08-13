@@ -271,7 +271,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="3">
+<p>그림을 그리는 코드</p>
+<div id="cell-2" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span>
@@ -358,50 +359,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-84"><a href="#cb1-84"></a>    plt.plot(Y, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb1-85"><a href="#cb1-85"></a>    </span>
 <span id="cb1-86"><a href="#cb1-86"></a>    <span class="co"># 분자와 분모에 해당하는 음영 추가</span></span>
-<span id="cb1-87"><a href="#cb1-87"></a>    plt.fill_between(<span class="bu">range</span>(<span class="bu">len</span>(X)), [<span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], color<span class="op">=</span><span class="st">'green'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Overlap Range'</span>)</span>
-<span id="cb1-88"><a href="#cb1-88"></a>    plt.fill_between(<span class="bu">range</span>(<span class="bu">len</span>(X)), [<span class="bu">min</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], [<span class="bu">max</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], color<span class="op">=</span><span class="st">'orange'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Spread Range'</span>)</span>
-<span id="cb1-89"><a href="#cb1-89"></a>    </span>
-<span id="cb1-90"><a href="#cb1-90"></a>    plt.plot(overlap_range, color<span class="op">=</span><span class="st">'green'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="vs">r'Overlap ($\min(U_n^{\tau}(X), U_n^{\tau}(Y)) - \max(L_n^{\tau}(X), L_n^{\tau}(Y))$)'</span>)</span>
-<span id="cb1-91"><a href="#cb1-91"></a>    plt.plot(spread_range, color<span class="op">=</span><span class="st">'orange'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="vs">r'Spread ($\max(U_n^{\tau}(X), U_n^{\tau}(Y)) - \min(L_n^{\tau}(X), L_n^{\tau}(Y))$)'</span>)</span>
+<span id="cb1-87"><a href="#cb1-87"></a>    plt.fill_between(<span class="bu">range</span>(<span class="bu">len</span>(X)), </span>
+<span id="cb1-88"><a href="#cb1-88"></a>                     [<span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb1-89"><a href="#cb1-89"></a>                     [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb1-90"><a href="#cb1-90"></a>                     where<span class="op">=</span>[<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="op">-</span> <span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))],</span>
+<span id="cb1-91"><a href="#cb1-91"></a>                     color<span class="op">=</span><span class="st">'green'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Overlap Range'</span>)</span>
 <span id="cb1-92"><a href="#cb1-92"></a>    </span>
-<span id="cb1-93"><a href="#cb1-93"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb1-94"><a href="#cb1-94"></a>    plt.title(<span class="st">'TPMA Overlap and Spread Ranges with Original Time Series'</span>)</span>
-<span id="cb1-95"><a href="#cb1-95"></a>    plt.show()</span>
-<span id="cb1-96"><a href="#cb1-96"></a></span>
-<span id="cb1-97"><a href="#cb1-97"></a><span class="co"># 시각화</span></span>
-<span id="cb1-98"><a href="#cb1-98"></a>plot_tpma_numerator_denominator_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, tau)</span>
-<span id="cb1-99"><a href="#cb1-99"></a></span>
-<span id="cb1-100"><a href="#cb1-100"></a><span class="co"># 두꺼운펜 변환 상관계수 계산 함수</span></span>
-<span id="cb1-101"><a href="#cb1-101"></a><span class="kw">def</span> rho_tau(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau):</span>
-<span id="cb1-102"><a href="#cb1-102"></a>    rho_tau_t <span class="op">=</span> np.zeros(<span class="bu">len</span>(X))</span>
+<span id="cb1-93"><a href="#cb1-93"></a>    plt.fill_between(<span class="bu">range</span>(<span class="bu">len</span>(X)), </span>
+<span id="cb1-94"><a href="#cb1-94"></a>                     [<span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb1-95"><a href="#cb1-95"></a>                     [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb1-96"><a href="#cb1-96"></a>                     where<span class="op">=</span>[<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="op">-</span> <span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))],</span>
+<span id="cb1-97"><a href="#cb1-97"></a>                     facecolor<span class="op">=</span><span class="st">'none'</span>, hatch<span class="op">=</span><span class="st">'//'</span>, edgecolor<span class="op">=</span><span class="st">'green'</span>, label<span class="op">=</span><span class="st">'Negative Overlap Range'</span>)</span>
+<span id="cb1-98"><a href="#cb1-98"></a>    </span>
+<span id="cb1-99"><a href="#cb1-99"></a>    plt.fill_between(<span class="bu">range</span>(<span class="bu">len</span>(X)), </span>
+<span id="cb1-100"><a href="#cb1-100"></a>                     [<span class="bu">min</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb1-101"><a href="#cb1-101"></a>                     [<span class="bu">max</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb1-102"><a href="#cb1-102"></a>                     color<span class="op">=</span><span class="st">'orange'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Spread Range'</span>)</span>
 <span id="cb1-103"><a href="#cb1-103"></a>    </span>
-<span id="cb1-104"><a href="#cb1-104"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
-<span id="cb1-105"><a href="#cb1-105"></a>        min_U <span class="op">=</span> <span class="bu">min</span>(X_U_tau[t], Y_U_tau[t])</span>
-<span id="cb1-106"><a href="#cb1-106"></a>        max_L <span class="op">=</span> <span class="bu">max</span>(X_L_tau[t], Y_L_tau[t])</span>
-<span id="cb1-107"><a href="#cb1-107"></a>        max_U <span class="op">=</span> <span class="bu">max</span>(X_U_tau[t], Y_U_tau[t])</span>
-<span id="cb1-108"><a href="#cb1-108"></a>        min_L <span class="op">=</span> <span class="bu">min</span>(X_L_tau[t], Y_L_tau[t])</span>
-<span id="cb1-109"><a href="#cb1-109"></a>        </span>
-<span id="cb1-110"><a href="#cb1-110"></a>        rho_tau_t[t] <span class="op">=</span> (min_U <span class="op">-</span> max_L) <span class="op">/</span> (max_U <span class="op">-</span> min_L)</span>
-<span id="cb1-111"><a href="#cb1-111"></a>    </span>
-<span id="cb1-112"><a href="#cb1-112"></a>    <span class="cf">return</span> rho_tau_t</span>
-<span id="cb1-113"><a href="#cb1-113"></a></span>
-<span id="cb1-114"><a href="#cb1-114"></a><span class="co"># TPMA 계산</span></span>
-<span id="cb1-115"><a href="#cb1-115"></a>rho_values <span class="op">=</span> rho_tau(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau)</span>
-<span id="cb1-116"><a href="#cb1-116"></a></span>
-<span id="cb1-117"><a href="#cb1-117"></a><span class="co"># TPMA 값 시각화 함수</span></span>
-<span id="cb1-118"><a href="#cb1-118"></a><span class="kw">def</span> plot_tpma_values_with_series(X, Y, rho_values):</span>
-<span id="cb1-119"><a href="#cb1-119"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">3</span>))</span>
-<span id="cb1-120"><a href="#cb1-120"></a>    </span>
-<span id="cb1-121"><a href="#cb1-121"></a>    <span class="co">#plt.plot(X, label='Time Series X', color='blue', linewidth=1)</span></span>
-<span id="cb1-122"><a href="#cb1-122"></a>    <span class="co">#plt.plot(Y, label='Time Series Y', color='red', linewidth=1)</span></span>
-<span id="cb1-123"><a href="#cb1-123"></a>    plt.plot(rho_values, label<span class="op">=</span><span class="st">'TPMA = Overlap/Spread '</span>, color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-104"><a href="#cb1-104"></a>    plt.plot(overlap_range, color<span class="op">=</span><span class="st">'green'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="vs">r'Overlap ($\min(U_n^{\tau}(X), U_n^{\tau}(Y)) - \max(L_n^{\tau}(X), L_n^{\tau}(Y))$)'</span>)</span>
+<span id="cb1-105"><a href="#cb1-105"></a>    plt.plot(spread_range, color<span class="op">=</span><span class="st">'orange'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="vs">r'Spread ($\max(U_n^{\tau}(X), U_n^{\tau}(Y)) - \min(L_n^{\tau}(X), L_n^{\tau}(Y))$)'</span>)</span>
+<span id="cb1-106"><a href="#cb1-106"></a>    </span>
+<span id="cb1-107"><a href="#cb1-107"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb1-108"><a href="#cb1-108"></a>    plt.title(<span class="st">'TPMA Overlap and Spread Ranges with Original Time Series'</span>)</span>
+<span id="cb1-109"><a href="#cb1-109"></a>    plt.show()</span>
+<span id="cb1-110"><a href="#cb1-110"></a><span class="co"># 시각화</span></span>
+<span id="cb1-111"><a href="#cb1-111"></a>plot_tpma_numerator_denominator_with_series(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau, tau)</span>
+<span id="cb1-112"><a href="#cb1-112"></a></span>
+<span id="cb1-113"><a href="#cb1-113"></a><span class="co"># 두꺼운펜 변환 상관계수 계산 함수</span></span>
+<span id="cb1-114"><a href="#cb1-114"></a><span class="kw">def</span> rho_tau(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau):</span>
+<span id="cb1-115"><a href="#cb1-115"></a>    rho_tau_t <span class="op">=</span> np.zeros(<span class="bu">len</span>(X))</span>
+<span id="cb1-116"><a href="#cb1-116"></a>    </span>
+<span id="cb1-117"><a href="#cb1-117"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X)):</span>
+<span id="cb1-118"><a href="#cb1-118"></a>        min_U <span class="op">=</span> <span class="bu">min</span>(X_U_tau[t], Y_U_tau[t])</span>
+<span id="cb1-119"><a href="#cb1-119"></a>        max_L <span class="op">=</span> <span class="bu">max</span>(X_L_tau[t], Y_L_tau[t])</span>
+<span id="cb1-120"><a href="#cb1-120"></a>        max_U <span class="op">=</span> <span class="bu">max</span>(X_U_tau[t], Y_U_tau[t])</span>
+<span id="cb1-121"><a href="#cb1-121"></a>        min_L <span class="op">=</span> <span class="bu">min</span>(X_L_tau[t], Y_L_tau[t])</span>
+<span id="cb1-122"><a href="#cb1-122"></a>        </span>
+<span id="cb1-123"><a href="#cb1-123"></a>        rho_tau_t[t] <span class="op">=</span> (min_U <span class="op">-</span> max_L) <span class="op">/</span> (max_U <span class="op">-</span> min_L)</span>
 <span id="cb1-124"><a href="#cb1-124"></a>    </span>
-<span id="cb1-125"><a href="#cb1-125"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb1-126"><a href="#cb1-126"></a>    plt.title(<span class="st">'TPMA Values with Original Time Series'</span>)</span>
-<span id="cb1-127"><a href="#cb1-127"></a>    plt.show()</span>
-<span id="cb1-128"><a href="#cb1-128"></a></span>
-<span id="cb1-129"><a href="#cb1-129"></a><span class="co"># 시각화</span></span>
-<span id="cb1-130"><a href="#cb1-130"></a>plot_tpma_values_with_series(X, Y, rho_values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-125"><a href="#cb1-125"></a>    <span class="cf">return</span> rho_tau_t</span>
+<span id="cb1-126"><a href="#cb1-126"></a></span>
+<span id="cb1-127"><a href="#cb1-127"></a><span class="co"># TPMA 계산</span></span>
+<span id="cb1-128"><a href="#cb1-128"></a>rho_values <span class="op">=</span> rho_tau(X, Y, X_L_tau, X_U_tau, Y_L_tau, Y_U_tau)</span>
+<span id="cb1-129"><a href="#cb1-129"></a></span>
+<span id="cb1-130"><a href="#cb1-130"></a><span class="co"># TPMA 값 시각화 함수</span></span>
+<span id="cb1-131"><a href="#cb1-131"></a><span class="kw">def</span> plot_tpma_values_with_series(X, Y, rho_values):</span>
+<span id="cb1-132"><a href="#cb1-132"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">3</span>))</span>
+<span id="cb1-133"><a href="#cb1-133"></a>    </span>
+<span id="cb1-134"><a href="#cb1-134"></a>    <span class="co">#plt.plot(X, label='Time Series X', color='blue', linewidth=1)</span></span>
+<span id="cb1-135"><a href="#cb1-135"></a>    <span class="co">#plt.plot(Y, label='Time Series Y', color='red', linewidth=1)</span></span>
+<span id="cb1-136"><a href="#cb1-136"></a>    plt.plot(rho_values, label<span class="op">=</span><span class="st">'TPMA = Overlap/Spread '</span>, color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-137"><a href="#cb1-137"></a>    </span>
+<span id="cb1-138"><a href="#cb1-138"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb1-139"><a href="#cb1-139"></a>    plt.title(<span class="st">'TPMA Values with Original Time Series'</span>)</span>
+<span id="cb1-140"><a href="#cb1-140"></a>    plt.show()</span>
+<span id="cb1-141"><a href="#cb1-141"></a></span>
+<span id="cb1-142"><a href="#cb1-142"></a><span class="co"># 시각화</span></span>
+<span id="cb1-143"><a href="#cb1-143"></a>plot_tpma_values_with_series(X, Y, rho_values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -431,7 +445,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="15">
+<p>pdf 저장하는 코드</p>
+<div id="cell-4" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">from</span> matplotlib.backends.backend_pdf <span class="im">import</span> PdfPages</span>
@@ -483,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-49"><a href="#cb2-49"></a></span>
 <span id="cb2-50"><a href="#cb2-50"></a><span class="co"># 플롯을 생성하는 함수</span></span>
 <span id="cb2-51"><a href="#cb2-51"></a><span class="kw">def</span> create_plots():</span>
-<span id="cb2-52"><a href="#cb2-52"></a>    fig, axs <span class="op">=</span> plt.subplots(<span class="dv">4</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">10</span>))</span>
+<span id="cb2-52"><a href="#cb2-52"></a>    fig, axs <span class="op">=</span> plt.subplots(<span class="dv">4</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">12</span>))</span>
 <span id="cb2-53"><a href="#cb2-53"></a>    </span>
 <span id="cb2-54"><a href="#cb2-54"></a>    <span class="co"># Upper와 Lower 각각 시각화</span></span>
 <span id="cb2-55"><a href="#cb2-55"></a>    axs[<span class="dv">0</span>].plot(X, label<span class="op">=</span><span class="vs">r'Time Series X'</span>, color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
@@ -514,26 +529,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-80"><a href="#cb2-80"></a>    spread_range <span class="op">=</span> [<span class="bu">max</span>(X_U_tau[t], Y_U_tau[t]) <span class="op">-</span> <span class="bu">min</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))]</span>
 <span id="cb2-81"><a href="#cb2-81"></a>    axs[<span class="dv">2</span>].plot(X, color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb2-82"><a href="#cb2-82"></a>    axs[<span class="dv">2</span>].plot(Y, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb2-83"><a href="#cb2-83"></a>    axs[<span class="dv">2</span>].fill_between(<span class="bu">range</span>(<span class="bu">len</span>(X)), [<span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], color<span class="op">=</span><span class="st">'green'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Overlap Range'</span>)</span>
-<span id="cb2-84"><a href="#cb2-84"></a>    axs[<span class="dv">2</span>].fill_between(<span class="bu">range</span>(<span class="bu">len</span>(X)), [<span class="bu">min</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], [<span class="bu">max</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], color<span class="op">=</span><span class="st">'orange'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Spread Range'</span>)</span>
-<span id="cb2-85"><a href="#cb2-85"></a>    axs[<span class="dv">2</span>].plot(overlap_range, color<span class="op">=</span><span class="st">'green'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="vs">r'Overlap ($\min(U_n^{\tau}(X), U_n^{\tau}(Y)) - \max(L_n^{\tau}(X), L_n^{\tau}(Y))$)'</span>)</span>
-<span id="cb2-86"><a href="#cb2-86"></a>    axs[<span class="dv">2</span>].plot(spread_range, color<span class="op">=</span><span class="st">'orange'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="vs">r'Spread ($\max(U_n^{\tau}(X), U_n^{\tau}(Y)) - \min(L_n^{\tau}(X), L_n^{\tau}(Y))$)'</span>)</span>
-<span id="cb2-87"><a href="#cb2-87"></a>    axs[<span class="dv">2</span>].legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb2-88"><a href="#cb2-88"></a>    axs[<span class="dv">2</span>].set_title(<span class="st">'TPMA Overlap and Spread Ranges with Original Time Series'</span>)</span>
-<span id="cb2-89"><a href="#cb2-89"></a></span>
-<span id="cb2-90"><a href="#cb2-90"></a>    <span class="co"># TPMA 값 시각화</span></span>
-<span id="cb2-91"><a href="#cb2-91"></a>    axs[<span class="dv">3</span>].plot(rho_values, label<span class="op">=</span><span class="st">'TPMA = Overlap/Spread'</span>, color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb2-92"><a href="#cb2-92"></a>    axs[<span class="dv">3</span>].legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb2-93"><a href="#cb2-93"></a>    axs[<span class="dv">3</span>].set_title(<span class="st">'TPMA Values with Original Time Series'</span>)</span>
-<span id="cb2-94"><a href="#cb2-94"></a></span>
-<span id="cb2-95"><a href="#cb2-95"></a>    plt.tight_layout()</span>
-<span id="cb2-96"><a href="#cb2-96"></a>    <span class="cf">return</span> fig</span>
-<span id="cb2-97"><a href="#cb2-97"></a></span>
-<span id="cb2-98"><a href="#cb2-98"></a><span class="co"># PDF로 저장하는 코드</span></span>
-<span id="cb2-99"><a href="#cb2-99"></a><span class="cf">with</span> PdfPages(<span class="st">'./Dropbox/03_Yechan3/연구/교수님이랑/MS_Review/tpt_tpma.pdf'</span>) <span class="im">as</span> pdf:</span>
-<span id="cb2-100"><a href="#cb2-100"></a>    fig <span class="op">=</span> create_plots()</span>
-<span id="cb2-101"><a href="#cb2-101"></a>    pdf.savefig(fig, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)  <span class="co"># 모든 페이지 저장</span></span>
-<span id="cb2-102"><a href="#cb2-102"></a>    plt.close(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-83"><a href="#cb2-83"></a>    </span>
+<span id="cb2-84"><a href="#cb2-84"></a>    <span class="co"># 분자와 분모에 해당하는 음영 추가</span></span>
+<span id="cb2-85"><a href="#cb2-85"></a>    axs[<span class="dv">2</span>].fill_between(<span class="bu">range</span>(<span class="bu">len</span>(X)), </span>
+<span id="cb2-86"><a href="#cb2-86"></a>                     [<span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb2-87"><a href="#cb2-87"></a>                     [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb2-88"><a href="#cb2-88"></a>                     where<span class="op">=</span>[<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="op">-</span> <span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))],</span>
+<span id="cb2-89"><a href="#cb2-89"></a>                     color<span class="op">=</span><span class="st">'green'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Overlap Range'</span>)</span>
+<span id="cb2-90"><a href="#cb2-90"></a>    </span>
+<span id="cb2-91"><a href="#cb2-91"></a>    axs[<span class="dv">2</span>].fill_between(<span class="bu">range</span>(<span class="bu">len</span>(X)), </span>
+<span id="cb2-92"><a href="#cb2-92"></a>                     [<span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb2-93"><a href="#cb2-93"></a>                     [<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb2-94"><a href="#cb2-94"></a>                     where<span class="op">=</span>[<span class="bu">min</span>(X_U_tau[t], Y_U_tau[t]) <span class="op">-</span> <span class="bu">max</span>(X_L_tau[t], Y_L_tau[t]) <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))],</span>
+<span id="cb2-95"><a href="#cb2-95"></a>                     facecolor<span class="op">=</span><span class="st">'none'</span>, hatch<span class="op">=</span><span class="st">'//'</span>, edgecolor<span class="op">=</span><span class="st">'green'</span>, label<span class="op">=</span><span class="st">'Negative Overlap Range'</span>)</span>
+<span id="cb2-96"><a href="#cb2-96"></a>    </span>
+<span id="cb2-97"><a href="#cb2-97"></a>    axs[<span class="dv">2</span>].fill_between(<span class="bu">range</span>(<span class="bu">len</span>(X)), </span>
+<span id="cb2-98"><a href="#cb2-98"></a>                     [<span class="bu">min</span>(X_L_tau[t], Y_L_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb2-99"><a href="#cb2-99"></a>                     [<span class="bu">max</span>(X_U_tau[t], Y_U_tau[t]) <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], </span>
+<span id="cb2-100"><a href="#cb2-100"></a>                     color<span class="op">=</span><span class="st">'orange'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">'Spread Range'</span>)</span>
+<span id="cb2-101"><a href="#cb2-101"></a>    </span>
+<span id="cb2-102"><a href="#cb2-102"></a>    axs[<span class="dv">2</span>].plot(overlap_range, color<span class="op">=</span><span class="st">'green'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="vs">r'Overlap ($\min(U_n^{\tau}(X), U_n^{\tau}(Y)) - \max(L_n^{\tau}(X), L_n^{\tau}(Y))$)'</span>)</span>
+<span id="cb2-103"><a href="#cb2-103"></a>    axs[<span class="dv">2</span>].plot(spread_range, color<span class="op">=</span><span class="st">'orange'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="vs">r'Spread ($\max(U_n^{\tau}(X), U_n^{\tau}(Y)) - \min(L_n^{\tau}(X), L_n^{\tau}(Y))$)'</span>)</span>
+<span id="cb2-104"><a href="#cb2-104"></a>    axs[<span class="dv">2</span>].legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb2-105"><a href="#cb2-105"></a>    axs[<span class="dv">2</span>].set_title(<span class="st">'TPMA Overlap and Spread Ranges with Original Time Series'</span>)</span>
+<span id="cb2-106"><a href="#cb2-106"></a></span>
+<span id="cb2-107"><a href="#cb2-107"></a>    <span class="co"># TPMA 값 시각화</span></span>
+<span id="cb2-108"><a href="#cb2-108"></a>    axs[<span class="dv">3</span>].plot(rho_values, label<span class="op">=</span><span class="st">'TPMA = Overlap/Spread'</span>, color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-109"><a href="#cb2-109"></a>    axs[<span class="dv">3</span>].legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb2-110"><a href="#cb2-110"></a>    axs[<span class="dv">3</span>].set_title(<span class="st">'TPMA Values with Original Time Series'</span>)</span>
+<span id="cb2-111"><a href="#cb2-111"></a></span>
+<span id="cb2-112"><a href="#cb2-112"></a>    plt.tight_layout()</span>
+<span id="cb2-113"><a href="#cb2-113"></a>    <span class="cf">return</span> fig</span>
+<span id="cb2-114"><a href="#cb2-114"></a></span>
+<span id="cb2-115"><a href="#cb2-115"></a><span class="co"># PDF로 저장하는 코드</span></span>
+<span id="cb2-116"><a href="#cb2-116"></a><span class="cf">with</span> PdfPages(<span class="st">'./Dropbox/03_Yechan3/연구/교수님이랑/MS_Review/tpt_tpma.pdf'</span>) <span class="im">as</span> pdf:</span>
+<span id="cb2-117"><a href="#cb2-117"></a>    fig <span class="op">=</span> create_plots()</span>
+<span id="cb2-118"><a href="#cb2-118"></a>    pdf.savefig(fig, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)  <span class="co"># 모든 페이지 저장</span></span>
+<span id="cb2-119"><a href="#cb2-119"></a>    plt.close(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
