@@ -244,8 +244,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#imports" id="toc-imports" class="nav-link active" data-scroll-target="#imports">Imports</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#적합" id="toc-적합" class="nav-link" data-scroll-target="#적합">적합</a></li>
-  <li><a href="#수동구현" id="toc-수동구현" class="nav-link" data-scroll-target="#수동구현">수동구현</a></li>
+  <li><a href="#적합" id="toc-적합" class="nav-link" data-scroll-target="#적합">적합</a>
+  <ul class="collapse">
+  <li><a href="#데이터" id="toc-데이터" class="nav-link" data-scroll-target="#데이터">데이터</a></li>
+  <li><a href="#코드1" id="toc-코드1" class="nav-link" data-scroll-target="#코드1">코드1</a></li>
+  <li><a href="#코드2" id="toc-코드2" class="nav-link" data-scroll-target="#코드2">코드2</a></li>
+  <li><a href="#비교" id="toc-비교" class="nav-link" data-scroll-target="#비교">비교</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2024-08-20-(공부) xgboost 재현.out.ipynb" download="2024-08-20-(공부) xgboost 재현.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -285,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="imports" class="level1">
 <h1>Imports</h1>
-<div id="91d2d18b-9be4-4a95-8547-9d77975938ea" class="cell" data-tags="[]" data-execution_count="100">
+<div id="91d2d18b-9be4-4a95-8547-9d77975938ea" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -301,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
-<div id="b25a21ed-2f77-49a5-855e-879ffb96a0a8" class="cell" data-tags="[]" data-execution_count="101">
+<div id="b25a21ed-2f77-49a5-855e-879ffb96a0a8" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>np.random.seed(<span class="dv">1</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a>temp <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/DV2022/master/posts/temp.csv'</span>).iloc[:,<span class="dv">3</span>].to_numpy()[:<span class="dv">80</span>]</span>
 <span id="cb2-3"><a href="#cb2-3"></a>temp.sort()</span>
@@ -309,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5"></a>icecream_sales <span class="op">=</span> <span class="dv">20</span> <span class="op">+</span> temp <span class="op">*</span> <span class="fl">2.5</span> <span class="co">#+ eps </span></span>
 <span id="cb2-6"><a href="#cb2-6"></a>df_train <span class="op">=</span> pd.DataFrame({<span class="st">'temp'</span>:temp,<span class="st">'sales'</span>:icecream_sales})</span>
 <span id="cb2-7"><a href="#cb2-7"></a>df_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="101">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -387,7 +392,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="적합" class="level1">
 <h1>적합</h1>
-<div id="58d374c4-edb4-4200-acf8-160fd26d0310" class="cell" data-tags="[]" data-execution_count="102">
+<section id="데이터" class="level2">
+<h2 class="anchored" data-anchor-id="데이터">데이터</h2>
+<div id="58d374c4-edb4-4200-acf8-160fd26d0310" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># step1 </span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>X <span class="op">=</span> df_train[[<span class="st">'temp'</span>]]</span>
 <span id="cb3-3"><a href="#cb3-3"></a>X <span class="op">=</span> np.array(X).astype(np.float32)</span>
@@ -395,90 +402,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-5"><a href="#cb3-5"></a>y <span class="op">=</span> np.array(y).astype(np.float32)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="수동구현" class="level1">
-<h1>수동구현</h1>
-<div id="263a7925" class="cell" data-execution_count="110">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>N<span class="op">=</span><span class="dv">3</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="co">## 코드1 </span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>predictr <span class="op">=</span> xgb.XGBRegressor(</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    n_estimators<span class="op">=</span>N,         <span class="co"># 부스팅 라운드 수</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>    learning_rate<span class="op">=</span><span class="fl">0.3</span>,         <span class="co"># 학습률</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>    max_depth<span class="op">=</span><span class="dv">6</span>,               <span class="co"># 최대 깊이</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>    min_child_weight<span class="op">=</span><span class="dv">1</span>,        <span class="co"># 최소 자식 가중치</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>    subsample<span class="op">=</span><span class="fl">1.0</span>,              <span class="co"># 데이터 샘플링 비율</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>    tree_method<span class="op">=</span><span class="st">'exact'</span>,</span>
-<span id="cb4-10"><a href="#cb4-10"></a>    reg_lambda<span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a>)</span>
-<span id="cb4-12"><a href="#cb4-12"></a>predictr.fit(X,y)</span>
-<span id="cb4-13"><a href="#cb4-13"></a>yhat <span class="op">=</span> predictr.predict(X) </span>
-<span id="cb4-14"><a href="#cb4-14"></a></span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="co">## 코드2 </span></span>
-<span id="cb4-16"><a href="#cb4-16"></a>yhat2 <span class="op">=</span> np.full(y.shape, np.mean(y), dtype<span class="op">=</span>np.float32)</span>
-<span id="cb4-17"><a href="#cb4-17"></a>num_boosting_rounds <span class="op">=</span> N</span>
-<span id="cb4-18"><a href="#cb4-18"></a>dtrain <span class="op">=</span> xgb.DMatrix(X, label<span class="op">=</span>y)</span>
-<span id="cb4-19"><a href="#cb4-19"></a>params <span class="op">=</span> {</span>
-<span id="cb4-20"><a href="#cb4-20"></a>    <span class="st">'objective'</span>: <span class="st">'reg:squarederror'</span>,</span>
-<span id="cb4-21"><a href="#cb4-21"></a>    <span class="st">'learning_rate'</span>: <span class="fl">0.3</span>,</span>
-<span id="cb4-22"><a href="#cb4-22"></a>    <span class="st">'max_depth'</span>: <span class="dv">6</span>,</span>
-<span id="cb4-23"><a href="#cb4-23"></a>    <span class="st">'min_child_weight'</span>: <span class="dv">1</span>,</span>
-<span id="cb4-24"><a href="#cb4-24"></a>    <span class="st">'subsample'</span>: <span class="fl">1.0</span>,</span>
-<span id="cb4-25"><a href="#cb4-25"></a>    <span class="st">'tree_method'</span>:<span class="st">'exact'</span>,</span>
-<span id="cb4-26"><a href="#cb4-26"></a>    <span class="st">'reg_lambda'</span>: <span class="fl">0.0</span></span>
-<span id="cb4-27"><a href="#cb4-27"></a>}</span>
-<span id="cb4-28"><a href="#cb4-28"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_boosting_rounds):</span>
-<span id="cb4-29"><a href="#cb4-29"></a>    residuals <span class="op">=</span> y <span class="op">-</span> yhat2</span>
-<span id="cb4-30"><a href="#cb4-30"></a>    dtrain.set_label(residuals)</span>
-<span id="cb4-31"><a href="#cb4-31"></a>    model <span class="op">=</span> xgb.train(params, dtrain, num_boost_round<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-32"><a href="#cb4-32"></a>    new_pred <span class="op">=</span> model.predict(dtrain)</span>
-<span id="cb4-33"><a href="#cb4-33"></a>    yhat2 <span class="op">+=</span> new_pred</span>
-<span id="cb4-34"><a href="#cb4-34"></a></span>
-<span id="cb4-35"><a href="#cb4-35"></a><span class="co">## 코드1,2 비교</span></span>
-<span id="cb4-36"><a href="#cb4-36"></a>diff <span class="op">=</span> ((yhat <span class="op">-</span> yhat2) <span class="op">**</span> <span class="dv">2</span>).<span class="bu">sum</span>()</span>
-<span id="cb4-37"><a href="#cb4-37"></a><span class="bu">print</span>(diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="코드1" class="level2">
+<h2 class="anchored" data-anchor-id="코드1">코드1</h2>
+<div id="263a7925" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">## 코드1 </span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>predictr <span class="op">=</span> xgb.XGBRegressor(</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    n_estimators<span class="op">=</span>N,         <span class="co"># 부스팅 라운드 수</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>    learning_rate<span class="op">=</span><span class="fl">0.3</span>,         <span class="co"># 학습률</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>    max_depth<span class="op">=</span><span class="dv">6</span>,               <span class="co"># 최대 깊이</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>    min_child_weight<span class="op">=</span><span class="dv">1</span>,        <span class="co"># 최소 자식 가중치</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>    subsample<span class="op">=</span><span class="fl">1.0</span>,              <span class="co"># 데이터 샘플링 비율</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>    tree_method<span class="op">=</span><span class="st">'exact'</span>,</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    reg_lambda<span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a>predictr.fit(X,y)</span>
+<span id="cb4-12"><a href="#cb4-12"></a>yhat <span class="op">=</span> predictr.predict(X) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="코드2" class="level2">
+<h2 class="anchored" data-anchor-id="코드2">코드2</h2>
+<div id="ae2fc9bb" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">## 코드2 </span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>yhat2 <span class="op">=</span> np.full(y.shape, np.mean(y), dtype<span class="op">=</span>np.float32)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>num_boosting_rounds <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_boosting_rounds):</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    residuals <span class="op">=</span> y <span class="op">-</span> yhat2</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="co">## 코드1 </span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>    predictr <span class="op">=</span> xgb.XGBRegressor(</span>
+<span id="cb5-8"><a href="#cb5-8"></a>        n_estimators<span class="op">=</span><span class="dv">1</span>,         <span class="co"># 부스팅 라운드 수</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>        learning_rate<span class="op">=</span><span class="fl">0.3</span>,         <span class="co"># 학습률</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>        max_depth<span class="op">=</span><span class="dv">6</span>,               <span class="co"># 최대 깊이</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>        min_child_weight<span class="op">=</span><span class="dv">1</span>,        <span class="co"># 최소 자식 가중치</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>        subsample<span class="op">=</span><span class="fl">1.0</span>,              <span class="co"># 데이터 샘플링 비율</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>        tree_method<span class="op">=</span><span class="st">'exact'</span>,</span>
+<span id="cb5-14"><a href="#cb5-14"></a>        reg_lambda<span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>    )</span>
+<span id="cb5-16"><a href="#cb5-16"></a>    predictr.fit(X,residuals)</span>
+<span id="cb5-17"><a href="#cb5-17"></a>    new_pred <span class="op">=</span> predictr.predict(X) </span>
+<span id="cb5-18"><a href="#cb5-18"></a>    yhat2 <span class="op">+=</span> new_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="비교" class="level2">
+<h2 class="anchored" data-anchor-id="비교">비교</h2>
+<div id="ec69ea5a" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">## 코드1,2 비교</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>diff <span class="op">=</span> ((yhat <span class="op">-</span> yhat2) <span class="op">**</span> <span class="dv">2</span>).<span class="bu">sum</span>()</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="bu">print</span>(diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1.7826096e-10</code></pre>
-</div>
-</div>
-<div id="5f72d8f5" class="cell" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>yhat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="111">
-<pre><code>array([17.163086, 17.820087, 18.969837, 21.762087, 23.076086, 23.404587,
-       24.390087, 24.554338, 24.554338, 25.077461, 25.077461, 25.374964,
-       25.374964, 25.480337, 25.904587, 26.223337, 26.223337, 26.316462,
-       26.316462, 27.182337, 27.182337, 27.182337, 27.675087, 28.039286,
-       28.039286, 28.039286, 28.114286, 28.114286, 28.660587, 29.209238,
-       29.679737, 29.679737, 29.795813, 29.958313, 30.046436, 30.795837,
-       31.124338, 31.288588, 31.288588, 31.452837, 31.958187, 31.958187,
-       31.958187, 32.11799 , 32.11799 , 32.21999 , 33.095337, 33.606464,
-       33.606464, 33.769024, 33.769024, 33.881523, 33.881523, 34.26959 ,
-       34.42259 , 34.42259 , 34.52259 , 34.961586, 35.036587, 35.036587,
-       35.407085, 35.407085, 35.534588, 36.051838, 36.544586, 37.23046 ,
-       37.552402, 37.70615 , 37.82765 , 38.3639  , 38.488586, 38.871086,
-       38.963715, 39.381462, 39.48365 , 39.8024  , 40.815086, 41.307835,
-       43.771587, 44.264336], dtype=float32)</code></pre>
-</div>
-</div>
-<div id="e77ee932" class="cell" data-execution_count="112">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>yhat2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="112">
-<pre><code>array([17.163086, 17.820087, 18.969837, 21.762089, 23.076088, 23.404587,
-       24.390087, 24.554337, 24.554337, 25.077461, 25.077461, 25.374962,
-       25.374962, 25.480337, 25.904587, 26.22334 , 26.22334 , 26.316463,
-       26.316463, 27.182339, 27.182339, 27.182339, 27.675087, 28.039288,
-       28.039288, 28.039288, 28.114288, 28.114288, 28.660587, 29.209238,
-       29.679739, 29.679739, 29.795813, 29.958313, 30.046438, 30.795837,
-       31.124338, 31.288588, 31.288588, 31.452837, 31.958187, 31.958187,
-       31.958187, 32.11799 , 32.11799 , 32.21999 , 33.095337, 33.60646 ,
-       33.60646 , 33.769024, 33.769024, 33.881527, 33.881527, 34.26959 ,
-       34.42259 , 34.42259 , 34.52259 , 34.961586, 35.036587, 35.036587,
-       35.407085, 35.407085, 35.534588, 36.051838, 36.544586, 37.23046 ,
-       37.5524  , 37.70615 , 37.82765 , 38.3639  , 38.488586, 38.871086,
-       38.963715, 39.381462, 39.48365 , 39.8024  , 40.81509 , 41.30784 ,
-       43.771587, 44.264336], dtype=float32)</code></pre>
+<pre><code>6.274422e-08</code></pre>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
