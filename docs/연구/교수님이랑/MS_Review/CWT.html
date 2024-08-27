@@ -278,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>웨이블릿 변환 수행: 웨이블릿 변환을 사용하여 신호를 분석하고 시간-주파수 스펙트로그램을 생성합니다.</li>
 <li>결과 비교: 두 방법의 결과를 시각적으로 비교합니다.</li>
 </ul>
-<div id="bae8c922" class="cell" data-execution_count="60">
+<div id="bae8c922" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> matplotlib.gridspec <span class="im">import</span> GridSpec</span>
@@ -288,15 +288,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7"></a></span>
 <span id="cb1-8"><a href="#cb1-8"></a><span class="co"># 샘플링 주파수 및 시간 축 설정</span></span>
 <span id="cb1-9"><a href="#cb1-9"></a>fs <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span> <span class="op">*</span> fs, endpoint<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">2.0</span>, <span class="dv">2</span> <span class="op">*</span> fs, endpoint<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb1-11"><a href="#cb1-11"></a></span>
 <span id="cb1-12"><a href="#cb1-12"></a><span class="co"># 주파수가 선형적으로 증가하는 신호 생성</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a>f0 <span class="op">=</span> <span class="dv">50</span>   <span class="co"># 시작 주파수</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>f1 <span class="op">=</span> <span class="dv">70</span>  <span class="co"># 종료 주파수</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>f0 <span class="op">=</span> <span class="dv">70</span>   <span class="co"># 시작 주파수</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>f1 <span class="op">=</span> <span class="dv">90</span>  <span class="co"># 종료 주파수</span></span>
 <span id="cb1-15"><a href="#cb1-15"></a>linear_chirp <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> (f0 <span class="op">+</span> (f1 <span class="op">-</span> f0)<span class="op">/</span><span class="dv">2</span> <span class="op">*</span> t <span class="op">/</span> <span class="dv">2</span>) <span class="op">*</span> t)</span>
 <span id="cb1-16"><a href="#cb1-16"></a></span>
 <span id="cb1-17"><a href="#cb1-17"></a><span class="co"># 주기적인 진동 신호 생성</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a>periodic_signal <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> t) <span class="op">*</span> (t <span class="op">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb1-18"><a href="#cb1-18"></a>periodic_signal <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> <span class="dv">80</span> <span class="op">*</span> t) <span class="op">*</span> (t <span class="op">&gt;</span> <span class="dv">1</span>)</span>
 <span id="cb1-19"><a href="#cb1-19"></a></span>
 <span id="cb1-20"><a href="#cb1-20"></a><span class="co"># 신호 합성</span></span>
 <span id="cb1-21"><a href="#cb1-21"></a>signal <span class="op">=</span> linear_chirp <span class="op">+</span> periodic_signal</span>
@@ -358,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-77"><a href="#cb1-77"></a>plt.tight_layout()</span>
 <span id="cb1-78"><a href="#cb1-78"></a></span>
 <span id="cb1-79"><a href="#cb1-79"></a><span class="co"># 그림 PDF로 저장</span></span>
-<span id="cb1-80"><a href="#cb1-80"></a>plt.savefig(<span class="st">"./Dropbox/03_Yechan3/연구/교수님이랑/MS_Review/cwt_signal_analysis.pdf"</span>)</span>
+<span id="cb1-80"><a href="#cb1-80"></a>plt.savefig(<span class="st">"/home/cgb2/Dropbox/03_Yechan3/연구/교수님이랑/MS_Review/cwt_signal_analysis.pdf"</span>)</span>
 <span id="cb1-81"><a href="#cb1-81"></a><span class="co"># 그림 표시</span></span>
 <span id="cb1-82"><a href="#cb1-82"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
