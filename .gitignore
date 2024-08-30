@@ -4,6 +4,7 @@
 *.pickle
 *.pkl
 *.pth
+*.pt
 *.npy
 *.pdf
 *.json
