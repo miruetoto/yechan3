@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.520">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -249,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="intro" class="level1 page-columns page-full">
 <h1>1. intro</h1>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-09-14-논문리비전_files/figure-html/ee969e9b-8dbf-4d1f-8dfa-d713d6748b09-1-9b6d5f0a-e3fc-482a-afa9-85431ec9febe.png" class="img-fluid figure-img"></p>
 <figcaption>image.png</figcaption>
@@ -267,7 +267,7 @@ ul.task-list li input[type="checkbox"] {
 <li>우리의 아이디어는 “호모지니우스하지 않은 그래프 -&gt; 호모지니우스화 시킴” 인데 이러한 방식은 이상한방식이 아님. Yu et al.&nbsp;(2017) and Guo et al.&nbsp;(2019) Bai et al.&nbsp;(2020), Li et al.&nbsp;(2019), Zhao et al.&nbsp;(2019) 이 우리와 비슷한 연구를 했음.</li>
 </ul>
 <div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;보통 결측없이 모두 관측한상태에서는 모형이 잘 동작함, 대부분의 spatio temporal data는 각각의 스냅샷마다 동일한 그래프구조를 가진다는 가정을 사용함. 스냅샷마다 그래프구조가 다른 경우를 가정하는 모형도 있음. 그러한 모형의 예시는 A,B,C,…. 등이 있음. 하지만 이러한 연구는 애초에 데이터가 스냅샷마다 non-호모지니우스하게 생겼으면 효율적일 수 있으나, 실제true model은 스냅샷마다 그래프구조가 동일하다고 여겨지지만 결측치로 인하여 스냅샷마다 호모지니우스가 깨지는 경우는 효율적이지 않을 수 있음. 우리는 이 부분에 초점을 맞추었음. 우리의 아이디어는 호모지니우스 하지 않은 그래프를 A,B,C, 등을 이용하여 그대로 처리하는것 보다 missing을 처리하여 호모지니우스하게 강제로 만들고 그 자료를 분석하자는 아이디어임.</p></li></div><p><code>-</code> 아래식은 틀렸음. 이건 회귀모형이 아님.. GNAR의 notation을 사용하여 모형을 다시표현해볼것..</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-09-14-논문리비전_files/figure-html/1f340f80-39bb-472a-9e0e-580bd25d4923-1-c5fb64d9-d118-4471-8fe0-aae33707f34b.png" class="img-fluid figure-img"></p>
 <figcaption>image.png</figcaption>
@@ -280,14 +280,14 @@ ul.task-list li input[type="checkbox"] {
 <li>뒤에 self consistence estimator에 사용할 Notation을 함께 고려</li>
 </ul>
 <p><code>-</code> 빨간부분 삭제후 다시 작성 (혹은 공부할 것)</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-09-14-논문리비전_files/figure-html/df78f19b-d302-4397-b41e-fc5d667d348c-1-47f23b5c-8859-4c66-9a4e-9ce9a22e7ae7.png" class="img-fluid figure-img"></p>
 <figcaption>image.png</figcaption>
 </figure>
 </div>
 <p><code>-</code> 초록색부분은 나쁘지 않음</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-09-14-논문리비전_files/figure-html/8db3d5da-fff0-4ad3-b1d6-e7c4c3991f77-1-d1c03028-6fdf-42f6-9c7d-d7d73158310b.png" class="img-fluid figure-img"></p>
 <figcaption>image.png</figcaption>
@@ -310,7 +310,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>4.</h1>
 <p><code>-</code> 내용을 좀 더 팬시하게 쓸 필요가 있어보임</p>
 <p><code>-</code> 아래부분을 정리하여 알고리즘화 해야함.</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-09-14-논문리비전_files/figure-html/cb8b7d22-d4b4-4633-aa8c-a30e2d18fdfd-1-359a9447-a5b6-43bc-b490-f2a8bc2e404f.png" class="img-fluid figure-img"></p>
 <figcaption>image.png</figcaption>
@@ -455,27 +455,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -490,10 +469,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -502,7 +485,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
       return note.innerHTML;
     }
   }
