@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.520">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -401,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>-</code> 생성가능한 gi 확인</p>
 <p><img src="2000-01-10-(메모) DGX staion_files/figure-html/6efc36c2-c6e3-45f9-a743-dda52663a90f-1-4bf8348a-6689-43be-8c2a-de78b1bf8804.png" class="img-fluid"></p>
 <p><code>-</code> 생성가능한 ci 확인</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2000-01-10-(메모) DGX staion_files/figure-html/72245eec-8104-43d7-8d8f-8c1b33c4dd6e-1-083e71fb-ac1b-4d0d-83db-3a2e6aac1681.png" class="img-fluid figure-img"></p>
 <figcaption>Note: GPU 1,2 에만 GI가 존재하므로, 목록에는 GPU 1,2 만 보임</figcaption>
@@ -426,7 +426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#nvidia-smi mig -i {GPUdev-ID} -cgi {GPU-INSTANCE-PROFILE-ID}</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="ex">nvidia-smi</span> mig <span class="at">-i</span> 4 <span class="at">-cgi</span> 9 </span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="ex">nvidia-smi</span> mig <span class="at">-i</span> 4 <span class="at">-cgi</span> 9 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2000-01-10-(메모) DGX staion_files/figure-html/c9c17590-9979-467c-aa50-bada68b66093-1-c80a5ffb-7c5f-4124-95fa-c89f7d132d6d.png" class="img-fluid figure-img"></p>
 <figcaption>Note: 2개까지는 잘 ㅁ나들어지고 그 이후에는 리소스 부족으로 에러가 발생한다.</figcaption>
@@ -436,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>2개까지는 잘 만들어지고 그 이후에는 리소스부족으로 에러발생</p>
 </blockquote>
 <p><code>-</code> 만들어진 <code>GI</code> 확인</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2000-01-10-(메모) DGX staion_files/figure-html/3d027141-a381-4a00-999a-72e7ed4c800c-1-49b1ecd2-049c-4e51-9d23-5d97477a5e1c.png" class="img-fluid figure-img"></p>
 <figcaption>Note: 1,2번 GPU에 각각 GI가 1개씩 있고 4번 GPU에 GI가 2개 있다.</figcaption>
@@ -444,7 +444,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 생성가능한 <code>CI</code> 확인</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">nvidia-smi</span> mig <span class="at">-lcip</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2000-01-10-(메모) DGX staion_files/figure-html/db40ccbe-a3f0-4660-acf1-3547cd6ed491-1-8649fd20-87c2-4b8c-a05b-40bc8b9e54bc.png" class="img-fluid figure-img"></p>
 <figcaption>Note: {GPU ID: GPU INSTANCE ID} 의 조합에서 {1:0}, {2:0}, {4:1}, {4:2} 에 해당하는 GI에서 생성가능한 CI들이 각각 출력된다. 4번 GPU의 GI들은 40기가가 한계이므로 생성가능 CI목록이 상대적으로 제한적임을 캐치하라</figcaption>
@@ -456,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>-</code> <code>GPUdev</code>=4 에서 생성가능한 <code>CI</code> 조회</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#nvidia-smi mig -i {GPU ID} -lcip</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="ex">nvidia-smi</span> mig <span class="at">-i</span> 4 <span class="at">-lcip</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2000-01-10-(메모) DGX staion_files/figure-html/ada60fdb-5536-4494-b5aa-11bf75e39a5f-1-afaddcc7-847b-45e9-9988-946572524348.png" class="img-fluid figure-img"></p>
 <figcaption>Note: 각 GPU-인스턴스(GI)에서는 3개 계산-인스턴스(CI)를 만들수 있음. 만약에 <code>Profile ID = 0</code> 으로 만든다면 14의 계산능력을 가진 CI를 3개까지 만들수 있음, 만약 <code>Profile ID = 2*</code> 로 만든다면 42개의 계산능력을 가진 CI를 1개만 만들 수 있음</figcaption>
@@ -465,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>-</code> {<code>GPUdev-ID</code>:<code>GI-ID</code>} = {4:1} 에서 <code>COMPUTE-INSTANCE-PROFILE-ID</code>=0 에 해당하는 CI를 3개 생성</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#nvidia-smi mig -i {GPUdev-ID} -gi {GI-ID} -cci {COMPUTE-INSTANCE-PROFILE-ID}</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="ex">nvidia-smi</span> mig <span class="at">-i</span> 4 <span class="at">-gi</span> 1 <span class="at">-cci</span> 0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2000-01-10-(메모) DGX staion_files/figure-html/9325b82f-8a59-46a3-b9f0-9d6a3673e5b5-1-3690903a-40be-4384-9ebc-c814535e95df.png" class="img-fluid figure-img"></p>
 <figcaption>Note: 자원부족으로 3개까지 밖에 못만든다..</figcaption>
@@ -474,7 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>-</code> {<code>GPUdev-ID</code>:<code>GI-ID</code>}={4:2} 에서 <code>COMPUTE-INSTANCE-PROFILE-ID</code>=2 에 해당하는 CI를 1개 생성</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#nvidia-smi mig -i {GPUdev-ID} -gi {GI-ID} -cci {COMPUTE-INSTANCE-PROFILE-ID}</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="ex">nvidia-smi</span> mig <span class="at">-i</span> 4 <span class="at">-gi</span> 2 <span class="at">-cci</span> 2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2000-01-10-(메모) DGX staion_files/figure-html/e5331b19-1d57-4bf9-a5e2-5a13799bbfdb-1-318514ed-7328-4e4c-b2de-fcb83322dad5.png" class="img-fluid figure-img"></p>
 <figcaption>Note: 자원이 부족해서 1개밖에 못 만든다.</figcaption>
@@ -777,27 +777,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -812,10 +791,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -824,7 +807,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
       return note.innerHTML;
     }
   }

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.520">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -125,6 +125,33 @@ div.csl-indent {
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -516,7 +543,7 @@ Djuric, Petar, and Cédric Richard. 2018. <em>Cooperative and Graph Signal Proce
 <p>Thus far, we have presented three extensions of the concept of stationarity into the realm of graph processes, two of which are equivalent and, hence, grouped in Definition 12.2. At this point, the attentive reader might have a natural inquiry. Are Definitions 12.1 and 12.2 equivalent for general graphs, as they are for stationarity in time? In fact, it can be shown that Definitions 12.1 and 12.2 are equivalent for any graph <span class="math inline">\({\bf S}\)</span> that is normal and whose eigenvalues are all distinct <span class="citation" data-cites="marques2017stationary">(<a href="#ref-marques2017stationary" role="doc-biblioref">Marques et al. 2017</a>)</span>. Follwing figure presents a concise summary of the definitions discussed in this section.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-marques2017stationary" class="csl-entry" role="listitem">
 Marques, Antonio G, Santiago Segarra, Geert Leus, and Alejandro Ribeiro. 2017. <span>“Stationary Graph Processes and Spectral Estimation.”</span> <em>IEEE Transactions on Signal Processing</em> 65 (22): 5911–26.
-</div></div><div class="quarto-figure quarto-figure-center">
+</div></div><div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-26-Chap-12.2_files/figure-html/2bacb792-6dad-4d86-a9d0-1130727b88d1-1-fcc7a188-7a4c-4e41-b896-f1b6a1f6f87d.png" class="img-fluid figure-img"></p>
 <figcaption>그림1: 교재에서 긁어온 다이어그램.</figcaption>
@@ -556,7 +583,7 @@ Segarra, Santiago, Antonio G Marques, Gonzalo Mateos, and Alejandro Ribeiro. 201
 <p>이러한 직관에서 아래와 같이 시계열의 정상성에 대한 세번째 정의를 이해할 수 있다.</p>
 <p>(정의3) <span class="math inline">\({\bf x}\)</span>가 정상시계열이다. <span class="math inline">\(\overset{def}{\Longleftrightarrow}\)</span> <span class="math inline">\({\bf C}_{\bf x}\)</span>는 <span class="math inline">\({\bf DFT}\)</span> 행렬로 대각화 가능하다. (<span class="math inline">\({\bf C}_{\bf x}\)</span>와 <span class="math inline">\({\bf B}\)</span>는 같은 고유벡터 행렬을 가진다.)</p>
 <p>정상시계열에 대한 세가지 정의는 아래와 같이 정상 그래프신호로 확장가능하다.</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-26-Chap-12.2_files/figure-html/39a41707-b306-4492-a0b5-e02b4d7d7591-1-fcc7a188-7a4c-4e41-b896-f1b6a1f6f87d.png" class="img-fluid figure-img"></p>
 <figcaption>그림1: 교재에서 긁어온 다이어그램.</figcaption>
@@ -752,27 +779,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -787,10 +793,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -799,7 +809,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
       return note.innerHTML;
     }
   }

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.520">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -100,6 +100,33 @@ ul.task-list li input[type="checkbox"] {
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -274,7 +301,7 @@ Author
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1724510012769" data-listing-reading-time-sort="2" data-listing-word-count-sort="231" data-listing-title-sort="(공부) xgboost 재현" data-listing-filename-sort="2024-08-20-(공부) xgboost 재현.ipynb">
+<tr data-index="0" data-listing-file-modified-sort="1724509997000" data-listing-reading-time-sort="2" data-listing-word-count-sort="231" data-listing-title-sort="(공부) xgboost 재현" data-listing-filename-sort="2024-08-20-(공부) xgboost 재현.ipynb">
 <td>
 <span class="listing-date">&nbsp;</span>
 </td>
@@ -285,7 +312,40 @@ Author
 <span class="listing-author">&nbsp;</span>
 </td>
 </tr>
-<tr data-index="1" data-listing-date-sort="1723388400000" data-listing-file-modified-sort="1724458133244" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2827" data-listing-title-sort="(공부) CGSP -- Chap 12.2: Weakly Stationary Graph Processes" data-listing-filename-sort="2022-12-26-Chap-12.2.ipynb">
+<tr data-index="1" data-listing-date-sort="1724857200000" data-listing-file-modified-sort="1725451429060" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1805" data-listing-title-sort="(공부) image_classification 2" data-listing-filename-sort="2024-08-29-image_classification-2.ipynb">
+<td>
+<span class="listing-date">Aug 29, 2024</span>
+</td>
+<td>
+<a href="./공부/HF/2024-08-29-image_classification-2.html" class="title listing-title">(공부) image_classification 2</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="2" data-listing-date-sort="1724857200000" data-listing-file-modified-sort="1725451429060" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="815" data-listing-title-sort="(공부) image_classification" data-listing-filename-sort="2024-08-29-image_classification.ipynb">
+<td>
+<span class="listing-date">Aug 29, 2024</span>
+</td>
+<td>
+<a href="./공부/HF/2024-08-29-image_classification.html" class="title listing-title">(공부) image_classification</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1724770800000" data-listing-file-modified-sort="1724981754000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="47" data-listing-title-sort="(공부) sequence_classification" data-listing-filename-sort="2024-08-28-sequence_classification.ipynb">
+<td>
+<span class="listing-date">Aug 28, 2024</span>
+</td>
+<td>
+<a href="./공부/HF/2024-08-28-sequence_classification.html" class="title listing-title">(공부) sequence_classification</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="4" data-listing-date-sort="1723388400000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2827" data-listing-title-sort="(공부) CGSP -- Chap 12.2: Weakly Stationary Graph Processes" data-listing-filename-sort="2022-12-26-Chap-12.2.ipynb">
 <td>
 <span class="listing-date">Aug 12, 2024</span>
 </td>
@@ -296,7 +356,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="2" data-listing-date-sort="1723388400000" data-listing-file-modified-sort="1724458133200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="48" data-listing-title-sort="(공부) 시계열과 GSP" data-listing-filename-sort="2024-08-12-(공부) 시계열과 GSP.ipynb">
+<tr data-index="5" data-listing-date-sort="1723388400000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="48" data-listing-title-sort="(공부) 시계열과 GSP" data-listing-filename-sort="2024-08-12-(공부) 시계열과 GSP.ipynb">
 <td>
 <span class="listing-date">Aug 12, 2024</span>
 </td>
@@ -307,139 +367,139 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="3" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="(공부) hf -- lesson12:" data-listing-filename-sort="Transformers 91-101.ipynb">
+<tr data-index="6" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(공부) hf -- lesson2:" data-listing-filename-sort="lecture2.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/Transformers 91-101.html" class="title listing-title">(공부) hf – lesson12:</a>
+<a href="./공부/HFBOOK/lecture2.html" class="title listing-title">(공부) hf – lesson2:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="4" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="(공부) hf -- lesson9:" data-listing-filename-sort="Transformers 66-72.ipynb">
+<tr data-index="7" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="5" data-listing-title-sort="(공부) hf -- lesson6:" data-listing-filename-sort="Transformers 43-49.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/Transformers 66-72.html" class="title listing-title">(공부) hf – lesson9:</a>
+<a href="./공부/HFBOOK/Transformers 43-49.html" class="title listing-title">(공부) hf – lesson6:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="5" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="(공부) hf -- lesson8:" data-listing-filename-sort="Transformers 56-65.ipynb">
+<tr data-index="8" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="(공부) hf -- lesson9:" data-listing-filename-sort="Transformers 66-72.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/Transformers 56-65.html" class="title listing-title">(공부) hf – lesson8:</a>
+<a href="./공부/HFBOOK/Transformers 66-72.html" class="title listing-title">(공부) hf – lesson9:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="6" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="(공부) hf -- lesson3:" data-listing-filename-sort="lecture3.ipynb">
+<tr data-index="9" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(공부) hf -- lesson5:" data-listing-filename-sort="Transformers 37-42.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/lecture3.html" class="title listing-title">(공부) hf – lesson3:</a>
+<a href="./공부/HFBOOK/Transformers 37-42.html" class="title listing-title">(공부) hf – lesson5:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="7" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9" data-listing-title-sort="(공부) hf -- lesson10:" data-listing-filename-sort="Transformers 73-81.ipynb">
+<tr data-index="10" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="(공부) hf -- lesson8:" data-listing-filename-sort="Transformers 56-65.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/Transformers 73-81.html" class="title listing-title">(공부) hf – lesson10:</a>
+<a href="./공부/HFBOOK/Transformers 56-65.html" class="title listing-title">(공부) hf – lesson8:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="8" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(공부) hf -- lesson2:" data-listing-filename-sort="lecture2.ipynb">
+<tr data-index="11" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9" data-listing-title-sort="(공부) hf -- lesson4:" data-listing-filename-sort="Transformers 27-36.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/lecture2.html" class="title listing-title">(공부) hf – lesson2:</a>
+<a href="./공부/HFBOOK/Transformers 27-36.html" class="title listing-title">(공부) hf – lesson4:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="9" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="(공부) hf -- lesson11:" data-listing-filename-sort="Transformers 82-90.ipynb">
+<tr data-index="12" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="(공부) hf -- lesson3:" data-listing-filename-sort="lecture3.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/Transformers 82-90.html" class="title listing-title">(공부) hf – lesson11:</a>
+<a href="./공부/HFBOOK/lecture3.html" class="title listing-title">(공부) hf – lesson3:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="10" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="5" data-listing-title-sort="(공부) hf -- lesson6:" data-listing-filename-sort="Transformers 43-49.ipynb">
+<tr data-index="13" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="37" data-listing-title-sort="(공부) hf -- lesson1:" data-listing-filename-sort="lecture1.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/Transformers 43-49.html" class="title listing-title">(공부) hf – lesson6:</a>
+<a href="./공부/HFBOOK/lecture1.html" class="title listing-title">(공부) hf – lesson1:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="11" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9" data-listing-title-sort="(공부) hf -- lesson4:" data-listing-filename-sort="Transformers 27-36.ipynb">
+<tr data-index="14" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="(공부) hf -- lesson11:" data-listing-filename-sort="Transformers 82-90.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/Transformers 27-36.html" class="title listing-title">(공부) hf – lesson4:</a>
+<a href="./공부/HFBOOK/Transformers 82-90.html" class="title listing-title">(공부) hf – lesson11:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="12" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="(공부) hf -- lesson7:" data-listing-filename-sort="Transformers 50-55.ipynb">
+<tr data-index="15" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="(공부) hf -- lesson12:" data-listing-filename-sort="Transformers 91-101.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/Transformers 50-55.html" class="title listing-title">(공부) hf – lesson7:</a>
+<a href="./공부/HFBOOK/Transformers 91-101.html" class="title listing-title">(공부) hf – lesson12:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="13" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(공부) hf -- lesson5:" data-listing-filename-sort="Transformers 37-42.ipynb">
+<tr data-index="16" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9" data-listing-title-sort="(공부) hf -- lesson10:" data-listing-filename-sort="Transformers 73-81.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/Transformers 37-42.html" class="title listing-title">(공부) hf – lesson5:</a>
+<a href="./공부/HFBOOK/Transformers 73-81.html" class="title listing-title">(공부) hf – lesson10:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="14" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="37" data-listing-title-sort="(공부) hf -- lesson1:" data-listing-filename-sort="lecture1.ipynb">
+<tr data-index="17" data-listing-date-sort="1720450800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="(공부) hf -- lesson7:" data-listing-filename-sort="Transformers 50-55.ipynb">
 <td>
 <span class="listing-date">Jul 9, 2024</span>
 </td>
 <td>
-<a href="./공부/HF/lecture1.html" class="title listing-title">(공부) hf – lesson1:</a>
+<a href="./공부/HFBOOK/Transformers 50-55.html" class="title listing-title">(공부) hf – lesson7:</a>
 </td>
 <td>
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="15" data-listing-date-sort="1706626800000" data-listing-file-modified-sort="1724458133200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(공부) 코드 -- AUC sklearn" data-listing-filename-sort="2024-01-30-(공부) 코드 -- AUC.ipynb">
+<tr data-index="18" data-listing-date-sort="1706626800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(공부) 코드 -- AUC sklearn" data-listing-filename-sort="2024-01-30-(공부) 코드 -- AUC.ipynb">
 <td>
 <span class="listing-date">Jan 31, 2024</span>
 </td>
@@ -450,7 +510,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="16" data-listing-date-sort="1706194800000" data-listing-file-modified-sort="1724458133200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="735" data-listing-title-sort="(공부) 조건부확률, 조건부기대값" data-listing-filename-sort="2024-01-26-(공부) 조건부확률.ipynb">
+<tr data-index="19" data-listing-date-sort="1706194800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="735" data-listing-title-sort="(공부) 조건부확률, 조건부기대값" data-listing-filename-sort="2024-01-26-(공부) 조건부확률.ipynb">
 <td>
 <span class="listing-date">Jan 26, 2024</span>
 </td>
@@ -461,7 +521,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="17" data-listing-date-sort="1698246000000" data-listing-file-modified-sort="1724458133200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="149" data-listing-title-sort="(공부) Julia -- Vector" data-listing-filename-sort="2023-10-26-(공부) Julia -- Vector.ipynb">
+<tr data-index="20" data-listing-date-sort="1698246000000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="149" data-listing-title-sort="(공부) Julia -- Vector" data-listing-filename-sort="2023-10-26-(공부) Julia -- Vector.ipynb">
 <td>
 <span class="listing-date">Oct 26, 2023</span>
 </td>
@@ -472,7 +532,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="18" data-listing-date-sort="1698159600000" data-listing-file-modified-sort="1724458133200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="67" data-listing-title-sort="(공부) Julia -- 문자와 문자열" data-listing-filename-sort="2023-10-25-(공부) Julia -- 문자와 문자열.ipynb">
+<tr data-index="21" data-listing-date-sort="1698159600000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="67" data-listing-title-sort="(공부) Julia -- 문자와 문자열" data-listing-filename-sort="2023-10-25-(공부) Julia -- 문자와 문자열.ipynb">
 <td>
 <span class="listing-date">Oct 25, 2023</span>
 </td>
@@ -483,7 +543,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="19" data-listing-date-sort="1697814000000" data-listing-file-modified-sort="1724458133200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(공부&amp;지윤) Imputer와 Scaler의 적용" data-listing-filename-sort="2023-10-21-(공부&amp;지윤) Imputer와 Scaler의 적용.ipynb">
+<tr data-index="22" data-listing-date-sort="1697814000000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(공부&amp;지윤) Imputer와 Scaler의 적용" data-listing-filename-sort="2023-10-21-(공부&amp;지윤) Imputer와 Scaler의 적용.ipynb">
 <td>
 <span class="listing-date">Oct 21, 2023</span>
 </td>
@@ -494,7 +554,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="20" data-listing-date-sort="1695481200000" data-listing-file-modified-sort="1724458133200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(공부) 코드 -- ggraph" data-listing-filename-sort="2023-09-24-(공부) 코드 -- ggraph.ipynb">
+<tr data-index="23" data-listing-date-sort="1695481200000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="(공부) 코드 -- ggraph" data-listing-filename-sort="2023-09-24-(공부) 코드 -- ggraph.ipynb">
 <td>
 <span class="listing-date">Sep 24, 2023</span>
 </td>
@@ -505,7 +565,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="21" data-listing-date-sort="1689692400000" data-listing-file-modified-sort="1724458133264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="155" data-listing-title-sort="(공부) PyG -- lesson6: GCN" data-listing-filename-sort="ls6.ipynb">
+<tr data-index="24" data-listing-date-sort="1689692400000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="155" data-listing-title-sort="(공부) PyG -- lesson6: GCN" data-listing-filename-sort="ls6.ipynb">
 <td>
 <span class="listing-date">Jul 19, 2023</span>
 </td>
@@ -516,7 +576,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="22" data-listing-date-sort="1689260400000" data-listing-file-modified-sort="1724458133264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="104" data-listing-title-sort="(공부) PyG -- lesson5: Learning Methods on Graphs" data-listing-filename-sort="ls5.ipynb">
+<tr data-index="25" data-listing-date-sort="1689260400000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="104" data-listing-title-sort="(공부) PyG -- lesson5: Learning Methods on Graphs" data-listing-filename-sort="ls5.ipynb">
 <td>
 <span class="listing-date">Jul 14, 2023</span>
 </td>
@@ -527,18 +587,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="23" data-listing-date-sort="1689087600000" data-listing-file-modified-sort="1724458133264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="(공부) PyG -- lesson4: Data Transform???" data-listing-filename-sort="ls4.ipynb">
-<td>
-<span class="listing-date">Jul 12, 2023</span>
-</td>
-<td>
-<a href="./공부/PyG/ls4.html" class="title listing-title">(공부) PyG – lesson4: Data Transform???</a>
-</td>
-<td>
-<span class="listing-author">신록예찬 </span>
-</td>
-</tr>
-<tr data-index="24" data-listing-date-sort="1689087600000" data-listing-file-modified-sort="1724458133264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="177" data-listing-title-sort="(공부) PyG -- lesson3: 미니배치" data-listing-filename-sort="ls3.ipynb">
+<tr data-index="26" data-listing-date-sort="1689087600000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="177" data-listing-title-sort="(공부) PyG -- lesson3: 미니배치" data-listing-filename-sort="ls3.ipynb">
 <td>
 <span class="listing-date">Jul 12, 2023</span>
 </td>
@@ -549,7 +598,18 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="25" data-listing-date-sort="1688655600000" data-listing-file-modified-sort="1724458133264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="311" data-listing-title-sort="(공부) PyG -- lesson2: 벤치마크 데이터셋 (train/test분리)" data-listing-filename-sort="ls2.ipynb">
+<tr data-index="27" data-listing-date-sort="1689087600000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="(공부) PyG -- lesson4: Data Transform???" data-listing-filename-sort="ls4.ipynb">
+<td>
+<span class="listing-date">Jul 12, 2023</span>
+</td>
+<td>
+<a href="./공부/PyG/ls4.html" class="title listing-title">(공부) PyG – lesson4: Data Transform???</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="28" data-listing-date-sort="1688655600000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="311" data-listing-title-sort="(공부) PyG -- lesson2: 벤치마크 데이터셋 (train/test분리)" data-listing-filename-sort="ls2.ipynb">
 <td>
 <span class="listing-date">Jul 7, 2023</span>
 </td>
@@ -560,7 +620,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="26" data-listing-date-sort="1688396400000" data-listing-file-modified-sort="1724458133196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2689" data-listing-title-sort="(공부) 토폴로지" data-listing-filename-sort="2023-07-04-(공부) 토폴로지.ipynb">
+<tr data-index="29" data-listing-date-sort="1688396400000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2689" data-listing-title-sort="(공부) 토폴로지" data-listing-filename-sort="2023-07-04-(공부) 토폴로지.ipynb">
 <td>
 <span class="listing-date">Jul 4, 2023</span>
 </td>
@@ -571,7 +631,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="27" data-listing-date-sort="1688223600000" data-listing-file-modified-sort="1724458133264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="107" data-listing-title-sort="(공부) PyG -- lesson1: 자료형" data-listing-filename-sort="ls1.ipynb">
+<tr data-index="30" data-listing-date-sort="1688223600000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="107" data-listing-title-sort="(공부) PyG -- lesson1: 자료형" data-listing-filename-sort="ls1.ipynb">
 <td>
 <span class="listing-date">Jul 2, 2023</span>
 </td>
@@ -582,18 +642,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="28" data-listing-date-sort="1687446000000" data-listing-file-modified-sort="1724458133196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1076" data-listing-title-sort="(공부&amp;지윤) 퓨리에변환(detailed)" data-listing-filename-sort="2023-06-28-(공부&amp;지윤) 퓨리에변환(detailed).ipynb">
-<td>
-<span class="listing-date">Jun 23, 2023</span>
-</td>
-<td>
-<a href="./공부/2023-06-28-(공부&amp;지윤) 퓨리에변환(detailed).html" class="title listing-title">(공부&amp;지윤) 퓨리에변환(detailed)</a>
-</td>
-<td>
-<span class="listing-author">신록예찬 </span>
-</td>
-</tr>
-<tr data-index="29" data-listing-date-sort="1687446000000" data-listing-file-modified-sort="1724458133196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="(공부&amp;지윤) 커널리그레션" data-listing-filename-sort="2023-06-28-(공부&amp;지윤) 커널리그레션.ipynb">
+<tr data-index="31" data-listing-date-sort="1687446000000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="(공부&amp;지윤) 커널리그레션" data-listing-filename-sort="2023-06-28-(공부&amp;지윤) 커널리그레션.ipynb">
 <td>
 <span class="listing-date">Jun 23, 2023</span>
 </td>
@@ -604,7 +653,18 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="30" data-listing-date-sort="1687446000000" data-listing-file-modified-sort="1724458133196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="106" data-listing-title-sort="(공부&amp;지윤) 퓨리에변환4jy" data-listing-filename-sort="2023-06-23-(공부&amp;지윤) 퓨리에변환4jy.ipynb">
+<tr data-index="32" data-listing-date-sort="1687446000000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1076" data-listing-title-sort="(공부&amp;지윤) 퓨리에변환(detailed)" data-listing-filename-sort="2023-06-28-(공부&amp;지윤) 퓨리에변환(detailed).ipynb">
+<td>
+<span class="listing-date">Jun 23, 2023</span>
+</td>
+<td>
+<a href="./공부/2023-06-28-(공부&amp;지윤) 퓨리에변환(detailed).html" class="title listing-title">(공부&amp;지윤) 퓨리에변환(detailed)</a>
+</td>
+<td>
+<span class="listing-author">신록예찬 </span>
+</td>
+</tr>
+<tr data-index="33" data-listing-date-sort="1687446000000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="106" data-listing-title-sort="(공부&amp;지윤) 퓨리에변환4jy" data-listing-filename-sort="2023-06-23-(공부&amp;지윤) 퓨리에변환4jy.ipynb">
 <td>
 <span class="listing-date">Jun 23, 2023</span>
 </td>
@@ -615,7 +675,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="31" data-listing-date-sort="1686668400000" data-listing-file-modified-sort="1724458133196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1285" data-listing-title-sort="(공부&amp;지윤) 추정" data-listing-filename-sort="2023-05-13-(공부&amp;지윤) 추정.ipynb">
+<tr data-index="34" data-listing-date-sort="1686668400000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1285" data-listing-title-sort="(공부&amp;지윤) 추정" data-listing-filename-sort="2023-05-13-(공부&amp;지윤) 추정.ipynb">
 <td>
 <span class="listing-date">Jun 14, 2023</span>
 </td>
@@ -626,7 +686,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="32" data-listing-date-sort="1677596400000" data-listing-file-modified-sort="1724458133196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="124" data-listing-title-sort="(공부&amp;서연) 지수분포 가설검정" data-listing-filename-sort="2023-03-01-(공부&amp;서연) 지수분포 가설검정.ipynb">
+<tr data-index="35" data-listing-date-sort="1677596400000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="124" data-listing-title-sort="(공부&amp;서연) 지수분포 가설검정" data-listing-filename-sort="2023-03-01-(공부&amp;서연) 지수분포 가설검정.ipynb">
 <td>
 <span class="listing-date">Mar 1, 2023</span>
 </td>
@@ -637,7 +697,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="33" data-listing-date-sort="1674140400000" data-listing-file-modified-sort="1724458133196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="524" data-listing-title-sort="(공부) 추정" data-listing-filename-sort="2023-01-20-(공부) 추정.ipynb">
+<tr data-index="36" data-listing-date-sort="1674140400000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="524" data-listing-title-sort="(공부) 추정" data-listing-filename-sort="2023-01-20-(공부) 추정.ipynb">
 <td>
 <span class="listing-date">Jan 20, 2023</span>
 </td>
@@ -648,7 +708,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="34" data-listing-date-sort="1673708400000" data-listing-file-modified-sort="1724458133248" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="58" data-listing-title-sort="(공부) CGSP -- Chap 12.4: Node Subsampling for PSD Estimation" data-listing-filename-sort="2023-01-15-Chap-12.4.ipynb">
+<tr data-index="37" data-listing-date-sort="1673708400000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="58" data-listing-title-sort="(공부) CGSP -- Chap 12.4: Node Subsampling for PSD Estimation" data-listing-filename-sort="2023-01-15-Chap-12.4.ipynb">
 <td>
 <span class="listing-date">Jan 15, 2023</span>
 </td>
@@ -659,7 +719,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="35" data-listing-date-sort="1673449200000" data-listing-file-modified-sort="1724458133196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="167" data-listing-title-sort="(공부&amp;서연) 지수분포 평균검정" data-listing-filename-sort="2023-02-14-(공부&amp;서연) 지수분포 평균검정.ipynb">
+<tr data-index="38" data-listing-date-sort="1673449200000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="167" data-listing-title-sort="(공부&amp;서연) 지수분포 평균검정" data-listing-filename-sort="2023-02-14-(공부&amp;서연) 지수분포 평균검정.ipynb">
 <td>
 <span class="listing-date">Jan 12, 2023</span>
 </td>
@@ -670,7 +730,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="36" data-listing-date-sort="1672066800000" data-listing-file-modified-sort="1724458133248" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24" data-listing-word-count-sort="4635" data-listing-title-sort="(공부) CGSP -- Chap 12.2 ~ 3: Power Spectral Density and its Estimators" data-listing-filename-sort="2022-12-27-Chap-12.2.1~12.3.1.ipynb">
+<tr data-index="39" data-listing-date-sort="1672066800000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24" data-listing-word-count-sort="4635" data-listing-title-sort="(공부) CGSP -- Chap 12.2 ~ 3: Power Spectral Density and its Estimators" data-listing-filename-sort="2022-12-27-Chap-12.2.1~12.3.1.ipynb">
 <td>
 <span class="listing-date">Dec 27, 2022</span>
 </td>
@@ -681,7 +741,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="37" data-listing-date-sort="1671807600000" data-listing-file-modified-sort="1724458133240" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1075" data-listing-title-sort="(공부) CGSP -- Chap 8.3: Discrete Fourier Transform" data-listing-filename-sort="2022-12-24-Chap-8.3.ipynb">
+<tr data-index="40" data-listing-date-sort="1671807600000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1075" data-listing-title-sort="(공부) CGSP -- Chap 8.3: Discrete Fourier Transform" data-listing-filename-sort="2022-12-24-Chap-8.3.ipynb">
 <td>
 <span class="listing-date">Dec 24, 2022</span>
 </td>
@@ -692,7 +752,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="38" data-listing-date-sort="1671721200000" data-listing-file-modified-sort="1724458133196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="676" data-listing-title-sort="(공부) 리뷰 -- EbayesThresh: R Programs for Empirical Bayes Thresholding" data-listing-filename-sort="2022-12-23-(공부) 리뷰 -- Ebayesthresh.ipynb">
+<tr data-index="41" data-listing-date-sort="1671721200000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="676" data-listing-title-sort="(공부) 리뷰 -- EbayesThresh: R Programs for Empirical Bayes Thresholding" data-listing-filename-sort="2022-12-23-(공부) 리뷰 -- Ebayesthresh.ipynb">
 <td>
 <span class="listing-date">Dec 23, 2022</span>
 </td>
@@ -703,7 +763,7 @@ Author
 <span class="listing-author">신록예찬 </span>
 </td>
 </tr>
-<tr data-index="39" data-listing-date-sort="1663686000000" data-listing-file-modified-sort="1724458133192" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="(공부) 파이토치 라이트닝 선형회귀" data-listing-filename-sort="2022-11-29-(공부) 코드 -- 파이토치 라이트닝 선형회귀.ipynb">
+<tr data-index="42" data-listing-date-sort="1663686000000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="(공부) 파이토치 라이트닝 선형회귀" data-listing-filename-sort="2022-11-29-(공부) 코드 -- 파이토치 라이트닝 선형회귀.ipynb">
 <td>
 <span class="listing-date">Sep 21, 2022</span>
 </td>
@@ -714,7 +774,7 @@ Author
 <span class="listing-author">최규빈 </span>
 </td>
 </tr>
-<tr data-index="40" data-listing-date-sort="1556204400000" data-listing-file-modified-sort="1724458133192" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="904" data-listing-title-sort="(공부) 퓨리에변환" data-listing-filename-sort="2019-04-26-(공부) 퓨리에변환.ipynb">
+<tr data-index="43" data-listing-date-sort="1556204400000" data-listing-file-modified-sort="1724458133000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="904" data-listing-title-sort="(공부) 퓨리에변환" data-listing-filename-sort="2019-04-26-(공부) 퓨리에변환.ipynb">
 <td>
 <span class="listing-date">Apr 26, 2019</span>
 </td>
@@ -859,27 +919,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -894,10 +933,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -906,7 +949,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
       return note.innerHTML;
     }
   }

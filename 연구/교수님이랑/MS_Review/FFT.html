@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.520">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -105,6 +105,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -279,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> scipy.fft <span class="im">import</span> fft</span>
 <span id="cb1-4"><a href="#cb1-4"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="5">
+<div id="cell-2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Define the function to compute the Fourier Transform and spectra</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> spec(y):</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    n <span class="op">=</span> <span class="bu">len</span>(y)</span>
@@ -330,11 +357,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-48"><a href="#cb2-48"></a>plot_series(axs[<span class="dv">1</span>, <span class="dv">0</span>], t, const, <span class="st">"Time Series (const)"</span>)</span>
 <span id="cb2-49"><a href="#cb2-49"></a>plot_spectrum(axs[<span class="dv">1</span>, <span class="dv">1</span>], freq, const_spec, <span class="st">"Frequency Spectrum (const)"</span>)</span>
 <span id="cb2-50"><a href="#cb2-50"></a></span>
-<span id="cb2-51"><a href="#cb2-51"></a>plot_series(axs[<span class="dv">2</span>, <span class="dv">0</span>], t, low, <span class="st">"Time Series (low)"</span>)</span>
-<span id="cb2-52"><a href="#cb2-52"></a>plot_spectrum(axs[<span class="dv">2</span>, <span class="dv">1</span>], freq, low_spec, <span class="st">"Frequency Spectrum (low)"</span>)</span>
+<span id="cb2-51"><a href="#cb2-51"></a>plot_series(axs[<span class="dv">2</span>, <span class="dv">0</span>], t, low, <span class="st">"Time Series ($l_n$)"</span>)</span>
+<span id="cb2-52"><a href="#cb2-52"></a>plot_spectrum(axs[<span class="dv">2</span>, <span class="dv">1</span>], freq, low_spec, <span class="st">"Frequency Spectrum ($l_n$)"</span>)</span>
 <span id="cb2-53"><a href="#cb2-53"></a></span>
-<span id="cb2-54"><a href="#cb2-54"></a>plot_series(axs[<span class="dv">3</span>, <span class="dv">0</span>], t, high, <span class="st">"Time Series (high)"</span>)</span>
-<span id="cb2-55"><a href="#cb2-55"></a>plot_spectrum(axs[<span class="dv">3</span>, <span class="dv">1</span>], freq, high_spec, <span class="st">"Frequency Spectrum (high)"</span>)</span>
+<span id="cb2-54"><a href="#cb2-54"></a>plot_series(axs[<span class="dv">3</span>, <span class="dv">0</span>], t, high, <span class="st">"Time Series ($h_n$)"</span>)</span>
+<span id="cb2-55"><a href="#cb2-55"></a>plot_spectrum(axs[<span class="dv">3</span>, <span class="dv">1</span>], freq, high_spec, <span class="st">"Frequency Spectrum ($h_n$)"</span>)</span>
 <span id="cb2-56"><a href="#cb2-56"></a></span>
 <span id="cb2-57"><a href="#cb2-57"></a>plot_series(axs[<span class="dv">4</span>, <span class="dv">0</span>], t, eps, <span class="vs">r"Time Series ($\epsilon_n$)"</span>)</span>
 <span id="cb2-58"><a href="#cb2-58"></a>plot_spectrum(axs[<span class="dv">4</span>, <span class="dv">1</span>], freq, eps_spec, <span class="st">"Frequency Spectrum ($\epsilon_n$)"</span>)</span>
@@ -344,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>&lt;&gt;:58: SyntaxWarning: invalid escape sequence '\e'
 &lt;&gt;:58: SyntaxWarning: invalid escape sequence '\e'
-/tmp/ipykernel_2170281/2521509224.py:58: SyntaxWarning: invalid escape sequence '\e'
+/tmp/ipykernel_2519670/2657843074.py:58: SyntaxWarning: invalid escape sequence '\e'
   plot_spectrum(axs[4, 1], freq, eps_spec, "Frequency Spectrum ($\epsilon_n$)")</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -507,27 +534,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -542,10 +548,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -554,7 +564,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
       return note.innerHTML;
     }
   }
