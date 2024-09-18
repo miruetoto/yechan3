@@ -9,7 +9,7 @@
 <meta name="author" content="신록예찬">
 <meta name="dcterms.date" content="2024-09-18">
 
-<title>신록예찬’s Blog - (강의) 감성분류 파고들기</title>
+<title>신록예찬’s Blog - (강의) 감성분석 파고들기</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">(강의) 감성분류 파고들기</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">(강의) 감성분석 파고들기</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -250,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">(강의) 감성분류 파고들기</h1>
+<h1 class="title">(강의) 감성분석 파고들기</h1>
 </div>
 
 
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> evaluate</span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/root/anaconda3/envs/hf/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+<pre><code>/home/cgb3/anaconda3/envs/hf/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
   from .autonotebook import tqdm as notebook_tqdm</code></pre>
 </div>
 </div>
@@ -314,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-17"><a href="#cb3-17"></a><span class="co">## Step4 </span></span>
 <span id="cb3-18"><a href="#cb3-18"></a>강인공지능생성하기 <span class="op">=</span> transformers.pipeline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/root/anaconda3/envs/hf/lib/python3.12/site-packages/transformers/tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+<pre><code>/home/cgb3/anaconda3/envs/hf/lib/python3.12/site-packages/transformers/tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
   warnings.warn(</code></pre>
 </div>
 </div>
@@ -546,10 +546,12 @@ Return:
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-주요 파라미터:
+<code>토크나이저</code> 사용법 (ref: ChatGPT)
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<section id="주요-파라미터" class="level4">
+<h4 class="anchored" data-anchor-id="주요-파라미터">주요 파라미터:</h4>
 <ol type="1">
 <li><strong>text</strong>:
 <ul>
@@ -642,8 +644,9 @@ Return:
 <li>디버깅 메시지를 출력할지 여부를 설정합니다. 기본값은 <code>True</code>로 설정되어 있습니다.</li>
 </ul></li>
 </ol>
-<section id="사용-예시" class="level3">
-<h3 class="anchored" data-anchor-id="사용-예시">사용 예시:</h3>
+</section>
+<section id="사용-예시" class="level4">
+<h4 class="anchored" data-anchor-id="사용-예시">사용 예시:</h4>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoTokenizer</span>
 <span id="cb8-2"><a href="#cb8-2"></a></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="co"># 토크나이저 불러오기</span></span>
@@ -665,34 +668,34 @@ Return:
 </div>
 </div>
 <p><code>-</code> 기본사용1: 단어별로 다른숫자를 맵핑 + 처음과 끝은 항상 <code>101</code>, <code>102</code></p>
-<div id="cell-12" class="cell" data-execution_count="22">
+<div id="cell-12" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>토크나이저(<span class="st">"hi hello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>{'input_ids': [101, 7632, 7592, 102], 'attention_mask': [1, 1, 1, 1]}</code></pre>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="24">
+<div id="cell-13" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>토크나이저(<span class="st">"hi hi hello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>{'input_ids': [101, 7632, 7632, 7592, 102], 'attention_mask': [1, 1, 1, 1, 1]}</code></pre>
 </div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="25">
+<div id="cell-14" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>토크나이저(<span class="st">"hi hi hello hello hello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>{'input_ids': [101, 7632, 7632, 7592, 7592, 7592, 102], 'attention_mask': [1, 1, 1, 1, 1, 1, 1]}</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="23">
+<div id="cell-15" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>토크나이저([<span class="st">"hi hello"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>{'input_ids': [[101, 7632, 7592, 102]], 'attention_mask': [[1, 1, 1, 1]]}</code></pre>
 </div>
 </div>
 <p><code>-</code> 기본사용2: 텍스트 혹은 텍스트의 리스트, 리스트의 리스트를 전달가능</p>
-<div id="cell-17" class="cell" data-execution_count="26">
+<div id="cell-17" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>토크나이저([<span class="st">"hi hello"</span>, <span class="st">"hello hello"</span>, <span class="st">"hi hi"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>{'input_ids': [[101, 7632, 7592, 102], [101, 7592, 7592, 102], [101, 7632, 7632, 102]], 'attention_mask': [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]}</code></pre>
 </div>
 </div>
