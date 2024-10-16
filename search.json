@@ -1573,6 +1573,34 @@
     "text": "D. train/val/test 자료의 의미\n- 학생입장에서 생각해본다면?\n\n소망: 내가 외우려고 한게 아니고 하도 공부하다보니까 문제가 외워졌음. 나도 그러기 싫음. 나도 내가 올바르게 공부했는지 체크하고 싶어.\n아이디어: 교수님이 풀어준 25000개중에서 15000개정도만 내가 풀이를 보면서 공부하고 나머지 10000개는 나 스스로 올바르게 공부했는지 체크하는 용도로 삼자.\n진행사항:\n\n1일차: 15000: 50점, 10000: 30점\n2일차: 15000: 90점, 10000: 85점\n3일차: 15000: 100점, 10000: 80점 &lt;– 이런 경험 없어요??\n\n판단: 이게 한 3일차 공부하다보니까 문제를 내가 너무 외운것같네? 오히려 2일차때의 느낌이 더 좋음. 그냥 2일차의 느낌으로 시험보러 가자.\n\n- 이럴경우 아래와 같이 상황이 정리된다.\n\n원래: 교수가 수업시간에 풀어준 25000문제 = 학생이 공부할 25000문제 = train // 교수가 기말시험으로 제출한 25000문제 = test\n바뀐상황: 학생공부할 15000문제 = train / 학생자체test 10000문제 = test // 교수가 기말시험으로 제출한 25000문제 = 찐 test\n\n- 이때 학생자체적으로 빼둔 test set을 validation set이라고 부른다 따라서 아래와 같이 정리가능하다.\n\ntrain = 15000문제 = 학생이 스스로 공부\nvalidation = 10000문제 = 학생이 공부할때 사용하지 않음. 자가진단용.\ntest = 25000문제 = 교수가 출제하는 시험\n\n- train/validation/test에 대한 용어는 엄밀하지 않게 사용되는 경우가 많아 그때그때 상황에 따라 맞게 알아서 해석해야 한다.\n\n억지상황1: 교수가 시험보지 않음. 그런데 내가 스스로 공부하면서 체크하고 싶어서 1000개의 문제를 구하고 매일 800개를 학습하고 200개를 이용하여 검증함. 이 경우는 200개의 문항을 validation이라고 부르기도 하고 test라고 부르기도함. (엄밀하게는 validation이 맞지만, 외부데이터가 없으므로 val/test의 경계가 흐릿해지는 상황)\n억지상황2: 나혼자 1000개의 문항을 800/200으로 나누어 매일 공부하고 있었음. 이때 나는 200개의 문항을 test라고 부르기도 하고 validation이라고 부르기도함. 그런데 교수가 보고 갑자기 나보고 외부 코딩대회에 나가라고 했음. 이 경우 200개의 문항은 validation이 되고 외부코딩대회에서 출제된 문항이 test가 되는 것임.\n\n- 느낌: 아래의 느낌을 기억하는게 중요함.\n\ntrain: 학습에 사용하는 자료.\nvalidation: 학습에 사용하지 않는 자료. 왜 안써? 더 좋은 훈련을 위한 목적.\ntest: 학습에 사용하지 않는 자료. 왜 안써? 올바르게 학습됨을 평가하기 위한 목적.\n\n\n헷갈리는 이유는 더 좋은 훈련을 위한 목적과 올바르게 학습됨을 폄가하기 위한 목적이 무 자르듯이 구분되지 않기 때문\n\n- 이상한 분류법\n\n데이터를 보통2개로 나누면 train/test 로 3개로 나누면 train/val/test 라고 표현한다고 생각하면 편리함.\n딱 맞는 정의는 아님. 의미상 구분해야함."
   },
   {
+    "objectID": "공부/HF/2024-10-01-(강의) 비디오분류.html#a.-이미지-자료의-이해",
+    "href": "공부/HF/2024-10-01-(강의) 비디오분류.html#a.-이미지-자료의-이해",
+    "title": "(강의) 비디오분류",
+    "section": "A. 이미지 자료의 이해",
+    "text": "A. 이미지 자료의 이해\n- plt.imshow(...) 에서 ...의 shape이 (??,??) 이러한 형태라면 흑백이미지를 출력\n\nplt.imshow([[0,150],[0,255]],cmap='gray')\nplt.colorbar()\n\n\n\n\n\n\n\n\n- plt.imshow(...) 에서 ...의 shape이 (??,??,3) 이러한 형태라면 칼라이미지를 출력\n\nr = [[0,255],[0,255]] # (2,2)\ng = [[255,0],[0,0]] # (2,2)\nb = [[0,0],[255,0]] # (2,2) \nplt.imshow(np.stack([r,g,b],axis=-1))\n\n\n\n\n\n\n\n\n- plt.imshow(...)는 ...의 dtype이 int인지 float인지에 따라서 인식이 다름\n\nr = [[0,1],[0,1]] # (2,2)\ng = [[1,0],[0,0]] # (2,2)\nb = [[0,0],[1,0]] # (2,2) \nplt.imshow(np.stack([r,g,b],axis=-1))\n\n\n\n\n\n\n\n\n\nr = [[0,1],[0,1]] # (2,2)\ng = [[1,0],[0,0]] # (2,2)\nb = [[0,0],[1,0]] # (2,2) \nplt.imshow(np.stack([r,g,b],axis=-1).astype(np.float64))\n\n\n\n\n\n\n\n\n\n이건 마치 1을 255로 생각한 결과"
+  },
+  {
+    "objectID": "공부/HF/2024-10-01-(강의) 비디오분류.html#b.-tsr.permute",
+    "href": "공부/HF/2024-10-01-(강의) 비디오분류.html#b.-tsr.permute",
+    "title": "(강의) 비디오분류",
+    "section": "B. tsr.permute()",
+    "text": "B. tsr.permute()\n- 실수로 R,G,B 를 이상한 방식으로 합쳤음..\n\nr = [[0,255],[0,255]] # (2,2)\ng = [[255,0],[0,0]] # (2,2)\nb = [[0,0],[255,0]] # (2,2) \n#img = np.stack([r,g,b],axis=-1) # &lt;-- 시각화를 위해선 이게 맞는 코드\nimg = np.stack([r,g,b])\nplt.imshow(img)\n\nTypeError: Invalid shape (3, 2, 2) for image data\n\n\n\n\n\n\n\n\n\n- 에러를 피하기 위해서 차원을 (3,2,2) 에서 (2,2,3) 으로 바꿈\n\nimg.reshape(2,2,3)\n\narray([[[  0, 255,   0],\n        [255, 255,   0]],\n\n       [[  0,   0,   0],\n        [  0, 255,   0]]])\n\n\n\nplt.imshow(img.reshape(2,2,3)) #???\n\n\n\n\n\n\n\n\n\n우리가 원하는 그림이 아닌데?\n\n- 아래의 결과를 관찰\n\nimg.reshape(2,2,3), np.transpose(img,(1,2,0))\n\n(array([[[  0, 255,   0],\n         [255, 255,   0]],\n \n        [[  0,   0,   0],\n         [  0, 255,   0]]]),\n array([[[  0, 255,   0],\n         [255,   0,   0]],\n \n        [[  0,   0, 255],\n         [255,   0,   0]]]))\n\n\n- 이게 맞는코드\n\nplt.imshow(np.transpose(img,(1,2,0)))\n\n\n\n\n\n\n\n\n- numpy 가 아니고 tensor 라면 아래와 같이 변환가능\n\nplt.imshow(torch.tensor(img).permute(1,2,0).numpy())"
+  },
+  {
+    "objectID": "공부/HF/2024-10-01-(강의) 비디오분류.html#c.-영상-자료-이해",
+    "href": "공부/HF/2024-10-01-(강의) 비디오분류.html#c.-영상-자료-이해",
+    "title": "(강의) 비디오분류",
+    "section": "C. 영상 자료 이해",
+    "text": "C. 영상 자료 이해\n\nnp.random.seed(43052)\nv = (np.random.rand(4, 60, 60, 3) * 255).astype('uint8')\n# frame1 \nv[0, :, :, 0] = 255  # R 채널을 최대치로 설정\n# frame2 \nv[1, :, :, 1] = 255  # G 채널을 최대치로 설정\n# frame3 \nv[2, :, :, 2] = 255  # B 채널을 최대치로 설정\n# frame4 \nv[3, :, :, 0] = 255  # R 채널을 최대치로 설정\nv[3, :, :, 1] = 255  # G 채널을 최대치로 설정\nfig,ax = plt.subplots(2,2)\nax[0][0].imshow(v[0])\nax[0][1].imshow(v[1])\nax[1][0].imshow(v[2])\nax[1][1].imshow(v[3])\n\n\n\n\n\n\n\n\n\nframes = [frame for frame in v]\nimageio.mimsave(\"sample.gif\", frames)\n\n\nIPython.display.Image(\"sample.gif\")\n\n&lt;IPython.core.display.Image object&gt;"
+  },
+  {
+    "objectID": "공부/HF/2024-10-01-(강의) 비디오분류.html#d.-arr.clip",
+    "href": "공부/HF/2024-10-01-(강의) 비디오분류.html#d.-arr.clip",
+    "title": "(강의) 비디오분류",
+    "section": "D. arr.clip()",
+    "text": "D. arr.clip()\n\narr = np.array([[300, -20, 150], [400, 100, 0], [255, 500, -100]])\narr\n\narray([[ 300,  -20,  150],\n       [ 400,  100,    0],\n       [ 255,  500, -100]])\n\n\n\narr_clipped = np.clip(arr, 0, 255)\narr_clipped\n\narray([[255,   0, 150],\n       [255, 100,   0],\n       [255, 255,   0]])"
+  },
+  {
     "objectID": "공부/HF/2024-10-01-(강의) 비디오분류.html#a.-다운로드",
     "href": "공부/HF/2024-10-01-(강의) 비디오분류.html#a.-다운로드",
     "title": "(강의) 비디오분류",
