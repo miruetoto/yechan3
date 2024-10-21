@@ -273,6 +273,13 @@ window.Quarto = {
   <ul>
   <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">1. 강의영상</a></li>
   <li><a href="#ref" id="toc-ref" class="nav-link" data-scroll-target="#ref">2. Ref</a></li>
+  <li><a href="#예비학습" id="toc-예비학습" class="nav-link" data-scroll-target="#예비학습">3. 예비학습</a>
+  <ul class="collapse">
+  <li><a href="#a.-이미지-자료의-이해" id="toc-a.-이미지-자료의-이해" class="nav-link" data-scroll-target="#a.-이미지-자료의-이해">A. 이미지 자료의 이해</a></li>
+  <li><a href="#b.-tsr.permute" id="toc-b.-tsr.permute" class="nav-link" data-scroll-target="#b.-tsr.permute">B. <code>tsr.permute()</code></a></li>
+  <li><a href="#c.-영상-자료-이해" id="toc-c.-영상-자료-이해" class="nav-link" data-scroll-target="#c.-영상-자료-이해">C. 영상 자료 이해</a></li>
+  <li><a href="#d.-arr.clip" id="toc-d.-arr.clip" class="nav-link" data-scroll-target="#d.-arr.clip">D. <code>arr.clip()</code></a></li>
+  </ul></li>
   <li><a href="#살펴보기" id="toc-살펴보기" class="nav-link" data-scroll-target="#살펴보기">4. 살펴보기</a></li>
   <li><a href="#pip-install-pytorchvideo-conda-install-conda-forgepytorchvideo" id="toc-pip-install-pytorchvideo-conda-install-conda-forgepytorchvideo" class="nav-link" data-scroll-target="#pip-install-pytorchvideo-conda-install-conda-forgepytorchvideo">pip install pytorchvideo # conda install conda-forge::pytorchvideo</a></li>
   <li><a href="#pip-install-imageio" id="toc-pip-install-imageio" class="nav-link" data-scroll-target="#pip-install-imageio">pip install imageio</a>
@@ -680,6 +687,214 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
 </div>
 </div>
 </section>
+<section id="예비학습" class="level1">
+<h1>3. 예비학습</h1>
+<div id="cell-27" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="a.-이미지-자료의-이해" class="level2">
+<h2 class="anchored" data-anchor-id="a.-이미지-자료의-이해">A. 이미지 자료의 이해</h2>
+<p><code>-</code> <code>plt.imshow(...)</code> 에서 <code>...</code>의 shape이 (??,??) 이러한 형태라면 흑백이미지를 출력</p>
+<div id="cell-30" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>plt.imshow([[<span class="dv">0</span>,<span class="dv">150</span>],[<span class="dv">0</span>,<span class="dv">255</span>]],cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb36-2"><a href="#cb36-2"></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> <code>plt.imshow(...)</code> 에서 <code>...</code>의 shape이 (??,??,3) 이러한 형태라면 칼라이미지를 출력</p>
+<div id="cell-32" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>r <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">255</span>],[<span class="dv">0</span>,<span class="dv">255</span>]] <span class="co"># (2,2)</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>g <span class="op">=</span> [[<span class="dv">255</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>]] <span class="co"># (2,2)</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>b <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">255</span>,<span class="dv">0</span>]] <span class="co"># (2,2) </span></span>
+<span id="cb37-4"><a href="#cb37-4"></a>plt.imshow(np.stack([r,g,b],axis<span class="op">=-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> <code>plt.imshow(...)</code>는 <code>...</code>의 dtype이 int인지 float인지에 따라서 인식이 다름</p>
+<div id="cell-34" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>r <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">0</span>,<span class="dv">1</span>]] <span class="co"># (2,2)</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>g <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>]] <span class="co"># (2,2)</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>b <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">1</span>,<span class="dv">0</span>]] <span class="co"># (2,2) </span></span>
+<span id="cb38-4"><a href="#cb38-4"></a>plt.imshow(np.stack([r,g,b],axis<span class="op">=-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-35" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>r <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">0</span>,<span class="dv">1</span>]] <span class="co"># (2,2)</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>g <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>]] <span class="co"># (2,2)</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a>b <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">1</span>,<span class="dv">0</span>]] <span class="co"># (2,2) </span></span>
+<span id="cb39-4"><a href="#cb39-4"></a>plt.imshow(np.stack([r,g,b],axis<span class="op">=-</span><span class="dv">1</span>).astype(np.float64))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>이건 마치 1을 255로 생각한 결과</li>
+</ul>
+</section>
+<section id="b.-tsr.permute" class="level2">
+<h2 class="anchored" data-anchor-id="b.-tsr.permute">B. <code>tsr.permute()</code></h2>
+<p><code>-</code> 실수로 R,G,B 를 이상한 방식으로 합쳤음..</p>
+<div id="cell-39" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>r <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">255</span>],[<span class="dv">0</span>,<span class="dv">255</span>]] <span class="co"># (2,2)</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>g <span class="op">=</span> [[<span class="dv">255</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>]] <span class="co"># (2,2)</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a>b <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">255</span>,<span class="dv">0</span>]] <span class="co"># (2,2) </span></span>
+<span id="cb40-4"><a href="#cb40-4"></a><span class="co">#img = np.stack([r,g,b],axis=-1) # &lt;-- 시각화를 위해선 이게 맞는 코드</span></span>
+<span id="cb40-5"><a href="#cb40-5"></a>img <span class="op">=</span> np.stack([r,g,b])</span>
+<span id="cb40-6"><a href="#cb40-6"></a>plt.imshow(img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: Invalid shape (3, 2, 2) for image data</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-29-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> 에러를 피하기 위해서 차원을 <code>(3,2,2)</code> 에서 <code>(2,2,3)</code> 으로 바꿈</p>
+<div id="cell-41" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>img.reshape(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>array([[[  0, 255,   0],
+        [255, 255,   0]],
+
+       [[  0,   0,   0],
+        [  0, 255,   0]]])</code></pre>
+</div>
+</div>
+<div id="cell-42" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>plt.imshow(img.reshape(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>)) <span class="co">#???</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>우리가 원하는 그림이 아닌데?</li>
+</ul>
+<p><code>-</code> 아래의 결과를 관찰</p>
+<div id="cell-45" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>img.reshape(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>), np.transpose(img,(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>(array([[[  0, 255,   0],
+         [255, 255,   0]],
+ 
+        [[  0,   0,   0],
+         [  0, 255,   0]]]),
+ array([[[  0, 255,   0],
+         [255,   0,   0]],
+ 
+        [[  0,   0, 255],
+         [255,   0,   0]]]))</code></pre>
+</div>
+</div>
+<p><code>-</code> 이게 맞는코드</p>
+<div id="cell-47" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>plt.imshow(np.transpose(img,(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> numpy 가 아니고 tensor 라면 아래와 같이 변환가능</p>
+<div id="cell-49" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>plt.imshow(torch.tensor(img).permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>).numpy())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="c.-영상-자료-이해" class="level2">
+<h2 class="anchored" data-anchor-id="c.-영상-자료-이해">C. 영상 자료 이해</h2>
+<div id="cell-51" class="cell" data-execution_count="156">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>np.random.seed(<span class="dv">43052</span>)</span>
+<span id="cb49-2"><a href="#cb49-2"></a>v <span class="op">=</span> (np.random.rand(<span class="dv">4</span>, <span class="dv">60</span>, <span class="dv">60</span>, <span class="dv">3</span>) <span class="op">*</span> <span class="dv">255</span>).astype(<span class="st">'uint8'</span>)</span>
+<span id="cb49-3"><a href="#cb49-3"></a><span class="co"># frame1 </span></span>
+<span id="cb49-4"><a href="#cb49-4"></a>v[<span class="dv">0</span>, :, :, <span class="dv">0</span>] <span class="op">=</span> <span class="dv">255</span>  <span class="co"># R 채널을 최대치로 설정</span></span>
+<span id="cb49-5"><a href="#cb49-5"></a><span class="co"># frame2 </span></span>
+<span id="cb49-6"><a href="#cb49-6"></a>v[<span class="dv">1</span>, :, :, <span class="dv">1</span>] <span class="op">=</span> <span class="dv">255</span>  <span class="co"># G 채널을 최대치로 설정</span></span>
+<span id="cb49-7"><a href="#cb49-7"></a><span class="co"># frame3 </span></span>
+<span id="cb49-8"><a href="#cb49-8"></a>v[<span class="dv">2</span>, :, :, <span class="dv">2</span>] <span class="op">=</span> <span class="dv">255</span>  <span class="co"># B 채널을 최대치로 설정</span></span>
+<span id="cb49-9"><a href="#cb49-9"></a><span class="co"># frame4 </span></span>
+<span id="cb49-10"><a href="#cb49-10"></a>v[<span class="dv">3</span>, :, :, <span class="dv">0</span>] <span class="op">=</span> <span class="dv">255</span>  <span class="co"># R 채널을 최대치로 설정</span></span>
+<span id="cb49-11"><a href="#cb49-11"></a>v[<span class="dv">3</span>, :, :, <span class="dv">1</span>] <span class="op">=</span> <span class="dv">255</span>  <span class="co"># G 채널을 최대치로 설정</span></span>
+<span id="cb49-12"><a href="#cb49-12"></a>fig,ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb49-13"><a href="#cb49-13"></a>ax[<span class="dv">0</span>][<span class="dv">0</span>].imshow(v[<span class="dv">0</span>])</span>
+<span id="cb49-14"><a href="#cb49-14"></a>ax[<span class="dv">0</span>][<span class="dv">1</span>].imshow(v[<span class="dv">1</span>])</span>
+<span id="cb49-15"><a href="#cb49-15"></a>ax[<span class="dv">1</span>][<span class="dv">0</span>].imshow(v[<span class="dv">2</span>])</span>
+<span id="cb49-16"><a href="#cb49-16"></a>ax[<span class="dv">1</span>][<span class="dv">1</span>].imshow(v[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-52" class="cell" data-execution_count="157">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>frames <span class="op">=</span> [frame <span class="cf">for</span> frame <span class="kw">in</span> v]</span>
+<span id="cb50-2"><a href="#cb50-2"></a>imageio.mimsave(<span class="st">"sample.gif"</span>, frames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-53" class="cell" data-execution_count="158">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>IPython.display.Image(<span class="st">"sample.gif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="158">
+<pre><code>&lt;IPython.core.display.Image object&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="d.-arr.clip" class="level2">
+<h2 class="anchored" data-anchor-id="d.-arr.clip">D. <code>arr.clip()</code></h2>
+<div id="cell-55" class="cell" data-execution_count="208">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>arr <span class="op">=</span> np.array([[<span class="dv">300</span>, <span class="op">-</span><span class="dv">20</span>, <span class="dv">150</span>], [<span class="dv">400</span>, <span class="dv">100</span>, <span class="dv">0</span>], [<span class="dv">255</span>, <span class="dv">500</span>, <span class="op">-</span><span class="dv">100</span>]])</span>
+<span id="cb53-2"><a href="#cb53-2"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="208">
+<pre><code>array([[ 300,  -20,  150],
+       [ 400,  100,    0],
+       [ 255,  500, -100]])</code></pre>
+</div>
+</div>
+<div id="cell-56" class="cell" data-execution_count="210">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>arr_clipped <span class="op">=</span> np.clip(arr, <span class="dv">0</span>, <span class="dv">255</span>)</span>
+<span id="cb55-2"><a href="#cb55-2"></a>arr_clipped</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="210">
+<pre><code>array([[255,   0, 150],
+       [255, 100,   0],
+       [255, 255,   0]])</code></pre>
+</div>
+</div>
+</section>
+</section>
 <section id="살펴보기" class="level1">
 <h1>4. 살펴보기</h1>
 </section>
@@ -688,70 +903,39 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
 </section>
 <section id="pip-install-imageio" class="level1">
 <h1>pip install imageio</h1>
-<div id="cell-28" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="im">import</span> huggingface_hub</span>
-<span id="cb35-2"><a href="#cb35-2"></a><span class="im">import</span> tarfile </span>
-<span id="cb35-3"><a href="#cb35-3"></a><span class="im">import</span> pathlib</span>
-<span id="cb35-4"><a href="#cb35-4"></a><span class="im">import</span> transformers</span>
-<span id="cb35-5"><a href="#cb35-5"></a><span class="im">import</span> pytorchvideo.data</span>
-<span id="cb35-6"><a href="#cb35-6"></a><span class="im">import</span> pytorchvideo.transforms</span>
-<span id="cb35-7"><a href="#cb35-7"></a><span class="im">import</span> torchvision.transforms</span>
-<span id="cb35-8"><a href="#cb35-8"></a><span class="im">import</span> os </span>
-<span id="cb35-9"><a href="#cb35-9"></a><span class="im">import</span> evaluate</span>
-<span id="cb35-10"><a href="#cb35-10"></a><span class="im">import</span> torch</span>
-<span id="cb35-11"><a href="#cb35-11"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb35-12"><a href="#cb35-12"></a><span class="im">import</span> imageio</span>
-<span id="cb35-13"><a href="#cb35-13"></a><span class="im">import</span> IPython.display</span>
-<span id="cb35-14"><a href="#cb35-14"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-59" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="im">import</span> huggingface_hub</span>
+<span id="cb57-2"><a href="#cb57-2"></a><span class="im">import</span> tarfile </span>
+<span id="cb57-3"><a href="#cb57-3"></a><span class="im">import</span> pathlib</span>
+<span id="cb57-4"><a href="#cb57-4"></a><span class="im">import</span> transformers</span>
+<span id="cb57-5"><a href="#cb57-5"></a><span class="im">import</span> pytorchvideo.data</span>
+<span id="cb57-6"><a href="#cb57-6"></a><span class="im">import</span> pytorchvideo.transforms</span>
+<span id="cb57-7"><a href="#cb57-7"></a><span class="im">import</span> torchvision.transforms</span>
+<span id="cb57-8"><a href="#cb57-8"></a><span class="im">import</span> os </span>
+<span id="cb57-9"><a href="#cb57-9"></a><span class="im">import</span> evaluate</span>
+<span id="cb57-10"><a href="#cb57-10"></a><span class="im">import</span> torch</span>
+<span id="cb57-11"><a href="#cb57-11"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb57-12"><a href="#cb57-12"></a><span class="im">import</span> imageio</span>
+<span id="cb57-13"><a href="#cb57-13"></a><span class="im">import</span> IPython.display</span>
+<span id="cb57-14"><a href="#cb57-14"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/cgb3/anaconda3/envs/hf/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
   from .autonotebook import tqdm as notebook_tqdm</code></pre>
 </div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">def</span> unnormalize_img(img):</span>
-<span id="cb37-2"><a href="#cb37-2"></a>    <span class="co">"""Un-normalizes the image pixels."""</span></span>
-<span id="cb37-3"><a href="#cb37-3"></a>    img <span class="op">=</span> (img <span class="op">*</span> std) <span class="op">+</span> mean</span>
-<span id="cb37-4"><a href="#cb37-4"></a>    img <span class="op">=</span> (img <span class="op">*</span> <span class="dv">255</span>).astype(<span class="st">"uint8"</span>)</span>
-<span id="cb37-5"><a href="#cb37-5"></a>    <span class="cf">return</span> img.clip(<span class="dv">0</span>, <span class="dv">255</span>)</span>
-<span id="cb37-6"><a href="#cb37-6"></a></span>
-<span id="cb37-7"><a href="#cb37-7"></a><span class="kw">def</span> create_gif(video_tensor, filename<span class="op">=</span><span class="st">"sample.gif"</span>):</span>
-<span id="cb37-8"><a href="#cb37-8"></a>    <span class="co">"""Prepares a GIF from a video tensor.</span></span>
-<span id="cb37-9"><a href="#cb37-9"></a><span class="co">    </span></span>
-<span id="cb37-10"><a href="#cb37-10"></a><span class="co">    The video tensor is expected to have the following shape:</span></span>
-<span id="cb37-11"><a href="#cb37-11"></a><span class="co">    (num_frames, num_channels, height, width).</span></span>
-<span id="cb37-12"><a href="#cb37-12"></a><span class="co">    """</span></span>
-<span id="cb37-13"><a href="#cb37-13"></a>    frames <span class="op">=</span> []</span>
-<span id="cb37-14"><a href="#cb37-14"></a>    <span class="cf">for</span> video_frame <span class="kw">in</span> video_tensor:</span>
-<span id="cb37-15"><a href="#cb37-15"></a>        frame_unnormalized <span class="op">=</span> unnormalize_img(video_frame.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>).numpy())</span>
-<span id="cb37-16"><a href="#cb37-16"></a>        frames.append(frame_unnormalized)</span>
-<span id="cb37-17"><a href="#cb37-17"></a>    kargs <span class="op">=</span> {<span class="st">"duration"</span>: <span class="fl">0.25</span>}</span>
-<span id="cb37-18"><a href="#cb37-18"></a>    imageio.mimsave(filename, frames, <span class="st">"GIF"</span>, <span class="op">**</span>kargs)</span>
-<span id="cb37-19"><a href="#cb37-19"></a>    <span class="cf">return</span> filename</span>
-<span id="cb37-20"><a href="#cb37-20"></a></span>
-<span id="cb37-21"><a href="#cb37-21"></a><span class="kw">def</span> display_gif(video_tensor, gif_name<span class="op">=</span><span class="st">"sample.gif"</span>):</span>
-<span id="cb37-22"><a href="#cb37-22"></a>    <span class="co">"""Prepares and displays a GIF from a video tensor."""</span></span>
-<span id="cb37-23"><a href="#cb37-23"></a>    video_tensor <span class="op">=</span> video_tensor.permute(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb37-24"><a href="#cb37-24"></a>    gif_filename <span class="op">=</span> create_gif(video_tensor, gif_name)</span>
-<span id="cb37-25"><a href="#cb37-25"></a>    <span class="cf">return</span> IPython.display.Image(filename<span class="op">=</span>gif_filename)</span>
-<span id="cb37-26"><a href="#cb37-26"></a></span>
-<span id="cb37-27"><a href="#cb37-27"></a><span class="co"># sample_video = next(iter(train_dataset))</span></span>
-<span id="cb37-28"><a href="#cb37-28"></a><span class="co"># video_tensor = sample_video["video"]</span></span>
-<span id="cb37-29"><a href="#cb37-29"></a><span class="co"># display_gif(video_tensor)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="a.-다운로드" class="level2">
 <h2 class="anchored" data-anchor-id="a.-다운로드">A. 다운로드</h2>
 <p><code>-</code> 처음 <code>/home/cgb3/.cache/</code>의 상태</p>
 <p><code>-</code> <code>huggingface_hub.hf_hub_download</code> 의 역할: (1) “UCF101_subset.tar.gz” 라는 압축파일을 다운로드 (2) 다운로드한 압축파일의 경로를 <code>str</code>으로 리턴</p>
-<div id="cell-33" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>file_path <span class="op">=</span> huggingface_hub.hf_hub_download(</span>
-<span id="cb38-2"><a href="#cb38-2"></a>    repo_id<span class="op">=</span><span class="st">"sayakpaul/ucf101-subset"</span>, </span>
-<span id="cb38-3"><a href="#cb38-3"></a>    filename<span class="op">=</span><span class="st">"UCF101_subset.tar.gz"</span>, </span>
-<span id="cb38-4"><a href="#cb38-4"></a>    repo_type<span class="op">=</span><span class="st">"dataset"</span></span>
-<span id="cb38-5"><a href="#cb38-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-63" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>file_path <span class="op">=</span> huggingface_hub.hf_hub_download(</span>
+<span id="cb59-2"><a href="#cb59-2"></a>    repo_id<span class="op">=</span><span class="st">"sayakpaul/ucf101-subset"</span>, </span>
+<span id="cb59-3"><a href="#cb59-3"></a>    filename<span class="op">=</span><span class="st">"UCF101_subset.tar.gz"</span>, </span>
+<span id="cb59-4"><a href="#cb59-4"></a>    repo_type<span class="op">=</span><span class="st">"dataset"</span></span>
+<span id="cb59-5"><a href="#cb59-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>file_path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-64" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>file_path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>'/home/cgb3/.cache/huggingface/hub/datasets--sayakpaul--ucf101-subset/snapshots/b9984b8d2a95e4a1879e1b071e9433858d0bc24a/UCF101_subset.tar.gz'</code></pre>
 </div>
@@ -760,73 +944,73 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
 <section id="b.-압축풀기" class="level2">
 <h2 class="anchored" data-anchor-id="b.-압축풀기">B. 압축풀기</h2>
 <p><code>-</code> <code>tarfile.open</code> 사용방법1</p>
-<div id="cell-37" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>t <span class="op">=</span> tarfile.<span class="bu">open</span>(file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-67" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>t <span class="op">=</span> tarfile.<span class="bu">open</span>(file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> <code>t</code> 의 주요기능</p>
-<div id="cell-39" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>t.closed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-69" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>t.closed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="cell-40" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>t._check()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-70" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>t._check()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-41" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>t.extractall(<span class="st">"여기에"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-71" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>t.extractall(<span class="st">"여기에"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-42" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>t.extractall(<span class="st">"asdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-72" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>t.extractall(<span class="st">"asdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-43" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>t.extractall(<span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-73" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>t.extractall(<span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-44" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>t.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-74" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>t.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-45" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>t.closed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-75" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>t.closed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="cell-46" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>t.extractall(<span class="st">"저기에"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-76" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>t.extractall(<span class="st">"저기에"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>OSError: TarFile is closed</code></pre>
 </div>
 </div>
-<div id="cell-47" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>t._check()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-77" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>t._check()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>OSError: TarFile is closed</code></pre>
 </div>
 </div>
 <p><code>-</code> <code>tarfile.open</code> + <code>with</code> 문</p>
 <p><em>아래의 코드를 작성하고 싶음</em></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="fl">1.</span> `TarFile` 오브젝트 만듦.</span>
-<span id="cb55-2"><a href="#cb55-2"></a><span class="fl">2.</span> 열린상태인지 체크. (열린상태라면 에러메시지 발생하고 진행중지)</span>
-<span id="cb55-3"><a href="#cb55-3"></a><span class="fl">3.</span> 압축해제.</span>
-<span id="cb55-4"><a href="#cb55-4"></a><span class="fl">4.</span> 닫음.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a><span class="fl">1.</span> `TarFile` 오브젝트 만듦.</span>
+<span id="cb76-2"><a href="#cb76-2"></a><span class="fl">2.</span> 열린상태인지 체크. (열린상태라면 에러메시지 발생하고 진행중지)</span>
+<span id="cb76-3"><a href="#cb76-3"></a><span class="fl">3.</span> 압축해제.</span>
+<span id="cb76-4"><a href="#cb76-4"></a><span class="fl">4.</span> 닫음.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>아래와 같이 쓸 수 있음</em></p>
-<div id="cell-52" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>t <span class="op">=</span> tarfile.<span class="bu">open</span>(file_path)</span>
-<span id="cb56-2"><a href="#cb56-2"></a>t._check()</span>
-<span id="cb56-3"><a href="#cb56-3"></a>t.extractall(<span class="st">"."</span>)</span>
-<span id="cb56-4"><a href="#cb56-4"></a>t.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-82" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>t <span class="op">=</span> tarfile.<span class="bu">open</span>(file_path)</span>
+<span id="cb77-2"><a href="#cb77-2"></a>t._check()</span>
+<span id="cb77-3"><a href="#cb77-3"></a>t.extractall(<span class="st">"."</span>)</span>
+<span id="cb77-4"><a href="#cb77-4"></a>t.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>이것을 아래와 같이 줄일 수 있음</em></p>
-<div id="cell-54" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="cf">with</span> tarfile.<span class="bu">open</span>(file_path) <span class="im">as</span> t:</span>
-<span id="cb57-2"><a href="#cb57-2"></a>    t.extractall(<span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-84" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a><span class="cf">with</span> tarfile.<span class="bu">open</span>(file_path) <span class="im">as</span> t:</span>
+<span id="cb78-2"><a href="#cb78-2"></a>    t.extractall(<span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="c.-영상확인" class="level2">
 <h2 class="anchored" data-anchor-id="c.-영상확인">C. 영상확인</h2>
 <p><code>-</code> 원래는 아래가 실행되어야함.</p>
-<div id="cell-57" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>IPython.display.Video(<span class="st">'UCF101_subset/train/ApplyEyeMakeup/v_ApplyEyeMakeup_g02_c03.avi'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-87" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>IPython.display.Video(<span class="st">'UCF101_subset/train/ApplyEyeMakeup/v_ApplyEyeMakeup_g02_c03.avi'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <video src="UCF101_subset/train/ApplyEyeMakeup/v_ApplyEyeMakeup_g02_c03.avi" controls="">
       Your browser does not support the <code>video</code> element.
@@ -834,9 +1018,9 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
 </div>
 </div>
 <p><code>-</code> <code>avi</code>를 <code>mp4</code>로 변환</p>
-<div id="cell-59" class="cell" data-execution_count="232">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a><span class="co">#!conda install conda-forge::ffmpeg</span></span>
-<span id="cb59-2"><a href="#cb59-2"></a><span class="op">!</span>ffmpeg <span class="op">-</span>i UCF101_subset<span class="op">/</span>train<span class="op">/</span>Basketball<span class="op">/</span>v_Basketball_g01_c01.avi <span class="op">-</span>vcodec libx264 <span class="op">-</span>acodec aac output_video.mp4 <span class="op">-</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-89" class="cell" data-execution_count="232">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a><span class="co">#!conda install conda-forge::ffmpeg</span></span>
+<span id="cb80-2"><a href="#cb80-2"></a><span class="op">!</span>ffmpeg <span class="op">-</span>i UCF101_subset<span class="op">/</span>train<span class="op">/</span>Basketball<span class="op">/</span>v_Basketball_g01_c01.avi <span class="op">-</span>vcodec libx264 <span class="op">-</span>acodec aac output_video.mp4 <span class="op">-</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ffmpeg version 6.1.1 Copyright (c) 2000-2023 the FFmpeg developers
   built with gcc 12.3.0 (conda-forge gcc 12.3.0-7)
@@ -893,8 +1077,8 @@ frame=  141 fps=0.0 q=-1.0 Lsize=      85kB time=00:00:04.60 bitrate= 151.8kbits
 </div>
 </div>
 <p><code>-</code> 영상확인</p>
-<div id="cell-61" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>IPython.display.Video(<span class="st">'output_video.mp4'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-91" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a>IPython.display.Video(<span class="st">'output_video.mp4'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <video src="output_video.mp4" controls="">
       Your browser does not support the <code>video</code> element.
@@ -907,22 +1091,22 @@ frame=  141 fps=0.0 q=-1.0 Lsize=      85kB time=00:00:04.60 bitrate= 151.8kbits
 <section id="영상-to-텐서-불러오기" class="level3">
 <h3 class="anchored" data-anchor-id="영상-to-텐서-불러오기"><code>#</code> 영상 <span class="math inline">\(\to\)</span> 텐서 // 불러오기</h3>
 <p><code>-</code> 데이터 불러오기</p>
-<div id="cell-65" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>_train <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
-<span id="cb62-2"><a href="#cb62-2"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
-<span id="cb62-3"><a href="#cb62-3"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"random"</span>, <span class="dv">15</span>),</span>
-<span id="cb62-4"><a href="#cb62-4"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb62-5"><a href="#cb62-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-95" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1"></a>_train <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
+<span id="cb83-2"><a href="#cb83-2"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
+<span id="cb83-3"><a href="#cb83-3"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"random"</span>, <span class="dv">15</span>),</span>
+<span id="cb83-4"><a href="#cb83-4"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb83-5"><a href="#cb83-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-66" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a><span class="bu">set</span>(<span class="bu">dir</span>(_train)) <span class="op">&amp;</span> {<span class="st">'__next__'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-96" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a><span class="bu">set</span>(<span class="bu">dir</span>(_train)) <span class="op">&amp;</span> {<span class="st">'__next__'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>{'__next__'}</code></pre>
 </div>
 </div>
-<div id="cell-67" class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>video_tensor <span class="op">=</span> <span class="bu">next</span>(_train)[<span class="st">'video'</span>]</span>
-<span id="cb65-2"><a href="#cb65-2"></a>video_tensor.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-97" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a>video_tensor <span class="op">=</span> <span class="bu">next</span>(_train)[<span class="st">'video'</span>]</span>
+<span id="cb86-2"><a href="#cb86-2"></a>video_tensor.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>torch.Size([3, 141, 240, 320])</code></pre>
 </div>
@@ -931,67 +1115,67 @@ frame=  141 fps=0.0 q=-1.0 Lsize=      85kB time=00:00:04.60 bitrate= 151.8kbits
 <section id="텐서-to-영상-확인용" class="level3">
 <h3 class="anchored" data-anchor-id="텐서-to-영상-확인용"><code>#</code> 텐서 <span class="math inline">\(\to\)</span> 영상 // 확인용</h3>
 <p><code>-</code> 차원변환</p>
-<div id="cell-70" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-100" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a>video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>torch.Size([141, 240, 320, 3])</code></pre>
 </div>
 </div>
 <p><code>-</code> 자료형변환전</p>
-<div id="cell-72" class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>plt.imshow(video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>)[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-102" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a>plt.imshow(video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>)[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.0..255.0].</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-47-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-62-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><code>-</code> 자료형 변환 후</p>
-<div id="cell-74" class="cell" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>img <span class="op">=</span> video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>)[<span class="dv">0</span>].numpy()</span>
-<span id="cb71-2"><a href="#cb71-2"></a>plt.imshow(img.astype(<span class="st">"uint8"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-104" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a>img <span class="op">=</span> video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>)[<span class="dv">0</span>].numpy()</span>
+<span id="cb92-2"><a href="#cb92-2"></a>plt.imshow(img.astype(<span class="st">"uint8"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-48-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="2024-10-01-(강의) 비디오분류_files/figure-html/cell-63-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><code>-</code> gif 만들기</p>
-<div id="cell-76" class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>frames <span class="op">=</span> [] </span>
-<span id="cb72-2"><a href="#cb72-2"></a><span class="cf">for</span> video_frame <span class="kw">in</span> video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>):</span>
-<span id="cb72-3"><a href="#cb72-3"></a>    frames.append(video_frame.numpy().astype(<span class="st">"uint8"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-106" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a>frames <span class="op">=</span> [] </span>
+<span id="cb93-2"><a href="#cb93-2"></a><span class="cf">for</span> video_frame <span class="kw">in</span> video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>):</span>
+<span id="cb93-3"><a href="#cb93-3"></a>    frames.append(video_frame.numpy().astype(<span class="st">"uint8"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-77" class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>imageio.mimsave(<span class="st">"sample.gif"</span>,frames,duration<span class="op">=</span><span class="fl">0.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-107" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1"></a>imageio.mimsave(<span class="st">"sample.gif"</span>,frames,duration<span class="op">=</span><span class="fl">0.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> gif이미지 display 하기</p>
-<div id="cell-79" class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>IPython.display.Image(filename<span class="op">=</span><span class="st">"sample.gif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-109" class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a>IPython.display.Image(filename<span class="op">=</span><span class="st">"sample.gif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>&lt;IPython.core.display.Image object&gt;</code></pre>
 </div>
 </div>
 <p><code>-</code> 정리하기</p>
-<div id="cell-81" class="cell" data-execution_count="95">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a><span class="kw">def</span> _display_gif(video_tensor):</span>
-<span id="cb76-2"><a href="#cb76-2"></a>    <span class="co">#---#</span></span>
-<span id="cb76-3"><a href="#cb76-3"></a>    frames <span class="op">=</span> [] </span>
-<span id="cb76-4"><a href="#cb76-4"></a>    <span class="cf">for</span> video_frame <span class="kw">in</span> video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>):</span>
-<span id="cb76-5"><a href="#cb76-5"></a>        img <span class="op">=</span> video_frame.numpy().astype(<span class="st">"uint8"</span>)</span>
-<span id="cb76-6"><a href="#cb76-6"></a>        frames.append(img)</span>
-<span id="cb76-7"><a href="#cb76-7"></a>    imageio.mimsave(<span class="st">"sample.gif"</span>,frames)</span>
-<span id="cb76-8"><a href="#cb76-8"></a>    <span class="cf">return</span> IPython.display.Image(filename<span class="op">=</span><span class="st">"sample.gif"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-111" class="cell" data-execution_count="95">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a><span class="kw">def</span> _display_gif(video_tensor):</span>
+<span id="cb97-2"><a href="#cb97-2"></a>    <span class="co">#---#</span></span>
+<span id="cb97-3"><a href="#cb97-3"></a>    frames <span class="op">=</span> [] </span>
+<span id="cb97-4"><a href="#cb97-4"></a>    <span class="cf">for</span> video_frame <span class="kw">in</span> video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>):</span>
+<span id="cb97-5"><a href="#cb97-5"></a>        img <span class="op">=</span> video_frame.numpy().astype(<span class="st">"uint8"</span>)</span>
+<span id="cb97-6"><a href="#cb97-6"></a>        frames.append(img)</span>
+<span id="cb97-7"><a href="#cb97-7"></a>    imageio.mimsave(<span class="st">"sample.gif"</span>,frames)</span>
+<span id="cb97-8"><a href="#cb97-8"></a>    <span class="cf">return</span> IPython.display.Image(filename<span class="op">=</span><span class="st">"sample.gif"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-82" class="cell" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>_display_gif(video_tensor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-112" class="cell" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1"></a>_display_gif(video_tensor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="96">
 <pre><code>&lt;IPython.core.display.Image object&gt;</code></pre>
 </div>
@@ -1000,48 +1184,48 @@ frame=  141 fps=0.0 q=-1.0 Lsize=      85kB time=00:00:04.60 bitrate= 151.8kbits
 </section>
 <section id="e.-모델생성" class="level2">
 <h2 class="anchored" data-anchor-id="e.-모델생성">E. 모델생성</h2>
-<div id="cell-84" class="cell" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>id2label <span class="op">=</span> {</span>
-<span id="cb79-2"><a href="#cb79-2"></a>    <span class="dv">0</span>: <span class="st">'ApplyEyeMakeup'</span>,</span>
-<span id="cb79-3"><a href="#cb79-3"></a>    <span class="dv">1</span>: <span class="st">'Archery'</span>,</span>
-<span id="cb79-4"><a href="#cb79-4"></a>    <span class="dv">2</span>: <span class="st">'BalanceBeam'</span>,</span>
-<span id="cb79-5"><a href="#cb79-5"></a>    <span class="dv">3</span>: <span class="st">'BaseballPitch'</span>,</span>
-<span id="cb79-6"><a href="#cb79-6"></a>    <span class="dv">4</span>: <span class="st">'BasketballDunk'</span>,</span>
-<span id="cb79-7"><a href="#cb79-7"></a>    <span class="dv">5</span>: <span class="st">'ApplyLipstick'</span>,</span>
-<span id="cb79-8"><a href="#cb79-8"></a>    <span class="dv">6</span>: <span class="st">'BabyCrawling'</span>,</span>
-<span id="cb79-9"><a href="#cb79-9"></a>    <span class="dv">7</span>: <span class="st">'BandMarching'</span>,</span>
-<span id="cb79-10"><a href="#cb79-10"></a>    <span class="dv">8</span>: <span class="st">'Basketball'</span>,</span>
-<span id="cb79-11"><a href="#cb79-11"></a>    <span class="dv">9</span>: <span class="st">'BenchPress'</span></span>
-<span id="cb79-12"><a href="#cb79-12"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-114" class="cell" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1"></a>id2label <span class="op">=</span> {</span>
+<span id="cb100-2"><a href="#cb100-2"></a>    <span class="dv">0</span>: <span class="st">'ApplyEyeMakeup'</span>,</span>
+<span id="cb100-3"><a href="#cb100-3"></a>    <span class="dv">1</span>: <span class="st">'Archery'</span>,</span>
+<span id="cb100-4"><a href="#cb100-4"></a>    <span class="dv">2</span>: <span class="st">'BalanceBeam'</span>,</span>
+<span id="cb100-5"><a href="#cb100-5"></a>    <span class="dv">3</span>: <span class="st">'BaseballPitch'</span>,</span>
+<span id="cb100-6"><a href="#cb100-6"></a>    <span class="dv">4</span>: <span class="st">'BasketballDunk'</span>,</span>
+<span id="cb100-7"><a href="#cb100-7"></a>    <span class="dv">5</span>: <span class="st">'ApplyLipstick'</span>,</span>
+<span id="cb100-8"><a href="#cb100-8"></a>    <span class="dv">6</span>: <span class="st">'BabyCrawling'</span>,</span>
+<span id="cb100-9"><a href="#cb100-9"></a>    <span class="dv">7</span>: <span class="st">'BandMarching'</span>,</span>
+<span id="cb100-10"><a href="#cb100-10"></a>    <span class="dv">8</span>: <span class="st">'Basketball'</span>,</span>
+<span id="cb100-11"><a href="#cb100-11"></a>    <span class="dv">9</span>: <span class="st">'BenchPress'</span></span>
+<span id="cb100-12"><a href="#cb100-12"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-85" class="cell" data-execution_count="98">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a>label2id <span class="op">=</span> {</span>
-<span id="cb80-2"><a href="#cb80-2"></a>    <span class="st">'ApplyEyeMakeup'</span>: <span class="dv">0</span>, </span>
-<span id="cb80-3"><a href="#cb80-3"></a>    <span class="st">'Archery'</span>: <span class="dv">1</span>,</span>
-<span id="cb80-4"><a href="#cb80-4"></a>    <span class="st">'BalanceBeam'</span>: <span class="dv">2</span>,</span>
-<span id="cb80-5"><a href="#cb80-5"></a>    <span class="st">'BaseballPitch'</span>: <span class="dv">3</span>,</span>
-<span id="cb80-6"><a href="#cb80-6"></a>    <span class="st">'BasketballDunk'</span>: <span class="dv">4</span>,</span>
-<span id="cb80-7"><a href="#cb80-7"></a>    <span class="st">'ApplyLipstick'</span>: <span class="dv">5</span>,</span>
-<span id="cb80-8"><a href="#cb80-8"></a>    <span class="st">'BabyCrawling'</span>: <span class="dv">6</span>,</span>
-<span id="cb80-9"><a href="#cb80-9"></a>    <span class="st">'BandMarching'</span>: <span class="dv">7</span>,</span>
-<span id="cb80-10"><a href="#cb80-10"></a>    <span class="st">'Basketball'</span>: <span class="dv">8</span>,</span>
-<span id="cb80-11"><a href="#cb80-11"></a>    <span class="st">'BenchPress'</span>: <span class="dv">9</span> </span>
-<span id="cb80-12"><a href="#cb80-12"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-115" class="cell" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a>label2id <span class="op">=</span> {</span>
+<span id="cb101-2"><a href="#cb101-2"></a>    <span class="st">'ApplyEyeMakeup'</span>: <span class="dv">0</span>, </span>
+<span id="cb101-3"><a href="#cb101-3"></a>    <span class="st">'Archery'</span>: <span class="dv">1</span>,</span>
+<span id="cb101-4"><a href="#cb101-4"></a>    <span class="st">'BalanceBeam'</span>: <span class="dv">2</span>,</span>
+<span id="cb101-5"><a href="#cb101-5"></a>    <span class="st">'BaseballPitch'</span>: <span class="dv">3</span>,</span>
+<span id="cb101-6"><a href="#cb101-6"></a>    <span class="st">'BasketballDunk'</span>: <span class="dv">4</span>,</span>
+<span id="cb101-7"><a href="#cb101-7"></a>    <span class="st">'ApplyLipstick'</span>: <span class="dv">5</span>,</span>
+<span id="cb101-8"><a href="#cb101-8"></a>    <span class="st">'BabyCrawling'</span>: <span class="dv">6</span>,</span>
+<span id="cb101-9"><a href="#cb101-9"></a>    <span class="st">'BandMarching'</span>: <span class="dv">7</span>,</span>
+<span id="cb101-10"><a href="#cb101-10"></a>    <span class="st">'Basketball'</span>: <span class="dv">8</span>,</span>
+<span id="cb101-11"><a href="#cb101-11"></a>    <span class="st">'BenchPress'</span>: <span class="dv">9</span> </span>
+<span id="cb101-12"><a href="#cb101-12"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-86" class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a>model <span class="op">=</span> transformers.VideoMAEForVideoClassification.from_pretrained(</span>
-<span id="cb81-2"><a href="#cb81-2"></a>    <span class="st">"MCG-NJU/videomae-base"</span>,</span>
-<span id="cb81-3"><a href="#cb81-3"></a>    label2id<span class="op">=</span>label2id,</span>
-<span id="cb81-4"><a href="#cb81-4"></a>    id2label<span class="op">=</span>id2label,</span>
-<span id="cb81-5"><a href="#cb81-5"></a>    ignore_mismatched_sizes<span class="op">=</span><span class="va">True</span>,  <span class="co"># provide this in case you're planning to fine-tune an already fine-tuned checkpoint</span></span>
-<span id="cb81-6"><a href="#cb81-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-116" class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1"></a>model <span class="op">=</span> transformers.VideoMAEForVideoClassification.from_pretrained(</span>
+<span id="cb102-2"><a href="#cb102-2"></a>    <span class="st">"MCG-NJU/videomae-base"</span>,</span>
+<span id="cb102-3"><a href="#cb102-3"></a>    label2id<span class="op">=</span>label2id,</span>
+<span id="cb102-4"><a href="#cb102-4"></a>    id2label<span class="op">=</span>id2label,</span>
+<span id="cb102-5"><a href="#cb102-5"></a>    ignore_mismatched_sizes<span class="op">=</span><span class="va">True</span>,  <span class="co"># provide this in case you're planning to fine-tune an already fine-tuned checkpoint</span></span>
+<span id="cb102-6"><a href="#cb102-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Some weights of VideoMAEForVideoClassification were not initialized from the model checkpoint at MCG-NJU/videomae-base and are newly initialized: ['classifier.bias', 'classifier.weight']
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.</code></pre>
 </div>
 </div>
-<div id="cell-87" class="cell" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1"></a>model.config.num_frames</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-117" class="cell" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a>model.config.num_frames</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="100">
 <pre><code>16</code></pre>
 </div>
@@ -1050,19 +1234,19 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
 <section id="f.-변환-to-trvaltest-생성" class="level2">
 <h2 class="anchored" data-anchor-id="f.-변환-to-trvaltest-생성">F. 변환 <span class="math inline">\(\to\)</span> tr/val/test 생성</h2>
 <p><code>-</code> 모델에 최적화된 변환기</p>
-<div id="cell-90" class="cell" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a>image_processor <span class="op">=</span> transformers.VideoMAEImageProcessor.from_pretrained(<span class="st">"MCG-NJU/videomae-base"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-120" class="cell" data-execution_count="101">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1"></a>image_processor <span class="op">=</span> transformers.VideoMAEImageProcessor.from_pretrained(<span class="st">"MCG-NJU/videomae-base"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 저장된 값들</p>
-<div id="cell-92" class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a><span class="bu">print</span>(</span>
-<span id="cb86-2"><a href="#cb86-2"></a>    <span class="ss">f"mean : </span><span class="sc">{</span>image_processor<span class="sc">.</span>image_mean<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
-<span id="cb86-3"><a href="#cb86-3"></a>    <span class="ss">f"std: </span><span class="sc">{</span>image_processor<span class="sc">.</span>image_std<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span> </span>
-<span id="cb86-4"><a href="#cb86-4"></a>    <span class="ss">f"size: </span><span class="sc">{</span>image_processor<span class="sc">.</span>size<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
-<span id="cb86-5"><a href="#cb86-5"></a>    <span class="ss">f"resize_to: </span><span class="sc">{</span>(<span class="dv">224</span>,<span class="dv">224</span>)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
-<span id="cb86-6"><a href="#cb86-6"></a>    <span class="ss">f"num_frames_to_sample: </span><span class="sc">{</span><span class="dv">16</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
-<span id="cb86-7"><a href="#cb86-7"></a>    <span class="ss">f"clip_duration: </span><span class="sc">{</span><span class="dv">16</span> <span class="op">*</span> <span class="dv">4</span> <span class="op">/</span> <span class="dv">30</span><span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb86-8"><a href="#cb86-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-122" class="cell" data-execution_count="102">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1"></a><span class="bu">print</span>(</span>
+<span id="cb107-2"><a href="#cb107-2"></a>    <span class="ss">f"mean : </span><span class="sc">{</span>image_processor<span class="sc">.</span>image_mean<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb107-3"><a href="#cb107-3"></a>    <span class="ss">f"std: </span><span class="sc">{</span>image_processor<span class="sc">.</span>image_std<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span> </span>
+<span id="cb107-4"><a href="#cb107-4"></a>    <span class="ss">f"size: </span><span class="sc">{</span>image_processor<span class="sc">.</span>size<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb107-5"><a href="#cb107-5"></a>    <span class="ss">f"resize_to: </span><span class="sc">{</span>(<span class="dv">224</span>,<span class="dv">224</span>)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb107-6"><a href="#cb107-6"></a>    <span class="ss">f"num_frames_to_sample: </span><span class="sc">{</span><span class="dv">16</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb107-7"><a href="#cb107-7"></a>    <span class="ss">f"clip_duration: </span><span class="sc">{</span><span class="dv">16</span> <span class="op">*</span> <span class="dv">4</span> <span class="op">/</span> <span class="dv">30</span><span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb107-8"><a href="#cb107-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>mean : [0.485, 0.456, 0.406]
 std: [0.229, 0.224, 0.225]
@@ -1073,44 +1257,44 @@ clip_duration: 2.1333333333333333</code></pre>
 </div>
 </div>
 <p><code>-</code> 최적화된 변환을 적용하여 다시 텐서를 부름</p>
-<div id="cell-94" class="cell" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a>train_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
-<span id="cb88-2"><a href="#cb88-2"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
-<span id="cb88-3"><a href="#cb88-3"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"random"</span>, <span class="fl">2.1333333333333333</span>),</span>
-<span id="cb88-4"><a href="#cb88-4"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb88-5"><a href="#cb88-5"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
-<span id="cb88-6"><a href="#cb88-6"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
-<span id="cb88-7"><a href="#cb88-7"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
-<span id="cb88-8"><a href="#cb88-8"></a>            [</span>
-<span id="cb88-9"><a href="#cb88-9"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
-<span id="cb88-10"><a href="#cb88-10"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
-<span id="cb88-11"><a href="#cb88-11"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
-<span id="cb88-12"><a href="#cb88-12"></a>                pytorchvideo.transforms.RandomShortSideScale(min_size<span class="op">=</span><span class="dv">256</span>, max_size<span class="op">=</span><span class="dv">320</span>),</span>
-<span id="cb88-13"><a href="#cb88-13"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
-<span id="cb88-14"><a href="#cb88-14"></a>                torchvision.transforms.RandomHorizontalFlip(p<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb88-15"><a href="#cb88-15"></a>            ]</span>
-<span id="cb88-16"><a href="#cb88-16"></a>        )</span>
-<span id="cb88-17"><a href="#cb88-17"></a>    )</span>
-<span id="cb88-18"><a href="#cb88-18"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-124" class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1"></a>train_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
+<span id="cb109-2"><a href="#cb109-2"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
+<span id="cb109-3"><a href="#cb109-3"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"random"</span>, <span class="fl">2.1333333333333333</span>),</span>
+<span id="cb109-4"><a href="#cb109-4"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb109-5"><a href="#cb109-5"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
+<span id="cb109-6"><a href="#cb109-6"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
+<span id="cb109-7"><a href="#cb109-7"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
+<span id="cb109-8"><a href="#cb109-8"></a>            [</span>
+<span id="cb109-9"><a href="#cb109-9"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
+<span id="cb109-10"><a href="#cb109-10"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
+<span id="cb109-11"><a href="#cb109-11"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb109-12"><a href="#cb109-12"></a>                pytorchvideo.transforms.RandomShortSideScale(min_size<span class="op">=</span><span class="dv">256</span>, max_size<span class="op">=</span><span class="dv">320</span>),</span>
+<span id="cb109-13"><a href="#cb109-13"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
+<span id="cb109-14"><a href="#cb109-14"></a>                torchvision.transforms.RandomHorizontalFlip(p<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb109-15"><a href="#cb109-15"></a>            ]</span>
+<span id="cb109-16"><a href="#cb109-16"></a>        )</span>
+<span id="cb109-17"><a href="#cb109-17"></a>    )</span>
+<span id="cb109-18"><a href="#cb109-18"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 변화된 텐서에 맞는 <code>display_gif</code>를 새로 선언</p>
-<div id="cell-96" class="cell" data-execution_count="124">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a><span class="kw">def</span> display_gif(video_tensor):</span>
-<span id="cb89-2"><a href="#cb89-2"></a>    mean <span class="op">=</span> [<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>]</span>
-<span id="cb89-3"><a href="#cb89-3"></a>    std <span class="op">=</span> [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]</span>
-<span id="cb89-4"><a href="#cb89-4"></a>    <span class="co">#---#</span></span>
-<span id="cb89-5"><a href="#cb89-5"></a>    frames <span class="op">=</span> [] </span>
-<span id="cb89-6"><a href="#cb89-6"></a>    <span class="cf">for</span> video_frame <span class="kw">in</span> video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>):</span>
-<span id="cb89-7"><a href="#cb89-7"></a>        img <span class="op">=</span> video_frame.numpy()</span>
-<span id="cb89-8"><a href="#cb89-8"></a>        img <span class="op">=</span> (img <span class="op">*</span> std) <span class="op">+</span> mean </span>
-<span id="cb89-9"><a href="#cb89-9"></a>        img <span class="op">=</span> (img <span class="op">*</span> <span class="dv">255</span>).astype(<span class="st">"uint8"</span>)</span>
-<span id="cb89-10"><a href="#cb89-10"></a>        img <span class="op">=</span> img.clip(<span class="dv">0</span>, <span class="dv">255</span>)</span>
-<span id="cb89-11"><a href="#cb89-11"></a>        frames.append(img)</span>
-<span id="cb89-12"><a href="#cb89-12"></a>    imageio.mimsave(<span class="st">"sample.gif"</span>,frames)</span>
-<span id="cb89-13"><a href="#cb89-13"></a>    <span class="cf">return</span> IPython.display.Image(filename<span class="op">=</span><span class="st">"sample.gif"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-126" class="cell" data-execution_count="124">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1"></a><span class="kw">def</span> display_gif(video_tensor):</span>
+<span id="cb110-2"><a href="#cb110-2"></a>    mean <span class="op">=</span> [<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>]</span>
+<span id="cb110-3"><a href="#cb110-3"></a>    std <span class="op">=</span> [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]</span>
+<span id="cb110-4"><a href="#cb110-4"></a>    <span class="co">#---#</span></span>
+<span id="cb110-5"><a href="#cb110-5"></a>    frames <span class="op">=</span> [] </span>
+<span id="cb110-6"><a href="#cb110-6"></a>    <span class="cf">for</span> video_frame <span class="kw">in</span> video_tensor.permute(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>):</span>
+<span id="cb110-7"><a href="#cb110-7"></a>        img <span class="op">=</span> video_frame.numpy()</span>
+<span id="cb110-8"><a href="#cb110-8"></a>        img <span class="op">=</span> (img <span class="op">*</span> std) <span class="op">+</span> mean </span>
+<span id="cb110-9"><a href="#cb110-9"></a>        img <span class="op">=</span> (img <span class="op">*</span> <span class="dv">255</span>).astype(<span class="st">"uint8"</span>)</span>
+<span id="cb110-10"><a href="#cb110-10"></a>        img <span class="op">=</span> img.clip(<span class="dv">0</span>, <span class="dv">255</span>)</span>
+<span id="cb110-11"><a href="#cb110-11"></a>        frames.append(img)</span>
+<span id="cb110-12"><a href="#cb110-12"></a>    imageio.mimsave(<span class="st">"sample.gif"</span>,frames)</span>
+<span id="cb110-13"><a href="#cb110-13"></a>    <span class="cf">return</span> IPython.display.Image(filename<span class="op">=</span><span class="st">"sample.gif"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-97" class="cell" data-execution_count="125">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a>display_gif(<span class="bu">next</span>(train)[<span class="st">'video'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-127" class="cell" data-execution_count="125">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1"></a>display_gif(<span class="bu">next</span>(train)[<span class="st">'video'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="125">
 <pre><code>&lt;IPython.core.display.Image object&gt;</code></pre>
 </div>
@@ -1123,110 +1307,110 @@ clip_duration: 2.1333333333333333</code></pre>
 <li><code>RandomShortSideScale(min_size=256, max_size=320)</code>:</li>
 <li><code>RandomHorizontalFlip(p=0.5)</code>:</li>
 </ul>
-<div id="cell-99" class="cell" data-execution_count="130">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a>train_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
-<span id="cb92-2"><a href="#cb92-2"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
-<span id="cb92-3"><a href="#cb92-3"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"random"</span>, <span class="fl">2.1333333333333333</span>),</span>
-<span id="cb92-4"><a href="#cb92-4"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb92-5"><a href="#cb92-5"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
-<span id="cb92-6"><a href="#cb92-6"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
-<span id="cb92-7"><a href="#cb92-7"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
-<span id="cb92-8"><a href="#cb92-8"></a>            [</span>
-<span id="cb92-9"><a href="#cb92-9"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
-<span id="cb92-10"><a href="#cb92-10"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
-<span id="cb92-11"><a href="#cb92-11"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
-<span id="cb92-12"><a href="#cb92-12"></a>                pytorchvideo.transforms.RandomShortSideScale(min_size<span class="op">=</span><span class="dv">256</span>, max_size<span class="op">=</span><span class="dv">320</span>),</span>
-<span id="cb92-13"><a href="#cb92-13"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
-<span id="cb92-14"><a href="#cb92-14"></a>                torchvision.transforms.RandomHorizontalFlip(p<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb92-15"><a href="#cb92-15"></a>            ]</span>
-<span id="cb92-16"><a href="#cb92-16"></a>        )</span>
-<span id="cb92-17"><a href="#cb92-17"></a>    )</span>
-<span id="cb92-18"><a href="#cb92-18"></a>)</span>
-<span id="cb92-19"><a href="#cb92-19"></a>display_gif(<span class="bu">next</span>(train)[<span class="st">'video'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-129" class="cell" data-execution_count="130">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1"></a>train_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
+<span id="cb113-2"><a href="#cb113-2"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
+<span id="cb113-3"><a href="#cb113-3"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"random"</span>, <span class="fl">2.1333333333333333</span>),</span>
+<span id="cb113-4"><a href="#cb113-4"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb113-5"><a href="#cb113-5"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
+<span id="cb113-6"><a href="#cb113-6"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
+<span id="cb113-7"><a href="#cb113-7"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
+<span id="cb113-8"><a href="#cb113-8"></a>            [</span>
+<span id="cb113-9"><a href="#cb113-9"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
+<span id="cb113-10"><a href="#cb113-10"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
+<span id="cb113-11"><a href="#cb113-11"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb113-12"><a href="#cb113-12"></a>                pytorchvideo.transforms.RandomShortSideScale(min_size<span class="op">=</span><span class="dv">256</span>, max_size<span class="op">=</span><span class="dv">320</span>),</span>
+<span id="cb113-13"><a href="#cb113-13"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
+<span id="cb113-14"><a href="#cb113-14"></a>                torchvision.transforms.RandomHorizontalFlip(p<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb113-15"><a href="#cb113-15"></a>            ]</span>
+<span id="cb113-16"><a href="#cb113-16"></a>        )</span>
+<span id="cb113-17"><a href="#cb113-17"></a>    )</span>
+<span id="cb113-18"><a href="#cb113-18"></a>)</span>
+<span id="cb113-19"><a href="#cb113-19"></a>display_gif(<span class="bu">next</span>(train)[<span class="st">'video'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="130">
 <pre><code>&lt;IPython.core.display.Image object&gt;</code></pre>
 </div>
 </div>
 <p><code>-</code> test, val 도 불러오자.</p>
-<div id="cell-101" class="cell" data-execution_count="131">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1"></a>test_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
-<span id="cb94-2"><a href="#cb94-2"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
-<span id="cb94-3"><a href="#cb94-3"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"uniform"</span>, <span class="fl">2.1333333333333333</span>),</span>
-<span id="cb94-4"><a href="#cb94-4"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb94-5"><a href="#cb94-5"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
-<span id="cb94-6"><a href="#cb94-6"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
-<span id="cb94-7"><a href="#cb94-7"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
-<span id="cb94-8"><a href="#cb94-8"></a>            [</span>
-<span id="cb94-9"><a href="#cb94-9"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
-<span id="cb94-10"><a href="#cb94-10"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
-<span id="cb94-11"><a href="#cb94-11"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
-<span id="cb94-12"><a href="#cb94-12"></a>                <span class="co">#pytorchvideo.transforms.RandomShortSideScale(min_size=256, max_size=320),</span></span>
-<span id="cb94-13"><a href="#cb94-13"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
-<span id="cb94-14"><a href="#cb94-14"></a>                <span class="co">#torchvision.transforms.RandomHorizontalFlip(p=0.5)</span></span>
-<span id="cb94-15"><a href="#cb94-15"></a>            ]</span>
-<span id="cb94-16"><a href="#cb94-16"></a>        )</span>
-<span id="cb94-17"><a href="#cb94-17"></a>    )</span>
-<span id="cb94-18"><a href="#cb94-18"></a>)</span>
-<span id="cb94-19"><a href="#cb94-19"></a>val_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
-<span id="cb94-20"><a href="#cb94-20"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
-<span id="cb94-21"><a href="#cb94-21"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"uniform"</span>, <span class="fl">2.1333333333333333</span>),</span>
-<span id="cb94-22"><a href="#cb94-22"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb94-23"><a href="#cb94-23"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
-<span id="cb94-24"><a href="#cb94-24"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
-<span id="cb94-25"><a href="#cb94-25"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
-<span id="cb94-26"><a href="#cb94-26"></a>            [</span>
-<span id="cb94-27"><a href="#cb94-27"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
-<span id="cb94-28"><a href="#cb94-28"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
-<span id="cb94-29"><a href="#cb94-29"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
-<span id="cb94-30"><a href="#cb94-30"></a>                <span class="co">#pytorchvideo.transforms.RandomShortSideScale(min_size=256, max_size=320),</span></span>
-<span id="cb94-31"><a href="#cb94-31"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
-<span id="cb94-32"><a href="#cb94-32"></a>                <span class="co">#torchvision.transforms.RandomHorizontalFlip(p=0.5)</span></span>
-<span id="cb94-33"><a href="#cb94-33"></a>            ]</span>
-<span id="cb94-34"><a href="#cb94-34"></a>        )</span>
-<span id="cb94-35"><a href="#cb94-35"></a>    )</span>
-<span id="cb94-36"><a href="#cb94-36"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-131" class="cell" data-execution_count="131">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1"></a>test_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
+<span id="cb115-2"><a href="#cb115-2"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
+<span id="cb115-3"><a href="#cb115-3"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"uniform"</span>, <span class="fl">2.1333333333333333</span>),</span>
+<span id="cb115-4"><a href="#cb115-4"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb115-5"><a href="#cb115-5"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
+<span id="cb115-6"><a href="#cb115-6"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
+<span id="cb115-7"><a href="#cb115-7"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
+<span id="cb115-8"><a href="#cb115-8"></a>            [</span>
+<span id="cb115-9"><a href="#cb115-9"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
+<span id="cb115-10"><a href="#cb115-10"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
+<span id="cb115-11"><a href="#cb115-11"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb115-12"><a href="#cb115-12"></a>                <span class="co">#pytorchvideo.transforms.RandomShortSideScale(min_size=256, max_size=320),</span></span>
+<span id="cb115-13"><a href="#cb115-13"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
+<span id="cb115-14"><a href="#cb115-14"></a>                <span class="co">#torchvision.transforms.RandomHorizontalFlip(p=0.5)</span></span>
+<span id="cb115-15"><a href="#cb115-15"></a>            ]</span>
+<span id="cb115-16"><a href="#cb115-16"></a>        )</span>
+<span id="cb115-17"><a href="#cb115-17"></a>    )</span>
+<span id="cb115-18"><a href="#cb115-18"></a>)</span>
+<span id="cb115-19"><a href="#cb115-19"></a>val_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
+<span id="cb115-20"><a href="#cb115-20"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
+<span id="cb115-21"><a href="#cb115-21"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"uniform"</span>, <span class="fl">2.1333333333333333</span>),</span>
+<span id="cb115-22"><a href="#cb115-22"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb115-23"><a href="#cb115-23"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
+<span id="cb115-24"><a href="#cb115-24"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
+<span id="cb115-25"><a href="#cb115-25"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
+<span id="cb115-26"><a href="#cb115-26"></a>            [</span>
+<span id="cb115-27"><a href="#cb115-27"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
+<span id="cb115-28"><a href="#cb115-28"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
+<span id="cb115-29"><a href="#cb115-29"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb115-30"><a href="#cb115-30"></a>                <span class="co">#pytorchvideo.transforms.RandomShortSideScale(min_size=256, max_size=320),</span></span>
+<span id="cb115-31"><a href="#cb115-31"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
+<span id="cb115-32"><a href="#cb115-32"></a>                <span class="co">#torchvision.transforms.RandomHorizontalFlip(p=0.5)</span></span>
+<span id="cb115-33"><a href="#cb115-33"></a>            ]</span>
+<span id="cb115-34"><a href="#cb115-34"></a>        )</span>
+<span id="cb115-35"><a href="#cb115-35"></a>    )</span>
+<span id="cb115-36"><a href="#cb115-36"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="g.-데이터콜렉터" class="level2">
 <h2 class="anchored" data-anchor-id="g.-데이터콜렉터">G. 데이터콜렉터</h2>
 <p><code>-</code> 일단 아래가 실행되지 않음을 관찰하자.</p>
-<div id="cell-104" class="cell" data-execution_count="134">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a>model(train_dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-134" class="cell" data-execution_count="134">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1"></a>model(train_dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>AttributeError: 'LabeledVideoDataset' object has no attribute 'shape'</code></pre>
 </div>
 </div>
 <p><code>-</code> 실행되는 형태1: <code>model(tsr-nfchw)</code></p>
-<div id="cell-106" class="cell" data-execution_count="168">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a>examples <span class="op">=</span> [<span class="bu">next</span>(train_dataset), <span class="bu">next</span>(train_dataset)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-136" class="cell" data-execution_count="168">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1"></a>examples <span class="op">=</span> [<span class="bu">next</span>(train_dataset), <span class="bu">next</span>(train_dataset)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-107" class="cell" data-execution_count="171">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1"></a>examples[<span class="dv">0</span>][<span class="st">'video'</span>].shape, examples[<span class="dv">1</span>][<span class="st">'video'</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-137" class="cell" data-execution_count="171">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1"></a>examples[<span class="dv">0</span>][<span class="st">'video'</span>].shape, examples[<span class="dv">1</span>][<span class="st">'video'</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="171">
 <pre><code>(torch.Size([3, 16, 224, 224]), torch.Size([3, 16, 224, 224]))</code></pre>
 </div>
 </div>
-<div id="cell-108" class="cell" data-execution_count="172">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1"></a>examples[<span class="dv">0</span>][<span class="st">'video'</span>].permute(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>).shape, examples[<span class="dv">1</span>][<span class="st">'video'</span>].permute(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-138" class="cell" data-execution_count="172">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1"></a>examples[<span class="dv">0</span>][<span class="st">'video'</span>].permute(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>).shape, examples[<span class="dv">1</span>][<span class="st">'video'</span>].permute(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="172">
 <pre><code>(torch.Size([16, 3, 224, 224]), torch.Size([16, 3, 224, 224]))</code></pre>
 </div>
 </div>
-<div id="cell-109" class="cell" data-execution_count="174">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1"></a>torch.stack([examples[<span class="dv">0</span>][<span class="st">'video'</span>].permute(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>), examples[<span class="dv">1</span>][<span class="st">'video'</span>].permute(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>)]).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-139" class="cell" data-execution_count="174">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1"></a>torch.stack([examples[<span class="dv">0</span>][<span class="st">'video'</span>].permute(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>), examples[<span class="dv">1</span>][<span class="st">'video'</span>].permute(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>)]).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="174">
 <pre><code>torch.Size([2, 16, 3, 224, 224])</code></pre>
 </div>
 </div>
-<div id="cell-110" class="cell" data-execution_count="180">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a>tsr <span class="op">=</span> torch.stack([examples[i][<span class="st">'video'</span>].permute(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)])</span>
-<span id="cb104-2"><a href="#cb104-2"></a>tsr.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-140" class="cell" data-execution_count="180">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1"></a>tsr <span class="op">=</span> torch.stack([examples[i][<span class="st">'video'</span>].permute(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)])</span>
+<span id="cb125-2"><a href="#cb125-2"></a>tsr.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="180">
 <pre><code>torch.Size([2, 16, 3, 224, 224])</code></pre>
 </div>
 </div>
-<div id="cell-111" class="cell" data-execution_count="181">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1"></a>model(tsr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-141" class="cell" data-execution_count="181">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1"></a>model(tsr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="181">
 <pre><code>ImageClassifierOutput(loss=None, logits=tensor([[ 0.4671,  0.4103, -0.3659,  0.0303,  0.1490, -0.5198, -0.4376, -0.2202,
           0.3834,  0.2408],
@@ -1235,27 +1419,27 @@ clip_duration: 2.1333333333333333</code></pre>
 </div>
 </div>
 <p><code>-</code> 실행되는 형태2: <code>model(**{"pixel_values": tsr-nfchw, "labels": tsr-n})</code></p>
-<div id="cell-113" class="cell" data-execution_count="184">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1"></a>examples[<span class="dv">0</span>][<span class="st">'label'</span>], examples[<span class="dv">1</span>][<span class="st">'label'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-143" class="cell" data-execution_count="184">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1"></a>examples[<span class="dv">0</span>][<span class="st">'label'</span>], examples[<span class="dv">1</span>][<span class="st">'label'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="184">
 <pre><code>(9, 2)</code></pre>
 </div>
 </div>
-<div id="cell-114" class="cell" data-execution_count="186">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1"></a>[examples[i][<span class="st">'label'</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-144" class="cell" data-execution_count="186">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1"></a>[examples[i][<span class="st">'label'</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="186">
 <pre><code>[9, 2]</code></pre>
 </div>
 </div>
-<div id="cell-115" class="cell" data-execution_count="189">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1"></a>labels <span class="op">=</span> torch.tensor([examples[i][<span class="st">'label'</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)])</span>
-<span id="cb112-2"><a href="#cb112-2"></a>labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-145" class="cell" data-execution_count="189">
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1"></a>labels <span class="op">=</span> torch.tensor([examples[i][<span class="st">'label'</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)])</span>
+<span id="cb133-2"><a href="#cb133-2"></a>labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="189">
 <pre><code>tensor([9, 2])</code></pre>
 </div>
 </div>
-<div id="cell-116" class="cell" data-execution_count="190">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1"></a>model(<span class="op">**</span>{<span class="st">'pixel_values'</span>:tsr, <span class="st">"labels"</span>: labels})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-146" class="cell" data-execution_count="190">
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1"></a>model(<span class="op">**</span>{<span class="st">'pixel_values'</span>:tsr, <span class="st">"labels"</span>: labels})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="190">
 <pre><code>ImageClassifierOutput(loss=tensor(2.3808, grad_fn=&lt;NllLossBackward0&gt;), logits=tensor([[ 0.4671,  0.4103, -0.3659,  0.0303,  0.1490, -0.5198, -0.4376, -0.2202,
           0.3834,  0.2408],
@@ -1264,16 +1448,16 @@ clip_duration: 2.1333333333333333</code></pre>
 </div>
 </div>
 <p><code>-</code> 그렇다면 데이터콜렉터는?</p>
-<div id="cell-118" class="cell" data-execution_count="191">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1"></a><span class="kw">def</span> collate_fn(examples):</span>
-<span id="cb116-2"><a href="#cb116-2"></a>    tsr <span class="op">=</span> torch.stack(</span>
-<span id="cb116-3"><a href="#cb116-3"></a>        [example[<span class="st">"video"</span>].permute(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="cf">for</span> example <span class="kw">in</span> examples]</span>
-<span id="cb116-4"><a href="#cb116-4"></a>    )</span>
-<span id="cb116-5"><a href="#cb116-5"></a>    labels <span class="op">=</span> torch.tensor([examples[i][<span class="st">'label'</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)])</span>
-<span id="cb116-6"><a href="#cb116-6"></a>    <span class="cf">return</span> <span class="bu">dict</span>(pixel_values<span class="op">=</span>tsr, labels<span class="op">=</span>labels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-148" class="cell" data-execution_count="191">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1"></a><span class="kw">def</span> collate_fn(examples):</span>
+<span id="cb137-2"><a href="#cb137-2"></a>    tsr <span class="op">=</span> torch.stack(</span>
+<span id="cb137-3"><a href="#cb137-3"></a>        [example[<span class="st">"video"</span>].permute(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="cf">for</span> example <span class="kw">in</span> examples]</span>
+<span id="cb137-4"><a href="#cb137-4"></a>    )</span>
+<span id="cb137-5"><a href="#cb137-5"></a>    labels <span class="op">=</span> torch.tensor([examples[i][<span class="st">'label'</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)])</span>
+<span id="cb137-6"><a href="#cb137-6"></a>    <span class="cf">return</span> <span class="bu">dict</span>(pixel_values<span class="op">=</span>tsr, labels<span class="op">=</span>labels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-119" class="cell" data-execution_count="192">
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1"></a>model(<span class="op">**</span>collate_fn(examples))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-149" class="cell" data-execution_count="192">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1"></a>model(<span class="op">**</span>collate_fn(examples))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="192">
 <pre><code>ImageClassifierOutput(loss=tensor(2.3808, grad_fn=&lt;NllLossBackward0&gt;), logits=tensor([[ 0.4671,  0.4103, -0.3659,  0.0303,  0.1490, -0.5198, -0.4376, -0.2202,
           0.3834,  0.2408],
@@ -1282,14 +1466,14 @@ clip_duration: 2.1333333333333333</code></pre>
 </div>
 </div>
 <p><code>-</code> 좀 더 일반화</p>
-<div id="cell-121" class="cell" data-execution_count="197">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1"></a><span class="kw">def</span> collate_fn(examples):</span>
-<span id="cb119-2"><a href="#cb119-2"></a>    tsr <span class="op">=</span> torch.stack(</span>
-<span id="cb119-3"><a href="#cb119-3"></a>        [example[<span class="st">"video"</span>].permute(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="cf">for</span> example <span class="kw">in</span> examples]</span>
-<span id="cb119-4"><a href="#cb119-4"></a>    )</span>
-<span id="cb119-5"><a href="#cb119-5"></a>    labels <span class="op">=</span> torch.tensor([example[<span class="st">'label'</span>] <span class="cf">for</span> example <span class="kw">in</span> examples])</span>
-<span id="cb119-6"><a href="#cb119-6"></a>    <span class="cf">return</span> <span class="bu">dict</span>(pixel_values<span class="op">=</span>tsr, labels<span class="op">=</span>labels)</span>
-<span id="cb119-7"><a href="#cb119-7"></a>model(<span class="op">**</span>collate_fn(examples))    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-151" class="cell" data-execution_count="197">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1"></a><span class="kw">def</span> collate_fn(examples):</span>
+<span id="cb140-2"><a href="#cb140-2"></a>    tsr <span class="op">=</span> torch.stack(</span>
+<span id="cb140-3"><a href="#cb140-3"></a>        [example[<span class="st">"video"</span>].permute(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="cf">for</span> example <span class="kw">in</span> examples]</span>
+<span id="cb140-4"><a href="#cb140-4"></a>    )</span>
+<span id="cb140-5"><a href="#cb140-5"></a>    labels <span class="op">=</span> torch.tensor([example[<span class="st">'label'</span>] <span class="cf">for</span> example <span class="kw">in</span> examples])</span>
+<span id="cb140-6"><a href="#cb140-6"></a>    <span class="cf">return</span> <span class="bu">dict</span>(pixel_values<span class="op">=</span>tsr, labels<span class="op">=</span>labels)</span>
+<span id="cb140-7"><a href="#cb140-7"></a>model(<span class="op">**</span>collate_fn(examples))    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>RuntimeError: Input type (torch.FloatTensor) and weight type (torch.cuda.FloatTensor) should be the same or input should be a MKLDNN tensor and weight is a dense tensor</code></pre>
 </div>
@@ -1298,151 +1482,151 @@ clip_duration: 2.1333333333333333</code></pre>
 </section>
 <section id="코드정리" class="level1">
 <h1>5. 코드정리</h1>
-<div id="cell-123" class="cell">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1"></a><span class="im">import</span> huggingface_hub</span>
-<span id="cb121-2"><a href="#cb121-2"></a><span class="im">import</span> tarfile </span>
-<span id="cb121-3"><a href="#cb121-3"></a><span class="im">import</span> pathlib</span>
-<span id="cb121-4"><a href="#cb121-4"></a><span class="im">import</span> transformers</span>
-<span id="cb121-5"><a href="#cb121-5"></a><span class="im">import</span> pytorchvideo.data</span>
-<span id="cb121-6"><a href="#cb121-6"></a><span class="im">import</span> pytorchvideo.transforms</span>
-<span id="cb121-7"><a href="#cb121-7"></a><span class="im">import</span> torchvision.transforms</span>
-<span id="cb121-8"><a href="#cb121-8"></a><span class="co"># import os </span></span>
-<span id="cb121-9"><a href="#cb121-9"></a><span class="im">import</span> evaluate</span>
-<span id="cb121-10"><a href="#cb121-10"></a><span class="im">import</span> torch</span>
-<span id="cb121-11"><a href="#cb121-11"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb121-12"><a href="#cb121-12"></a><span class="co"># import imageio</span></span>
-<span id="cb121-13"><a href="#cb121-13"></a><span class="co"># import IPython.display</span></span>
-<span id="cb121-14"><a href="#cb121-14"></a><span class="co"># import matplotlib.pyplot as plt </span></span>
-<span id="cb121-15"><a href="#cb121-15"></a><span class="co">#---#</span></span>
-<span id="cb121-16"><a href="#cb121-16"></a><span class="co">## Step1 </span></span>
-<span id="cb121-17"><a href="#cb121-17"></a>file_path <span class="op">=</span> huggingface_hub.hf_hub_download(</span>
-<span id="cb121-18"><a href="#cb121-18"></a>    repo_id<span class="op">=</span><span class="st">"sayakpaul/ucf101-subset"</span>, </span>
-<span id="cb121-19"><a href="#cb121-19"></a>    filename<span class="op">=</span><span class="st">"UCF101_subset.tar.gz"</span>, </span>
-<span id="cb121-20"><a href="#cb121-20"></a>    repo_type<span class="op">=</span><span class="st">"dataset"</span></span>
-<span id="cb121-21"><a href="#cb121-21"></a>)</span>
-<span id="cb121-22"><a href="#cb121-22"></a><span class="cf">with</span> tarfile.<span class="bu">open</span>(file_path) <span class="im">as</span> t:</span>
-<span id="cb121-23"><a href="#cb121-23"></a>    t.extractall(<span class="st">"."</span>)</span>
-<span id="cb121-24"><a href="#cb121-24"></a>train_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
-<span id="cb121-25"><a href="#cb121-25"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
-<span id="cb121-26"><a href="#cb121-26"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"random"</span>, <span class="fl">2.1333333333333333</span>),</span>
-<span id="cb121-27"><a href="#cb121-27"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb121-28"><a href="#cb121-28"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
-<span id="cb121-29"><a href="#cb121-29"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
-<span id="cb121-30"><a href="#cb121-30"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
-<span id="cb121-31"><a href="#cb121-31"></a>            [</span>
-<span id="cb121-32"><a href="#cb121-32"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
-<span id="cb121-33"><a href="#cb121-33"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
-<span id="cb121-34"><a href="#cb121-34"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
-<span id="cb121-35"><a href="#cb121-35"></a>                pytorchvideo.transforms.RandomShortSideScale(min_size<span class="op">=</span><span class="dv">256</span>, max_size<span class="op">=</span><span class="dv">320</span>),</span>
-<span id="cb121-36"><a href="#cb121-36"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
-<span id="cb121-37"><a href="#cb121-37"></a>                torchvision.transforms.RandomHorizontalFlip(p<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb121-38"><a href="#cb121-38"></a>            ]</span>
-<span id="cb121-39"><a href="#cb121-39"></a>        )</span>
-<span id="cb121-40"><a href="#cb121-40"></a>    )</span>
-<span id="cb121-41"><a href="#cb121-41"></a>)</span>
-<span id="cb121-42"><a href="#cb121-42"></a>test_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
-<span id="cb121-43"><a href="#cb121-43"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
-<span id="cb121-44"><a href="#cb121-44"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"uniform"</span>, <span class="fl">2.1333333333333333</span>),</span>
-<span id="cb121-45"><a href="#cb121-45"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb121-46"><a href="#cb121-46"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
-<span id="cb121-47"><a href="#cb121-47"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
-<span id="cb121-48"><a href="#cb121-48"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
-<span id="cb121-49"><a href="#cb121-49"></a>            [</span>
-<span id="cb121-50"><a href="#cb121-50"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
-<span id="cb121-51"><a href="#cb121-51"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
-<span id="cb121-52"><a href="#cb121-52"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
-<span id="cb121-53"><a href="#cb121-53"></a>                <span class="co">#pytorchvideo.transforms.RandomShortSideScale(min_size=256, max_size=320),</span></span>
-<span id="cb121-54"><a href="#cb121-54"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
-<span id="cb121-55"><a href="#cb121-55"></a>                <span class="co">#torchvision.transforms.RandomHorizontalFlip(p=0.5)</span></span>
-<span id="cb121-56"><a href="#cb121-56"></a>            ]</span>
-<span id="cb121-57"><a href="#cb121-57"></a>        )</span>
-<span id="cb121-58"><a href="#cb121-58"></a>    )</span>
-<span id="cb121-59"><a href="#cb121-59"></a>)</span>
-<span id="cb121-60"><a href="#cb121-60"></a>val_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
-<span id="cb121-61"><a href="#cb121-61"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
-<span id="cb121-62"><a href="#cb121-62"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"uniform"</span>, <span class="fl">2.1333333333333333</span>),</span>
-<span id="cb121-63"><a href="#cb121-63"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb121-64"><a href="#cb121-64"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
-<span id="cb121-65"><a href="#cb121-65"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
-<span id="cb121-66"><a href="#cb121-66"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
-<span id="cb121-67"><a href="#cb121-67"></a>            [</span>
-<span id="cb121-68"><a href="#cb121-68"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
-<span id="cb121-69"><a href="#cb121-69"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
-<span id="cb121-70"><a href="#cb121-70"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
-<span id="cb121-71"><a href="#cb121-71"></a>                <span class="co">#pytorchvideo.transforms.RandomShortSideScale(min_size=256, max_size=320),</span></span>
-<span id="cb121-72"><a href="#cb121-72"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
-<span id="cb121-73"><a href="#cb121-73"></a>                <span class="co">#torchvision.transforms.RandomHorizontalFlip(p=0.5)</span></span>
-<span id="cb121-74"><a href="#cb121-74"></a>            ]</span>
-<span id="cb121-75"><a href="#cb121-75"></a>        )</span>
-<span id="cb121-76"><a href="#cb121-76"></a>    )</span>
-<span id="cb121-77"><a href="#cb121-77"></a>)</span>
-<span id="cb121-78"><a href="#cb121-78"></a><span class="co">## Step2 </span></span>
-<span id="cb121-79"><a href="#cb121-79"></a>id2label <span class="op">=</span> {</span>
-<span id="cb121-80"><a href="#cb121-80"></a>    <span class="dv">0</span>: <span class="st">'ApplyEyeMakeup'</span>,</span>
-<span id="cb121-81"><a href="#cb121-81"></a>    <span class="dv">1</span>: <span class="st">'Archery'</span>,</span>
-<span id="cb121-82"><a href="#cb121-82"></a>    <span class="dv">2</span>: <span class="st">'BalanceBeam'</span>,</span>
-<span id="cb121-83"><a href="#cb121-83"></a>    <span class="dv">3</span>: <span class="st">'BaseballPitch'</span>,</span>
-<span id="cb121-84"><a href="#cb121-84"></a>    <span class="dv">4</span>: <span class="st">'BasketballDunk'</span>,</span>
-<span id="cb121-85"><a href="#cb121-85"></a>    <span class="dv">5</span>: <span class="st">'ApplyLipstick'</span>,</span>
-<span id="cb121-86"><a href="#cb121-86"></a>    <span class="dv">6</span>: <span class="st">'BabyCrawling'</span>,</span>
-<span id="cb121-87"><a href="#cb121-87"></a>    <span class="dv">7</span>: <span class="st">'BandMarching'</span>,</span>
-<span id="cb121-88"><a href="#cb121-88"></a>    <span class="dv">8</span>: <span class="st">'Basketball'</span>,</span>
-<span id="cb121-89"><a href="#cb121-89"></a>    <span class="dv">9</span>: <span class="st">'BenchPress'</span></span>
-<span id="cb121-90"><a href="#cb121-90"></a>}</span>
-<span id="cb121-91"><a href="#cb121-91"></a>label2id <span class="op">=</span> {</span>
-<span id="cb121-92"><a href="#cb121-92"></a>    <span class="st">'ApplyEyeMakeup'</span>: <span class="dv">0</span>, </span>
-<span id="cb121-93"><a href="#cb121-93"></a>    <span class="st">'Archery'</span>: <span class="dv">1</span>,</span>
-<span id="cb121-94"><a href="#cb121-94"></a>    <span class="st">'BalanceBeam'</span>: <span class="dv">2</span>,</span>
-<span id="cb121-95"><a href="#cb121-95"></a>    <span class="st">'BaseballPitch'</span>: <span class="dv">3</span>,</span>
-<span id="cb121-96"><a href="#cb121-96"></a>    <span class="st">'BasketballDunk'</span>: <span class="dv">4</span>,</span>
-<span id="cb121-97"><a href="#cb121-97"></a>    <span class="st">'ApplyLipstick'</span>: <span class="dv">5</span>,</span>
-<span id="cb121-98"><a href="#cb121-98"></a>    <span class="st">'BabyCrawling'</span>: <span class="dv">6</span>,</span>
-<span id="cb121-99"><a href="#cb121-99"></a>    <span class="st">'BandMarching'</span>: <span class="dv">7</span>,</span>
-<span id="cb121-100"><a href="#cb121-100"></a>    <span class="st">'Basketball'</span>: <span class="dv">8</span>,</span>
-<span id="cb121-101"><a href="#cb121-101"></a>    <span class="st">'BenchPress'</span>: <span class="dv">9</span> </span>
-<span id="cb121-102"><a href="#cb121-102"></a>}</span>
-<span id="cb121-103"><a href="#cb121-103"></a>model <span class="op">=</span> transformers.VideoMAEForVideoClassification.from_pretrained(</span>
-<span id="cb121-104"><a href="#cb121-104"></a>    <span class="st">"MCG-NJU/videomae-base"</span>,</span>
-<span id="cb121-105"><a href="#cb121-105"></a>    label2id<span class="op">=</span>label2id,</span>
-<span id="cb121-106"><a href="#cb121-106"></a>    id2label<span class="op">=</span>id2label,</span>
-<span id="cb121-107"><a href="#cb121-107"></a>    ignore_mismatched_sizes<span class="op">=</span><span class="va">True</span>,  <span class="co"># provide this in case you're planning to fine-tune an already fine-tuned checkpoint</span></span>
-<span id="cb121-108"><a href="#cb121-108"></a>)</span>
-<span id="cb121-109"><a href="#cb121-109"></a><span class="co"># Step3 </span></span>
-<span id="cb121-110"><a href="#cb121-110"></a>metric <span class="op">=</span> evaluate.load(<span class="st">"accuracy"</span>)</span>
-<span id="cb121-111"><a href="#cb121-111"></a><span class="kw">def</span> compute_metrics(eval_pred):</span>
-<span id="cb121-112"><a href="#cb121-112"></a>    predictions <span class="op">=</span> np.argmax(eval_pred.predictions, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb121-113"><a href="#cb121-113"></a>    <span class="cf">return</span> metric.compute(predictions<span class="op">=</span>predictions, references<span class="op">=</span>eval_pred.label_ids)</span>
-<span id="cb121-114"><a href="#cb121-114"></a><span class="kw">def</span> collate_fn(examples):</span>
-<span id="cb121-115"><a href="#cb121-115"></a>    tsr <span class="op">=</span> torch.stack(</span>
-<span id="cb121-116"><a href="#cb121-116"></a>        [example[<span class="st">"video"</span>].permute(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="cf">for</span> example <span class="kw">in</span> examples]</span>
-<span id="cb121-117"><a href="#cb121-117"></a>    )</span>
-<span id="cb121-118"><a href="#cb121-118"></a>    labels <span class="op">=</span> torch.tensor([example[<span class="st">'label'</span>] <span class="cf">for</span> example <span class="kw">in</span> examples])</span>
-<span id="cb121-119"><a href="#cb121-119"></a>    <span class="cf">return</span> <span class="bu">dict</span>(pixel_values<span class="op">=</span>tsr, labels<span class="op">=</span>labels)</span>
-<span id="cb121-120"><a href="#cb121-120"></a>args <span class="op">=</span> transformers.TrainingArguments(</span>
-<span id="cb121-121"><a href="#cb121-121"></a>    <span class="st">'영상분류학습된모델'</span>,</span>
-<span id="cb121-122"><a href="#cb121-122"></a>    remove_unused_columns<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb121-123"><a href="#cb121-123"></a>    eval_strategy<span class="op">=</span><span class="st">"epoch"</span>,</span>
-<span id="cb121-124"><a href="#cb121-124"></a>    save_strategy<span class="op">=</span><span class="st">"epoch"</span>,</span>
-<span id="cb121-125"><a href="#cb121-125"></a>    learning_rate<span class="op">=</span><span class="fl">5e-5</span>,</span>
-<span id="cb121-126"><a href="#cb121-126"></a>    per_device_train_batch_size<span class="op">=</span><span class="dv">16</span>,</span>
-<span id="cb121-127"><a href="#cb121-127"></a>    per_device_eval_batch_size<span class="op">=</span><span class="dv">16</span>,</span>
-<span id="cb121-128"><a href="#cb121-128"></a>    warmup_ratio<span class="op">=</span><span class="fl">0.1</span>,</span>
-<span id="cb121-129"><a href="#cb121-129"></a>    logging_steps<span class="op">=</span><span class="dv">10</span>,</span>
-<span id="cb121-130"><a href="#cb121-130"></a>    load_best_model_at_end<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb121-131"><a href="#cb121-131"></a>    metric_for_best_model<span class="op">=</span><span class="st">"accuracy"</span>,</span>
-<span id="cb121-132"><a href="#cb121-132"></a>    push_to_hub<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb121-133"><a href="#cb121-133"></a>    max_steps<span class="op">=</span>(train_dataset.num_videos <span class="op">//</span> <span class="dv">16</span>) <span class="op">*</span> <span class="dv">4</span>,</span>
-<span id="cb121-134"><a href="#cb121-134"></a>)</span>
-<span id="cb121-135"><a href="#cb121-135"></a>trainer <span class="op">=</span> transformers.Trainer(</span>
-<span id="cb121-136"><a href="#cb121-136"></a>    model,</span>
-<span id="cb121-137"><a href="#cb121-137"></a>    args,</span>
-<span id="cb121-138"><a href="#cb121-138"></a>    train_dataset<span class="op">=</span>train_dataset,</span>
-<span id="cb121-139"><a href="#cb121-139"></a>    eval_dataset<span class="op">=</span>val_dataset,</span>
-<span id="cb121-140"><a href="#cb121-140"></a>    <span class="co">#tokenizer=transformers.VideoMAEImageProcessor.from_pretrained("MCG-NJU/videomae-base"),</span></span>
-<span id="cb121-141"><a href="#cb121-141"></a>    compute_metrics<span class="op">=</span>compute_metrics,</span>
-<span id="cb121-142"><a href="#cb121-142"></a>    data_collator<span class="op">=</span>collate_fn,</span>
-<span id="cb121-143"><a href="#cb121-143"></a>)</span>
-<span id="cb121-144"><a href="#cb121-144"></a>train_results <span class="op">=</span> trainer.train()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-153" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1"></a><span class="im">import</span> huggingface_hub</span>
+<span id="cb142-2"><a href="#cb142-2"></a><span class="im">import</span> tarfile </span>
+<span id="cb142-3"><a href="#cb142-3"></a><span class="im">import</span> pathlib</span>
+<span id="cb142-4"><a href="#cb142-4"></a><span class="im">import</span> transformers</span>
+<span id="cb142-5"><a href="#cb142-5"></a><span class="im">import</span> pytorchvideo.data</span>
+<span id="cb142-6"><a href="#cb142-6"></a><span class="im">import</span> pytorchvideo.transforms</span>
+<span id="cb142-7"><a href="#cb142-7"></a><span class="im">import</span> torchvision.transforms</span>
+<span id="cb142-8"><a href="#cb142-8"></a><span class="co"># import os </span></span>
+<span id="cb142-9"><a href="#cb142-9"></a><span class="im">import</span> evaluate</span>
+<span id="cb142-10"><a href="#cb142-10"></a><span class="im">import</span> torch</span>
+<span id="cb142-11"><a href="#cb142-11"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb142-12"><a href="#cb142-12"></a><span class="co"># import imageio</span></span>
+<span id="cb142-13"><a href="#cb142-13"></a><span class="co"># import IPython.display</span></span>
+<span id="cb142-14"><a href="#cb142-14"></a><span class="co"># import matplotlib.pyplot as plt </span></span>
+<span id="cb142-15"><a href="#cb142-15"></a><span class="co">#---#</span></span>
+<span id="cb142-16"><a href="#cb142-16"></a><span class="co">## Step1 </span></span>
+<span id="cb142-17"><a href="#cb142-17"></a>file_path <span class="op">=</span> huggingface_hub.hf_hub_download(</span>
+<span id="cb142-18"><a href="#cb142-18"></a>    repo_id<span class="op">=</span><span class="st">"sayakpaul/ucf101-subset"</span>, </span>
+<span id="cb142-19"><a href="#cb142-19"></a>    filename<span class="op">=</span><span class="st">"UCF101_subset.tar.gz"</span>, </span>
+<span id="cb142-20"><a href="#cb142-20"></a>    repo_type<span class="op">=</span><span class="st">"dataset"</span></span>
+<span id="cb142-21"><a href="#cb142-21"></a>)</span>
+<span id="cb142-22"><a href="#cb142-22"></a><span class="cf">with</span> tarfile.<span class="bu">open</span>(file_path) <span class="im">as</span> t:</span>
+<span id="cb142-23"><a href="#cb142-23"></a>    t.extractall(<span class="st">"."</span>)</span>
+<span id="cb142-24"><a href="#cb142-24"></a>train_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
+<span id="cb142-25"><a href="#cb142-25"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
+<span id="cb142-26"><a href="#cb142-26"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"random"</span>, <span class="fl">2.1333333333333333</span>),</span>
+<span id="cb142-27"><a href="#cb142-27"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb142-28"><a href="#cb142-28"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
+<span id="cb142-29"><a href="#cb142-29"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
+<span id="cb142-30"><a href="#cb142-30"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
+<span id="cb142-31"><a href="#cb142-31"></a>            [</span>
+<span id="cb142-32"><a href="#cb142-32"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
+<span id="cb142-33"><a href="#cb142-33"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
+<span id="cb142-34"><a href="#cb142-34"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb142-35"><a href="#cb142-35"></a>                pytorchvideo.transforms.RandomShortSideScale(min_size<span class="op">=</span><span class="dv">256</span>, max_size<span class="op">=</span><span class="dv">320</span>),</span>
+<span id="cb142-36"><a href="#cb142-36"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
+<span id="cb142-37"><a href="#cb142-37"></a>                torchvision.transforms.RandomHorizontalFlip(p<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb142-38"><a href="#cb142-38"></a>            ]</span>
+<span id="cb142-39"><a href="#cb142-39"></a>        )</span>
+<span id="cb142-40"><a href="#cb142-40"></a>    )</span>
+<span id="cb142-41"><a href="#cb142-41"></a>)</span>
+<span id="cb142-42"><a href="#cb142-42"></a>test_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
+<span id="cb142-43"><a href="#cb142-43"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
+<span id="cb142-44"><a href="#cb142-44"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"uniform"</span>, <span class="fl">2.1333333333333333</span>),</span>
+<span id="cb142-45"><a href="#cb142-45"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb142-46"><a href="#cb142-46"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
+<span id="cb142-47"><a href="#cb142-47"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
+<span id="cb142-48"><a href="#cb142-48"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
+<span id="cb142-49"><a href="#cb142-49"></a>            [</span>
+<span id="cb142-50"><a href="#cb142-50"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
+<span id="cb142-51"><a href="#cb142-51"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
+<span id="cb142-52"><a href="#cb142-52"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb142-53"><a href="#cb142-53"></a>                <span class="co">#pytorchvideo.transforms.RandomShortSideScale(min_size=256, max_size=320),</span></span>
+<span id="cb142-54"><a href="#cb142-54"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
+<span id="cb142-55"><a href="#cb142-55"></a>                <span class="co">#torchvision.transforms.RandomHorizontalFlip(p=0.5)</span></span>
+<span id="cb142-56"><a href="#cb142-56"></a>            ]</span>
+<span id="cb142-57"><a href="#cb142-57"></a>        )</span>
+<span id="cb142-58"><a href="#cb142-58"></a>    )</span>
+<span id="cb142-59"><a href="#cb142-59"></a>)</span>
+<span id="cb142-60"><a href="#cb142-60"></a>val_dataset <span class="op">=</span> pytorchvideo.data.labeled_video_dataset(</span>
+<span id="cb142-61"><a href="#cb142-61"></a>    data_path <span class="op">=</span> <span class="st">'UCF101_subset/train'</span>,</span>
+<span id="cb142-62"><a href="#cb142-62"></a>    clip_sampler <span class="op">=</span> pytorchvideo.data.make_clip_sampler(<span class="st">"uniform"</span>, <span class="fl">2.1333333333333333</span>),</span>
+<span id="cb142-63"><a href="#cb142-63"></a>    decode_audio <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb142-64"><a href="#cb142-64"></a>    transform <span class="op">=</span> pytorchvideo.transforms.ApplyTransformToKey(</span>
+<span id="cb142-65"><a href="#cb142-65"></a>        key <span class="op">=</span> <span class="st">"video"</span>,</span>
+<span id="cb142-66"><a href="#cb142-66"></a>        transform <span class="op">=</span> torchvision.transforms.Compose(</span>
+<span id="cb142-67"><a href="#cb142-67"></a>            [</span>
+<span id="cb142-68"><a href="#cb142-68"></a>                pytorchvideo.transforms.UniformTemporalSubsample(<span class="dv">16</span>),</span>
+<span id="cb142-69"><a href="#cb142-69"></a>                torchvision.transforms.Lambda(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">255.0</span>),</span>
+<span id="cb142-70"><a href="#cb142-70"></a>                pytorchvideo.transforms.Normalize([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], [<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb142-71"><a href="#cb142-71"></a>                <span class="co">#pytorchvideo.transforms.RandomShortSideScale(min_size=256, max_size=320),</span></span>
+<span id="cb142-72"><a href="#cb142-72"></a>                torchvision.transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
+<span id="cb142-73"><a href="#cb142-73"></a>                <span class="co">#torchvision.transforms.RandomHorizontalFlip(p=0.5)</span></span>
+<span id="cb142-74"><a href="#cb142-74"></a>            ]</span>
+<span id="cb142-75"><a href="#cb142-75"></a>        )</span>
+<span id="cb142-76"><a href="#cb142-76"></a>    )</span>
+<span id="cb142-77"><a href="#cb142-77"></a>)</span>
+<span id="cb142-78"><a href="#cb142-78"></a><span class="co">## Step2 </span></span>
+<span id="cb142-79"><a href="#cb142-79"></a>id2label <span class="op">=</span> {</span>
+<span id="cb142-80"><a href="#cb142-80"></a>    <span class="dv">0</span>: <span class="st">'ApplyEyeMakeup'</span>,</span>
+<span id="cb142-81"><a href="#cb142-81"></a>    <span class="dv">1</span>: <span class="st">'Archery'</span>,</span>
+<span id="cb142-82"><a href="#cb142-82"></a>    <span class="dv">2</span>: <span class="st">'BalanceBeam'</span>,</span>
+<span id="cb142-83"><a href="#cb142-83"></a>    <span class="dv">3</span>: <span class="st">'BaseballPitch'</span>,</span>
+<span id="cb142-84"><a href="#cb142-84"></a>    <span class="dv">4</span>: <span class="st">'BasketballDunk'</span>,</span>
+<span id="cb142-85"><a href="#cb142-85"></a>    <span class="dv">5</span>: <span class="st">'ApplyLipstick'</span>,</span>
+<span id="cb142-86"><a href="#cb142-86"></a>    <span class="dv">6</span>: <span class="st">'BabyCrawling'</span>,</span>
+<span id="cb142-87"><a href="#cb142-87"></a>    <span class="dv">7</span>: <span class="st">'BandMarching'</span>,</span>
+<span id="cb142-88"><a href="#cb142-88"></a>    <span class="dv">8</span>: <span class="st">'Basketball'</span>,</span>
+<span id="cb142-89"><a href="#cb142-89"></a>    <span class="dv">9</span>: <span class="st">'BenchPress'</span></span>
+<span id="cb142-90"><a href="#cb142-90"></a>}</span>
+<span id="cb142-91"><a href="#cb142-91"></a>label2id <span class="op">=</span> {</span>
+<span id="cb142-92"><a href="#cb142-92"></a>    <span class="st">'ApplyEyeMakeup'</span>: <span class="dv">0</span>, </span>
+<span id="cb142-93"><a href="#cb142-93"></a>    <span class="st">'Archery'</span>: <span class="dv">1</span>,</span>
+<span id="cb142-94"><a href="#cb142-94"></a>    <span class="st">'BalanceBeam'</span>: <span class="dv">2</span>,</span>
+<span id="cb142-95"><a href="#cb142-95"></a>    <span class="st">'BaseballPitch'</span>: <span class="dv">3</span>,</span>
+<span id="cb142-96"><a href="#cb142-96"></a>    <span class="st">'BasketballDunk'</span>: <span class="dv">4</span>,</span>
+<span id="cb142-97"><a href="#cb142-97"></a>    <span class="st">'ApplyLipstick'</span>: <span class="dv">5</span>,</span>
+<span id="cb142-98"><a href="#cb142-98"></a>    <span class="st">'BabyCrawling'</span>: <span class="dv">6</span>,</span>
+<span id="cb142-99"><a href="#cb142-99"></a>    <span class="st">'BandMarching'</span>: <span class="dv">7</span>,</span>
+<span id="cb142-100"><a href="#cb142-100"></a>    <span class="st">'Basketball'</span>: <span class="dv">8</span>,</span>
+<span id="cb142-101"><a href="#cb142-101"></a>    <span class="st">'BenchPress'</span>: <span class="dv">9</span> </span>
+<span id="cb142-102"><a href="#cb142-102"></a>}</span>
+<span id="cb142-103"><a href="#cb142-103"></a>model <span class="op">=</span> transformers.VideoMAEForVideoClassification.from_pretrained(</span>
+<span id="cb142-104"><a href="#cb142-104"></a>    <span class="st">"MCG-NJU/videomae-base"</span>,</span>
+<span id="cb142-105"><a href="#cb142-105"></a>    label2id<span class="op">=</span>label2id,</span>
+<span id="cb142-106"><a href="#cb142-106"></a>    id2label<span class="op">=</span>id2label,</span>
+<span id="cb142-107"><a href="#cb142-107"></a>    ignore_mismatched_sizes<span class="op">=</span><span class="va">True</span>,  <span class="co"># provide this in case you're planning to fine-tune an already fine-tuned checkpoint</span></span>
+<span id="cb142-108"><a href="#cb142-108"></a>)</span>
+<span id="cb142-109"><a href="#cb142-109"></a><span class="co"># Step3 </span></span>
+<span id="cb142-110"><a href="#cb142-110"></a>metric <span class="op">=</span> evaluate.load(<span class="st">"accuracy"</span>)</span>
+<span id="cb142-111"><a href="#cb142-111"></a><span class="kw">def</span> compute_metrics(eval_pred):</span>
+<span id="cb142-112"><a href="#cb142-112"></a>    predictions <span class="op">=</span> np.argmax(eval_pred.predictions, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb142-113"><a href="#cb142-113"></a>    <span class="cf">return</span> metric.compute(predictions<span class="op">=</span>predictions, references<span class="op">=</span>eval_pred.label_ids)</span>
+<span id="cb142-114"><a href="#cb142-114"></a><span class="kw">def</span> collate_fn(examples):</span>
+<span id="cb142-115"><a href="#cb142-115"></a>    tsr <span class="op">=</span> torch.stack(</span>
+<span id="cb142-116"><a href="#cb142-116"></a>        [example[<span class="st">"video"</span>].permute(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="cf">for</span> example <span class="kw">in</span> examples]</span>
+<span id="cb142-117"><a href="#cb142-117"></a>    )</span>
+<span id="cb142-118"><a href="#cb142-118"></a>    labels <span class="op">=</span> torch.tensor([example[<span class="st">'label'</span>] <span class="cf">for</span> example <span class="kw">in</span> examples])</span>
+<span id="cb142-119"><a href="#cb142-119"></a>    <span class="cf">return</span> <span class="bu">dict</span>(pixel_values<span class="op">=</span>tsr, labels<span class="op">=</span>labels)</span>
+<span id="cb142-120"><a href="#cb142-120"></a>args <span class="op">=</span> transformers.TrainingArguments(</span>
+<span id="cb142-121"><a href="#cb142-121"></a>    <span class="st">'영상분류학습된모델'</span>,</span>
+<span id="cb142-122"><a href="#cb142-122"></a>    remove_unused_columns<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb142-123"><a href="#cb142-123"></a>    eval_strategy<span class="op">=</span><span class="st">"epoch"</span>,</span>
+<span id="cb142-124"><a href="#cb142-124"></a>    save_strategy<span class="op">=</span><span class="st">"epoch"</span>,</span>
+<span id="cb142-125"><a href="#cb142-125"></a>    learning_rate<span class="op">=</span><span class="fl">5e-5</span>,</span>
+<span id="cb142-126"><a href="#cb142-126"></a>    per_device_train_batch_size<span class="op">=</span><span class="dv">16</span>,</span>
+<span id="cb142-127"><a href="#cb142-127"></a>    per_device_eval_batch_size<span class="op">=</span><span class="dv">16</span>,</span>
+<span id="cb142-128"><a href="#cb142-128"></a>    warmup_ratio<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb142-129"><a href="#cb142-129"></a>    logging_steps<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb142-130"><a href="#cb142-130"></a>    load_best_model_at_end<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb142-131"><a href="#cb142-131"></a>    metric_for_best_model<span class="op">=</span><span class="st">"accuracy"</span>,</span>
+<span id="cb142-132"><a href="#cb142-132"></a>    push_to_hub<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb142-133"><a href="#cb142-133"></a>    max_steps<span class="op">=</span>(train_dataset.num_videos <span class="op">//</span> <span class="dv">16</span>) <span class="op">*</span> <span class="dv">4</span>,</span>
+<span id="cb142-134"><a href="#cb142-134"></a>)</span>
+<span id="cb142-135"><a href="#cb142-135"></a>trainer <span class="op">=</span> transformers.Trainer(</span>
+<span id="cb142-136"><a href="#cb142-136"></a>    model,</span>
+<span id="cb142-137"><a href="#cb142-137"></a>    args,</span>
+<span id="cb142-138"><a href="#cb142-138"></a>    train_dataset<span class="op">=</span>train_dataset,</span>
+<span id="cb142-139"><a href="#cb142-139"></a>    eval_dataset<span class="op">=</span>val_dataset,</span>
+<span id="cb142-140"><a href="#cb142-140"></a>    <span class="co">#tokenizer=transformers.VideoMAEImageProcessor.from_pretrained("MCG-NJU/videomae-base"),</span></span>
+<span id="cb142-141"><a href="#cb142-141"></a>    compute_metrics<span class="op">=</span>compute_metrics,</span>
+<span id="cb142-142"><a href="#cb142-142"></a>    data_collator<span class="op">=</span>collate_fn,</span>
+<span id="cb142-143"><a href="#cb142-143"></a>)</span>
+<span id="cb142-144"><a href="#cb142-144"></a>train_results <span class="op">=</span> trainer.train()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Some weights of VideoMAEForVideoClassification were not initialized from the model checkpoint at MCG-NJU/videomae-base and are newly initialized: ['classifier.bias', 'classifier.weight']
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
@@ -1452,8 +1636,8 @@ max_steps is given, it will override any value given in num_train_epochs</code><
 
     <div>
       
-      <progress value="73" max="72" style="width:300px; height:20px; vertical-align: middle;"></progress>
-      [72/72 04:33, Epoch 3.21/9223372036854775807]
+      <progress value="72" max="72" style="width:300px; height:20px; vertical-align: middle;"></progress>
+      [72/72 05:19, Epoch 3/9223372036854775807]
     </div>
     
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -1483,6 +1667,12 @@ max_steps is given, it will override any value given in num_train_epochs</code><
 <td>1.050500</td>
 <td>0.817494</td>
 <td>0.905344</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.697400</td>
+<td>0.708020</td>
+<td>0.919084</td>
 </tr>
 </tbody>
 </table>
