@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="신록예찬">
+<meta name="dcterms.date" content="2024-10-10">
 
-<title>신록예찬’s Blog - Image captioning</title>
+<title>신록예찬’s Blog - (강의) 이미지캡셔닝</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -183,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Image captioning</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">(강의) 이미지캡셔닝</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -254,14 +256,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Image captioning</h1>
+<h1 class="title">(강의) 이미지캡셔닝</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>신록예찬 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 10, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -271,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-0" class="cell">
+<div id="cell-1" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Transformers installation</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="op">!</span> pip install transformers datasets</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># To install from source instead of the last release, comment the command above and uncomment the following one.</span></span>
@@ -289,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">pip</span> install transformers datasets evaluate <span class="at">-q</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="ex">pip</span> install jiwer <span class="at">-q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We encourage you to log in to your Hugging Face account so you can upload and share your model with the community. When prompted, enter your token to log in:</p>
-<div id="cell-3" class="cell" data-execution_count="6">
+<div id="cell-4" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> huggingface_hub <span class="im">import</span> notebook_login</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a>notebook_login()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -300,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="load-the-pokémon-blip-captions-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="load-the-pokémon-blip-captions-dataset">Load the Pokémon BLIP captions dataset</h2>
 <p>Use the 🤗 Dataset library to load a dataset that consists of {image-caption} pairs. To create your own image captioning dataset in PyTorch, you can follow <a href="https://github.com/NielsRogge/Transformers-Tutorials/blob/master/GIT/Fine_tune_GIT_on_an_image_captioning_dataset.ipynb">this notebook</a>.</p>
-<div id="cell-6" class="cell" data-execution_count="12">
+<div id="cell-7" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co"># Conceptual Captions 데이터셋 불러오기</span></span>
@@ -322,7 +336,7 @@ Generating validation split: 100%|██████████| 15840/15840 [0
 })</code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="14">
+<div id="cell-8" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>Dataset({
@@ -331,20 +345,20 @@ Generating validation split: 100%|██████████| 15840/15840 [0
 })</code></pre>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="16">
+<div id="cell-9" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>ds <span class="op">=</span> ds.train_test_split(test_size<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb10-2"><a href="#cb10-2"></a>train_ds <span class="op">=</span> ds[<span class="st">"train"</span>]</span>
 <span id="cb10-3"><a href="#cb10-3"></a>test_ds <span class="op">=</span> ds[<span class="st">"test"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s visualize a couple of samples from the training set.</p>
-<div id="cell-10" class="cell" data-execution_count="22">
+<div id="cell-11" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>train_ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>{'image_url': 'http://l7.alamy.com/zooms/a95a95341dcb4ebd810d5a30503bb98a/fisherman-sell-seafood-at-the-fish-market-fg4p25.jpg',
  'caption': 'sell seafood at the fish market'}</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="19">
+<div id="cell-12" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">from</span> textwrap <span class="im">import</span> wrap</span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -376,14 +390,14 @@ Generating validation split: 100%|██████████| 15840/15840 [0
 <h2 class="anchored" data-anchor-id="preprocess-the-dataset">Preprocess the dataset</h2>
 <p>Since the dataset has two modalities (image and text), the pre-processing pipeline will preprocess images and the captions.</p>
 <p>To do so, load the processor class associated with the model you are about to fine-tune.</p>
-<div id="cell-15" class="cell">
+<div id="cell-16" class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoProcessor</span>
 <span id="cb16-2"><a href="#cb16-2"></a></span>
 <span id="cb16-3"><a href="#cb16-3"></a>checkpoint <span class="op">=</span> <span class="st">"microsoft/git-base"</span></span>
 <span id="cb16-4"><a href="#cb16-4"></a>processor <span class="op">=</span> AutoProcessor.from_pretrained(checkpoint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The processor will internally pre-process the image (which includes resizing, and pixel scaling) and tokenize the caption.</p>
-<div id="cell-17" class="cell">
+<div id="cell-18" class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">def</span> transforms(example_batch):</span>
 <span id="cb17-2"><a href="#cb17-2"></a>    images <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> example_batch[<span class="st">"image"</span>]]</span>
 <span id="cb17-3"><a href="#cb17-3"></a>    captions <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> example_batch[<span class="st">"text"</span>]]</span>
@@ -400,7 +414,7 @@ Generating validation split: 100%|██████████| 15840/15840 [0
 <section id="load-a-base-model" class="level2">
 <h2 class="anchored" data-anchor-id="load-a-base-model">Load a base model</h2>
 <p>Load the <a href="https://huggingface.co/microsoft/git-base">“microsoft/git-base”</a> into a <a href="https://huggingface.co/docs/transformers/model_doc/auto#transformers.AutoModelForCausalLM"><code>AutoModelForCausalLM</code></a> object.</p>
-<div id="cell-21" class="cell">
+<div id="cell-22" class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoModelForCausalLM</span>
 <span id="cb18-2"><a href="#cb18-2"></a></span>
 <span id="cb18-3"><a href="#cb18-3"></a>model <span class="op">=</span> AutoModelForCausalLM.from_pretrained(checkpoint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -410,7 +424,7 @@ Generating validation split: 100%|██████████| 15840/15840 [0
 <h2 class="anchored" data-anchor-id="evaluate">Evaluate</h2>
 <p>Image captioning models are typically evaluated with the <a href="https://huggingface.co/spaces/evaluate-metric/rouge">Rouge Score</a> or <a href="https://huggingface.co/spaces/evaluate-metric/wer">Word Error Rate</a>. For this guide, you will use the Word Error Rate (WER).</p>
 <p>We use the 🤗 Evaluate library to do so. For potential limitations and other gotchas of the WER, refer to <a href="https://huggingface.co/spaces/evaluate-metric/wer">this guide</a>.</p>
-<div id="cell-24" class="cell">
+<div id="cell-25" class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">from</span> evaluate <span class="im">import</span> load</span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> torch</span>
 <span id="cb19-3"><a href="#cb19-3"></a></span>
@@ -430,7 +444,7 @@ Generating validation split: 100%|██████████| 15840/15840 [0
 <h2 class="anchored" data-anchor-id="train">Train!</h2>
 <p>Now, you are ready to start fine-tuning the model. You will use the 🤗 <a href="https://huggingface.co/docs/transformers/main/en/main_classes/trainer#transformers.Trainer">Trainer</a> for this.</p>
 <p>First, define the training arguments using <a href="https://huggingface.co/docs/transformers/main/en/main_classes/trainer#transformers.TrainingArguments">TrainingArguments</a>.</p>
-<div id="cell-27" class="cell">
+<div id="cell-28" class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">from</span> transformers <span class="im">import</span> TrainingArguments, Trainer</span>
 <span id="cb20-2"><a href="#cb20-2"></a></span>
 <span id="cb20-3"><a href="#cb20-3"></a>model_name <span class="op">=</span> checkpoint.split(<span class="st">"/"</span>)[<span class="dv">1</span>]</span>
@@ -456,7 +470,7 @@ Generating validation split: 100%|██████████| 15840/15840 [0
 <span id="cb20-23"><a href="#cb20-23"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then pass them along with the datasets and the model to 🤗 Trainer.</p>
-<div id="cell-29" class="cell">
+<div id="cell-30" class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>trainer <span class="op">=</span> Trainer(</span>
 <span id="cb21-2"><a href="#cb21-2"></a>    model<span class="op">=</span>model,</span>
 <span id="cb21-3"><a href="#cb21-3"></a>    args<span class="op">=</span>training_args,</span>
@@ -466,19 +480,19 @@ Generating validation split: 100%|██████████| 15840/15840 [0
 <span id="cb21-7"><a href="#cb21-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To start training, simply call <a href="https://huggingface.co/docs/transformers/main/en/main_classes/trainer#transformers.Trainer.train">train()</a> on the <a href="https://huggingface.co/docs/transformers/main/en/main_classes/trainer#transformers.Trainer">Trainer</a> object.</p>
-<div id="cell-31" class="cell">
+<div id="cell-32" class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>trainer.train()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You should see the training loss drop smoothly as training progresses.</p>
 <p>Once training is completed, share your model to the Hub with the <a href="https://huggingface.co/docs/transformers/main/en/main_classes/trainer#transformers.Trainer.push_to_hub">push_to_hub()</a> method so everyone can use your model:</p>
-<div id="cell-33" class="cell">
+<div id="cell-34" class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>trainer.push_to_hub()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="inference" class="level2">
 <h2 class="anchored" data-anchor-id="inference">Inference</h2>
 <p>Take a sample image from <code>test_ds</code> to test the model.</p>
-<div id="cell-36" class="cell">
+<div id="cell-37" class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="im">import</span> requests</span>
 <span id="cb24-3"><a href="#cb24-3"></a></span>
@@ -490,14 +504,14 @@ Generating validation split: 100%|██████████| 15840/15840 [0
 <pre><code>&lt;img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/tasks/test_image_image_cap.png" alt="Test image"/&gt;</code></pre>
 </div>
 <p>Prepare image for the model.</p>
-<div id="cell-38" class="cell">
+<div id="cell-39" class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>device <span class="op">=</span> <span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a></span>
 <span id="cb26-3"><a href="#cb26-3"></a>inputs <span class="op">=</span> processor(images<span class="op">=</span>image, return_tensors<span class="op">=</span><span class="st">"pt"</span>).to(device)</span>
 <span id="cb26-4"><a href="#cb26-4"></a>pixel_values <span class="op">=</span> inputs.pixel_values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Call <code>generate</code> and decode the predictions.</p>
-<div id="cell-40" class="cell">
+<div id="cell-41" class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>generated_ids <span class="op">=</span> model.generate(pixel_values<span class="op">=</span>pixel_values, max_length<span class="op">=</span><span class="dv">50</span>)</span>
 <span id="cb27-2"><a href="#cb27-2"></a>generated_caption <span class="op">=</span> processor.batch_decode(generated_ids, skip_special_tokens<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>]</span>
 <span id="cb27-3"><a href="#cb27-3"></a><span class="bu">print</span>(generated_caption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
