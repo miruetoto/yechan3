@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="신록예찬">
+<meta name="dcterms.date" content="2024-10-10">
 
-<title>신록예찬’s Blog</title>
+<title>신록예찬’s Blog - (강의) 음성인식</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -186,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">(강의) 음성인식</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -241,10 +243,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">(강의) 음성인식</h1>
+</div>
 
 
 
-<div id="cell-0" class="cell" data-execution_count="1">
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>신록예찬 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 10, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="cell-1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>pip install transformers datasets evaluate jiwer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Requirement already satisfied: transformers in /home/cgb3/anaconda3/envs/hf/lib/python3.12/site-packages (4.45.1)
@@ -287,7 +317,7 @@ Requirement already satisfied: six&gt;=1.5 in /home/cgb3/anaconda3/envs/hf/lib/p
 Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
 </div>
-<div id="cell-1" class="cell" data-execution_count="1">
+<div id="cell-2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset, Audio</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a>minds <span class="op">=</span> load_dataset(<span class="st">"PolyAI/minds14"</span>, name<span class="op">=</span><span class="st">"en-US"</span>, split<span class="op">=</span><span class="st">"train[:100]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -300,10 +330,10 @@ Passing `trust_remote_code=True` will be mandatory to load this dataset from the
   warnings.warn(</code></pre>
 </div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>minds <span class="op">=</span> minds.train_test_split(test_size<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="4">
+<div id="cell-4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>minds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>DatasetDict({
@@ -318,10 +348,10 @@ Passing `trust_remote_code=True` will be mandatory to load this dataset from the
 })</code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="5">
+<div id="cell-5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>minds <span class="op">=</span> minds.remove_columns([<span class="st">"english_transcription"</span>, <span class="st">"intent_class"</span>, <span class="st">"lang_id"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="6">
+<div id="cell-6" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>minds[<span class="st">"train"</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>{'path': '/home/cgb3/.cache/huggingface/datasets/downloads/extracted/75236ad3a9fd9bbe635f6aa63106ed2d33d9507d30786db63f62cb59a5716646/en-US~BALANCE/602b9c72bb1e6d0fbce91f87.wav',
@@ -332,7 +362,7 @@ Passing `trust_remote_code=True` will be mandatory to load this dataset from the
  'transcription': 'what is my account balance'}</code></pre>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="7">
+<div id="cell-7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoProcessor</span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
 <span id="cb11-3"><a href="#cb11-3"></a>processor <span class="op">=</span> AutoProcessor.from_pretrained(<span class="st">"facebook/wav2vec2-base"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -343,7 +373,7 @@ Passing `trust_remote_code=True` will be mandatory to load this dataset from the
   warnings.warn(</code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="8">
+<div id="cell-8" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>minds <span class="op">=</span> minds.cast_column(<span class="st">"audio"</span>, Audio(sampling_rate<span class="op">=</span><span class="dv">16_000</span>))</span>
 <span id="cb13-2"><a href="#cb13-2"></a>minds[<span class="st">"train"</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -355,7 +385,7 @@ Passing `trust_remote_code=True` will be mandatory to load this dataset from the
  'transcription': 'what is my account balance'}</code></pre>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="9">
+<div id="cell-9" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">def</span> uppercase(example):</span>
 <span id="cb15-2"><a href="#cb15-2"></a>    <span class="cf">return</span> {<span class="st">"transcription"</span>: example[<span class="st">"transcription"</span>].upper()}</span>
 <span id="cb15-3"><a href="#cb15-3"></a></span>
@@ -366,21 +396,21 @@ Passing `trust_remote_code=True` will be mandatory to load this dataset from the
 Map: 100%|██████████| 20/20 [00:00&lt;00:00, 5103.49 examples/s]</code></pre>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="10">
+<div id="cell-10" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">def</span> prepare_dataset(batch):</span>
 <span id="cb17-2"><a href="#cb17-2"></a>    audio <span class="op">=</span> batch[<span class="st">"audio"</span>]</span>
 <span id="cb17-3"><a href="#cb17-3"></a>    batch <span class="op">=</span> processor(audio[<span class="st">"array"</span>], sampling_rate<span class="op">=</span>audio[<span class="st">"sampling_rate"</span>], text<span class="op">=</span>batch[<span class="st">"transcription"</span>])</span>
 <span id="cb17-4"><a href="#cb17-4"></a>    batch[<span class="st">"input_length"</span>] <span class="op">=</span> <span class="bu">len</span>(batch[<span class="st">"input_values"</span>][<span class="dv">0</span>])</span>
 <span id="cb17-5"><a href="#cb17-5"></a>    <span class="cf">return</span> batch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="11">
+<div id="cell-11" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>encoded_minds <span class="op">=</span> minds.<span class="bu">map</span>(prepare_dataset, remove_columns<span class="op">=</span>minds.column_names[<span class="st">"train"</span>], num_proc<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Map (num_proc=4): 100%|██████████| 80/80 [00:00&lt;00:00, 474.87 examples/s]
 Map (num_proc=4): 100%|██████████| 20/20 [00:00&lt;00:00, 177.41 examples/s]</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="12">
+<div id="cell-12" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> torch</span>
 <span id="cb20-2"><a href="#cb20-2"></a></span>
 <span id="cb20-3"><a href="#cb20-3"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass, field</span>
@@ -409,15 +439,15 @@ Map (num_proc=4): 100%|██████████| 20/20 [00:00&lt;00:00, 17
 <span id="cb20-26"><a href="#cb20-26"></a></span>
 <span id="cb20-27"><a href="#cb20-27"></a>        <span class="cf">return</span> batch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="13">
+<div id="cell-13" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>data_collator <span class="op">=</span> DataCollatorCTCWithPadding(processor<span class="op">=</span>processor, padding<span class="op">=</span><span class="st">"longest"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="25">
+<div id="cell-14" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> evaluate</span>
 <span id="cb22-2"><a href="#cb22-2"></a></span>
 <span id="cb22-3"><a href="#cb22-3"></a><span class="co">#wer = evaluate.load("wer")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="42">
+<div id="cell-15" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb23-2"><a href="#cb23-2"></a></span>
 <span id="cb23-3"><a href="#cb23-3"></a></span>
@@ -434,7 +464,7 @@ Map (num_proc=4): 100%|██████████| 20/20 [00:00&lt;00:00, 17
 <span id="cb23-14"><a href="#cb23-14"></a></span>
 <span id="cb23-15"><a href="#cb23-15"></a>    <span class="cf">return</span> {<span class="st">"wer"</span>: wer.compute(predictions<span class="op">=</span>pred_str, references<span class="op">=</span>label_str)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="43">
+<div id="cell-16" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoModelForCTC, TrainingArguments, Trainer</span>
 <span id="cb24-2"><a href="#cb24-2"></a></span>
 <span id="cb24-3"><a href="#cb24-3"></a>model <span class="op">=</span> AutoModelForCTC.from_pretrained(</span>
@@ -449,7 +479,7 @@ Some weights of Wav2Vec2ForCTC were not initialized from the model checkpoint at
 You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="44">
+<div id="cell-17" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>training_args <span class="op">=</span> TrainingArguments(</span>
 <span id="cb26-2"><a href="#cb26-2"></a>    output_dir<span class="op">=</span><span class="st">"my_awesome_asr_mind_model"</span>,</span>
 <span id="cb26-3"><a href="#cb26-3"></a>    per_device_train_batch_size<span class="op">=</span><span class="dv">8</span>,</span>
@@ -529,7 +559,7 @@ max_steps is given, it will override any value given in num_train_epochs
 <pre><code>TrainOutput(global_step=200, training_loss=27.734552917480467, metrics={'train_runtime': 160.7855, 'train_samples_per_second': 19.902, 'train_steps_per_second': 1.244, 'total_flos': 3.839687518470912e+17, 'train_loss': 27.734552917480467, 'epoch': 40.0})</code></pre>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="45">
+<div id="cell-18" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset, Audio</span>
 <span id="cb29-2"><a href="#cb29-2"></a></span>
 <span id="cb29-3"><a href="#cb29-3"></a>dataset <span class="op">=</span> load_dataset(<span class="st">"PolyAI/minds14"</span>, <span class="st">"en-US"</span>, split<span class="op">=</span><span class="st">"train"</span>)</span>
@@ -543,7 +573,7 @@ Passing `trust_remote_code=True` will be mandatory to load this dataset from the
   warnings.warn(</code></pre>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="50">
+<div id="cell-19" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="im">from</span> transformers <span class="im">import</span> pipeline</span>
 <span id="cb31-2"><a href="#cb31-2"></a></span>
 <span id="cb31-3"><a href="#cb31-3"></a>transcriber <span class="op">=</span> pipeline(<span class="st">"automatic-speech-recognition"</span>, model<span class="op">=</span><span class="st">"my_awesome_asr_mind_model/checkpoint-200"</span>)</span>
