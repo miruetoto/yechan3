@@ -1290,7 +1290,7 @@
     "href": "공부/HF/2024-11-02-(강의) numpy와 torch의 차이.html#c.-차이점2-메소드차이",
     "title": "(강의) numpy와 torch의 차이",
     "section": "C. 차이점2 – 메소드차이",
-    "text": "C. 차이점2 – 메소드차이\n- torch 와 numpy의 메소드(=자료에 내장된 특수함수)들이 완전히 같지는 않음.\n\ntsr = torch.tensor([1,2,3])\ntsr\n\ntensor([1, 2, 3])\n\n\n\ntsr.numpy() # np.array로 바꿔주는 메소드\n\narray([1, 2, 3])\n\n\n\ntsr.float() # 자료형을 바꿔주는 메소드\n\ntensor([1., 2., 3.])\n\n\n- 차원변환 관련 메소드"
+    "text": "C. 차이점2 – 메소드차이\n- torch 와 numpy의 메소드(=자료에 내장된 특수함수)들이 완전히 같지는 않음.\n\ntsr = torch.tensor([1,2,3])\ntsr\n\ntensor([1, 2, 3])\n\n\n\ntsr.numpy() # np.array로 바꿔주는 메소드\n\narray([1, 2, 3])\n\n\n\ntsr.float() # 자료형을 바꿔주는 메소드\n\ntensor([1., 2., 3.])\n\n\n\narr = np.array([1,2,3])\narr\n\narray([1, 2, 3])\n\n\n\narr.numpy()\n\nAttributeError: 'numpy.ndarray' object has no attribute 'numpy'\n\n\n\narr.float()\n\nAttributeError: 'numpy.ndarray' object has no attribute 'float'"
   },
   {
     "objectID": "공부/HF/2024-11-02-(강의) numpy와 torch의 차이.html#d.-차이점3-미분연산지원-star",
